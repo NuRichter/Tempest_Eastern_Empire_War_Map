@@ -1,0 +1,46 @@
+{
+  "name": "tempest-eastern-empire-war-map",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive cinematic war map for the Tempest-Eastern Empire War, built on the Step 1 canonical battlefield dataset.",
+  "scripts": {
+    "compile-data": "tsx scripts/compile-data.ts",
+    "validate-data": "tsx scripts/validate-data.ts",
+    "validate-assets": "tsx scripts/validate-assets.ts",
+    "prebuild": "npm run compile-data && npm run validate-data && npm run validate-assets",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx scripts/test-runtime.ts",
+    "verify": "npm run compile-data && npm run validate-data && npm run validate-assets && npm run lint && npm run typecheck && npm run test && npm run build",
+    "qa": "tsx scripts/browser-qa.ts"
+  },
+  "dependencies": {
+    "lucide-react": "^0.469.0",
+    "maplibre-gl": "^5.6.0",
+    "next": "15.5.25",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.18.0",
+    "eslint-config-next": "15.5.25",
+    "postcss": "^8.5.1",
+    "puppeteer": "^25.10.0",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "xlsx": "^0.18.5"
+  },
+  "engines": {
+    "node": ">=20.11"
+  }
+}

@@ -1,0 +1,645 @@
+{
+  "$schema": "internal://gazetteer.source",
+  "about": {
+    "purpose": "Cartographic placement layer. The Step 1 dataset contains NO coordinates of any kind; it names places in prose. This file is the only place where a name is given a position on the map, so that no coordinate is ever invented inside application code.",
+    "coordinateSystem": "SIM_NORMALISED",
+    "definition": "x in [0,1] left->right, y in [0,1] top->bottom, measured against public/maps/base-atlas.png at its native 2641 x 2035 pixels. These are simulation coordinates for a fictional world. They are NOT Earth latitude/longitude and must never be presented as such.",
+    "placementGrades": {
+      "MEASURED": "Read directly off the supplied annotated map (public/maps/reference-annotated.png) by registering that 1920x1080 screenshot onto the 2641x2035 atlas with a SIFT + RANSAC homography (385 inliers of 414 matches) and taking the tip pixel of each marker pin. Repeatable; not authored by hand.",
+      "RECONSTRUCTED": "Not marked on any supplied map. Positioned by relation to MEASURED anchors as described in each entry's basis field. A plausible position, not a canonical one.",
+      "ABSTRACT": "Has no place on the map at all (a worldwide posture, a sealed space, an inter-state negotiation). Deliberately carries no coordinate; the interface renders these off-map."
+    },
+    "warning": "Every RECONSTRUCTED position is a rendering convenience. It is surfaced in the interface as RECONSTRUCTED and must not be read as canon."
+  },
+  "measurementProvenance": {
+    "sourceImage": "Central_World_Tensura_Map_with_Tick.png",
+    "targetImage": "Central_World_Tensura.png",
+    "method": "SIFT keypoints, BFMatcher ratio test at 0.72, findHomography RANSAC reprojection threshold 4.0px",
+    "inliers": 385,
+    "matches": 414,
+    "markerPoint": "bottom tip of the teardrop pin, which is the point the pin indicates"
+  },
+  "nations": [
+    {
+      "id": "ice-continent",
+      "name": "Ice Continent",
+      "category": "Octagram Nations",
+      "x": 0.4727,
+      "y": 0.14469,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "lubelius",
+      "name": "Holy Empire of Lubelius",
+      "category": "Octagram Nations",
+      "x": 0.34115,
+      "y": 0.46481,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "damargania",
+      "name": "Holy Void of Damargania",
+      "category": "Octagram Nations",
+      "x": 0.22848,
+      "y": 0.54348,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "el-dorado",
+      "name": "Golden City of El Dorado",
+      "category": "Octagram Nations",
+      "x": 0.31403,
+      "y": 0.84371,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "jura-tempest-federation",
+      "name": "Jura Tempest Federation",
+      "category": "Octagram Nations",
+      "x": 0.63833,
+      "y": 0.56247,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "city-of-the-forgotten-dragon",
+      "name": "City of the Forgotten Dragon",
+      "category": "Octagram Nations",
+      "x": 0.83098,
+      "y": 0.59774,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "nasca-namrium-ulmeria",
+      "name": "Nasca Namrium Ulmeria",
+      "category": "Eastern Empire",
+      "x": 0.8239,
+      "y": 0.37438,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "eurazania",
+      "name": "Beast Kingdom of Eurazania",
+      "category": "Former Demon Lord Territories",
+      "x": 0.73829,
+      "y": 0.66647,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "fulbrosia",
+      "name": "Harpy Queendom of Fulbrosia",
+      "category": "Former Demon Lord Territories",
+      "x": 0.66822,
+      "y": 0.71711,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "jistav",
+      "name": "Puppet Nation of Jistav",
+      "category": "Former Demon Lord Territories",
+      "x": 0.87527,
+      "y": 0.49827,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "dwargon",
+      "name": "Armed Nation of Dwargon",
+      "category": "Miscellaneous",
+      "x": 0.65698,
+      "y": 0.41146,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "sarion",
+      "name": "Dynasty of Sarion",
+      "category": "Miscellaneous",
+      "x": 0.53964,
+      "y": 0.70264,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "ulgracia",
+      "name": "Republic of Ulgracia",
+      "category": "Miscellaneous",
+      "x": 0.56245,
+      "y": 0.75509,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "blumund",
+      "name": "Kingdom of Blumund",
+      "category": "Western Nations",
+      "x": 0.57832,
+      "y": 0.53353,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "englassia",
+      "name": "Kingdom of Englassia",
+      "category": "Western Nations",
+      "x": 0.47123,
+      "y": 0.5046,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "farmenas",
+      "name": "Kingdom of Farmenas",
+      "category": "Western Nations",
+      "x": 0.54975,
+      "y": 0.48651,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "siltrosso",
+      "name": "Kingdom of Siltrosso",
+      "category": "Western Nations",
+      "x": 0.50971,
+      "y": 0.463,
+      "placement": "MEASURED"
+    },
+    {
+      "id": "various-western-states",
+      "name": "Various Western States",
+      "category": "Western Nations",
+      "x": 0.46976,
+      "y": 0.59593,
+      "placement": "MEASURED",
+      "hasFlag": false
+    }
+  ],
+  "places": [
+    {
+      "id": "imperial-capital",
+      "name": "Imperial Capital",
+      "theatre": "TH-CAP",
+      "x": 0.8239,
+      "y": 0.37438,
+      "placement": "MEASURED",
+      "basis": "The Eastern Empire marker on the supplied annotated map. The corpus places the capital inside the Empire and gives no finer location."
+    },
+    {
+      "id": "imperial-interior",
+      "name": "Eastern Empire interior",
+      "theatre": "TH-CAP",
+      "x": 0.7955,
+      "y": 0.3925,
+      "placement": "RECONSTRUCTED",
+      "basis": "The assembly area of the invasion column before it marched. Placed just inside the Empire on the bearing from the capital towards the Great Jura Forest, so that the approach march reads as leaving the Empire westward. The corpus states only 'Eastern Empire'."
+    },
+    {
+      "id": "great-jura-forest",
+      "name": "Great Jura Forest",
+      "theatre": "TH-DWG",
+      "x": 0.6512,
+      "y": 0.5405,
+      "placement": "RECONSTRUCTED",
+      "basis": "The forest surrounds the Tempest capital. Placed just north-east of the MEASURED Tempest marker, between Tempest and the Dwargon approach, which is the sector the campaign is fought in."
+    },
+    {
+      "id": "jura-forest-edge",
+      "name": "Edge of the Great Jura Forest",
+      "theatre": "TH-DWG",
+      "x": 0.6985,
+      "y": 0.5138,
+      "placement": "RECONSTRUCTED",
+      "basis": "Eastern margin of the forest, the point at which the imperial column stops being 'in transit'. Placed on the straight line from imperial-interior to great-jura-forest at the point where it meets the forest body. Endpoint of the Approach_Progress_Pct interpolation."
+    },
+    {
+      "id": "tempest-border",
+      "name": "Tempest border",
+      "theatre": "TH-DWG",
+      "x": 0.7248,
+      "y": 0.4995,
+      "placement": "RECONSTRUCTED",
+      "basis": "The border forced at EVT-0015, east of the forest edge on the same march axis. No border is drawn on any supplied map."
+    },
+    {
+      "id": "dwargon-gate-front",
+      "name": "Dwargon Gate Front",
+      "theatre": "TH-DWG",
+      "x": 0.6608,
+      "y": 0.4762,
+      "placement": "RECONSTRUCTED",
+      "basis": "The decisive surface battlefield, fought at Dwargon's gate on the forest side. Placed between the MEASURED Dwargon marker and the forest, on the Dwargon-Tempest axis."
+    },
+    {
+      "id": "dwargon-outer-gate",
+      "name": "Dwargon outer gate",
+      "theatre": "TH-DWG",
+      "x": 0.6588,
+      "y": 0.4498,
+      "placement": "RECONSTRUCTED",
+      "basis": "The fortified gate itself, between the Dwargon marker and the gate front."
+    },
+    {
+      "id": "dwargon-gate-airspace",
+      "name": "Airspace over the Dwargon Gate Front",
+      "theatre": "TH-DWG",
+      "x": 0.6608,
+      "y": 0.4762,
+      "placement": "RECONSTRUCTED",
+      "altitude": "AIR",
+      "basis": "Directly above dwargon-gate-front. Rendered as an air layer at the same ground position, since the map has no vertical dimension."
+    },
+    {
+      "id": "ramiris-labyrinth",
+      "name": "Ramiris Labyrinth",
+      "theatre": "TH-LAB",
+      "x": 0.63833,
+      "y": 0.56247,
+      "placement": "RECONSTRUCTED",
+      "altitude": "SUBSURFACE",
+      "basis": "The labyrinth lies beneath the Tempest capital, so it takes the MEASURED Tempest position. It is a subsurface theatre and is rendered as such; two theatres share this ground position by design, not by error."
+    },
+    {
+      "id": "dwargon-eastern-metropolis",
+      "name": "Dwargon eastern metropolis (Isthmus gate)",
+      "theatre": "TH-DWE",
+      "x": 0.7005,
+      "y": 0.4271,
+      "placement": "RECONSTRUCTED",
+      "basis": "East of the MEASURED Dwargon marker, on the isthmus facing the Empire. The corpus names an eastern gate and metropolis but locates neither."
+    },
+    {
+      "id": "dwargon-eastern-front",
+      "name": "Dwargon eastern front",
+      "theatre": "TH-DWE",
+      "x": 0.7148,
+      "y": 0.4207,
+      "placement": "RECONSTRUCTED",
+      "basis": "The battle line outside the eastern metropolis, one step further east than the metropolis itself."
+    },
+    {
+      "id": "jura-airspace",
+      "name": "Airspace over the Great Jura Forest",
+      "theatre": "TH-DRG",
+      "x": 0.6512,
+      "y": 0.5405,
+      "placement": "RECONSTRUCTED",
+      "altitude": "AIR",
+      "basis": "The dragon engagement takes place over the forest. Same ground position as great-jura-forest, air layer."
+    },
+    {
+      "id": "northern-ingracia-airspace",
+      "name": "Airspace over northern Ingracia",
+      "theatre": "TH-CAP",
+      "x": 0.4795,
+      "y": 0.4652,
+      "placement": "RECONSTRUCTED",
+      "altitude": "AIR",
+      "basis": "North of the MEASURED Englassia marker, in the western half of the central continent, which is where the corpus places the Ingracia region. Low confidence: the supplied maps do not label Ingracia."
+    },
+    {
+      "id": "embassy-in-the-empire",
+      "name": "Embassy in the Empire",
+      "theatre": "TH-DIP",
+      "x": 0.8318,
+      "y": 0.3822,
+      "placement": "RECONSTRUCTED",
+      "basis": "Inside the imperial capital, offset so the embassy marker does not sit exactly on the capital marker."
+    },
+    {
+      "id": "settlement-table",
+      "name": "Settlement (inter-state)",
+      "theatre": "TH-DIP",
+      "placement": "ABSTRACT",
+      "basis": "The settlement is a negotiation between states, not a place. Deliberately given no coordinate."
+    },
+    {
+      "id": "sealed-space",
+      "name": "Sealed space, Imperial Capital",
+      "theatre": "TH-CAP",
+      "placement": "ABSTRACT",
+      "basis": "A severed space with no location on any map. Rendered off-map with an explicit marker."
+    },
+    {
+      "id": "worldwide-deployment",
+      "name": "Deployed worldwide",
+      "theatre": null,
+      "placement": "ABSTRACT",
+      "basis": "A posture, not a position. Forces carrying this location are not drawn on the map."
+    },
+    {
+      "id": "position-unknown",
+      "name": "Position unknown",
+      "theatre": null,
+      "placement": "ABSTRACT",
+      "basis": "Reserved for UNKNOWN locations, including Velgrynd's space-time jump (MOV-015, AMB-009). The destination is not stated in the corpus and is not guessed."
+    },
+    {
+      "id": "green-legion-start-line",
+      "name": "Green Legion start line",
+      "theatre": "TH-DWG",
+      "x": 0.656,
+      "y": 0.48,
+      "placement": "RECONSTRUCTED",
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+    },
+    {
+      "id": "imperial-chariot-line",
+      "name": "Imperial chariot line",
+      "theatre": "TH-DWG",
+      "x": 0.6656,
+      "y": 0.4728,
+      "placement": "RECONSTRUCTED",
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+    },
+    {
+      "id": "linked-fortress-position",
+      "name": "Linked fortress position",
+      "theatre": "TH-DWG",
+      "x": 0.6672,
+      "y": 0.4744,
+      "placement": "RECONSTRUCTED",
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+    },
+    {
+      "id": "encircled-position",
+      "name": "Encircled position",
+      "theatre": "TH-DWG",
+      "x": 0.6624,
+      "y": 0.4772,
+      "placement": "RECONSTRUCTED",
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+    },
+    {
+      "id": "feigned-withdrawal-line",
+      "name": "Feigned withdrawal line",
+      "theatre": "TH-DWG",
+      "x": 0.6576,
+      "y": 0.4816,
+      "placement": "RECONSTRUCTED",
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+    },
+    {
+      "id": "attempted-rally-point",
+      "name": "Attempted rally point",
+      "theatre": "TH-DWG",
+      "x": 0.6704,
+      "y": 0.47,
+      "placement": "RECONSTRUCTED",
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+    },
+    {
+      "id": "dwargon-defensive-line",
+      "name": "Dwargon defensive line",
+      "theatre": "TH-DWE",
+      "x": 0.712,
+      "y": 0.423,
+      "placement": "RECONSTRUCTED",
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+    },
+    {
+      "id": "ritual-caster-position",
+      "name": "Ritual caster position",
+      "theatre": "TH-DWE",
+      "x": 0.7185,
+      "y": 0.418,
+      "placement": "RECONSTRUCTED",
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+    },
+    {
+      "id": "central-continent",
+      "name": "Central continent (via northern Ingracia)",
+      "theatre": "TH-CAP",
+      "x": 0.5,
+      "y": 0.51,
+      "placement": "RECONSTRUCTED",
+      "basis": "Destination of the Warcraft Legion air movement (MOV-014). The corpus names the central continent by way of northern Ingracia and no finer place. Positioned in the western half of the central landmass, near the MEASURED Englassia and Siltrosso markers."
+    }
+  ],
+  "theatreZones": {
+    "note": "Schematic areas of operations, not borders. Hand-authored convex rings around the theatre anchor so that territorial control has something to shade. Marked SCHEMATIC everywhere they are drawn. The supplied maps contain no theatre boundaries.",
+    "placement": "SCHEMATIC",
+    "zones": {
+      "TH-DWG": [
+        [
+          0.612,
+          0.512
+        ],
+        [
+          0.641,
+          0.454
+        ],
+        [
+          0.688,
+          0.443
+        ],
+        [
+          0.717,
+          0.481
+        ],
+        [
+          0.706,
+          0.541
+        ],
+        [
+          0.656,
+          0.561
+        ],
+        [
+          0.622,
+          0.545
+        ]
+      ],
+      "TH-LAB": [
+        [
+          0.615,
+          0.588
+        ],
+        [
+          0.626,
+          0.548
+        ],
+        [
+          0.661,
+          0.542
+        ],
+        [
+          0.678,
+          0.572
+        ],
+        [
+          0.661,
+          0.607
+        ],
+        [
+          0.628,
+          0.611
+        ]
+      ],
+      "TH-CAP": [
+        [
+          0.784,
+          0.336
+        ],
+        [
+          0.833,
+          0.324
+        ],
+        [
+          0.868,
+          0.352
+        ],
+        [
+          0.861,
+          0.404
+        ],
+        [
+          0.815,
+          0.421
+        ],
+        [
+          0.782,
+          0.393
+        ]
+      ],
+      "TH-DWE": [
+        [
+          0.682,
+          0.398
+        ],
+        [
+          0.722,
+          0.391
+        ],
+        [
+          0.744,
+          0.418
+        ],
+        [
+          0.733,
+          0.452
+        ],
+        [
+          0.697,
+          0.459
+        ],
+        [
+          0.677,
+          0.433
+        ]
+      ],
+      "TH-DRG": [
+        [
+          0.618,
+          0.502
+        ],
+        [
+          0.664,
+          0.489
+        ],
+        [
+          0.7,
+          0.514
+        ],
+        [
+          0.692,
+          0.566
+        ],
+        [
+          0.646,
+          0.579
+        ],
+        [
+          0.613,
+          0.552
+        ]
+      ]
+    }
+  },
+  "aliases": {
+    "Eastern Empire": "imperial-interior",
+    "Eastern Empire (nationwide)": "imperial-interior",
+    "Eastern Empire interior": "imperial-interior",
+    "Imperial territory": "imperial-interior",
+    "Imperial theatre": "imperial-capital",
+    "Imperial Capital": "imperial-capital",
+    "Imperial capital": "imperial-capital",
+    "Imperial command post": "imperial-capital",
+    "Back streets of the Imperial Capital": "imperial-capital",
+    "Yuuki's office, Imperial Capital": "imperial-capital",
+    "Yuuki's staff room": "imperial-capital",
+    "Yuuki's chamber": "imperial-capital",
+    "Sealed space, Imperial Capital": "sealed-space",
+    "Aboard Samuel's flagship": "northern-ingracia-airspace",
+    "Airspace over northern Ingracia": "northern-ingracia-airspace",
+    "Embassy in the Empire": "embassy-in-the-empire",
+    "Eastern Empire / Dwargon eastern approach": "dwargon-eastern-front",
+    "Dwargon eastern approach": "dwargon-eastern-front",
+    "Dwargon eastern front": "dwargon-eastern-front",
+    "Dwargon eastern battlefield": "dwargon-eastern-front",
+    "Behind the Scorch Dragon's position": "dwargon-eastern-front",
+    "Blockade camp": "dwargon-eastern-metropolis",
+    "Dwargon eastern metropolis": "dwargon-eastern-metropolis",
+    "Eastern metropolis of Dwargon": "dwargon-eastern-metropolis",
+    "Dwargon eastern gate (Isthmus)": "dwargon-eastern-metropolis",
+    "Dwargon": "dwargon-outer-gate",
+    "Dwargon Gate": "dwargon-outer-gate",
+    "Dwargon gate": "dwargon-outer-gate",
+    "Dwargon outer gate": "dwargon-outer-gate",
+    "Dwargon Gate Front": "dwargon-gate-front",
+    "Airspace over Dwargon Gate Front": "dwargon-gate-airspace",
+    "Airspace over the front": "dwargon-gate-airspace",
+    "Above the imperial column": "dwargon-gate-airspace",
+    "Great Jura Forest": "great-jura-forest",
+    "Great Jura Forest interior": "great-jura-forest",
+    "Great Jura Forest, eastern reaches": "jura-forest-edge",
+    "Eastern approaches": "jura-forest-edge",
+    "Edge of the Great Jura Forest": "jura-forest-edge",
+    "Great Jura Forest / Dwargon approach": "jura-forest-edge",
+    "Tempest border": "tempest-border",
+    "Inn town on the imperial line of march": "tempest-border",
+    "Ten kilometres from the imperial line": "jura-forest-edge",
+    "Imperial line of retreat": "dwargon-gate-front",
+    "Imperial supply echelon": "jura-forest-edge",
+    "Tempest": "jura-tempest-federation",
+    "Jura-Tempest Federation": "jura-tempest-federation",
+    "Tempest Control Room": "jura-tempest-federation",
+    "Tempest control room": "jura-tempest-federation",
+    "Rimuru city, inside the labyrinth": "ramiris-labyrinth",
+    "Ramiris Labyrinth": "ramiris-labyrinth",
+    "Labyrinth interior": "ramiris-labyrinth",
+    "Labyrinth entrance": "ramiris-labyrinth",
+    "Labyrinth - upper floors": "ramiris-labyrinth",
+    "Labyrinth - Floor 70": "ramiris-labyrinth",
+    "Labyrinth gate and upper floors": "ramiris-labyrinth",
+    "Great Jura Forest -> Ramiris Labyrinth": "ramiris-labyrinth",
+    "Jura airspace": "jura-airspace",
+    "Airspace over the Great Jura Forest": "jura-airspace",
+    "Deployed worldwide; recalled on outbreak of war": "worldwide-deployment",
+    "Between Tempest and the Empire": "settlement-table",
+    "UNKNOWN (space-time jump)": "position-unknown",
+    "UNKNOWN": "position-unknown",
+    "Tempest / command post": "jura-tempest-federation",
+    "Tempest / command post; advance element to Dwargon east": "jura-tempest-federation",
+    "Dwargon Gate Front airspace": "dwargon-gate-airspace",
+    "Dwargon Gate Front airspace; later Jura airspace": "dwargon-gate-airspace",
+    "Dwargon Gate Front; later Dwargon eastern relief": "dwargon-gate-front",
+    "Dwargon Gate Front; later imperial theatre and embassy": "dwargon-gate-front",
+    "Ramiris Labyrinth interior": "ramiris-labyrinth",
+    "Green Legion start line": "green-legion-start-line",
+    "Imperial chariot line": "imperial-chariot-line",
+    "Chariot line": "imperial-chariot-line",
+    "Linked fortress position": "linked-fortress-position",
+    "Encircled position": "encircled-position",
+    "Feigned withdrawal line": "feigned-withdrawal-line",
+    "Attempted rally point": "attempted-rally-point",
+    "Dwargon defensive line": "dwargon-defensive-line",
+    "Ritual caster position": "ritual-caster-position",
+    "Central continent (via northern Ingracia)": "central-continent",
+    "Inn town": "tempest-border"
+  },
+  "transitAxis": {
+    "note": "Locations of the form 'In transit, N% of the way from the imperial interior to the forest edge' are resolved parametrically along this axis, matching Approach_Progress_Pct_SIMULATED in the Timeline sheet. The endpoints are canonical statements of origin and destination; every intermediate point is linear interpolation and is reported as RECONSTRUCTED (see AMB-014).",
+    "from": "imperial-interior",
+    "to": "jura-forest-edge",
+    "pattern": "^In transit, (\\d+)% of the way from the imperial interior to the forest edge$"
+  },
+  "compoundLocationRule": {
+    "note": "Locations of the form 'A; later B' or 'A -> B' record a force whose station changes over the campaign. The Army Sizes sheet gives a per-frame location string, so the compound is resolved to its FIRST component for the frames before the force's recorded relocation events and is never used to invent a movement. Where the sheet itself never changes the string, the force is held at the first component and the second is carried as a note.",
+    "separators": [
+      ";",
+      "->"
+    ]
+  }
+}
