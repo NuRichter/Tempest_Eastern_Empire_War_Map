@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: >-
+  Jika Anda menggunakan proyek ini dalam riset, tugas akademik, atau bahan ajar,
+  mohon sitasi seperti di bawah ini dan sebutkan keterbatasan dataset sesuai
+  bagian Limitations pada berkas .md dataset. / If you use this project, please
+  cite it as below and mention the dataset's documented limitations.
+title: "Tempest–Eastern Empire War Map: Campaign Atlas and Battlefield Timeline"
+abstract: >-
+  An interactive reconstruction of the Tempest–Eastern Empire War from the light
+  novel series "Tensei Shitara Slime Datta Ken" (volumes 12–16): fifty campaign
+  days, six theatres and 7,200 ten-minute keyframes of battlefield state, rendered
+  on a globe. The project separates source-stated facts from simulation
+  reconstructions at the column level, keeps unknown values as UNKNOWN, and
+  verifies its timeline with a machine-checkable temporal constraint graph.
+  Non-commercial fan project; not affiliated with the rights holders of the
+  original work.
+type: software
+authors:
+  - alias: NuRichter
+    website: "https://github.com/NuRichter"
+repository-code: "https://github.com/NuRichter/Tempest_Eastern_Empire_War_Map"
+url: "https://github.com/NuRichter/Tempest_Eastern_Empire_War_Map"
+license-url: "https://github.com/NuRichter/Tempest_Eastern_Empire_War_Map/blob/main/LICENSE"
+version: 1.0.0
+date-released: "2026-10-07"
+keywords:
+  - tensura
+  - timeline-reconstruction
+  - battlefield-simulation
+  - keyframes
+  - maplibre
+  - nextjs
+  - data-visualization
+  - fan-project

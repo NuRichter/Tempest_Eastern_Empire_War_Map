@@ -1,0 +1,515 @@
+================================================================================
+
+              TEMPEST–EASTERN EMPIRE WAR TIMELINE PROJECT
+                    LISENSI PROYEK / PROJECT LICENCE
+
+                          Versi 1.0 — Step 1
+                       Berlaku sejak: 30 Agustus 2026
+
+================================================================================
+
+RINGKASAN SATU PARAGRAF (bukan bagian hukum dari lisensi ini)
+
+    Proyek ini adalah karya penggemar non-komersial. Kode, skema basis data,
+    dan tulisan analitis di dalamnya dilisensikan secara terbuka oleh
+    Pemelihara Proyek. TETAPI karya fiksi yang menjadi rujukannya — seri novel
+    ringan "Tensei Shitara Slime Datta Ken" — TIDAK dimiliki oleh proyek ini
+    dan TIDAK dilisensikan oleh dokumen ini. Semua hak atas dunia, tokoh,
+    peristiwa, dan teks aslinya tetap milik pemegang hak masing-masing.
+    Gunakan proyek ini untuk belajar, bereksperimen, dan bersenang-senang.
+    Jangan gunakan untuk menggantikan karya aslinya, dan jangan menjualnya.
+
+    ONE-PARAGRAPH SUMMARY (not a legal part of this licence)
+
+    This is a non-commercial fan project. The code, database schema, and
+    analytical writing are openly licensed by the Project Maintainer. However,
+    the underlying fictional work — the light novel series "That Time I Got
+    Reincarnated as a Slime" — is NOT owned by this project and is NOT licensed
+    by this document. All rights in the world, characters, events, and original
+    text remain with their respective holders. Use this project to learn,
+    experiment, and have fun. Do not use it as a substitute for the original
+    work, and do not sell it.
+
+================================================================================
+DAFTAR ISI / TABLE OF CONTENTS
+================================================================================
+
+    BAGIAN 0   Definisi
+    BAGIAN 1   Struktur Lisensi Dua Lapis
+    BAGIAN 2   Lapis A — Perangkat Lunak dan Skema
+    BAGIAN 3   Lapis B — Dataset dan Tulisan Analitis
+    BAGIAN 4   Lapis C — Materi Pihak Ketiga (TIDAK dilisensikan di sini)
+    BAGIAN 5   Kekayaan Intelektual Karya Asal
+    BAGIAN 6   Batasan Non-Komersial
+    BAGIAN 7   Kewajiban Atribusi
+    BAGIAN 8   Integritas Data dan Kewajiban Pelabelan
+    BAGIAN 9   Karya Turunan dan Kontribusi
+    BAGIAN 10  Aset Media dan GIF
+    BAGIAN 11  Merek Dagang
+    BAGIAN 12  Penyangkalan Jaminan
+    BAGIAN 13  Pembatasan Tanggung Jawab
+    BAGIAN 14  Pengakhiran
+    BAGIAN 15  Keterpisahan Ketentuan
+    BAGIAN 16  Hukum yang Berlaku
+    BAGIAN 17  Prosedur Takedown
+    BAGIAN 18  Keseluruhan Perjanjian
+    LAMPIRAN A Panduan Cepat: Boleh / Tidak Boleh
+    LAMPIRAN B Catatan bagi Peneliti dan Pendidik
+
+================================================================================
+BAGIAN 0 — DEFINISI
+================================================================================
+
+0.1  "Proyek" berarti keseluruhan repositori Tempest–Eastern Empire War
+     Timeline, termasuk seluruh berkas, dokumentasi, dan riwayat revisinya.
+
+0.2  "Pemelihara" berarti pemegang hak cipta atas Materi Proyek sebagaimana
+     didefinisikan pada Bagian 0.4 dan 0.5.
+
+0.3  "Anda" berarti setiap orang atau badan yang mengakses, menyalin,
+     menggunakan, memodifikasi, atau mendistribusikan Proyek.
+
+0.4  "Perangkat Lunak" berarti seluruh kode sumber, skrip, generator,
+     validator, dan skema basis data dalam Proyek, termasuk namun tidak
+     terbatas pada berkas-berkas berekstensi .py dan struktur kolom pada
+     berkas .xlsx.
+
+0.5  "Dataset" berarti kumpulan catatan terstruktur hasil rekonstruksi dalam
+     Proyek, mencakup catatan peristiwa, keyframe, keadaan kekuatan militer,
+     catatan korban, register pergerakan, register komando, register wilayah,
+     register kontradiksi, register ambiguitas, serta tulisan analitis dan
+     naratif yang menyertainya.
+
+0.6  "Karya Asal" berarti seri novel ringan "Tensei Shitara Slime Datta Ken"
+     beserta seluruh adaptasi resminya, termasuk teks, dunia fiksi, tokoh,
+     nama, alur peristiwa, dan elemen kreatif lainnya.
+
+0.7  "Fakta Rekonstruksi" berarti pernyataan faktual mengenai Karya Asal yang
+     diekstraksi dan disusun ulang oleh Proyek — misalnya bahwa suatu formasi
+     berkekuatan sekian, atau bahwa suatu peristiwa mendahului peristiwa lain.
+
+0.8  "Nilai Simulasi" berarti setiap nilai dalam Dataset yang tidak dinyatakan
+     oleh Karya Asal melainkan direkonstruksi oleh Proyek demi kesinambungan
+     linimasa, dan yang diberi label sesuai Bagian 8.
+
+0.9  "Penggunaan Komersial" berarti penggunaan yang terutama ditujukan untuk
+     memperoleh keuntungan komersial atau imbalan uang, termasuk penjualan,
+     pemasangan iklan berbayar, langganan berbayar, dan penjualan token atau
+     aset digital.
+
+================================================================================
+BAGIAN 1 — STRUKTUR LISENSI DUA LAPIS
+================================================================================
+
+1.1  Proyek ini tidak dilisensikan secara seragam. Ia terdiri atas tiga lapis
+     dengan status hukum yang berbeda:
+
+         Lapis A  Perangkat Lunak dan Skema     → lisensi permisif (Bagian 2)
+         Lapis B  Dataset dan Tulisan Analitis  → lisensi berbagi-serupa,
+                                                   non-komersial (Bagian 3)
+         Lapis C  Materi Pihak Ketiga           → TIDAK dilisensikan di sini
+                                                   (Bagian 4)
+
+1.2  Jika suatu berkas memuat lebih dari satu lapis, ketentuan yang lebih ketat
+     berlaku atas berkas tersebut secara keseluruhan.
+
+1.3  Jika Anda ragu suatu materi termasuk lapis yang mana, anggaplah ia
+     termasuk Lapis C dan mintalah klarifikasi sebelum menggunakannya.
+
+================================================================================
+BAGIAN 2 — LAPIS A: PERANGKAT LUNAK DAN SKEMA
+================================================================================
+
+2.1  Pemelihara dengan ini memberikan kepada Anda izin bebas royalti, di
+     seluruh dunia, non-eksklusif, dan permanen untuk menggunakan, menyalin,
+     memodifikasi, menggabungkan, menerbitkan, dan mendistribusikan Perangkat
+     Lunak, termasuk untuk tujuan komersial, dengan syarat pemberitahuan hak
+     cipta dan pemberitahuan izin ini disertakan pada seluruh salinan atau
+     bagian substansial dari Perangkat Lunak.
+
+2.2  Izin pada Bagian 2.1 mencakup logika generator keyframe, validator
+     constraint temporal, generator markdown, dan rancangan skema kolom.
+
+2.3  Izin pada Bagian 2.1 TIDAK mencakup isi Dataset, meskipun isi tersebut
+     tertanam di dalam berkas kode. Isi Dataset diatur oleh Bagian 3.
+
+2.4  Konsekuensi praktis: Anda boleh mengambil mesin keyframe 10 menit ini dan
+     memakainya untuk merekonstruksi konflik apa pun — sejarah nyata maupun
+     fiksi lain — secara komersial, tanpa izin tambahan. Yang tidak boleh Anda
+     bawa serta adalah isi perang Tempest-nya.
+
+================================================================================
+BAGIAN 3 — LAPIS B: DATASET DAN TULISAN ANALITIS
+================================================================================
+
+3.1  Pemelihara memberikan kepada Anda izin bebas royalti, di seluruh dunia,
+     dan non-eksklusif untuk menggunakan, menyalin, memodifikasi, dan
+     mendistribusikan Dataset, dengan syarat kumulatif berikut:
+
+     (a)  ATRIBUSI       — sesuai Bagian 7;
+     (b)  NON-KOMERSIAL  — sesuai Bagian 6;
+     (c)  BERBAGI SERUPA — karya turunan dari Dataset harus didistribusikan
+                           di bawah ketentuan yang sama dengan dokumen ini;
+     (d)  INTEGRITAS     — sesuai Bagian 8.
+
+3.2  Izin ini meliputi susunan, pemilihan, penataan, penomoran identitas,
+     kerangka klasifikasi, register ambiguitas, register kontradiksi, dan
+     seluruh penilaian analitis yang merupakan karya orisinal Pemelihara.
+
+3.3  Izin ini TIDAK dan tidak dapat meliputi elemen kreatif Karya Asal yang
+     dirujuk oleh Dataset. Lihat Bagian 4 dan 5.
+
+3.4  Fakta Rekonstruksi. Para pihak mencatat bahwa fakta pada umumnya tidak
+     dilindungi hak cipta di banyak yurisdiksi, sementara susunan dan pemilihan
+     fakta dapat dilindungi. Bagian 3 dimaksudkan untuk melisensikan susunan
+     dan pemilihan tersebut, tanpa menyatakan kepemilikan atas fakta itu
+     sendiri maupun atas karya yang menjadi sumbernya.
+
+================================================================================
+BAGIAN 4 — LAPIS C: MATERI PIHAK KETIGA
+================================================================================
+
+4.1  Berkas PDF sumber, jika ada dalam salinan Anda, BUKAN bagian dari Proyek
+     dan TIDAK dilisensikan oleh dokumen ini. Berkas tersebut tidak boleh
+     didistribusikan ulang bersama Proyek.
+
+4.2  Proyek ini sengaja dirancang untuk TIDAK mereproduksi teks Karya Asal.
+     Kolom bukti (EVIDENCE) hanya memuat penunjuk volume dan bab, bukan
+     kutipan. Pemelihara memandang perancangan ini sebagai bagian penting dari
+     kepatuhan Proyek, dan meminta setiap kontributor mempertahankannya.
+
+4.3  Anda dilarang menambahkan kutipan verbatim, terjemahan penuh, ringkasan
+     yang dapat menggantikan pembacaan Karya Asal, atau reproduksi struktur
+     naratifnya ke dalam Proyek.
+
+4.4  Nama tokoh, nama tempat, nama formasi, dan istilah dunia fiksi digunakan
+     dalam Proyek semata-mata sebagai penunjuk referensial guna identifikasi
+     yang akurat, sebagaimana lazim dalam katalog, indeks, dan karya rujukan.
+
+================================================================================
+BAGIAN 5 — KEKAYAAN INTELEKTUAL KARYA ASAL
+================================================================================
+
+5.1  "Tensei Shitara Slime Datta Ken" beserta seluruh dunia fiksi, tokoh,
+     peristiwa, nama, ilustrasi, dan teksnya adalah milik pengarang, ilustrator,
+     penerbit, dan pemegang lisensi resminya. Proyek ini tidak berafiliasi
+     dengan, tidak didukung oleh, dan tidak disponsori oleh pihak mana pun di
+     antaranya.
+
+5.2  Tidak ada satu pun ketentuan dalam dokumen ini yang memberikan kepada Anda
+     hak apa pun atas Karya Asal. Dokumen ini tidak dapat dijadikan dasar untuk
+     mengklaim izin adaptasi, penerjemahan, penerbitan, penyiaran, atau
+     komersialisasi Karya Asal.
+
+5.3  Proyek ini bersifat transformatif dan rujukan. Ia menyusun data militer
+     terstruktur untuk keperluan visualisasi dan analisis, dan tidak
+     dimaksudkan untuk menggantikan pembacaan Karya Asal. Pemelihara mendorong
+     setiap pengguna untuk membeli dan membaca edisi resminya.
+
+5.4  Kepatuhan yurisdiksi merupakan tanggung jawab Anda. Doktrin seperti
+     penggunaan wajar (fair use), transaksi wajar (fair dealing), dan
+     pengecualian penelitian berbeda antarnegara. Pemelihara tidak memberikan
+     nasihat hukum dan tidak menjamin bahwa penggunaan Anda sah di yurisdiksi
+     Anda.
+
+================================================================================
+BAGIAN 6 — BATASAN NON-KOMERSIAL
+================================================================================
+
+6.1  Dataset (Lapis B) tidak boleh digunakan untuk Penggunaan Komersial tanpa
+     izin tertulis sebelumnya dari Pemelihara, dan Anda tetap wajib memperoleh
+     izin terpisah dari pemegang hak Karya Asal apabila diperlukan.
+
+6.2  Berikut TIDAK dianggap Penggunaan Komersial:
+
+     (a)  penggunaan pribadi, hobi, dan penggemar;
+     (b)  penggunaan dalam pengajaran, tugas kuliah, dan penelitian akademik;
+     (c)  publikasi ilmiah yang tidak dijual secara langsung;
+     (d)  portofolio pribadi, termasuk portofolio pencarian kerja;
+     (e)  hosting demo publik tanpa iklan berbayar dan tanpa dinding bayar.
+
+6.3  Berikut dianggap Penggunaan Komersial dan dilarang:
+
+     (a)  menjual Dataset atau turunannya;
+     (b)  memasang iklan berbayar pada halaman yang menampilkan Dataset;
+     (c)  menempatkan Dataset di balik langganan berbayar;
+     (d)  memasarkan Dataset sebagai NFT atau aset digital berbayar;
+     (e)  memasukkan Dataset ke dalam produk atau layanan berbayar.
+
+6.4  Pembatasan komersial pada Bagian 6 TIDAK berlaku atas Perangkat Lunak
+     (Lapis A), yang tetap permisif sesuai Bagian 2.
+
+================================================================================
+BAGIAN 7 — KEWAJIBAN ATRIBUSI
+================================================================================
+
+7.1  Setiap distribusi atau tampilan publik atas Dataset atau turunannya harus
+     memuat, pada tempat yang wajar terlihat:
+
+     (a)  nama Proyek;
+     (b)  tautan ke repositori asal, jika tersedia;
+     (c)  pernyataan bahwa Proyek merupakan karya penggemar non-komersial;
+     (d)  pernyataan bahwa Karya Asal dimiliki oleh pemegang haknya, sesuai
+          Bagian 5.1;
+     (e)  pernyataan bahwa seluruh stempel waktu bersifat rekonstruksi
+          simulasi, sesuai Bagian 8.
+
+7.2  Contoh pemenuhan yang memadai:
+
+         Data medan perang berasal dari Tempest–Eastern Empire War Timeline
+         Project, sebuah proyek penggemar non-komersial. Seluruh stempel waktu
+         merupakan rekonstruksi simulasi, bukan kanon. "Tensei Shitara Slime
+         Datta Ken" adalah milik pemegang haknya; proyek ini tidak berafiliasi
+         dengan mereka.
+
+7.3  Atribusi tidak boleh disusun sedemikian rupa sehingga menyiratkan
+     dukungan dari Pemelihara maupun dari pemegang hak Karya Asal.
+
+================================================================================
+BAGIAN 8 — INTEGRITAS DATA DAN KEWAJIBAN PELABELAN
+================================================================================
+
+8.1  Bagian ini merupakan syarat yang tidak lazim namun mengikat. Ia ada karena
+     nilai utama Proyek terletak pada pemisahan antara apa yang dinyatakan
+     sumber dan apa yang direkonstruksi.
+
+8.2  Apabila Anda mendistribusikan ulang Dataset atau turunannya, Anda WAJIB:
+
+     (a)  mempertahankan seluruh kolom dasar temporal, termasuk namun tidak
+          terbatas pada TIME_BASIS, DATE_BASIS, dan padanannya;
+     (b)  mempertahankan pembedaan antara CANONICAL_TIME dan SIMULATION_TIME;
+     (c)  mempertahankan nilai UNKNOWN sebagai UNKNOWN, dan TIDAK mengubahnya
+          menjadi nol, kosong, atau taksiran;
+     (d)  mempertahankan kolom lingkup korban (CASUALTY_SCOPE) sehingga angka
+          agregat tidak dijumlahkan ganda dengan komponennya;
+     (e)  mempertahankan register ambiguitas dan register kontradiksi, atau
+          menyertakan tautan yang jelas kepadanya.
+
+8.3  Anda DILARANG menyajikan Nilai Simulasi sebagai fakta kanon. Secara
+     khusus, Anda dilarang menyatakan atau menyiratkan bahwa Karya Asal
+     menyebutkan jam, tanggal kalender, tahun 9001, atau durasi perang tertentu.
+
+8.4  Anda DILARANG menambahkan data yang tidak berdasar sumber ke dalam
+     Dataset tanpa menandainya secara jelas sebagai rekonstruksi atau
+     spekulasi. Menambah "fanon" tanpa label merupakan pelanggaran material
+     atas lisensi ini.
+
+8.5  Pelanggaran atas Bagian 8 mengakhiri hak Anda atas Lapis B secara
+     otomatis, sesuai Bagian 14.
+
+================================================================================
+BAGIAN 9 — KARYA TURUNAN DAN KONTRIBUSI
+================================================================================
+
+9.1  Karya turunan dari Dataset harus dilisensikan dengan ketentuan yang sama
+     dengan dokumen ini (berbagi serupa).
+
+9.2  Karya turunan yang HANYA menggunakan Perangkat Lunak (Lapis A), tanpa isi
+     Dataset, bebas dari kewajiban berbagi serupa.
+
+9.3  Dengan mengirimkan kontribusi ke Proyek, Anda menyatakan bahwa:
+
+     (a)  Anda berhak mengirimkan kontribusi tersebut;
+     (b)  kontribusi Anda tidak memuat teks verbatim dari Karya Asal;
+     (c)  setiap fakta baru yang Anda tambahkan disertai penunjuk sumber;
+     (d)  setiap nilai rekonstruksi yang Anda tambahkan telah diberi label;
+     (e)  kontribusi Anda dilisensikan di bawah ketentuan dokumen ini.
+
+9.4  Kontributor mempertahankan hak ciptanya masing-masing atas kontribusinya
+     dan memberikan izin kepada Pemelihara serta pengguna hilir sesuai
+     ketentuan dokumen ini.
+
+9.5  Setiap perubahan pada penempatan temporal harus lulus validator constraint
+     yang disertakan sebelum digabungkan. Ini merupakan syarat teknis
+     kontribusi, bukan sekadar anjuran.
+
+================================================================================
+BAGIAN 10 — ASET MEDIA DAN GIF
+================================================================================
+
+10.1 Berkas gambar bergerak (GIF) yang dirujuk dalam dokumentasi Proyek
+     di-embed dari layanan pihak ketiga dan tunduk pada ketentuan layanan
+     serta hak pemiliknya masing-masing.
+
+10.2 Aset tersebut BUKAN bagian dari Proyek, tidak dilisensikan oleh dokumen
+     ini, dan tidak boleh dianggap sebagai karya Pemelihara.
+
+10.3 Apabila Anda membuat fork atas Proyek, Anda bertanggung jawab memastikan
+     kepatuhan atas setiap aset media yang Anda pertahankan atau tambahkan.
+
+================================================================================
+BAGIAN 11 — MEREK DAGANG
+================================================================================
+
+11.1 Dokumen ini tidak memberikan izin penggunaan nama dagang, merek dagang,
+     merek layanan, atau nama produk milik pihak mana pun.
+
+11.2 Penggunaan nama-nama dari Karya Asal dalam Proyek bersifat nominatif dan
+     deskriptif semata, guna menunjukkan secara akurat entitas yang dibahas.
+
+================================================================================
+BAGIAN 12 — PENYANGKALAN JAMINAN
+================================================================================
+
+12.1 PROYEK DISEDIAKAN "SEBAGAIMANA ADANYA", TANPA JAMINAN DALAM BENTUK APA
+     PUN, BAIK TERSURAT MAUPUN TERSIRAT, TERMASUK NAMUN TIDAK TERBATAS PADA
+     JAMINAN KELAYAKAN JUAL, KESESUAIAN UNTUK TUJUAN TERTENTU, DAN
+     KETIDAKLANGGARAN.
+
+12.2 Pemelihara secara khusus TIDAK menjamin bahwa:
+
+     (a)  Dataset akurat, lengkap, atau bebas kesalahan;
+     (b)  penempatan temporal di dalamnya mencerminkan kronologi Karya Asal;
+     (c)  angka kekuatan atau korban di dalamnya benar;
+     (d)  penggunaan Proyek oleh Anda sah menurut hukum yurisdiksi Anda;
+     (e)  Proyek akan terus dipelihara atau tersedia.
+
+12.3 Dataset ini merupakan rekonstruksi dari terjemahan penggemar untuk
+     sebagian volumenya. Kesalahan terjemahan telah ditemukan dan
+     didokumentasikan dalam register kontradiksi. Kesalahan lain yang belum
+     ditemukan hampir pasti masih ada.
+
+================================================================================
+BAGIAN 13 — PEMBATASAN TANGGUNG JAWAB
+================================================================================
+
+13.1 SEPANJANG DIIZINKAN HUKUM YANG BERLAKU, PEMELIHARA DAN PARA KONTRIBUTOR
+     TIDAK BERTANGGUNG JAWAB ATAS KLAIM, KERUGIAN, ATAU TANGGUNG JAWAB LAIN,
+     BAIK DALAM TINDAKAN KONTRAK, PERBUATAN MELAWAN HUKUM, MAUPUN LAINNYA,
+     YANG TIMBUL DARI ATAU SEHUBUNGAN DENGAN PROYEK ATAU PENGGUNAANNYA.
+
+13.2 Pembatasan ini mencakup kerugian tidak langsung, insidental, khusus, dan
+     konsekuensial, termasuk kehilangan data dan kehilangan keuntungan.
+
+13.3 Anda bertanggung jawab penuh atas cara Anda menggunakan Proyek, termasuk
+     kepatuhan terhadap hukum hak cipta di yurisdiksi Anda.
+
+================================================================================
+BAGIAN 14 — PENGAKHIRAN
+================================================================================
+
+14.1 Hak Anda berdasarkan dokumen ini berakhir secara otomatis apabila Anda
+     melanggar ketentuannya, khususnya Bagian 6 (non-komersial) dan Bagian 8
+     (integritas data).
+
+14.2 Hak Anda dipulihkan secara otomatis apabila pelanggaran diperbaiki dalam
+     waktu tiga puluh (30) hari sejak Anda mengetahuinya, sepanjang ini
+     merupakan pelanggaran pertama Anda.
+
+14.3 Pihak yang menerima Dataset dari Anda tidak kehilangan haknya semata-mata
+     karena hak Anda berakhir, sepanjang mereka sendiri patuh.
+
+14.4 Bagian 5, 12, 13, dan 15 tetap berlaku setelah pengakhiran.
+
+================================================================================
+BAGIAN 15 — KETERPISAHAN KETENTUAN
+================================================================================
+
+15.1 Apabila suatu ketentuan dinyatakan tidak dapat diberlakukan, ketentuan
+     tersebut ditafsirkan seminimal mungkin agar dapat diberlakukan, dan
+     ketentuan lainnya tetap berlaku penuh.
+
+15.2 Apabila Bagian 5 dinyatakan tidak dapat diberlakukan di suatu yurisdiksi,
+     seluruh izin atas Lapis B menjadi batal di yurisdiksi tersebut. Pemisahan
+     antara Proyek dan Karya Asal bersifat mendasar dan tidak dapat dilepaskan.
+
+================================================================================
+BAGIAN 16 — HUKUM YANG BERLAKU
+================================================================================
+
+16.1 Dokumen ini ditafsirkan tanpa merujuk pada satu yurisdiksi tertentu.
+     Apabila hukum yang berlaku harus ditentukan, hukum tempat kedudukan
+     Pemelihara yang berlaku, tanpa mengesampingkan hak wajib pengguna
+     berdasarkan hukum setempatnya.
+
+16.2 Versi bahasa Indonesia dan bahasa Inggris dokumen ini dimaksudkan memiliki
+     makna yang sama. Apabila terdapat perbedaan penafsiran, versi bahasa
+     Indonesia yang berlaku.
+
+================================================================================
+BAGIAN 17 — PROSEDUR TAKEDOWN
+================================================================================
+
+17.1 Pemelihara menghormati hak pemegang Karya Asal.
+
+17.2 Apabila Anda adalah pemegang hak atau kuasanya dan berpendapat bahwa suatu
+     bagian Proyek melampaui batas yang wajar, silakan hubungi Pemelihara.
+     Pemelihara berkomitmen untuk meninjau permintaan tersebut dengan itikad
+     baik dan segera, serta akan menghapus atau mengubah materi terkait tanpa
+     memerlukan proses hukum.
+
+17.3 Pemelihara tidak akan menolak permintaan yang wajar dari pemegang hak
+     dengan alasan formalitas prosedural.
+
+================================================================================
+BAGIAN 18 — KESELURUHAN PERJANJIAN
+================================================================================
+
+18.1 Dokumen ini merupakan keseluruhan perjanjian antara Anda dan Pemelihara
+     mengenai Proyek, dan menggantikan setiap pemahaman sebelumnya.
+
+18.2 Ringkasan satu paragraf di bagian awal dokumen ini bersifat penjelasan
+     dan bukan merupakan bagian hukum dari lisensi.
+
+================================================================================
+LAMPIRAN A — PANDUAN CEPAT: BOLEH / TIDAK BOLEH
+================================================================================
+
+    Panduan ini bersifat membantu dan bukan bagian hukum dari lisensi.
+    Apabila bertentangan dengan Bagian 0–18, ketentuan Bagian 0–18 yang
+    berlaku.
+
+    BOLEH
+      +  Membuat animasi web dari dataset ini dan menerbitkannya gratis
+      +  Melakukan fork, memodifikasi, dan memperbaiki data
+      +  Menggunakan mesin keyframe untuk proyek lain, termasuk komersial
+      +  Memakainya untuk skripsi, penelitian, dan bahan ajar
+      +  Memasukkannya ke portofolio pencarian kerja
+      +  Menambah event baru yang disertai bukti sumber
+
+    TIDAK BOLEH
+      -  Menjual dataset atau animasinya
+      -  Memasang iklan berbayar atau dinding bayar di atasnya
+      -  Menjadikannya NFT atau aset berbayar
+      -  Menghapus label TIME_BASIS atau mengubah UNKNOWN menjadi nol
+      -  Menyatakan bahwa novelnya menyebut jam atau tanggal tertentu
+      -  Mendistribusikan ulang berkas PDF sumber
+      -  Menambahkan kutipan verbatim dari novelnya
+      -  Menambahkan fanon tanpa label
+
+================================================================================
+LAMPIRAN B — CATATAN BAGI PENELITI DAN PENDIDIK
+================================================================================
+
+    Proyek ini dapat digunakan sebagai studi kasus mengenai rekonstruksi
+    linimasa dari sumber naratif yang tidak menyediakan penanda waktu absolut.
+
+    Tiga aspek yang mungkin bermanfaat secara metodologis:
+
+      1.  Pemisahan eksplisit antara pernyataan sumber dan rekonstruksi,
+          diwujudkan sebagai kolom basis data dan bukan sekadar catatan kaki.
+
+      2.  Graf constraint temporal yang dapat diperiksa mesin, sehingga
+          penempatan waktu dapat diuji ulang setiap kali data berubah.
+
+      3.  Register ambiguitas dan kontradiksi yang mendokumentasikan keputusan
+          interpretatif beserta alternatif yang ditolak, sehingga pembaca dapat
+          menilai ulang keputusan tersebut.
+
+    Pemelihara mempersilakan pengutipan metodologi ini, dan meminta agar
+    keterbatasan pada bagian Limitations dalam berkas .md turut disebutkan
+    apabila dataset digunakan sebagai bukti.
+
+================================================================================
+
+                        Hak Cipta atas Materi Proyek
+                     © 2026 Pemelihara Proyek Tempest Timeline
+
+              "Tensei Shitara Slime Datta Ken" © pemegang haknya.
+                 Proyek ini tidak berafiliasi dengan mereka.
+
+                     Dibuat oleh penggemar, untuk penggemar.
+                    Fakta dihormati. Ketidaktahuan diakui.
+                            Karangan tidak diterima.
+
+================================================================================
