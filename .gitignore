@@ -14,3 +14,6 @@ desktop.ini
 Sources of Truth/Contoh Referensi Tujuan Proyek/*.mp4
 Sources of Truth/Character Photocard/_work/
 __pycache__/
+
+# Browser QA output
+qa-artifacts/

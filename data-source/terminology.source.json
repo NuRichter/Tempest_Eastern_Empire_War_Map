@@ -1,0 +1,3174 @@
+{
+ "$schema": "internal://terminology.source",
+ "about": {
+  "policy": "The official Japanese (katakana/kanji from ten-sura.com character list, keyword glossary and world map, or the wiki's kanji field) anchors each term's identity. The English canonical form is the official English one. If Yen Press (the licensed English light novel, which covers vols 12-16) agrees with the anime/official-portal romanisation, that form is used. For light-novel-only terms, the Yen Press form is used where it could be verified: the full vol. 16 text is local, but vols 12-15 could only be checked through cover copy. If the official English sources disagree with each other (Ludora/Rudra, Farmus/Falmuth, Thalion/Sarion, Gabil/Gabiru, Dolph/Dorf, Henrietta/Anrietta, Adalman/Adalmann), the canonical form is the direct romanisation of the official katakana that the anime-following wiki and the project already use, and the conflict is recorded. When no official English form exists, the tensura.fandom.com wiki title is used; the wiki is secondary evidence. The Indonesian fan TL of vols 12-15 is used only to explain project variants. Confidence: HIGH = two independent official sources agree, or one official source plus unambiguous katakana. MEDIUM = one official source, or the official sources disagree. LOW = only fan-TL or project evidence."
+ },
+ "terms": [
+  {
+   "id": "nasca-namrium-ulmeria",
+   "kind": "nation",
+   "canonical": "Nasca Namrium Ulmeria United Eastern Empire",
+   "display": "Eastern Empire",
+   "japanese": "ナスカ・ナムリウム・ウルメリア東方連合統一帝国 (common name: 東の帝国)",
+   "romaji": "nasuka namuriumu urumeria tōhō rengō tōitsu teikoku",
+   "aliases": [
+    "Eastern Empire",
+    "the Empire",
+    "Nasca Namrium Ulmeria",
+    "Nasca-Namrium-Ulmeria",
+    "Nazca-Namlium-Ulmeria",
+    "Nazca-Namlium Ulmeria",
+    "United Eastern Empire of Nazca-Namlium-Ulmeria",
+    "Kekaisaran Persatuan Timur Nasca-Namrium-Ulmeria",
+    "Kekaisaran Timur",
+    "Sovereign Alliance of the Nasca Namrium Ulmeria Empire (web novel)",
+    "Eastern Kingdom (anime S1)",
+    "Kingdom of Nasca (founding kingdom)",
+    "Magic Kingdom of Namrium (absorbed)",
+    "Eastern Union of Ulmeria (absorbed)"
+   ],
+   "projectIdsUsing": [
+    "nations.json:nasca-namrium-ulmeria (name 'Nasca Namrium Ulmeria')",
+    "factions.json:'Eastern Empire'",
+    "gazetteer.source.json nations[nasca-namrium-ulmeria]",
+    "nation-flags.json",
+    "Flag List.txt: 'Flag - Nasca Namrium Ulmeria.png'",
+    "theatres.json TH-CAP region 'Eastern Empire'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "東の帝国 … 正式名称はナスカ・ナムリウム・ウルメリア東方連合統一帝国"
+    },
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314439-that-time-i-got-reincarnated-as-a-slime-vol-12-light-novel",
+     "spelling": "Eastern Empire"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Eastern Empire; 'Kingdom of Nasca'"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Nasca_Namrium_Ulmeria_United_Eastern_Empire",
+     "spelling": "Nasca Namrium Ulmeria United Eastern Empire"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12.txt",
+     "spelling": "Nazca-Namlium-Ulmeria (5x), 'Kerajaan Sihir Namlius'"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v14.txt",
+     "spelling": "Nasca-Namrium-Ulmeria"
+    }
+   ],
+   "conflicts": "Katakana is unambiguous: ナスカ=Nasca, ナムリウム=Namrium, ウルメリア=Ulmeria. 'Nazca'/'Namlium'/'Namlius' occur only in the Indonesian v12 fan TL. Yen Press's rendering of the full formal name (vol. 12) could not be verified online; Yen Press vol. 16 does write 'Nasca'. Separator style varies (Japanese ・, wiki spaces, IDN v14 hyphens). 'Ulmeria' is uncontested.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "jura-tempest-federation",
+   "kind": "nation",
+   "canonical": "Jura-Tempest Federation",
+   "display": "Tempest",
+   "japanese": "ジュラ・テンペスト連邦国 (common: 魔国連邦〈テンペスト〉)",
+   "romaji": "jura tenpesuto renpōkoku",
+   "aliases": [
+    "Tempest",
+    "Jura Tempest Federation",
+    "Federasi Jura Tempest",
+    "Demon Federation",
+    "Monster Federation",
+    "Land of Monsters",
+    "Tempest Federation"
+   ],
+   "projectIdsUsing": [
+    "nations.json:jura-tempest-federation (name 'Jura Tempest Federation')",
+    "factions.json:'Jura-Tempest Federation'",
+    "forces/commanders/combatants/events/battles faction 'Jura-Tempest Federation'",
+    "gazetteer aliases 'Tempest', 'Jura-Tempest Federation'",
+    "Flag List.txt: 'Flag - Jura Tempest Federation.png'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "ジュラ・テンペスト連邦国"
+    },
+    {
+     "type": "publisher",
+     "ref": "https://worldswithoutend.com/novel.asp?ID=40420 (Yen Press vol. 8 cover copy)",
+     "spelling": "Jura-Tempest Federation"
+    },
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314453-that-time-i-got-reincarnated-as-a-slime-vol-13-light-novel",
+     "spelling": "Tempest"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Jura-Tempest_Federation",
+     "spelling": "Jura-Tempest Federation"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v15",
+     "spelling": "Federasi Jura Tempest"
+    }
+   ],
+   "conflicts": "Hyphen renders the Japanese ・ and is used by Yen Press and the wiki. The unhyphenated form appears only in nations.json/gazetteer and the flag filename.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "dwargon",
+   "kind": "nation",
+   "canonical": "Armed Nation of Dwargon",
+   "display": "Dwargon",
+   "japanese": "武装国家ドワルゴン",
+   "romaji": "busō kokka dowarugon",
+   "aliases": [
+    "Dwargon",
+    "Dwarven Kingdom",
+    "Armed Nation Dwargon",
+    "Armament Nation Dwargon",
+    "negara bersenjata Dwargon",
+    "Kerajaan Dwarven"
+   ],
+   "projectIdsUsing": [
+    "nations.json:dwargon",
+    "factions.json:'Armed Nation of Dwargon'",
+    "forces F-DWA-001..003",
+    "theatres TH-DWE region"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "武装国家ドワルゴン"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "the Armed Nation of Dwargon; 'Dwarven Kingdom'"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Armed_Nation_of_Dwargon",
+     "spelling": "Armed Nation of Dwargon"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "eurazania",
+   "kind": "nation",
+   "canonical": "Beast Kingdom of Eurazania",
+   "display": "Eurazania",
+   "japanese": "獣王国ユーラザニア",
+   "romaji": "jū-ōkoku yūrazania",
+   "aliases": [
+    "Eurazania",
+    "Beast Kingdom Eurazania",
+    "Animal Kingdom of Euranazia",
+    "Beast Kingdom of Yuurazania"
+   ],
+   "projectIdsUsing": [
+    "nations.json:eurazania (name 'Beast Kingdom of Eurazania')",
+    "factions.json:'Beast Kingdom Eurazania'",
+    "forces F-ALL-001 faction",
+    "combatants ACT-015 faction"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "獣王国ユーラザニア"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Beast_Kingdom_of_Eurazania",
+     "spelling": "Beast Kingdom of Eurazania"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12/v13/v15",
+     "spelling": "Eurazania"
+    }
+   ],
+   "conflicts": "Yen Press form of the full name not verified online. Project uses two forms (with and without 'of').",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "lubelius",
+   "kind": "nation",
+   "canonical": "Holy Empire of Lubelius",
+   "display": "Lubelius",
+   "japanese": "神聖法皇国ルベリオス",
+   "romaji": "shinsei hōōkoku ruberiosu",
+   "aliases": [
+    "Lubelius",
+    "Ruberios",
+    "Holy Empire of Ruberios",
+    "Holy Empire of Ruberion",
+    "Holy Empire of Ruberius"
+   ],
+   "projectIdsUsing": [
+    "nations.json:lubelius"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "神聖法皇国ルベリオス"
+    },
+    {
+     "type": "publisher",
+     "ref": "Yen Press vol. 11 cover copy (retailer listings via web search, e.g. collinsbooks.com.au)",
+     "spelling": "Holy Empire of Lubelius"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Holy_Empire_of_Lubelius",
+     "spelling": "Holy Empire of Lubelius"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v14",
+     "spelling": "Ruberios"
+    }
+   ],
+   "conflicts": "Indonesian fan TL uses 'Ruberios' (raw romaji).",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "farmenas",
+   "kind": "nation",
+   "canonical": "Kingdom of Farmenas",
+   "display": "Farmenas",
+   "japanese": "ファルメナス王国",
+   "romaji": "farumenasu ōkoku",
+   "aliases": [
+    "Farmenas",
+    "Farmenas Kingdom",
+    "Farmenace Kingdom",
+    "Falmenace"
+   ],
+   "projectIdsUsing": [
+    "nations.json:farmenas",
+    "Flag List.txt: 'Flag - Kingdom of Farmenas.png'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "ファルメナス — ヨウムを王として生まれ変わった、旧ファルムス王国 (the former Falmuth, reborn with Youm as king)"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Kingdom_of_Farmenas",
+     "spelling": "Kingdom of Farmenas (former name: Kingdom of Falmuth)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12 (16x)",
+     "spelling": "Farmenas"
+    }
+   ],
+   "conflicts": "VERIFIED: Farmenas is the successor state of Falmuth (official portal map). It already exists during the v12-16 war, so the project's use is correct.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "falmuth",
+   "kind": "nation",
+   "canonical": "Kingdom of Falmuth",
+   "display": "Falmuth",
+   "japanese": "ファルムス王国",
+   "romaji": "farumusu ōkoku",
+   "aliases": [
+    "Falmuth",
+    "Farmus",
+    "Kingdom of Farmus",
+    "Kingdom of Farmas",
+    "Farmuth"
+   ],
+   "projectIdsUsing": [],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "ファルムス王国 … 後にファルメナスとなる"
+    },
+    {
+     "type": "publisher",
+     "ref": "Yen Press vol. 5 cover copy (via web search)",
+     "spelling": "Kingdom of Farmus"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Kingdom_of_Falmuth",
+     "spelling": "Kingdom of Falmuth (alt: Kingdom of Farmus — Yen Press)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v14",
+     "spelling": "Farmus"
+    }
+   ],
+   "conflicts": "Official English disagrees: Yen Press LN 'Farmus' vs anime-following wiki 'Falmuth'. 'Farmuth' is not attested anywhere. Predecessor of Farmenas; not a v12-16 belligerent.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "englassia",
+   "kind": "nation",
+   "canonical": "Kingdom of Englassia",
+   "display": "Englassia",
+   "japanese": "イングラシア王国",
+   "romaji": "ingurashia ōkoku",
+   "aliases": [
+    "Englassia",
+    "Ingracia",
+    "Kingdom of Ingracia",
+    "Kerajaan Ingracia",
+    "Ingrassia",
+    "Englesia",
+    "Engrassia"
+   ],
+   "projectIdsUsing": [
+    "nations.json:englassia",
+    "places.json:northern-ingracia-airspace ('Airspace over northern Ingracia')",
+    "places.json:central-continent ('via northern Ingracia')",
+    "gazetteer aliases 'Airspace over northern Ingracia'",
+    "events/movement/force-tracks text 'Ingracia'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "イングラシア王国"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Kingdom_of_Englassia",
+     "spelling": "Kingdom of Englassia (alts: Ingrassia, Englesia, Engrassia, Ingracia)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v15",
+     "spelling": "Ingracia (e.g. v15 airship armada 'dari bagian utara Kerajaan Ingracia')"
+    }
+   ],
+   "conflicts": "Yen Press spelling NOT verified online (community reports 'Englesia'; unconfirmed). The project uses 'Englassia' (nations) and 'Ingracia' (places/events) for the same state.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "blumund",
+   "kind": "nation",
+   "canonical": "Kingdom of Blumund",
+   "display": "Blumund",
+   "japanese": "ブルムンド王国",
+   "romaji": "burumundo ōkoku",
+   "aliases": [
+    "Blumund",
+    "Brumund",
+    "Burmund Kingdom",
+    "Kerajaan Blumund"
+   ],
+   "projectIdsUsing": [
+    "nations.json:blumund",
+    "events.json (1 mention)"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "ブルムンド王国"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "the kingdom of Blumund"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Kingdom_of_Blumund",
+     "spelling": "Kingdom of Blumund"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "sarion",
+   "kind": "nation",
+   "canonical": "Sorcerous Dynasty of Sarion",
+   "display": "Sarion",
+   "japanese": "魔導王朝サリオン",
+   "romaji": "madō ōchō sarion",
+   "aliases": [
+    "Sarion",
+    "Thalion",
+    "Dynasty of Sarion",
+    "Sorcerer's Dynasty of Sarion",
+    "Sorcery Dynasty of Thalion",
+    "Sorcerous Dynasty of Thalion"
+   ],
+   "projectIdsUsing": [
+    "nations.json:sarion (name 'Dynasty of Sarion')",
+    "Flag List.txt: 'Flag - Dynasty of Sarion.png'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "魔導王朝サリオン"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Thalion (10x)"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Sorcerous_Dynasty_of_Sarion",
+     "spelling": "Sorcerous Dynasty of Sarion"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v14",
+     "spelling": "Sarion"
+    }
+   ],
+   "conflicts": "Yen Press 'Thalion' vs anime/wiki 'Sarion'. Project drops the qualifier 魔導 ('Sorcerous').",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "ulgracia",
+   "kind": "nation",
+   "canonical": "Republic of Ulgracia",
+   "display": "Ulgracia",
+   "japanese": "ウルグレイシア共和国",
+   "romaji": "urugureishia kyōwakoku",
+   "aliases": [
+    "Ulgracia",
+    "Republic of Ur-Gracia"
+   ],
+   "projectIdsUsing": [
+    "nations.json:ulgracia"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "ウルグレイシア共和国"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Republic_of_Ulgracia",
+     "spelling": "Republic of Ulgracia"
+    }
+   ],
+   "conflicts": "Yen Press 'Republic of Ur-Gracia' (per wiki annotation).",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "siltrosso",
+   "kind": "nation",
+   "canonical": "Kingdom of Siltrosso",
+   "display": "Siltrosso",
+   "japanese": "シルトロッゾ王国",
+   "romaji": "shirutorozzo ōkoku",
+   "aliases": [
+    "Siltrosso",
+    "Siltrozzo",
+    "Seltrozzo"
+   ],
+   "projectIdsUsing": [
+    "nations.json:siltrosso"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Kingdom_of_Siltrosso",
+     "spelling": "Kingdom of Siltrosso"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "fulbrosia",
+   "kind": "nation",
+   "canonical": "Harpy Queendom of Fulbrosia",
+   "display": "Fulbrosia",
+   "japanese": "天翼国フルブロジア",
+   "romaji": "ten'yokukoku furuburojia",
+   "aliases": [
+    "Fulbrosia"
+   ],
+   "projectIdsUsing": [
+    "nations.json:fulbrosia"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "天翼国フルブロジア"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Harpy_Queendom_of_Fulbrosia",
+     "spelling": "Harpy Queendom of Fulbrosia"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "jistav",
+   "kind": "nation",
+   "canonical": "Puppet Nation of Jistav",
+   "display": "Jistav",
+   "japanese": "傀儡国ジスターヴ",
+   "romaji": "kairaikoku jisutāvu",
+   "aliases": [
+    "Jistav",
+    "Distave",
+    "Gishtave",
+    "Dhistav"
+   ],
+   "projectIdsUsing": [
+    "nations.json:jistav"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "傀儡国ジスターヴ"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Puppet_Nation_of_Jistav",
+     "spelling": "Puppet Nation of Jistav"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "damargania",
+   "kind": "nation",
+   "canonical": "Holy Void of Damargania",
+   "display": "Damargania",
+   "japanese": "聖虚ダマルガニア",
+   "romaji": "seikyo damarugania",
+   "aliases": [
+    "Damargania"
+   ],
+   "projectIdsUsing": [
+    "nations.json:damargania"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Holy_Void_of_Damargania",
+     "spelling": "Holy Void of Damargania"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "el-dorado",
+   "kind": "nation",
+   "canonical": "Golden City of El Dorado",
+   "display": "El Dorado",
+   "japanese": "黄金郷エルドラド",
+   "romaji": "ōgonkyō erudorado",
+   "aliases": [
+    "El Dorado"
+   ],
+   "projectIdsUsing": [
+    "nations.json:el-dorado"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Golden_City_of_El_Dorado",
+     "spelling": "Golden City of El Dorado"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "city-of-the-forgotten-dragon",
+   "kind": "nation",
+   "canonical": "City of the Forgotten Dragon",
+   "display": "Forgotten Dragon",
+   "japanese": "忘れられた竜の都",
+   "romaji": "wasurerareta ryū no miyako",
+   "aliases": [],
+   "projectIdsUsing": [
+    "nations.json:city-of-the-forgotten-dragon"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "忘れられた竜の都"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/City_of_the_Forgotten_Dragon",
+     "spelling": "City of the Forgotten Dragon"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "ice-continent",
+   "kind": "nation",
+   "canonical": "Ice Continent",
+   "display": "Ice Continent",
+   "japanese": "氷土の大陸",
+   "romaji": "hyōdo no tairiku",
+   "aliases": [
+    "Frozen Continent"
+   ],
+   "projectIdsUsing": [
+    "nations.json:ice-continent"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "氷土の大陸"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Ice_Continent",
+     "spelling": "Ice Continent"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "western-nations",
+   "kind": "faction",
+   "canonical": "Western Nations",
+   "display": "Western Nations",
+   "japanese": "西方諸国",
+   "romaji": "seihō shokoku",
+   "aliases": [
+    "Western States",
+    "Various Western States",
+    "Council of the West (西方諸国評議会 — the political body)"
+   ],
+   "projectIdsUsing": [
+    "factions.json:'Western Nations'",
+    "nations.json:various-western-states ('Various Western States')"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/keyword",
+     "spelling": "西方諸国 / 西方諸国評議会"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "the Western Nations"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Council_of_the_West",
+     "spelling": "Council of the West"
+    }
+   ],
+   "conflicts": "'Various Western States' (nations.json) and 'Western Nations' (factions.json) label the same bloc.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "rudra",
+   "kind": "character",
+   "canonical": "Rudra Nam Ul Nasca",
+   "display": "Emperor Rudra",
+   "japanese": "ルドラ・ナム・ウル・ナスカ",
+   "romaji": "rudora namu uru nasuka",
+   "aliases": [
+    "Ludora Nam Ul Nasca",
+    "Ludora Nam-ul-Nasca",
+    "Emperor Ludora",
+    "Ludora Nasca",
+    "Rudra Naam Ulu Nasca",
+    "Rudra Naam Ul Nazca",
+    "Rudra Nasca",
+    "Emperor Rudra",
+    "Lord First"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-000/F-EMP-001 commander 'Emperor Rudra Nam Ul Nasca'",
+    "commanders CMD-030",
+    "combatants ACT-030",
+    "events actor 'Emperor Rudra Nam Ul Nasca' / opponent 'Emperor Rudra'"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Rudra_Nam_Ul_Nasca",
+     "spelling": "Rudra Nam Ul Nasca (alt: Ludora Nam Ul Nasca — Yen Press)"
+    },
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975369750-that-time-i-got-reincarnated-as-a-slime-vol-16-light-novel",
+     "spelling": "Emperor Ludora"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Ludora (196x); 'Masayuki Ludora Nam-ul-Nasca'; 'Ludora Nasca, crown prince of the Kingdom of Nasca'"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12.txt",
+     "spelling": "Rudra Naam Ulu Nasca / Rudra Naam Ul Nazca"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v15.txt",
+     "spelling": "Rudra Nam Ul Nasca"
+    },
+    {
+     "type": "wiki",
+     "ref": "Character Photocard metadata ID 350 (wiki-derived)",
+     "spelling": "Rudra Nam Ul Nasca"
+    }
+   ],
+   "conflicts": "UNRESOLVED official conflict: the Yen Press LN uses 'Ludora' (and 'Nam-ul-Nasca' once in v16); the katakana ルドラ and the anime-following wiki give 'Rudra'. Canonical kept as 'Rudra Nam Ul Nasca' (direct romanisation, matches wiki, photocard archive and project); 'Ludora' is the Yen Press alias. 'Naam', 'Ulu', 'Nazca' are fan-TL errors.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "masayuki",
+   "kind": "character",
+   "canonical": "Masayuki Rudra Nam Ul Nasca",
+   "display": "Masayuki",
+   "japanese": "マサユキ (later マサユキ・ルドラ・ナム・ウル・ナスカ)",
+   "romaji": "masayuki",
+   "aliases": [
+    "Masayuki",
+    "Masayuki Honjou",
+    "Masayuki Ludora Nam Ul Nasca",
+    "Emperor Masayuki"
+   ],
+   "projectIdsUsing": [
+    "commanders CMD-040 'Masayuki'",
+    "combatants ACT-041 'Masayuki'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/masayuki",
+     "spelling": "マサユキ / Masayuki"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Masayuki"
+    }
+   ],
+   "conflicts": "Project files him under faction 'Eastern Empire'; he only becomes emperor at the end of the war.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "velgrynd",
+   "kind": "character",
+   "canonical": "Velgrynd",
+   "display": "Velgrynd",
+   "japanese": "ヴェルグリンド (title 灼熱竜)",
+   "romaji": "verugurindo (title: shakunetsuryū)",
+   "aliases": [
+    "Velgrynd (Scorch Dragon)",
+    "Velgrynd the Flame Dragon",
+    "Scorch Dragon",
+    "Flame Dragon",
+    "Gryn",
+    "Cardinal"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-070",
+    "commanders CMD-038 'Velgrynd (Scorch Dragon)'",
+    "combatants ACT-039",
+    "events actor 'Velgrynd (Scorch Dragon)'",
+    "gazetteer alias \"Behind the Scorch Dragon's position\""
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314491-that-time-i-got-reincarnated-as-a-slime-vol-15-light-novel",
+     "spelling": "Velgrynd"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Velgrynd the Flame Dragon"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Velgrynd",
+     "spelling": "Velgrynd; title Scorch Dragon (灼熱竜)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v15",
+     "spelling": "Velgrynd; Scorch Dragon"
+    }
+   ],
+   "conflicts": "Name consistent everywhere. Title 灼熱竜: Yen Press 'Flame Dragon' vs wiki/fan TL 'Scorch Dragon'.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "veldora",
+   "kind": "character",
+   "canonical": "Veldora Tempest",
+   "display": "Veldora",
+   "japanese": "ヴェルドラ＝テンペスト (title 暴風竜)",
+   "romaji": "verudora tenpesuto (title: bōfūryū)",
+   "aliases": [
+    "Veldora",
+    "Storm Dragon",
+    "Storm Dragon Veldora",
+    "Veldora Tempest (Storm Dragon)"
+   ],
+   "projectIdsUsing": [
+    "forces F-DRG-001 ('Veldora Tempest (Storm Dragon)', commander 'Veldora')",
+    "combatants ACT-005",
+    "events actor 'Veldora Tempest'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/veldora",
+     "spelling": "ヴェルドラ / Veldora"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Veldora Tempest; Veldora the Storm Dragon"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Veldora_Tempest",
+     "spelling": "Veldora Tempest"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "rimuru",
+   "kind": "character",
+   "canonical": "Rimuru Tempest",
+   "display": "Rimuru",
+   "japanese": "リムル＝テンペスト",
+   "romaji": "rimuru tenpesuto",
+   "aliases": [
+    "Rimuru",
+    "Demon Lord Rimuru"
+   ],
+   "projectIdsUsing": [
+    "F-TEM-000",
+    "CMD-001",
+    "ACT-001"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/rimuru",
+     "spelling": "Rimuru Tempest"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Rimuru Tempest"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "calgurio",
+   "kind": "character",
+   "canonical": "Caligulio",
+   "display": "Caligulio",
+   "japanese": "カリギュリオ・ヒース",
+   "romaji": "karigyurio hīsu",
+   "aliases": [
+    "Calgurio",
+    "Calgurio Heath",
+    "Caligulio Heath",
+    "Marshal Calgurio"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-010/011/040 commander 'Marshal Calgurio'",
+    "commanders CMD-031 'Marshal Calgurio / Caligulio'",
+    "combatants ACT-031",
+    "events 'Marshal Calgurio'"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Caligulio (36x)"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Calgurio_Heath",
+     "spelling": "Calgurio Heath (alt: Caligulio)"
+    },
+    {
+     "type": "wiki",
+     "ref": "Character Photocard metadata ID 049",
+     "spelling": "Calgurio Heath (alt Caligulio)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v15",
+     "spelling": "Calgurio (482x)"
+    }
+   ],
+   "conflicts": "Official English (Yen Press) is 'Caligulio', which is also the closer reading of カリギュリオ (ka-ri-gyu-ri-o). 'Calgurio' is the wiki/fan form. Rank: wiki has him as General commanding the Armored Division (Velgrynd holds the Marshal post); 'Marshal' comes from the fan TL — verify.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "gradim",
+   "kind": "character",
+   "canonical": "Gradim",
+   "display": "Gradim",
+   "japanese": "グラディム",
+   "romaji": "guradimu",
+   "aliases": [
+    "Gladim",
+    "Grand Admiral Gladim",
+    "Lone White Tiger"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-020 commander 'Gladim'",
+    "commanders CMD-035 'Grand Admiral Gladim'",
+    "combatants ACT-035",
+    "events 'Grand Admiral Gladim'"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Gradim",
+     "spelling": "Gradim (alt: Gladim)"
+    },
+    {
+     "type": "wiki",
+     "ref": "Character Photocard metadata ID 170",
+     "spelling": "Gradim (alt Gladim)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v15",
+     "spelling": "Gladim (207x)"
+    }
+   ],
+   "conflicts": "Yen Press spelling NOT verified (name absent from v16). ラ is r/l-ambiguous; 'Gradim' is the wiki title and the standard romanisation. 'Grand Admiral' is doubtful: wiki lists him as one of the Three Great Generals commanding the Magic Beast Division — verify against the source.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "minitz",
+   "kind": "character",
+   "canonical": "Minitz",
+   "display": "Minitz",
+   "japanese": "ミニッツ",
+   "romaji": "minittsu",
+   "aliases": [
+    "Minits",
+    "Minute",
+    "Major General Minitz"
+   ],
+   "projectIdsUsing": [
+    "commanders CMD-034 'Major General Minute / Minitz'",
+    "combatants ACT-034"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Major General Minitz (32x)"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Minitz",
+     "spelling": "Minitz (alt: Minits)"
+    }
+   ],
+   "conflicts": "'Minute' is a mistranslation (ミニッツ read as 'minutes').",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "kondo",
+   "kind": "character",
+   "canonical": "Tatsuya Kondo",
+   "display": "Kondo",
+   "japanese": "近藤達也 (タツヤ・コンドウ)",
+   "romaji": "kondō tatsuya",
+   "aliases": [
+    "Kondou",
+    "Tatsuya Kondou",
+    "Lieutenant Kondo",
+    "First Lieutenant Kondou",
+    "Stalker of the Halls of Information"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-014 commander 'Lieutenant Tatsuya Kondo'",
+    "commanders CMD-037",
+    "combatants ACT-036",
+    "events"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Kondo; 'the figure stalking the halls of information'"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Tatsuya_Kondou",
+     "spelling": "Tatsuya Kondou"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v16",
+     "spelling": "Kondo"
+    }
+   ],
+   "conflicts": "Yen Press 'Kondo' vs wiki 'Kondou' (long-vowel romanisation). The photocard archive uses 'Tatsuya Kondou'.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "damrada",
+   "kind": "character",
+   "canonical": "Damrada",
+   "display": "Damrada",
+   "japanese": "ダムラダ",
+   "romaji": "damurada",
+   "aliases": [
+    "Damrada of Gold",
+    "Sir Damrada"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-014 notes"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/damrada",
+     "spelling": "ダムラダ / Damrada"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Damrada"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Damrada",
+     "spelling": "Damrada"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "yuuki",
+   "kind": "character",
+   "canonical": "Yuuki Kagurazaka",
+   "display": "Yuuki",
+   "japanese": "神楽坂優樹 (ユウキ・カグラザカ)",
+   "romaji": "kagurazaka yūki",
+   "aliases": [
+    "Yuuki",
+    "Yuki Kagurazaka",
+    "Yūki"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-030/031/032/050",
+    "commanders CMD-036",
+    "combatants ACT-038",
+    "gazetteer aliases \"Yuuki's office\" etc."
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/yuuki",
+     "spelling": "ユウキ / Yuuki"
+    },
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314477-that-time-i-got-reincarnated-as-a-slime-vol-14-light-novel",
+     "spelling": "Yuuki"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Yuuki_Kagurazaka",
+     "spelling": "Yuuki Kagurazaka"
+    }
+   ],
+   "conflicts": "Indonesian TL occasionally writes 'Yuki'.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "kagali",
+   "kind": "character",
+   "canonical": "Kagali",
+   "display": "Kagali",
+   "japanese": "カガリ",
+   "romaji": "kagari",
+   "aliases": [
+    "Kazalim (former identity, カザリーム)",
+    "Curse Lord"
+   ],
+   "projectIdsUsing": [
+    "events/forces/state.deltas mentions"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/kagali",
+     "spelling": "カガリ / Kagali"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Kagali",
+     "spelling": "Kagali (former name: Kazalim)"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "gaster",
+   "kind": "character",
+   "canonical": "Gaster",
+   "display": "Gaster",
+   "japanese": "ガスター",
+   "romaji": "gasutā",
+   "aliases": [
+    "Geist",
+    "Lieutenant General Geist",
+    "Lieutenant General Gaster"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-012 commander 'Lieutenant General Geist'",
+    "commanders CMD-032",
+    "combatants ACT-032",
+    "events (16)"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Gaster ('Farraga, Gaster, and Zamdo, too...')"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Gaster",
+     "spelling": "Gaster — Lieutenant General commanding the Magitank Force (Armored Division)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v13.txt",
+     "spelling": "Geist (150x)"
+    }
+   ],
+   "conflicts": "'Geist' is the fan-TL rendering of ガスター. Identity confirmed by role: Lt. General commanding the magitank ('Magic Chariot') force under Caligulio.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "farraga",
+   "kind": "character",
+   "canonical": "Farraga",
+   "display": "Farraga",
+   "japanese": "ファラガ",
+   "romaji": "faraga",
+   "aliases": [
+    "Faraga",
+    "Farage",
+    "Major General Faraga"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-013 commander 'Major General Faraga'",
+    "commanders CMD-033",
+    "combatants ACT-033",
+    "events/casualties"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Farraga"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Farraga",
+     "spelling": "Farraga (alts: Faraga, Farage)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v13.txt",
+     "spelling": "Faraga (126x)"
+    }
+   ],
+   "conflicts": "Yen Press and wiki agree on 'Farraga'.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "miranda",
+   "kind": "character",
+   "canonical": "Miranda",
+   "display": "Miranda",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [],
+   "projectIdsUsing": [
+    "combatants ACT-037",
+    "commanders/forces notes",
+    "events (27)"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "v13-v14",
+     "spelling": "Miranda"
+    }
+   ],
+   "conflicts": "No official or wiki source located; Japanese unknown.",
+   "confidence": "LOW"
+  },
+  {
+   "id": "samuel",
+   "kind": "character",
+   "canonical": "Samuel",
+   "display": "Samuel",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [
+    "Zamdo",
+    "Major General Zamdo",
+    "Samuel (Zamdo)"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-060",
+    "commanders CMD-039",
+    "combatants ACT-040",
+    "gazetteer alias \"Aboard Samuel's flagship\""
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "v14-v15",
+     "spelling": "Samuel"
+    }
+   ],
+   "conflicts": "No official or wiki source located; Japanese unknown. The Indonesian translation (V15) says Samuel; the Yen Press V16 says Zamdo for the same officer. Recorded as one person.",
+   "confidence": "LOW"
+  },
+  {
+   "id": "vega",
+   "kind": "character",
+   "canonical": "Vega",
+   "display": "Vega",
+   "japanese": "ヴェガ",
+   "romaji": "vega",
+   "aliases": [
+    "Vega of Power"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-050 notes"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Vega",
+     "spelling": "Vega"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v15",
+     "spelling": "Vega"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "gadra",
+   "kind": "character",
+   "canonical": "Gadora",
+   "display": "Gadora",
+   "japanese": "ガドラ",
+   "romaji": "gadora",
+   "aliases": [
+    "Gadra",
+    "Magic Otaku",
+    "Magic Maniac"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-011 commander 'Gadra (rider)'",
+    "combatants ACT-014",
+    "events (21)"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Gadora (19x)"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Gadra",
+     "spelling": "Gadra (alt: Gadora)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v15",
+     "spelling": "Gadra"
+    }
+   ],
+   "conflicts": "Light-novel-only character: the only official English form is Yen Press 'Gadora' (also the exact reading of ガドラ, ga-do-ra). 'Gadra' is the wiki/fan form used by the project and the photocard archive. Low-impact conflict; switching is optional.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "adalmann",
+   "kind": "character",
+   "canonical": "Adalmann",
+   "display": "Adalmann",
+   "japanese": "アダルマン",
+   "romaji": "adaruman",
+   "aliases": [
+    "Adalman",
+    "Immortal King"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-010 'Ramiris / Adalman'",
+    "commanders CMD-009 'Adalman'",
+    "combatants ACT-008",
+    "events"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/adalmann",
+     "spelling": "アダルマン / Adalmann"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Adalman (33x)"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Adalmann",
+     "spelling": "Adalmann (alt: Adalman)"
+    }
+   ],
+   "conflicts": "Official portal 'Adalmann' vs Yen Press 'Adalman'. The project matches Yen Press.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "hakuro",
+   "kind": "character",
+   "canonical": "Hakuro",
+   "display": "Hakuro",
+   "japanese": "白老 (ハクロウ)",
+   "romaji": "hakurō",
+   "aliases": [
+    "Hakurou"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-012 'Gobya (Hakurou advising)'",
+    "commanders CMD-007",
+    "combatants ACT-013"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/hakuro",
+     "spelling": "ハクロウ / Hakuro"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Hakuro"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Hakurou",
+     "spelling": "Hakurou"
+    }
+   ],
+   "conflicts": "Both official sources write 'Hakuro'; 'Hakurou' is the wiki's long-vowel form.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "soei",
+   "kind": "character",
+   "canonical": "Soei",
+   "display": "Soei",
+   "japanese": "蒼影 (ソウエイ)",
+   "romaji": "sōei",
+   "aliases": [
+    "Souei"
+   ],
+   "projectIdsUsing": [
+    "events.json (1)",
+    "state.deltas.json (1)"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/soei",
+     "spelling": "ソウエイ / Soei"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Soei"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Souei",
+     "spelling": "Souei"
+    }
+   ],
+   "conflicts": "Same pattern as Hakuro.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "gabiru",
+   "kind": "character",
+   "canonical": "Gabiru",
+   "display": "Gabil",
+   "japanese": "ガビル",
+   "romaji": "gabiru",
+   "aliases": [
+    "Gabil",
+    "Sir Gabiru"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-003/003A/003B",
+    "commanders CMD-005",
+    "combatants ACT-004",
+    "events"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/gabiru",
+     "spelling": "ガビル / Gabiru"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Gabil (28x)"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Gabiru",
+     "spelling": "Gabiru (alt: Gabil)"
+    }
+   ],
+   "conflicts": "Official portal 'Gabiru' vs Yen Press 'Gabil'. The project's 'Gabil' matches Yen Press; either is defensible.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "gobwa",
+   "kind": "character",
+   "canonical": "Gobwa",
+   "display": "Gobwa",
+   "japanese": "ゴブア",
+   "romaji": "gobua",
+   "aliases": [
+    "Gobya",
+    "Gobua",
+    "Gobsya"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-012 commander 'Gobya (Hakurou advising)'",
+    "commanders CMD-006",
+    "combatants ACT-012",
+    "events"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/gobwa",
+     "spelling": "ゴブア / Gobwa"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Gobwa",
+     "spelling": "Gobwa (alt: Gobua) — head of Kurenai"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v15",
+     "spelling": "Gobya / Gobsya"
+    }
+   ],
+   "conflicts": "'Gobya' is a fan-TL misreading of ゴブア.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "benimaru",
+   "kind": "character",
+   "canonical": "Benimaru",
+   "display": "Benimaru",
+   "japanese": "紅丸 (ベニマル)",
+   "romaji": "benimaru",
+   "aliases": [],
+   "projectIdsUsing": [
+    "F-TEM-004",
+    "CMD-002",
+    "ACT-002"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/benimaru",
+     "spelling": "Benimaru"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "shion",
+   "kind": "character",
+   "canonical": "Shion",
+   "display": "Shion",
+   "japanese": "紫苑 (シオン)",
+   "romaji": "shion",
+   "aliases": [],
+   "projectIdsUsing": [
+    "F-TEM-005",
+    "ACT-011"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/shion",
+     "spelling": "Shion"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "gobta",
+   "kind": "character",
+   "canonical": "Gobta",
+   "display": "Gobta",
+   "japanese": "ゴブタ",
+   "romaji": "gobuta",
+   "aliases": [],
+   "projectIdsUsing": [
+    "F-TEM-001",
+    "CMD-003",
+    "ACT-003"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/gobta",
+     "spelling": "Gobta"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "geld",
+   "kind": "character",
+   "canonical": "Geld",
+   "display": "Geld",
+   "japanese": "ゲルド",
+   "romaji": "gerudo",
+   "aliases": [
+    "Gerd"
+   ],
+   "projectIdsUsing": [
+    "F-TEM-002/002A/002B",
+    "CMD-004"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/geld",
+     "spelling": "Geld"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Geld"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "ramiris",
+   "kind": "character",
+   "canonical": "Ramiris",
+   "display": "Ramiris",
+   "japanese": "ラミリス",
+   "romaji": "ramirisu",
+   "aliases": [
+    "Lamrys"
+   ],
+   "projectIdsUsing": [
+    "F-TEM-010",
+    "CMD-008",
+    "ACT-009"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/ramiris",
+     "spelling": "Ramiris"
+    },
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314453-that-time-i-got-reincarnated-as-a-slime-vol-13-light-novel",
+     "spelling": "Ramiris"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "testarossa",
+   "kind": "character",
+   "canonical": "Testarossa",
+   "display": "Testarossa",
+   "japanese": "テスタロッサ",
+   "romaji": "tesutarossa",
+   "aliases": [
+    "Blanc",
+    "White Primordial"
+   ],
+   "projectIdsUsing": [
+    "F-DEM-001",
+    "CMD-010",
+    "ACT-006"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/testarossa",
+     "spelling": "Testarossa"
+    },
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314453-that-time-i-got-reincarnated-as-a-slime-vol-13-light-novel",
+     "spelling": "Testarossa"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "ultima",
+   "kind": "character",
+   "canonical": "Ultima",
+   "display": "Ultima",
+   "japanese": "ウルティマ",
+   "romaji": "urutima",
+   "aliases": [
+    "Violet"
+   ],
+   "projectIdsUsing": [
+    "F-DEM-002",
+    "F-TEM-013",
+    "ACT-007"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/ultima",
+     "spelling": "Ultima"
+    },
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314453-that-time-i-got-reincarnated-as-a-slime-vol-13-light-novel",
+     "spelling": "Ultima"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "zonda",
+   "kind": "character",
+   "canonical": "Zonda",
+   "display": "Zonda",
+   "japanese": "ゾンダ",
+   "romaji": "zonda",
+   "aliases": [],
+   "projectIdsUsing": [
+    "F-TEM-013 formation",
+    "combatants/events"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/zonda",
+     "spelling": "Zonda"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "diablo",
+   "kind": "character",
+   "canonical": "Diablo",
+   "display": "Diablo",
+   "japanese": "ディアブロ",
+   "romaji": "diaburo",
+   "aliases": [],
+   "projectIdsUsing": [
+    "ACT-010"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/diablo",
+     "spelling": "Diablo"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "gazel",
+   "kind": "character",
+   "canonical": "Gazel Dwargo",
+   "display": "Gazel Dwargo",
+   "japanese": "ガゼル・ドワルゴ",
+   "romaji": "gazeru dowarugo",
+   "aliases": [
+    "King Gazel",
+    "Gazel",
+    "King Gazel Dwargo"
+   ],
+   "projectIdsUsing": [
+    "F-DWA-001/002",
+    "CMD-020",
+    "ACT-020"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/gazel",
+     "spelling": "ガゼル・ドワルゴ / Gazel"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "King Gazel"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "veyron",
+   "kind": "character",
+   "canonical": "Veyron",
+   "display": "Veyron",
+   "japanese": "ヴェイロン",
+   "romaji": "veiron",
+   "aliases": [
+    "Veryon (official portal spelling)"
+   ],
+   "projectIdsUsing": [
+    "F-TEM-013 formation",
+    "combatants/events"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/character/veryon",
+     "spelling": "Veryon"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Veyron",
+     "spelling": "Veyron"
+    }
+   ],
+   "conflicts": "Portal writes 'Veryon' (likely a typo of ヴェイロン = Veyron).",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "phobio",
+   "kind": "character",
+   "canonical": "Phobio",
+   "display": "Phobio",
+   "japanese": "フォビオ",
+   "romaji": "fobio",
+   "aliases": [
+    "Phobio the Panthertooth",
+    "Black Leopard Fang (黒豹牙)"
+   ],
+   "projectIdsUsing": [
+    "F-ALL-001",
+    "ACT-015 'Phobio the Panthertooth'"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Phobio",
+     "spelling": "Phobio (epithet: Black Leopard Fang)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v14-v15",
+     "spelling": "Phobio"
+    }
+   ],
+   "conflicts": "Epithet 'Panthertooth' not verified in an official source.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "dorf",
+   "kind": "character",
+   "canonical": "Dorf",
+   "display": "Dorf",
+   "japanese": "ドルフ",
+   "romaji": "dorufu",
+   "aliases": [
+    "Dolph"
+   ],
+   "projectIdsUsing": [
+    "forces F-DWA-003 commander",
+    "commanders CMD-021",
+    "combatants ACT-021"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Dolph ('Pegasus Knights captain Dolph')"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Dorf",
+     "spelling": "Dorf (alt: Dolph); anime ep. 15"
+    }
+   ],
+   "conflicts": "Yen Press 'Dolph' vs anime/wiki 'Dorf'; kept 'Dorf'. He captains the Pegasus Knights — check F-DWA-003 ('Heavy armed assault force' under Dorf) against the source.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "anrietta",
+   "kind": "character",
+   "canonical": "Anrietta",
+   "display": "Anrietta",
+   "japanese": "アンリエッタ",
+   "romaji": "anrietta",
+   "aliases": [
+    "Henrietta"
+   ],
+   "projectIdsUsing": [
+    "combatants ACT-023",
+    "forces F-DWA-003 notes",
+    "events"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Henrietta"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Anrietta",
+     "spelling": "Anrietta (alt: Henrietta); anime ep. 5"
+    }
+   ],
+   "conflicts": "Yen Press 'Henrietta' vs anime/wiki 'Anrietta'; kept 'Anrietta'.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "vaughn",
+   "kind": "character",
+   "canonical": "Vaughn",
+   "display": "Vaughn",
+   "japanese": "バーン",
+   "romaji": "bān",
+   "aliases": [
+    "Ben",
+    "Ban",
+    "Pan",
+    "Admiral Paladin",
+    "Dwargon Supreme Commander"
+   ],
+   "projectIdsUsing": [
+    "combatants ACT-022 'Ben'",
+    "forces F-DWA-003 notes",
+    "events actor 'Dwargon Supreme Commander'"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Vaughn",
+     "spelling": "Vaughn — supreme commander of Dwargon's military ('Admiral Paladin'); anime ep. 15"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v15.txt",
+     "spelling": "Ben (Gazel's counsel; fights Footman alongside Anrietta)"
+    }
+   ],
+   "conflicts": "'Ben' (fan TL) = バーン = Vaughn; identity inferred from role. Yen Press spelling not verified.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "imperial-army",
+   "kind": "force",
+   "canonical": "Imperial Army",
+   "display": "Imperial Army",
+   "japanese": "帝国軍",
+   "romaji": "teikoku-gun",
+   "aliases": [
+    "Imperial Armed Forces",
+    "Eastern Empire Military",
+    "the Empire's army"
+   ],
+   "projectIdsUsing": [
+    "forces army 'Imperial Armed Forces' (F-EMP-000/001/020/030/040)"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Nasca_Namrium_Ulmeria_United_Eastern_Empire/Military",
+     "spelling": "Eastern Empire Military (帝国軍)"
+    },
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314453-that-time-i-got-reincarnated-as-a-slime-vol-13-light-novel",
+     "spelling": "the Empire's army"
+    }
+   ],
+   "conflicts": "'Imperial Armed Forces' is an acceptable descriptive label.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "armored-division",
+   "kind": "force",
+   "canonical": "Armored Division",
+   "display": "Armored Division",
+   "japanese": "機甲軍団",
+   "romaji": "kikō gundan",
+   "aliases": [
+    "Mechs Legion",
+    "Legion Mecha",
+    "Mecha Legion",
+    "Armored Corps",
+    "Mechanized Corps"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-040 formation 'Mechs Legion'",
+    "F-EMP-010 'Invasion Army (Jura front)' is drawn from it"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "the Empire's proud Armored Division"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Armored_Division",
+     "spelling": "Armored Division (機甲軍団)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v14.txt",
+     "spelling": "Legion Mecha"
+    }
+   ],
+   "conflicts": "'Mechs Legion' is a fan-TL label. 'Armored Corps'/'Mechanized Corps' (from the brief) are not attested in official sources.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "restructured-armor-corps",
+   "kind": "force",
+   "canonical": "Restructured Armor Corps",
+   "display": "Restructured Armor Corps",
+   "japanese": "機甲改造兵団",
+   "romaji": "kikō kaizō heidan",
+   "aliases": [
+    "Mecha Modification Corps",
+    "Modified Armor Corps"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-011 formation 'Mecha Modification Corps (ground main body)'",
+    "events/casualties"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Armored_Division",
+     "spelling": "Restructured Armor Corps (機甲改造兵団)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v13",
+     "spelling": "Mecha Modification ..."
+    }
+   ],
+   "conflicts": "Yen Press rendering not verified.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "magitank-force",
+   "kind": "force",
+   "canonical": "Magitank Force",
+   "display": "Magitank Force",
+   "japanese": "魔導戦車師団",
+   "romaji": "madō sensha shidan",
+   "aliases": [
+    "Magic Chariot Division",
+    "Magitank Division",
+    "Chariot Division"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-012 formation 'Magic Chariot Division'",
+    "events (12)",
+    "places imperial-chariot-line"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Magitank (vehicle)"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Armored_Division",
+     "spelling": "Magitank Force (魔導戦車師団), commanded by Lt. General Gaster"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v13",
+     "spelling": "Magic Chariot"
+    }
+   ],
+   "conflicts": "Yen Press unit name not verified; Yen Press calls the vehicle 'Magitank'. 師団 literally = division.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "flying-combat-corps",
+   "kind": "force",
+   "canonical": "Flying Combat Corps",
+   "display": "Flying Combat Corps",
+   "japanese": "空戦飛行兵団",
+   "romaji": "kūsen hikō heidan",
+   "aliases": [
+    "Air Combat Flying Corps",
+    "air corps"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-013 formation 'Air Combat Flying Corps'",
+    "events/casualties/territories"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Armored_Division",
+     "spelling": "Flying Combat Corps (空戦飛行兵団): 400 airships under Major General Farraga"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v13-v14",
+     "spelling": "Air Combat Flying Corps"
+    }
+   ],
+   "conflicts": "Project label is a faithful literal variant; Yen Press form not verified.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "magic-beast-division",
+   "kind": "force",
+   "canonical": "Magic Beast Division",
+   "display": "Magic Beast Division",
+   "japanese": "魔獣軍団",
+   "romaji": "majū gundan",
+   "aliases": [
+    "Warcraft Legion",
+    "Magical Beast Division",
+    "Magic Beast Corps"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-020 formation 'Warcraft Legion'",
+    "battles BTL-008 'Warcraft Legion Air Movement'",
+    "places/territories/reference/gazetteer 'Warcraft Legion'"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Magic_Beast_Division",
+     "spelling": "Magic Beast Division (魔獣軍団)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v15",
+     "spelling": "Warcraft Legion"
+    }
+   ],
+   "conflicts": "'Warcraft Legion' is a machine/fan-TL rendering of 魔獣軍団. Yen Press form not verified.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "composite-division",
+   "kind": "force",
+   "canonical": "Composite Division",
+   "display": "Composite Division",
+   "japanese": "混成軍団",
+   "romaji": "konsei gundan",
+   "aliases": [
+    "Hybrid Legion",
+    "Mixed Corps",
+    "Mixed Division"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-030/031/032 'Hybrid Legion'",
+    "commanders CMD-041 'Hybrid Legion blockade force'",
+    "events/casualties/reference"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Composite_Division",
+     "spelling": "Composite Division (混成軍団)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12-v15",
+     "spelling": "Hybrid Legion"
+    }
+   ],
+   "conflicts": "Yen Press form not verified.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "magic-division",
+   "kind": "force",
+   "canonical": "Magic Division",
+   "display": "Magic Division",
+   "japanese": "魔法軍団",
+   "romaji": "mahō gundan",
+   "aliases": [],
+   "projectIdsUsing": [],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Magic_Division",
+     "spelling": "Magic Division — Gadra's former command, predecessor of the Composite Division"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "three-great-generals",
+   "kind": "title",
+   "canonical": "Three Great Generals",
+   "display": "Three Generals",
+   "japanese": "三大将",
+   "romaji": "santaishō",
+   "aliases": [
+    "Three Generals",
+    "Three Commanders"
+   ],
+   "projectIdsUsing": [],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Three_Great_Generals",
+     "spelling": "Three Great Generals: Calgurio (Armored), Gradim (Magic Beast), Yuuki (Composite)"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "imperial-guardians",
+   "kind": "force",
+   "canonical": "Imperial Guardians",
+   "display": "Imperial Guardians",
+   "japanese": "帝国皇帝近衛騎士団 (インペリアルガーディアン)",
+   "romaji": "inperiaru gādian",
+   "aliases": [
+    "Near Guard",
+    "Imperial Emperor's Order of the Near Guard",
+    "Imperial Emperor's Knights of the Near Guard",
+    "Royal Knights",
+    "Imperial Guard"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-014 formation 'Imperial Intelligence Service / Near Guard'",
+    "F-EMP-014 notes 'head of the Near Guard'"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Imperial_Guardians",
+     "spelling": "Imperial Guardians"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v13-v14",
+     "spelling": "Imperial Emperor's Order of the Near Guard"
+    }
+   ],
+   "conflicts": "'Near Guard' is a fan-TL rendering of 近衛. F-EMP-014 merges two bodies (Imperial Guardians and Imperial Intelligence Bureau).",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "single-digits",
+   "kind": "title",
+   "canonical": "Single Digits",
+   "display": "Single Digits",
+   "japanese": "ひとけた数字 (ダブルオーナンバー)",
+   "romaji": "hitoketa sūji (daburu ō nanbā)",
+   "aliases": [
+    "Double 0 Numbers",
+    "single digit"
+   ],
+   "projectIdsUsing": [],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "'Bernie, member of the Single Digits and ranked number seven'"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Double_0_Numbers",
+     "spelling": "Double 0 Numbers (alt: Single Digits)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v13.txt",
+     "spelling": "single digit"
+    }
+   ],
+   "conflicts": "Yen Press 'Single Digits' vs wiki 'Double 0 Numbers' (the furigana reading).",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "orichalcum",
+   "kind": "title",
+   "canonical": "Orichalcum",
+   "display": "Orichalcum",
+   "japanese": "神輝金鋼 (オリハルコン)",
+   "romaji": "oriharukon",
+   "aliases": [
+    "Orichalc"
+   ],
+   "projectIdsUsing": [],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Orichalcum",
+     "spelling": "Orichalcum — a metal"
+    }
+   ],
+   "conflicts": "Listed in the brief among imperial corps names, but it is a material (神輝金鋼), not a formation; not found in the local v12-16 text.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "imperial-intelligence-bureau",
+   "kind": "force",
+   "canonical": "Imperial Intelligence Bureau",
+   "display": "Imperial Intelligence",
+   "japanese": "帝国情報局",
+   "romaji": "teikoku jōhō-kyoku",
+   "aliases": [
+    "Imperial Intelligence Service",
+    "Imperial Intelligence Agency",
+    "IIB",
+    "Imperial Intelligence"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-014 army 'Imperial Intelligence'",
+    "commanders",
+    "events (actor 'Imperial Intelligence Bureau'; opponent 'Imperial Intelligence Service')"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Imperial_Intelligence_Bureau",
+     "spelling": "Imperial Intelligence Bureau (帝国情報局)"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v14.txt",
+     "spelling": "Imperial Intelligence Service"
+    }
+   ],
+   "conflicts": "Project uses both 'Service' and 'Bureau'.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "airship",
+   "kind": "force",
+   "canonical": "airship",
+   "display": "airship flotilla",
+   "japanese": "飛空船",
+   "romaji": "hikūsen",
+   "aliases": [
+    "magic airship",
+    "Airship transport flotilla",
+    "Air Transport Command",
+    "air fleet",
+    "Armada terbang"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-060 army 'Air Transport Command', formation 'Airship transport flotilla'"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "airship"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Armored_Division",
+     "spelling": "400 airships (Flying Combat Corps)"
+    }
+   ],
+   "conflicts": "'Air Transport Command' is project-coined, not canon.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "moderate-harlequin-alliance",
+   "kind": "faction",
+   "canonical": "Moderate Harlequin Alliance",
+   "display": "Harlequin Alliance",
+   "japanese": "中庸道化連",
+   "romaji": "chūyō dōke ren",
+   "aliases": [
+    "Clown faction",
+    "Yuuki's clown group",
+    "Moderate Jesters",
+    "Moderate Clown Troupe"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-050 army 'Clown faction', formation \"Yuuki's clown group\"",
+    "casualties/events"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/keyword",
+     "spelling": "中庸道化連"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Moderate_Harlequin_Alliance",
+     "spelling": "Moderate Harlequin Alliance"
+    }
+   ],
+   "conflicts": "Project label is informal.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "cerberus",
+   "kind": "faction",
+   "canonical": "Cerberus",
+   "display": "Cerberus",
+   "japanese": "三巨頭 (ケルベロス)",
+   "romaji": "keruberosu",
+   "aliases": [
+    "Three Greats",
+    "Three Heads"
+   ],
+   "projectIdsUsing": [
+    "forces F-EMP-050 notes ('Three Greats')"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/keyword",
+     "spelling": "三巨頭 (けるべろす) — underworld organisation of the Eastern Empire"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Cerberus",
+     "spelling": "Cerberus"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "first-corps",
+   "kind": "force",
+   "canonical": "First Corps",
+   "display": "First Corps",
+   "japanese": "第一軍団",
+   "romaji": "dai-ichi gundan",
+   "aliases": [
+    "Korps Pertama"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-001 'First Corps / Green Legion'"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Green_Numbers",
+     "spelling": "First Corps (Gobta)"
+    }
+   ],
+   "conflicts": "Second/Third/Fourth Corps follow the same pattern (第二/第三/第四軍団).",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "green-numbers",
+   "kind": "force",
+   "canonical": "Green Numbers",
+   "display": "Green Numbers",
+   "japanese": "緑色軍団 (グリーンナンバーズ)",
+   "romaji": "gurīn nanbāzu",
+   "aliases": [
+    "Green Legion",
+    "Green Corps"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-001 'First Corps / Green Legion'",
+    "places green-legion-start-line",
+    "events (20)",
+    "gazetteer"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/keyword",
+     "spelling": "緑色軍団 ぐりーんなんばーず"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Green_Numbers",
+     "spelling": "Green Numbers"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12.txt / v13.txt",
+     "spelling": "Green Numbers (1x) / Green Legion (1x)"
+    }
+   ],
+   "conflicts": "Official reading is literally 'Green Numbers'.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "yellow-numbers",
+   "kind": "force",
+   "canonical": "Yellow Numbers",
+   "display": "Yellow Numbers",
+   "japanese": "黄色軍団 (イエローナンバーズ)",
+   "romaji": "ierō nanbāzu",
+   "aliases": [
+    "Yellow Legion",
+    "Yellow Corps"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-002A 'Yellow Legion'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/keyword",
+     "spelling": "黄色軍団 いえろーなんばーず — Geld's ~5,000 high orcs"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Yellow_Numbers",
+     "spelling": "Yellow Numbers"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "orange-numbers",
+   "kind": "force",
+   "canonical": "Orange Numbers",
+   "display": "Orange Numbers",
+   "japanese": "橙色軍団 (オレンジナンバーズ)",
+   "romaji": "orenji nanbāzu",
+   "aliases": [
+    "Orange Legion",
+    "Orange Corps"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-002B 'Orange Legion'"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Orange_Numbers",
+     "spelling": "Orange Numbers"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12.txt",
+     "spelling": "Orange Legion"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "blue-numbers",
+   "kind": "force",
+   "canonical": "Blue Numbers",
+   "display": "Blue Numbers",
+   "japanese": "青色兵団 (ブルーナンバーズ)",
+   "romaji": "burū nanbāzu",
+   "aliases": [
+    "Blue Legion",
+    "Legiun Biru",
+    "Blue Corps"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-003A 'Blue Legion'"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Blue_Numbers",
+     "spelling": "Blue Numbers"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v12.txt",
+     "spelling": "Legiun Biru"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "hiryuu",
+   "kind": "force",
+   "canonical": "Hiryuu",
+   "display": "Hiryuu",
+   "japanese": "飛竜衆 (ヒリュウ)",
+   "romaji": "hiryū",
+   "aliases": [
+    "Flying Dragon element",
+    "Flying Dragons",
+    "Flying Dragon Force",
+    "Dragon Warriors"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-003B 'Flying Dragon element'",
+    "events actor 'Third Corps (Flying Dragons)' / 'Third Corps (Dragon Warriors)'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/keyword",
+     "spelling": "飛竜衆 ひりゅう — Gabiru's ~100 dragonewts"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Hiryuu",
+     "spelling": "Hiryuu"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "kurenai",
+   "kind": "force",
+   "canonical": "Kurenai",
+   "display": "Kurenai",
+   "japanese": "紅炎衆 (クレナイ)",
+   "romaji": "kurenai",
+   "aliases": [
+    "Red Army",
+    "Kurenai advance force"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-004 'Fourth Corps / Kurenai (Red Army)'",
+    "F-TEM-012 'Kurenai advance force'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/keyword",
+     "spelling": "紅炎衆 くれない — Benimaru's ~300-ogre guard"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Kurenai",
+     "spelling": "Kurenai"
+    }
+   ],
+   "conflicts": "'(Red Army)' gloss is non-canonical.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "yomigaeri",
+   "kind": "force",
+   "canonical": "Yomigaeri",
+   "display": "Yomigaeri",
+   "japanese": "紫克衆 (ヨミガエリ)",
+   "romaji": "yomigaeri",
+   "aliases": [
+    "Team Reborn",
+    "Shion's undocumented unit"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-005 \"Shion's undocumented unit\""
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/keyword",
+     "spelling": "よみがえり — シオンが率いる100名ほどの部隊"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Yomigaeri",
+     "spelling": "Yomigaeri"
+    }
+   ],
+   "conflicts": "Replace the project label only if the source confirms Yomigaeri was the unit engaged.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "primordials",
+   "kind": "faction",
+   "canonical": "Primordials",
+   "display": "Primordials",
+   "japanese": "原初",
+   "romaji": "gensho",
+   "aliases": [
+    "Primordial demons",
+    "Primal Demons",
+    "Primordial Daemons"
+   ],
+   "projectIdsUsing": [
+    "forces army 'Primordial demons' (F-DEM-001/002, F-TEM-013)",
+    "F-DEM-001 'Testarossa (White Primordial)'"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314453-that-time-i-got-reincarnated-as-a-slime-vol-13-light-novel",
+     "spelling": "Primal Demons Testarossa and Ultima"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Primordials"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Primordial",
+     "spelling": "Primordial Daemons / Primordials"
+    }
+   ],
+   "conflicts": "Yen Press itself varies (blurb 'Primal Demons', text 'Primordials').",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "ten-dungeon-marvels",
+   "kind": "force",
+   "canonical": "Ten Dungeon Marvels",
+   "display": "Ten Dungeon Marvels",
+   "japanese": "地下迷宮10傑",
+   "romaji": "danjon jikketsu",
+   "aliases": [
+    "Labyrinth garrison",
+    "Labyrinth defence",
+    "Dungeon's Elite Ten"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-010 'Ramiris Labyrinth garrison'",
+    "events 'Labyrinth garrison'"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Ten Dungeon Marvels"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Ten_Dungeon_Marvels",
+     "spelling": "Ten Dungeon Marvels"
+    }
+   ],
+   "conflicts": "'Labyrinth garrison' is a broader descriptive label; keep it but link to this term.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "elemental-colossus",
+   "kind": "force",
+   "canonical": "Elemental Colossus",
+   "display": "Elemental Colossus",
+   "japanese": "聖霊の守護巨像 (エレメンタルコロッサス)",
+   "romaji": "erementaru korossasu",
+   "aliases": [
+    "Floor Guardian Colossus",
+    "Spirit Protector Colossus",
+    "Colossus"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-011 'Floor Guardian Colossus'",
+    "combatants/events/state.deltas 'Colossus'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/keyword",
+     "spelling": "聖霊の守護巨像 えれめんたるころっさす"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Elemental_Colossus",
+     "spelling": "Elemental Colossus"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "twelve-guardian-lords",
+   "kind": "title",
+   "canonical": "Twelve Guardian Lords",
+   "display": "Twelve Guardian Lords",
+   "japanese": "聖魔十二守護王",
+   "romaji": "seima jūni shugoō",
+   "aliases": [
+    "Twelve Lordly Guardians"
+   ],
+   "projectIdsUsing": [],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Twelve Lordly Guardians"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Twelve_Guardian_Lords",
+     "spelling": "Twelve Guardian Lords"
+    }
+   ],
+   "conflicts": "Formed at the end of the war; Yen Press 'Twelve Lordly Guardians'.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "pegasus-knights",
+   "kind": "force",
+   "canonical": "Pegasus Knights",
+   "display": "Pegasus Knights",
+   "japanese": "天翔騎士団 (ペガサスナイツ)",
+   "romaji": "pegasasu naitsu",
+   "aliases": [
+    "Sky Knights",
+    "Ksatria Langit"
+   ],
+   "projectIdsUsing": [
+    "forces F-DWA-002 'Sky Knights'",
+    "events/combatants/territories 'Sky Knights'"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "Pegasus Knights"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Pegasus_Knights",
+     "spelling": "Pegasus Knights"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v14-v15",
+     "spelling": "Ksatria Langit"
+    }
+   ],
+   "conflicts": "'Sky Knights' is a fan-TL gloss.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "dwarf-knights",
+   "kind": "force",
+   "canonical": "Dwarven Knights",
+   "display": "Dwarven Knights",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [
+    "Dwarf Knights",
+    "Dwarven Army"
+   ],
+   "projectIdsUsing": [
+    "forces F-DWA-001 'Dwarf Knights'"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "v13.txt",
+     "spelling": "The Dwarf Knights (seven units, two of them magic support)"
+    }
+   ],
+   "conflicts": "No official source located; treat as descriptive.",
+   "confidence": "LOW"
+  },
+  {
+   "id": "dark-ministry",
+   "kind": "force",
+   "canonical": "Dark Ministry",
+   "display": "Dark Ministry",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [
+    "Kementerian Kegelapan",
+    "Dwargon Dark Ministry"
+   ],
+   "projectIdsUsing": [],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "Character Photocard metadata (Anrietta subfaction)",
+     "spelling": "Dwargon Dark Ministry"
+    },
+    {
+     "type": "novel-local",
+     "ref": "v15.txt",
+     "spelling": "Kementerian Kegelapan"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "LOW"
+  },
+  {
+   "id": "great-jura-forest",
+   "kind": "place",
+   "canonical": "Great Jura Forest",
+   "display": "Jura Forest",
+   "japanese": "ジュラの大森林",
+   "romaji": "jura no dai shinrin",
+   "aliases": [
+    "Forest of Jura",
+    "Jura Forest",
+    "Great Forest of Jura",
+    "Hutan Besar Jura",
+    "Hutan Jura"
+   ],
+   "projectIdsUsing": [
+    "places great-jura-forest, jura-forest-edge, jura-airspace",
+    "theatres TH-DWG/TH-DRG region",
+    "battles BTL-005"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/map",
+     "spelling": "ジュラの大森林"
+    },
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314453-that-time-i-got-reincarnated-as-a-slime-vol-13-light-novel",
+     "spelling": "the Forest of Jura"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Great_Jura_Forest",
+     "spelling": "Great Jura Forest"
+    }
+   ],
+   "conflicts": "Yen Press 'Forest of Jura' vs anime/wiki 'Great Jura Forest'. Project is consistent with the wiki.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "dungeon",
+   "kind": "place",
+   "canonical": "Dungeon",
+   "display": "Ramiris's Labyrinth",
+   "japanese": "地下迷宮 (ダンジョン)",
+   "romaji": "chika meikyū (danjon)",
+   "aliases": [
+    "Labyrinth",
+    "Ramiris Labyrinth",
+    "Ramiris's Labyrinth",
+    "Ramiris' Labyrinth",
+    "the labyrinth"
+   ],
+   "projectIdsUsing": [
+    "places ramiris-labyrinth",
+    "theatres TH-LAB 'Ramiris Labyrinth Front'",
+    "forces F-TEM-010",
+    "battles BTL-002 'Battle of the Labyrinth'",
+    "gazetteer aliases 'Labyrinth ...'"
+   ],
+   "sources": [
+    {
+     "type": "official",
+     "ref": "https://www.ten-sura.com/keyword",
+     "spelling": "地下迷宮 だんじょん — ラミリスの能力によって…作られた迷宮"
+    },
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314453-that-time-i-got-reincarnated-as-a-slime-vol-13-light-novel",
+     "spelling": "the nation's labyrinthine Dungeon"
+    },
+    {
+     "type": "publisher",
+     "ref": "scratchpad/ln/v16.txt (Yen Press English vol. 16, trans. Kevin Gifford, 2023)",
+     "spelling": "labyrinth (107x), Dungeon (3x)"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Dungeon",
+     "spelling": "Dungeon (alt: Labyrinth)"
+    }
+   ],
+   "conflicts": "The official term is 'Dungeon' (ダンジョン); 'Labyrinth' is the common English descriptor (Yen Press v16, anime ep. 62 title). 'Ramiris Labyrinth' (no possessive) is not an official name.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "rimuru-city",
+   "kind": "place",
+   "canonical": "Central City of Rimuru",
+   "display": "Rimuru (capital)",
+   "japanese": "中央都市リムル",
+   "romaji": "chūō toshi rimuru",
+   "aliases": [
+    "Capital City Rimuru",
+    "Rimuru city"
+   ],
+   "projectIdsUsing": [
+    "gazetteer alias 'Rimuru city, inside the labyrinth'"
+   ],
+   "sources": [
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Rimuru_City",
+     "spelling": "Capital City Rimuru (alt: The Central City of Rimuru — Yen Press)"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "imperial-capital",
+   "kind": "place",
+   "canonical": "Imperial Capital",
+   "display": "Imperial Capital",
+   "japanese": "帝都",
+   "romaji": "teito",
+   "aliases": [
+    "Imperial Capital Nasca",
+    "imperial capital",
+    "Ibukota Kekaisaran"
+   ],
+   "projectIdsUsing": [
+    "places imperial-capital, sealed-space",
+    "theatres TH-CAP",
+    "battles BTL-003/BTL-007"
+   ],
+   "sources": [
+    {
+     "type": "publisher",
+     "ref": "https://yenpress.com/titles/9781975314477-that-time-i-got-reincarnated-as-a-slime-vol-14-light-novel",
+     "spelling": "the imperial capital"
+    },
+    {
+     "type": "wiki",
+     "ref": "https://tensura.fandom.com/wiki/Nasca_Namrium_Ulmeria_United_Eastern_Empire",
+     "spelling": "Imperial Capital Nasca"
+    }
+   ],
+   "conflicts": null,
+   "confidence": "HIGH"
+  },
+  {
+   "id": "isthmus",
+   "kind": "place",
+   "canonical": "Isthmus",
+   "display": "Isthmus (Dwargon eastern city)",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [
+    "Dwargon eastern metropolis",
+    "Eastern metropolis of Dwargon",
+    "Kota metropolitan timur Dwargon"
+   ],
+   "projectIdsUsing": [
+    "places dwargon-eastern-metropolis",
+    "theatres TH-DWE",
+    "battles BTL-004/BTL-006"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "v12.txt / v13.txt",
+     "spelling": "Isthmus (one of Dwargon's three great cities; its eastern gate)"
+    }
+   ],
+   "conflicts": "Not verified against official or wiki sources; Japanese not found.",
+   "confidence": "LOW"
+  },
+  {
+   "id": "th-dwg",
+   "kind": "theatre",
+   "canonical": "Dwargon Gate Front",
+   "display": "Dwargon Gate Front",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [],
+   "projectIdsUsing": [
+    "theatres.json:TH-DWG"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "project theatres.json",
+     "spelling": "Dwargon Gate Front"
+    }
+   ],
+   "conflicts": "Project-coined label, not a canon name. Component terms: dwargon, great-jura-forest",
+   "confidence": "LOW"
+  },
+  {
+   "id": "th-lab",
+   "kind": "theatre",
+   "canonical": "Ramiris Labyrinth Front",
+   "display": "Ramiris Labyrinth Front",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [],
+   "projectIdsUsing": [
+    "theatres.json:TH-LAB"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "project theatres.json",
+     "spelling": "Ramiris Labyrinth Front"
+    }
+   ],
+   "conflicts": "Project-coined label, not a canon name. Component terms: dungeon, ramiris",
+   "confidence": "LOW"
+  },
+  {
+   "id": "th-cap",
+   "kind": "theatre",
+   "canonical": "Imperial Capital",
+   "display": "Imperial Capital",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [],
+   "projectIdsUsing": [
+    "theatres.json:TH-CAP"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "project theatres.json",
+     "spelling": "Imperial Capital"
+    }
+   ],
+   "conflicts": "Project-coined label, not a canon name. Component terms: imperial-capital",
+   "confidence": "LOW"
+  },
+  {
+   "id": "th-dwe",
+   "kind": "theatre",
+   "canonical": "Dwargon Eastern Metropolis",
+   "display": "Dwargon Eastern Metropolis",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [],
+   "projectIdsUsing": [
+    "theatres.json:TH-DWE"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "project theatres.json",
+     "spelling": "Dwargon Eastern Metropolis"
+    }
+   ],
+   "conflicts": "Project-coined label, not a canon name. Component terms: isthmus, dwargon",
+   "confidence": "LOW"
+  },
+  {
+   "id": "th-drg",
+   "kind": "theatre",
+   "canonical": "Dragon Theatre",
+   "display": "Dragon Theatre",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [],
+   "projectIdsUsing": [
+    "theatres.json:TH-DRG"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "project theatres.json",
+     "spelling": "Dragon Theatre"
+    }
+   ],
+   "conflicts": "Project-coined label, not a canon name. Component terms: velgrynd, veldora, great-jura-forest",
+   "confidence": "LOW"
+  },
+  {
+   "id": "th-dip",
+   "kind": "theatre",
+   "canonical": "Diplomatic / Settlement",
+   "display": "Diplomatic / Settlement",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [],
+   "projectIdsUsing": [
+    "theatres.json:TH-DIP"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "project theatres.json",
+     "spelling": "Diplomatic / Settlement"
+    }
+   ],
+   "conflicts": "Project-coined label.",
+   "confidence": "LOW"
+  }
+ ]
+}

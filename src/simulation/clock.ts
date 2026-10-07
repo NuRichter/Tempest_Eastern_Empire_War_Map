@@ -4,7 +4,7 @@
  * One clock, owned by nobody in the React tree. It advances on
  * requestAnimationFrame and publishes a continuous frame position; the renderer
  * reads that position every animation tick, and React is told only when the
- * integer frame changes. This is what keeps 7,200 keyframes at 8x from
+ * integer frame changes. This is what keeps ten thousand keyframes at 48x from
  * re-rendering the interface sixty times a second.
  *
  * Determinism: frame position is a pure function of accumulated simulation
@@ -15,11 +15,15 @@
 
 export type ClockListener = (frame: number, playing: boolean) => void;
 
-export const SPEEDS = [0.25, 0.5, 1, 2, 4, 8] as const;
+export const SPEEDS = [0.25, 0.5, 1, 2, 4, 8, 16, 48] as const;
 export type Speed = (typeof SPEEDS)[number];
 
-/** Keyframes advanced per second of wall clock at 1x. */
-const FRAMES_PER_SECOND_AT_1X = 3;
+/**
+ * Keyframes advanced per second of wall clock at 1x. One keyframe is ten
+ * simulated minutes, so 1x = 30 simulated minutes per second and 48x = one
+ * simulated day per second, the pace of the reference documentaries.
+ */
+export const FRAMES_PER_SECOND_AT_1X = 3;
 
 export interface ClockOptions {
   frameCount: number;
@@ -32,7 +36,7 @@ export class SimulationClock {
 
   private position = 0;
   private playing = false;
-  private speed: Speed = 1;
+  private speed: number = 1;
   private direction: 1 | -1 = 1;
   private lastTick = 0;
   private raf: number | null = null;
@@ -57,7 +61,7 @@ export class SimulationClock {
     return this.playing;
   }
 
-  get currentSpeed(): Speed {
+  get currentSpeed(): number {
     return this.speed;
   }
 
@@ -91,7 +95,7 @@ export class SimulationClock {
     else this.play();
   }
 
-  setSpeed(speed: Speed): void {
+  setSpeed(speed: number): void {
     this.speed = speed;
     this.publish();
   }

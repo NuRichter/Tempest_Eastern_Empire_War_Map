@@ -1,0 +1,1098 @@
+{
+ "$schema": "internal://characters.source",
+ "about": {
+  "purpose": "Characters of the campaign and their photocards. Names follow data-source/terminology.source.json; every alias is searchable. Photocards are local files from Sources of Truth/Character Photocard and keep the provenance recorded in that repository's manifest (no licence is recorded there: the images remain the property of their rights holders and are shown for identification in a non-commercial fan project).",
+  "photocardRoot": "Sources of Truth/Character Photocard"
+ },
+ "characters": [
+  {
+   "id": "rimuru",
+   "name": "Rimuru Tempest",
+   "aliases": [
+    "Bestie",
+    "Boss",
+    "Demon Lord Rimuru",
+    "Great Phantom Thief Satoru",
+    "Great Rimuru",
+    "His/Your Majesty",
+    "Master",
+    "Papa",
+    "Rimu",
+    "Rimuru",
+    "Squishy",
+    "Teacher/Sensei"
+   ],
+   "japanese": "リムル＝テンペスト",
+   "faction": "Jura-Tempest Federation",
+   "role": "Head of state; Head of state; aerial reconnaissance; infiltration of the Imperial Capital; settlement",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "001_Rimuru Tempest.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/rimuru",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 1,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.34
+   }
+  },
+  {
+   "id": "benimaru",
+   "name": "Benimaru",
+   "aliases": [
+    "Young Master",
+    "Young'un"
+   ],
+   "japanese": "紅丸 (ベニマル)",
+   "faction": "Jura-Tempest Federation",
+   "role": "Supreme General; Supreme General; directed the double feigned defeat; present at the sealed space and the summit",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "039_Benimaru.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/benimaru",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 39,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.02
+   }
+  },
+  {
+   "id": "gobta",
+   "name": "Gobta",
+   "aliases": [
+    "Captain Gobta"
+   ],
+   "japanese": "ゴブタ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Corps commander; First Corps; wolf-rider charge; Blizzard Wolf Dance",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "158_Gobta.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/gobta",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 158,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 4.45
+   }
+  },
+  {
+   "id": "geld",
+   "name": "Geld",
+   "aliases": [
+    "Gerd"
+   ],
+   "japanese": "ゲルド",
+   "faction": "Jura-Tempest Federation",
+   "role": "Corps commander",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "143_Geld Junior.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/geld",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 143,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.65
+   }
+  },
+  {
+   "id": "gabiru",
+   "name": "Gabiru",
+   "aliases": [
+    "Gabil",
+    "Sir Gabiru"
+   ],
+   "japanese": "ガビル",
+   "faction": "Jura-Tempest Federation",
+   "role": "Corps commander; Third Corps; airship boarding actions; Colossus airlift; solo attack on the eastern front",
+   "nameConflicts": "Official portal 'Gabiru' vs Yen Press 'Gabil'. The project's 'Gabil' matches Yen Press; either is defensible.",
+   "photocard": {
+    "file": "129_Gabiru.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/gabiru",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 129,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.6
+   }
+  },
+  {
+   "id": "gobwa",
+   "name": "Gobwa",
+   "aliases": [
+    "Gobsya",
+    "Gobua",
+    "Gobya"
+   ],
+   "japanese": "ゴブア",
+   "faction": "Jura-Tempest Federation",
+   "role": "Detachment commander; Led the Kurenai advance force onto the eastern front",
+   "nameConflicts": "'Gobya' is a fan-TL misreading of ゴブア.",
+   "photocard": null
+  },
+  {
+   "id": "hakuro",
+   "name": "Hakuro",
+   "aliases": [
+    "Geezer",
+    "Hakurou",
+    "Master"
+   ],
+   "japanese": "白老 (ハクロウ)",
+   "faction": "Jura-Tempest Federation",
+   "role": "Advisor; Advisor to the Kurenai advance force",
+   "nameConflicts": "Both official sources write 'Hakuro'; 'Hakurou' is the wiki's long-vowel form.",
+   "photocard": {
+    "file": "182_Hakurou.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/hakuro",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 182,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.8
+   }
+  },
+  {
+   "id": "ramiris",
+   "name": "Ramiris",
+   "aliases": [
+    "Lady Ramiris",
+    "Lamrys",
+    "NEET",
+    "Poverty Demon Lord"
+   ],
+   "japanese": "ラミリス",
+   "faction": "Jura-Tempest Federation",
+   "role": "Theatre commander; Labyrinth structure, severing and revival; preserved the capital city",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "334_Ramiris.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/ramiris",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 334,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 4.46
+   }
+  },
+  {
+   "id": "adalmann",
+   "name": "Adalmann",
+   "aliases": [
+    "Adalman",
+    "Bones",
+    "Immortal King",
+    "Magic Maniac"
+   ],
+   "japanese": "アダルマン",
+   "faction": "Jura-Tempest Federation",
+   "role": "Sector commander; labyrinth attrition; Floor 70 defence with an undead legion of fewer than 40,000",
+   "nameConflicts": "Official portal 'Adalmann' vs Yen Press 'Adalman'. The project matches Yen Press.",
+   "photocard": {
+    "file": "005_Adalmann.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/adalmann",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 5,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.6
+   }
+  },
+  {
+   "id": "testarossa",
+   "name": "Testarossa",
+   "aliases": [
+    "Big Sister",
+    "Blanc",
+    "Testa",
+    "White Primordial",
+    "White Queen"
+   ],
+   "japanese": "テスタロッサ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Independent element, later ambassador; Envoy; closed the imperial retreat; decisive victory; ambassador to the Empire",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "387_Testarossa.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/testarossa",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 387,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.75
+   }
+  },
+  {
+   "id": "ultima",
+   "name": "Ultima",
+   "aliases": [
+    "Goddess",
+    "Princess",
+    "Ult",
+    "Violet"
+   ],
+   "japanese": "ウルティマ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Engaged Faraga's flagship; despatched Veyron and Zonda",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "401_Ultima.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/ultima",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 401,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.84
+   }
+  },
+  {
+   "id": "diablo",
+   "name": "Diablo",
+   "aliases": [
+    "Black King",
+    "Black/Kuro",
+    "Lord Diablo",
+    "Mr. Butter"
+   ],
+   "japanese": "ディアブロ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Took the souls of the imperial camp and defeated Caligulio (V13 Ch4); in Rimuru's party; held back during the long night; summit attendee",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "089_Diablo.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/diablo",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 89,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.69
+   }
+  },
+  {
+   "id": "shion",
+   "name": "Shion",
+   "aliases": [
+    "Big Sis"
+   ],
+   "japanese": "紫苑 (シオン)",
+   "faction": "Jura-Tempest Federation",
+   "role": "Secretary; leads Yomigaeri (10,000 per V13 Ch4); in Rimuru's party in the Dream Fortress; summit attendee. Not killed in this war: the V15 Ch2 'killed' line is a flashback.",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "367_Shion.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/shion",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 367,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.49
+   }
+  },
+  {
+   "id": "veldora",
+   "name": "Veldora Tempest",
+   "aliases": [
+    "Alias",
+    "Evil Dragon",
+    "Gullidora",
+    "Lord Veldora",
+    "Master/Teacher",
+    "Rimudora",
+    "Secret Weapon",
+    "Storm Dragon",
+    "Storm Dragon Veldora",
+    "The Last Line of Defense",
+    "Veldora",
+    "Veldora Tempest (Storm Dragon)"
+   ],
+   "japanese": "ヴェルドラ＝テンペスト (title 暴風竜)",
+   "faction": "Jura-Tempest Federation",
+   "role": "Storm Dragon; duel with Velgrynd over Jura (V14 Epilogue-V15); dominated by Rudra after Kondo's bullet, then recovered by Rimuru",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "406_Veldora Tempest.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/veldora",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 406,
+    "originalSize": [
+     930,
+     1210
+    ],
+    "upscaleFactor": 2.16
+   }
+  },
+  {
+   "id": "gadra",
+   "name": "Gadora",
+   "aliases": [
+    "Gadra",
+    "Magic Maniac",
+    "Magic Otaku"
+   ],
+   "japanese": "ガドラ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Relayed encrypted contact; rode and fired the Floor Guardian Colossus at Velgrynd",
+   "nameConflicts": "Light-novel-only character: the only official English form is Yen Press 'Gadora' (also the exact reading of ガドラ, ga-do-ra). 'Gadra' is the wiki/fan form used by the project and the photocard archive. Low-impact conflict; switching is optional.",
+   "photocard": {
+    "file": "130_Gadra.jpg",
+    "sourceType": "wiki:light_novel_illustration",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Gadra",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 130,
+    "originalSize": [
+     332,
+     764
+    ],
+    "upscaleFactor": 6.63
+   }
+  },
+  {
+   "id": "phobio",
+   "name": "Phobio",
+   "aliases": [
+    "Black Leopard Fang",
+    "Black Leopard Fang (黒豹牙)",
+    "Phobio the Panthertooth"
+   ],
+   "japanese": "フォビオ",
+   "faction": "Beast Kingdom Eurazania",
+   "role": "Attached to Gobya's force on the eastern front",
+   "nameConflicts": "Epithet 'Panthertooth' not verified in an official source.",
+   "photocard": {
+    "file": "317_Phobio.jpg",
+    "sourceType": "wiki:anime_screenshot_or_design",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Phobio",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 317,
+    "originalSize": [
+     1024,
+     1376
+    ],
+    "upscaleFactor": 2.89
+   }
+  },
+  {
+   "id": "veyron",
+   "name": "Veyron",
+   "aliases": [
+    "Veryon",
+    "Veryon (official portal spelling)",
+    "Violet's Confidant ｢ヴィオレの腹心｣"
+   ],
+   "japanese": "ヴェイロン",
+   "faction": "Jura-Tempest Federation",
+   "role": "Veyron and Zonda arrive on the eastern front",
+   "nameConflicts": "Portal writes 'Veryon' (likely a typo of ヴェイロン = Veyron).",
+   "photocard": {
+    "file": "415_Veyron.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/veryon",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 415,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.65
+   }
+  },
+  {
+   "id": "zonda",
+   "name": "Zonda",
+   "aliases": [],
+   "japanese": "ゾンダ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Veyron and Zonda arrive on the eastern front",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "437_Zonda.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/zonda",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 437,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.7
+   }
+  },
+  {
+   "id": "gazel",
+   "name": "Gazel Dwargo",
+   "aliases": [
+    "Gazel",
+    "Gazzie/Young Gazel",
+    "His/Your Majesty",
+    "King Gazel",
+    "King Gazel Dwargo"
+   ],
+   "japanese": "ガゼル・ドワルゴ",
+   "faction": "Armed Nation of Dwargon",
+   "role": "Head of state and field commander; Fortified the gate; assessed the campaign; committed the Sky Knights",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "141_Gazel Dwargo.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/gazel",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 141,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.54
+   }
+  },
+  {
+   "id": "dorf",
+   "name": "Dorf",
+   "aliases": [
+    "Dolph"
+   ],
+   "japanese": "ドルフ",
+   "faction": "Armed Nation of Dwargon",
+   "role": "Formation commander; Heavy assault force; took joint command with Gabil",
+   "nameConflicts": "Yen Press 'Dolph' vs anime/wiki 'Dorf'; kept 'Dorf'. He captains the Pegasus Knights — check F-DWA-003 ('Heavy armed assault force' under Dorf) against the source.",
+   "photocard": {
+    "file": "096_Dorf.jpg",
+    "sourceType": "wiki:anime_screenshot_or_design",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Dorf",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 96,
+    "originalSize": [
+     1920,
+     1080
+    ],
+    "upscaleFactor": 3.15
+   }
+  },
+  {
+   "id": "vaughn",
+   "name": "Vaughn",
+   "aliases": [
+    "Admiral Paladin",
+    "Ban",
+    "Ben",
+    "Dwargon Supreme Commander",
+    "Pan"
+   ],
+   "japanese": "バーン",
+   "faction": "Armed Nation of Dwargon",
+   "role": "Counsel to Gazel on the eastern front",
+   "nameConflicts": "'Ben' (fan TL) = バーン = Vaughn; identity inferred from role. Yen Press spelling not verified.",
+   "photocard": null
+  },
+  {
+   "id": "anrietta",
+   "name": "Anrietta",
+   "aliases": [
+    "Henrietta"
+   ],
+   "japanese": "アンリエッタ",
+   "faction": "Armed Nation of Dwargon",
+   "role": "Detected the ritual behind the Scorch Dragon",
+   "nameConflicts": "Yen Press 'Henrietta' vs anime/wiki 'Anrietta'; kept 'Anrietta'.",
+   "photocard": {
+    "file": "017_Anrietta.jpg",
+    "sourceType": "wiki:anime_screenshot_or_design",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Anrietta",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 17,
+    "originalSize": [
+     1920,
+     1080
+    ],
+    "upscaleFactor": 3.15
+   }
+  },
+  {
+   "id": "rudra",
+   "name": "Rudra Nam Ul Nasca",
+   "aliases": [
+    "Elder Brother",
+    "Emperor Ludora",
+    "Emperor Rudra",
+    "Emperor Rudra Nam Ul Nasca",
+    "His/Your Majesty",
+    "Lord First",
+    "Ludora Nam Ul Nasca",
+    "Ludora Nam-ul-Nasca",
+    "Ludora Nasca",
+    "Rudra",
+    "Rudra Naam Ul Nazca",
+    "Rudra Naam Ulu Nasca",
+    "Rudra Nasca"
+   ],
+   "japanese": "ルドラ・ナム・ウル・ナスカ",
+   "faction": "Eastern Empire",
+   "role": "Head of state; Ordered mobilisation; the truth of the throne uncovered",
+   "nameConflicts": "UNRESOLVED official conflict: the Yen Press LN uses 'Ludora' (and 'Nam-ul-Nasca' once in v16); the katakana ルドラ and the anime-following wiki give 'Rudra'. Canonical kept as 'Rudra Nam Ul Nasca' (direct romanisation, matches wiki, photocard archive and project); 'Ludora' is the Yen Press alias. 'Naam', 'Ulu', 'Nazca' are fan-TL errors.",
+   "photocard": {
+    "file": "350_Rudra Nam Ul Nasca.jpg",
+    "sourceType": "wiki:anime_screenshot_or_design",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Rudra_Nam_Ul_Nasca",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 350,
+    "originalSize": [
+     1920,
+     1080
+    ],
+    "upscaleFactor": 3.15
+   }
+  },
+  {
+   "id": "calgurio",
+   "name": "Caligulio",
+   "aliases": [
+    "Calgurio",
+    "Calgurio Heath",
+    "Caligulio Heath",
+    "Marshal Calgurio"
+   ],
+   "japanese": "カリギュリオ・ヒース",
+   "faction": "Eastern Empire",
+   "role": "General (one of the Three Great Generals), head of the Armored Division; commanded the Jura invasion; killed by Diablo, resurrected, held prisoner in Tempest, summit delegate, leads the repatriation",
+   "nameConflicts": "Official English (Yen Press) is 'Caligulio', which is also the closer reading of カリギュリオ (ka-ri-gyu-ri-o). 'Calgurio' is the wiki/fan form. Rank: wiki has him as General commanding the Armored Division (Velgrynd holds the Marshal post); 'Marshal' comes from the fan TL — verify.",
+   "photocard": {
+    "file": "049_Calgurio Heath.jpg",
+    "sourceType": "wiki:light_novel_illustration",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Calgurio_Heath",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 49,
+    "originalSize": [
+     236,
+     898
+    ],
+    "upscaleFactor": 3.5
+   }
+  },
+  {
+   "id": "gaster",
+   "name": "Gaster",
+   "aliases": [
+    "Geist",
+    "Lieutenant General Gaster",
+    "Lieutenant General Geist"
+   ],
+   "japanese": "ガスター",
+   "faction": "Eastern Empire",
+   "role": "Lieutenant General, Magitank Force; killed by Testarossa at his headquarters (V13 Ch2)",
+   "nameConflicts": "'Geist' is the fan-TL rendering of ガスター. Identity confirmed by role: Lt. General commanding the magitank ('Magic Chariot') force under Caligulio.",
+   "photocard": null
+  },
+  {
+   "id": "farraga",
+   "name": "Farraga",
+   "aliases": [
+    "Faraga",
+    "Farage",
+    "Major General Faraga"
+   ],
+   "japanese": "ファラガ",
+   "faction": "Eastern Empire",
+   "role": "Major General, Flying Combat Corps (100 airships committed); killed by Ultima's Nuclear Flame (V13 Ch2)",
+   "nameConflicts": "Yen Press and wiki agree on 'Farraga'.",
+   "photocard": null
+  },
+  {
+   "id": "minitz",
+   "name": "Minitz",
+   "aliases": [
+    "Major General Minitz",
+    "Major General Minute",
+    "Minits",
+    "Minute"
+   ],
+   "japanese": "ミニッツ",
+   "faction": "Eastern Empire",
+   "role": "Major General, Caligulio's right hand; led the labyrinth assault and was killed there; resurrected; summit delegate",
+   "nameConflicts": "'Minute' is a mistranslation (ミニッツ read as 'minutes').",
+   "photocard": {
+    "file": "279_Minitz.jpg",
+    "sourceType": "wiki:light_novel_illustration",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Minitz",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 279,
+    "originalSize": [
+     1000,
+     1778
+    ],
+    "upscaleFactor": 1.87
+   }
+  },
+  {
+   "id": "gradim",
+   "name": "Gradim",
+   "aliases": [
+    "Gladim",
+    "Grand Admiral Gladim",
+    "Lone White Tiger"
+   ],
+   "japanese": "グラディム",
+   "faction": "Eastern Empire",
+   "role": "Commander of the Magic Beast Division (30,000); killed by Carillon during his awakening sleep at the Dwargon eastern front, remains devoured by Vega (V15 Ch3)",
+   "nameConflicts": "Yen Press spelling NOT verified (name absent from v16). ラ is r/l-ambiguous; 'Gradim' is the wiki title and the standard romanisation. 'Grand Admiral' is doubtful: wiki lists him as one of the Three Great Generals commanding the Magic Beast Division — verify against the source.",
+   "photocard": null
+  },
+  {
+   "id": "yuuki",
+   "name": "Yuuki Kagurazaka",
+   "aliases": [
+    "Boss",
+    "Mysterious Patron",
+    "That Lord",
+    "The Youth",
+    "Yuki Kagurazaka",
+    "Yuuki",
+    "Yūki"
+   ],
+   "japanese": "神楽坂優樹 (ユウキ・カグラザカ)",
+   "faction": "Eastern Empire",
+   "role": "Legion commander; Hybrid Legion; led the coup conspiracy; coordinated with Tempest via Gadra",
+   "nameConflicts": "Indonesian TL occasionally writes 'Yuki'.",
+   "photocard": {
+    "file": "424_Yuuki Kagurazaka.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/yuuki",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 424,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.77
+   }
+  },
+  {
+   "id": "kondo",
+   "name": "Tatsuya Kondo",
+   "aliases": [
+    "Kondo",
+    "Lieutenant Tatsuya Kondo",
+    "Stalker of the Halls of Information",
+    "Tatsuya Kondo"
+   ],
+   "japanese": "近藤達也（タツヤ・コンドウ）",
+   "faction": "Eastern Empire",
+   "role": "Lieutenant, Imperial Intelligence Bureau; killed Miranda; guarded Kagali's ritual and fought Gazel on the Dwargon eastern front; shot Veldora; killed by Carrera (V15 Ch5)",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "384_Tatsuya Kondou.jpg",
+    "sourceType": "wiki:light_novel_illustration",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Tatsuya_Kondou",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 384,
+    "originalSize": [
+     834,
+     1186
+    ],
+    "upscaleFactor": 2.87
+   }
+  },
+  {
+   "id": "velgrynd",
+   "name": "Velgrynd",
+   "aliases": [
+    "Big Sis Gryn",
+    "Big Sister Gryn",
+    "Cardina",
+    "Cardinal",
+    "Flame Dragon",
+    "Gryn",
+    "Gryun",
+    "Guren",
+    "Longfang",
+    "Ryuo",
+    "Scorch Dragon",
+    "Velgrynd (Scorch Dragon)",
+    "Velgrynd the Flame Dragon"
+   ],
+   "japanese": "ヴェルグリンド (title 灼熱竜)",
+   "faction": "Eastern Empire",
+   "role": "Marshal and guardian dragon; Duel with Veldora; destroyed the labyrinth gate; Marshal aboard the flotilla; named the new emperor",
+   "nameConflicts": "Name consistent everywhere. Title 灼熱竜: Yen Press 'Flame Dragon' vs wiki/fan TL 'Scorch Dragon'.",
+   "photocard": {
+    "file": "408_Velgrynd.jpg",
+    "sourceType": "wiki:light_novel_illustration",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Velgrynd",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 408,
+    "originalSize": [
+     456,
+     1348
+    ],
+    "upscaleFactor": 2.27
+   }
+  },
+  {
+   "id": "samuel",
+   "name": "Samuel",
+   "aliases": [
+    "Zamdo",
+    "Major General Zamdo",
+    "Major General Samuel"
+   ],
+   "japanese": null,
+   "faction": "Eastern Empire",
+   "role": "Major General commanding the 300-airship flotilla and the imperial flagship; killed by Testarossa's Death Streak (V15 Ch4) and revived in a homunculus (V16 Ch3)",
+   "nameConflicts": "The Indonesian fan TL (V14-V15) writes Samuel; Yen Press V16 writes Major General Zamdo for the same officer (v14.txt:5954; v16.txt:9181-9183). Japanese not located.",
+   "photocard": null
+  },
+  {
+   "id": "masayuki",
+   "name": "Masayuki Rudra Nam Ul Nasca",
+   "aliases": [
+    "Elder Brother",
+    "Emperor Masayuki",
+    "His/Your Majesty",
+    "Lord First",
+    "Masayuki",
+    "Masayuki Honjou",
+    "Masayuki Ludora Nam Ul Nasca",
+    "Rudra"
+   ],
+   "japanese": "マサユキ (later マサユキ・ルドラ・ナム・ウル・ナスカ)",
+   "faction": "Eastern Empire",
+   "role": "Emperor; Imperial principal at the summit; installed as emperor by Velgrynd",
+   "nameConflicts": "Project files him under faction 'Eastern Empire'; he only becomes emperor at the end of the war.",
+   "photocard": {
+    "file": "269_Masayuki Rudra Nam Ul Nasca.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/masayuki",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 269,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.92
+   }
+  },
+  {
+   "id": "miranda",
+   "name": "Miranda",
+   "aliases": [],
+   "japanese": null,
+   "faction": "Eastern Empire",
+   "role": "Coup preparation in the Imperial Capital; killed by Kondo",
+   "nameConflicts": "No official or wiki source located; Japanese unknown.",
+   "photocard": null
+  },
+  {
+   "id": "carrera",
+   "name": "Carrera",
+   "aliases": [],
+   "japanese": "カレラ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Primordial of Yellow; Gravity Collapse on the imperial camp outside the labyrinth (V13 Ch4); killed Kondo (V15 Ch5)",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "053_Carrera.jpg",
+    "sourceType": "official_anime_character_art",
+    "sourceUrl": "https://www.ten-sura.com/character/carrera",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 53
+   }
+  },
+  {
+   "id": "damrada",
+   "name": "Damrada",
+   "aliases": [
+    "Damrada of Gold",
+    "Sir Damrada"
+   ],
+   "japanese": "ダムラダ",
+   "faction": "Eastern Empire",
+   "role": "Former Nasca chancellor; betrayed at Miranda's killing",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "081_Damrada.jpg",
+    "sourceType": "official_anime_character_art",
+    "sourceUrl": "https://www.ten-sura.com/character/damrada",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 81
+   }
+  },
+  {
+   "id": "kagali",
+   "name": "Kagali",
+   "aliases": [
+    "Curse Lord",
+    "Kazalim (former identity, カザリーム)"
+   ],
+   "japanese": "カガリ",
+   "faction": "Eastern Empire",
+   "role": "Clown faction; ritual caster on the Dwargon eastern front",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "211_Kagali.jpg",
+    "sourceType": "official_anime_character_art",
+    "sourceUrl": "https://www.ten-sura.com/character/kagali",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 211
+   }
+  },
+  {
+   "id": "laplace",
+   "name": "Laplace",
+   "aliases": [],
+   "japanese": "ラプラス",
+   "faction": "Eastern Empire",
+   "role": "Clown faction member",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "241_Laplace.jpg",
+    "sourceType": "official_anime_character_art",
+    "sourceUrl": "https://www.ten-sura.com/character/laplace",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 241
+   }
+  },
+  {
+   "id": "tear",
+   "name": "Tear",
+   "aliases": [],
+   "japanese": "ティア",
+   "faction": "Eastern Empire",
+   "role": "Clown faction member",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "385_Tear.jpg",
+    "sourceType": "official_anime_character_art",
+    "sourceUrl": "https://www.ten-sura.com/character/tear",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 385
+   }
+  },
+  {
+   "id": "footman",
+   "name": "Footman",
+   "aliases": [],
+   "japanese": "フットマン",
+   "faction": "Eastern Empire",
+   "role": "Clown faction member",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "121_Footman.jpg",
+    "sourceType": "official_anime_character_art",
+    "sourceUrl": "https://www.ten-sura.com/character/footman",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 121
+   }
+  },
+  {
+   "id": "vega",
+   "name": "Vega",
+   "aliases": [
+    "Vega of Power"
+   ],
+   "japanese": "ヴェガ",
+   "faction": "Eastern Empire",
+   "role": "Killed and consumed Gradim",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "403_Vega.jpg",
+    "sourceType": "light_novel_illustration_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Vega",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 403
+   }
+  },
+  {
+   "id": "soei",
+   "name": "Soei",
+   "aliases": [
+    "Souei"
+   ],
+   "japanese": "蒼影 (ソウエイ)",
+   "faction": "Jura-Tempest Federation",
+   "role": "Intelligence chief",
+   "nameConflicts": "Same pattern as Hakuro.",
+   "photocard": {
+    "file": "372_Souei.jpg",
+    "sourceType": "official_anime_character_art",
+    "sourceUrl": "https://www.ten-sura.com/character/soei",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 372
+   }
+  },
+  {
+   "id": "feldway",
+   "name": "Feldway",
+   "aliases": [],
+   "japanese": "フェルドウェイ",
+   "faction": "Eastern Empire",
+   "role": "Withdrew with Michael at the end of the night",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "117_Feldway.jpg",
+    "sourceType": "light_novel_illustration_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Feldway",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 117
+   }
+  },
+  {
+   "id": "michael",
+   "name": "Michael",
+   "aliases": [],
+   "japanese": "ミカエル",
+   "faction": "Eastern Empire",
+   "role": "Ultimate skill that dominated Rudra and Veldora",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "273_Michael.jpg",
+    "sourceType": "light_novel_illustration_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Michael",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 273
+   }
+  },
+  {
+   "id": "zero",
+   "name": "Zero",
+   "aliases": [],
+   "japanese": null,
+   "faction": "Eastern Empire",
+   "role": "Deputy army commander of the Composite Division appointed by Yuuki; senior officer at the Isthmus blockade camp who held the legion in place (V14 Ch4)",
+   "nameConflicts": "Indonesian fan TL only (v14.txt:12397-12474); Japanese and official English not located.",
+   "photocard": null
+  },
+  {
+   "id": "albis",
+   "name": "Albis",
+   "aliases": [
+    "Alvis"
+   ],
+   "japanese": null,
+   "faction": "Beast Kingdom Eurazania",
+   "role": "Led the 20,000 reinforcements (beastmen and winged clan) that Milim sent into the labyrinth (V13 Ch4)",
+   "nameConflicts": "Indonesian TL 'Albis' vs Yen Press V16 'Alvis' (v13.txt:14247; v16.txt:9145).",
+   "photocard": null
+  },
+  {
+   "id": "carillon",
+   "name": "Carillon",
+   "aliases": [
+    "Carrion",
+    "Karion"
+   ],
+   "japanese": "カリオン",
+   "faction": "Beast Kingdom Eurazania",
+   "role": "Former demon lord (Beast King); killed Gradim at the Dwargon eastern front during Gradim's awakening sleep (V15 Ch3)",
+   "nameConflicts": "Indonesian fan TL writes 'Carrion' (v15.txt:9400-9466). 'Carillon' follows common English usage; not verified against Yen Press for this volume.",
+   "photocard": null
+  },
+  {
+   "id": "ranga",
+   "name": "Ranga",
+   "aliases": [
+    "Dog"
+   ],
+   "japanese": "ランガ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Tempest Star Wolf; carried Testarossa to the ultimatum and fused with Gobta for Black Lightning and Blizzard Wolf Dance",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "335_Ranga.jpg",
+    "sourceType": "official_anime_character_art",
+    "sourceUrl": "https://www.ten-sura.com/character/ranga",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 335
+   }
+  },
+  {
+   "id": "gobchi",
+   "name": "Gobchi",
+   "aliases": [],
+   "japanese": "ゴブチ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Goblin Rider; threw the first Flaming Jade and led the wolf riders once Gobta fused",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "157_Gobchi.jpg",
+    "sourceType": "anime_screenshot_or_design_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Gobchi",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 157
+   }
+  },
+  {
+   "id": "zegion",
+   "name": "Zegion",
+   "aliases": [
+    "Insect Kaiser",
+    "King of the Fantasy World"
+   ],
+   "japanese": "ゼギオン",
+   "faction": "Jura-Tempest Federation",
+   "role": "Labyrinth guardian in the Labyrinth Raider operation",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "430_Zegion.jpg",
+    "sourceType": "light_novel_illustration_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Zegion",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 430
+   }
+  },
+  {
+   "id": "albert",
+   "name": "Albert",
+   "aliases": [
+    "Death Paladin"
+   ],
+   "japanese": "アルベルト",
+   "faction": "Jura-Tempest Federation",
+   "role": "Labyrinth guardian in the Labyrinth Raider operation",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "009_Albert.jpg",
+    "sourceType": "light_novel_illustration_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Albert",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "manifestId": 9
+   }
+  }
+ ]
+}

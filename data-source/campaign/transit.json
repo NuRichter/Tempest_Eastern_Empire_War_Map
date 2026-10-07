@@ -1,0 +1,1100 @@
+[
+ {
+  "forceId": "F-EMP-010",
+  "day": -32,
+  "time": "08:00",
+  "pct": 0.0
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -32,
+  "time": "08:00",
+  "pct": 0.0
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -32,
+  "time": "08:00",
+  "pct": 0.0
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -32,
+  "time": "20:00",
+  "pct": 0.5
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -32,
+  "time": "20:00",
+  "pct": 0.5
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -32,
+  "time": "20:00",
+  "pct": 0.5
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -31,
+  "time": "08:00",
+  "pct": 1.1
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -31,
+  "time": "08:00",
+  "pct": 1.1
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -31,
+  "time": "08:00",
+  "pct": 1.1
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -31,
+  "time": "20:00",
+  "pct": 1.6
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -31,
+  "time": "20:00",
+  "pct": 1.6
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -31,
+  "time": "20:00",
+  "pct": 1.6
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -30,
+  "time": "08:00",
+  "pct": 2.2
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -30,
+  "time": "08:00",
+  "pct": 2.2
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -30,
+  "time": "08:00",
+  "pct": 2.2
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -30,
+  "time": "20:00",
+  "pct": 2.7
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -30,
+  "time": "20:00",
+  "pct": 2.7
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -30,
+  "time": "20:00",
+  "pct": 2.7
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -29,
+  "time": "08:00",
+  "pct": 3.3
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -29,
+  "time": "08:00",
+  "pct": 3.3
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -29,
+  "time": "08:00",
+  "pct": 3.3
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -29,
+  "time": "20:00",
+  "pct": 3.8
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -29,
+  "time": "20:00",
+  "pct": 3.8
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -29,
+  "time": "20:00",
+  "pct": 3.8
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -28,
+  "time": "08:00",
+  "pct": 4.3
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -28,
+  "time": "08:00",
+  "pct": 4.3
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -28,
+  "time": "08:00",
+  "pct": 4.3
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -28,
+  "time": "20:00",
+  "pct": 4.9
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -28,
+  "time": "20:00",
+  "pct": 4.9
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -28,
+  "time": "20:00",
+  "pct": 4.9
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -27,
+  "time": "08:00",
+  "pct": 5.4
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -27,
+  "time": "08:00",
+  "pct": 5.4
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -27,
+  "time": "08:00",
+  "pct": 5.4
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -27,
+  "time": "20:00",
+  "pct": 6.0
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -27,
+  "time": "20:00",
+  "pct": 6.0
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -27,
+  "time": "20:00",
+  "pct": 6.0
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -26,
+  "time": "08:00",
+  "pct": 6.5
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -26,
+  "time": "08:00",
+  "pct": 6.5
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -26,
+  "time": "08:00",
+  "pct": 6.5
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -26,
+  "time": "20:00",
+  "pct": 7.1
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -26,
+  "time": "20:00",
+  "pct": 7.1
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -26,
+  "time": "20:00",
+  "pct": 7.1
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -25,
+  "time": "08:00",
+  "pct": 7.6
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -25,
+  "time": "08:00",
+  "pct": 7.6
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -25,
+  "time": "08:00",
+  "pct": 7.6
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -25,
+  "time": "20:00",
+  "pct": 8.1
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -25,
+  "time": "20:00",
+  "pct": 8.1
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -25,
+  "time": "20:00",
+  "pct": 8.1
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -24,
+  "time": "08:00",
+  "pct": 8.7
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -24,
+  "time": "08:00",
+  "pct": 8.7
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -24,
+  "time": "08:00",
+  "pct": 8.7
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -24,
+  "time": "20:00",
+  "pct": 9.2
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -24,
+  "time": "20:00",
+  "pct": 9.2
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -24,
+  "time": "20:00",
+  "pct": 9.2
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -23,
+  "time": "08:00",
+  "pct": 9.8
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -23,
+  "time": "08:00",
+  "pct": 9.8
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -23,
+  "time": "08:00",
+  "pct": 9.8
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -23,
+  "time": "20:00",
+  "pct": 10.3
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -23,
+  "time": "20:00",
+  "pct": 10.3
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -23,
+  "time": "20:00",
+  "pct": 10.3
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -22,
+  "time": "08:00",
+  "pct": 10.9
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -22,
+  "time": "08:00",
+  "pct": 10.9
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -22,
+  "time": "08:00",
+  "pct": 10.9
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -22,
+  "time": "20:00",
+  "pct": 11.4
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -22,
+  "time": "20:00",
+  "pct": 11.4
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -22,
+  "time": "20:00",
+  "pct": 11.4
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -21,
+  "time": "08:00",
+  "pct": 11.9
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -21,
+  "time": "08:00",
+  "pct": 11.9
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -21,
+  "time": "08:00",
+  "pct": 11.9
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -21,
+  "time": "20:00",
+  "pct": 12.5
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -21,
+  "time": "20:00",
+  "pct": 12.5
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -21,
+  "time": "20:00",
+  "pct": 12.5
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -20,
+  "time": "08:00",
+  "pct": 13.0
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -20,
+  "time": "08:00",
+  "pct": 13.0
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -20,
+  "time": "08:00",
+  "pct": 13.0
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -20,
+  "time": "20:00",
+  "pct": 13.6
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -20,
+  "time": "20:00",
+  "pct": 13.6
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -20,
+  "time": "20:00",
+  "pct": 13.6
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -19,
+  "time": "08:00",
+  "pct": 14.1
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -19,
+  "time": "08:00",
+  "pct": 14.1
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -19,
+  "time": "08:00",
+  "pct": 14.1
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -19,
+  "time": "20:00",
+  "pct": 14.7
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -19,
+  "time": "20:00",
+  "pct": 14.7
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -19,
+  "time": "20:00",
+  "pct": 14.7
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -18,
+  "time": "08:00",
+  "pct": 15.2
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -18,
+  "time": "08:00",
+  "pct": 15.2
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -18,
+  "time": "08:00",
+  "pct": 15.2
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -18,
+  "time": "20:00",
+  "pct": 15.7
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -18,
+  "time": "20:00",
+  "pct": 15.7
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -18,
+  "time": "20:00",
+  "pct": 15.7
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -17,
+  "time": "08:00",
+  "pct": 16.3
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -17,
+  "time": "08:00",
+  "pct": 16.3
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -17,
+  "time": "08:00",
+  "pct": 16.3
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -17,
+  "time": "20:00",
+  "pct": 16.8
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -17,
+  "time": "20:00",
+  "pct": 16.8
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -17,
+  "time": "20:00",
+  "pct": 16.8
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -16,
+  "time": "08:00",
+  "pct": 17.4
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -16,
+  "time": "08:00",
+  "pct": 17.4
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -16,
+  "time": "08:00",
+  "pct": 17.4
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -16,
+  "time": "20:00",
+  "pct": 17.9
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -16,
+  "time": "20:00",
+  "pct": 17.9
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -16,
+  "time": "20:00",
+  "pct": 17.9
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -15,
+  "time": "08:00",
+  "pct": 18.4
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -15,
+  "time": "08:00",
+  "pct": 18.4
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -15,
+  "time": "08:00",
+  "pct": 18.4
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -15,
+  "time": "20:00",
+  "pct": 19.0
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -15,
+  "time": "20:00",
+  "pct": 19.0
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -15,
+  "time": "20:00",
+  "pct": 19.0
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -14,
+  "time": "08:00",
+  "pct": 19.5
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -14,
+  "time": "08:00",
+  "pct": 19.5
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -14,
+  "time": "08:00",
+  "pct": 19.5
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -14,
+  "time": "20:00",
+  "pct": 20.1
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -14,
+  "time": "20:00",
+  "pct": 20.1
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -14,
+  "time": "20:00",
+  "pct": 20.1
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -13,
+  "time": "08:00",
+  "pct": 20.6
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -13,
+  "time": "08:00",
+  "pct": 20.6
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -13,
+  "time": "08:00",
+  "pct": 20.6
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -13,
+  "time": "20:00",
+  "pct": 21.2
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -13,
+  "time": "20:00",
+  "pct": 21.2
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -13,
+  "time": "20:00",
+  "pct": 21.2
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -12,
+  "time": "08:00",
+  "pct": 21.7
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -12,
+  "time": "08:00",
+  "pct": 21.7
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -12,
+  "time": "08:00",
+  "pct": 21.7
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -12,
+  "time": "20:00",
+  "pct": 22.2
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -12,
+  "time": "20:00",
+  "pct": 22.2
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -12,
+  "time": "20:00",
+  "pct": 22.2
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -11,
+  "time": "08:00",
+  "pct": 22.8
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -11,
+  "time": "08:00",
+  "pct": 22.8
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -11,
+  "time": "08:00",
+  "pct": 22.8
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -11,
+  "time": "20:00",
+  "pct": 23.3
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -11,
+  "time": "20:00",
+  "pct": 23.3
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -11,
+  "time": "20:00",
+  "pct": 23.3
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -10,
+  "time": "08:00",
+  "pct": 23.9
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -10,
+  "time": "08:00",
+  "pct": 23.9
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -10,
+  "time": "08:00",
+  "pct": 23.9
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -10,
+  "time": "20:00",
+  "pct": 24.4
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -10,
+  "time": "20:00",
+  "pct": 24.4
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -10,
+  "time": "20:00",
+  "pct": 24.4
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -9,
+  "time": "08:00",
+  "pct": 25.0
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -9,
+  "time": "08:00",
+  "pct": 25.0
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -9,
+  "time": "08:00",
+  "pct": 25.0
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -9,
+  "time": "20:00",
+  "pct": 25.5
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -9,
+  "time": "20:00",
+  "pct": 25.5
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -9,
+  "time": "20:00",
+  "pct": 25.5
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -8,
+  "time": "08:00",
+  "pct": 26.0
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -8,
+  "time": "08:00",
+  "pct": 26.0
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -8,
+  "time": "08:00",
+  "pct": 26.0
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -8,
+  "time": "20:00",
+  "pct": 26.6
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -8,
+  "time": "20:00",
+  "pct": 26.6
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -8,
+  "time": "20:00",
+  "pct": 26.6
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -7,
+  "time": "08:00",
+  "pct": 27.1
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -7,
+  "time": "08:00",
+  "pct": 27.1
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -7,
+  "time": "08:00",
+  "pct": 27.1
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -7,
+  "time": "20:00",
+  "pct": 27.7
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -7,
+  "time": "20:00",
+  "pct": 27.7
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -7,
+  "time": "20:00",
+  "pct": 27.7
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -6,
+  "time": "08:00",
+  "pct": 28.2
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -6,
+  "time": "08:00",
+  "pct": 28.2
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -6,
+  "time": "08:00",
+  "pct": 28.2
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -6,
+  "time": "20:00",
+  "pct": 28.8
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -6,
+  "time": "20:00",
+  "pct": 28.8
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -6,
+  "time": "20:00",
+  "pct": 28.8
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -5,
+  "time": "08:00",
+  "pct": 29.3
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -5,
+  "time": "08:00",
+  "pct": 29.3
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -5,
+  "time": "08:00",
+  "pct": 29.3
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -5,
+  "time": "20:00",
+  "pct": 41.1
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -5,
+  "time": "20:00",
+  "pct": 41.1
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -5,
+  "time": "20:00",
+  "pct": 41.1
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -4,
+  "time": "08:00",
+  "pct": 52.9
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -4,
+  "time": "08:00",
+  "pct": 52.9
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -4,
+  "time": "08:00",
+  "pct": 52.9
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -4,
+  "time": "20:00",
+  "pct": 64.7
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -4,
+  "time": "20:00",
+  "pct": 64.7
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -4,
+  "time": "20:00",
+  "pct": 64.7
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -3,
+  "time": "08:00",
+  "pct": 76.4
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -3,
+  "time": "08:00",
+  "pct": 76.4
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -3,
+  "time": "08:00",
+  "pct": 76.4
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -3,
+  "time": "20:00",
+  "pct": 88.2
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -3,
+  "time": "20:00",
+  "pct": 88.2
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -3,
+  "time": "20:00",
+  "pct": 88.2
+ },
+ {
+  "forceId": "F-EMP-010",
+  "day": -2,
+  "time": "08:00",
+  "pct": 100.0
+ },
+ {
+  "forceId": "F-EMP-011",
+  "day": -2,
+  "time": "08:00",
+  "pct": 100.0
+ },
+ {
+  "forceId": "F-EMP-012",
+  "day": -2,
+  "time": "08:00",
+  "pct": 100.0
+ }
+]

@@ -1,0 +1,105 @@
+'use client';
+
+import { EVENT_CATEGORIES } from '@/lib/taxonomy';
+import { activeFilterCount, useSimulation } from '@/simulation/store';
+import { PROVENANCE_ORDER } from '@/types/dataset';
+import { FactionDot, ProvenanceBadge, Section, Segmented } from '@/components/ui/primitives';
+
+function toggleIn<T>(list: T[], v: T): T[] {
+  return list.includes(v) ? list.filter((x) => x !== v) : [...list, v];
+}
+
+function Check({ checked, onChange, children }: { checked: boolean; onChange: () => void; children: React.ReactNode }) {
+  return (
+    <label className="flex cursor-pointer items-center gap-2 rounded-[3px] px-1.5 py-1 hover:bg-ink-700/60">
+      <input type="checkbox" checked={checked} onChange={onChange} className="h-3.5 w-3.5 accent-[#d4ab57]" />
+      <span className="flex min-w-0 items-center gap-1.5 text-sm text-fg">{children}</span>
+    </label>
+  );
+}
+
+/**
+ * Filters hide things; they never change the record. The map shows a chip
+ * whenever anything is filtered, so nothing disappears silently.
+ */
+export function FiltersPanel() {
+  const data = useSimulation((s) => s.data);
+  const filters = useSimulation((s) => s.filters);
+  const setFilters = useSimulation((s) => s.setFilters);
+  const resetFilters = useSimulation((s) => s.resetFilters);
+  const commanderFocus = useSimulation((s) => s.commanderFocus);
+  const setCommanderFocus = useSimulation((s) => s.setCommanderFocus);
+  if (!data) return null;
+  const count = activeFilterCount(filters);
+
+  return (
+    <div>
+      <div className="flex items-center justify-between px-3 py-2.5">
+        <p className="text-xs text-fg-2">{count ? `${count} filter${count > 1 ? 's' : ''} active` : 'Showing everything in the record'}</p>
+        <button type="button" onClick={resetFilters} disabled={!count} className="ctl h-7">
+          Reset filters
+        </button>
+      </div>
+
+      <Section title="Factions">
+        <div className="-mx-1.5">
+          {data.factions.map((f) => (
+            <Check key={f.id} checked={!filters.hiddenFactions.includes(f.id)} onChange={() => setFilters({ hiddenFactions: toggleIn(filters.hiddenFactions, f.id) })}>
+              <FactionDot faction={f.id} />
+              <span className="truncate">{f.name}</span>
+              <span className="figure ml-auto text-2xs text-fg-3">{f.forceIds.length}</span>
+            </Check>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Theatres">
+        <div className="-mx-1.5">
+          {data.theatres.map((t) => (
+            <Check key={t.id} checked={!filters.hiddenTheatres.includes(t.id)} onChange={() => setFilters({ hiddenTheatres: toggleIn(filters.hiddenTheatres, t.id) })}>
+              <span className="figure w-8 text-2xs text-fg-3">{t.code}</span>
+              <span className="truncate">{t.name}</span>
+              <span className="figure ml-auto text-2xs text-fg-3">{t.eventCount}</span>
+            </Check>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Event types">
+        <div className="-mx-1.5">
+          {EVENT_CATEGORIES.map((c) => (
+            <Check key={c.id} checked={!filters.hiddenCategories.includes(c.id)} onChange={() => setFilters({ hiddenCategories: toggleIn(filters.hiddenCategories, c.id) })}>
+              {c.label}
+            </Check>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Canon status">
+        <div className="-mx-1.5">
+          {PROVENANCE_ORDER.map((p) => (
+            <Check key={p} checked={!filters.hiddenProvenance.includes(p)} onChange={() => setFilters({ hiddenProvenance: toggleIn(filters.hiddenProvenance, p) })}>
+              <ProvenanceBadge value={p} />
+              <span className="figure ml-auto text-2xs text-fg-3">{data.events.filter((e) => e.provenance === p).length}</span>
+            </Check>
+          ))}
+        </div>
+        <Segmented label="Minimum confidence" value={filters.minConfidence} onChange={(v) => setFilters({ minConfidence: v })} options={[{ id: 'ANY', label: 'Any' }, { id: 'MEDIUM', label: 'Medium+' }, { id: 'HIGH', label: 'High' }]} />
+      </Section>
+
+      <Section title="Command" defaultOpen={Boolean(commanderFocus)}>
+        <label className="block px-1.5 text-xs text-fg-2" htmlFor="commander-focus">
+          Show only one commander&apos;s formations
+        </label>
+        <select id="commander-focus" value={commanderFocus ?? ''} onChange={(e) => setCommanderFocus(e.target.value || null)} className="mt-1 h-8 w-full rounded-[3px] border border-ink-500 bg-ink-800 px-2 text-sm text-fg">
+          <option value="">All commanders</option>
+          {data.commanders.filter((c) => c.forceIds.length).map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.name} · {c.faction}
+            </option>
+          ))}
+        </select>
+      </Section>
+    </div>
+  );
+}

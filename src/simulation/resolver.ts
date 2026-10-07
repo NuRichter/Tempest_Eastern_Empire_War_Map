@@ -1,10 +1,10 @@
 import type { Dataset } from '@/data/loader';
-import type { ForceSnapshot, FrameState, PlacementGrade } from '@/types/dataset';
+import type { ForceSnapshot, FrameState, PlacementGrade, RouteConfidence, Territory, TerritoryControlSegment } from '@/types/dataset';
 
 /**
  * Resolves battlefield state at any frame without replaying the campaign.
  *
- * The dataset is 7,200 keyframes of which 5.6% carry any change at all. Full
+ * The dataset is ~10,800 keyframes of which about 2% carry any change. Full
  * state is stored once every 144 frames; everything between is a sparse delta.
  * Seeking to frame N therefore costs one checkpoint plus, at worst, the deltas
  * inside a single simulation day.
@@ -97,6 +97,8 @@ export interface ResolvedPosition {
   progress: number;
   placement: PlacementGrade;
   placeId: string | null;
+  /** Confidence of the leg being travelled (or of the last leg arrived by). */
+  route: RouteConfidence;
 }
 
 /** Smoothstep. Movement eases out of and into a halt; it never snaps. */
@@ -151,7 +153,15 @@ export function forcePositionAt(data: Dataset, forceId: string, frame: number): 
       progress: 1,
       placement: current.placement,
       placeId: current.placeId,
+      route: current.route,
     };
+  }
+
+  // An UNKNOWN route (a space-time transfer, a destination the source does not
+  // trace) is never interpolated: the force stays where it was last recorded and
+  // appears at its destination when the record puts it there. No false line.
+  if (next.route === 'UNKNOWN') {
+    return { x: current.x, y: current.y, moving: false, heading: null, progress: 0, placement: current.placement, placeId: current.placeId, route: current.route };
   }
 
   const span = next.f - current.f;
@@ -172,6 +182,7 @@ export function forcePositionAt(data: Dataset, forceId: string, frame: number): 
     progress: raw,
     placement: raw > 0 && raw < 1 ? 'RECONSTRUCTED' : next.placement,
     placeId: raw >= 1 ? next.placeId : current.placeId,
+    route: next.route,
   };
 }
 
@@ -196,40 +207,6 @@ export function forceTrail(
   return points;
 }
 
-/**
- * Forces that should be drawn at this frame.
- *
- * A force is drawn when the dataset has placed it and has not recorded it as
- * gone. Parent formations whose children are separately drawn are suppressed at
- * operational zoom so that the same soldiers are not shown twice.
- */
-export function visibleForces(
-  data: Dataset,
-  frame: number,
-  options: { includeParents: boolean },
-): { forceId: string; snapshot: ForceSnapshot; position: ResolvedPosition }[] {
-  const out: { forceId: string; snapshot: ForceSnapshot; position: ResolvedPosition }[] = [];
-  const drawn = new Set<string>();
-
-  for (const force of data.forces) {
-    const snapshot = forceSnapshotAt(data, force.id, frame);
-    if (!snapshot) continue;
-    const position = forcePositionAt(data, force.id, frame);
-    if (!position) continue;
-    out.push({ forceId: force.id, snapshot, position });
-    drawn.add(force.id);
-  }
-
-  if (options.includeParents) return out;
-
-  // Suppress any force at least one of whose children is already on the map.
-  return out.filter(({ forceId }) => {
-    const force = data.forceById.get(forceId);
-    if (!force) return true;
-    return !force.childIds.some((child) => drawn.has(child));
-  });
-}
-
 /** Theatre control at a frame, read from resolved battlefield state. */
 export function theatreControl(state: FrameState, theatreId: string): string | null {
   return state.theatres[theatreId]?.control ?? null;
@@ -240,7 +217,7 @@ export function activeBattles(data: Dataset, frame: number): string[] {
   return data.battles.filter((b) => frame >= b.startFrame && frame <= b.endFrame).map((b) => b.id);
 }
 
-/** The most recent event at or before a frame, for the "current event" readout. */
+/** The most recent event at or before a frame. */
 export function currentEvent(data: Dataset, frame: number) {
   let found = null;
   for (const event of data.events) {
@@ -248,4 +225,45 @@ export function currentEvent(data: Dataset, frame: number) {
     found = event;
   }
   return found;
+}
+
+/** The next event strictly after a frame. */
+export function nextEvent(data: Dataset, frame: number) {
+  return data.events.find((e) => e.frame > frame) ?? null;
+}
+
+/** Frames over which a change of political state is animated (3 simulated hours). */
+export const CONTROL_TRANSITION_FRAMES = 18;
+
+export interface ResolvedControl {
+  segment: TerritoryControlSegment;
+  previous: TerritoryControlSegment | null;
+  /** 0..1 while the change is being animated, 1 once settled. */
+  transition: number;
+}
+
+/**
+ * Political state of a territory at a continuous frame. A change is not a
+ * snap: for CONTROL_TRANSITION_FRAMES after it the renderer blends from the
+ * previous state, so the reader sees what changed.
+ */
+export function territoryControlAt(territory: Territory, frame: number): ResolvedControl {
+  const segs = territory.control;
+  let i = 0;
+  for (let k = 0; k < segs.length; k += 1) if (segs[k].fromFrame <= frame) i = k;
+  const segment = segs[i];
+  const previous = i > 0 ? segs[i - 1] : null;
+  const since = frame - segment.fromFrame;
+  const transition = previous && since < CONTROL_TRANSITION_FRAMES ? Math.max(0, since / CONTROL_TRANSITION_FRAMES) : 1;
+  return { segment, previous, transition };
+}
+
+/** A force's strength history: the frames at which its recorded strength changed. */
+export function strengthHistory(data: Dataset, forceId: string): { f: number; strength: ForceSnapshot['strength']; eventId: string | null }[] {
+  const out: { f: number; strength: ForceSnapshot['strength']; eventId: string | null }[] = [];
+  for (const s of data.trackByForce.get(forceId)?.snapshots ?? []) {
+    const last = out[out.length - 1];
+    if (!last || last.strength !== s.strength) out.push({ f: s.f, strength: s.strength, eventId: s.eventId });
+  }
+  return out;
 }

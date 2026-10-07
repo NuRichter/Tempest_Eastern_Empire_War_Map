@@ -1,0 +1,1733 @@
+[
+ {
+  "id": "EVT-0201",
+  "day": 1,
+  "time": "08:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "a full day after the raid began, about 350,000 had entered",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Labyrinth Raider Operation",
+  "battleType": "MAJOR_BATTLE",
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth entrance (imperial camp at the gate)",
+  "actor": "Restructured Armor Corps",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Labyrinth garrison",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "calgurio",
+   "ramiris",
+   "rimuru"
+  ],
+  "forces": [
+   "F-EMP-011",
+   "F-EMP-011A",
+   "F-EMP-011B",
+   "F-TEM-010",
+   "F-TEM-010A"
+  ],
+  "type": "MOVEMENT",
+  "title": "Labyrinth Raider operation begins: 350,000 enter on day one",
+  "immediateResult": "Roped assault teams file into the labyrinth day and night; about 350,000 are inside after the first full day",
+  "operationalResult": "The Restructured Armor Corps splits into an assault echelon inside the labyrinth and a camp at the gate",
+  "strategicResult": "The main imperial ground force is drawn into Ramiris's labyrinth: the decisive operational error of the campaign",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 350000,
+   "note": "350,000 entered on day one out of the 700,000-strong corps"
+  },
+  "commandStatus": "General Caligulio directing from the camp outside",
+  "intensity": "MEDIUM",
+  "significance": "CRITICAL",
+  "turningPoint": {
+   "rank": 9,
+   "summary": "The imperial ground army enters the labyrinth. The decisive operational error of the campaign."
+  },
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:6687-6691"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9180-9195"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9324-9327"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9486-9493"
+   }
+  ],
+  "evidence": "Imperial soldiers, roped together in three-metre intervals with free fighting squads, enter the labyrinth in good order; pushing day and night, about 350,000 were inside after the first full day.",
+  "reconstructionNote": "Day 1 of the operation = D+1 is a placement: the corps was advancing on the capital during the surface battle (v13.txt:6690-6691) and no interval is stated. 08:00 is a simulation time.",
+  "notes": "The 700,000 were never committed at once: 350,000 / 150,000 / 30,000 entered on days 1-3 and 170,000 stayed outside (v13.txt:9489-9493). F-EMP-011B's 350,000 on day one is DERIVED (700,000 - 350,000).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved to D+1 08:00 (start RECONSTRUCTED; AUDIT-PLAN row 13)",
+    "Empire strength 700,000 -> 350,000 entering on day one (v13.txt:9489-9490)",
+    "Effects: the corps splits; F-EMP-011A enters ramiris-labyrinth, F-EMP-011B camps at imperial-siege-camp; F-EMP-011 location removed",
+    "Sources and evidence re-anchored to Ch2/Ch3 (v13.txt:6690-6691, 9180-9195, 9324-9327)",
+    "Names: Calgurio -> Caligulio, Mecha Modification Corps -> Restructured Armor Corps, Adalman -> Adalmann"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-011": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE"
+    },
+    "F-EMP-011A": {
+     "strength": 350000,
+     "effective": 350000,
+     "sizeStatus": "EXPLICIT",
+     "kia": "UNKNOWN",
+     "wia": "UNKNOWN",
+     "pow": "UNKNOWN",
+     "mia": "UNKNOWN",
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "direction": "Down into the labyrinth floors",
+     "confidence": "HIGH",
+     "location": "ramiris-labyrinth",
+     "locationText": "Ramiris Labyrinth (upper floors)"
+    },
+    "F-EMP-011B": {
+     "strength": 350000,
+     "effective": 350000,
+     "sizeStatus": "DERIVED",
+     "kia": "UNKNOWN",
+     "wia": "UNKNOWN",
+     "pow": "UNKNOWN",
+     "mia": "UNKNOWN",
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "MEDIUM",
+     "location": "imperial-siege-camp",
+     "locationText": "Imperial camp at the labyrinth entrance"
+    },
+    "F-TEM-010": {
+     "strength": "UNKNOWN",
+     "effective": "UNKNOWN",
+     "kia": 0,
+     "wia": "UNKNOWN",
+     "pow": "UNKNOWN",
+     "mia": "UNKNOWN",
+     "status": "ENGAGED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "MEDIUM",
+     "location": "ramiris-labyrinth",
+     "locationText": "Ramiris Labyrinth"
+    },
+    "F-TEM-010A": {
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "location": "ramiris-labyrinth",
+     "locationText": "Ramiris Labyrinth - Floor 70 (city of the dead)"
+    }
+   },
+   "theatres": {
+    "TH-LAB": {
+     "status": "ACTIVE",
+     "frontline": "Imperial assault echelon inside the labyrinth; the rest of the corps camped at the gate",
+     "battleStatus": "ACTIVE",
+     "control": "CONTESTED"
+    }
+   },
+   "campaign": {
+    "majorCombatants": "Ramiris; Adalmann; Caligulio"
+   }
+  }
+ },
+ {
+  "id": "EVT-0210",
+  "day": 2,
+  "time": "08:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "the next day (day two of the operation)",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Labyrinth Raider Operation",
+  "battleType": "MAJOR_BATTLE",
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth entrance",
+  "actor": "Restructured Armor Corps",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Labyrinth garrison",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "calgurio"
+  ],
+  "forces": [
+   "F-EMP-011A",
+   "F-EMP-011B"
+  ],
+  "type": "REINFORCEMENT",
+  "title": "Day two: 150,000 more enter the labyrinth",
+  "immediateResult": "A further 150,000 imperial troops enter, bringing the assault echelon to about 500,000",
+  "operationalResult": "The camp outside shrinks to about 200,000",
+  "strategicResult": "Imperial commitment to the labyrinth deepens",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 150000,
+   "note": "150,000 entered on day two; 500,000 inside is a cumulative sum"
+  },
+  "commandStatus": "General Caligulio",
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9489-9491"
+   }
+  ],
+  "evidence": "After 350,000 on the first day, another 150,000 were added on the following day.",
+  "reconstructionNote": "Day is canonical relative to day one (itself placed on D+1); 08:00 is a simulation time. The cumulative 500,000 inside and 200,000 outside are DERIVED sums.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event per AUDIT-PLAN section 4 (v13.txt:9491)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-011A": {
+     "strength": 500000,
+     "effective": 500000,
+     "sizeStatus": "DERIVED"
+    },
+    "F-EMP-011B": {
+     "strength": 200000,
+     "effective": 200000,
+     "sizeStatus": "DERIVED"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0203",
+  "day": 3,
+  "time": "07:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "the next morning; ten thousand destroyed in less than an hour",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Labyrinth Raider Operation",
+  "battleType": "MAJOR_BATTLE",
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth - Floor 70 gate (Adalmann's city of the dead)",
+  "actor": "Adalmann's undead legion",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial assault force at Floor 70",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "adalmann"
+  ],
+  "forces": [
+   "F-TEM-010A",
+   "F-EMP-011A"
+  ],
+  "type": "ATTACK",
+  "title": "Adalmann's undead sally from the Floor 70 gate",
+  "immediateResult": "The gate opens before more than 10,000 assembled imperial troops; ten thousand fall in under an hour and the dead are bound to Adalmann",
+  "operationalResult": "Survivors' reports spread dread to the following units; the Floor 70 raider battle turns white-hot",
+  "strategicResult": "Imperial losses feed Adalmann's army: attrition becomes self-reinforcing",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": "Local imperial force: more than 10,000"
+  },
+  "kia": 10000,
+  "commandStatus": "Adalmann commanding the undead with Albert and the Death Dragon",
+  "intensity": "EXTREME",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9907-9937"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9935-10012"
+   }
+  ],
+  "evidence": "After a first day on floors 60-69 and a closed gate, more than 10,000 imperial troops assemble next morning; the gate opens, Adalmann's undead sally, and ten thousand die in under an hour.",
+  "reconstructionNote": "The text dates this only as the morning after the first day on floors 60-69, not as a day of the operation. D+3 07:00 follows AUDIT-PLAN section 4; an earlier group could have reached Floor 70 on D+2, since routes changed for each wave (v13.txt:9489).",
+  "notes": "The 10,000 is a component of the 530,000 lost in the labyrinth (CAS-005, excluded from sums), so this event does not reduce the corps' strength.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+1 12:00 -> D+3 07:00 (AUDIT-PLAN section 4)",
+    "Location: upper floors / rear -> Floor 70 gate (v13.txt:9910-9937)",
+    "Title: not a rear attack but a sally from the gate (v13.txt:9935-9960)",
+    "Empire strength 700,000 -> more than 10,000 local force (v13.txt:9935-9936)",
+    "Source chapter Ch4 -> Ch3 (v13.txt:9907-10012)",
+    "Effects: removed strength 690,000 / empireEffective 690,000 (COMPONENT row CAS-005 must not reduce the corps)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-010A": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "locationText": "Ramiris Labyrinth - Floor 70 gate"
+    }
+   },
+   "theatres": {
+    "TH-LAB": {
+     "frontline": "Floor 70: Adalmann's undead hold the gate of the city of the dead",
+     "battleStatus": "INTENSIFYING"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0211",
+  "day": 3,
+  "time": "08:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "day three of the operation",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Labyrinth Raider Operation",
+  "battleType": "MAJOR_BATTLE",
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth entrance",
+  "actor": "Restructured Armor Corps",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Labyrinth garrison",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "calgurio"
+  ],
+  "forces": [
+   "F-EMP-011A",
+   "F-EMP-011B"
+  ],
+  "type": "REINFORCEMENT",
+  "title": "Day three: last 30,000 enter; 170,000 remain outside",
+  "immediateResult": "Only 30,000 enter on day three, completing an assault echelon of about 530,000",
+  "operationalResult": "About 170,000 imperial troops remain in the camp outside the gate",
+  "strategicResult": "The corps' strength is now locked inside the labyrinth; Caligulio begins to doubt the operation",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 30000,
+   "note": "30,000 entered on day three; 170,000 outside is stated"
+  },
+  "commandStatus": "General Caligulio",
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9491-9493"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9518-9523"
+   }
+  ],
+  "evidence": "Only 30,000 entered on the third day; the imperial troops left outside had been reduced to 170,000, and Caligulio wonders whether he has made a great mistake.",
+  "reconstructionNote": "Day canonical relative to day one; 08:00 is a simulation time.",
+  "notes": "End of MOV-007 (the echelon's entry). 530,000 inside = 350,000 + 150,000 + 30,000 (DERIVED); 170,000 outside is EXPLICIT.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event per AUDIT-PLAN section 4 (v13.txt:9491-9493, 9520-9521)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-011A": {
+     "strength": 530000,
+     "effective": 530000,
+     "sizeStatus": "DERIVED",
+     "movement": "STATIONARY",
+     "locationText": "Ramiris Labyrinth (spread across many floors)"
+    },
+    "F-EMP-011B": {
+     "strength": 170000,
+     "effective": 170000,
+     "sizeStatus": "EXPLICIT"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0202",
+  "day": 3,
+  "time": "21:00",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "not all floors explored until the third day was nearly over",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Labyrinth Raider Operation",
+  "battleType": "MAJOR_BATTLE",
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth - Floors 49-50",
+  "actor": "Labyrinth garrison",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Restructured Armor Corps",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "ramiris"
+  ],
+  "forces": [
+   "F-TEM-010",
+   "F-EMP-011A"
+  ],
+  "type": "ENCIRCLEMENT",
+  "title": "Slime floors: units severed and wiped out",
+  "immediateResult": "Walls and floors of slime cut off units at every turn; the Tempest Serpents on floor 50 are only destroyed late on day three",
+  "operationalResult": "Imperial cohesion breaks down; the survivors regroup and the wounded are sent back upstairs",
+  "strategicResult": "The imperial mass advantage is neutralised by the labyrinth",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": "At most 350,000 inside on day one; no local figure"
+  },
+  "commandStatus": "Ramiris controlling the structure",
+  "intensity": "HIGH",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9619-9653"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9746-9753"
+   }
+  ],
+  "evidence": "Slimes drop from ceilings, walls and floors are slime, units are cut off and wiped out; the floors were not cleared until day three was nearly over, the Tempest Serpents late that night.",
+  "reconstructionNote": "The fight spans days 1-3 of the operation; it is placed at its stated end, late on day three (D+3 21:00, simulation time).",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+1 10:00 -> D+3 21:00, DAY_LEVEL for the D+1..D+3 range (v13.txt:9651-9653, 9752)",
+    "Location: interior -> floors 49-50 (v13.txt:9619)",
+    "Empire strength 700,000 -> UNKNOWN locally (v13.txt:9489-9490)",
+    "Source chapter Ch4 -> Ch3",
+    "Effect on F-EMP-011 moved to F-EMP-011A"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-011A": {
+     "movement": "STATIONARY"
+    }
+   },
+   "theatres": {
+    "TH-LAB": {
+     "frontline": "Imperial formations severed and isolated on the slime floors and at the Floor 70 gate"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0204",
+  "day": 4,
+  "time": "09:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "the raiders from the upper floors joined them on the fourth day",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Labyrinth Raider Operation",
+  "battleType": "MAJOR_BATTLE",
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth - Floor 70",
+  "actor": "Imperial raiders at Floor 70",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Adalmann's undead legion",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "adalmann"
+  ],
+  "forces": [
+   "F-EMP-011A",
+   "F-TEM-010A"
+  ],
+  "type": "ENGAGEMENT",
+  "title": "Floor 70: 70,000 imperial raiders against Adalmann's undead",
+  "immediateResult": "With the upper-floor raiders, the imperial force reaches 70,000 against fewer than 40,000 undead and attacks with holy-type techniques",
+  "operationalResult": "Repeated assaults fail; the empire's elite are pinned on Floor 70",
+  "strategicResult": "The Empire's best troops are absorbed without effect",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 70000,
+   "note": "Adalmann's force fewer than 40,000 (not a precise figure)"
+  },
+  "commandStatus": "Adalmann defending; an imperial brigadier leading the assault",
+  "intensity": "EXTREME",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:10010-10062"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:10653-10666"
+   }
+  ],
+  "evidence": "After repeated failed attempts at Floor 70, raider teams from the upper floors joined on day four; the imperial force totalled 70,000, Adalmann's still under 40,000. Caligulio's staff later note even the elite are struggling.",
+  "reconstructionNote": "Day four is canonical relative to the operation's start; 09:00 is a simulation time.",
+  "notes": "Adalmann is rumoured to be one of the Ten Masters (v13.txt:10653-10655).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+2 -> D+4 09:00 (v13.txt:10042-10043)",
+    "Empire strength UNKNOWN -> 70,000; Tempest under 40,000 noted (v13.txt:10059-10062)",
+    "Source Ch4 -> Ch3 (battle) + Ch4 (staff remark)",
+    "Forces: F-EMP-011A, F-TEM-010A"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-010A": {
+     "status": "ENGAGED",
+     "movement": "STATIONARY",
+     "locationText": "Ramiris Labyrinth - Floor 70"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0206",
+  "day": 4,
+  "time": "12:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "revive after three hours",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Labyrinth Raider Operation",
+  "battleType": "MAJOR_BATTLE",
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth interior",
+  "actor": "Labyrinth garrison",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Restructured Armor Corps",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "ramiris",
+   "rimuru"
+  ],
+  "forces": [
+   "F-TEM-010",
+   "F-TEM-010A"
+  ],
+  "type": "REINFORCEMENT",
+  "title": "Labyrinth revival cycle sustains the defence",
+  "immediateResult": "Defeated labyrinth monsters and Adalmann's undead return three hours after falling",
+  "operationalResult": "Tempest suffers no net attrition inside the labyrinth",
+  "strategicResult": "The defence can be sustained indefinitely",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Ramiris administering revival",
+  "intensity": "MEDIUM",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9707-9711"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:11599-11611"
+   }
+  ],
+  "evidence": "A Tempest Serpent comes back three hours after each defeat; later, at Floor 70, Rimuru notes the undead army needs three hours to revive.",
+  "reconstructionNote": "The mechanic applies throughout the operation; the event is a marker placed after the day-four battle. The three-hour interval is canonical, the placement is not.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+2 16:00 -> D+4 12:00 as a standing-mechanic marker (AUDIT-PLAN section 4)",
+    "Sources: Ch3 (v13.txt:9707-9711) and Ch4 (v13.txt:11599-11611)",
+    "timePrecision RECONSTRUCTED: the three hours is an interval, not the event's date"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0205",
+  "day": 8,
+  "time": "09:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "seven days after the Labyrinth Raider operation began",
+  "theatreId": "TH-LAB",
+  "front": "Imperial command",
+  "battle": null,
+  "location": "imperial-siege-camp",
+  "locationText": "Imperial headquarters outside the labyrinth",
+  "actor": "General Caligulio",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "calgurio"
+  ],
+  "forces": [
+   "F-EMP-011B",
+   "F-EMP-011A"
+  ],
+  "type": "COMMAND",
+  "title": "Seven days in: contact lost, Caligulio fears for 530,000",
+  "immediateResult": "No reports come back and contact with the troops inside is broken; failure would mean the death of 530,000 soldiers",
+  "operationalResult": "Seven days remain before the deadline; Caligulio resolves to send an elite team against the Ten Masters",
+  "strategicResult": "Imperial high command confronts the prospect of catastrophe",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "General Caligulio",
+  "intensity": "NONE",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "HIGH",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:10599-10606"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:10662-10674"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:10715-10726"
+   }
+  ],
+  "evidence": "Seven days after the operation began, contact with the troops inside is lost; Caligulio shudders that failure means 530,000 dead, with seven days still left, and picks a hundred elite.",
+  "reconstructionNote": "D+8 = day one (D+1) + seven days. 09:00 is a simulation time.",
+  "notes": "Four of the ten keys had been taken from the Dragon Lords; none of the other six Masters had been beaten (v13.txt:10676-10682).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+2 14:00 -> D+8 09:00 (v13.txt:10599)",
+    "canonicalTime added: seven days after the Labyrinth Raider operation began",
+    "Location imperial-capital -> imperial-siege-camp (v13.txt:10599-10606)",
+    "Calgurio -> Caligulio"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0213",
+  "day": 9,
+  "time": "09:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "two days before Caligulio's dawn scene (the hundred elite were sent two days earlier)",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Labyrinth Raider Operation",
+  "battleType": "MAJOR_BATTLE",
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth entrance",
+  "actor": "Imperial elite team under Minitz",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Labyrinth garrison",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "calgurio",
+   "minitz"
+  ],
+  "forces": [
+   "F-EMP-011B",
+   "F-EMP-015",
+   "F-EMP-011A"
+  ],
+  "type": "ATTACK",
+  "title": "Caligulio sends a hundred elite under Minitz into the labyrinth",
+  "immediateResult": "A hundred picked fighters, the weakest of them A-rank, including Imperial Guardians, enter the labyrinth with Minitz in command",
+  "operationalResult": "The labyrinth drops Minitz on floor 78; he clears it and rests for the night",
+  "strategicResult": "The Empire stakes its best individual fighters on breaking the Ten Masters",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 100
+  },
+  "commandStatus": "Major General Minitz commanding the elite team",
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:10715-10800"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:11878-11910"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:15988-15992"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16136-16140"
+   }
+  ],
+  "evidence": "Caligulio picks a hundred elite under Minitz and sends them to beat the Ten Masters; Minitz lands on floor 78, crushes the insects and goes to bed. Two days later Caligulio still has no word.",
+  "reconstructionNote": "The dispatch is dated only by 'two days ago' at the D+11 dawn scene (v13.txt:15990, 16280), giving D+9; the selection scene follows the D+8 opening. 09:00 is a simulation time.",
+  "notes": "Added beyond AUDIT-PLAN section 4 so that the 'two days' anchor and Minitz's 'next day' (v13.txt:11917) both hold: dispatch D+9, Minitz killed D+10, camp annihilated D+11.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event: elite dispatch (v13.txt:10715-10800, 15990, 16137-16140)"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0212",
+  "day": 10,
+  "time": "13:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "the next day (after Minitz's night on floor 78)",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Labyrinth Raider Operation",
+  "battleType": "SPECIAL_COMBAT",
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth - Floor 79 and below",
+  "actor": "Labyrinth garrison (Apito, Zegion)",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Major General Minitz and the elite team",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "minitz"
+  ],
+  "forces": [
+   "F-EMP-011A",
+   "F-EMP-015",
+   "F-TEM-010"
+  ],
+  "type": "UNIT_DESTRUCTION",
+  "title": "Minitz's elite raid: floor 79, then killed by Zegion",
+  "immediateResult": "Minitz enters floor 79 and meets the killer-bee legion; after a three-hour rest he challenges Zegion and is killed within a minute, Krishna watching",
+  "operationalResult": "The elite team is destroyed; Krishna alone returns, through a genuine resurrection bracelet",
+  "strategicResult": "The Empire's last means of breaking the labyrinth fails",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": "Remnant of the hundred-strong elite team"
+  },
+  "commandStatus": "Minitz killed",
+  "intensity": "EXTREME",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:11914-11920"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:13225-13245"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:13655-13660"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16268-16272"
+   }
+  ],
+  "evidence": "The next day Minitz enters floor 79 and meets a bee legion; a door counts down about three hours; against Zegion the challenger dies within a minute. Krishna later reports Minitz killed before his eyes.",
+  "reconstructionNote": "Minitz enters 'the next day' after the night he rested (v13.txt:11907-11917), so D+10 if the dispatch is D+9. 13:00 is a simulation time allowing the floor-79 fight and the three-hour wait.",
+  "notes": "AUDIT-PLAN section 4 proposed D+9 09:00; moved one day later so that Krishna's 'sent two days ago' (v13.txt:16280) holds at the D+11 dawn scene. Bazan and Reiha also died (v13.txt:16268-16270).",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event per AUDIT-PLAN section 4 (v13.txt:10724-10726, 11914-11920, 16268-16272)",
+    "Placed D+10 13:00 instead of the plan's D+9 09:00 (v13.txt:11917, 15990, 16280)"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {
+    "TH-LAB": {
+     "frontline": "Lower floors: the imperial elite team destroyed by the Ten Masters"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0207",
+  "day": 10,
+  "time": "18:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Labyrinth Raider Operation",
+  "battleType": "MAJOR_BATTLE",
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth interior",
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Restructured Armor Corps",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "benimaru",
+   "ramiris"
+  ],
+  "forces": [
+   "F-EMP-011A",
+   "F-EMP-011",
+   "F-EMP-010",
+   "F-TEM-010"
+  ],
+  "type": "UNIT_DESTRUCTION",
+  "title": "Labyrinth battle over: more than 530,000 defeated, no Tempest losses",
+  "immediateResult": "Of the 700,000 who came by land, more than 530,000 are defeated inside the labyrinth; Tempest loses no one",
+  "operationalResult": "The assault echelon is destroyed; fewer than 200,000 imperial troops remain in the camp outside, so the ground war goes on",
+  "strategicResult": "The Jura front swings decisively to Tempest",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 530000
+  },
+  "commandStatus": "Caligulio still commanding the camp outside",
+  "intensity": "EXTREME",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:13700-13719"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:13723-13726"
+   }
+  ],
+  "evidence": "The battle inside the labyrinth ended with no losses on our side; of 700,000 who came by land more than 530,000 are defeated, and fewer than 200,000 imperial troops remain.",
+  "reconstructionNote": "Bracketed by Minitz's death (D+10) and the D+11 dawn. Rimuru's tally is narrated at the next morning's planning, where Benimaru notes two days since the last dispatch (v13.txt:13723); D+10 18:00 marks the end of fighting.",
+  "notes": "All of the 530,000 were resurrected on D+12 (EVT-0220); the deaths are not erased (CAS-004).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+3 10:00 -> D+10 18:00 (AUDIT-PLAN row 14)",
+    "Operational result: the ground war continues with fewer than 200,000 outside (v13.txt:13716-13719)",
+    "Effects: F-EMP-011A strength 0 / kia 530,000 / DESTROYED; F-EMP-011 170,000 (no longer DESTROYED); F-EMP-010 170,000 / kia 770,000 (DERIVED)",
+    "TH-LAB no longer CLEARED/CONCLUDED: the camp outside is still in the field",
+    "activeCommanders: imperial field command not yet destroyed"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-011A": {
+     "strength": 0,
+     "effective": 0,
+     "kia": 530000,
+     "status": "DESTROYED",
+     "movement": "STATIONARY"
+    },
+    "F-EMP-011": {
+     "strength": 170000,
+     "effective": 170000,
+     "kia": 530000,
+     "status": "ENGAGED",
+     "movement": "STATIONARY"
+    },
+    "F-EMP-010": {
+     "strength": 170000,
+     "effective": 170000,
+     "kia": 770000
+    },
+    "F-TEM-010": {
+     "kia": 0,
+     "status": "DEPLOYED"
+    }
+   },
+   "theatres": {
+    "TH-LAB": {
+     "status": "ACTIVE",
+     "frontline": "Labyrinth cleared of invaders; fewer than 200,000 imperial troops remain in the camp at the gate",
+     "battleStatus": "ACTIVE",
+     "control": "CONTESTED"
+    }
+   },
+   "campaign": {
+    "empireEffective": 170000,
+    "activeCommanders": "Benimaru Supreme General (Tempest); Caligulio commanding the camp outside the labyrinth"
+   }
+  }
+ },
+ {
+  "id": "EVT-0209",
+  "day": 10,
+  "time": "18:10",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "-",
+  "theatreId": "TH-LAB",
+  "front": "Strategic",
+  "battle": null,
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth control room",
+  "actor": "Rimuru Tempest",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru"
+  ],
+  "forces": [],
+  "type": "AFTERMATH",
+  "title": "Soul harvest: more than 700,000; evolutions deferred",
+  "immediateResult": "Rimuru counts the 530,000 as half a million souls, more than 700,000 in total; seven subordinates could evolve",
+  "operationalResult": "He defers the choice until the ground battle is over",
+  "strategicResult": "Tempest's top tier is poised to grow markedly stronger",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru",
+  "intensity": "NONE",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:13708-13713"
+   },
+   {
+    "volume": "V14",
+    "chapter": "Ch1",
+    "locator": "v14.txt:1294-1297"
+   }
+  ],
+  "evidence": "The 530,000 mean half a million souls, bringing the total past 700,000; seven subordinates could evolve, but Rimuru will wait until the ground battle ends. V14: twelve qualify, nine evolve.",
+  "reconstructionNote": "Follows EVT-0207 in the same narration; the frame is a placement.",
+  "notes": "Interim tally only (CAS-006): the camp outside was destroyed on D+11. V14 Ch1 revises the count to twelve eligible, nine evolving at once (v14.txt:1294-1297).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+3 18:00 -> D+10 18:10",
+    "Location Tempest -> labyrinth control room",
+    "Notes: V14 update (twelve qualify, nine evolve; v14.txt:1294-1297); removed '770,000 consistent' claim"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0208",
+  "day": 11,
+  "time": "07:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "after dawn broke; Krishna had been sent in two days earlier",
+  "theatreId": "TH-LAB",
+  "front": "Imperial command",
+  "battle": null,
+  "location": "imperial-siege-camp",
+  "locationText": "Imperial headquarters tent outside the labyrinth",
+  "actor": "General Caligulio",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "calgurio",
+   "miranda"
+  ],
+  "forces": [
+   "F-EMP-011B",
+   "F-EMP-015"
+  ],
+  "type": "INTELLIGENCE",
+  "title": "Krishna returns: Caligulio realises the imitation bracelets failed",
+  "immediateResult": "Krishna, revived by a genuine resurrection bracelet, reports Minitz and the elite dead; Caligulio infers the technical bureau's imitations do not work",
+  "operationalResult": "Caligulio believes more than half a million soldiers in the labyrinth are truly dead, with fewer than 200,000 left of 940,000",
+  "strategicResult": "Imperial command collapses into despair on the morning of its destruction",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "General Caligulio",
+  "intensity": "NONE",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:15988-16010"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16200-16212"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16262-16300"
+   }
+  ],
+  "evidence": "After dawn Caligulio, two days after sending the elite, hears Krishna report Minitz killed; since Krishna revived, his bracelet was genuine, so the imitations failed and the labyrinth soldiers are dead.",
+  "reconstructionNote": "Day canonical relative to the elite dispatch (two days earlier); 07:00 is a simulation time after dawn.",
+  "notes": "An inference by Caligulio, not a test. The belief is wrong in the long run: about 700,000 were resurrected on D+12 (EVT-0220). Two bracelets came from Gadora: one analysed and copied, one given to the Emperor.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+3 12:00 -> D+11 07:00 (v13.txt:16004, 16280)",
+    "Title: no test performed; Caligulio's inference (v13.txt:16282-16296)",
+    "Source Ch5/Epilogue -> Ch4 (V13 has no Ch5)",
+    "Deleted 'no prospect of recovery': ~700,000 resurrected on D+12 (v13.txt:18489-18492)",
+    "Location imperial-capital -> imperial-siege-camp"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0214",
+  "day": 11,
+  "time": "07:30",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "theatreId": "TH-LAB",
+  "front": "Strategic",
+  "battle": null,
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth control room",
+  "actor": "Milim Nava (Albis's force)",
+  "actorFaction": "Beast Kingdom of Eurazania",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "albis",
+   "benimaru",
+   "ramiris"
+  ],
+  "forces": [
+   "F-ALL-003"
+  ],
+  "type": "REINFORCEMENT",
+  "title": "Milim sends Albis's 20,000 straight into the labyrinth",
+  "immediateResult": "With Ramiris's leave, Milim sends 20,000 under Albis, beastmen and winged folk, directly into the labyrinth",
+  "operationalResult": "Albis's force stands by as reinforcement for the attack on the camp",
+  "strategicResult": "Allied support reaches Tempest without crossing the forest",
+  "strength": {
+   "tempest": 20000,
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Albis",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:14238-14252"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16744-16750"
+   }
+  ],
+  "evidence": "Milim obtains Ramiris's permission by thought communication and sends troops straight into the labyrinth: Albis's force, 20,000 in all, including winged folk.",
+  "reconstructionNote": "Narrated in the control-room planning that precedes the attack; Benimaru's 'two days since they last sent troops' (v13.txt:13723) and 'finish it today' (v13.txt:14602) put that planning on the attack day. 07:30 is a simulation time.",
+  "notes": "AUDIT-PLAN section 4 proposed D+10 19:00; placed on D+11 morning for the reasons above. MOV-037 starts and ends here. Albis's reinforcements are named as support on the attack day (v13.txt:16747-16748).",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event per AUDIT-PLAN section 4 (v13.txt:14242-14250)",
+    "Placed D+11 07:30 instead of the plan's D+10 19:00 (v13.txt:13723, 14602)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-ALL-003": {
+     "strength": 20000,
+     "effective": 20000,
+     "status": "DEPLOYED",
+     "movement": "REINFORCEMENT",
+     "location": "ramiris-labyrinth",
+     "locationText": "Ramiris Labyrinth (reinforcement)"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0216",
+  "day": 11,
+  "time": "10:00",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "-",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Annihilation of the Imperial Camp",
+  "battleType": "MAJOR_BATTLE",
+  "location": "imperial-siege-camp",
+  "locationText": "Imperial camp outside the labyrinth",
+  "actor": "Carrera",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial camp outside the labyrinth",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "carrera",
+   "geld"
+  ],
+  "forces": [
+   "F-DEM-003",
+   "F-EMP-011B"
+  ],
+  "type": "ATTACK",
+  "title": "Carrera's Gravity Collapse strikes the camp",
+  "immediateResult": "More than 80% of the nearly 200,000 imperial troops are caught in Gravity Collapse, an artificial black hole; most are wiped out",
+  "operationalResult": "Fewer than one in five survive; more than 20,000 flee toward Geld's line",
+  "strategicResult": "The last imperial ground force in the Jura forest is shattered in one blow",
+  "strength": {
+   "tempest": 1,
+   "empire": "UNKNOWN",
+   "note": "Imperial force 'nearly 200,000' (170,000 per the day-three count)"
+  },
+  "commandStatus": "Carrera, after the Empire broke Agera's surrender truce",
+  "intensity": "EXTREME",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16436-16450"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16975-16990"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17095-17132"
+   }
+  ],
+  "evidence": "Nearly 200,000 imperial soldiers advance; Carrera casts Gravity Collapse, a forbidden spell compressing space into a black hole. More than 80% are caught, and most are wiped out.",
+  "reconstructionNote": "After dawn on D+11 and after Agera's one-hour surrender deadline (v13.txt:16441-16447); 10:00 is a simulation time.",
+  "notes": "No death count is stated for the spell itself (CAS-018, component). Those turned to dust could not be resurrected (v13.txt:18374-18377).",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event per AUDIT-PLAN section 4 (v13.txt:16980-17132)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DEM-003": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "imperial-siege-camp",
+     "locationText": "Above the imperial camp"
+    },
+    "F-EMP-011B": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "effective": "UNKNOWN"
+    },
+    "F-EMP-011": {
+     "status": "ENGAGED"
+    }
+   },
+   "theatres": {
+    "TH-LAB": {
+     "frontline": "Gravity Collapse over the imperial camp at the labyrinth gate",
+     "battleStatus": "INTENSIFYING"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0217",
+  "day": 11,
+  "time": "10:20",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "-",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Annihilation of the Imperial Camp",
+  "battleType": "MAJOR_BATTLE",
+  "location": "imperial-siege-camp",
+  "locationText": "Outside the labyrinth, before the imperial camp",
+  "actor": "Second Corps (Geld)",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial survivors of the Gravity Collapse",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "geld",
+   "shion",
+   "benimaru"
+  ],
+  "forces": [
+   "F-TEM-002",
+   "F-TEM-002A",
+   "F-TEM-002B",
+   "F-TEM-004",
+   "F-TEM-005",
+   "F-EMP-011B",
+   "F-ALL-003"
+  ],
+  "type": "ENGAGEMENT",
+  "title": "Geld's 17,000 hold against more than 20,000 fleeing survivors",
+  "immediateResult": "Geld's Yellow and Orange Numbers, 17,000 elite, stand like a stone wall as more than 20,000 desperate survivors charge them",
+  "operationalResult": "The Fourth Corps under Momiji and Shion's Yomigaeri strike the survivors; Albis's force stands in support",
+  "strategicResult": "The surviving imperial mass is destroyed in the open",
+  "strength": {
+   "tempest": 17000,
+   "empire": "UNKNOWN",
+   "note": "Imperial survivors 'more than 20,000'; Fourth Corps 30,000 and Yomigaeri 10,000 also committed"
+  },
+  "commandStatus": "Geld on the defensive line; Momiji leading the Fourth Corps for Benimaru; Shion leading the Yomigaeri",
+  "intensity": "HIGH",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:13955-13973"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16700-16760"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17160-17175"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17194-17268"
+   }
+  ],
+  "evidence": "More than 20,000 imperial survivors flee straight at Geld, whose 17,000 Yellow and Orange elite hold as a stone wall; Momiji's Fourth Corps and Shion's Yomigaeri join the fight.",
+  "reconstructionNote": "Directly after the Gravity Collapse; 10:20 is a simulation time.",
+  "notes": "End of MOV-024. Benimaru's plan: his 30,000 plus Geld's 17,000 and Shion's 10,000 (v13.txt:13955-13973). No Tempest deaths stated.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event per AUDIT-PLAN section 4 (v13.txt:13955-13973, 16756, 17160-17170)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-002": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "imperial-siege-camp",
+     "locationText": "Before the imperial camp (17,000 committed)"
+    },
+    "F-TEM-002A": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "imperial-siege-camp",
+     "locationText": "Before the imperial camp"
+    },
+    "F-TEM-002B": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "imperial-siege-camp",
+     "locationText": "Before the imperial camp"
+    },
+    "F-TEM-004": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "imperial-siege-camp",
+     "locationText": "Around the imperial camp (under Momiji)"
+    },
+    "F-TEM-005": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "imperial-siege-camp",
+     "locationText": "Around the imperial camp"
+    },
+    "F-EMP-011B": {
+     "movement": "RETREAT"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0218",
+  "day": 11,
+  "time": "11:00",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "-",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Annihilation of the Imperial Camp",
+  "battleType": "SPECIAL_COMBAT",
+  "location": "imperial-siege-camp",
+  "locationText": "Imperial headquarters tent",
+  "actor": "Diablo",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial headquarters",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "diablo",
+   "calgurio",
+   "miranda"
+  ],
+  "forces": [
+   "F-DEM-004",
+   "F-EMP-015",
+   "F-EMP-011B"
+  ],
+  "type": "ATTACK",
+  "title": "Diablo infiltrates the headquarters and takes the camp's souls",
+  "immediateResult": "Diablo kills Bonnie and the HQ staff, spares Miranda once she says she serves Yuuki, and fells Krishna and others with a snap of his fingers",
+  "operationalResult": "Outside the tent the soldiers lie dead as if their souls were drawn out; only Caligulio's circle remains",
+  "strategicResult": "Imperial command on the Jura front is decapitated",
+  "strength": {
+   "tempest": 1,
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Diablo",
+  "intensity": "EXTREME",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17618-17630"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17740-17760"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17775-17815"
+   }
+  ],
+  "evidence": "Diablo appears unseen in the tent; the flap opens on piles of soldiers dead as if their souls were drawn out. He had killed Bonnie, spared Miranda, and used End World on the camp.",
+  "reconstructionNote": "Follows the Gravity Collapse and Geld's fight; daylight outside the tent (v13.txt:17752-17755). 11:00 is a simulation time.",
+  "notes": "Named dead: Krishna (a second time), Bonnie, the staff. Count not stated (CAS-019, component). Miranda escapes.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event per AUDIT-PLAN section 4 (v13.txt:17620-17815)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DEM-004": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "imperial-siege-camp",
+     "locationText": "Imperial headquarters tent"
+    },
+    "F-EMP-011B": {
+     "effective": 0,
+     "status": "ENGAGED",
+     "movement": "STATIONARY"
+    }
+   },
+   "theatres": {},
+   "campaign": {
+    "activeCommanders": "Benimaru Supreme General (Tempest); Caligulio isolated in his tent"
+   }
+  }
+ },
+ {
+  "id": "EVT-0219",
+  "day": 11,
+  "time": "11:30",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "-",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Annihilation of the Imperial Camp",
+  "battleType": "SPECIAL_COMBAT",
+  "location": "imperial-siege-camp",
+  "locationText": "Imperial headquarters tent",
+  "actor": "Diablo",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "General Caligulio",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "diablo",
+   "calgurio",
+   "miranda"
+  ],
+  "forces": [
+   "F-DEM-004",
+   "F-EMP-011B",
+   "F-EMP-011",
+   "F-EMP-010"
+  ],
+  "type": "UNIT_DESTRUCTION",
+  "title": "Caligulio defeated; the Jura invasion army annihilated",
+  "immediateResult": "Caligulio, unable to draw on his mythic armour, is beaten without Diablo taking him seriously, and his soul is taken",
+  "operationalResult": "Of the 940,000 who invaded the Jura forest, all are dead except Miranda, Michel and Raymond",
+  "strategicResult": "The Empire's Jura offensive is destroyed outright",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 170000,
+   "note": "The camp outside; Jura total 940,000"
+  },
+  "commandStatus": "Imperial field command destroyed",
+  "intensity": "EXTREME",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:18000-18015"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Epilogue",
+    "locator": "v13.txt:18344-18349"
+   }
+  ],
+  "evidence": "Caligulio, the last man of the imperial force, is defeated without Diablo becoming serious, and his soul is taken. Of the 940,000 who invaded, all died except Miranda, Michel and Raymond.",
+  "reconstructionNote": "Ends the D+11 action; 11:30 is a simulation time.",
+  "notes": "CAS-017 (170,000, approximate) and the campaign total CAS-020 (940,000). LOC-015 changes here. All but the unrecoverable were resurrected next day (EVT-0220).",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event per AUDIT-PLAN section 4 (v13.txt:18008-18015, 18344-18349)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-011B": {
+     "strength": 0,
+     "effective": 0,
+     "kia": 170000,
+     "status": "DESTROYED",
+     "movement": "STATIONARY"
+    },
+    "F-EMP-011": {
+     "strength": 0,
+     "effective": 0,
+     "kia": 700000,
+     "status": "DESTROYED",
+     "movement": "STATIONARY"
+    },
+    "F-EMP-010": {
+     "strength": 0,
+     "effective": 0,
+     "kia": 940000,
+     "status": "DESTROYED",
+     "movement": "STATIONARY"
+    },
+    "F-DEM-004": {
+     "status": "DEPLOYED",
+     "movement": "STATIONARY"
+    }
+   },
+   "theatres": {
+    "TH-LAB": {
+     "status": "CLEARED",
+     "frontline": "No imperial force remains in the Jura forest",
+     "battleStatus": "CONCLUDED",
+     "control": "TEMPEST_CONTROLLED"
+    }
+   },
+   "campaign": {
+    "empireEffective": 0,
+    "activeCommanders": "Benimaru Supreme General (Tempest); imperial field command destroyed (Caligulio killed)"
+   }
+  }
+ },
+ {
+  "id": "EVT-0220",
+  "day": 12,
+  "time": "10:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "the spell ran all day; V14 Ch1 opens the day after the resurrection",
+  "theatreId": "TH-LAB",
+  "front": "Strategic",
+  "battle": null,
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth - Floor 70 (Adalmann's domain)",
+  "actor": "Rimuru Tempest",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "calgurio",
+   "gobta",
+   "geld",
+   "gabiru",
+   "adalmann",
+   "soei"
+  ],
+  "forces": [
+   "F-EMP-010",
+   "F-EMP-011",
+   "F-TEM-010"
+  ],
+  "type": "AFTERMATH",
+  "title": "Rimuru resurrects about 700,000 imperial soldiers",
+  "immediateResult": "Caligulio is revived first as a test; then about 700,000 gathered bodies are resurrected on Floor 70 under a traceable 'false life'",
+  "operationalResult": "About 240,000 cannot be revived: bodies vaporised or turned to dust, or souls broken by fear",
+  "strategicResult": "The Empire's Jura army becomes some 700,000 prisoners held in Tempest",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 700000,
+   "note": "About 700,000 revived; about 240,000 not revivable"
+  },
+  "commandStatus": "Rimuru; Soei watching the revived",
+  "intensity": "NONE",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Epilogue",
+    "locator": "v13.txt:18328-18352"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Epilogue",
+    "locator": "v13.txt:18353-18395"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Epilogue",
+    "locator": "v13.txt:18484-18492"
+   },
+   {
+    "volume": "V14",
+    "chapter": "Ch1",
+    "locator": "v14.txt:875"
+   }
+  ],
+  "evidence": "After testing on Caligulio, Rimuru resurrects about 700,000 gathered on Floor 70; about 240,000 could not be revived, their bodies destroyed or souls broken. The spell took all day.",
+  "reconstructionNote": "One day after the annihilation is a placement (the gathering of remains needs time); V14 Ch1 is 'the day after the resurrection' (v14.txt:875). 10:00 is a simulation time for a spell that ran all day.",
+  "notes": "The 240,000 are not only the surface-battle dead: the text names those vaporised by Ultima, destroyed by Testarossa's Death Blessing, dusted by Carrera's Gravity Collapse, and those who died of terror (v13.txt:18372-18386). Deaths are kept (CAS-004, CAS-017); revival is CAS-021, captivity CAS-014.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event per AUDIT-PLAN section 4 (v13.txt:18328-18395, 18484-18492)",
+    "Unrevivable 240,000 described per the text, not as 'surface dead' only (v13.txt:18372-18386)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-010": {
+     "pow": 700000,
+     "status": "RESURRECTED - PRISONERS",
+     "movement": "STATIONARY",
+     "location": "ramiris-labyrinth",
+     "locationText": "Floor 70, Ramiris Labyrinth (resurrected prisoners)"
+    }
+   },
+   "theatres": {
+    "TH-LAB": {
+     "frontline": "About 700,000 resurrected imperial soldiers held on Floor 70"
+    }
+   },
+   "campaign": {}
+  }
+ }
+]

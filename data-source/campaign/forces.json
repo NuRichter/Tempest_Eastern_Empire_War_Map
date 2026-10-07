@@ -1,0 +1,2708 @@
+[
+ {
+  "id": "F-EMP-000",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "formation": "Imperial Army (all legions and services)",
+  "displayName": "Imperial Army",
+  "parentId": null,
+  "commander": "Emperor Rudra (supreme authority); operations directed by the Marshal (Velgrynd)",
+  "commanderIds": [
+   "rudra",
+   "velgrynd"
+  ],
+  "role": "National armed forces: the Three Great Generals' legions plus intelligence and guard services",
+  "unitType": "command",
+  "initialStrengthRaw": "No whole-Empire headcount stated; V12 Ch4 sets 'more than one million elite' against the West's ~400,000",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "No figure is stated for the whole Empire. The >2,000,000 / <=1,000,000 figures in V12 Ch4 belong to the Armored Division (F-EMP-040). The V12 Ch4 comparison of 'more than one million elite' with the West's ~400,000 is a lower-bound remark, not a total (v12.txt:10200-10208).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Eastern Empire",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Lost more than two-thirds of its war power; ready to accept an unconditional-surrender treaty (Minitz at the V16 summit)",
+  "strengthBasis": "UNKNOWN",
+  "source": "V12 Ch4; V16 Ch3",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:9855-9909"
+   },
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10200-10208"
+   },
+   {
+    "volume": "16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8752-8759"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "R5: before the audit this row was 'Total mobilizable strength 2,000,000'. That figure belongs to the Armored Division and now sits on F-EMP-040. The ID is kept so existing references still resolve."
+ },
+ {
+  "id": "F-EMP-040",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "formation": "Armored Division",
+  "displayName": "Armored Division",
+  "parentId": "F-EMP-000",
+  "commander": "General Caligulio (one of the Three Great Generals)",
+  "commanderIds": [
+   "calgurio"
+  ],
+  "role": "Largest legion of the Empire; owner of the Jura invasion",
+  "unitType": "combined arms (armour, modified infantry, air)",
+  "initialStrengthRaw": "more than two million mobilisable including garrisons across the Empire; at most about one million for an immediate operation",
+  "initialMin": 2000000,
+  "initialMax": "UNKNOWN",
+  "initialBest": 2000000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "V12 Ch4 gives 'more than two million' mobilisable (with garrisons) and 'at most one million' at once under the heading of Calgurio's legion, the Empire's largest (v12.txt:10128-10135). Lower bound.",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Eastern Empire",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "No longer able to fight after the Jura annihilation (Caligulio's own assessment, V14 Ch1)",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch4; V14 Ch1",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10128-10135"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch1",
+    "locator": "v14.txt:1122-1125"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL label 'Mechs Legion' / 'Legion Mecha'. 'Marshal' is not Caligulio's title (the Marshal is Velgrynd)."
+ },
+ {
+  "id": "F-EMP-001",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "formation": "Armored Division - immediately deployable strength",
+  "displayName": "Armored Division (deployable ceiling)",
+  "parentId": "F-EMP-040",
+  "commander": "General Caligulio",
+  "commanderIds": [
+   "calgurio"
+  ],
+  "role": "Strength ceiling for an immediate operation (not a field formation)",
+  "unitType": "strength ceiling",
+  "initialStrengthRaw": "at most about one million for an immediate operation",
+  "initialMin": "UNKNOWN",
+  "initialMax": 1000000,
+  "initialBest": 1000000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Stated for Calgurio's legion, not the whole Empire (v12.txt:10133-10135). V13 Ch1's '700,000 = about 70% of all imperial strength' fits this denominator (v13.txt:347-349; CON-005).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Eastern Empire",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Pool from which the 940,000-strong Jura invasion army was drawn",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch4",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10133-10135"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:347-349"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Subset of F-EMP-040; never sum the two. Warcraft/Magic Beast and Hybrid/Composite are separate legions and are no longer children of this row (R5)."
+ },
+ {
+  "id": "F-EMP-010",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army (Jura front)",
+  "formation": "Jura invasion army",
+  "displayName": "Imperial Army of the Jura invasion",
+  "parentId": "F-EMP-001",
+  "commander": "General Caligulio",
+  "commanderIds": [
+   "calgurio"
+  ],
+  "role": "Invasion of the Great Jura Forest",
+  "unitType": "command",
+  "initialStrengthRaw": "940,000 ('he originally led an army of 940,000', V13 Ch4; '940,000 killed', V14)",
+  "initialMin": 940000,
+  "initialMax": 940000,
+  "initialBest": 940000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Stated outright: Caligulio originally led 940,000 (v13.txt:16208); 940,000 imperial soldiers killed (v14.txt:1124, 4650; v14.txt:10133). Components 700,000 + 200,000 + 40,000 = 940,000 agree (DERIVED cross-check). 'Ninety-four thousand' at v13.txt:7057 and 18347 is a translation slip.",
+  "finalStrength": 0,
+  "kia": 940000,
+  "wia": "UNKNOWN",
+  "pow": 700000,
+  "mia": "UNKNOWN",
+  "finalLocation": "Annihilated in the Jura theatre; about 700,000 resurrected and held in Tempest, then marched home after the V16 summit",
+  "finalMovementStatus": "REPATRIATING",
+  "finalStatus": "DESTROYED (V13 Ch2-Ch4): all killed except Miranda, Michel and Raymond; about 700,000 resurrected as prisoners (V13 Epilogue); about 240,000 could not be revived",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch4; V13 Ch2-Epilogue; V14 Ch1-Ch2; V16 Ch3",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16208-16209"
+   },
+   {
+    "volume": "13",
+    "chapter": "Epilogue",
+    "locator": "v13.txt:18344-18350"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch1",
+    "locator": "v14.txt:875"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch1",
+    "locator": "v14.txt:1122-1125"
+   },
+   {
+    "volume": "14",
+    "chapter": "Intermission",
+    "locator": "v14.txt:4644-4651"
+   },
+   {
+    "volume": "16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:7990-7994"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "Caligulio hand-picked the force from his legion (v12.txt:10208-10215); placed under the <=1,000,000 ceiling. kia counts deaths; ~700,000 of them were revived (see CAS-021) and then held as prisoners (CAS-014). Permanent dead about 240,000."
+ },
+ {
+  "id": "F-EMP-011",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army (Jura front)",
+  "formation": "Restructured Armor Corps",
+  "displayName": "Restructured Armor Corps",
+  "parentId": "F-EMP-010",
+  "commander": "General Caligulio (direct); Major General Minitz led the labyrinth assault",
+  "commanderIds": [
+   "calgurio",
+   "minitz"
+  ],
+  "role": "Main ground effort against the capital Rimuru",
+  "unitType": "modified infantry",
+  "initialStrengthRaw": "seven hundred thousand; about 70% of all imperial strength",
+  "initialMin": 700000,
+  "initialMax": 700000,
+  "initialBest": 700000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "700,000 (v12.txt:10216-10220; v13.txt:347-349). Labyrinth entry by day: 350,000, 150,000, 30,000 = 530,000; 170,000 stayed outside (v13.txt:9489-9493, 9520).",
+  "finalStrength": 0,
+  "kia": 700000,
+  "wia": "UNKNOWN",
+  "pow": 700000,
+  "mia": "UNKNOWN",
+  "finalLocation": "Labyrinth and the camp outside it; resurrected and held in Tempest",
+  "finalMovementStatus": "REPATRIATING",
+  "finalStatus": "DESTROYED: 530,000 in the labyrinth (D+1..D+10) and 170,000 outside (D+11); resurrected as prisoners (D+12)",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch4; V13 Ch1, Ch3-Epilogue",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10216-10220"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:343-349"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9489-9493"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:13708-13719"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17100-17170"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL 'Mecha Modification Corps'. Minimum individual ability C+, some at A; Soei rates the average about B with ~35,000 A-rank equivalents (v13.txt:427-460)."
+ },
+ {
+  "id": "F-EMP-011A",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army (Jura front)",
+  "formation": "Restructured Armor Corps - labyrinth assault echelon",
+  "displayName": "Labyrinth Raider force",
+  "parentId": "F-EMP-011",
+  "commander": "Not named for the mass echelon (Caligulio directing from outside); Major General Minitz led the hundred-strong elite team sent on D+9",
+  "commanderIds": [
+   "calgurio"
+  ],
+  "role": "Labyrinth Raider operation",
+  "unitType": "modified infantry (roped dungeon-assault teams)",
+  "initialStrengthRaw": "350,000 on day one, 150,000 on day two, 30,000 on day three",
+  "initialMin": 530000,
+  "initialMax": 530000,
+  "initialBest": 530000,
+  "sizeStatus": "DERIVED",
+  "sizeEvidence": "Sum of the three explicit daily entries (v13.txt:9489-9493); Rimuru later counts 'more than 530,000' defeated (v13.txt:13708-13709).",
+  "finalStrength": 0,
+  "kia": 530000,
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Ramiris Labyrinth",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "DESTROYED inside the labyrinth; resurrected on D+12",
+  "strengthBasis": "DERIVED",
+  "source": "V13 Ch3-Ch4",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9180-9195"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9489-9493"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:10724-10726"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:13708-13709"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Register entity added in R5 so that the labyrinth share has its own movement and casualty rows. The text splits the corps this way; the grouping as a force is the project's."
+ },
+ {
+  "id": "F-EMP-011B",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army (Jura front)",
+  "formation": "Restructured Armor Corps - camp outside the labyrinth",
+  "displayName": "Imperial camp outside the labyrinth",
+  "parentId": "F-EMP-011",
+  "commander": "General Caligulio (field headquarters)",
+  "commanderIds": [
+   "calgurio"
+  ],
+  "role": "Reserve and field headquarters outside the labyrinth",
+  "unitType": "modified infantry + field HQ",
+  "initialStrengthRaw": "170,000 remained outside ('fewer than 200,000')",
+  "initialMin": 170000,
+  "initialMax": 170000,
+  "initialBest": 170000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "'Reduced to 170,000 remaining' outside (v13.txt:9491-9493, 9520-9521); Rimuru and Caligulio say 'fewer than 200,000' (v13.txt:13716-13719, 16208-16209).",
+  "finalStrength": 0,
+  "kia": 170000,
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Imperial camp outside the labyrinth",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "DESTROYED on D+11 by Carrera's Gravity Collapse, Geld's Second Corps and Diablo; resurrected on D+12",
+  "strengthBasis": "CANONICAL",
+  "source": "V13 Ch3-Ch4",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9489-9493"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16980-17170"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17745-17760"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Register entity added in R5. Three individuals of the 940,000 survived (Miranda, Michel, Raymond), so the 170,000 kill figure is approximate."
+ },
+ {
+  "id": "F-EMP-012",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army (Jura front)",
+  "formation": "Magitank Force",
+  "displayName": "Magitank Force",
+  "parentId": "F-EMP-010",
+  "commander": "Lieutenant General Gaster",
+  "commanderIds": [
+   "gaster"
+  ],
+  "role": "Armoured feint and pressure on Dwargon",
+  "unitType": "armour",
+  "initialStrengthRaw": "200,000 personnel including maintenance teams; 2,000 Magic Guided Chariots, five crew each",
+  "initialMin": 200000,
+  "initialMax": 200000,
+  "initialBest": 200000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "200,000 including maintenance; 2,000 magitanks with five crew each (v12.txt:10224-10238); confirmed in the post-battle tally (v13.txt:6675-6676, 7531-7532).",
+  "finalStrength": 0,
+  "kia": 200000,
+  "wia": "UNKNOWN",
+  "pow": 0,
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon Gate Front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "DESTROYED on D+0 in under two hours; no prisoners; among the ~240,000 who could not be revived",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch4 (formation); V13 Ch1-Ch3 (Gaster named, battle)",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10224-10238"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:511-515"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:6664-6680"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:7531-7542"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL 'Magic Chariot Division'; commander 'Geist' in the fan TL (= Gaster). Gaster is not named in V12."
+ },
+ {
+  "id": "F-EMP-013",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army (Jura front)",
+  "formation": "Flying Combat Corps - committed element (100 airships)",
+  "displayName": "Flying Combat Corps",
+  "parentId": "F-EMP-010",
+  "commander": "Major General Farraga",
+  "commanderIds": [
+   "farraga"
+  ],
+  "role": "Air power over the Dwargon gate front",
+  "unitType": "air",
+  "initialStrengthRaw": "40,000 personnel; one hundred airships committed",
+  "initialMin": 40000,
+  "initialMax": 40000,
+  "initialBest": 40000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Only 100 airships were committed at Dwargon (v13.txt:3065, 4049, 8246-8249); 300 of the corps' 400 ships were kept to lift the Magic Beast Division (v12.txt:10863-10871). 40,000 personnel in the post-battle tally (v13.txt:6678-6679, 7532-7533). V12 also gives the whole air regiment as 100,000 (v12.txt:10257).",
+  "finalStrength": 0,
+  "kia": 40000,
+  "wia": "UNKNOWN",
+  "pow": 0,
+  "mia": "UNKNOWN",
+  "finalLocation": "Airspace over the Dwargon Gate Front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "DESTROYED on D+0 by Ultima's Nuclear Flame (not Veldora); no prisoners; not revivable",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch4; V13 Ch1-Ch3",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10240-10258"
+   },
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10863-10871"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:4049"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:5298-5378"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:7532-7542"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL 'Air Combat Flying Corps'; commander 'Faraga' (= Farraga). Carried the magicule-disturbing radiation weapon. '400 airships destroyed' was wrong: 100 were committed."
+ },
+ {
+  "id": "F-EMP-014",
+  "faction": "Eastern Empire",
+  "army": "Imperial Intelligence",
+  "formation": "Imperial Intelligence Bureau",
+  "displayName": "Imperial Intelligence Bureau",
+  "parentId": "F-EMP-000",
+  "commander": "Head not named in the war window; Lieutenant Tatsuya Kondo is its principal named officer",
+  "commanderIds": [
+   "kondo"
+  ],
+  "role": "Intelligence, counter-intelligence and the forbidden-ritual operation",
+  "unitType": "intelligence / special operations",
+  "initialStrengthRaw": "no headcount stated",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "No headcount. Bureau staff (\"intelligence staff\") guard Kagali's ritual ground with about 100 defenders in all (v15.txt:1352-1377).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Imperial Capital; Dwargon eastern front; imperial flagship",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Kondo killed by Carrera (V15 Ch5; confirmed V16 Ch3); bureau otherwise UNKNOWN",
+  "strengthBasis": "UNKNOWN",
+  "source": "V14 Ch3; V15 Ch1, Ch5; V16 Ch3",
+  "sourceRefs": [
+   {
+    "volume": "14",
+    "chapter": "Ch3",
+    "locator": "v14.txt:9844-9857"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:1352-1377"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch5",
+    "locator": "v15.txt:15015-15054"
+   },
+   {
+    "volume": "16",
+    "chapter": "Ch2",
+    "locator": "v16.txt:7364-7376"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "R5: no longer merged with the Imperial Guardians (now F-EMP-015). Kondo holds the unique skill Reader."
+ },
+ {
+  "id": "F-EMP-015",
+  "faction": "Eastern Empire",
+  "army": "Imperial Guard",
+  "formation": "Imperial Guardians",
+  "displayName": "Imperial Guardians",
+  "parentId": "F-EMP-000",
+  "commander": "Not named in the war window",
+  "commanderIds": [],
+  "role": "Emperor's elite guard; members serve with the field army and aboard the flagship",
+  "unitType": "special combatants (elite guard)",
+  "initialStrengthRaw": "no headcount stated",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "No total. Nearly 50 Guardian knights among the ritual-ground defenders (v15.txt:1352-1377); Krishna, a Guardian carrying a genuine resurrection bracelet (v13.txt:16282-16289); Malcolm, single-digit No. 8 (v15.txt:2303-2313); Guardian knights aboard the flagship (v15.txt:11073-11165).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon eastern front; imperial flagship",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Knights aboard the flagship killed by Testarossa's Death Streak (V15 Ch4); otherwise UNKNOWN",
+  "strengthBasis": "UNKNOWN",
+  "source": "V13 Ch4; V15 Ch1, Ch4",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16282-16289"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:1352-1377"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:2303-2313"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch4",
+    "locator": "v15.txt:11073-11165"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "Added in R5 (split from F-EMP-014). Fan TL 'Near Guard' / 'Order of the Near Guard'."
+ },
+ {
+  "id": "F-EMP-020",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "formation": "Magic Beast Division",
+  "displayName": "Magic Beast Division",
+  "parentId": "F-EMP-000",
+  "commander": "Gradim (one of the Three Great Generals)",
+  "commanderIds": [
+   "gradim"
+  ],
+  "role": "Elite monster-riding legion; airlifted strike on the West, diverted to Dwargon",
+  "unitType": "monster cavalry",
+  "initialStrengthRaw": "only 30,000, each rider on a monster rated above A-",
+  "initialMin": 30000,
+  "initialMax": 30000,
+  "initialBest": 30000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "30,000 riders on 30,000 monsters (v12.txt:10156-10160, 10870); about 60,000 to be lifted with mage auxiliaries (v14.txt:5945-5971). V15 Ch3: 10,000 died of the Demon Beast Fusion drug, 20,000 remained (v15.txt:9276-9306).",
+  "finalStrength": 0,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon eastern front (delivered by Velgrynd's Space-Time Connection)",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "DESTROYED (V15 Ch3): 10,000 died of the fusion drug, the rest destroyed; Gradim killed by Carillon, his remains devoured by Vega",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch4; V14 Ch2; V15 Ch1, Ch3",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10156-10160"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch2",
+    "locator": "v14.txt:5945-5971"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:3404-3435"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch3",
+    "locator": "v15.txt:9276-9306"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch3",
+    "locator": "v15.txt:9404-9502"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch3",
+    "locator": "v15.txt:10509-10523"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL 'Warcraft Legion' / 'Demon Beast Legion'. Separate legion of the Three Great Generals, not a child of the Armored Division (R5). kia is at least 10,000 (explicit) plus an unstated remainder; see CAS-024/CAS-025."
+ },
+ {
+  "id": "F-EMP-030",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "formation": "Composite Division",
+  "displayName": "Composite Division",
+  "parentId": "F-EMP-000",
+  "commander": "Yuuki Kagurazaka (one of the Three Great Generals)",
+  "commanderIds": [
+   "yuuki"
+  ],
+  "role": "Mixed legion; pressure on Dwargon and guard of the capital",
+  "unitType": "mixed (special talent, intelligence, line troops)",
+  "initialStrengthRaw": "total 200,000, of whom about 100,000 are fighting troops",
+  "initialMin": 100000,
+  "initialMax": 200000,
+  "initialBest": 200000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Total 200,000; half are intelligence or general-service personnel, about 100,000 fighting troops (v12.txt:10184-10187). 60,000 (60%) formed the Isthmus blockade (v14.txt:640-641, 12352-12355).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Eastern Empire; Isthmus",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "PARTIAL: the 60,000 Isthmus element was killed (V14 Ch4); the rest UNKNOWN. Yuuki was dominated by Rudra and later withdrawn with Feldway",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch4; V14 Prologue, Ch4",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10162-10190"
+   },
+   {
+    "volume": "14",
+    "chapter": "Prologue",
+    "locator": "v14.txt:640-641"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch4",
+    "locator": "v14.txt:12352-12366"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL 'Hybrid Legion'. Separate legion, not a child of the Armored Division (R5)."
+ },
+ {
+  "id": "F-EMP-031",
+  "faction": "Eastern Empire",
+  "army": "Composite Division",
+  "formation": "Composite Division blockade force before Isthmus",
+  "displayName": "Isthmus blockade force",
+  "parentId": "F-EMP-030",
+  "commander": "Deputy army commander Zero (senior officer on site); Yuuki nominal",
+  "commanderIds": [
+   "zero",
+   "yuuki"
+  ],
+  "role": "Blockade of the Dwargon eastern metropolis (camouflage for a secret understanding with Dwargon)",
+  "unitType": "infantry",
+  "initialStrengthRaw": "sixty thousand troops (60% of the Composite Division) blockading Isthmus",
+  "initialMin": 60000,
+  "initialMax": 60000,
+  "initialBest": 60000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "60,000 (v13.txt:7710-7714; v14.txt:640-641, 12352-12355); Laplace: about 60,000 (v14.txt:14212).",
+  "finalStrength": 0,
+  "kia": 60000,
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Before Isthmus (Dwargon eastern metropolis)",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "DESTROYED by Velgrynd's Gravity Collapse on the night of D+18 (V14 Ch4); the corpses fed Kagali's forbidden undead ritual",
+  "strengthBasis": "CANONICAL",
+  "source": "V13 Ch1, Ch3; V14 Ch4; V15 Ch1",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:697-703"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch4",
+    "locator": "v14.txt:12352-12411"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch4",
+    "locator": "v14.txt:13851-13884"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch4",
+    "locator": "v14.txt:14212-14214"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:654-657"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "The death is narrated in V14 Ch4; V15 Ch1 only refers back to the sacrifice. Zero restored order in the camp; the force never lost its command (EVT-0321 corrected)."
+ },
+ {
+  "id": "F-EMP-032",
+  "faction": "Eastern Empire",
+  "army": "Composite Division",
+  "formation": "Composite Division staff (Tolneod, Aria, Olca)",
+  "displayName": "Composite Division staff",
+  "parentId": "F-EMP-030",
+  "commander": "Yuuki Kagurazaka",
+  "commanderIds": [
+   "yuuki"
+  ],
+  "role": "Command staff",
+  "unitType": "command",
+  "initialStrengthRaw": "named staff only: Tolneod, Aria, Olca",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "Named individuals only (V14 Ch3); about thirty of Yuuki's sworn subordinates gather at his mansion (v14.txt:10083-10090).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Imperial Capital",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "UNKNOWN (caught in the purge of the coup night)",
+  "strengthBasis": "UNKNOWN",
+  "source": "V14 Ch3",
+  "sourceRefs": [
+   {
+    "volume": "14",
+    "chapter": "Ch3",
+    "locator": "v14.txt:10083-10117"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch3",
+    "locator": "v14.txt:10283-10304"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "RECONSTRUCTED",
+  "notes": "Grouping is the project's. Aria is a disciple of Gadora."
+ },
+ {
+  "id": "F-EMP-050",
+  "faction": "Eastern Empire",
+  "army": "Moderate Harlequin Alliance",
+  "formation": "Moderate Harlequin Alliance (Yuuki's clowns)",
+  "displayName": "Moderate Harlequin Alliance",
+  "parentId": null,
+  "commander": "Yuuki Kagurazaka",
+  "commanderIds": [
+   "yuuki",
+   "kagali"
+  ],
+  "role": "Coup conspiracy",
+  "unitType": "special combatants (conspiracy)",
+  "initialStrengthRaw": "named members: Kagali, Laplace, Tear, Footman",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "Named members only (v14.txt:71-80, 255, 529).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Kagali's ritual ground, Dwargon eastern front",
+  "finalMovementStatus": "WITHDRAWN",
+  "finalStatus": "Kagali, Footman and Tear withdrawn by Feldway at the end of the long night (V15 Ch5); Laplace guided Rimuru's party",
+  "strengthBasis": "UNKNOWN",
+  "source": "V14 Prologue, Ch4; V15 Ch1, Ch5",
+  "sourceRefs": [
+   {
+    "volume": "14",
+    "chapter": "Prologue",
+    "locator": "v14.txt:71-80"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch4",
+    "locator": "v14.txt:13914-13931"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch5",
+    "locator": "v15.txt:17080-17104"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL 'Clown faction'. R5: no longer a child of the Composite Division (it is Yuuki's private faction); Miranda and Vega moved to Cerberus (F-EMP-051)."
+ },
+ {
+  "id": "F-EMP-051",
+  "faction": "Eastern Empire",
+  "army": "Cerberus",
+  "formation": "Cerberus (the Three Greats)",
+  "displayName": "Cerberus",
+  "parentId": null,
+  "commander": "Heads: Damrada, Miranda, Vega (under Yuuki)",
+  "commanderIds": [
+   "damrada",
+   "miranda",
+   "vega"
+  ],
+  "role": "Underworld organisation of the Empire",
+  "unitType": "special combatants (underworld)",
+  "initialStrengthRaw": "three named heads",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "Miranda is one of the Three Greats (v14.txt:78, 255); Vega infiltrated the Magic Beast Division (v15.txt:10520); Damrada arranged Miranda's rendezvous (v14.txt:9900-9908).",
+  "finalStrength": "UNKNOWN",
+  "kia": 1,
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Imperial Capital; Dwargon eastern front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Miranda killed by Kondo (D+18); Damrada revealed loyal to Rudra; Vega devoured Gradim and was withdrawn with Feldway",
+  "strengthBasis": "UNKNOWN",
+  "source": "V14 Prologue, Ch3; V15 Ch3, Ch5",
+  "sourceRefs": [
+   {
+    "volume": "14",
+    "chapter": "Prologue",
+    "locator": "v14.txt:78"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch3",
+    "locator": "v14.txt:10003-10077"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch3",
+    "locator": "v15.txt:10511-10525"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5. Fan TL 'Three Greats'. Miranda was one of three survivors of the Jura annihilation before Kondo killed her."
+ },
+ {
+  "id": "F-EMP-060",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "formation": "Airship flotilla (300 airships)",
+  "displayName": "Airship flotilla",
+  "parentId": "F-EMP-040",
+  "commander": "Major General Samuel (V16: Zamdo)",
+  "commanderIds": [
+   "samuel"
+  ],
+  "role": "Strategic air lift of the Magic Beast Division",
+  "unitType": "air transport",
+  "initialStrengthRaw": "three hundred airships",
+  "initialMin": 300,
+  "initialMax": 300,
+  "initialBest": 300,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Strength is in airships, not personnel: 300 of the 400 air-corps ships were kept to lift the Magic Beast Division (v12.txt:10863-10871); 300 airships under Samuel (v15.txt:3452-3463).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon eastern front (after Velgrynd's Space-Time Connection)",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Delivered the Magic Beast Division to the Dwargon eastern front instead of the central continent",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch4; V14 Ch2; V15 Ch1",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10863-10871"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch2",
+    "locator": "v14.txt:5945-5971"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:3452-3463"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:3696-3757"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "The 'Air Transport Command' label used before R5 is project-coined. The flotilla is placed under the Armored Division because V12 describes the air corps with Calgurio's legion."
+ },
+ {
+  "id": "F-EMP-061",
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "formation": "Imperial flagship",
+  "displayName": "Emperor's flagship",
+  "parentId": "F-EMP-060",
+  "commander": "Major General Samuel (V16: Zamdo); Emperor Rudra and Velgrynd aboard",
+  "commanderIds": [
+   "samuel",
+   "rudra",
+   "velgrynd"
+  ],
+  "role": "Command ship of the Emperor and the Marshal",
+  "unitType": "air (command ship)",
+  "initialStrengthRaw": "one ship; crew not counted",
+  "initialMin": 1,
+  "initialMax": 1,
+  "initialBest": 1,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "One named ship; crew size not stated. Velgrynd emerges aboard as the Marshal and Rudra is aboard the same ship (v15.txt:3469-3570).",
+  "finalStrength": 1,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Over the Great Jura Forest",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Nearly everyone aboard killed by Testarossa's Death Streak (V15 Ch4); Zamdo's group (several dozen) revived in homunculi (V16 Ch3)",
+  "strengthBasis": "CANONICAL",
+  "source": "V15 Ch1, Ch4-Ch5; V16 Ch3",
+  "sourceRefs": [
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:3469-3570"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch4",
+    "locator": "v15.txt:11073-11165"
+   },
+   {
+    "volume": "16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9176-9196"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "Added in R5 so that the flagship, which ends up over Jura, can be tracked apart from the flotilla delivered to Dwargon."
+ },
+ {
+  "id": "F-EMP-070",
+  "faction": "Eastern Empire",
+  "army": "Imperial command",
+  "formation": "Velgrynd (Scorch Dragon), the Marshal",
+  "displayName": "Velgrynd",
+  "parentId": "F-EMP-000",
+  "commander": "Velgrynd",
+  "commanderIds": [
+   "velgrynd"
+  ],
+  "role": "Marshal of the Empire and guardian dragon",
+  "unitType": "special combatant (True Dragon)",
+  "initialStrengthRaw": "single entity (uses Parallel Existence)",
+  "initialMin": 1,
+  "initialMax": 1,
+  "initialBest": 1,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Single entity; acts through several bodies at once (Parallel Existence, v14.txt:15488-15496).",
+  "finalStrength": 1,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Over the Great Jura Forest; later Tempest (summit)",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Defeated by Rimuru at the end of the long night (V15 Ch5-Epilogue); alive at the V16 summit as the former Marshal, names Masayuki emperor",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch4; V14 Ch4-Epilogue; V15; V16 Ch3",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10785-10796"
+   },
+   {
+    "volume": "14",
+    "chapter": "Ch4",
+    "locator": "v14.txt:13851-13884"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:3522-3554"
+   },
+   {
+    "volume": "16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:7985-7988"
+   },
+   {
+    "volume": "16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8884-8886"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "The masked 'Marshal' of the V12 Ch4 council is Velgrynd (revealed V15 Ch1). Caligulio was never Marshal."
+ },
+ {
+  "id": "F-TEM-000",
+  "faction": "Jura-Tempest Federation",
+  "army": "Federation forces",
+  "formation": "Jura-Tempest Federation armed forces (all elements)",
+  "displayName": "Tempest armed forces",
+  "parentId": null,
+  "commander": "Rimuru Tempest",
+  "commanderIds": [
+   "rimuru"
+  ],
+  "role": "Head of state; all Federation forces",
+  "unitType": "command",
+  "initialStrengthRaw": "no national total stated; field army 'more than 100,000' after reorganisation",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "No national total. Field army 'more than 100,000' after reorganisation (right wing 52,000 + left wing 50,000, v12.txt:4623-4625); Rimuru guesses the total with reserves at not less than 200,000 (v12.txt:4633). The 150,000 previously stored here is the Council's Western Army (F-ALL-002).",
+  "finalStrength": "UNKNOWN",
+  "kia": 0,
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Jura-Tempest Federation",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "No deaths: Federation casualties stated as zero for the Jura campaign (v14.txt:4648); after the long night 'we are all safe' (v15.txt:18080-18083)",
+  "strengthBasis": "UNKNOWN",
+  "source": "V12 Ch2; V14 Intermission; V15 Ch5",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3984-4026"
+   },
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4612-4636"
+   },
+   {
+    "volume": "14",
+    "chapter": "Intermission",
+    "locator": "v14.txt:4644-4651"
+   },
+   {
+    "volume": "15",
+    "chapter": "Epilogue",
+    "locator": "v15.txt:18078-18086"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "R5: was 'Total national military potential 150,000', a misreading. The population passed one million."
+ },
+ {
+  "id": "F-TEM-020",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Right wing (First, Second and Third Corps)",
+  "displayName": "Right wing",
+  "parentId": "F-TEM-000",
+  "commander": "Benimaru (Supreme General)",
+  "commanderIds": [
+   "benimaru"
+  ],
+  "role": "Standing corps of the Federation",
+  "unitType": "command",
+  "initialStrengthRaw": "about 52,000 (12,000 + 37,000 + 3,000)",
+  "initialMin": 52000,
+  "initialMax": 52000,
+  "initialBest": 52000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Right side of the organisation chart: First ~12,000, Second ~37,000, Third ~3,000 = about 52,000 (v12.txt:3984-3990); revised chart 'right wing 52,000' (v12.txt:4623).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon gate; Jura front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "No deaths stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3984-3990"
+   },
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4623"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5 from the revised organisation chart."
+ },
+ {
+  "id": "F-TEM-021",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Left wing (Monster's Army and Volunteer Corps)",
+  "displayName": "Left wing",
+  "parentId": "F-TEM-000",
+  "commander": "Benimaru (Supreme General)",
+  "commanderIds": [
+   "benimaru"
+  ],
+  "role": "Newly raised formations",
+  "unitType": "command",
+  "initialStrengthRaw": "50,000 (Monster's Army 30,000 + Volunteer Corps 20,000)",
+  "initialMin": 50000,
+  "initialMax": 50000,
+  "initialBest": 50000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Left side of the chart lists the Western Army 150,000, the Monster's Army 30,000 and the Volunteer Corps 20,000 (v12.txt:4016-4024); the revised chart makes the left wing 50,000, keeping the 150,000 in the West (v12.txt:4623-4629).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Jura-Tempest Federation",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "No deaths stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4016-4024"
+   },
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4623-4629"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5."
+ },
+ {
+  "id": "F-TEM-001",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "First Corps (Green Numbers)",
+  "displayName": "First Corps (Green Numbers)",
+  "parentId": "F-TEM-020",
+  "commander": "Gobta (Hakuro military adviser)",
+  "commanderIds": [
+   "gobta",
+   "hakuro"
+  ],
+  "role": "Defence of the Dwargon gate; mobile shock",
+  "unitType": "infantry + wolf-rider cavalry",
+  "initialStrengthRaw": "about 12,000 in the Green Corps (4,000 veterans and 8,000 later recruits); plus one hundred wolf riders",
+  "initialMin": 12000,
+  "initialMax": 12000,
+  "initialBest": 12000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "About 12,000 (v12.txt:3737-3743, 3987); First Legion ~12,000 at the Dwargon gate (v13.txt:944-948). Hakuro leads the 12,000 on the supply raid (v13.txt:4078-4084).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon Gate Front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED on D+0; no deaths stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2; V13 Ch1-Ch2",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3728-3747"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:944-948"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:4078-4120"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "The force in contact at the start of the battle was the ~100-strong wolf-rider unit (F-TEM-001A), not the 12,000."
+ },
+ {
+  "id": "F-TEM-001A",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Wolf Rider unit (about one hundred)",
+  "displayName": "Goblin Riders (wolf riders)",
+  "parentId": "F-TEM-001",
+  "commander": "Gobta (fused with Ranga); Gobchi leads the team once Gobta fuses",
+  "commanderIds": [
+   "gobta"
+  ],
+  "role": "Opening contact and feigned defeat at the Dwargon gate",
+  "unitType": "wolf-rider cavalry",
+  "initialStrengthRaw": "one hundred wolves and riders, each grown to A- level",
+  "initialMin": 100,
+  "initialMax": 100,
+  "initialBest": 100,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "'One hundred wolves and riders', each A- (v12.txt:3737-3740); only the Wolf Rider force is sent first against the magitanks (v13.txt:1505-1510); about a hundred sensed by Gaster (v13.txt:1729-1734).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon Gate Front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Wounded but no deaths stated (restorative potions)",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2; V13 Ch1-Ch2",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3737-3740"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1505-1510"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:3446-3500"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5. Whether the 100 are inside the 12,000 is not stated: do not sum."
+ },
+ {
+  "id": "F-TEM-002",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Second Corps",
+  "displayName": "Second Corps",
+  "parentId": "F-TEM-020",
+  "commander": "Geld",
+  "commanderIds": [
+   "geld"
+  ],
+  "role": "Engineering and heavy defensive line",
+  "unitType": "heavy infantry / engineers",
+  "initialStrengthRaw": "about 37,000; field-deployable 17,000 (Yellow 2,000 + Orange veterans 15,000)",
+  "initialMin": 37000,
+  "initialMax": 37000,
+  "initialBest": 37000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "About 37,000 (v12.txt:3988); 17,000 deployable (v13.txt:8147, 13959-13960, 16756).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Jura front, outside the labyrinth (V13 Ch4 final battle)",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED on D+11 with 17,000 against more than 20,000 fleeing imperial survivors; no deaths stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2, Ch5; V13 Ch3-Ch4",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3988"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:8147"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16756"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17160-17170"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Recalled from overseas work at the V12 Ch5 war council."
+ },
+ {
+  "id": "F-TEM-002A",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Yellow Numbers",
+  "displayName": "Yellow Numbers",
+  "parentId": "F-TEM-002",
+  "commander": "Geld",
+  "commanderIds": [
+   "geld"
+  ],
+  "role": "Impenetrable defensive line; unit leaders",
+  "unitType": "heavy infantry",
+  "initialStrengthRaw": "two thousand in the Yellow Legion",
+  "initialMin": 2000,
+  "initialMax": 2000,
+  "initialBest": 2000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "2,000, individual ability about B+ (v12.txt:3764).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Jura front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED on D+11",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2; V13 Ch4",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3764"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16756"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL 'Yellow Legion'."
+ },
+ {
+  "id": "F-TEM-002B",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Orange Numbers",
+  "displayName": "Orange Numbers",
+  "parentId": "F-TEM-002",
+  "commander": "Geld",
+  "commanderIds": [
+   "geld"
+  ],
+  "role": "Newly raised orc formation",
+  "unitType": "heavy infantry",
+  "initialStrengthRaw": "35,000 people, of whom fifteen thousand veterans can take the field",
+  "initialMin": 15000,
+  "initialMax": 35000,
+  "initialBest": 35000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "35,000, of whom 15,000 veterans can fight; 20,000 on rear support and engineering (v12.txt:3774-3778).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Jura front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "15,000 veterans ENGAGED on D+11",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2; V13 Ch4",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3774-3778"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16756"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL 'Orange Legion'."
+ },
+ {
+  "id": "F-TEM-003",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Third Corps",
+  "displayName": "Third Corps",
+  "parentId": "F-TEM-020",
+  "commander": "Gabil",
+  "commanderIds": [
+   "gabiru"
+  ],
+  "role": "Airborne guerrilla and air superiority",
+  "unitType": "air assault",
+  "initialStrengthRaw": "about 3,000",
+  "initialMin": 3000,
+  "initialMax": 3000,
+  "initialBest": 3000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "About 3,000 (v12.txt:3989; v13.txt:948). The figure does not visibly include the Hiryuu: do not add them.",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon Gate Front; Hiryuu element later at the Dwargon eastern front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED; badly wounded on D+0 but no deaths stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2; V13 Ch1-Ch2; V15 Ch1",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3780-3810"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:2136-2145"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:3861-3862"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": ""
+ },
+ {
+  "id": "F-TEM-003A",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Blue Numbers",
+  "displayName": "Blue Numbers",
+  "parentId": "F-TEM-003",
+  "commander": "Gabil",
+  "commanderIds": [
+   "gabiru"
+  ],
+  "role": "Dragon-borne assault",
+  "unitType": "air assault (dragon riders)",
+  "initialStrengthRaw": "three thousand in the Blue Legion",
+  "initialMin": 3000,
+  "initialMax": 3000,
+  "initialBest": 3000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "3,000 volunteers from the Lizardman Warrior Corps, about C+ (v12.txt:3798-3807).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon Gate Front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "No deaths stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3798-3807"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL 'Blue Legion'."
+ },
+ {
+  "id": "F-TEM-003B",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Hiryuu (about one hundred dragon warriors)",
+  "displayName": "Hiryuu",
+  "parentId": "F-TEM-003",
+  "commander": "Gabil",
+  "commanderIds": [
+   "gabiru"
+  ],
+  "role": "Gabil's elite flying troop",
+  "unitType": "air assault (dragonewts)",
+  "initialStrengthRaw": "one hundred flying dragon troops (V13); one hundred Flying Dragons (V15)",
+  "initialMin": 100,
+  "initialMax": 100,
+  "initialBest": 100,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "100 in action at the Dwargon gate (v13.txt:2140-2142) and 100 at the Dwargon eastern front (v15.txt:759-763, 1473-1475); each about A- (v12.txt:3784-3790). V12 Ch2 renders 'hundreds' (translation variance, CON-011).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon eastern front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED; several fell against Malcolm but none died (v15.txt:2496-2649)",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2; V13 Ch1; V15 Ch1",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3780-3790"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:2140-2142"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:759-763"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:1463-1475"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "R5: was 'Flying Dragon element: hundreds / 300 developed', which mixed the Hiryuu with the Blue Numbers' 300 dragon mounts (now F-TEM-003C)."
+ },
+ {
+  "id": "F-TEM-003C",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Blue Numbers flying-dragon riders (about three hundred)",
+  "displayName": "Blue Numbers dragon riders",
+  "parentId": "F-TEM-003A",
+  "commander": "Gabil (led away by Ultima during the feint)",
+  "commanderIds": [
+   "gabiru"
+  ],
+  "role": "Air strike",
+  "unitType": "air assault (dragon riders)",
+  "initialStrengthRaw": "three hundred flying dragon troops chosen from the Blue Regiment; only about three hundred Flying Dragons raised so far",
+  "initialMin": 300,
+  "initialMax": 300,
+  "initialBest": 300,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "300 chosen from the Blue Regiment fly with the Hiryuu at the Dwargon gate (v13.txt:2140-2142); about 300 Flying Dragons raised (v12.txt:3806-3807).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon Gate Front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Withdrawn by Ultima during the feint; Flying Dragon losses counted as zero (v13.txt:5390-5392)",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2; V13 Ch1-Ch2",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3806-3807"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:2140-2142"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:3838-3841"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5."
+ },
+ {
+  "id": "F-TEM-004",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Fourth Corps (Monster's Army)",
+  "displayName": "Fourth Corps (Monster's Army)",
+  "parentId": "F-TEM-021",
+  "commander": "Benimaru",
+  "commanderIds": [
+   "benimaru"
+  ],
+  "role": "Magic-born corps under the Supreme General",
+  "unitType": "magic-born infantry",
+  "initialStrengthRaw": "The Monster's Army - 30,000; one thousand leaders selected from among the Kurenai",
+  "initialMin": 30000,
+  "initialMax": 30000,
+  "initialBest": 30000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "30,000 (v12.txt:4020, 4204, 4442-4445); Benimaru's 30,000 on the Jura front (v13.txt:13955-13967).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Jura front (V13 Ch4 final battle)",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED on D+11; no deaths stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2; V13 Ch4",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4016-4024"
+   },
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4442-4445"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:13955-13967"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Raised largely from magic-born formerly under Clayman. '(Red Army)' gloss is not canonical."
+ },
+ {
+  "id": "F-TEM-005",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Yomigaeri (Shion's unit)",
+  "displayName": "Yomigaeri",
+  "parentId": "F-TEM-000",
+  "commander": "Shion",
+  "commanderIds": [
+   "shion"
+  ],
+  "role": "Irregular unit outside the organisation chart",
+  "unitType": "infantry (irregular)",
+  "initialStrengthRaw": "'ten thousand in all', B+ (V13 Ch4); V12 Ch2 guessed not more than a thousand",
+  "initialMin": 10000,
+  "initialMax": 10000,
+  "initialBest": 10000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Shion: ten thousand in all, all B+ survivors of her training (v13.txt:13968-13973). V12 Ch2 said the number was unknown and guessed under a thousand (v12.txt:3920-3930). The official keyword page describes Yomigaeri as about 100 (CON-010).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Jura front (V13 Ch4 final battle)",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED on D+11; no deaths stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2; V13 Ch4",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3920-3930"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:13968-13973"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "V12 says the unit is not under the regular command; parent set to the national node. 10,000 is the fan-TL reading of V13 Ch4 and conflicts with the official ~100 (CON-010)."
+ },
+ {
+  "id": "F-TEM-006",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Volunteer Corps",
+  "displayName": "Volunteer Corps",
+  "parentId": "F-TEM-021",
+  "commander": "Masayuki (as the Hero)",
+  "commanderIds": [
+   "masayuki"
+  ],
+  "role": "Volunteers following the Hero's banner",
+  "unitType": "infantry (volunteers)",
+  "initialStrengthRaw": "Volunteer Corps - 20,000",
+  "initialMin": 20000,
+  "initialMax": 20000,
+  "initialBest": 20000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "20,000 (v12.txt:4024); placed under Masayuki as the Hero (v12.txt:4612-4619).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Jura-Tempest Federation",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "UNKNOWN: no engagement of this corps was located in V13-V15",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4016-4024"
+   },
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4612-4619"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5."
+ },
+ {
+  "id": "F-TEM-010",
+  "faction": "Jura-Tempest Federation",
+  "army": "Labyrinth defence",
+  "formation": "Labyrinth garrison (Ten Dungeon Marvels)",
+  "displayName": "Labyrinth garrison",
+  "parentId": "F-TEM-000",
+  "commander": "Ramiris (with Adalmann and the Ten Dungeon Marvels)",
+  "commanderIds": [
+   "ramiris",
+   "adalmann"
+  ],
+  "role": "Attrition defence of the labyrinth",
+  "unitType": "monster / undead garrison",
+  "initialStrengthRaw": "no numerical strength stated",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "No total. The labyrinth can hold about 540,000 (v13.txt:8840-8850); Adalmann's undead number fewer than 40,000 (v13.txt:10059-10062).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Ramiris Labyrinth",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "No losses: the labyrinth battle ended without losses on Tempest's side (v13.txt:13703-13704)",
+  "strengthBasis": "UNKNOWN",
+  "source": "V13 Ch3-Ch4",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:8840-8850"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:13703-13704"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "Ramiris is an allied demon lord; the garrison is placed under the Federation node by inference."
+ },
+ {
+  "id": "F-TEM-010A",
+  "faction": "Jura-Tempest Federation",
+  "army": "Labyrinth defence",
+  "formation": "Adalmann's undead legion (Floor 70)",
+  "displayName": "Adalmann's undead legion",
+  "parentId": "F-TEM-010",
+  "commander": "Adalmann",
+  "commanderIds": [
+   "adalmann"
+  ],
+  "role": "Floor 70 defence",
+  "unitType": "undead",
+  "initialStrengthRaw": "fewer than 40,000",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "Upper bound only: fewer than 40,000 against 70,000 imperial raiders (v13.txt:10059-10062). Not converted into a number.",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Ramiris Labyrinth, Floor 70",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Revived every three hours by the labyrinth; no permanent losses",
+  "strengthBasis": "UNKNOWN",
+  "source": "V13 Ch3-Ch4",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9907-10062"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:11599-11611"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5."
+ },
+ {
+  "id": "F-TEM-011",
+  "faction": "Jura-Tempest Federation",
+  "army": "Labyrinth defence",
+  "formation": "Elemental Colossus",
+  "displayName": "Elemental Colossus",
+  "parentId": "F-TEM-010",
+  "commander": "Gadora (rider)",
+  "commanderIds": [
+   "gadra"
+  ],
+  "role": "Heavy assault construct",
+  "unitType": "construct",
+  "initialStrengthRaw": "single construct, carried on chains by one hundred Flying Dragons",
+  "initialMin": 1,
+  "initialMax": 1,
+  "initialBest": 1,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "One construct slung beneath 100 Hiryuu (v15.txt:1463-1476); Gadora rides and fires it at Velgrynd (v15.txt:1489-1511).",
+  "finalStrength": 1,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Kagali's ritual ground, Dwargon eastern front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED; Gadora stalled Velgrynd by talk rather than combat",
+  "strengthBasis": "CANONICAL",
+  "source": "V15 Ch1",
+  "sourceRefs": [
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:66-69"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:1463-1511"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:3155-3175"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL 'Floor Guardian Colossus'."
+ },
+ {
+  "id": "F-TEM-012",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Kurenai advance force",
+  "displayName": "Kurenai",
+  "parentId": "F-TEM-004",
+  "commander": "Gobwa (Hakuro advising)",
+  "commanderIds": [
+   "gobwa"
+  ],
+  "role": "Ground strike force sent to Dwargon",
+  "unitType": "elite infantry",
+  "initialStrengthRaw": "three hundred Kurenai commanded by Gobya",
+  "initialMin": 300,
+  "initialMax": 300,
+  "initialBest": 300,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "300 Kurenai under Gobwa, with 100 Hiryuu = 400, all above A level (v15.txt:759-763).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Kagali's ritual ground, Dwargon eastern front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED; no deaths stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V15 Ch1",
+  "sourceRefs": [
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:759-763"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:1550-1572"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:1876"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Arrived at Gazel's command post by spatial transfer, then ran to the ritual ground on foot and arrived last. Gobya (fan TL) = Gobwa."
+ },
+ {
+  "id": "F-TEM-013",
+  "faction": "Jura-Tempest Federation",
+  "army": "Primordials",
+  "formation": "Ultima's subordinates (Veyron, Zonda)",
+  "displayName": "Veyron and Zonda",
+  "parentId": "F-TEM-000",
+  "commander": "Ultima",
+  "commanderIds": [
+   "veyron",
+   "zonda",
+   "ultima"
+  ],
+  "role": "Rescue and reinforcement on the Dwargon eastern front",
+  "unitType": "special combatants (demons)",
+  "initialStrengthRaw": "two named subordinates",
+  "initialMin": 2,
+  "initialMax": 2,
+  "initialBest": 2,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Two named demons (v15.txt:2648-2665).",
+  "finalStrength": 2,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Kagali's ritual ground, Dwargon eastern front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED; saved Gabil from Malcolm",
+  "strengthBasis": "CANONICAL",
+  "source": "V15 Ch1",
+  "sourceRefs": [
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:2648-2665"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:2914-2916"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "Arrival time 'not known' in the text. R5: listed under the Tempest command rather than inside Ultima's own headcount of one; Ultima commands them (commanderIds), but a two-person element cannot be counted inside a one-person force."
+ },
+ {
+  "id": "F-TEM-030",
+  "faction": "Jura-Tempest Federation",
+  "army": "Federation forces",
+  "formation": "Rimuru's party to the Imperial Capital",
+  "displayName": "Rimuru's party",
+  "parentId": "F-TEM-000",
+  "commander": "Rimuru Tempest",
+  "commanderIds": [
+   "rimuru",
+   "benimaru",
+   "shion",
+   "soei",
+   "diablo"
+  ],
+  "role": "Meeting with Yuuki; ended confined in the Dream Fortress",
+  "unitType": "special combatants",
+  "initialStrengthRaw": "Rimuru with Benimaru, Shion, Soei and Diablo, transported by Laplace",
+  "initialMin": 5,
+  "initialMax": 5,
+  "initialBest": 5,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Rimuru picks Benimaru, Shion, Soei and Diablo (v14.txt:14514-14517); they are transported with Laplace (v14.txt:14541-14552). Laplace is not counted.",
+  "finalStrength": 5,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Over the Great Jura Forest after the break-out",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "All safe (v15.txt:18080-18083)",
+  "strengthBasis": "CANONICAL",
+  "source": "V14 Ch4; V15 Ch2",
+  "sourceRefs": [
+   {
+    "volume": "14",
+    "chapter": "Ch4",
+    "locator": "v14.txt:14514-14559"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch2",
+    "locator": "v15.txt:4687-4762"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5 for MOV-016/MOV-032."
+ },
+ {
+  "id": "F-DEM-001",
+  "faction": "Jura-Tempest Federation",
+  "army": "Primordials",
+  "formation": "Testarossa (Primordial of White)",
+  "displayName": "Testarossa",
+  "parentId": "F-TEM-000",
+  "commander": "Testarossa",
+  "commanderIds": [
+   "testarossa"
+  ],
+  "role": "Envoy and independent annihilation element; later ambassador",
+  "unitType": "special combatant (Primordial)",
+  "initialStrengthRaw": "single combatant",
+  "initialMin": 1,
+  "initialMax": 1,
+  "initialBest": 1,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Single combatant.",
+  "finalStrength": 1,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Tempest; designated ambassador to the Empire",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Active throughout: delivered the ultimatum and killed Gaster (V13 Ch2); fought Velgrynd; Death Streak on the flagship (V15 Ch4); chairs the summit",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch5; V13 Ch1-Ch2; V15; V16 Ch3",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1848-1995"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:5934-6670"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch4",
+    "locator": "v15.txt:11073-11165"
+   },
+   {
+    "volume": "16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9262-9265"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": ""
+ },
+ {
+  "id": "F-DEM-002",
+  "faction": "Jura-Tempest Federation",
+  "army": "Primordials",
+  "formation": "Ultima (Primordial of Violet)",
+  "displayName": "Ultima",
+  "parentId": "F-TEM-000",
+  "commander": "Ultima",
+  "commanderIds": [
+   "ultima"
+  ],
+  "role": "Independent air-battle element",
+  "unitType": "special combatant (Primordial)",
+  "initialStrengthRaw": "single combatant",
+  "initialMin": 1,
+  "initialMax": 1,
+  "initialBest": 1,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Single combatant.",
+  "finalStrength": 1,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Flagship strike team, Jura theatre",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Destroyed the Flying Combat Corps with Nuclear Flame (V13 Ch2); fought Velgrynd; flagship strike team",
+  "strengthBasis": "CANONICAL",
+  "source": "V13 Ch2; V15",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:5298-5378"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:899-1307"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": ""
+ },
+ {
+  "id": "F-DEM-003",
+  "faction": "Jura-Tempest Federation",
+  "army": "Primordials",
+  "formation": "Carrera (Primordial of Yellow), with Esprit and Agera",
+  "displayName": "Carrera",
+  "parentId": "F-TEM-000",
+  "commander": "Carrera",
+  "commanderIds": [
+   "carrera"
+  ],
+  "role": "Attached to Geld; annihilation of the camp outside the labyrinth",
+  "unitType": "special combatant (Primordial)",
+  "initialStrengthRaw": "single combatant (subordinates Esprit and Agera not counted)",
+  "initialMin": 1,
+  "initialMax": 1,
+  "initialBest": 1,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Single combatant; her subordinates are named separately (v13.txt:16980-16992).",
+  "finalStrength": 1,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Flagship strike team, Jura theatre",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Gravity Collapse on the nearly 200,000 outside the labyrinth (V13 Ch4); fought Velgrynd; killed Kondo (V15 Ch5)",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch5; V13 Ch4; V15 Ch1, Ch5; V16 Ch2",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16980-17132"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch5",
+    "locator": "v15.txt:15015-15054"
+   },
+   {
+    "volume": "16",
+    "chapter": "Ch2",
+    "locator": "v16.txt:7364-7376"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5 (missing force)."
+ },
+ {
+  "id": "F-DEM-004",
+  "faction": "Jura-Tempest Federation",
+  "army": "Primordials",
+  "formation": "Diablo (Primordial of Black)",
+  "displayName": "Diablo",
+  "parentId": "F-TEM-000",
+  "commander": "Diablo",
+  "commanderIds": [
+   "diablo"
+  ],
+  "role": "Rimuru's aide; independent annihilation element",
+  "unitType": "special combatant (Primordial)",
+  "initialStrengthRaw": "single combatant",
+  "initialMin": 1,
+  "initialMax": 1,
+  "initialBest": 1,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Single combatant.",
+  "finalStrength": 1,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Imperial flagship, Jura theatre",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Took the souls of the imperial camp and defeated Caligulio (V13 Ch4); in Rimuru's party; held back in the long night; summit attendee",
+  "strengthBasis": "CANONICAL",
+  "source": "V13 Ch4; V15 Ch4; V16 Ch3",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17620-17815"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:18008-18015"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch4",
+    "locator": "v15.txt:10936-11007"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5. The pre-audit claim that Diablo was 'withheld from battle' is true only of V15 Ch4."
+ },
+ {
+  "id": "F-DEM-005",
+  "faction": "Jura-Tempest Federation",
+  "army": "Primordials",
+  "formation": "Black Numbers",
+  "displayName": "Black Numbers",
+  "parentId": "F-TEM-000",
+  "commander": "Not named in the passage",
+  "commanderIds": [],
+  "role": "Demon battle group directly under Rimuru",
+  "unitType": "demons",
+  "initialStrengthRaw": "only about 500, but of dreadful quality",
+  "initialMin": 500,
+  "initialMax": 500,
+  "initialBest": 500,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "About 500 fall on the Magic Beast Division (v15.txt:10250-10256); Cien leads about 500 to reinforce Gabil against 30,000+ (v15.txt:5126-5141).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon eastern front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED against the Magic Beast Division; no deaths stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V15 Ch2-Ch3",
+  "sourceRefs": [
+   {
+    "volume": "15",
+    "chapter": "Ch2",
+    "locator": "v15.txt:5126-5141"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch3",
+    "locator": "v15.txt:10250-10256"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "Added in R5. About 600 demons evolved when Rimuru broke out (v15.txt:5207-5249)."
+ },
+ {
+  "id": "F-DRG-001",
+  "faction": "Jura-Tempest Federation",
+  "army": "Dragon",
+  "formation": "Veldora Tempest (Storm Dragon)",
+  "displayName": "Veldora",
+  "parentId": "F-TEM-000",
+  "commander": "Veldora",
+  "commanderIds": [
+   "veldora"
+  ],
+  "role": "Strategic deterrent; duel with Velgrynd",
+  "unitType": "special combatant (True Dragon)",
+  "initialStrengthRaw": "single entity",
+  "initialMin": 1,
+  "initialMax": 1,
+  "initialBest": 1,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Single entity.",
+  "finalStrength": 1,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Jura airspace",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Dominated by Rudra after Kondo's bullet during the long night; recovered when Rimuru took him in (V15 Ch2); active",
+  "strengthBasis": "CANONICAL",
+  "source": "V14 Epilogue; V15 Ch1-Ch2",
+  "sourceRefs": [
+   {
+    "volume": "14",
+    "chapter": "Epilogue",
+    "locator": "v14.txt:15470-15734"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:4561-4667"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch2",
+    "locator": "v15.txt:6804-7345"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Not present at the Dwargon gate: the 'Veldora' the air corps feared was Gabil (v13.txt:4658-4715). First in action on the night of D+18."
+ },
+ {
+  "id": "F-DWA-000",
+  "faction": "Armed Nation of Dwargon",
+  "army": "Dwargon Armed Forces",
+  "formation": "Armed forces of Dwargon",
+  "displayName": "Dwargon Armed Forces",
+  "parentId": null,
+  "commander": "King Gazel Dwargo; Vaughn supreme commander",
+  "commanderIds": [
+   "gazel",
+   "vaughn"
+  ],
+  "role": "Defence of Dwargon",
+  "unitType": "command",
+  "initialStrengthRaw": "no total stated",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "No total.",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Gazel shot down by Kondo but survived; party to the V16 summit",
+  "strengthBasis": "UNKNOWN",
+  "source": "V13 Ch1; V15 Ch1; V16 Ch3",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:956-969"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:587-593"
+   },
+   {
+    "volume": "16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8465"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5 as a parent node. Vaughn = 'Ben' in the fan TL."
+ },
+ {
+  "id": "F-DWA-001",
+  "faction": "Armed Nation of Dwargon",
+  "army": "Dwargon Armed Forces",
+  "formation": "Dwarven Knights (gate garrison)",
+  "displayName": "Dwarven Knights",
+  "parentId": "F-DWA-000",
+  "commander": "King Gazel Dwargo",
+  "commanderIds": [
+   "gazel"
+  ],
+  "role": "Fortress defence of the Dwargon gate",
+  "unitType": "heavy infantry + magic support",
+  "initialStrengthRaw": "seven units of Dwarf Knights, two of them magic support units",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "Seven units, two magic-support; no headcount (v13.txt:956-969).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon outer gate",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Defensive only; not engaged",
+  "strengthBasis": "UNKNOWN",
+  "source": "V13 Ch1",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:956-969"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Built three earth walls hardened by fire magic outside the gate."
+ },
+ {
+  "id": "F-DWA-002",
+  "faction": "Armed Nation of Dwargon",
+  "army": "Dwargon Armed Forces",
+  "formation": "Pegasus Knights",
+  "displayName": "Pegasus Knights",
+  "parentId": "F-DWA-000",
+  "commander": "Dorf (captain)",
+  "commanderIds": [
+   "dorf"
+  ],
+  "role": "Special air attack on the ritual",
+  "unitType": "air cavalry",
+  "initialStrengthRaw": "five hundred Sky Knights",
+  "initialMin": 500,
+  "initialMax": 500,
+  "initialBest": 500,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "500 (v15.txt:672); flew in fives to stall, not annihilate (v15.txt:1425-1456).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Kagali's ritual ground, Dwargon eastern front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED; losses not stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V15 Ch1; V16",
+  "sourceRefs": [
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:672-689"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:1309-1313"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:1425-1456"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Fan TL 'Sky Knights'. Yen Press V16 calls Dorf (Dolph) the Pegasus Knights captain; R5 moves command from Gazel to Dorf."
+ },
+ {
+  "id": "F-DWA-003",
+  "faction": "Armed Nation of Dwargon",
+  "army": "Dwargon Armed Forces",
+  "formation": "Heavy armoured force",
+  "displayName": "Dwargon heavy armoured force",
+  "parentId": "F-DWA-000",
+  "commander": "Not named; held back by King Gazel",
+  "commanderIds": [
+   "gazel"
+  ],
+  "role": "Heavy infantry",
+  "unitType": "heavy infantry",
+  "initialStrengthRaw": "no headcount stated",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "No headcount; Gazel declines to move it because it is slow and a magic target (v15.txt:663-670).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Dwargon eastern front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Held back; not engaged",
+  "strengthBasis": "UNKNOWN",
+  "source": "V15 Ch1",
+  "sourceRefs": [
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:663-670"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "R5: no longer attributed to Dorf, who captains the Pegasus Knights."
+ },
+ {
+  "id": "F-ALL-001",
+  "faction": "Beast Kingdom Eurazania",
+  "army": "Allied contingent",
+  "formation": "Phobio",
+  "displayName": "Phobio",
+  "parentId": "F-TEM-012",
+  "commander": "Phobio",
+  "commanderIds": [
+   "phobio"
+  ],
+  "role": "Attached individual combatant",
+  "unitType": "special combatant",
+  "initialStrengthRaw": "single combatant",
+  "initialMin": 1,
+  "initialMax": 1,
+  "initialBest": 1,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "Came with Gobwa (v15.txt:1568-1572).",
+  "finalStrength": 1,
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Kagali's ritual ground, Dwargon eastern front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED; held Footman with Vaughn",
+  "strengthBasis": "CANONICAL",
+  "source": "V15 Ch1",
+  "sourceRefs": [
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:1568-1572"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:2779-2984"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": ""
+ },
+ {
+  "id": "F-ALL-002",
+  "faction": "Western Nations",
+  "army": "Council of the West",
+  "formation": "Western Army (financed through Tempest, held in the West)",
+  "displayName": "Western Army",
+  "parentId": null,
+  "commander": "Not named",
+  "commanderIds": [],
+  "role": "Reserve deliberately left unused in the West",
+  "unitType": "infantry (multinational)",
+  "initialStrengthRaw": "Western Army - 150,000",
+  "initialMin": 150000,
+  "initialMax": 150000,
+  "initialBest": 150000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "On the left of Tempest's organisation chart: Western Army 150,000, nominally the Council's legion (v12.txt:4016-4024, 4348-4354); kept in the West as reserve (v12.txt:4623-4629).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Western Nations",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "RESERVE: never committed",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4016-4024"
+   },
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4348-4354"
+   },
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4623-4629"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5. Before R5 this figure was misread as Tempest's 'national military potential' (F-TEM-000)."
+ },
+ {
+  "id": "F-ALL-003",
+  "faction": "Beast Kingdom Eurazania",
+  "army": "Milim's reinforcement",
+  "formation": "Milim's reinforcement under Albis",
+  "displayName": "Albis reinforcement",
+  "parentId": null,
+  "commander": "Albis",
+  "commanderIds": [
+   "albis"
+  ],
+  "role": "Reinforcement sent by Milim directly into the labyrinth",
+  "unitType": "beastmen and winged clan",
+  "initialStrengthRaw": "the troops led by Albis, 20,000 in all",
+  "initialMin": 20000,
+  "initialMax": 20000,
+  "initialBest": 20000,
+  "sizeStatus": "EXPLICIT",
+  "sizeEvidence": "20,000 in all: beastmen, the winged clan and some of the Beast King's warriors (v13.txt:14242-14250).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Ramiris Labyrinth / Jura front",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Accepted as reinforcement; combat role not traced in this audit",
+  "strengthBasis": "CANONICAL",
+  "source": "V13 Ch4",
+  "sourceRefs": [
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:14236-14256"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "CANONICAL",
+  "notes": "Added in R5. Faction set to Eurazania for display; the troops were sent on Milim's authority."
+ }
+]

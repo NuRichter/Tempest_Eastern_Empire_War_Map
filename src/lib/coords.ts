@@ -24,7 +24,7 @@
 /** Longitudinal width the atlas occupies in the synthetic projection. */
 export const LNG_SPAN_DEG = 260;
 
-/** Native pixel dimensions of public/maps/base-atlas.png. */
+/** Native pixel dimensions shared by public/maps/base-map.png and myth-map.jpg. */
 export const ATLAS_WIDTH = 2641;
 export const ATLAS_HEIGHT = 2035;
 
@@ -127,3 +127,18 @@ export function simDistance(a: { x: number; y: number }, b: { x: number; y: numb
  */
 export const COORDINATE_DISCLAIMER =
   'Simulation coordinates on a fictional map. Not latitude and longitude, and not a claim about any real place.';
+
+/** Simulation-space bounds [x0, y0, x1, y1] -> renderer bounds, for fitBounds. */
+export function simBoundsToLngLat(b: [number, number, number, number]): [[number, number], [number, number]] {
+  const nw = simToLngLat(b[0], b[1]);
+  const se = simToLngLat(b[2], b[3]);
+  return [
+    [nw.lng, se.lat],
+    [se.lng, nw.lat],
+  ];
+}
+
+/** GeoJSON ring in simulation space -> renderer space. */
+export function ringToLngLat(ring: [number, number][]): [number, number][] {
+  return ring.map(([x, y]) => simToLngLatTuple(x, y));
+}

@@ -2,8 +2,8 @@
  * Runtime dataset contract.
  *
  * These types describe the OUTPUT of scripts/compile-data.ts, i.e. the static
- * JSON the browser consumes. They deliberately do not describe the workbook:
- * the workbook shape lives only inside the compiler.
+ * JSON the browser consumes. The source shapes (data-source/campaign/*.json)
+ * live in scripts/lib/source-types.ts.
  */
 
 /** A value the corpus does not establish. Never coerced to zero. */
@@ -16,16 +16,57 @@ export type Quantity = number | Unknown;
 export type Confidence = 'HIGH' | 'MEDIUM' | 'LOW' | Unknown;
 
 /**
- * Where a piece of information comes from. Drives the source badge in the UI.
- * CANONICAL      - stated by the corpus
- * RECONSTRUCTED  - derived by Step 1 from canonical statements
- * SIMULATION     - a placement Step 1 made so the campaign can be rendered
- * UNKNOWN        - not established
+ * How an event is supported by the source corpus.
+ * CANONICAL                            explicitly supported by the novel
+ * CANONICAL_WITH_VISUAL_RECONSTRUCTION canonical, but position/path/timing are reconstructed for the map
+ * RECONSTRUCTED                        a plausible bridging sequence made by this project
+ * INFERRED                             follows from several clues, not stated
+ * UNRESOLVED                           evidence insufficient
  */
+export type Provenance =
+  | 'CANONICAL'
+  | 'CANONICAL_WITH_VISUAL_RECONSTRUCTION'
+  | 'RECONSTRUCTED'
+  | 'INFERRED'
+  | 'UNRESOLVED';
+
+export const PROVENANCE_ORDER: Provenance[] = [
+  'CANONICAL',
+  'CANONICAL_WITH_VISUAL_RECONSTRUCTION',
+  'INFERRED',
+  'RECONSTRUCTED',
+  'UNRESOLVED',
+];
+
+/** Display grade for any single value (a coordinate, a time, a number). */
 export type SourceGrade = 'CANONICAL' | 'RECONSTRUCTED' | 'SIMULATION' | Unknown;
 
 /** How a coordinate was arrived at. See data-source/gazetteer.source.json. */
 export type PlacementGrade = 'MEASURED' | 'RECONSTRUCTED' | 'SCHEMATIC' | 'ABSTRACT';
+
+/** How a force strength is known. UNKNOWN is never rendered as zero. */
+export type SizeStatus = 'EXPLICIT' | 'DERIVED' | 'RECONSTRUCTED' | 'UNKNOWN';
+
+/** How a movement route is known. UNKNOWN routes are never drawn. */
+export type RouteConfidence = 'SOLID' | 'RECONSTRUCTED' | 'SCHEMATIC' | 'UNKNOWN';
+
+/** How precisely an event's time is known. */
+export type TimePrecision =
+  | 'CANONICAL_RELATIVE'
+  | 'DAY_LEVEL'
+  | 'SEQUENTIAL'
+  | 'RECONSTRUCTED';
+
+export type BattleType =
+  | 'MAJOR_BATTLE'
+  | 'ENGAGEMENT'
+  | 'SIEGE'
+  | 'INTERCEPTION'
+  | 'DEFENSIVE_ACTION'
+  | 'RETREAT'
+  | 'AMBUSH'
+  | 'SPECIAL_COMBAT'
+  | 'POLITICAL_EVENT';
 
 export type FactionId = string;
 export type TheatreId = string;
@@ -35,6 +76,14 @@ export type BattleId = string;
 export type CommanderId = string;
 export type NationId = string;
 export type PlaceId = string;
+export type CharacterId = string;
+export type TerritoryId = string;
+
+export interface SourceRef {
+  volume: string;
+  chapter: string | null;
+  locator: string | null;
+}
 
 /** Simulation coordinates. x,y in [0,1] against the base atlas. Not lat/lng. */
 export interface SimPoint {
@@ -47,37 +96,29 @@ export interface CoordinateSystem {
   description: string;
   atlasPixelWidth: number;
   atlasPixelHeight: number;
-  /** Longitude span of the synthetic projection used to place the atlas on a globe. */
   lngSpanDeg: number;
-  /** Latitude reached by the top and bottom edges of the atlas. */
   latExtentDeg: number;
   disclaimer: string;
 }
 
 export interface Manifest {
   schemaVersion: number;
-  generatedAt: string;
-  source: {
-    workbook: string;
-    workbookSha256: string;
-    markdown: string;
-    markdownSha256: string;
-    gazetteer: string;
-  };
+  revision: string;
+  source: Record<string, string>;
   clock: {
     frameCount: number;
     minutesPerFrame: number;
     framesPerHour: number;
     framesPerDay: number;
     checkpointInterval: number;
+    firstDay: number;
+    lastDay: number;
     calendarNote: string;
   };
   campaign: {
     startDate: string;
     endDate: string;
     firstContactFrame: number;
-    campaignDayMin: number;
-    campaignDayMax: number;
     battleDayMin: number;
     battleDayMax: number;
   };
@@ -94,14 +135,10 @@ export interface DictColumn {
 export interface TimelineIndex {
   frameCount: number;
   date: DictColumn;
-  campaignDay: number[];
   battleDay: number[];
   phase: DictColumn;
   stage: DictColumn;
-  /** -1 where the sheet gives no approach percentage. */
-  approachPct: number[];
-  confidence: DictColumn;
-  /** Frame indices that carry a new event. */
+  /** Frame indices that carry at least one event. */
   eventFrames: number[];
   /** Frame indices where battlefield state changed. */
   stateChangeFrames: number[];
@@ -114,51 +151,31 @@ export interface TheatreFrameState {
   control: string | null;
 }
 
+export interface SideCasualties {
+  kia: Quantity;
+  wia: Quantity;
+  pow: Quantity;
+  mia: Quantity;
+  /** Killed and later restored to life, counted separately from kia. */
+  revived: Quantity;
+}
+
+export interface SideStrength {
+  total: Quantity;
+  effective: Quantity;
+}
+
 /** Full battlefield state at one frame. */
 export interface FrameState {
   frame: number;
   phase: string;
   stage: string;
-  columnLocation: string;
-  approachPct: number | null;
-  tempestTotal: Quantity;
-  tempestEffective: Quantity;
-  empireTotal: Quantity;
-  empireEffective: Quantity;
-  tempestMovement: { advancing: string; retreating: string };
-  empireMovement: { advancing: string; retreating: string };
-  casualties: {
-    tempest: { kia: Quantity; wia: Quantity; pow: Quantity; mia: Quantity };
-    empire: { kia: Quantity; wia: Quantity; pow: Quantity; mia: Quantity };
-  };
+  strength: { tempest: SideStrength; empire: SideStrength };
+  casualties: { tempest: SideCasualties; empire: SideCasualties };
   theatres: Record<TheatreId, TheatreFrameState>;
-  activeTheatres: string;
-  activeFronts: string;
-  activeBattles: string;
   activeCommanders: string;
   majorCombatants: string;
-  majorEvents: string;
   eventIds: EventId[];
-  frameStatus: string;
-  eventStatus: string;
-  stateStatus: string;
-  informationStatus: string;
-  confidence: Confidence;
-  sourceReferences: string;
-  evidence: string;
-  notes: string | null;
-}
-
-/** Sparse encoding: a checkpoint every `interval` frames, deltas in between. */
-export interface StateStream {
-  interval: number;
-  frameCount: number;
-  checkpointFrames: number[];
-  checkpoints: Record<string, FrameState>;
-  /** Sorted ascending. Frames carrying at least one changed field. */
-  deltaFrames: number[];
-  /** Keyed by frame index; each value is a partial FrameState. */
-  deltas: Record<string, Partial<FrameState>>;
 }
 
 export interface Nation {
@@ -169,20 +186,24 @@ export interface Nation {
   y: number | null;
   placement: PlacementGrade;
   flag: string | null;
-  /** Whether the Step 1 dataset actually references this nation. */
   inDataset: boolean;
-  role: string | null;
+  territoryId: TerritoryId | null;
 }
 
 export interface Theatre {
   id: TheatreId;
+  code: string;
   name: string;
   region: string;
   anchor: SimPoint | null;
   placement: PlacementGrade;
-  zone: [number, number][] | null;
+  /** Clipped schematic operational area, if the theatre has one on the map. */
+  area: GeoMultiPolygon | null;
+  bounds: [number, number, number, number] | null;
   firstEvent: EventId | null;
   lastEvent: EventId | null;
+  firstFrame: number | null;
+  lastFrame: number | null;
   eventCount: number;
   colorKey: string;
 }
@@ -196,6 +217,7 @@ export interface Place {
   placement: PlacementGrade;
   altitude: 'GROUND' | 'AIR' | 'SUBSURFACE' | null;
   basis: string;
+  territoryId: TerritoryId | null;
 }
 
 export interface Force {
@@ -203,31 +225,26 @@ export interface Force {
   faction: FactionId;
   army: string;
   formation: string;
+  displayName: string;
   parentId: ForceId | null;
   childIds: ForceId[];
   depth: number;
   commander: string;
+  commanderIds: CharacterId[];
   role: string;
+  unitType: string;
   initialStrengthRaw: string;
-  initialMin: Quantity;
-  initialMax: Quantity;
   initialBest: Quantity;
+  sizeStatus: SizeStatus;
+  sizeEvidence: string;
   finalStrength: Quantity;
-  kia: Quantity;
-  wia: Quantity;
-  pow: Quantity;
-  mia: Quantity;
-  finalLocation: string;
-  finalMovementStatus: string;
   finalStatus: string;
-  strengthBasis: string;
   source: string;
+  sourceRefs: SourceRef[];
   confidence: Confidence;
+  hierarchyProvenance: Provenance;
   notes: string;
-  /**
-   * True when this force's strength is already counted inside its parent.
-   * Aggregation must never sum a force with its ancestors.
-   */
+  /** True when this force's strength is already counted inside its parent. */
   countedInParent: boolean;
   firstFrame: number;
   lastFrame: number;
@@ -238,6 +255,7 @@ export interface ForceSnapshot {
   f: number;
   strength: Quantity;
   effective: Quantity;
+  sizeStatus: SizeStatus;
   kia: Quantity;
   wia: Quantity;
   pow: Quantity;
@@ -245,11 +263,10 @@ export interface ForceSnapshot {
   status: string;
   movement: string;
   direction: string;
-  locationRaw: string;
+  locationText: string;
   placeId: PlaceId | null;
-  /** Present only for parametric transit positions along the approach axis. */
   transitPct: number | null;
-  info: string;
+  eventId: EventId | null;
   confidence: Confidence;
 }
 
@@ -265,12 +282,13 @@ export interface PositionKey {
   y: number;
   placeId: PlaceId | null;
   placement: PlacementGrade;
+  /** Confidence of the route that ARRIVES at this key. */
+  route: RouteConfidence;
 }
 
 export interface ForcePositionTrack {
   forceId: ForceId;
   keys: PositionKey[];
-  /** Frames in which the force has no defensible position and is not drawn. */
   offMap: [number, number][];
 }
 
@@ -279,13 +297,14 @@ export interface WarEvent {
   prevId: EventId | null;
   nextId: EventId | null;
   frame: number;
+  battleDay: number;
   warDay: string;
   simulationTime: string;
+  timePrecision: TimePrecision;
   canonicalTime: string;
   phase: string;
   theatreId: TheatreId;
   theatre: string;
-  front: string;
   battleId: BattleId | null;
   battle: string | null;
   location: string;
@@ -294,27 +313,29 @@ export interface WarEvent {
   actorFaction: FactionId;
   opponent: string;
   opponentFaction: FactionId;
+  characterIds: CharacterId[];
+  forceIds: ForceId[];
   type: string;
-  action: string;
+  title: string;
   immediateResult: string;
   operationalResult: string;
   strategicResult: string;
   tempestStrength: Quantity;
   empireStrength: Quantity;
+  strengthNote: string;
   kia: Quantity;
   pow: Quantity;
-  commandStatus: string;
-  intensity: string;
   significance: 'CRITICAL' | 'HIGH' | 'MEDIUM' | string;
-  timeBasis: string;
+  provenance: Provenance;
+  confidence: Confidence;
   timeConfidence: Confidence;
   numericalConfidence: Confidence;
-  confidence: Confidence;
-  sourceVolume: string;
-  sourceChapter: string;
+  sourceRefs: SourceRef[];
   evidence: string;
+  reconstructionNote: string;
   notes: string;
-  /** True for the fifteen turning points named by the Step 1 markdown. */
+  auditStatus: 'UNCHANGED' | 'CORRECTED' | 'ADDED' | 'PRE_AUDIT';
+  auditChanges: string[];
   turningPoint: boolean;
   turningPointRank: number | null;
   turningPointSummary: string | null;
@@ -323,18 +344,20 @@ export interface WarEvent {
 export interface Battle {
   id: BattleId;
   name: string;
+  type: BattleType;
   theatreId: TheatreId;
   placeId: PlaceId | null;
   startFrame: number;
   endFrame: number;
   eventIds: EventId[];
-  phases: string[];
   participants: { faction: FactionId; forces: ForceId[] }[];
+  characterIds: CharacterId[];
   empireCommitted: Quantity;
   empireLost: Quantity;
   tempestLost: Quantity;
   result: string;
   significance: string;
+  provenance: Provenance;
   confidence: Confidence;
 }
 
@@ -345,21 +368,17 @@ export interface CasualtyRecord {
   faction: FactionId;
   forceId: ForceId | null;
   formation: string;
-  location: string;
-  battle: string;
   cause: string;
   kia: Quantity;
   wia: Quantity;
   pow: Quantity;
   mia: Quantity;
-  other: Quantity;
-  total: Quantity;
-  scope: 'EVENT_CASUALTY' | 'COMPONENT_CASUALTY' | 'AGGREGATE_CASUALTY' | 'CAMPAIGN_TOTAL' | string;
+  revived: Quantity;
+  scope: 'EVENT_CASUALTY' | 'COMPONENT_CASUALTY' | 'AGGREGATE_CASUALTY' | 'CAMPAIGN_TOTAL' | 'RESTORATION' | string;
   aggregateOf: string;
   basis: string;
-  derivation: string;
   confidence: Confidence;
-  source: string;
+  sourceRefs: SourceRef[];
   evidence: string;
   notes: string;
   /** False for AGGREGATE / COMPONENT / CAMPAIGN rows, which would double count. */
@@ -369,6 +388,7 @@ export interface CasualtyRecord {
 export interface Commander {
   id: CommanderId;
   name: string;
+  characterId: CharacterId | null;
   faction: FactionId;
   role: string;
   scope: string;
@@ -388,6 +408,7 @@ export interface Commander {
 export interface Combatant {
   id: string;
   name: string;
+  characterId: CharacterId | null;
   faction: FactionId;
   firstEvent: EventId | null;
   lastEvent: EventId | null;
@@ -396,6 +417,24 @@ export interface Combatant {
   finalStatus: string;
   effect: string;
   sourceVolumes: string;
+}
+
+export interface Character {
+  id: CharacterId;
+  name: string;
+  aliases: string[];
+  japanese: string | null;
+  faction: FactionId;
+  role: string;
+  photocard: { src: string; source: string; sourceUrl: string | null } | null;
+  commanderIds: CommanderId[];
+  combatantIds: string[];
+  forceIds: ForceId[];
+  eventIds: EventId[];
+  battleIds: BattleId[];
+  theatreIds: TheatreId[];
+  firstFrame: number | null;
+  lastFrame: number | null;
 }
 
 export interface Movement {
@@ -410,10 +449,13 @@ export interface Movement {
   startFrame: number | null;
   endFrame: number | null;
   type: string;
+  route: RouteConfidence;
   basis: string;
   confidence: Confidence;
+  /** Strength at departure and at arrival, each only where recorded. */
+  strengthAtStart: Quantity;
+  strengthAtEnd: Quantity;
   notes: string;
-  /** True when the corpus does not establish a destination (MOV-015). */
   destinationUnknown: boolean;
 }
 
@@ -431,6 +473,38 @@ export interface TerritoryChange {
   notes: string;
 }
 
+export type GeoMultiPolygon = { type: 'MultiPolygon'; coordinates: [number, number][][][] };
+
+export type TerritoryRole = 'BELLIGERENT' | 'CO_BELLIGERENT' | 'CONTRIBUTOR' | 'UNINVOLVED' | 'ARMISTICE';
+export type ControlStatus = 'CONTROLLED' | 'CONTESTED' | 'OCCUPIED' | 'UNKNOWN' | 'INACTIVE';
+
+export interface TerritoryControlSegment {
+  fromFrame: number;
+  fromEvent: EventId | null;
+  controller: FactionId | null;
+  status: ControlStatus;
+  role: TerritoryRole;
+  provenance: Provenance;
+  basis: string;
+}
+
+/** A political region traced from the drawn borders of the base map. */
+export interface Territory {
+  id: TerritoryId;
+  name: string;
+  display: string;
+  nationId: NationId | null;
+  identification: 'LABELLED' | 'PARTIAL' | 'UNLABELLED';
+  boundarySource: string;
+  boundaryGrade: 'MEASURED';
+  labelPoint: [number, number];
+  bounds: [number, number, number, number];
+  areaFraction: number;
+  notes: string;
+  geometry: GeoMultiPolygon;
+  control: TerritoryControlSegment[];
+}
+
 export interface Faction {
   id: FactionId;
   name: string;
@@ -443,10 +517,6 @@ export interface Faction {
 export interface CampaignStage {
   id: string;
   name: string;
-  startWarDay: string;
-  endWarDay: string;
-  startDate: string;
-  endDate: string;
   startFrame: number;
   endFrame: number;
   definition: string;
@@ -469,23 +539,19 @@ export interface Contradiction {
 export interface Ambiguity {
   id: string;
   subject: string;
-  events: string;
   ambiguity: string;
-  possibleOrder: string;
   chosenPlacement: string;
   confidence: Confidence;
 }
 
 export interface CampaignTotals {
-  empireKiaCampaign: Quantity;
-  empireKiaJuraFront: Quantity;
-  tempestKiaConfirmed: Quantity;
-  tempestKiaUnstated: string;
-  empirePowSurfacePhase: Quantity;
-  empirePowLaterPhases: Quantity;
+  empireKilled: Quantity;
+  empireRevived: Quantity;
+  empirePermanentDead: Quantity;
+  empireCaptured: Quantity;
+  tempestKilled: Quantity;
   wiaBothSides: Quantity;
   miaBothSides: Quantity;
-  empireUnaccountedFor: Quantity;
   excludedRows: string[];
   note: string;
 }
@@ -497,3 +563,12 @@ export interface NationFlagEntry {
 }
 
 export type NationFlagManifest = Record<NationId, NationFlagEntry>;
+
+export interface TermEntry {
+  id: string;
+  kind: string;
+  canonical: string;
+  display: string;
+  japanese: string | null;
+  aliases: string[];
+}

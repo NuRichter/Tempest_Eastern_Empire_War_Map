@@ -1,0 +1,470 @@
+[
+ {
+  "id": "CMD-001",
+  "name": "Rimuru Tempest",
+  "faction": "Jura-Tempest Federation",
+  "role": "Head of state",
+  "scope": "National command",
+  "startEvent": "EVT-0004",
+  "endEvent": "EVT-0398",
+  "status": "IN COMMAND",
+  "subordinates": [
+   "Benimaru",
+   "Diablo",
+   "Testarossa",
+   "Ultima",
+   "Carrera",
+   "Ramiris"
+  ],
+  "source": "V12 Ch2 - V16 Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-002",
+  "name": "Benimaru",
+  "faction": "Jura-Tempest Federation",
+  "role": "Supreme General",
+  "scope": "All Tempest field forces",
+  "startEvent": "EVT-0022",
+  "endEvent": "EVT-0390",
+  "status": "IN COMMAND",
+  "subordinates": [
+   "Gobta",
+   "Geld",
+   "Gabil",
+   "Gobwa",
+   "Shion"
+  ],
+  "source": "V12 Ch2 - V16 Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-003",
+  "name": "Gobta",
+  "faction": "Jura-Tempest Federation",
+  "role": "Corps commander",
+  "scope": "First Corps / Green Legion (12,000)",
+  "startEvent": "EVT-0004",
+  "endEvent": "EVT-0119",
+  "status": "IN COMMAND",
+  "subordinates": [
+   "Green Numbers (12,000)",
+   "Wolf Rider unit (~100)",
+   "Hakuro (military adviser)"
+  ],
+  "source": "V12 Ch2, Ch5; V13 Ch1-Ch2",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-004",
+  "name": "Geld",
+  "faction": "Jura-Tempest Federation",
+  "role": "Corps commander",
+  "scope": "Second Corps (37,000; 17,000 deployable)",
+  "startEvent": "EVT-0004",
+  "endEvent": "EVT-0217",
+  "status": "IN COMMAND",
+  "subordinates": [
+   "Yellow Numbers",
+   "Orange Numbers",
+   "Carrera (attached)"
+  ],
+  "source": "V12 Ch2, Ch5; V13 Ch3-Ch4",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-005",
+  "name": "Gabil",
+  "faction": "Jura-Tempest Federation",
+  "role": "Corps commander",
+  "scope": "Third Corps (3,000) + Flying Dragons",
+  "startEvent": "EVT-0006",
+  "endEvent": "EVT-0375",
+  "status": "IN COMMAND (handed the eastern-front scheme of manoeuvre to Dorf; defeated by Malcolm, later awakened and fought Gradim)",
+  "subordinates": [
+   "Blue Numbers",
+   "Hiryuu (100)"
+  ],
+  "source": "V12 Ch2; V13 Ch1-Ch2; V15 Ch1, Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-006",
+  "name": "Gobwa",
+  "faction": "Jura-Tempest Federation",
+  "role": "Detachment commander",
+  "scope": "Kurenai advance force (300)",
+  "startEvent": "EVT-0350",
+  "endEvent": "EVT-0350",
+  "status": "IN COMMAND",
+  "subordinates": [
+   "Kurenai (300)",
+   "Phobio (attached)"
+  ],
+  "source": "V15 Ch1",
+  "confidence": "MEDIUM"
+ },
+ {
+  "id": "CMD-007",
+  "name": "Hakuro",
+  "faction": "Jura-Tempest Federation",
+  "role": "Advisor",
+  "scope": "Military adviser to the First Corps (V12 Ch2) and to the Kurenai advance force (V15); led the 12,000 Green Numbers on the supply raid (V13 Ch2)",
+  "startEvent": "EVT-0004",
+  "endEvent": "EVT-0350",
+  "status": "ADVISORY (arms ruined by Kondo's qi on the eastern front, treated by Esprit)",
+  "subordinates": [],
+  "source": "V12 Ch2; V13 Ch2; V15 Ch1",
+  "confidence": "MEDIUM"
+ },
+ {
+  "id": "CMD-008",
+  "name": "Ramiris",
+  "faction": "Jura-Tempest Federation",
+  "role": "Theatre commander",
+  "scope": "Ramiris Labyrinth",
+  "startEvent": "EVT-0201",
+  "endEvent": "EVT-0333",
+  "status": "IN COMMAND",
+  "subordinates": [
+   "Adalman",
+   "labyrinth garrison"
+  ],
+  "source": "V13 Ch1-Ch4; V14 Epilogue",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-009",
+  "name": "Adalmann",
+  "faction": "Jura-Tempest Federation",
+  "role": "Sector commander",
+  "scope": "Floor 70 undead legion (fewer than 40,000)",
+  "startEvent": "EVT-0203",
+  "endEvent": "EVT-0207",
+  "status": "IN COMMAND",
+  "subordinates": [
+   "Undead formations"
+  ],
+  "source": "V13 Ch3-Ch4",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-010",
+  "name": "Testarossa",
+  "faction": "Jura-Tempest Federation",
+  "role": "Independent element, later ambassador",
+  "scope": "Own element; embassy to the Empire",
+  "startEvent": "EVT-0026",
+  "endEvent": "EVT-0396",
+  "status": "REASSIGNED TO EMBASSY (designated at the summit)",
+  "subordinates": [],
+  "source": "V12 Ch5 - V16 Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-011",
+  "name": "Carrera",
+  "faction": "Jura-Tempest Federation",
+  "role": "Primordial attached to Geld",
+  "scope": "Own element (with Esprit and Agera)",
+  "startEvent": "EVT-0026",
+  "endEvent": "EVT-0378",
+  "status": "IN COMMAND",
+  "subordinates": [
+   "Esprit",
+   "Agera"
+  ],
+  "source": "V12 Ch5; V13 Ch4; V15; V16 Ch2",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-012",
+  "name": "Diablo",
+  "faction": "Jura-Tempest Federation",
+  "role": "Rimuru's aide",
+  "scope": "Own element; Black demons",
+  "startEvent": "EVT-0012",
+  "endEvent": "EVT-0390",
+  "status": "IN COMMAND",
+  "subordinates": [],
+  "source": "V13 Ch1, Ch4; V15 Ch4; V16 Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-013",
+  "name": "Ultima",
+  "faction": "Jura-Tempest Federation",
+  "role": "Primordial attached to Gabil",
+  "scope": "Own element (Veyron, Zonda)",
+  "startEvent": "EVT-0026",
+  "endEvent": "EVT-0351",
+  "status": "IN COMMAND",
+  "subordinates": [
+   "Veyron",
+   "Zonda"
+  ],
+  "source": "V12 Ch5; V13 Ch2; V15 Ch1",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-014",
+  "name": "Shion",
+  "faction": "Jura-Tempest Federation",
+  "role": "Rimuru's secretary; unit leader",
+  "scope": "Yomigaeri (10,000 per V13 Ch4)",
+  "startEvent": "EVT-0004",
+  "endEvent": "EVT-0390",
+  "status": "IN COMMAND",
+  "subordinates": [
+   "Yomigaeri"
+  ],
+  "source": "V12 Ch2; V13 Ch4; V15; V16 Ch3",
+  "confidence": "MEDIUM"
+ },
+ {
+  "id": "CMD-020",
+  "name": "King Gazel Dwargo",
+  "faction": "Armed Nation of Dwargon",
+  "role": "Head of state and field commander",
+  "scope": "All Dwargon forces",
+  "startEvent": "EVT-0016",
+  "endEvent": "EVT-0390",
+  "status": "IN COMMAND (shot down by Kondo on the eastern front, survived; party to the summit)",
+  "subordinates": [
+   "Vaughn",
+   "Dorf",
+   "Anrietta",
+   "Pegasus Knights",
+   "Dwarven Knights"
+  ],
+  "source": "V13 Ch1; V14 Ch4; V15 Ch1; V16 Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-021",
+  "name": "Dorf",
+  "faction": "Armed Nation of Dwargon",
+  "role": "Pegasus Knights captain",
+  "scope": "Pegasus Knights (500); joint scheme of manoeuvre with Gabil on the eastern front",
+  "startEvent": "EVT-0344",
+  "endEvent": "EVT-0348",
+  "status": "ASSUMED JOINT COMMAND",
+  "subordinates": [
+   "Pegasus Knights",
+   "Hiryuu (by Gabil's hand-over)"
+  ],
+  "source": "V15 Ch1",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-022",
+  "name": "Vaughn",
+  "faction": "Armed Nation of Dwargon",
+  "role": "Supreme commander of Dwargon's army",
+  "scope": "Dwargon forces on the eastern front",
+  "startEvent": "EVT-0340",
+  "endEvent": "EVT-0345",
+  "status": "IN COMMAND",
+  "subordinates": [],
+  "source": "V15 Ch1",
+  "confidence": "MEDIUM"
+ },
+ {
+  "id": "CMD-030",
+  "name": "Emperor Rudra Nam Ul Nasca",
+  "faction": "Eastern Empire",
+  "role": "Head of state",
+  "scope": "Imperial mobilization authority",
+  "startEvent": "EVT-0001",
+  "endEvent": "EVT-0381",
+  "status": "SOUL CONSUMED; body taken over by Michael, withdrew with Feldway (V15 Epilogue)",
+  "subordinates": [
+   "Velgrynd (Marshal)",
+   "Caligulio",
+   "Gradim",
+   "Yuuki"
+  ],
+  "source": "V12 Ch4; V15 Ch5",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-031",
+  "name": "General Caligulio",
+  "faction": "Eastern Empire",
+  "role": "General (one of the Three Great Generals), head of the Armored Division",
+  "scope": "Armored Division; supreme command of the Jura invasion (940,000)",
+  "startEvent": "EVT-0001",
+  "endEvent": "EVT-0395",
+  "status": "KILLED (V13 Ch4, by Diablo); RESURRECTED (V13 Epilogue); PRISONER in Tempest; summit delegate; leads the repatriation",
+  "subordinates": [
+   "Gaster",
+   "Farraga",
+   "Minitz",
+   "Restructured Armor Corps"
+  ],
+  "source": "V12 Ch4 - V16 Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-032",
+  "name": "Lieutenant General Gaster",
+  "faction": "Eastern Empire",
+  "role": "Lieutenant General",
+  "scope": "Magic Chariot Division (200,000)",
+  "startEvent": "EVT-0101",
+  "endEvent": "EVT-0119",
+  "status": "KILLED IN ACTION (by Testarossa at his headquarters, D+0)",
+  "subordinates": [
+   "2,000 magitank crews",
+   "Supply guard infantry"
+  ],
+  "source": "V12 Ch4 (division); V13 Ch1-Ch2 (named)",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-033",
+  "name": "Major General Farraga",
+  "faction": "Eastern Empire",
+  "role": "Major General",
+  "scope": "Flying Combat Corps (40,000; 100 airships)",
+  "startEvent": "EVT-0106",
+  "endEvent": "EVT-0115",
+  "status": "KILLED IN ACTION (Ultima's Nuclear Flame, D+0)",
+  "subordinates": [
+   "Airship crews"
+  ],
+  "source": "V13 Ch1-Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-034",
+  "name": "Major General Minitz",
+  "faction": "Eastern Empire",
+  "role": "Major General",
+  "scope": "Caligulio's right hand; commander of the labyrinth assault",
+  "startEvent": "EVT-0205",
+  "endEvent": "EVT-0392",
+  "status": "KILLED (labyrinth, V13 Ch4); RESURRECTED; PRISONER; summit delegate",
+  "subordinates": [
+   "Labyrinth Raider force"
+  ],
+  "source": "V13 Ch4; V14 Ch2; V16 Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-035",
+  "name": "Gradim",
+  "faction": "Eastern Empire",
+  "role": "General (one of the Three Great Generals); the fan TL also calls him Brigadier General / Grand Admiral",
+  "scope": "Magic Beast Division (30,000)",
+  "startEvent": "EVT-0370",
+  "endEvent": "EVT-0375",
+  "status": "KILLED (V15 Ch3) by Carillon during his awakening sleep; remains devoured by Vega",
+  "subordinates": [
+   "Warcraft Legion"
+  ],
+  "source": "V12 Ch4; V14 Ch2; V15 Ch1, Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-036",
+  "name": "Yuuki Kagurazaka",
+  "faction": "Eastern Empire",
+  "role": "Legion commander",
+  "scope": "Hybrid Legion (200,000 / 100,000 effective)",
+  "startEvent": "EVT-0001",
+  "endEvent": "EVT-0385",
+  "status": "DOMINATED BY RUDRA on the coup night; WITHDRAWN WITH FELDWAY (V15 Ch5)",
+  "subordinates": [
+   "Kagali",
+   "Laplace",
+   "Tear",
+   "Footman",
+   "Zero",
+   "Tolneod",
+   "Aria",
+   "Olca"
+  ],
+  "source": "V12 Ch4; V13 Prologue; V14; V15 Ch5",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-037",
+  "name": "Lieutenant Tatsuya Kondo",
+  "faction": "Eastern Empire",
+  "role": "Intelligence officer",
+  "scope": "Imperial Intelligence Bureau officer; defence of Kagali's ritual ground",
+  "startEvent": "EVT-0313",
+  "endEvent": "EVT-0378",
+  "status": "KILLED (V15 Ch5, by Carrera; confirmed V16)",
+  "subordinates": [
+   "Intelligence staff",
+   "Malcolm (attached)"
+  ],
+  "source": "V14 Ch3; V15 Ch1, Ch5; V16 Ch2-Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-038",
+  "name": "Velgrynd (Scorch Dragon)",
+  "faction": "Eastern Empire",
+  "role": "Marshal (the masked Marshal of the V12 Ch4 council) and guardian dragon",
+  "scope": "Imperial strategic direction",
+  "startEvent": "EVT-0001",
+  "endEvent": "EVT-0394",
+  "status": "DEFEATED BY RIMURU; ALIVE AT THE SUMMIT, NAMES THE NEW EMPEROR",
+  "subordinates": [
+   "Samuel (Zamdo)",
+   "Gradim"
+  ],
+  "source": "V12 Ch4; V14 Ch4-Epilogue; V15; V16 Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-039",
+  "name": "Major General Samuel (Zamdo)",
+  "faction": "Eastern Empire",
+  "role": "Flotilla commander",
+  "scope": "300-airship flotilla; the imperial flagship",
+  "startEvent": "EVT-0370",
+  "endEvent": "EVT-0399",
+  "status": "KILLED aboard the flagship by Testarossa's Death Streak (V15 Ch4); REVIVED in a homunculus (V16 Ch3)",
+  "subordinates": [
+   "Airship crews"
+  ],
+  "source": "V14 Ch2; V15 Ch1, Ch4; V16 Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-040",
+  "name": "Masayuki",
+  "faction": "Eastern Empire",
+  "role": "Volunteer Corps commander (V12 Ch2); Emperor (V16)",
+  "scope": "Volunteer Corps (20,000); later imperial head of state",
+  "startEvent": "EVT-0022",
+  "endEvent": "EVT-0398",
+  "status": "DESIGNATED EMPEROR (coronation pending)",
+  "subordinates": [
+   "Caligulio",
+   "Minitz",
+   "Velgrynd"
+  ],
+  "source": "V12 Ch2; V16 Ch3",
+  "confidence": "HIGH"
+ },
+ {
+  "id": "CMD-041",
+  "name": "Zero",
+  "faction": "Eastern Empire",
+  "role": "Deputy army commander, Composite Division",
+  "scope": "Senior officer at the Isthmus blockade camp (60,000)",
+  "startEvent": "EVT-0321",
+  "endEvent": "EVT-0324",
+  "status": "HELD COMMAND (quelled the officers' dispute); fate after Velgrynd's arrival not stated",
+  "subordinates": [
+   "Isthmus blockade force"
+  ],
+  "source": "V14 Ch4",
+  "confidence": "MEDIUM"
+ }
+]

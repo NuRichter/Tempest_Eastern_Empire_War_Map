@@ -3,63 +3,51 @@
 import { create } from 'zustand';
 
 import type { Dataset } from '@/data/loader';
-import type { FrameState } from '@/types/dataset';
-import { SimulationClock, type Speed } from '@/simulation/clock';
+import type { FrameState, Provenance } from '@/types/dataset';
+import type { EventCategory } from '@/lib/taxonomy';
+import { SimulationClock, SPEEDS } from '@/simulation/clock';
 import { StateResolver } from '@/simulation/resolver';
-
-export type LayerId =
-  | 'base'
-  | 'political'
-  | 'frontlines'
-  | 'armies'
-  | 'movement'
-  | 'trails'
-  | 'battles'
-  | 'events'
-  | 'commanders'
-  | 'casualties'
-  | 'labels'
-  | 'grid'
-  | 'theatres'
-  | 'markers';
-
-export const LAYERS: { id: LayerId; name: string; note: string }[] = [
-  { id: 'base', name: 'Base map', note: 'The supplied atlas.' },
-  { id: 'political', name: 'Political nations', note: 'Nation markers measured from the supplied map.' },
-  { id: 'theatres', name: 'Theatre boundaries', note: 'Schematic areas of operations. Not borders.' },
-  { id: 'frontlines', name: 'Frontlines', note: 'Contact between opposed forces in a live theatre.' },
-  { id: 'armies', name: 'Armies', note: 'Formations placed by the dataset.' },
-  { id: 'movement', name: 'Movement', note: 'Recorded movements with an origin and a destination.' },
-  { id: 'trails', name: 'Movement trails', note: 'Where a formation has been.' },
-  { id: 'battles', name: 'Battles', note: 'Combat engagements.' },
-  { id: 'events', name: 'Events', note: 'Changes recorded in the campaign.' },
-  { id: 'commanders', name: 'Commanders', note: 'Command posts of active commanders.' },
-  { id: 'casualties', name: 'Casualties', note: 'Losses at the place they were recorded.' },
-  { id: 'labels', name: 'Labels', note: 'Zoom-dependent place and formation names.' },
-  { id: 'markers', name: 'Strategic markers', note: 'Turning points and campaign anchors.' },
-  { id: 'grid', name: 'Graticule', note: 'Simulation grid. Not a geographic graticule.' },
-];
+import { usePreferences } from '@/state/preferences';
 
 export type Selection =
   | { kind: 'none' }
   | { kind: 'force'; id: string }
   | { kind: 'event'; id: string }
   | { kind: 'battle'; id: string }
-  | { kind: 'commander'; id: string }
-  | { kind: 'nation'; id: string }
+  | { kind: 'character'; id: string }
+  | { kind: 'territory'; id: string }
   | { kind: 'theatre'; id: string }
-  | { kind: 'combatant'; id: string };
+  | { kind: 'nation'; id: string }
+  | { kind: 'movement'; id: string };
 
-export type PanelId = 'calendar' | 'events' | 'highlights' | 'layers' | 'casualties' | 'intelligence';
+export type ViewMode = 'standard' | 'cinematic';
+export type RailTab = 'layers' | 'filters' | 'feed' | 'story';
 
-export type ViewMode = 'standard' | 'cinematic' | 'presentation';
+/** A camera request in simulation space. The map eases to it; it never jumps. */
+export type CameraRequest =
+  | { kind: 'point'; x: number; y: number; zoom?: number; nonce: number }
+  | { kind: 'bounds'; bounds: [number, number, number, number]; maxZoom?: number; nonce: number }
+  | { kind: 'campaign'; nonce: number };
 
-export interface CameraRequest {
-  x: number;
-  y: number;
-  zoom?: number;
-  /** Increments on every request so repeated focus on one place still fires. */
-  nonce: number;
+export interface Filters {
+  hiddenFactions: string[];
+  hiddenTheatres: string[];
+  hiddenCategories: EventCategory[];
+  hiddenProvenance: Provenance[];
+  /** Only show items at or above this confidence. */
+  minConfidence: 'ANY' | 'MEDIUM' | 'HIGH';
+}
+
+export const EMPTY_FILTERS: Filters = {
+  hiddenFactions: [],
+  hiddenTheatres: [],
+  hiddenCategories: [],
+  hiddenProvenance: [],
+  minConfidence: 'ANY',
+};
+
+export function activeFilterCount(f: Filters): number {
+  return f.hiddenFactions.length + f.hiddenTheatres.length + f.hiddenCategories.length + f.hiddenProvenance.length + (f.minConfidence === 'ANY' ? 0 : 1);
 }
 
 interface SimulationState {
@@ -71,78 +59,61 @@ interface SimulationState {
 
   frame: number;
   playing: boolean;
-  speed: Speed;
-  reversed: boolean;
   state: FrameState | null;
 
-  layers: Record<LayerId, boolean>;
-  openPanels: Record<PanelId, boolean>;
   selection: Selection;
   hovered: Selection;
   viewMode: ViewMode;
-  globe: boolean;
-  showParentFormations: boolean;
-  commanderMode: string | null;
-  combatantFocus: string | null;
+  railTab: RailTab;
+  paletteOpen: boolean;
+  legendOpen: boolean;
+  helpOpen: boolean;
   debug: boolean;
-  searchOpen: boolean;
+  filters: Filters;
+  commanderFocus: string | null;
   camera: CameraRequest | null;
 
   init: (data: Dataset) => void;
   failed: (message: string) => void;
-  setFrame: (frame: number) => void;
   seek: (frame: number) => void;
-  play: () => void;
-  pause: () => void;
   toggle: () => void;
-  setSpeed: (speed: Speed) => void;
-  setReversed: (reversed: boolean) => void;
-  toggleLayer: (id: LayerId) => void;
-  setLayer: (id: LayerId, on: boolean) => void;
-  togglePanel: (id: PanelId) => void;
+  pause: () => void;
+  setSpeedIndex: (index: number) => void;
+  stepEvent: (direction: 1 | -1) => void;
   select: (selection: Selection) => void;
   hover: (selection: Selection) => void;
   setViewMode: (mode: ViewMode) => void;
-  setGlobe: (on: boolean) => void;
-  setShowParentFormations: (on: boolean) => void;
-  setCommanderMode: (id: string | null) => void;
-  setCombatantFocus: (id: string | null) => void;
+  setRailTab: (tab: RailTab) => void;
+  setPaletteOpen: (open: boolean) => void;
+  setLegendOpen: (open: boolean) => void;
+  setHelpOpen: (open: boolean) => void;
   setDebug: (on: boolean) => void;
-  setSearchOpen: (on: boolean) => void;
-  focusOn: (x: number, y: number, zoom?: number) => void;
-  jumpToEvent: (eventId: string) => void;
-  jumpToBattle: (battleId: string) => void;
-  jumpToForce: (forceId: string) => void;
-  jumpToTheatre: (theatreId: string) => void;
+  setFilters: (update: Partial<Filters>) => void;
+  resetFilters: () => void;
+  setCommanderFocus: (id: string | null) => void;
+  focusPoint: (x: number, y: number, zoom?: number) => void;
+  focusBounds: (bounds: [number, number, number, number], maxZoom?: number) => void;
+  focusCampaign: () => void;
+  jumpToEvent: (id: string, opts?: { seek?: boolean }) => void;
+  jumpToBattle: (id: string) => void;
+  jumpToForce: (id: string) => void;
+  jumpToCharacter: (id: string) => void;
+  jumpToTerritory: (id: string) => void;
+  jumpToTheatre: (id: string) => void;
+  jumpToNation: (id: string) => void;
+  jumpToMovement: (id: string) => void;
 }
 
-const DEFAULT_LAYERS: Record<LayerId, boolean> = {
-  base: true,
-  political: true,
-  theatres: true,
-  frontlines: true,
-  armies: true,
-  movement: true,
-  trails: false,
-  battles: true,
-  events: true,
-  commanders: false,
-  casualties: false,
-  labels: true,
-  markers: true,
-  grid: false,
-};
-
-const DEFAULT_PANELS: Record<PanelId, boolean> = {
-  calendar: true,
-  events: true,
-  highlights: false,
-  layers: false,
-  casualties: false,
-  intelligence: false,
-};
-
 let cameraNonce = 0;
+const nextNonce = () => (cameraNonce += 1);
+
+function trackBounds(data: Dataset, forceId: string): [number, number, number, number] | null {
+  const keys = data.positionByForce.get(forceId)?.keys ?? [];
+  if (!keys.length) return null;
+  const xs = keys.map((k) => k.x);
+  const ys = keys.map((k) => k.y);
+  return [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
+}
 
 export const useSimulation = create<SimulationState>((set, get) => ({
   status: 'loading',
@@ -153,21 +124,18 @@ export const useSimulation = create<SimulationState>((set, get) => ({
 
   frame: 0,
   playing: false,
-  speed: 1,
-  reversed: false,
   state: null,
 
-  layers: { ...DEFAULT_LAYERS },
-  openPanels: { ...DEFAULT_PANELS },
   selection: { kind: 'none' },
   hovered: { kind: 'none' },
   viewMode: 'standard',
-  globe: true,
-  showParentFormations: false,
-  commanderMode: null,
-  combatantFocus: null,
+  railTab: 'layers',
+  paletteOpen: false,
+  legendOpen: false,
+  helpOpen: false,
   debug: false,
-  searchOpen: false,
+  filters: EMPTY_FILTERS,
+  commanderFocus: null,
   camera: null,
 
   init: (data) => {
@@ -175,111 +143,158 @@ export const useSimulation = create<SimulationState>((set, get) => ({
     const resolver = new StateResolver(data);
     const clock = new SimulationClock({
       frameCount: data.manifest.clock.frameCount,
-      onIntegerFrame: (frame) => {
-        set({ frame, state: resolver.at(frame) });
-      },
+      onIntegerFrame: (frame) => set({ frame, state: resolver.at(frame) }),
     });
+    clock.setSpeed(SPEEDS[Math.min(SPEEDS.length - 1, usePreferences.getState().speedIndex)] ?? 1);
     clock.subscribe((_, playing) => {
       if (get().playing !== playing) set({ playing });
     });
-    set({
-      status: 'ready',
-      error: null,
-      data,
-      clock,
-      resolver,
-      frame: 0,
-      state: resolver.at(0),
-    });
+    set({ status: 'ready', error: null, data, clock, resolver, frame: 0, state: resolver.at(0) });
   },
 
   failed: (message) => set({ status: 'error', error: message }),
 
-  setFrame: (frame) => {
-    const { resolver } = get();
-    set({ frame, state: resolver ? resolver.at(frame) : null });
-  },
-
   seek: (frame) => {
     const { clock, resolver } = get();
     clock?.seek(frame);
-    const target = clock ? clock.integerFrame : frame;
+    const target = clock ? clock.integerFrame : Math.max(0, Math.floor(frame));
     set({ frame: target, state: resolver ? resolver.at(target) : null });
   },
 
-  play: () => get().clock?.play(),
-  pause: () => get().clock?.pause(),
   toggle: () => get().clock?.toggle(),
+  pause: () => get().clock?.pause(),
 
-  setSpeed: (speed) => {
-    get().clock?.setSpeed(speed);
-    set({ speed });
+  setSpeedIndex: (index) => {
+    const i = Math.max(0, Math.min(SPEEDS.length - 1, index));
+    get().clock?.setSpeed(SPEEDS[i]);
+    usePreferences.getState().set('speedIndex', i);
   },
 
-  setReversed: (reversed) => {
-    get().clock?.setDirection(reversed ? -1 : 1);
-    set({ reversed });
+  stepEvent: (direction) => {
+    const { data, frame, jumpToEvent } = get();
+    if (!data) return;
+    const list = data.events;
+    const target = direction > 0 ? list.find((e) => e.frame > frame) : [...list].reverse().find((e) => e.frame < frame);
+    if (target) jumpToEvent(target.id);
   },
-
-  toggleLayer: (id) => set((s) => ({ layers: { ...s.layers, [id]: !s.layers[id] } })),
-  setLayer: (id, on) => set((s) => ({ layers: { ...s.layers, [id]: on } })),
-  togglePanel: (id) => set((s) => ({ openPanels: { ...s.openPanels, [id]: !s.openPanels[id] } })),
 
   select: (selection) => set({ selection }),
   hover: (hovered) => set({ hovered }),
-
   setViewMode: (viewMode) => set({ viewMode }),
-  setGlobe: (globe) => set({ globe }),
-  setShowParentFormations: (showParentFormations) => set({ showParentFormations }),
-  setCommanderMode: (commanderMode) => set({ commanderMode }),
-  setCombatantFocus: (combatantFocus) => set({ combatantFocus }),
-  setDebug: (debug) => set({ debug }),
-  setSearchOpen: (searchOpen) => set({ searchOpen }),
-
-  focusOn: (x, y, zoom) => {
-    cameraNonce += 1;
-    set({ camera: { x, y, zoom, nonce: cameraNonce } });
+  setRailTab: (railTab) => {
+    set({ railTab });
+    usePreferences.getState().set('railOpen', true);
   },
+  setPaletteOpen: (paletteOpen) => set({ paletteOpen }),
+  setLegendOpen: (legendOpen) => set({ legendOpen }),
+  setHelpOpen: (helpOpen) => set({ helpOpen }),
+  setDebug: (debug) => set({ debug }),
+  setFilters: (update) => set((s) => ({ filters: { ...s.filters, ...update } })),
+  resetFilters: () => set({ filters: EMPTY_FILTERS }),
+  setCommanderFocus: (commanderFocus) => set({ commanderFocus }),
 
-  jumpToEvent: (eventId) => {
-    const { data, seek, focusOn, select } = get();
-    const event = data?.eventById.get(eventId);
-    if (!event) return;
-    seek(event.frame);
-    select({ kind: 'event', id: eventId });
-    const place = event.placeId ? data!.placeById.get(event.placeId) : undefined;
-    if (place?.x != null && place.y != null) focusOn(place.x, place.y, 4.2);
+  focusPoint: (x, y, zoom) => set({ camera: { kind: 'point', x, y, zoom, nonce: nextNonce() } }),
+  focusBounds: (bounds, maxZoom) => set({ camera: { kind: 'bounds', bounds, maxZoom, nonce: nextNonce() } }),
+  focusCampaign: () => set({ camera: { kind: 'campaign', nonce: nextNonce() } }),
+
+  jumpToEvent: (id, opts) => {
+    const { data, seek, focusPoint } = get();
+    const event = data?.eventById.get(id);
+    if (!data || !event) return;
+    if (opts?.seek !== false) seek(event.frame);
+    set({ selection: { kind: 'event', id } });
+    const place = event.placeId ? data.placeById.get(event.placeId) ?? data.nationById.get(event.placeId) : undefined;
+    if (place?.x != null && place.y != null) focusPoint(place.x, place.y, 4.5);
     else {
-      const theatre = data!.theatreById.get(event.theatreId);
-      if (theatre?.anchor) focusOn(theatre.anchor.x, theatre.anchor.y, 3.8);
+      const theatre = data.theatreById.get(event.theatreId);
+      if (theatre?.anchor) focusPoint(theatre.anchor.x, theatre.anchor.y, 4.2);
     }
   },
 
-  jumpToBattle: (battleId) => {
-    const { data, seek, focusOn, select } = get();
-    const battle = data?.battleById.get(battleId);
-    if (!battle) return;
+  jumpToBattle: (id) => {
+    const { data, seek, focusPoint } = get();
+    const battle = data?.battleById.get(id);
+    if (!data || !battle) return;
     seek(battle.startFrame);
-    select({ kind: 'battle', id: battleId });
-    const place = battle.placeId ? data!.placeById.get(battle.placeId) : undefined;
-    if (place?.x != null && place.y != null) focusOn(place.x, place.y, 4.6);
+    set({ selection: { kind: 'battle', id } });
+    const place = battle.placeId ? data.placeById.get(battle.placeId) : undefined;
+    if (place?.x != null && place.y != null) focusPoint(place.x, place.y, 4.7);
   },
 
-  jumpToForce: (forceId) => {
-    const { data, select, focusOn, frame } = get();
-    if (!data) return;
-    select({ kind: 'force', id: forceId });
-    const track = data.positionByForce.get(forceId);
-    if (!track || track.keys.length === 0) return;
-    const key = track.keys.find((k) => k.f >= frame) ?? track.keys[track.keys.length - 1];
-    focusOn(key.x, key.y, 4.2);
+  jumpToForce: (id) => {
+    const { data, frame, focusPoint, focusBounds, seek } = get();
+    const force = data?.forceById.get(id);
+    if (!data || !force) return;
+    set({ selection: { kind: 'force', id } });
+    const track = data.positionByForce.get(id);
+    if (!track || !track.keys.length) return;
+    // If the force is not on the map at this moment, move to when it first is.
+    if (frame < track.keys[0].f) seek(track.keys[0].f);
+    const b = trackBounds(data, id);
+    if (b && (b[2] - b[0] > 0.02 || b[3] - b[1] > 0.02)) focusBounds(b, 4.8);
+    else {
+      const key = track.keys.find((k) => k.f >= get().frame) ?? track.keys[track.keys.length - 1];
+      focusPoint(key.x, key.y, 4.8);
+    }
   },
 
-  jumpToTheatre: (theatreId) => {
-    const { data, select, focusOn } = get();
-    const theatre = data?.theatreById.get(theatreId);
+  jumpToCharacter: (id) => {
+    const { data, frame, focusPoint } = get();
+    const character = data?.characterById.get(id);
+    if (!data || !character) return;
+    set({ selection: { kind: 'character', id } });
+    // Focus on the character's most recent appearance at or before now.
+    const evs = character.eventIds.map((e) => data.eventById.get(e)).filter((e): e is NonNullable<typeof e> => Boolean(e));
+    // Before the character's first appearance, go to it rather than to an empty map.
+    if (evs.length && !evs.some((e) => e.frame <= frame)) get().seek(evs[0].frame);
+    const current = [...evs].reverse().find((e) => e.frame <= get().frame) ?? evs[0];
+    const place = current?.placeId ? data.placeById.get(current.placeId) ?? data.nationById.get(current.placeId) : undefined;
+    if (place?.x != null && place.y != null) focusPoint(place.x, place.y, 4.5);
+  },
+
+  jumpToTerritory: (id) => {
+    const { data, focusBounds } = get();
+    const t = data?.territoryById.get(id);
+    if (!t) return;
+    set({ selection: { kind: 'territory', id } });
+    focusBounds(t.bounds, 5);
+  },
+
+  jumpToTheatre: (id) => {
+    const { data, focusBounds, focusPoint } = get();
+    const theatre = data?.theatreById.get(id);
     if (!theatre) return;
-    select({ kind: 'theatre', id: theatreId });
-    if (theatre.anchor) focusOn(theatre.anchor.x, theatre.anchor.y, 3.6);
+    set({ selection: { kind: 'theatre', id } });
+    if (theatre.bounds) focusBounds(theatre.bounds, 5);
+    else if (theatre.anchor) focusPoint(theatre.anchor.x, theatre.anchor.y, 5);
+  },
+
+  jumpToNation: (id) => {
+    const { data, jumpToTerritory, focusPoint } = get();
+    const nation = data?.nationById.get(id);
+    if (!nation) return;
+    if (nation.territoryId) {
+      jumpToTerritory(nation.territoryId);
+      set({ selection: { kind: 'nation', id } });
+    } else {
+      set({ selection: { kind: 'nation', id } });
+      if (nation.x != null && nation.y != null) focusPoint(nation.x, nation.y, 4);
+    }
+  },
+
+  jumpToMovement: (id) => {
+    const { data, seek, focusBounds } = get();
+    const m = data?.movements.find((x) => x.id === id);
+    if (!data || !m) return;
+    if (m.startFrame !== null) seek(m.startFrame);
+    set({ selection: { kind: 'movement', id } });
+    const a = m.fromPlaceId ? data.placeById.get(m.fromPlaceId) ?? data.nationById.get(m.fromPlaceId) : null;
+    const b = m.toPlaceId ? data.placeById.get(m.toPlaceId) ?? data.nationById.get(m.toPlaceId) : null;
+    const pts = [a, b].filter((p): p is NonNullable<typeof p> => p?.x != null && p?.y != null);
+    if (pts.length) {
+      const xs = pts.map((p) => p.x!);
+      const ys = pts.map((p) => p.y!);
+      focusBounds([Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)], 4.8);
+    }
   },
 }));

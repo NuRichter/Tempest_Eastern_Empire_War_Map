@@ -207,19 +207,19 @@
       "id": "tempest-border",
       "name": "Tempest border",
       "theatre": "TH-DWG",
-      "x": 0.7248,
-      "y": 0.4995,
+      "x": 0.7671,
+      "y": 0.428,
       "placement": "RECONSTRUCTED",
-      "basis": "The border forced at EVT-0015, east of the forest edge on the same march axis. No border is drawn on any supplied map."
+      "basis": "The point where the imperial line of march (imperial-interior -> jura-forest-edge) crosses the Empire-Jura border drawn on the Base Map, found by tracing the march axis across the traced territory polygons (R5 cartographic check). The border line is MEASURED; the crossing point on it is RECONSTRUCTED, since the novels name no crossing place."
     },
     {
       "id": "dwargon-gate-front",
       "name": "Dwargon Gate Front",
       "theatre": "TH-DWG",
       "x": 0.6608,
-      "y": 0.4762,
+      "y": 0.5012,
       "placement": "RECONSTRUCTED",
-      "basis": "The decisive surface battlefield, fought at Dwargon's gate on the forest side. Placed between the MEASURED Dwargon marker and the forest, on the Dwargon-Tempest axis."
+      "basis": "The decisive surface battlefield, fought at Dwargon's gate on the forest side. Placed between the MEASURED Dwargon marker and the forest, on the Dwargon-Tempest axis. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
     {
       "id": "dwargon-outer-gate",
@@ -235,10 +235,10 @@
       "name": "Airspace over the Dwargon Gate Front",
       "theatre": "TH-DWG",
       "x": 0.6608,
-      "y": 0.4762,
+      "y": 0.5012,
       "placement": "RECONSTRUCTED",
       "altitude": "AIR",
-      "basis": "Directly above dwargon-gate-front. Rendered as an air layer at the same ground position, since the map has no vertical dimension."
+      "basis": "Directly above dwargon-gate-front. Rendered as an air layer at the same ground position, since the map has no vertical dimension. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
     {
       "id": "ramiris-labyrinth",
@@ -330,54 +330,54 @@
       "name": "Green Legion start line",
       "theatre": "TH-DWG",
       "x": 0.656,
-      "y": 0.48,
+      "y": 0.505,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
     {
       "id": "imperial-chariot-line",
       "name": "Imperial chariot line",
       "theatre": "TH-DWG",
       "x": 0.6656,
-      "y": 0.4728,
+      "y": 0.4978,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
     {
       "id": "linked-fortress-position",
       "name": "Linked fortress position",
       "theatre": "TH-DWG",
       "x": 0.6672,
-      "y": 0.4744,
+      "y": 0.4994,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
     {
       "id": "encircled-position",
       "name": "Encircled position",
       "theatre": "TH-DWG",
       "x": 0.6624,
-      "y": 0.4772,
+      "y": 0.5022,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
     {
       "id": "feigned-withdrawal-line",
       "name": "Feigned withdrawal line",
       "theatre": "TH-DWG",
       "x": 0.6576,
-      "y": 0.4816,
+      "y": 0.5066,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
     {
       "id": "attempted-rally-point",
       "name": "Attempted rally point",
       "theatre": "TH-DWG",
       "x": 0.6704,
-      "y": 0.47,
+      "y": 0.495,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
     {
       "id": "dwargon-defensive-line",
@@ -405,6 +405,50 @@
       "y": 0.51,
       "placement": "RECONSTRUCTED",
       "basis": "Destination of the Warcraft Legion air movement (MOV-014). The corpus names the central continent by way of northern Ingracia and no finer place. Positioned in the western half of the central landmass, near the MEASURED Englassia and Siltrosso markers."
+    },
+    {
+      "id": "imperial-infantry-camp",
+      "name": "Imperial main-body camp (~30 km from capital Rimuru)",
+      "theatre": "TH-LAB",
+      "x": 0.65337,
+      "y": 0.5503,
+      "placement": "RECONSTRUCTED",
+      "basis": "Soei reports the imperial infantry gathered about thirty kilometres from the capital Rimuru, camped and set up command posts (V13 Ch1, v13.txt:383-389). No bearing is stated. Placed 25% of the way from the MEASURED Tempest marker toward jura-forest-edge, on the imperial line of approach. The map scale is not established, so the 30 km is not measured."
+    },
+    {
+      "id": "imperial-siege-camp",
+      "name": "Imperial camp outside the labyrinth",
+      "theatre": "TH-LAB",
+      "x": 0.64435,
+      "y": 0.5576,
+      "placement": "RECONSTRUCTED",
+      "basis": "Where the 170,000 who did not enter the labyrinth stayed, with Caligulio's headquarters tents, until they were annihilated on D+11 (V13 Ch3-4, v13.txt:9489-9493, 9520, 17745-17760). No location is stated beyond 'outside' the labyrinth entrance at the capital. Placed just east of the Tempest marker on the line toward jura-forest-edge."
+    },
+    {
+      "id": "magitank-hq",
+      "name": "Magitank Force main camp (Gaster's headquarters)",
+      "theatre": "TH-DWG",
+      "x": 0.676,
+      "y": 0.4915,
+      "placement": "RECONSTRUCTED",
+      "basis": "Gaster's main camp lay far behind the battle line (V13 Ch2, v13.txt:5620); Testarossa kills him there (v13.txt:5763-6200). Placed east of attempted-rally-point, on the imperial side of the Dwargon gate front. The distance is not stated. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
+    },
+    {
+      "id": "dream-fortress",
+      "name": "Dream Fortress (isolated dimension)",
+      "theatre": "TH-CAP",
+      "placement": "ABSTRACT",
+      "basis": "Rimuru's party, teleported by Laplace toward the Imperial Capital, lands in an isolated space in another dimension used to confine troublesome opponents (V14 Ch4 v14.txt:14549-14559, 15754-15770; V15 Ch2 v15.txt:4687-4693, 4747-4750). It has no map position."
+    },
+    {
+      "id": "imperial-flagship-jura",
+      "name": "Emperor's flagship over the Great Jura Forest",
+      "theatre": "TH-DRG",
+      "x": 0.656,
+      "y": 0.536,
+      "placement": "RECONSTRUCTED",
+      "altitude": "AIR",
+      "basis": "The imperial flagship carrying Rudra hangs over the Jura theatre during the dragon battle and the flagship duels (V15 Ch1-Ch5, v15.txt:4771-4772, 11173-11177). Placed as an air layer just north-east of jura-airspace; no finer position is stated."
     }
   ],
   "theatreZones": {

@@ -9,7 +9,7 @@ const compat = new FlatCompat({ baseDirectory: __dirname });
 
 const config = [
   {
-    ignores: ['node_modules/**', '.next/**', 'out/**', 'public/data/**', 'next-env.d.ts'],
+    ignores: ['node_modules/**', '.next/**', 'out/**', 'public/data/**', 'next-env.d.ts', 'Sources of Truth/**', 'qa-artifacts/**'],
   },
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {

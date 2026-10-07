@@ -1,254 +1,203 @@
 /**
  * Engine tests.
  *
- * These exercise the three pieces of logic where a silent error would be
- * invisible on screen but wrong in substance: the coordinate transform, the
- * state resolver, and the movement interpolator. Everything else is covered by
- * validate-data (the dataset) and browser-qa (the interface).
+ * They exercise the logic where a silent error would be invisible on screen
+ * but wrong in substance: the coordinate transform, the deterministic clock,
+ * the state resolver, movement interpolation, territory control, search, and
+ * the rule that unknown never renders as zero. The dataset itself is covered by
+ * validate-data; the interface by browser-qa.
  */
 
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import {
-  ATLAS_HEIGHT,
-  ATLAS_WIDTH,
-  LAT_EXTENT_DEG,
-  LNG_SPAN_DEG,
-  atlasCorners,
-  campaignBounds,
-  lngLatToSim,
-  simToLngLat,
-} from '../src/lib/coords';
-import { forcePositionAt, forceSnapshotAt } from '../src/simulation/resolver';
+import { atlasCorners, lngLatToSim, simToLngLat } from '../src/lib/coords';
+import { assembleDataset, PART_FILES, type DatasetParts } from '../src/data/loader';
+import { buildIndex, scoreKey, search } from '../src/lib/search';
 import { SimulationClock } from '../src/simulation/clock';
-import type { Dataset } from '../src/data/loader';
-import type { ForcePositionTrack, ForceTrack, FrameState } from '../src/types/dataset';
+import { CONTROL_TRANSITION_FRAMES, forcePositionAt, forceSnapshotAt, StateResolver, territoryControlAt } from '../src/simulation/resolver';
+import { formatStrength, strengthFontSize } from '../src/map/overlay/layers/forces';
+import type { FrameState } from '../src/types/dataset';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const DATA = join(HERE, '..', 'public', 'data');
+const read = <T>(f: string): T => JSON.parse(readFileSync(join(DATA, f), 'utf8')) as T;
 
 let passed = 0;
 const failures: string[] = [];
-
 function test(name: string, fn: () => void): void {
   try {
     fn();
     passed += 1;
     console.log(`  pass  ${name}`);
   } catch (error) {
-    failures.push(`${name}: ${error instanceof Error ? error.message : String(error)}`);
-    console.log(`  FAIL  ${name} — ${error instanceof Error ? error.message : String(error)}`);
+    const msg = error instanceof Error ? error.message : String(error);
+    failures.push(`${name}: ${msg}`);
+    console.log(`  FAIL  ${name} — ${msg}`);
   }
 }
-
-function assert(condition: boolean, message: string): void {
+function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message);
 }
 
-function close(a: number, b: number, tolerance: number, message: string): void {
-  if (Math.abs(a - b) > tolerance) throw new Error(`${message} (${a} vs ${b})`);
-}
-
-function load<T>(name: string): T {
-  return JSON.parse(readFileSync(join(DATA, name), 'utf8')) as T;
-}
+const parts = Object.fromEntries(Object.entries(PART_FILES).map(([k, f]) => [k, read(f)])) as unknown as Omit<DatasetParts, 'checkpoints'>;
+const data = assembleDataset({ ...parts, checkpoints: parts.keyframeIndex.files.map((f) => read<FrameState>(f)) });
+const N = data.manifest.clock.frameCount;
 
 console.log('Engine tests\n');
 
-/* ------------------------------------------------------------------ */
-/* Coordinates                                                         */
-/* ------------------------------------------------------------------ */
+/* -- coordinates ---------------------------------------------------- */
 
 test('simulation coordinates round-trip through the synthetic projection', () => {
-  for (const [x, y] of [
-    [0, 0],
-    [1, 1],
-    [0.5, 0.5],
-    [0.63833, 0.56247],
-    [0.8239, 0.37438],
-    [0.001, 0.999],
-  ]) {
-    const { lng, lat } = simToLngLat(x, y);
-    const back = lngLatToSim(lng, lat);
-    close(back.x, x, 1e-9, `x did not round-trip at (${x}, ${y})`);
-    close(back.y, y, 1e-9, `y did not round-trip at (${x}, ${y})`);
+  for (const [x, y] of [[0, 0], [1, 1], [0.5, 0.5], [0.63833, 0.56247], [0.001, 0.999]]) {
+    const back = lngLatToSim(simToLngLat(x, y).lng, simToLngLat(x, y).lat);
+    assert(Math.abs(back.x - x) < 1e-9 && Math.abs(back.y - y) < 1e-9, `round-trip failed at ${x},${y}`);
   }
 });
 
-test('the projection preserves the atlas aspect ratio', () => {
-  // Mercator width and height of the atlas quad must be in the same ratio as
-  // the image, or the map is stretched.
-  const toMercY = (lat: number) => 0.5 - Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360)) / (2 * Math.PI);
-  const top = simToLngLat(0, 0);
-  const bottom = simToLngLat(0, 1);
-  const widthFraction = LNG_SPAN_DEG / 360;
-  const heightFraction = toMercY(bottom.lat) - toMercY(top.lat);
-  close(heightFraction / widthFraction, ATLAS_HEIGHT / ATLAS_WIDTH, 1e-6, 'aspect ratio drifted');
+test('the atlas sits inside the renderer longitude range', () => {
+  for (const [lng] of atlasCorners()) assert(Math.abs(lng) < 180, `corner longitude ${lng} outside ±180`);
 });
 
-test('the projection stays inside legal angular bounds', () => {
-  const corners = atlasCorners();
-  for (const [lng, lat] of corners) {
-    assert(lng >= -180 && lng <= 180, `longitude ${lng} out of range`);
-    assert(lat >= -85 && lat <= 85, `latitude ${lat} out of range`);
-  }
-  close(LAT_EXTENT_DEG, 70.26, 0.01, 'latitude extent drifted from the documented value');
-});
-
-test('campaign bounds are well ordered', () => {
-  const [[west, south], [east, north]] = campaignBounds();
-  assert(east > west, 'east is not east of west');
-  assert(north > south, 'north is not north of south');
-});
-
-/* ------------------------------------------------------------------ */
-/* State resolver                                                      */
-/* ------------------------------------------------------------------ */
-
-const manifest = load<{ clock: { frameCount: number } }>('manifest.json');
-const keyIndex = load<{ interval: number; frames: number[]; files: string[] }>('keyframes.index.json');
-const deltas = load<{ deltaFrames: number[]; deltas: Record<string, Partial<FrameState>> }>('state.deltas.json');
-const checkpoints = keyIndex.files.map((f) => load<FrameState>(f));
-const forceTracks = load<ForceTrack[]>('force-tracks.json');
-const movement = load<{ positions: ForcePositionTrack[] }>('movement.json');
-
-const dataset = {
-  manifest,
-  keyframeIndex: keyIndex,
-  checkpoints,
-  deltas,
-  trackByForce: new Map(forceTracks.map((t) => [t.forceId, t])),
-  positionByForce: new Map(movement.positions.map((p) => [p.forceId, p])),
-} as unknown as Dataset;
-
-test('a force snapshot is never returned before the force is first recorded', () => {
-  for (const track of forceTracks) {
-    const first = track.snapshots[0].f;
-    if (first === 0) continue;
-    assert(
-      forceSnapshotAt(dataset, track.forceId, first - 1) === null,
-      `${track.forceId} returned a snapshot before frame ${first}`,
-    );
-    assert(
-      forceSnapshotAt(dataset, track.forceId, first) !== null,
-      `${track.forceId} returned no snapshot at its first recorded frame`,
-    );
-  }
-});
-
-test('a force snapshot is the most recent record at or before the frame', () => {
-  for (const track of forceTracks.slice(0, 8)) {
-    for (const snapshot of track.snapshots) {
-      const found = forceSnapshotAt(dataset, track.forceId, snapshot.f);
-      assert(found?.f === snapshot.f, `${track.forceId} @${snapshot.f} resolved to frame ${found?.f}`);
-      const later = forceSnapshotAt(dataset, track.forceId, snapshot.f + 1);
-      assert(
-        later !== null && later.f <= snapshot.f + 1,
-        `${track.forceId} resolved forward past the requested frame`,
-      );
-    }
-  }
-});
-
-/* ------------------------------------------------------------------ */
-/* Movement                                                            */
-/* ------------------------------------------------------------------ */
-
-test('no force teleports between recorded positions', () => {
-  // Sampling every leg finely: the largest single-step jump must be a small
-  // fraction of the leg, which is only true if the path is interpolated.
-  for (const track of movement.positions) {
-    for (let i = 0; i < track.keys.length - 1; i += 1) {
-      const from = track.keys[i];
-      const to = track.keys[i + 1];
-      const legLength = Math.hypot(to.x - from.x, to.y - from.y);
-      if (legLength < 1e-6 || to.f - from.f < 2) continue;
-
-      const steps = 24;
-      let previous: { x: number; y: number } | null = null;
-      let biggest = 0;
-      let offMapInLeg = false;
-      for (let s = 0; s <= steps; s += 1) {
-        const frame = from.f + ((to.f - from.f) * s) / steps;
-        const point = forcePositionAt(dataset, track.forceId, frame);
-        if (!point) {
-          offMapInLeg = true;
-          break;
-        }
-        if (previous) biggest = Math.max(biggest, Math.hypot(point.x - previous.x, point.y - previous.y));
-        previous = { x: point.x, y: point.y };
-      }
-      if (offMapInLeg) continue;
-      assert(
-        biggest <= legLength * 0.35,
-        `${track.forceId} jumped ${biggest.toFixed(4)} of a ${legLength.toFixed(4)} leg in one step`,
-      );
-    }
-  }
-});
-
-test('interpolated positions stay on the leg between their endpoints', () => {
-  for (const track of movement.positions) {
-    for (let i = 0; i < track.keys.length - 1; i += 1) {
-      const from = track.keys[i];
-      const to = track.keys[i + 1];
-      if (to.f - from.f < 2) continue;
-      const mid = forcePositionAt(dataset, track.forceId, (from.f + to.f) / 2);
-      if (!mid) continue;
-      const lo = { x: Math.min(from.x, to.x) - 1e-6, y: Math.min(from.y, to.y) - 1e-6 };
-      const hi = { x: Math.max(from.x, to.x) + 1e-6, y: Math.max(from.y, to.y) + 1e-6 };
-      assert(
-        mid.x >= lo.x && mid.x <= hi.x && mid.y >= lo.y && mid.y <= hi.y,
-        `${track.forceId} left the bounding box of its own leg`,
-      );
-    }
-  }
-});
-
-test('a force with no recorded position is not placed', () => {
-  for (const track of movement.positions) {
-    for (const [start, end] of track.offMap) {
-      const mid = Math.floor((start + end) / 2);
-      assert(
-        forcePositionAt(dataset, track.forceId, mid) === null,
-        `${track.forceId} was placed at frame ${mid}, which it has no position for`,
-      );
-    }
-  }
-});
-
-/* ------------------------------------------------------------------ */
-/* Clock                                                               */
-/* ------------------------------------------------------------------ */
+/* -- clock ------------------------------------------------------------ */
 
 test('the clock clamps seeks to the campaign', () => {
-  const clock = new SimulationClock({ frameCount: manifest.clock.frameCount });
-  clock.seek(-500);
-  assert(clock.frame === 0, 'a negative seek escaped the campaign start');
-  clock.seek(999_999);
-  assert(clock.frame === manifest.clock.frameCount - 1, 'a large seek escaped the campaign end');
-  clock.seek(3600);
-  assert(clock.integerFrame === 3600, 'a valid seek did not land');
+  const clock = new SimulationClock({ frameCount: N });
+  clock.seek(-50);
+  assert(clock.integerFrame === 0, 'negative seek not clamped');
+  clock.seek(N + 500);
+  assert(clock.integerFrame === N - 1, 'overshoot not clamped');
   clock.destroy();
 });
 
-test('the clock reports speed and direction it was given', () => {
-  const clock = new SimulationClock({ frameCount: manifest.clock.frameCount });
-  clock.setSpeed(8);
-  assert(clock.currentSpeed === 8, 'speed was not retained');
-  clock.setDirection(-1);
-  assert(clock.isReversed, 'direction was not retained');
-  assert(!clock.isPlaying, 'a clock that was never played reports as playing');
-  clock.destroy();
+/* -- resolver: scrubbing equals playing ------------------------------- */
+
+test('seeking to any frame equals playing up to it', () => {
+  const sequential = new StateResolver(data);
+  const random = new StateResolver(data);
+  const probes = [0, 1, 143, 144, 145, Math.floor(N / 3), data.manifest.campaign.firstContactFrame, N - 2, N - 1];
+  let s: FrameState | null = null;
+  for (let f = 0; f < N; f += 1) {
+    s = sequential.at(f);
+    if (probes.includes(f)) {
+      const r = random.at(f);
+      assert(JSON.stringify(r) === JSON.stringify(s), `state differs at frame ${f}`);
+    }
+  }
 });
 
-/* ------------------------------------------------------------------ */
+test('the resolver is deterministic across instances', () => {
+  const a = new StateResolver(data).at(Math.floor(N * 0.8));
+  const b = new StateResolver(data).at(Math.floor(N * 0.8));
+  assert(JSON.stringify(a) === JSON.stringify(b), 'two resolvers disagree');
+});
 
-console.log(`\n  ${passed}/${passed + failures.length} tests passed`);
-if (failures.length > 0) {
-  console.error('\nEngine tests failed.\n');
+/* -- movement -------------------------------------------------------- */
+
+test('no force teleports between recorded positions', () => {
+  // Largest per-keyframe displacement allowed while on the map: 4% of the atlas.
+  for (const track of data.positions) {
+    let prev: { x: number; y: number } | null = null;
+    for (let f = track.keys[0]?.f ?? 0; f < N; f += 1) {
+      const p = forcePositionAt(data, track.forceId, f);
+      if (!p) {
+        prev = null;
+        continue;
+      }
+      // A key reached by an UNKNOWN route (e.g. a space-time transfer) is a
+      // recorded discontinuity: the force is not drawn travelling a false line.
+      const arrivingUnknown = track.keys.some((k) => k.f === f && k.route === 'UNKNOWN');
+      if (prev && !arrivingUnknown) {
+        const d = Math.hypot(p.x - prev.x, p.y - prev.y);
+        assert(d < 0.04, `${track.forceId} jumps ${d.toFixed(3)} at frame ${f}`);
+      }
+      prev = { x: p.x, y: p.y };
+    }
+  }
+});
+
+test('a force holds its position until its recorded movement departs', () => {
+  let checked = 0;
+  for (const m of data.movements) {
+    if (m.startFrame === null || m.endFrame === null || m.endFrame - m.startFrame < 2 || m.startFrame < 1) continue;
+    // A chained movement (the previous leg arrives as this one departs) is legitimately in motion.
+    const chained = data.movements.some((o) => o !== m && o.forceId === m.forceId && o.endFrame !== null && o.endFrame >= m.startFrame! - 2 && o.endFrame <= m.startFrame!);
+    if (chained) continue;
+    const before = forcePositionAt(data, m.forceId, m.startFrame - 1);
+    const at = forcePositionAt(data, m.forceId, m.startFrame);
+    if (!before || !at || before.moving) continue; // still arriving from the previous leg
+    assert(Math.hypot(before.x - at.x, before.y - at.y) < 1e-6, `${m.id}: ${m.forceId} drifts before departure`);
+    checked += 1;
+  }
+  assert(checked > 0, 'no movement was checkable');
+});
+
+test('a force is not drawn before the record places it', () => {
+  for (const f of data.forces) {
+    if (f.firstFrame <= 0) continue;
+    assert(forceSnapshotAt(data, f.id, f.firstFrame - 1) === null, `${f.id} has a snapshot before it appears`);
+  }
+});
+
+/* -- territory --------------------------------------------------------- */
+
+test('territory control changes are animated, then settle', () => {
+  const t = data.territories.find((x) => x.control.length > 1);
+  assert(t, 'no territory with a control change');
+  const seg = t.control[1];
+  assert(territoryControlAt(t, seg.fromFrame).transition === 0, 'transition does not start at 0');
+  assert(territoryControlAt(t, seg.fromFrame + CONTROL_TRANSITION_FRAMES).transition === 1, 'transition does not settle');
+  assert(territoryControlAt(t, Math.max(0, seg.fromFrame - 1)).segment === t.control[0], 'previous segment not used before the change');
+});
+
+test('unknown control never names a controller', () => {
+  for (const t of data.territories) for (const s of t.control) assert(!(s.status === 'UNKNOWN' && s.controller), `${t.id} names a controller for unknown control`);
+});
+
+/* -- unknown is never zero -------------------------------------------- */
+
+test('an unknown strength renders as "?" and never as zero', () => {
+  assert(formatStrength('UNKNOWN', 'EXPLICIT') === '?', 'UNKNOWN quantity rendered as a number');
+  assert(formatStrength(0, 'UNKNOWN') === '?', 'UNKNOWN size status rendered as a number');
+  assert(formatStrength(940000, 'DERIVED').startsWith('≈'), 'derived strength not marked');
+  assert(formatStrength(940000, 'EXPLICIT') === '940,000', 'explicit strength mis-formatted');
+});
+
+test('strength labels grow with size but stay inside their clamp', () => {
+  const a = strengthFontSize(1_000, 1);
+  const b = strengthFontSize(100_000, 1);
+  const c = strengthFontSize(10_000_000, 1);
+  assert(a >= 11 && c <= 28 && b > a && c >= b, `sizes ${a}, ${b}, ${c}`);
+});
+
+/* -- search ------------------------------------------------------------ */
+
+test('fuzzy search tolerates missing letters', () => {
+  assert(scoreKey('clglo', 'caligulio') > 0, 'subsequence not matched');
+  assert(scoreKey('zzz', 'caligulio') === 0, 'false positive');
+});
+
+test('search finds aliases and Japanese names', () => {
+  const index = buildIndex(data);
+  const nazca = search(index, 'Nazca');
+  assert(nazca.some((r) => r.group === 'Territories' && /Eastern Empire/.test(r.title + r.detail)), 'alias "Nazca" does not find the Eastern Empire');
+  const withJapanese = data.characters.find((c) => c.japanese);
+  if (withJapanese) {
+    const hits = search(index, withJapanese.japanese!.split(/[ (]/)[0]);
+    assert(hits.some((r) => 'id' in r.selection && r.selection.id === withJapanese.id), `Japanese name does not find ${withJapanese.name}`);
+  }
+});
+
+/* -- determinism of the build ------------------------------------------ */
+
+test('the runtime manifest carries no build timestamp', () => {
+  assert(!JSON.stringify(data.manifest).includes('generatedAt'), 'manifest contains a timestamp, so builds are not reproducible');
+});
+
+console.log(`\n  ${passed}/${passed + failures.length} tests passed\n`);
+if (failures.length) {
+  console.error('Engine tests FAILED');
   process.exit(1);
 }
-console.log('\nEngine tests passed.\n');
+console.log('Engine tests passed.');

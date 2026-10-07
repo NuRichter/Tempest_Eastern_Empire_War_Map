@@ -4,48 +4,83 @@
 
 :root {
   color-scheme: dark;
+  --label-scale: 1;
 }
 
 html,
 body {
   height: 100%;
-  background-color: #0a0d0e;
-  color: #cdc4b0;
+  background-color: #090d10;
+  color: #e3e7e8;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-feature-settings: 'tnum' 1;
 }
 
-/* Scrollbars belong to the instrument, not to the operating system. */
+/* Keyboard focus is always visible; pointer focus is not decorated. */
+:focus-visible {
+  outline: 2px solid #d4ab57;
+  outline-offset: 2px;
+}
+
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(160, 138, 82, 0.35) transparent;
+  scrollbar-color: #3a4a54 transparent;
 }
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 *::-webkit-scrollbar-thumb {
-  background: rgba(160, 138, 82, 0.3);
-}
-*::-webkit-scrollbar-thumb:hover {
-  background: rgba(160, 138, 82, 0.5);
+  background: #26323a;
+  border-radius: 4px;
 }
 *::-webkit-scrollbar-track {
   background: transparent;
 }
 
-@keyframes slide {
+@layer components {
+  /* A section label: small capitals, tracked, quiet. */
+  .eyebrow {
+    @apply font-ui text-2xs font-semibold uppercase tracking-label text-fg-3;
+  }
+  .figure {
+    @apply font-mono tabular-nums;
+  }
+  /* Instrument controls: square, flat, 32px hit area minimum. */
+  .ctl {
+    @apply inline-flex h-8 min-w-8 items-center justify-center gap-1.5 rounded-[3px] border border-ink-500 bg-ink-800/90 px-2 text-xs text-fg-2 transition-colors duration-150 hover:border-ink-400 hover:text-fg disabled:opacity-40;
+  }
+  .ctl[aria-pressed='true'],
+  .ctl[data-active='true'] {
+    @apply border-accent/70 bg-accent/10 text-fg;
+  }
+  .surface {
+    @apply border border-ink-500 bg-ink-800/95 shadow-panel;
+  }
+}
+
+@keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(300%); }
 }
 
-/* MapLibre ships light-themed chrome; the atlas is dark. */
+@keyframes caption-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* MapLibre ships light chrome; the atlas draws its own. */
 .maplibregl-ctrl-attrib,
 .maplibregl-ctrl-logo {
   display: none !important;
 }
 .maplibregl-canvas:focus {
   outline: none;
+}
+.maplibregl-canvas:focus-visible {
+  outline: 2px solid #d4ab57;
+  outline-offset: -2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

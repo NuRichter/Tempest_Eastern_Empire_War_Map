@@ -1,8 +1,9 @@
 {
   "name": "tempest-eastern-empire-war-map",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Interactive cinematic war map for the Tempest-Eastern Empire War, built on the Step 1 canonical battlefield dataset.",
+  "description": "Fan-made campaign atlas of the Tempest-Eastern Empire War (Tensura LN vols 12-16): canon-audited timeline, traced territories, army sizes and movements, with every reconstruction labelled. Not official Tensura material.",
+  "author": "NuRichter",
   "scripts": {
     "compile-data": "tsx scripts/compile-data.ts",
     "validate-data": "tsx scripts/validate-data.ts",
@@ -37,8 +38,7 @@
     "puppeteer": "^25.10.0",
     "tailwindcss": "^3.4.17",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.3",
-    "xlsx": "^0.18.5"
+    "typescript": "^5.7.3"
   },
   "engines": {
     "node": ">=20.11"

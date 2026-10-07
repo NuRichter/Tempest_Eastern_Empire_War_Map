@@ -19,7 +19,7 @@ import { closeSync, existsSync, openSync, readdirSync, readFileSync, readSync, s
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import type { NationFlagManifest, Nation } from '../src/types/dataset';
+import type { Character, NationFlagManifest, Nation } from '../src/types/dataset';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
@@ -55,6 +55,23 @@ function readablePng(absolute: string): boolean {
   } catch {
     return false;
   }
+}
+
+/** Width and height of a PNG or baseline/progressive JPEG, read from the header. */
+function imageSize(absolute: string): [number, number] | null {
+  const buf = readFileSync(absolute);
+  if (buf.subarray(0, 8).equals(PNG_MAGIC)) return [buf.readUInt32BE(16), buf.readUInt32BE(20)];
+  if (buf[0] === 0xff && buf[1] === 0xd8) {
+    let i = 2;
+    while (i < buf.length) {
+      if (buf[i] !== 0xff) return null;
+      const marker = buf[i + 1];
+      const len = buf.readUInt16BE(i + 2);
+      if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) return [buf.readUInt16BE(i + 7), buf.readUInt16BE(i + 5)];
+      i += 2 + len;
+    }
+  }
+  return null;
 }
 
 function main(): void {
@@ -156,8 +173,36 @@ function main(): void {
     }
   }
 
+  /* -- base maps ---------------------------------------------------- */
+
+  // Both map styles must exist and share the 2641 x 2035 frame the territory
+  // geometry was traced in; otherwise borders would not sit on the map.
+  for (const map of ['maps/base-map.png', 'maps/myth-map.jpg']) {
+    const absolute = join(PUBLIC, map);
+    if (!existsSync(absolute)) {
+      errors.push(`Map style asset missing: public/${map}`);
+      continue;
+    }
+    const dims = imageSize(absolute);
+    if (!dims) errors.push(`Map style asset is not a readable PNG or JPEG: public/${map}`);
+    else if (dims[0] !== 2641 || dims[1] !== 2035) errors.push(`public/${map} is ${dims[0]} x ${dims[1]}; every map style must be 2641 x 2035.`);
+  }
+
+  /* -- photocards ---------------------------------------------------- */
+
+  const characters = JSON.parse(readFileSync(join(DATA, 'characters.json'), 'utf8')) as Character[];
+  let cards = 0;
+  for (const c of characters) {
+    if (!c.photocard) continue;
+    if (/^https?:/i.test(c.photocard.src)) errors.push(`Character ${c.id}: photocard is a remote hotlink; local assets only.`);
+    else if (!existsSync(join(PUBLIC, c.photocard.src))) errors.push(`Character ${c.id}: photocard missing at public${c.photocard.src}. Run python scripts/characters/build_photocards.py.`);
+    else cards += 1;
+    if (!c.photocard.source) errors.push(`Character ${c.id}: photocard has no recorded source.`);
+  }
+
   /* -- report ------------------------------------------------------ */
 
+  console.log(`  photocards        ${cards} of ${characters.length} characters`);
   console.log(`  declared nations  ${Object.keys(flags).length}`);
   console.log(`  flags present     ${present}`);
   console.log(`  flags missing     ${missing.length}`);

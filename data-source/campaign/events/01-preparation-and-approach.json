@@ -1,0 +1,3044 @@
+[
+ {
+  "id": "EVT-0004",
+  "day": -43,
+  "time": "10:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "A daily planning meeting with Benimaru in Rimuru's office; V12 Ch2, before the imperial council in narrative order. No date.",
+  "theatreId": "TH-DWG",
+  "front": "Command",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Rimuru's office, capital Rimuru",
+  "actor": "Rimuru Tempest / Benimaru",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "benimaru",
+   "shion",
+   "gobta",
+   "geld",
+   "gabiru"
+  ],
+  "forces": [
+   "F-TEM-000",
+   "F-TEM-020",
+   "F-TEM-001",
+   "F-TEM-002",
+   "F-TEM-003",
+   "F-TEM-005"
+  ],
+  "type": "STRATEGIC_PREPARATION",
+  "title": "Tempest order of battle presented: three corps, about 52,000",
+  "immediateResult": "Benimaru lists the registered strength: First Corps (Gobta) about 12,000, Second Corps (Geld) about 37,000, Third Corps (Gabil) about 3,000, some 52,000 in all.",
+  "operationalResult": "Without Geld's engineer corps only about 15,000 are at hand; the Second Corps is to be recalled as soon as war begins.",
+  "strategicResult": "After reorganisation Tempest fields more than 100,000 with a 150,000-strong Western reserve; Rimuru guesses the whole total is not under 200,000 (v12.txt:4623-4635).",
+  "strength": {
+   "tempest": 52000,
+   "empire": "UNKNOWN",
+   "note": "Standing force of the three corps (v12.txt:3987-3990)."
+  },
+  "commandStatus": "Rimuru and Benimaru in daily planning",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3505"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3987"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3999"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4623"
+   }
+  ],
+  "evidence": "In Rimuru's office Benimaru lists the First (~12,000), Second (~37,000) and Third (~3,000) Corps, about 52,000; the population has passed one million, and Geld's corps is to be recalled when war starts.",
+  "reconstructionNote": "D-43 is a placement. V12 Ch2 precedes the V12 Ch4 imperial council in narrative order, but no interval is stated. The time is a simulation slot.",
+  "notes": "This is not the 'subordinates' gathering' of v13.txt:248; that is the V12 Ch5 war council (EVT-0008). The 150,000 figure is the Western Army (F-ALL-002), not Tempest's national potential. Shion's Yomigaeri number 'hundreds' in V12 (v12.txt:3889).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Location: Rimuru's office, not the Control Room (v12.txt:3505).",
+    "Tempest strength 52,000 standing, not 150,000 (v12.txt:3987-3990).",
+    "Strategic result: >100,000 field force plus 150,000 Western reserve; total guessed not under 200,000 (v12.txt:4623-4635).",
+    "Moved from D-38 to D-43, before EVT-0001 (V12 Ch2 precedes V12 Ch4).",
+    "Removed the 'subordinates' gathering' anchor claim (v13.txt:248 refers to v12.txt:12108).",
+    "Effects: F-TEM-000 UNKNOWN (was 150,000); F-TEM-001/003 stay in Tempest until MOV-002/MOV-021; F-TEM-020 52,000 added; F-TEM-005 UNKNOWN; TH-DWG activation moved to EVT-0026."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-000": {
+     "strength": "UNKNOWN",
+     "effective": "UNKNOWN",
+     "sizeStatus": "UNKNOWN",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "MEDIUM",
+     "location": "jura-tempest-federation",
+     "locationText": "Jura-Tempest Federation"
+    },
+    "F-TEM-020": {
+     "strength": 52000,
+     "effective": 52000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "jura-tempest-federation",
+     "locationText": "Jura-Tempest Federation"
+    },
+    "F-TEM-001": {
+     "strength": 12000,
+     "effective": 12000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "jura-tempest-federation",
+     "locationText": "Jura-Tempest Federation"
+    },
+    "F-TEM-002": {
+     "strength": 37000,
+     "effective": 37000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "worldwide-deployment",
+     "locationText": "Deployed on works abroad; to be recalled when war begins"
+    },
+    "F-TEM-003": {
+     "strength": 3000,
+     "effective": 3000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "jura-tempest-federation",
+     "locationText": "Jura-Tempest Federation"
+    },
+    "F-TEM-005": {
+     "strength": "UNKNOWN",
+     "effective": "UNKNOWN",
+     "sizeStatus": "UNKNOWN",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "LOW",
+     "location": "jura-tempest-federation",
+     "locationText": "Jura-Tempest Federation"
+    }
+   },
+   "theatres": {},
+   "campaign": {
+    "activeCommanders": "Rimuru (Tempest head of state) with Benimaru; Emperor Rudra (Empire)"
+   }
+  }
+ },
+ {
+  "id": "EVT-0022",
+  "day": -43,
+  "time": "11:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "Same V12 Ch2 planning sequence; no date.",
+  "theatreId": "TH-DWG",
+  "front": "Command",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Rimuru's office, capital Rimuru",
+  "actor": "Rimuru Tempest / Benimaru",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "benimaru",
+   "masayuki"
+  ],
+  "forces": [
+   "F-TEM-020",
+   "F-TEM-021",
+   "F-TEM-004",
+   "F-TEM-006",
+   "F-ALL-002"
+  ],
+  "type": "STRATEGIC_PREPARATION",
+  "title": "Order of battle reorganised into two wings under Benimaru",
+  "immediateResult": "Right wing 52,000 (First to Third Corps) and left wing 50,000 (Monster's Army 30,000 and the Volunteer Corps 20,000); Benimaru is supreme commander.",
+  "operationalResult": "The 20,000 volunteers follow Masayuki as \"the Hero\"; the 150,000-strong Western Army is deliberately left unused in the West as a reserve.",
+  "strategicResult": "Tempest can field more than 100,000, though Rimuru is still unsure it is enough against the Empire.",
+  "strength": {
+   "tempest": 102000,
+   "empire": "UNKNOWN",
+   "note": "DERIVED: 52,000 + 50,000; the text says \"more than 100,000\" (v12.txt:4627)."
+  },
+  "commandStatus": "Benimaru supreme commander",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4020"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4352"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4619"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4623"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:4627"
+   }
+  ],
+  "evidence": "The chart's left side lists the Western Army 150,000, Monster's Army 30,000 and Volunteer Corps 20,000; the revised chart has a 52,000 right wing and 50,000 left wing under Benimaru, with 150,000 held in the West.",
+  "reconstructionNote": "Placed one hour after EVT-0004 for order only; the reorganisation follows several discussions in the same chapter and is undated.",
+  "notes": "Western nations are also preparing reinforcements from their knightly orders (v12.txt:4631-4633).",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added from audit missingEvents (v12.txt:4016-4024, 4348-4354, 4612-4636).",
+    "Campaign tempestTotal 102,000 (DERIVED)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-021": {
+     "strength": 50000,
+     "effective": 50000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "jura-tempest-federation",
+     "locationText": "Jura-Tempest Federation (station not stated)"
+    },
+    "F-TEM-004": {
+     "strength": 30000,
+     "effective": 30000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "jura-tempest-federation",
+     "locationText": "Jura-Tempest Federation (station not stated)"
+    },
+    "F-TEM-006": {
+     "strength": 20000,
+     "effective": 20000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "MEDIUM",
+     "location": null,
+     "locationText": "Station not stated"
+    },
+    "F-ALL-002": {
+     "strength": 150000,
+     "effective": 150000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "Held in the West as a reserve",
+     "confidence": "HIGH",
+     "location": "various-western-states",
+     "locationText": "Western nations (left in place)"
+    }
+   },
+   "theatres": {},
+   "campaign": {
+    "tempestTotal": 102000,
+    "activeCommanders": "Rimuru (Tempest head of state), Benimaru supreme commander; Emperor Rudra (Empire)"
+   }
+  }
+ },
+ {
+  "id": "EVT-0002",
+  "day": -40,
+  "time": "08:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "Same imperial council as EVT-0001, narrated before the Marshal's decision.",
+  "theatreId": "TH-CAP",
+  "front": "Strategic rear",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-capital",
+  "locationText": "Imperial council, Imperial Capital",
+  "actor": "Imperial Intelligence Bureau",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Western Nations",
+  "opponentFaction": "Western Nations",
+  "characters": [],
+  "forces": [
+   "F-EMP-014"
+  ],
+  "type": "INTELLIGENCE",
+  "title": "Imperial Intelligence Bureau assesses Western war potential",
+  "immediateResult": "The Bureau puts the total strength of the Western nations under one million, of which at best about 400,000 could be raised.",
+  "operationalResult": "It doubts the Western states would combine smoothly or use their troops intelligently.",
+  "strategicResult": "Against about 400,000, the Empire counts more than one million elite troops; imperial confidence is set.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 1000000,
+   "note": "Lower bound: \"more than one million\" elite (v12.txt:10208)."
+  },
+  "commandStatus": "Imperial Intelligence Bureau",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10200"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10208"
+   }
+  ],
+  "evidence": "The Bureau rates Western strength under one million, realistically up to 400,000 and poorly coordinated; against that the Empire has more than a million elite troops.",
+  "reconstructionNote": "D-40 is a placement: the council must precede Gadora's audience, which follows two \"several days\" passages on the Tempest side (v12.txt:11582, 11817).",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved before EVT-0001: narrated before the Marshal's decision (v12.txt:10200 precedes 10785).",
+    "Empire strength marked as a lower bound (v12.txt:10208)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0001",
+  "day": -40,
+  "time": "09:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "The war decree was issued \"on this day\", the day of the council.",
+  "theatreId": "TH-CAP",
+  "front": "Strategic rear",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-capital",
+  "locationText": "Imperial council, Imperial Capital",
+  "actor": "Imperial council (the masked Marshal)",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "rudra",
+   "velgrynd",
+   "calgurio",
+   "yuuki",
+   "gradim",
+   "gadra"
+  ],
+  "forces": [
+   "F-EMP-000",
+   "F-EMP-040",
+   "F-EMP-001",
+   "F-EMP-070"
+  ],
+  "type": "MOBILIZATION",
+  "title": "Imperial council adopts the invasion; war decree issued in the Emperor's name",
+  "immediateResult": "On the Marshal's word the council gives the invasion of the Great Jura Forest to the Armored Division under Caligulio.",
+  "operationalResult": "The division counts over two million, but at short notice at most about one million can be mobilised.",
+  "strategicResult": "Rudra says nothing; that day the decree is issued in his name and the Empire enters a war of aggression on three fronts.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": "Armored Division: over 2,000,000, about 1,000,000 deployable (v12.txt:10132-10135)."
+  },
+  "commandStatus": "The Marshal fixes the plan; Emperor Rudra silent; decree issued in his name",
+  "intensity": "LOW",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:9861"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10132"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10785"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10978"
+   }
+  ],
+  "evidence": "At the imperial council the masked Marshal's words settle the Jura invasion on Caligulio's legion; Rudra does not speak and the decree goes out in his name that day.",
+  "reconstructionNote": "D-40 is a placement; see EVT-0002. The Marshal is Velgrynd (revealed in V15 Ch1).",
+  "notes": "Gadora argued against the war at this council (v12.txt:11920-11921).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Actor: the imperial council and the Marshal, not the Emperor; Rudra silent (v12.txt:10785-10796, 10978-10980).",
+    "Effects: 2,000,000 moved from F-EMP-000 to F-EMP-040; F-EMP-001 = 1,000,000; F-EMP-000 UNKNOWN (v12.txt:10132-10135).",
+    "Sources: v12.txt:9861, 10785, 10978."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-000": {
+     "strength": "UNKNOWN",
+     "effective": "UNKNOWN",
+     "sizeStatus": "UNKNOWN",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "MEDIUM",
+     "location": "imperial-interior",
+     "locationText": "Eastern Empire (nationwide)"
+    },
+    "F-EMP-040": {
+     "strength": 2000000,
+     "effective": 2000000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "imperial-interior",
+     "locationText": "Eastern Empire (including standby troops nationwide)"
+    },
+    "F-EMP-001": {
+     "strength": 1000000,
+     "effective": 1000000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "imperial-interior",
+     "locationText": "Eastern Empire"
+    }
+   },
+   "theatres": {
+    "TH-CAP": {
+     "status": "ACTIVE",
+     "frontline": "War decree issued; the legions assigned to three fronts",
+     "battleStatus": "NOT_STARTED",
+     "control": "EMPIRE_CONTROLLED"
+    }
+   },
+   "campaign": {
+    "activeCommanders": "Rimuru (Tempest head of state), Benimaru supreme commander; the Marshal directing the Empire's war, decree in Emperor Rudra's name"
+   }
+  }
+ },
+ {
+  "id": "EVT-0023",
+  "day": -40,
+  "time": "09:10",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "Same council as EVT-0001.",
+  "theatreId": "TH-CAP",
+  "front": "Strategic rear",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-capital",
+  "locationText": "Imperial council, Imperial Capital",
+  "actor": "The Marshal",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Tempest, Dwargon and the Western nations",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "velgrynd",
+   "calgurio",
+   "yuuki",
+   "gradim"
+  ],
+  "forces": [
+   "F-EMP-040",
+   "F-EMP-030",
+   "F-EMP-031",
+   "F-EMP-020",
+   "F-EMP-060"
+  ],
+  "type": "COMMAND",
+  "title": "Council assigns the legions: Armored Division to Jura, Composite Division against Dwargon, Magic Beast Division against the West",
+  "immediateResult": "Armored Division (Caligulio) to invade the Great Jura Forest; Composite Division (Yuuki) to press Dwargon and guard the capital; Magic Beast Division (Gradim) to strike the West (Ingracia, Farmenas).",
+  "operationalResult": "Caligulio keeps 100 airships for his own attack; the other 300 are to carry the Magic Beast Division, 30,000 soldiers with 30,000 mounts.",
+  "strategicResult": "The Empire commits to a simultaneous offensive on three axes.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "The Marshal; Yuuki swallows his objection",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10785"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10788"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10835"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10863"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10870"
+   }
+  ],
+  "evidence": "The Marshal hands pressure on Dwargon and the capital's defence to the Hybrid (Composite) legion and sends Gradim's legion against Ingracia; 100 airships stay with Caligulio, 300 carry Gradim's 60,000 men and beasts.",
+  "reconstructionNote": "Placed ten minutes after EVT-0001 for order only. The blockade force (F-EMP-031) departure is not dated; MOV-008 starts here.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added from audit missingEvents (v12.txt:10785-10837, 10863-10871).",
+    "Start event for MOV-008 (request filed)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-030": {
+     "strength": 200000,
+     "effective": 200000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "Tasked to press Dwargon and guard the capital",
+     "confidence": "HIGH",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital"
+    },
+    "F-EMP-031": {
+     "strength": "UNKNOWN",
+     "effective": "UNKNOWN",
+     "sizeStatus": "UNKNOWN",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "Tasked to press Dwargon; departure not dated",
+     "confidence": "LOW",
+     "location": "imperial-interior",
+     "locationText": "Eastern Empire"
+    },
+    "F-EMP-020": {
+     "strength": 30000,
+     "effective": 30000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "Tasked to strike the West by air",
+     "confidence": "HIGH",
+     "location": "imperial-interior",
+     "locationText": "Eastern Empire"
+    },
+    "F-EMP-060": {
+     "strength": 300,
+     "effective": 300,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "To carry the Magic Beast Division",
+     "confidence": "HIGH",
+     "location": "imperial-interior",
+     "locationText": "Eastern Empire"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0024",
+  "day": -34,
+  "time": "09:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "\"Several more days\" after the previous Tempest scene; \"no movement today either\".",
+  "theatreId": "TH-CAP",
+  "front": "Imperial border",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-interior",
+  "locationText": "Imperial border security base (Argos image)",
+  "actor": "Rimuru Tempest / Benimaru (Argos)",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial Army",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "benimaru"
+  ],
+  "forces": [
+   "F-EMP-010"
+  ],
+  "type": "RECONNAISSANCE",
+  "title": "Argos shows a large imperial army massed at the border base: no movement again",
+  "immediateResult": "On the Control Room screens a large number of imperial troops is gathered around a security base on the military border.",
+  "operationalResult": "Benimaru remarks that there is no movement today either; Tempest keeps watch while Gadora is out of contact.",
+  "strategicResult": "Tempest sees the concentration but does not yet know what the imperial council decided.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru and Benimaru in the Control Room",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:11817"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:11827"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:11831"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:11836"
+   }
+  ],
+  "evidence": "Worried that Gadora has not called, Rimuru visits the Control Room; Argos shows many soldiers massed around a border security base, and Benimaru notes there is no movement today either.",
+  "reconstructionNote": "D-34 is a placement after two \"several days\" passages (v12.txt:11582, 11817). Same day as Gadora's return (EVT-0025), which interrupts the scene.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added from audit missingEvents (v12.txt:11827-11836).",
+    "F-EMP-010 shown at the border with strength UNKNOWN (940,000 first applies at departure, EVT-0003)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-010": {
+     "strength": "UNKNOWN",
+     "effective": "UNKNOWN",
+     "sizeStatus": "UNKNOWN",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "LOW",
+     "location": "imperial-interior",
+     "locationText": "Imperial border security base"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0025",
+  "day": -34,
+  "time": "13:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "The audience took place \"today\"; the attack was less than ten minutes before Gadora reappeared.",
+  "theatreId": "TH-CAP",
+  "front": "Imperial rear",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-capital",
+  "locationText": "Emperor's chambers (killed); revives on floor 70 of the labyrinth",
+  "actor": "Gadora",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Unknown assailant",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gadra",
+   "rudra",
+   "rimuru",
+   "benimaru",
+   "diablo",
+   "ramiris",
+   "veldora",
+   "adalmann"
+  ],
+  "forces": [],
+  "type": "ASSASSINATION",
+  "title": "Gadora killed at his imperial audience; revives in Tempest and reports the council",
+  "immediateResult": "Granted an audience to petition Rudra, Gadora is stabbed in the heart from behind in the Emperor's chambers; a resurrection bracelet returns him alive to the labyrinth.",
+  "operationalResult": "He reports that the council leaned to war despite his anti-war advocacy; the attacker could approach him unnoticed.",
+  "strategicResult": "Tempest learns the imperial decision first-hand and assumes another master-class fighter on the imperial side.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Gadora acting on Rimuru's instructions",
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:11179"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:11222"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:11888"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:11928"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:11965"
+   }
+  ],
+  "evidence": "Gadora teleports into the labyrinth; he petitioned Rudra, was killed in the imperial chambers under ten minutes earlier, and survived through a resurrection bracelet; Diablo notes a stab to the heart from behind.",
+  "reconstructionNote": "Day is a placement (D-34, after two \"several days\" passages). The audience-to-return interval is canonical (under ten minutes, v12.txt:11929-11931); the clock time is a slot.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added from audit missingEvents (v12.txt:11179-11185, 11890-11935)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0009",
+  "day": -34,
+  "time": "14:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "After his return to Tempest the same day; no explicit time.",
+  "theatreId": "TH-CAP",
+  "front": "Imperial rear",
+  "battle": null,
+  "battleType": null,
+  "location": "ramiris-labyrinth",
+  "locationText": "Tempest (Gadora); Yuuki receives the call in his office, Imperial Capital",
+  "actor": "Gadora",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Yuuki Kagurazaka",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gadra",
+   "yuuki",
+   "rimuru"
+  ],
+  "forces": [],
+  "type": "INTELLIGENCE",
+  "title": "Gadora warns Yuuki by magic communication, then reports to Rimuru",
+  "immediateResult": "Gadora gives Yuuki a hurried warning, saying he has no time to talk and that Yuuki should take care not to be used, then reports and liaises with Rimuru.",
+  "operationalResult": "Yuuki concludes that Gadora is safe and appears to have gone over to Rimuru.",
+  "strategicResult": "Gadora becomes a link between Tempest and Yuuki on the eve of the war.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Gadora acting on his own judgement",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Prologue",
+    "locator": "v13.txt:83"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Prologue",
+    "locator": "v13.txt:96"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Prologue",
+    "locator": "v13.txt:104"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:11928"
+   }
+  ],
+  "evidence": "In the V13 Prologue Gadora calls Yuuki by magic communication with a warning, then reports to Rimuru; Yuuki remarks the old man seems to have run to Rimuru's side.",
+  "reconstructionNote": "Same day as EVT-0025 by the plan's reading of the V13 Prologue (\"he reached a conclusion and acted at once\"); the day itself is a placement.",
+  "notes": "The pre-audit \"imperial minister / ministry source\" results came from a garbled line praising Gadora's reporting discipline (v13.txt:96-99); nothing says a minister works for Tempest.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D-39 to D-34, after the audience and return (v12.txt:11582, 11817, 11928).",
+    "Location: Gadora in Tempest, Yuuki remote (v12.txt:11909-11916; v13.txt:83-99).",
+    "Opponent: Yuuki (v13.txt:83-96).",
+    "Deleted the \"imperial minister / ministry source\" results (mistranslation, v13.txt:96-99)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0010",
+  "day": -34,
+  "time": "14:30",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "\"Today it was raining\"; directly after Gadora's call.",
+  "theatreId": "TH-CAP",
+  "front": "Imperial rear",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-capital",
+  "locationText": "Yuuki's office, Imperial Capital",
+  "actor": "Yuuki Kagurazaka",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Gadora (message assessed)",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "yuuki",
+   "kagali",
+   "gadra",
+   "masayuki",
+   "rudra"
+  ],
+  "forces": [
+   "F-EMP-030"
+  ],
+  "type": "INTELLIGENCE",
+  "title": "Yuuki weighs Gadora's warning with Kagali",
+  "immediateResult": "On a rainy day, watched by a hidden observer, Yuuki and Kagali discuss Gadora's message: Masayuki looks exactly like Emperor Rudra.",
+  "operationalResult": "Yuuki judges that, if Gadora is right, sending the Composite Division against Dwargon is unwise.",
+  "strategicResult": "Yuuki begins to sort friend from foe inside the Empire before the campaign opens.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Yuuki with Kagali",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Prologue",
+    "locator": "v13.txt:109"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Prologue",
+    "locator": "v13.txt:143"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Prologue",
+    "locator": "v13.txt:186"
+   }
+  ],
+  "evidence": "Yuuki spots a watcher using the rain for cover, then tells Kagali that Gadora says Masayuki looks exactly like Rudra; he thinks sending the hybrid legion against Dwargon would be unwise.",
+  "reconstructionNote": "Same day and scene as EVT-0009 (v13.txt:104 follows the call at v13.txt:99); the day is a placement.",
+  "notes": "Context for the Isthmus blockade (EVT-0016).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved to the same day as EVT-0009 (v13.txt:104).",
+    "Added Yuuki's judgement on the Composite Division against Dwargon (v13.txt:186-189)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0011",
+  "day": -33,
+  "time": "09:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "\"The first step\" once the imperial moves were known; same period as the war council.",
+  "theatreId": "TH-DWG",
+  "front": "Tempest rear",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Control Room, capital Rimuru",
+  "actor": "Rimuru Tempest / Benimaru",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "benimaru",
+   "soei"
+  ],
+  "forces": [],
+  "type": "STRATEGIC_PREPARATION",
+  "title": "Integrated operations headquarters set up in the Control Room",
+  "immediateResult": "An integrated operations headquarters is set up in the Control Room; Benimaru and Soei are to stay there.",
+  "operationalResult": "Soei's clones and Moss's surveillance supplement Argos; in wartime the room is staffed in three day-and-night shifts.",
+  "strategicResult": "Tempest centralises intelligence before contact.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru and Benimaru",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12035"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:265"
+   }
+  ],
+  "evidence": "With the imperial movement known, the first step is an integrated operations HQ in the Control Room, with Benimaru and Soei stationed there; V13 adds the three-shift wartime watch.",
+  "reconstructionNote": "Placed on R0 (D-33), one hour before the war council, which meets in the same room.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D-36 to D-33 (V12 Ch5 establishment, v12.txt:12035).",
+    "Sources: V12 Ch5 plus V13 Ch1 for the shifts (v13.txt:265-266).",
+    "Attendance note moved to EVT-0012 (v13.txt:289-292)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0008",
+  "day": -33,
+  "time": "10:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "\"Today, in this control room, our subordinates gathered\"; the anchor of V13's \"a month has passed\".",
+  "theatreId": "TH-DWG",
+  "front": "Command",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Control Room (Argos feed)",
+  "actor": "Rimuru Tempest and his subordinates (Benimaru commanding)",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial Army",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "benimaru",
+   "hakuro",
+   "soei",
+   "gobta",
+   "gabiru",
+   "geld",
+   "testarossa",
+   "ultima",
+   "carrera",
+   "diablo",
+   "shion",
+   "gadra",
+   "masayuki"
+  ],
+  "forces": [
+   "F-EMP-010"
+  ],
+  "type": "INTELLIGENCE",
+  "title": "War council in the Control Room (the 'subordinates' gathering'): Argos shows 2,000 chariots",
+  "immediateResult": "Viewed from above, the imperial gathering includes 2,000 chariots; Raphael estimates the invaders at millions.",
+  "operationalResult": "Benimaru reads the conspicuous chariot route along the Canaat foothills as a demonstration; the main force moves on hidden routes.",
+  "strategicResult": "This council is the reference point (R0) for V13's 'a month has passed since the gathering' (v13.txt:248).",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": "\"Millions\" (Raphael's estimate, v12.txt:12234); 2,000 chariots counted. 940,000 is stated only later (v13.txt:16208)."
+  },
+  "commandStatus": "Benimaru commanding, Hakuro adviser, Soei intelligence",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12108"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12146"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12228"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12367"
+   }
+  ],
+  "evidence": "With commanders, the three demons, Gadora and Masayuki present, the screen shows the imperial gathering from above with 2,000 chariots; Raphael puts the total at millions.",
+  "reconstructionNote": "R0 is placed at D-33 so that the month mark (EVT-0012, R0 + 30 days) falls three days before first contact. Its distance from the imperial council and Gadora's return is a placement.",
+  "notes": "Benimaru also says some imperial troops have already entered the Great Jura Forest while the chariots have not moved (v12.txt:12329-12331), and Moss tracks imperial squads in the eastern forest (v12.txt:12504-12506). This sits awkwardly with the V12 Epilogue departure \"the next day\" (EVT-0003); the plan keeps the Epilogue reading.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D-1 to D-33: it is the V12 Ch5 war council, the reference R0 (v12.txt:12108-12234; v13.txt:248).",
+    "Location: Control Room, not airspace (v12.txt:12146).",
+    "Empire strength: \"millions\" (estimate), not 940,000 (v12.txt:12228-12234)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0026",
+  "day": -33,
+  "time": "10:30",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "Same war council as EVT-0008.",
+  "theatreId": "TH-DWG",
+  "front": "Command",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Control Room, capital Rimuru",
+  "actor": "Benimaru",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial Army",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "benimaru",
+   "rimuru",
+   "gobta",
+   "gabiru",
+   "geld",
+   "soei",
+   "testarossa",
+   "ultima",
+   "carrera"
+  ],
+  "forces": [
+   "F-TEM-001",
+   "F-TEM-002",
+   "F-TEM-003",
+   "F-DEM-001",
+   "F-DEM-002",
+   "F-DEM-003"
+  ],
+  "type": "COMMAND",
+  "title": "War-council taskings: inn town evacuated, First Corps to Dwargon, Second Corps recalled",
+  "immediateResult": "The inn town is to be evacuated to the capital; Gobta's First Corps is to defend Dwargon alongside the Dwarven army; Gabil escorts the evacuees from the air, then joins Gobta.",
+  "operationalResult": "Geld recalls the Second Corps from all its work sites; Moss watches the eastern forest for Soei; Testarossa goes with Gobta, Ultima with Gabil and Carrera with Geld.",
+  "strategicResult": "Tempest commits its corps to Dwargon's gate and its home forest before the enemy arrives; nobody may strike first.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Benimaru commanding",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12309"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12338"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12421"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12481"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12504"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12588"
+   }
+  ],
+  "evidence": "Benimaru orders the inn town evacuated, puts Gobta's pawn beside the Dwarven army, sends Gabil to escort evacuees then join Gobta, and has Geld recall his corps; the three demons are paired with Gobta, Gabil and Geld.",
+  "reconstructionNote": "Placed thirty minutes into the council for order only. The corps' departure dates are not stated; MOV-002, MOV-021 and MOV-023 start here.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added from audit missingEvents (v12.txt:12309, 12421, 12481-12504, 12588).",
+    "TH-DWG activated here instead of at EVT-0004.",
+    "Start event for MOV-002, MOV-021, MOV-023 (request filed)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-001": {
+     "movement": "REPOSITION",
+     "direction": "Ordered to defend Dwargon; arrival not dated"
+    },
+    "F-TEM-003": {
+     "movement": "REPOSITION",
+     "direction": "Escort inn-town evacuees, then join Gobta at Dwargon"
+    },
+    "F-TEM-002": {
+     "movement": "REINFORCEMENT",
+     "direction": "Recalled from works abroad to the Federation"
+    },
+    "F-DEM-001": {
+     "strength": 1,
+     "effective": 1,
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "Attached to Gobta",
+     "confidence": "HIGH",
+     "location": "jura-tempest-federation",
+     "locationText": "Control Room, capital Rimuru"
+    },
+    "F-DEM-002": {
+     "strength": 1,
+     "effective": 1,
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "Attached to Gabil",
+     "confidence": "HIGH",
+     "location": "jura-tempest-federation",
+     "locationText": "Control Room, capital Rimuru"
+    },
+    "F-DEM-003": {
+     "strength": 1,
+     "effective": 1,
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "Attached to Geld",
+     "confidence": "HIGH",
+     "location": "jura-tempest-federation",
+     "locationText": "Control Room, capital Rimuru"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "status": "ACTIVE",
+     "frontline": "Inn town evacuating; First and Third Corps tasked to defend Dwargon's gate",
+     "battleStatus": "NOT_STARTED",
+     "control": "TEMPEST_CONTROLLED"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0027",
+  "day": -33,
+  "time": "10:40",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "Same war council; arrival forecast \"about twenty days\".",
+  "theatreId": "TH-DWG",
+  "front": "Command",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Control Room, capital Rimuru",
+  "actor": "Rimuru Tempest (Raphael's calculation)",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial Army",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru"
+  ],
+  "forces": [
+   "F-EMP-010"
+  ],
+  "type": "INTELLIGENCE",
+  "title": "Tempest forecast: enemy about 1,500 km away at about 80 km a day, arrival in about twenty days",
+  "immediateResult": "The imperial force, already near the national border, is about 1,500 km from the expected battlefield and could march about 80 km a day.",
+  "operationalResult": "At that rate it arrives in about twenty days; the inn-town evacuation, partly by magic train, must finish first.",
+  "strategicResult": "Tempest plans on about twenty days; V13 later cites a 29-day expectation, and the attack actually came about 33 days after this council (CON-012).",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12438"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12444"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12448"
+   }
+  ],
+  "evidence": "Reconstructed soldiers let the Empire march about eighty kilometres a day; already near the border and some 1,500 km from the battlefield, it would arrive in about twenty days.",
+  "reconstructionNote": "Placed ten minutes after EVT-0026 for order only.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added from audit missingEvents (v12.txt:12440-12449); see CON-012."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0028",
+  "day": -33,
+  "time": "22:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "Undated V12 Epilogue scene; the army leaves \"the next day\".",
+  "theatreId": "TH-CAP",
+  "front": "Strategic rear",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-capital",
+  "locationText": "Imperial Capital",
+  "actor": "Emperor Rudra and Velgrynd",
+  "actorFaction": "Eastern Empire",
+  "opponent": "None",
+  "opponentFaction": "-",
+  "characters": [
+   "rudra",
+   "velgrynd"
+  ],
+  "forces": [
+   "F-EMP-070"
+  ],
+  "type": "POLITICAL",
+  "title": "Rudra and Velgrynd resolve on world conquest; the army is to march the next day",
+  "immediateResult": "Velgrynd, seeing Rudra's mental exhaustion, asks how much time he has left; he promises not to fall before he has conquered the world.",
+  "operationalResult": "Velgrynd resolves to kill everyone who stands in the way of his domination.",
+  "strategicResult": "The next day an army of unprecedented size leaves the Empire for Tempest (EVT-0003).",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Emperor Rudra; Velgrynd",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Epilogue",
+    "locator": "v12.txt:13088"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Epilogue",
+    "locator": "v12.txt:13103"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Epilogue",
+    "locator": "v12.txt:13116"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Epilogue",
+    "locator": "v12.txt:13120"
+   }
+  ],
+  "evidence": "Rudra, near his limit, will not hand power to a prince; he vows to conquer the world and Velgrynd embraces him, resolving to kill all in his way. The next day the army departs.",
+  "reconstructionNote": "The Epilogue scene is undated. It is placed on the night of the war council (R0), because the council saw the army still near the border (v12.txt:12444-12445) and the departure follows \"the next day\".",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added from audit missingEvents (v12.txt:13088-13120)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-070": {
+     "strength": 1,
+     "effective": 1,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0003",
+  "day": -32,
+  "time": "08:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "The next day the army left the Empire.",
+  "theatreId": "TH-DWG",
+  "front": "Imperial approach",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-interior",
+  "locationText": "Eastern Empire, departing westward",
+  "actor": "Jura invasion army (Armored Division)",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "calgurio",
+   "gaster",
+   "farraga"
+  ],
+  "forces": [
+   "F-EMP-010",
+   "F-EMP-011",
+   "F-EMP-012",
+   "F-EMP-013"
+  ],
+  "type": "DEPLOYMENT",
+  "title": "The invasion army leaves the Empire for Tempest",
+  "immediateResult": "An army of unprecedented size leaves the Empire and marches toward the Jura-Tempest Federation.",
+  "operationalResult": "Caligulio leads 940,000: the Restructured Armor Corps 700,000, the Magitank Force 200,000 and the Flying Combat Corps 40,000.",
+  "strategicResult": "The invasion of the Great Jura Forest begins.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 940000,
+   "note": "Stated: Caligulio \"originally led 940,000\" (v13.txt:16208)."
+  },
+  "commandStatus": "General Caligulio; Magitank Force under Lieutenant General Gaster",
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Epilogue",
+    "locator": "v12.txt:13120"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16208"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:302"
+   }
+  ],
+  "evidence": "The V12 Epilogue ends with the army leaving the Empire for Tempest the next day; V13 later says Caligulio originally led 940,000.",
+  "reconstructionNote": "Relative to the undated Epilogue scene (EVT-0028), itself placed on R0, so D-32 is a placement in absolute terms. The march to the halt (D-2) is a linear interpolation in transit.json.",
+  "notes": "The component split (700,000 / 200,000 / 40,000) is stated piecemeal (v12.txt:10215-10240; v13.txt:7531-7533).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Source: V12 Epilogue (v12.txt:13120), with the forecast at v13.txt:302-305; V13 Prologue has nothing on the advance.",
+    "canonicalTime: \"the next day the army left the Empire\" (v12.txt:13120).",
+    "Dropped the \"slower than forecast\" text; that is EVT-0013 (v13.txt:302-305).",
+    "Strength 940,000 now EXPLICIT (v13.txt:16208).",
+    "Effects: F-EMP-010/011/012/013 at imperial-interior (were forest edge, labyrinth, gate front, gate airspace).",
+    "Commander: Gaster (fan TL \"Geist\")."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-010": {
+     "strength": 940000,
+     "effective": 940000,
+     "sizeStatus": "EXPLICIT",
+     "status": "IN_TRANSIT",
+     "movement": "ADVANCE",
+     "direction": "West toward the Great Jura Forest",
+     "confidence": "MEDIUM",
+     "location": "imperial-interior",
+     "locationText": "On the march from the Eastern Empire (position interpolated)"
+    },
+    "F-EMP-011": {
+     "strength": 700000,
+     "effective": 700000,
+     "sizeStatus": "EXPLICIT",
+     "status": "IN_TRANSIT",
+     "movement": "ADVANCE",
+     "direction": "West",
+     "confidence": "HIGH",
+     "location": "imperial-interior",
+     "locationText": "On the march from the Eastern Empire (position interpolated)"
+    },
+    "F-EMP-012": {
+     "strength": 200000,
+     "effective": 200000,
+     "sizeStatus": "EXPLICIT",
+     "status": "IN_TRANSIT",
+     "movement": "ADVANCE",
+     "direction": "West",
+     "confidence": "HIGH",
+     "location": "imperial-interior",
+     "locationText": "On the march from the Eastern Empire (position interpolated)"
+    },
+    "F-EMP-013": {
+     "strength": 40000,
+     "effective": 40000,
+     "sizeStatus": "EXPLICIT",
+     "status": "IN_TRANSIT",
+     "movement": "ADVANCE",
+     "direction": "West",
+     "confidence": "HIGH",
+     "location": "imperial-interior",
+     "locationText": "Eastern Empire"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "Imperial invasion army on the march from the Empire",
+     "battleStatus": "FORMING"
+    }
+   },
+   "campaign": {
+    "empireTotal": 940000,
+    "empireEffective": 940000,
+    "activeCommanders": "Rimuru (Tempest head of state), Benimaru supreme commander; General Caligulio leading the Jura invasion (Empire)"
+   }
+  }
+ },
+ {
+  "id": "EVT-0015",
+  "day": -5,
+  "time": "08:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "Already done when \"a month has passed\" (V13 Ch1).",
+  "theatreId": "TH-DWG",
+  "front": "Imperial approach",
+  "battle": null,
+  "battleType": null,
+  "location": "tempest-border",
+  "locationText": "Tempest border",
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "rimuru",
+   "benimaru"
+  ],
+  "forces": [
+   "F-EMP-010"
+  ],
+  "type": "MOVEMENT",
+  "title": "The Imperial Army has crossed the Tempest border",
+  "immediateResult": "The Imperial Army crosses into Tempest territory, against the international law of the Western council, which the Empire does not take seriously.",
+  "operationalResult": "Tempest could use the crossing as a pretext for a surprise attack.",
+  "strategicResult": "Rimuru and Benimaru opt for an open fight and a declaration instead; there is no need to sneak.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Imperial field command (General Caligulio)",
+  "intensity": "LOW",
+  "significance": "CRITICAL",
+  "turningPoint": {
+   "rank": 1,
+   "summary": "The Imperial Army crosses the Tempest border. The invasion becomes fact."
+  },
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:314"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:317"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:323"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:331"
+   }
+  ],
+  "evidence": "At the month mark the Imperial Army has already crossed the border, against the Western council's law; Tempest could use it for a surprise attack, but Benimaru agrees there is no need to sneak.",
+  "reconstructionNote": "The crossing is undated; it is only stated as already done at the month mark (D-3). D-5 is a placement inside the interpolated march (MOV-018). No location effect is set, so the column follows transit.json.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Strategic result: Tempest opts for an open declaration rather than a surprise attack (v13.txt:323-335).",
+    "Empire strength not stated here: UNKNOWN (was 940,000).",
+    "Kept at D-5, before the month mark (v13.txt:313-317)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-010": {
+     "movement": "ADVANCE",
+     "direction": "West, inside Tempest territory"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "Imperial Army has crossed the Tempest border",
+     "control": "CONTESTED"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0012",
+  "day": -3,
+  "time": "12:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "A month has passed since the subordinates' gathering met.",
+  "theatreId": "TH-DWG",
+  "front": "Tempest rear",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Control Room, capital Rimuru",
+  "actor": "Rimuru Tempest",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "benimaru",
+   "soei",
+   "shion",
+   "diablo",
+   "geld",
+   "veldora",
+   "ramiris"
+  ],
+  "forces": [
+   "F-EMP-010"
+  ],
+  "type": "INTELLIGENCE",
+  "title": "A month after the gathering, still no engagement",
+  "immediateResult": "A month after the V12 Ch5 war council there has been no engagement; Veldora and Ramiris, bored, have gone back to their institute and asked to be told when something happens.",
+  "operationalResult": "Rimuru, Benimaru, Soei, Shion, Diablo and Geld watch the Empire from the Control Room.",
+  "strategicResult": "Tempest waits for the Empire to move; the attacker holds the initiative.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru observing",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:248"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:279"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:289"
+   }
+  ],
+  "evidence": "A month after the gathering Rimuru watches the Empire from the Control Room; Veldora and Ramiris went back to their institute out of boredom; Benimaru, Soei, Shion, Diablo and Geld are present.",
+  "reconstructionNote": "\"A month\" is taken as thirty days after R0 (D-33). R0 itself is a placement.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Title and result: a month without an engagement, not \"no imperial movement\"; the Empire advanced and crossed the border (v13.txt:279-281, 302-315).",
+    "Veldora and Ramiris withdraw out of boredom; no formal stand-down (v13.txt:279-283).",
+    "Anchor: the V12 Ch5 war council, EVT-0008 (v12.txt:12108; v13.txt:248).",
+    "Moved from D-8 to D-3.",
+    "Effect: F-EMP-010 movement ADVANCE (was STATIONARY)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-010": {
+     "movement": "ADVANCE"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "A month without engagement; the imperial army advancing slowly inside Tempest territory"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0013",
+  "day": -3,
+  "time": "12:10",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "Retrospective at the month mark: the invasion turned out slower than expected.",
+  "theatreId": "TH-DWG",
+  "front": "Imperial approach",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-forest-edge",
+  "locationText": "Imperial line of march toward Dwargon",
+  "actor": "Magitank Force",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "rimuru"
+  ],
+  "forces": [
+   "F-EMP-012",
+   "F-EMP-011"
+  ],
+  "type": "MOVEMENT",
+  "title": "The Magitank Force advances more slowly than expected, by design",
+  "immediateResult": "The chariot force, expected to attack in about twenty-nine days or more, comes more slowly, deliberately displaying its majesty.",
+  "operationalResult": "The slow chariot advance holds Tempest's attention while the infantry main body assembles.",
+  "strategicResult": "Tempest gains time and reads the chariot axis as a demonstration.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 200000,
+   "note": "Magitank Force 200,000; whole invasion army 940,000."
+  },
+  "commandStatus": "Imperial field command",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:302"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:362"
+   }
+  ],
+  "evidence": "The chariot force was thought likely to attack in about twenty-nine days or more but came more slowly, on purpose, to show majesty and draw eyes until the infantry main body had gathered.",
+  "reconstructionNote": "A condition over the whole approach, summarised at the month mark; placed ten minutes after EVT-0012 for order only.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D-7 to the month mark (v13.txt:302-305).",
+    "Actor: the Magitank Force (v13.txt:302).",
+    "Added the second purpose: holding Tempest's eyes while the infantry assembled (v13.txt:362-366).",
+    "Strength: 200,000 stated / 940,000 whole."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-012": {
+     "movement": "ADVANCE",
+     "direction": "Slow, deliberate advance toward Dwargon"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0014",
+  "day": -3,
+  "time": "12:20",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "Habitual: \"I always watched them with Argos\".",
+  "theatreId": "TH-DWG",
+  "front": "Imperial approach",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-forest-edge",
+  "locationText": "Great Jura Forest, eastern reaches",
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "None (forest wildlife)",
+  "opponentFaction": "-",
+  "characters": [
+   "rimuru"
+  ],
+  "forces": [
+   "F-EMP-010"
+  ],
+  "type": "MOVEMENT",
+  "title": "Forest beasts flee the imperial columns",
+  "immediateResult": "Even sub-A-rank beasts living in the forest flee the imperial columns out of fear.",
+  "operationalResult": "Rimuru follows the march throughout by Argos.",
+  "strategicResult": "The approach is watched at long range without contact.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Imperial field command",
+  "intensity": "NONE",
+  "significance": "LOW",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:307"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:310"
+   }
+  ],
+  "evidence": "Rimuru always watched the imperial force with Argos; even sub-A-rank forest beasts fled its columns in fear.",
+  "reconstructionNote": "An ongoing observation summarised at the month mark; the single placement is for order only.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D-6 to the month mark (v13.txt:307-312).",
+    "Opponent: none (wildlife), not the Federation.",
+    "Empire strength UNKNOWN here (was 940,000)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0019",
+  "day": -2,
+  "time": "08:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "\"Soon after that, the days we had waited finally ended.\"",
+  "theatreId": "TH-DWG",
+  "front": "Imperial approach",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-forest-edge",
+  "locationText": "Inside Tempest territory (exact point not stated; placed at the forest edge)",
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "rimuru"
+  ],
+  "forces": [
+   "F-EMP-010",
+   "F-EMP-011",
+   "F-EMP-012"
+  ],
+  "type": "DEPLOYMENT",
+  "title": "The imperial army halts and begins issuing its formations",
+  "immediateResult": "The imperial side stops and begins to put out its formations.",
+  "operationalResult": "Unlike the chariot unit, the infantry marches into the forest one formation after another.",
+  "strategicResult": "The Empire passes from the approach march to its attack posture.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 940000,
+   "note": "Whole invasion army (v13.txt:16208); not stated in this passage."
+  },
+  "commandStatus": "General Caligulio",
+  "intensity": "LOW",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:341"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:343"
+   }
+  ],
+  "evidence": "Soon after the month mark the waiting ended: the imperial side halted and began issuing formations, and the infantry marched into the forest one unit after another.",
+  "reconstructionNote": "\"Soon after\" the month mark; D-2 is a placement. The halt position is not stated and is drawn at the forest edge, where transit.json ends.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved before the Gazel call and the gate scene (v13.txt:341-349 precede v13.txt:571-580).",
+    "Location marked as not stated.",
+    "Effects: F-EMP-011 and F-EMP-012 now also placed at the halt."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-010": {
+     "status": "DEPLOYED",
+     "movement": "DEPLOYMENT",
+     "direction": "-",
+     "location": "jura-forest-edge",
+     "locationText": "Halt inside Tempest territory (placed at the forest edge)"
+    },
+    "F-EMP-011": {
+     "status": "DEPLOYED",
+     "movement": "DEPLOYMENT",
+     "direction": "-",
+     "location": "jura-forest-edge",
+     "locationText": "Halt inside Tempest territory (placed at the forest edge)"
+    },
+    "F-EMP-012": {
+     "status": "DEPLOYED",
+     "movement": "DEPLOYMENT",
+     "direction": "-",
+     "location": "jura-forest-edge",
+     "locationText": "Halt inside Tempest territory (placed at the forest edge)"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "Imperial army halted inside Tempest territory and issuing its formations"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0020",
+  "day": -2,
+  "time": "09:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "Same passage as the halt.",
+  "theatreId": "TH-DWG",
+  "front": "Imperial approach",
+  "battle": null,
+  "battleType": null,
+  "location": "great-jura-forest",
+  "locationText": "Great Jura Forest",
+  "actor": "Restructured Armor Corps (V13: \"the infantry\")",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "rimuru",
+   "benimaru",
+   "calgurio"
+  ],
+  "forces": [
+   "F-EMP-011"
+  ],
+  "type": "MOVEMENT",
+  "title": "Up to 700,000 imperial infantry march into the forest",
+  "immediateResult": "The force entering the forest is about 70% of all imperial strength, up to 700,000.",
+  "operationalResult": "Rimuru and Benimaru read it as the main force; the chariots front Dwargon to pin the Dwarven army.",
+  "strategicResult": "Roughly seventy percent of imperial strength is committed to one forest theatre.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 700000
+  },
+  "commandStatus": "General Caligulio (not \"Marshal\")",
+  "intensity": "LOW",
+  "significance": "CRITICAL",
+  "turningPoint": {
+   "rank": 2,
+   "summary": "Up to 700,000 enter the forest: about seventy percent of imperial strength committed to one theatre."
+  },
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:348"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:353"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10215"
+   }
+  ],
+  "evidence": "The infantry entering the forest totals about 70% of the whole imperial strength, up to 700,000; V12 Ch4 gives the reconstructed corps 700,000.",
+  "reconstructionNote": "The mapping of \"the infantry\" to the Restructured Armor Corps is INFERRED (v13.txt:345-349 vs v12.txt:10215-10219). MOV-020 carries the march to the camp (EVT-0029).",
+  "notes": "The 70% figure is the basis of CON-005.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Command: General Caligulio, not \"Marshal\" (v12.txt:10129, 10785).",
+    "Moved before the Gazel call (v13.txt:348 precedes 580).",
+    "Effects: F-EMP-011 marches toward imperial-infantry-camp (MOV-020); arrival moved to EVT-0029."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-011": {
+     "status": "IN_TRANSIT",
+     "movement": "ADVANCE",
+     "direction": "Into the forest toward capital Rimuru"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "Up to 700,000 imperial infantry marching into the forest toward capital Rimuru"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0029",
+  "day": -1,
+  "time": "18:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "Reported by Soei on the day of the Gazel call; the camp itself is undated.",
+  "theatreId": "TH-LAB",
+  "front": "Approaches to the capital",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-infantry-camp",
+  "locationText": "About 30 km from capital Rimuru",
+  "actor": "Restructured Armor Corps",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "soei",
+   "diablo",
+   "rimuru",
+   "benimaru"
+  ],
+  "forces": [
+   "F-EMP-011"
+  ],
+  "type": "DEPLOYMENT",
+  "title": "Imperial infantry camps about 30 km from capital Rimuru",
+  "immediateResult": "The infantry converges about thirty kilometres from the capital, makes camp and sets up command posts.",
+  "operationalResult": "Soei rates them about B on average (C+ to above A), with teams worth A rank; Rimuru reckons about 35,000 A-rank equivalents.",
+  "strategicResult": "Diablo notes thirty kilometres is where magical surveillance degrades: the enemy believes it is unseen, and Tempest lets it believe so.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 700000
+  },
+  "commandStatus": "General Caligulio (field headquarters)",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:383"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:405"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:427"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:460"
+   }
+  ],
+  "evidence": "Soei reports the infantry gathered about thirty kilometres from the capital, camped with command posts; average grade about B, and one A per twenty men gives some 35,000 A-rank opponents.",
+  "reconstructionNote": "The camp must exist before Soei's report on D+0; D-1 18:00 is a placement that gives the march into the forest about a day and a half.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added from audit missingEvents (v13.txt:383-389, 427-460).",
+    "F-EMP-011 arrives at imperial-infantry-camp; end event for MOV-020 (request filed)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-011": {
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "location": "imperial-infantry-camp",
+     "locationText": "Camp about 30 km from capital Rimuru, with command posts"
+    }
+   },
+   "theatres": {
+    "TH-LAB": {
+     "status": "ACTIVE",
+     "frontline": "Imperial infantry camped about 30 km from the capital, with command posts",
+     "battleStatus": "NOT_STARTED"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0030",
+  "day": 0,
+  "time": "08:00",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "Shown on the Control Room screens just before the final Gazel call.",
+  "theatreId": "TH-DWG",
+  "front": "Dwargon approach",
+  "battle": null,
+  "battleType": null,
+  "location": "dwargon-gate-front",
+  "locationText": "Plain at the mountain foot, about 30 km from Dwargon's centre",
+  "actor": "Magitank Force",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Armed Nation of Dwargon / Jura-Tempest Federation",
+  "opponentFaction": "Armed Nation of Dwargon",
+  "characters": [
+   "rimuru",
+   "gaster"
+  ],
+  "forces": [
+   "F-EMP-012"
+  ],
+  "type": "DEPLOYMENT",
+  "title": "2,000 magitanks arrayed about 30 km from Dwargon's centre",
+  "immediateResult": "2,000 magitanks stand in neat rows, twenty by twenty blocks, on a plain at the foot of the mountains about 30 km from Dwargon's centre.",
+  "operationalResult": "Their muzzles face Dwargon's front gate; Rimuru doubts shells can hit at that range.",
+  "strategicResult": "The Empire's demonstration axis is in place before the ultimatum.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 200000
+  },
+  "commandStatus": "Lieutenant General Gaster",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:511"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:513"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:517"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1644"
+   }
+  ],
+  "evidence": "The screens show 2,000 chariots lined up about thirty kilometres from Dwargon's centre, muzzles toward the front gate; Gaster's scene describes them in blocks on a plain at the mountain foot.",
+  "reconstructionNote": "The arrival time on this plain is not stated; D+0 08:00 is when the array is first shown and may be later than the arrival. End event for MOV-001.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added from audit missingEvents (v13.txt:511-515, 1644).",
+    "F-EMP-012 arrives at dwargon-gate-front; end event for MOV-001 (request filed)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-012": {
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "direction": "Muzzles toward Dwargon's front gate",
+     "location": "dwargon-gate-front",
+     "locationText": "Plain about 30 km from Dwargon's centre"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "2,000 magitanks arrayed about 30 km from Dwargon's centre, facing the gate",
+     "battleStatus": "FORMING"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0016",
+  "day": 0,
+  "time": "08:10",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "Reported at the start of the final Gazel call; the blockade's start is undated.",
+  "theatreId": "TH-DWE",
+  "front": "Dwargon eastern approach",
+  "battle": null,
+  "battleType": null,
+  "location": "dwargon-eastern-metropolis",
+  "locationText": "Before the Isthmus gate, east of Dwargon",
+  "actor": "Imperial Army (Composite Division suspected)",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Armed Nation of Dwargon",
+  "opponentFaction": "Armed Nation of Dwargon",
+  "characters": [
+   "gazel",
+   "rimuru",
+   "yuuki",
+   "gadra"
+  ],
+  "forces": [
+   "F-EMP-031"
+  ],
+  "type": "SIEGE",
+  "title": "Gazel reports Dwargon's eastern gate (Isthmus) blockaded",
+  "immediateResult": "Before the task talks, Gazel reports that the gate east of Dwargon's city (Isthmus) has been blocked by the Imperial Army, as Gadora predicted.",
+  "operationalResult": "Rimuru suspects the legion led by Yuuki.",
+  "strategicResult": "Dwargon must split its army to defend both its centre and the east.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": "60,000 is first stated after the gate battle (v13.txt:7712); the force effect is back-projected."
+  },
+  "commandStatus": "Gazel reporting; imperial blockade commander not named here",
+  "intensity": "LOW",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:697"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:703"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:823"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:7712"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10788"
+   }
+  ],
+  "evidence": "Gazel opens the call by reporting the Isthmus gate east of Dwargon blocked by the Imperial Army; Rimuru recalls Gadora's warning and suspects Yuuki's legion.",
+  "reconstructionNote": "Actor attribution is INFERRED from Rimuru's suspicion (v13.txt:703). When the blockade began is not stated (MOV-008 runs from the council tasking). The 60,000 in the force effect is back-projected from v13.txt:7712.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D-4 to the D+0 call, after the halt (v13.txt:341-349 precede 697-703).",
+    "Actor: Imperial Army, Yuuki's legion suspected (INFERRED, v13.txt:703).",
+    "Event strength UNKNOWN; 60,000 back-projected from v13.txt:7712.",
+    "Effects: removed F-EMP-030 (the whole 200,000 division is not at Isthmus); F-EMP-031 kept at 60,000.",
+    "TH-DWE battleStatus NOT_STARTED (blockade, no fighting yet)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-031": {
+     "strength": 60000,
+     "effective": 60000,
+     "sizeStatus": "RECONSTRUCTED",
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "direction": "Blocking the road to the Isthmus gate",
+     "confidence": "LOW",
+     "location": "dwargon-eastern-metropolis",
+     "locationText": "Before the Isthmus gate"
+    }
+   },
+   "theatres": {
+    "TH-DWE": {
+     "status": "ACTIVE",
+     "frontline": "Imperial force blocking the road to the Isthmus gate",
+     "battleStatus": "NOT_STARTED",
+     "control": "CONTESTED"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0006",
+  "day": 0,
+  "time": "08:10",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "\"At the time Rimuru spoke to Gazel through the contact device.\"",
+  "theatreId": "TH-DWG",
+  "front": "Dwargon approach",
+  "battle": null,
+  "battleType": null,
+  "location": "dwargon-outer-gate",
+  "locationText": "Plaza at the outer edge of Dwargon's gate",
+  "actor": "First Corps (Gobta) and Third Corps (Gabil)",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gobta",
+   "gabiru",
+   "testarossa",
+   "ultima",
+   "veyron",
+   "zonda"
+  ],
+  "forces": [
+   "F-TEM-001",
+   "F-TEM-001A",
+   "F-TEM-003",
+   "F-DEM-001",
+   "F-DEM-002"
+  ],
+  "type": "DEPLOYMENT",
+  "title": "About 15,000 Tempest troops camped at Dwargon's gate",
+  "immediateResult": "About 15,000 are gathered at Dwargon's gate: the First Corps under Gobta (about 12,000) and the Third under Gabil (about 3,000), camped on the outer plaza rather than in the cavern.",
+  "operationalResult": "The inn-town residents are in shelters; the Empire has sent no envoy and demanded no surrender. Testarossa and Ultima take tea at the gate, served by Veyron and Zonda.",
+  "strategicResult": "Tempest's field force stands with Dwargon at the gate when the war opens.",
+  "strength": {
+   "tempest": 15000,
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Gobta and Gabil; Benimaru in overall command from the Control Room",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:944"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:946"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:950"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:977"
+   }
+  ],
+  "evidence": "While Rimuru talks to Gazel, about 15,000 (Gobta ~12,000, Gabil ~3,000) are camped on the plaza at the outer edge of the gate; Testarossa and Ultima sit at a tea table nearby.",
+  "reconstructionNote": "Simultaneous with the call (v13.txt:944); the corps' arrival at the gate is undated, so MOV-002 and MOV-021 end here.",
+  "notes": "v13.txt:528 says \"just inside the gate\"; v13.txt:950 says the outer plaza rather than the cavern. The outer plaza is used.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D-2 to the D+0 call (v13.txt:944).",
+    "Location: plaza at the outer edge (v13.txt:950-953).",
+    "Effects: Testarossa and Ultima placed at the gate (v13.txt:977-982); the wolf riders (F-TEM-001A) placed for MOV-022."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-001": {
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "location": "dwargon-outer-gate",
+     "locationText": "Plaza at the outer edge of Dwargon's gate"
+    },
+    "F-TEM-001A": {
+     "strength": 100,
+     "effective": 100,
+     "sizeStatus": "EXPLICIT",
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "dwargon-outer-gate",
+     "locationText": "Plaza at the outer edge of Dwargon's gate"
+    },
+    "F-TEM-003": {
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "location": "dwargon-outer-gate",
+     "locationText": "Plaza at the outer edge of Dwargon's gate"
+    },
+    "F-DEM-001": {
+     "movement": "STATIONARY",
+     "direction": "With Gobta",
+     "location": "dwargon-outer-gate",
+     "locationText": "Dwargon's gate"
+    },
+    "F-DEM-002": {
+     "movement": "STATIONARY",
+     "direction": "With Gabil",
+     "location": "dwargon-outer-gate",
+     "locationText": "Dwargon's gate"
+    }
+   },
+   "theatres": {},
+   "campaign": {
+    "tempestEffective": 15000
+   }
+  }
+ },
+ {
+  "id": "EVT-0007",
+  "day": 0,
+  "time": "08:10",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "Same scene as the 15,000 at the gate, during the Gazel call.",
+  "theatreId": "TH-DWG",
+  "front": "Dwargon approach",
+  "battle": null,
+  "battleType": null,
+  "location": "dwargon-outer-gate",
+  "locationText": "Dwargon's gate",
+  "actor": "Dwarven Knights (seven units)",
+  "actorFaction": "Armed Nation of Dwargon",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [],
+  "forces": [
+   "F-DWA-001"
+  ],
+  "type": "FORTIFICATION",
+  "title": "Dwarven Knights fortify the gate with three earth walls",
+  "immediateResult": "Seven Dwarven Knight units, two of them magic support, raise earth walls by earth magic and harden them with fire magic beyond brick strength.",
+  "operationalResult": "Three defensive walls stand outside the gate and a fully armoured strike force forms up.",
+  "strategicResult": "Dwargon holds the gate as the defensive partner.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": "Seven units; headcount not stated."
+  },
+  "commandStatus": "Dwarven Knights' officers; King Gazel on the call in the capital",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:958"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:960"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:969"
+   }
+  ],
+  "evidence": "Seven Dwarf Knight units, two of them magic support, reinforce the gate with earth walls hardened by fire magic; three walls go up outside and an armoured strike force forms.",
+  "reconstructionNote": "Simultaneous with EVT-0006 and the call.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D-2 to the D+0 call (v13.txt:944-969).",
+    "Actor: the Dwarven Knights, not Gazel (v13.txt:958-962).",
+    "F-DWA-001 effect moved here from EVT-0018."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DWA-001": {
+     "strength": "UNKNOWN",
+     "effective": "UNKNOWN",
+     "sizeStatus": "UNKNOWN",
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "dwargon-outer-gate",
+     "locationText": "Dwargon's gate, behind three earth walls"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0017",
+  "day": 0,
+  "time": "08:20",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "Same Gazel call.",
+  "theatreId": "TH-DWE",
+  "front": "Dwargon eastern approach",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-interior",
+  "locationText": "Imperial territory east of Dwargon (Argos image)",
+  "actor": "Rimuru Tempest (Argos)",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial blockade force",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "gazel",
+   "gadra"
+  ],
+  "forces": [
+   "F-EMP-031"
+  ],
+  "type": "RECONNAISSANCE",
+  "title": "Argos imagery of the blockade shared with Gazel",
+  "immediateResult": "Distance and a magical barrier blur the Argos images of imperial territory, but a group blocking the road from the east can be seen.",
+  "operationalResult": "Gazel finds Gadora's warning credible; Rimuru cautions that Gadora cannot be trusted one hundred percent and might be used unknowingly.",
+  "strategicResult": "The allies share one intelligence picture before contact.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru directing Argos",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:705"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:707"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:716"
+   }
+  ],
+  "evidence": "Rimuru turns Argos on imperial territory; a barrier and distance blur the picture, but a group blocking the eastern road is visible; Gazel believes Gadora, Rimuru urges caution.",
+  "reconstructionNote": "Same continuous call as EVT-0016 and EVT-0018; the ten-minute steps are for order only.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D-4 into the D+0 call (v13.txt:694-891 one call)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0018",
+  "day": 0,
+  "time": "08:30",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "\"Now the Empire has deployed, war will not be long\"; same call.",
+  "theatreId": "TH-DWG",
+  "front": "Allied command",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Control Room, capital Rimuru (call to Gazel)",
+  "actor": "Rimuru Tempest / King Gazel Dwargo",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "gazel",
+   "benimaru"
+  ],
+  "forces": [],
+  "type": "COMMAND",
+  "title": "Rimuru and Gazel fix the division of tasks: Dwargon defends, Tempest negotiates and attacks",
+  "immediateResult": "Gazel leaves negotiation with the Empire to Tempest; if Tempest goes to war, Dwargon fights as an ally but holds only the defence from start to finish.",
+  "operationalResult": "Dwargon splits its army between its centre and the east; Rimuru will send an envoy as planned.",
+  "strategicResult": "One task per army avoids a confused chain of command; Tempest carries the offensive.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru and Gazel; Benimaru present",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:571"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:788"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:821"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:890"
+   }
+  ],
+  "evidence": "Gazel states plainly that negotiation is Tempest's job and that Dwargon, joining as an ally, will be responsible only for defence; Rimuru accepts and says the envoy goes as planned.",
+  "reconstructionNote": "Same continuous call; the call is placed in the D+0 morning.",
+  "notes": "Dwargon must stay neutral unless its territory is violated (v13.txt:800-803).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D-3 into the D+0 call, after the halt (v13.txt:571-576, 694).",
+    "Added: Dwargon defends only; Tempest negotiates and attacks (v13.txt:788-825).",
+    "F-DWA-001 effect moved to EVT-0007."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {
+    "activeCommanders": "Rimuru and Benimaru (Tempest); King Gazel (Dwargon); General Caligulio leading the Jura invasion (Empire)"
+   }
+  }
+ },
+ {
+  "id": "EVT-0005",
+  "day": 0,
+  "time": "08:50",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "Right after the final Gazel call (\"the time has come\").",
+  "theatreId": "TH-DWG",
+  "front": "Dwargon approach",
+  "battle": null,
+  "battleType": null,
+  "location": "dwargon-outer-gate",
+  "locationText": "Order from the Control Room to Testarossa at Dwargon's gate",
+  "actor": "Rimuru Tempest",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Magitank Force",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "testarossa",
+   "gobta"
+  ],
+  "forces": [
+   "F-DEM-001",
+   "F-TEM-001A"
+  ],
+  "type": "COMMAND",
+  "title": "Testarossa sent as envoy to the Magitank Force, escorted by Gobta and Ranga",
+  "immediateResult": "Rimuru picks Testarossa as envoy and reaches her through the Communication Network; Gobta and Ranga go as her escort.",
+  "operationalResult": "If the Empire accepts Tempest's demands, well and good; if not, there will be war on the spot.",
+  "strategicResult": "The war opens on a declared footing, while Tempest hides how much it has seen.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru; Testarossa detached as envoy",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:902"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:928"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1229"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1351"
+   }
+  ],
+  "evidence": "After the call Rimuru decides to send Testarossa, contacts her by the Communication Network and sends Ranga with Gobta as escort: accept the demands or face war on the spot.",
+  "reconstructionNote": "Placed at 08:50, before the opening plans (EVT-0031), because the envoy is chosen and despatched (v13.txt:928-1354) before the plans are discussed (v13.txt:1476-1564).",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D-24 to the D+0 morning, right after the call (v13.txt:902-928, 1229).",
+    "Theatre TH-DWG, not TH-CAP; envoy to the invading Magitank Force, escorted by Gobta and Ranga (v13.txt:1351-1352).",
+    "Placed before EVT-0031 (v13.txt:1351 precedes 1476)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DEM-001": {
+     "status": "ACTIVE",
+     "movement": "ADVANCE",
+     "direction": "As envoy toward the Magitank Force camp"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0031",
+  "day": 0,
+  "time": "09:00",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "After the envoy is sent, before the ultimatum.",
+  "theatreId": "TH-DWG",
+  "front": "Command",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Control Room, capital Rimuru",
+  "actor": "Rimuru Tempest / Benimaru",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "benimaru",
+   "ramiris",
+   "gobta"
+  ],
+  "forces": [
+   "F-TEM-001A"
+  ],
+  "type": "COMMAND",
+  "title": "Opening plans: capital to be isolated in the labyrinth; only the ~100 wolf riders to open",
+  "immediateResult": "If Testarossa's talks end in war, the city will at once be isolated inside the labyrinth; Ramiris is to be called back first.",
+  "operationalResult": "Benimaru will open with only the ~100 wolf riders: a fast surprise strike to test the chariots, with orders to judge for themselves and escape by Shadow Motion.",
+  "strategicResult": "The bulk of the First Corps is kept out of the chariots' guns until their power is known.",
+  "strength": {
+   "tempest": 100,
+   "empire": "UNKNOWN",
+   "note": "The opening force only."
+  },
+  "commandStatus": "Benimaru planning; Rimuru approving",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1476"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1505"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1533"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1564"
+   }
+  ],
+  "evidence": "Rimuru will isolate the city in the labyrinth if war comes and recall Ramiris; Benimaru sends only the hundred wolf riders first to test the chariots, escaping by Shadow Motion if needed.",
+  "reconstructionNote": "Placed ten minutes after the envoy order for order only.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added from audit missingEvents (v13.txt:1476, 1505-1510, 1564).",
+    "Placed after EVT-0005, not before it as in the plan (v13.txt:1351 precedes 1476)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-001A": {
+     "direction": "Designated to open the battle with a surprise strike"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0021",
+  "day": 0,
+  "time": "11:00",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "During Gaster's camp scene, just before Testarossa arrives.",
+  "theatreId": "TH-DWG",
+  "front": "Dwargon approach",
+  "battle": null,
+  "battleType": null,
+  "location": "dwargon-gate-front",
+  "locationText": "Magitank Force camp, about 30 km from Dwargon",
+  "actor": "Lieutenant General Gaster",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "gaster"
+  ],
+  "forces": [
+   "F-EMP-012"
+  ],
+  "type": "INTELLIGENCE",
+  "title": "Gaster believes the demon lord's army is at the inn town",
+  "immediateResult": "While his men pitch tents about 30 km from Dwargon, Gaster recalls hearing that the demon lord's army is gathering at the inn town on the line of march.",
+  "operationalResult": "He takes this as proof that his plan works and that the monsters have missed the imperial main body.",
+  "strategicResult": "The belief is wrong: Tempest's 15,000 are on the plaza at Dwargon's gate (EVT-0006), and Tempest is watching the main body.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 200000
+  },
+  "commandStatus": "Lieutenant General Gaster, Magitank Force",
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1620"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1723"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:1763"
+   }
+  ],
+  "evidence": "Gaster, making camp about thirty kilometres from Dwargon, recalls that the demon lord's army is said to gather at the inn town and takes it as proof his plan works.",
+  "reconstructionNote": "Same continuous scene as the ultimatum (v13.txt:1620-2064); not before dawn, since tents are being pitched. Clock time is a placement.",
+  "notes": "Fan TL \"Geist\" = Gaster. The ~100 approaching riders he senses belong to the ultimatum scene (EVT-0100).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Reframed as Gaster's belief, not a fact; the real position is the gate plaza (v13.txt:1723-1727 vs 946-950).",
+    "Moved from D-1 to D+0, just before the ultimatum (v13.txt:1620-1856).",
+    "No Tempest strength figure (Gaster gives none; was 15,000).",
+    "Location: the Magitank Force camp ~30 km from Dwargon (v13.txt:1763-1764), not the border."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ }
+]

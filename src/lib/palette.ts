@@ -1,89 +1,119 @@
 /**
- * Palette. Restrained, cartographic, desaturated (brief §42).
+ * Palette — the single source of colour for canvas and MapLibre.
  *
- * Canvas cannot read Tailwind classes, so the pigments live here as plain
- * strings and Tailwind mirrors them in tailwind.config.ts. One source of truth
- * per medium, deliberately kept in step.
+ * Tailwind mirrors these values in tailwind.config.ts (see DESIGN.md). Faction
+ * colours are chosen to stay distinguishable on the dark base map and are never
+ * the only signal: every faction also has a marker shape and a label.
  */
+
+import type { Provenance, RouteConfidence } from '@/types/dataset';
 
 export type ColorKey = 'empire' | 'tempest' | 'dwargon' | 'neutral' | 'unknown';
 
 export const FACTION_COLOR: Record<ColorKey, string> = {
-  empire: '#8c3a31',
-  tempest: '#3f6b5a',
-  dwargon: '#4b5f73',
-  neutral: '#8a7844',
-  unknown: '#6b6b63',
+  empire: '#c9473d',
+  tempest: '#2f9e7e',
+  dwargon: '#5b8fd8',
+  neutral: '#c29a45',
+  unknown: '#878f93',
 };
 
-export const FACTION_COLOR_PALE: Record<ColorKey, string> = {
-  empire: '#b4685c',
-  tempest: '#6d9b87',
-  dwargon: '#7d95aa',
-  neutral: '#b3a06a',
-  unknown: '#94948a',
+export const FACTION_DEEP: Record<ColorKey, string> = {
+  empire: '#5c1914',
+  tempest: '#0f4636',
+  dwargon: '#1c365e',
+  neutral: '#57421a',
+  unknown: '#363c40',
 };
 
-export const FACTION_COLOR_DEEP: Record<ColorKey, string> = {
-  empire: '#5e2721',
-  tempest: '#2a4a3d',
-  dwargon: '#33424f',
-  neutral: '#5e5230',
-  unknown: '#48483f',
+export const FACTION_PALE: Record<ColorKey, string> = {
+  empire: '#ee9086',
+  tempest: '#86d8bd',
+  dwargon: '#a9c8f2',
+  neutral: '#e6cc91',
+  unknown: '#c3c9cc',
 };
 
-/** Territorial control shading. Muted enough to keep the atlas legible beneath. */
-export const CONTROL_COLOR: Record<string, string> = {
-  EMPIRE_CONTROLLED: '#8c3a31',
-  TEMPEST_CONTROLLED: '#3f6b5a',
-  DWARGON_CONTROLLED: '#4b5f73',
-  CONTESTED: '#8a7844',
-  NEUTRAL: '#6b6b63',
-  DESTROYED: '#4a4038',
-  UNKNOWN: '#6b6b63',
+/** Marker shape per faction, so identity never rests on colour alone. */
+export const FACTION_SHAPE: Record<ColorKey, 'square' | 'circle' | 'diamond' | 'triangle' | 'hex'> = {
+  empire: 'square',
+  tempest: 'circle',
+  dwargon: 'diamond',
+  neutral: 'triangle',
+  unknown: 'hex',
 };
 
 export const INK = {
-  base: '#0a0d0e',
-  panel: 'rgba(16, 21, 23, 0.88)',
-  panelSolid: '#14191b',
-  rule: 'rgba(160, 138, 82, 0.28)',
-  ruleStrong: 'rgba(160, 138, 82, 0.55)',
-  text: '#cdc4b0',
-  textDim: '#8d8676',
-  textFaint: '#6a655a',
-  brass: '#a08a52',
-  alert: '#b4685c',
+  bg: '#090d10',
+  surface: '#0f1519',
+  surface2: '#151d22',
+  surface3: '#1c262c',
+  line: '#26323a',
+  lineStrong: '#3a4a54',
+  text: '#e3e7e8',
+  text2: '#a7b1b5',
+  text3: '#7d898e',
+  accent: '#d4ab57',
+  alert: '#e0614f',
+  halo: 'rgba(6, 9, 11, 0.92)',
 };
 
-/** Movement categories get distinct line treatments, not distinct hues. */
-export const MOVEMENT_STYLE: Record<string, { dash: number[]; width: number; head: 'arrow' | 'bar' | 'none' }> = {
-  ADVANCE: { dash: [], width: 2, head: 'arrow' },
-  BREAKTHROUGH: { dash: [], width: 3, head: 'arrow' },
-  DEPLOYMENT: { dash: [7, 5], width: 2, head: 'arrow' },
-  REINFORCEMENT: { dash: [2, 4], width: 2, head: 'arrow' },
-  ENCIRCLEMENT: { dash: [10, 4, 2, 4], width: 2, head: 'arrow' },
-  RETREAT: { dash: [5, 4], width: 2, head: 'bar' },
-  WITHDRAWAL: { dash: [5, 4], width: 2, head: 'bar' },
-  IN_TRANSIT: { dash: [3, 6], width: 1.5, head: 'none' },
-  REPOSITION: { dash: [3, 6], width: 1.5, head: 'arrow' },
+export const PROVENANCE_COLOR: Record<Provenance, string> = {
+  CANONICAL: '#cfe5dc',
+  CANONICAL_WITH_VISUAL_RECONSTRUCTION: '#8fc9b6',
+  INFERRED: '#d9b56a',
+  RECONSTRUCTED: '#c79a4e',
+  UNRESOLVED: '#e0614f',
 };
 
-export function movementStyle(type: string) {
-  return MOVEMENT_STYLE[type] ?? { dash: [4, 4], width: 1.5, head: 'arrow' as const };
+/** Route confidence is shown by line treatment, not by hue. */
+export const ROUTE_STYLE: Record<RouteConfidence, { dash: number[]; alpha: number; width: number }> = {
+  SOLID: { dash: [], alpha: 1, width: 1 },
+  RECONSTRUCTED: { dash: [10, 6], alpha: 0.85, width: 1 },
+  SCHEMATIC: { dash: [2, 6], alpha: 0.6, width: 0.8 },
+  UNKNOWN: { dash: [], alpha: 0, width: 0 },
+};
+
+/** Fill treatment of a territory by its role in the war at this moment. */
+export const ROLE_FILL_WEIGHT: Record<string, number> = {
+  BELLIGERENT: 1,
+  CO_BELLIGERENT: 0.75,
+  CONTRIBUTOR: 0.45,
+  ARMISTICE: 0.55,
+  UNINVOLVED: 0.12,
+};
+
+export function factionKey(faction: string | null | undefined): ColorKey {
+  if (!faction) return 'unknown';
+  if (/eastern empire/i.test(faction)) return 'empire';
+  if (/tempest/i.test(faction)) return 'tempest';
+  if (/dwargon/i.test(faction)) return 'dwargon';
+  if (/eurazania|western|blumund|farmenas|englassia/i.test(faction)) return 'neutral';
+  return 'unknown';
 }
 
-/** Control state -> pigment, with a safe fallback that reads as unknown. */
-export function controlColor(state: string | null | undefined): string {
-  if (!state) return CONTROL_COLOR.UNKNOWN;
-  const key = state.toUpperCase().replace(/\s*\(.*\)\s*$/, '').trim();
-  return CONTROL_COLOR[key] ?? CONTROL_COLOR.UNKNOWN;
+export const factionColor = (faction: string | null | undefined) => FACTION_COLOR[factionKey(faction)];
+
+/** Theatre control strings from the dataset -> colour key, UNKNOWN stays unknown. */
+export function controlKey(control: string | null | undefined): ColorKey | 'contested' | null {
+  if (!control) return null;
+  const c = control.toUpperCase();
+  if (c.startsWith('CONTESTED')) return 'contested';
+  if (c.startsWith('EMPIRE')) return 'empire';
+  if (c.startsWith('TEMPEST')) return 'tempest';
+  if (c.startsWith('DWARGON')) return 'dwargon';
+  if (c.startsWith('NEUTRAL')) return 'neutral';
+  return 'unknown';
 }
 
-/** Uncertainty is drawn, not hidden. */
-export const CONFIDENCE_ALPHA: Record<string, number> = {
-  HIGH: 1,
-  MEDIUM: 0.82,
-  LOW: 0.62,
-  UNKNOWN: 0.5,
-};
+export function hexToRgba(hex: string, alpha: number): string {
+  const n = Number.parseInt(hex.slice(1), 16);
+  return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`;
+}
+
+export function mix(a: string, b: string, t: number): string {
+  const pa = Number.parseInt(a.slice(1), 16);
+  const pb = Number.parseInt(b.slice(1), 16);
+  const ch = (shift: number) => Math.round(((pa >> shift) & 255) * (1 - t) + ((pb >> shift) & 255) * t);
+  return `#${[16, 8, 0].map((s) => ch(s).toString(16).padStart(2, '0')).join('')}`;
+}

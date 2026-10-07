@@ -5,35 +5,41 @@
  * failure here means the browser would have received something incoherent, so
  * the build stops rather than shipping it.
  *
- * The checks are deliberately pedantic about the two failure modes that would
- * quietly corrupt a historical visualisation: a reference that points at
- * nothing, and a number that was never in the source.
+ * Deliberately pedantic about the failure modes that quietly corrupt a
+ * historical visualisation: a reference that points at nothing, a number that
+ * was never in the source, time running backwards, and the same death counted
+ * twice.
  */
 
-import { readFileSync, existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import type {
-  Battle,
-  CampaignStage,
-  CasualtyRecord,
-  Combatant,
-  Commander,
-  Faction,
-  Force,
-  ForcePositionTrack,
-  ForceTrack,
-  FrameState,
-  Manifest,
-  Movement,
-  Nation,
-  Place,
-  Quantity,
-  TerritoryChange,
-  Theatre,
-  TimelineIndex,
-  WarEvent,
+import {
+  PROVENANCE_ORDER,
+  type Battle,
+  type CampaignStage,
+  type CampaignTotals,
+  type CasualtyRecord,
+  type Character,
+  type Combatant,
+  type Commander,
+  type Faction,
+  type Force,
+  type ForcePositionTrack,
+  type ForceTrack,
+  type FrameState,
+  type Manifest,
+  type Movement,
+  type Nation,
+  type Place,
+  type Quantity,
+  type TermEntry,
+  type Territory,
+  type TerritoryChange,
+  type Theatre,
+  type TimelineIndex,
+  type WarEvent,
 } from '../src/types/dataset';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -41,19 +47,12 @@ const DATA = join(HERE, '..', 'public', 'data');
 
 const errors: string[] = [];
 const warnings: string[] = [];
-
-function fail(message: string): void {
-  errors.push(message);
-}
-function warn(message: string): void {
-  warnings.push(message);
-}
+const fail = (m: string) => errors.push(m);
+const warn = (m: string) => warnings.push(m);
 
 function load<T>(name: string): T {
   const path = join(DATA, name);
-  if (!existsSync(path)) {
-    throw new Error(`Runtime dataset is missing ${name}. Run "npm run compile-data" first.`);
-  }
+  if (!existsSync(path)) throw new Error(`Runtime dataset is missing ${name}. Run "npm run compile-data" first.`);
   return JSON.parse(readFileSync(path, 'utf8')) as T;
 }
 
@@ -64,13 +63,8 @@ function assertFinite(value: unknown, path: string): void {
     else if (!Number.isFinite(value)) fail(`Infinity at ${path}`);
     return;
   }
-  if (Array.isArray(value)) {
-    value.forEach((v, i) => assertFinite(v, `${path}[${i}]`));
-    return;
-  }
-  if (value && typeof value === 'object') {
-    for (const [k, v] of Object.entries(value)) assertFinite(v, `${path}.${k}`);
-  }
+  if (Array.isArray(value)) value.forEach((v, i) => assertFinite(v, `${path}[${i}]`));
+  else if (value && typeof value === 'object') for (const [k, v] of Object.entries(value)) assertFinite(v, `${path}.${k}`);
 }
 
 function uniqueIds<T extends { id: string }>(items: T[], label: string): Set<string> {
@@ -83,9 +77,17 @@ function uniqueIds<T extends { id: string }>(items: T[], label: string): Set<str
   return seen;
 }
 
-function isQuantity(q: Quantity): boolean {
-  return q === 'UNKNOWN' || (typeof q === 'number' && Number.isFinite(q));
+/** A quantity is UNKNOWN or a finite, non-negative integer. */
+function checkQuantity(q: Quantity, where: string): void {
+  if (q === 'UNKNOWN') return;
+  if (typeof q !== 'number' || !Number.isFinite(q)) fail(`${where}: not a quantity (${String(q)}).`);
+  else if (q < 0) fail(`${where}: negative quantity ${q}.`);
+  else if (!Number.isInteger(q)) fail(`${where}: fractional headcount ${q}.`);
 }
+
+const ref = (set: Set<string>, id: string | null | undefined, where: string) => {
+  if (id && !set.has(id)) fail(`${where}: references unknown id ${id}.`);
+};
 
 function main(): void {
   const manifest = load<Manifest>('manifest.json');
@@ -95,377 +97,321 @@ function main(): void {
   const forces = load<Force[]>('forces.json');
   const forceTracks = load<ForceTrack[]>('force-tracks.json');
   const movementFile = load<{ movements: Movement[]; positions: ForcePositionTrack[] }>('movement.json');
-  const casualtyFile = load<{ records: CasualtyRecord[]; campaignTotals: Record<string, unknown> }>('casualties.json');
+  const casualtyFile = load<{ records: CasualtyRecord[]; campaignTotals: CampaignTotals }>('casualties.json');
   const commanders = load<Commander[]>('commanders.json');
   const combatants = load<Combatant[]>('combatants.json');
-  const territories = load<TerritoryChange[]>('territories.json');
+  const characters = load<Character[]>('characters.json');
+  const territoryChanges = load<TerritoryChange[]>('territories.json');
+  const geo = load<{ territories: Territory[] }>('territories.geo.json');
   const theatres = load<Theatre[]>('theatres.json');
   const places = load<Place[]>('places.json');
   const nations = load<Nation[]>('nations.json');
   const factions = load<Faction[]>('factions.json');
   const stages = load<CampaignStage[]>('stages.json');
+  const terms = load<TermEntry[]>('terms.json');
   const keyIndex = load<{ interval: number; frames: number[]; files: string[] }>('keyframes.index.json');
-  const deltaFile = load<{ interval: number; frameCount: number; deltaFrames: number[]; deltas: Record<string, Partial<FrameState>> }>(
-    'state.deltas.json',
-  );
+  const deltaFile = load<{ deltaFrames: number[]; deltas: Record<string, Partial<FrameState>> }>('state.deltas.json');
 
   const frameCount = manifest.clock.frameCount;
+  if (frameCount !== (manifest.clock.lastDay - manifest.clock.firstDay + 1) * manifest.clock.framesPerDay) {
+    fail('manifest: frameCount does not match the day span of the clock.');
+  }
+
+  for (const [name, value] of Object.entries({ events, battles, forces, forceTracks, movementFile, casualtyFile, commanders, characters, geo, theatres, places, nations, stages })) {
+    assertFinite(value, name);
+  }
 
   /* -- identity ---------------------------------------------------- */
 
   const eventIds = uniqueIds(events, 'events');
   const battleIds = uniqueIds(battles, 'battles');
   const forceIds = uniqueIds(forces, 'forces');
-  uniqueIds(commanders, 'commanders');
   const theatreIds = uniqueIds(theatres, 'theatres');
   const placeIds = uniqueIds(places, 'places');
   const nationIds = uniqueIds(nations, 'nations');
-  uniqueIds(casualtyFile.records, 'casualties');
+  const characterIds = uniqueIds(characters, 'characters');
+  const territoryIds = uniqueIds(geo.territories, 'territories');
+  const commanderIds = uniqueIds(commanders, 'commanders');
   uniqueIds(combatants, 'combatants');
-  uniqueIds(territories, 'territories');
+  uniqueIds(casualtyFile.records, 'casualties');
+  uniqueIds(territoryChanges, 'territory changes');
   uniqueIds(movementFile.movements, 'movements');
-  uniqueIds(factions.map((f) => ({ ...f, id: f.id })), 'factions');
   uniqueIds(stages, 'stages');
+  uniqueIds(terms, 'terms');
+  const factionIds = new Set(factions.map((f) => f.id));
+  const anyPlace = new Set([...placeIds, ...nationIds]);
 
-  /* -- frame ranges ------------------------------------------------ */
-
-  const inRange = (f: number | null, where: string): void => {
+  const inRange = (f: number | null, where: string) => {
     if (f === null) return;
-    if (!Number.isInteger(f) || f < 0 || f >= frameCount) {
-      fail(`${where}: frame ${f} is outside 0..${frameCount - 1}.`);
-    }
+    if (!Number.isInteger(f) || f < 0 || f >= frameCount) fail(`${where}: frame ${f} outside 0..${frameCount - 1}.`);
   };
 
-  for (const e of events) inRange(e.frame, `event ${e.id}`);
-  for (const b of battles) {
-    inRange(b.startFrame, `battle ${b.id}`);
-    inRange(b.endFrame, `battle ${b.id}`);
-    if (b.endFrame < b.startFrame) fail(`battle ${b.id}: end frame precedes start frame.`);
+  /* -- events -------------------------------------------------------- */
+
+  let previousFrame = -1;
+  let unresolved = 0;
+  for (const [i, e] of events.entries()) {
+    const where = `event ${e.id}`;
+    inRange(e.frame, where);
+    if (e.frame < previousFrame) fail(`${where}: events are not in chronological order.`);
+    previousFrame = e.frame;
+    if (e.prevId !== (events[i - 1]?.id ?? null)) fail(`${where}: prevId does not match the ordered sequence.`);
+    if (e.nextId !== (events[i + 1]?.id ?? null)) fail(`${where}: nextId does not match the ordered sequence.`);
+    if (!PROVENANCE_ORDER.includes(e.provenance)) fail(`${where}: provenance "${e.provenance}" is not a recognised class.`);
+    if (e.provenance === 'UNRESOLVED') unresolved += 1;
+    ref(theatreIds, e.theatreId, `${where}.theatreId`);
+    ref(anyPlace, e.placeId, `${where}.placeId`);
+    ref(battleIds, e.battleId, `${where}.battleId`);
+    for (const c of e.characterIds) ref(characterIds, c, `${where}.characterIds`);
+    for (const f of e.forceIds) ref(forceIds, f, `${where}.forceIds`);
+    checkQuantity(e.tempestStrength, `${where}.tempestStrength`);
+    checkQuantity(e.empireStrength, `${where}.empireStrength`);
+    checkQuantity(e.kia, `${where}.kia`);
+    checkQuantity(e.pow, `${where}.pow`);
+    if (!/^\d{2}:\d{2}$/.test(e.simulationTime)) fail(`${where}: simulation time "${e.simulationTime}" is not HH:MM.`);
+    if (e.sourceRefs.length === 0) warn(`${where}: no source reference.`);
+    if ((e.provenance === 'RECONSTRUCTED' || e.provenance === 'INFERRED') && !e.reconstructionNote && !e.notes) {
+      warn(`${where}: ${e.provenance} without a reconstruction note.`);
+    }
   }
+  if (unresolved) warn(`${unresolved} event(s) are UNRESOLVED; the interface flags them.`);
+
+  /* -- battles ------------------------------------------------------- */
+
+  for (const b of battles) {
+    const where = `battle ${b.id}`;
+    inRange(b.startFrame, `${where}.startFrame`);
+    inRange(b.endFrame, `${where}.endFrame`);
+    if (b.startFrame > b.endFrame) fail(`${where}: starts after it ends.`);
+    ref(theatreIds, b.theatreId, `${where}.theatreId`);
+    ref(anyPlace, b.placeId, `${where}.placeId`);
+    for (const id of b.eventIds) ref(eventIds, id, `${where}.eventIds`);
+    for (const p of b.participants) for (const f of p.forces) ref(forceIds, f, `${where}.participants`);
+    checkQuantity(b.empireLost, `${where}.empireLost`);
+    checkQuantity(b.tempestLost, `${where}.tempestLost`);
+  }
+
+  /* -- forces & tracks ---------------------------------------------- */
+
+  const forceById = new Map(forces.map((f) => [f.id, f]));
+  for (const f of forces) {
+    const where = `force ${f.id}`;
+    ref(forceIds, f.parentId, `${where}.parentId`);
+    for (const c of f.childIds) {
+      ref(forceIds, c, `${where}.childIds`);
+      if (forceById.get(c)?.parentId !== f.id) fail(`${where}: child ${c} does not name it as parent.`);
+    }
+    if (f.countedInParent !== Boolean(f.parentId)) fail(`${where}: countedInParent disagrees with parentId.`);
+    for (const c of f.commanderIds) ref(characterIds, c, `${where}.commanderIds`);
+    if (!factionIds.has(f.faction)) fail(`${where}: faction ${f.faction} is not a declared faction.`);
+    checkQuantity(f.initialBest, `${where}.initialBest`);
+    checkQuantity(f.finalStrength, `${where}.finalStrength`);
+    if (f.sizeStatus === 'UNKNOWN' && f.initialBest !== 'UNKNOWN') warn(`${where}: sizeStatus UNKNOWN but a best estimate is recorded.`);
+    if (f.sizeStatus !== 'UNKNOWN' && f.initialBest === 'UNKNOWN') fail(`${where}: sizeStatus ${f.sizeStatus} without a number.`);
+  }
+  const snapshotAt = new Map<string, ForceTrack>();
+  for (const t of forceTracks) {
+    ref(forceIds, t.forceId, 'force track');
+    snapshotAt.set(t.forceId, t);
+    let last = -1;
+    for (const s of t.snapshots) {
+      const where = `track ${t.forceId}@${s.f}`;
+      inRange(s.f, where);
+      if (s.f <= last) fail(`${where}: snapshots out of order.`);
+      last = s.f;
+      for (const k of ['strength', 'effective', 'kia', 'wia', 'pow', 'mia'] as const) checkQuantity(s[k], `${where}.${k}`);
+      ref(anyPlace, s.placeId, `${where}.placeId`);
+      ref(eventIds, s.eventId, `${where}.eventId`);
+      if (typeof s.strength === 'number' && typeof s.effective === 'number' && s.effective > s.strength) {
+        warn(`${where}: effective strength exceeds strength.`);
+      }
+    }
+  }
+  // A child formation can never be larger than its parent at the same moment.
+  const at = (id: string, f: number) => {
+    let s: ForceTrack['snapshots'][number] | undefined;
+    for (const x of snapshotAt.get(id)?.snapshots ?? []) if (x.f <= f) s = x;
+    return s;
+  };
+  for (const f of forces) {
+    if (!f.parentId) continue;
+    for (const s of snapshotAt.get(f.id)?.snapshots ?? []) {
+      const p = at(f.parentId, s.f);
+      if (p && typeof p.strength === 'number' && typeof s.strength === 'number' && s.strength > p.strength) {
+        warn(`force ${f.id}@${s.f}: ${s.strength} exceeds parent ${f.parentId} (${p.strength}).`);
+      }
+    }
+  }
+
+  /* -- positions & movements --------------------------------------- */
+
+  for (const track of movementFile.positions) {
+    let last = -1;
+    for (const k of track.keys) {
+      const where = `positions ${track.forceId}@${k.f}`;
+      inRange(k.f, where);
+      if (k.f < last) fail(`${where}: position keys out of order (movement would run backwards in time).`);
+      last = k.f;
+      if (k.x < 0 || k.x > 1 || k.y < 0 || k.y > 1) fail(`${where}: coordinate outside the atlas.`);
+    }
+    for (const [a, b] of track.offMap) if (a > b) fail(`positions ${track.forceId}: inverted off-map run ${a}..${b}.`);
+  }
+  for (const m of movementFile.movements) {
+    const where = `movement ${m.id}`;
+    ref(forceIds, m.forceId, `${where}.forceId`);
+    ref(anyPlace, m.fromPlaceId, `${where}.fromPlaceId`);
+    ref(anyPlace, m.toPlaceId, `${where}.toPlaceId`);
+    ref(eventIds, m.startEvent, `${where}.startEvent`);
+    ref(eventIds, m.endEvent, `${where}.endEvent`);
+    if (m.startFrame !== null && m.endFrame !== null && m.endFrame < m.startFrame) fail(`${where}: ends before it starts.`);
+    if (m.destinationUnknown && m.route !== 'UNKNOWN') fail(`${where}: unknown destination drawn with a ${m.route} route.`);
+    if (m.route === 'SOLID' && m.basis === 'SIMULATION_RECONSTRUCTED') warn(`${where}: SOLID route on a simulation-reconstructed basis.`);
+  }
+
+  /* -- casualties ---------------------------------------------------- */
+
+  const records = casualtyFile.records;
+  for (const c of records) {
+    const where = `casualty ${c.id}`;
+    ref(eventIds, c.eventId, `${where}.eventId`);
+    ref(forceIds, c.forceId, `${where}.forceId`);
+    for (const k of ['kia', 'wia', 'pow', 'mia', 'revived'] as const) checkQuantity(c[k], `${where}.${k}`);
+    const excluded = ['AGGREGATE_CASUALTY', 'COMPONENT_CASUALTY', 'CAMPAIGN_TOTAL', 'UNKNOWN'].includes(c.scope);
+    if (excluded === c.countsTowardCampaignTotal) fail(`${where}: scope ${c.scope} contradicts countsTowardCampaignTotal.`);
+  }
+  // Recompute the campaign totals independently and require agreement.
+  const additive = records.filter((c) => c.countsTowardCampaignTotal && c.frame !== null);
+  const recompute = (faction: string, k: 'kia' | 'pow' | 'revived'): Quantity => {
+    const nums = additive.filter((c) => c.faction === faction).map((c) => c[k]).filter((q): q is number => typeof q === 'number');
+    return nums.length ? nums.reduce((a, b) => a + b, 0) : 'UNKNOWN';
+  };
+  const totals = casualtyFile.campaignTotals;
+  const pairs: [string, Quantity, Quantity][] = [
+    ['empireKilled', totals.empireKilled, recompute('Eastern Empire', 'kia')],
+    ['empireRevived', totals.empireRevived, recompute('Eastern Empire', 'revived')],
+    ['empireCaptured', totals.empireCaptured, recompute('Eastern Empire', 'pow')],
+    ['tempestKilled', totals.tempestKilled, recompute('Jura-Tempest Federation', 'kia')],
+  ];
+  for (const [name, stated, again] of pairs) if (stated !== again) fail(`campaign totals: ${name} is ${stated}, recomputed ${again}.`);
+  if (typeof totals.empireKilled === 'number' && typeof totals.empireRevived === 'number') {
+    if (totals.empireRevived > totals.empireKilled) fail('campaign totals: more revived than killed.');
+    if (totals.empirePermanentDead !== totals.empireKilled - totals.empireRevived) fail('campaign totals: permanent dead is not killed minus revived.');
+  }
+
+  /* -- people -------------------------------------------------------- */
+
+  for (const c of commanders) {
+    ref(eventIds, c.startEvent, `commander ${c.id}.startEvent`);
+    ref(eventIds, c.endEvent, `commander ${c.id}.endEvent`);
+    ref(characterIds, c.characterId, `commander ${c.id}.characterId`);
+    if (c.startFrame !== null && c.endFrame !== null && c.endFrame < c.startFrame) fail(`commander ${c.id}: command ends before it starts.`);
+  }
+  for (const c of combatants) {
+    ref(eventIds, c.firstEvent, `combatant ${c.id}.firstEvent`);
+    ref(eventIds, c.lastEvent, `combatant ${c.id}.lastEvent`);
+    ref(characterIds, c.characterId, `combatant ${c.id}.characterId`);
+    if (c.firstFrame !== null && c.lastFrame !== null && c.lastFrame < c.firstFrame) fail(`combatant ${c.id}: last seen before first seen.`);
+  }
+  for (const c of characters) {
+    for (const id of c.commanderIds) ref(commanderIds, id, `character ${c.id}.commanderIds`);
+    for (const id of c.forceIds) ref(forceIds, id, `character ${c.id}.forceIds`);
+    for (const id of c.eventIds) ref(eventIds, id, `character ${c.id}.eventIds`);
+    for (const id of c.battleIds) ref(battleIds, id, `character ${c.id}.battleIds`);
+  }
+
+  /* -- geography ----------------------------------------------------- */
+
+  for (const p of places) {
+    if (p.placement !== 'ABSTRACT' && (p.x === null || p.y === null)) fail(`place ${p.id}: ${p.placement} place without coordinates.`);
+    if (p.x !== null && (p.x < 0 || p.x > 1 || p.y! < 0 || p.y! > 1)) fail(`place ${p.id}: coordinate outside the atlas.`);
+    if (p.placement !== 'ABSTRACT' && !p.basis) fail(`place ${p.id}: no stated basis for its position.`);
+    ref(territoryIds, p.territoryId, `place ${p.id}.territoryId`);
+    if (p.placement !== 'ABSTRACT' && p.altitude !== 'AIR' && p.territoryId === null) warn(`place ${p.id}: ground position falls outside every traced territory (sea).`);
+  }
+  for (const n of nations) ref(territoryIds, n.territoryId, `nation ${n.id}.territoryId`);
+  for (const t of geo.territories) {
+    for (const poly of t.geometry.coordinates) {
+      const ring = poly[0];
+      if (ring.length < 4) fail(`territory ${t.id}: degenerate ring.`);
+      const [a, b] = [ring[0], ring[ring.length - 1]];
+      if (a[0] !== b[0] || a[1] !== b[1]) fail(`territory ${t.id}: ring is not closed.`);
+      for (const [x, y] of ring) if (x < 0 || x > 1 || y < 0 || y > 1) fail(`territory ${t.id}: vertex outside the atlas.`);
+    }
+    let last = -1;
+    for (const s of t.control) {
+      inRange(s.fromFrame, `territory ${t.id} control`);
+      ref(eventIds, s.fromEvent, `territory ${t.id} control.fromEvent`);
+      if (s.fromFrame < last) fail(`territory ${t.id}: control segments out of order.`);
+      last = s.fromFrame;
+      if (s.status === 'UNKNOWN' && s.controller) fail(`territory ${t.id}: UNKNOWN control must not name a controller.`);
+    }
+  }
+  for (const t of territoryChanges) ref(eventIds, t.changeEventId, `territory change ${t.id}`);
   for (const s of stages) {
     inRange(s.startFrame, `stage ${s.id}`);
     inRange(s.endFrame, `stage ${s.id}`);
-    if (s.endFrame < s.startFrame) fail(`stage ${s.id}: end frame precedes start frame.`);
-  }
-  for (const c of casualtyFile.records) inRange(c.frame, `casualty ${c.id}`);
-  for (const m of movementFile.movements) {
-    inRange(m.startFrame, `movement ${m.id}`);
-    inRange(m.endFrame, `movement ${m.id}`);
+    if (s.endFrame < s.startFrame) fail(`stage ${s.id}: ends before it starts.`);
+    for (const a of s.anchorEvents) ref(eventIds, a, `stage ${s.id}.anchorEvents`);
   }
 
-  /* -- referential integrity --------------------------------------- */
+  /* -- timeline index & state stream ------------------------------- */
 
-  for (const e of events) {
-    if (!theatreIds.has(e.theatreId)) fail(`event ${e.id}: unknown theatre ${e.theatreId}.`);
-    if (e.battleId && !battleIds.has(e.battleId)) fail(`event ${e.id}: unknown battle ${e.battleId}.`);
-    if (e.placeId && !placeIds.has(e.placeId) && !nationIds.has(e.placeId)) {
-      fail(`event ${e.id}: unknown place ${e.placeId}.`);
-    }
-    if (e.prevId && !eventIds.has(e.prevId)) fail(`event ${e.id}: previous event ${e.prevId} does not exist.`);
-    if (e.nextId && !eventIds.has(e.nextId)) fail(`event ${e.id}: next event ${e.nextId} does not exist.`);
+  for (const k of ['date', 'phase', 'stage'] as const) {
+    if (timeline[k].idx.length !== frameCount) fail(`timeline.${k}: ${timeline[k].idx.length} entries for ${frameCount} frames.`);
+    for (const i of timeline[k].idx) if (i < 0 || i >= timeline[k].dict.length) { fail(`timeline.${k}: dictionary index out of range.`); break; }
   }
-  for (const b of battles) {
-    if (!theatreIds.has(b.theatreId)) fail(`battle ${b.id}: unknown theatre ${b.theatreId}.`);
-    for (const id of b.eventIds) if (!eventIds.has(id)) fail(`battle ${b.id}: unknown event ${id}.`);
-    for (const p of b.participants) {
-      for (const fid of p.forces) if (!forceIds.has(fid)) fail(`battle ${b.id}: unknown force ${fid}.`);
-    }
-  }
-  for (const f of forces) {
-    if (f.parentId && !forceIds.has(f.parentId)) fail(`force ${f.id}: unknown parent ${f.parentId}.`);
-    for (const c of f.childIds) if (!forceIds.has(c)) fail(`force ${f.id}: unknown child ${c}.`);
-  }
-  for (const t of forceTracks) {
-    if (!forceIds.has(t.forceId)) fail(`force track: unknown force ${t.forceId}.`);
-    let previous = -1;
-    for (const s of t.snapshots) {
-      inRange(s.f, `force track ${t.forceId}`);
-      if (s.f <= previous) fail(`force track ${t.forceId}: snapshots are not strictly ordered at frame ${s.f}.`);
-      previous = s.f;
-      for (const [k, v] of Object.entries({ strength: s.strength, kia: s.kia, wia: s.wia, pow: s.pow, mia: s.mia })) {
-        if (!isQuantity(v as Quantity)) fail(`force track ${t.forceId} @${s.f}: ${k} is neither a finite number nor UNKNOWN.`);
-      }
-      if (s.placeId && !placeIds.has(s.placeId) && !nationIds.has(s.placeId)) {
-        fail(`force track ${t.forceId} @${s.f}: unknown place ${s.placeId}.`);
-      }
-    }
-  }
-  for (const p of movementFile.positions) {
-    if (!forceIds.has(p.forceId)) fail(`position track: unknown force ${p.forceId}.`);
-    let previous = -1;
-    for (const k of p.keys) {
-      inRange(k.f, `position track ${p.forceId}`);
-      if (k.f <= previous) fail(`position track ${p.forceId}: keys are not strictly ordered at frame ${k.f}.`);
-      previous = k.f;
-      if (k.x < 0 || k.x > 1 || k.y < 0 || k.y > 1) {
-        fail(`position track ${p.forceId} @${k.f}: simulation coordinate (${k.x}, ${k.y}) is outside the unit square.`);
-      }
-    }
-  }
-  for (const m of movementFile.movements) {
-    if (!forceIds.has(m.forceId)) fail(`movement ${m.id}: unknown force ${m.forceId}.`);
-    if (m.startEvent && !eventIds.has(m.startEvent)) fail(`movement ${m.id}: unknown start event ${m.startEvent}.`);
-    if (m.endEvent && !eventIds.has(m.endEvent)) fail(`movement ${m.id}: unknown end event ${m.endEvent}.`);
-    if (!m.destinationUnknown && m.toPlaceId === null) {
-      warn(`movement ${m.id}: destination "${m.to}" has no gazetteer position; the arrow is not drawn.`);
-    }
-  }
-  for (const c of commanders) {
-    for (const fid of c.forceIds) if (!forceIds.has(fid)) fail(`commander ${c.id}: unknown force ${fid}.`);
-    for (const eid of c.eventIds) if (!eventIds.has(eid)) fail(`commander ${c.id}: unknown event ${eid}.`);
-    if (c.startEvent && !eventIds.has(c.startEvent)) fail(`commander ${c.id}: unknown start event ${c.startEvent}.`);
-    if (c.endEvent && !eventIds.has(c.endEvent)) fail(`commander ${c.id}: unknown end event ${c.endEvent}.`);
-  }
-  for (const c of combatants) {
-    if (c.firstEvent && !eventIds.has(c.firstEvent)) fail(`combatant ${c.id}: unknown first event ${c.firstEvent}.`);
-    if (c.lastEvent && !eventIds.has(c.lastEvent)) fail(`combatant ${c.id}: unknown last event ${c.lastEvent}.`);
-  }
-  for (const t of territories) {
-    if (!theatreIds.has(t.theatreId)) fail(`territory ${t.id}: unknown theatre ${t.theatreId}.`);
-    if (t.changeEventId && !eventIds.has(t.changeEventId)) fail(`territory ${t.id}: unknown event ${t.changeEventId}.`);
-  }
-  for (const c of casualtyFile.records) {
-    if (c.eventId && !eventIds.has(c.eventId)) fail(`casualty ${c.id}: unknown event ${c.eventId}.`);
-    if (c.forceId && !forceIds.has(c.forceId)) fail(`casualty ${c.id}: unknown force ${c.forceId}.`);
-  }
-  for (const f of factions) {
-    for (const fid of f.forceIds) if (!forceIds.has(fid)) fail(`faction ${f.id}: unknown force ${fid}.`);
-    if (f.nationId && !nationIds.has(f.nationId)) fail(`faction ${f.id}: unknown nation ${f.nationId}.`);
+  for (let f = 1; f < frameCount; f += 1) {
+    if (timeline.battleDay[f] < timeline.battleDay[f - 1]) { fail(`timeline: battle day decreases at frame ${f}.`); break; }
   }
 
-  /* -- timeline ---------------------------------------------------- */
-
-  if (timeline.frameCount !== frameCount) fail('timeline.index.json disagrees with the manifest frame count.');
-  for (const [name, column] of Object.entries({
-    date: timeline.date,
-    phase: timeline.phase,
-    stage: timeline.stage,
-    confidence: timeline.confidence,
-  })) {
-    if (column.idx.length !== frameCount) fail(`timeline column ${name} has ${column.idx.length} entries, expected ${frameCount}.`);
-    for (const i of column.idx) {
-      if (i < 0 || i >= column.dict.length) fail(`timeline column ${name}: dictionary index ${i} is out of range.`);
-    }
-  }
-  for (const [name, arr] of Object.entries({
-    campaignDay: timeline.campaignDay,
-    battleDay: timeline.battleDay,
-    approachPct: timeline.approachPct,
-  })) {
-    if (arr.length !== frameCount) fail(`timeline column ${name} has ${arr.length} entries, expected ${frameCount}.`);
-  }
-  for (let i = 1; i < timeline.campaignDay.length; i += 1) {
-    if (timeline.campaignDay[i] < timeline.campaignDay[i - 1]) {
-      fail(`campaign day is not monotonic at frame ${i}.`);
-    }
-    if (timeline.battleDay[i] < timeline.battleDay[i - 1]) {
-      fail(`battle day is not monotonic at frame ${i}.`);
-    }
-  }
-  for (let i = 0; i < timeline.approachPct.length; i += 1) {
-    const v = timeline.approachPct[i];
-    if (v !== -1 && (v < 0 || v > 100)) fail(`approach percentage ${v} at frame ${i} is outside 0..100.`);
-  }
-  for (const f of timeline.eventFrames) inRange(f, 'timeline.eventFrames');
-  for (const f of timeline.stateChangeFrames) inRange(f, 'timeline.stateChangeFrames');
-
-  const eventFrameSet = new Set(timeline.eventFrames);
-  for (const e of events) {
-    if (!eventFrameSet.has(e.frame)) {
-      fail(`event ${e.id} sits at frame ${e.frame}, which the timeline does not mark as an event frame.`);
-    }
-  }
-
-  /* -- checkpoints and deltas -------------------------------------- */
-
-  const expectedCheckpoints = Math.ceil(frameCount / keyIndex.interval);
-  if (keyIndex.frames.length !== expectedCheckpoints) {
-    fail(`expected ${expectedCheckpoints} checkpoints at interval ${keyIndex.interval}, found ${keyIndex.frames.length}.`);
-  }
-  for (let i = 0; i < keyIndex.frames.length; i += 1) {
-    if (keyIndex.frames[i] !== i * keyIndex.interval) {
-      fail(`checkpoint ${i} sits at frame ${keyIndex.frames[i]}, expected ${i * keyIndex.interval}.`);
-    }
-    if (!existsSync(join(DATA, keyIndex.files[i]))) fail(`checkpoint file ${keyIndex.files[i]} does not exist.`);
-  }
-
-  let previousDelta = -1;
-  for (const f of deltaFile.deltaFrames) {
-    if (f <= previousDelta) fail(`delta frames are not strictly ascending at ${f}.`);
-    previousDelta = f;
-    inRange(f, 'state deltas');
-    const delta = deltaFile.deltas[String(f)];
-    if (!delta) fail(`delta frame ${f} is indexed but has no payload.`);
-    else if (Object.keys(delta).length === 0) fail(`delta frame ${f} carries an empty payload; it should not be indexed.`);
-  }
-  if (Object.keys(deltaFile.deltas).length !== deltaFile.deltaFrames.length) {
-    fail('state.deltas.json: the delta index and the delta payload map are different sizes.');
-  }
-
-  // Replay the whole campaign from the checkpoints and confirm every frame
-  // resolves to a state with the fields the renderer reads.
-  const checkpointStates = keyIndex.files.map((file) => JSON.parse(readFileSync(join(DATA, file), 'utf8')) as FrameState);
-  let cursor: FrameState | null = null;
+  // Dual-path replay. Every frame is resolved twice: sequentially from frame 0
+  // through the delta stream, and by seeking from the nearest checkpoint. If
+  // the two disagree, scrubbing would show a different campaign from playing.
+  const checkpoints = keyIndex.files.map((f) => load<FrameState>(f));
+  let sequential: FrameState = checkpoints[0];
+  let mismatches = 0;
   for (let f = 0; f < frameCount; f += 1) {
-    if (f % keyIndex.interval === 0) {
-      cursor = { ...checkpointStates[f / keyIndex.interval] };
-    } else {
-      const delta = deltaFile.deltas[String(f)];
-      if (delta) cursor = { ...(cursor as FrameState), ...delta };
-    }
-    if (!cursor) {
-      fail(`frame ${f} resolves to no state.`);
-      break;
-    }
-    if (typeof cursor.phase !== 'string' || cursor.phase.length === 0) fail(`frame ${f} resolves to an empty phase.`);
-    if (!cursor.theatres || typeof cursor.theatres !== 'object') fail(`frame ${f} resolves without theatre state.`);
+    if (f > 0 && deltaFile.deltas[String(f)]) sequential = { ...sequential, ...deltaFile.deltas[String(f)] };
+    const block = Math.floor(f / keyIndex.interval);
+    let seeked: FrameState = checkpoints[block];
+    for (let g = keyIndex.frames[block] + 1; g <= f; g += 1) if (deltaFile.deltas[String(g)]) seeked = { ...seeked, ...deltaFile.deltas[String(g)] };
+    const a = JSON.stringify({ ...sequential, frame: 0 });
+    const b = JSON.stringify({ ...seeked, frame: 0 });
+    if (a !== b && mismatches++ < 3) fail(`state stream: sequential replay and checkpoint seek disagree at frame ${f}.`);
   }
-
-  // Two independent resolution paths must agree on every one of the 7,200
-  // frames: sequential replay of the delta stream from frame 0, and a seek
-  // that jumps to the nearest checkpoint and applies deltas forward. If they
-  // diverge, scrubbing the timeline would show a different campaign from
-  // playing it.
-  const normalise = (s: FrameState): string => JSON.stringify({ ...s, frame: 0 });
-  let sequential: FrameState = { ...checkpointStates[0] };
-  let divergences = 0;
+  // Recorded casualties never decrease.
+  let prior: FrameState | null = null;
+  sequential = checkpoints[0];
   for (let f = 0; f < frameCount; f += 1) {
-    if (f > 0) {
-      const delta = deltaFile.deltas[String(f)];
-      if (delta) sequential = { ...sequential, ...delta };
-    }
-    const cpIndex = Math.floor(f / keyIndex.interval);
-    let seeked: FrameState = { ...checkpointStates[cpIndex] };
-    for (let g = keyIndex.frames[cpIndex] + 1; g <= f; g += 1) {
-      const delta = deltaFile.deltas[String(g)];
-      if (delta) seeked = { ...seeked, ...delta };
-    }
-    if (normalise(sequential) !== normalise(seeked)) {
-      divergences += 1;
-      if (divergences <= 5) fail(`frame ${f}: sequential playback and seek-from-checkpoint resolve to different states.`);
-    }
-  }
-  if (divergences > 5) fail(`${divergences} frames in total resolve differently under playback and seeking.`);
-
-  /* -- numerics ---------------------------------------------------- */
-
-  assertFinite(timeline, 'timeline');
-  assertFinite(events, 'events');
-  assertFinite(forces, 'forces');
-  assertFinite(forceTracks, 'forceTracks');
-  assertFinite(movementFile, 'movement');
-  assertFinite(casualtyFile, 'casualties');
-  assertFinite(checkpointStates, 'checkpoints');
-  assertFinite(deltaFile, 'deltas');
-
-  for (const f of forces) {
-    for (const [k, v] of Object.entries({
-      initialMin: f.initialMin,
-      initialMax: f.initialMax,
-      initialBest: f.initialBest,
-      finalStrength: f.finalStrength,
-      kia: f.kia,
-      wia: f.wia,
-      pow: f.pow,
-      mia: f.mia,
-    })) {
-      if (!isQuantity(v as Quantity)) fail(`force ${f.id}: ${k} is neither a finite number nor UNKNOWN.`);
-      if (typeof v === 'number' && v < 0) fail(`force ${f.id}: ${k} is negative (${v}).`);
-    }
-  }
-
-  /* -- casualty arithmetic ----------------------------------------- */
-
-  const CATEGORIES = new Set(['EVENT_CASUALTY', 'COMPONENT_CASUALTY', 'AGGREGATE_CASUALTY', 'CAMPAIGN_TOTAL', 'UNKNOWN']);
-  for (const c of casualtyFile.records) {
-    if (!CATEGORIES.has(c.scope)) fail(`casualty ${c.id}: unrecognised scope ${c.scope}.`);
-    for (const [k, v] of Object.entries({ kia: c.kia, wia: c.wia, pow: c.pow, mia: c.mia })) {
-      if (!isQuantity(v as Quantity)) fail(`casualty ${c.id}: ${k} is neither a finite number nor UNKNOWN.`);
-      if (typeof v === 'number' && v < 0) fail(`casualty ${c.id}: ${k} is negative.`);
-    }
-    const nonAdditive = c.scope !== 'EVENT_CASUALTY' && c.scope !== 'UNKNOWN';
-    if (nonAdditive === c.countsTowardCampaignTotal) {
-      fail(`casualty ${c.id}: scope ${c.scope} and countsTowardCampaignTotal=${c.countsTowardCampaignTotal} disagree.`);
-    }
-  }
-
-  // The Step 1 markdown reconciles the campaign to 830,001 imperial dead from
-  // EVENT_CASUALTY rows alone. If our aggregation does not reproduce that, the
-  // double-counting guard is wrong.
-  const empireKia = casualtyFile.records
-    .filter((c) => c.countsTowardCampaignTotal && c.faction === 'Eastern Empire')
-    .map((c) => c.kia)
-    .filter((q): q is number => typeof q === 'number')
-    .reduce((a, b) => a + b, 0);
-  if (empireKia !== 830001) {
-    fail(`campaign imperial KIA aggregates to ${empireKia}; the Step 1 reconciliation is 830,001. Check the aggregate exclusions.`);
-  }
-
-  /* -- hierarchy --------------------------------------------------- */
-
-  for (const f of forces) {
-    if (f.parentId && !f.countedInParent) {
-      fail(`force ${f.id} has a parent but is not marked as counted inside it; totals would double count.`);
-    }
-    if (!f.parentId && f.countedInParent) {
-      fail(`force ${f.id} has no parent but is marked as counted inside one.`);
-    }
-  }
-  const roots = forces.filter((f) => !f.parentId);
-  if (roots.length === 0) fail('the force hierarchy has no root.');
-
-  /* -- geography --------------------------------------------------- */
-
-  for (const p of places) {
-    if (p.placement === 'ABSTRACT') {
-      if (p.x !== null || p.y !== null) fail(`place ${p.id} is ABSTRACT but carries a coordinate.`);
-    } else {
-      if (p.x === null || p.y === null) fail(`place ${p.id} is ${p.placement} but carries no coordinate.`);
-      else if (p.x < 0 || p.x > 1 || p.y < 0 || p.y > 1) {
-        fail(`place ${p.id}: coordinate (${p.x}, ${p.y}) is outside the unit square.`);
+    if (f > 0 && deltaFile.deltas[String(f)]) sequential = { ...sequential, ...deltaFile.deltas[String(f)] };
+    if (prior) {
+      for (const side of ['tempest', 'empire'] as const) {
+        for (const k of ['kia', 'pow', 'revived'] as const) {
+          const a = prior.casualties[side][k];
+          const b = sequential.casualties[side][k];
+          if (typeof a === 'number' && typeof b === 'number' && b < a) fail(`state: ${side} ${k} decreases at frame ${f}.`);
+        }
       }
     }
-    if (!p.basis) fail(`place ${p.id} has no stated basis; every placement must say how it was arrived at.`);
-  }
-  for (const n of nations) {
-    if (n.x === null || n.y === null) continue;
-    if (n.x < 0 || n.x > 1 || n.y < 0 || n.y > 1) fail(`nation ${n.id}: coordinate outside the unit square.`);
-  }
-  for (const t of theatres) {
-    if (t.zone) {
-      if (t.zone.length < 3) fail(`theatre ${t.id}: zone has fewer than three vertices.`);
-      for (const [x, y] of t.zone) {
-        if (x < 0 || x > 1 || y < 0 || y > 1) fail(`theatre ${t.id}: zone vertex outside the unit square.`);
-      }
-    }
+    prior = sequential;
   }
 
-  /* -- report ------------------------------------------------------ */
+  /* -- report -------------------------------------------------------- */
 
-  console.log('Validating the runtime dataset.\n');
-  console.log(`  frames            ${frameCount}`);
-  console.log(`  checkpoints       ${keyIndex.frames.length}`);
-  console.log(`  delta frames      ${deltaFile.deltaFrames.length}`);
-  console.log(`  events            ${events.length}`);
-  console.log(`  battles           ${battles.length}`);
-  console.log(`  forces            ${forces.length} (${roots.length} root, ${forces.length - roots.length} counted inside a parent)`);
-  console.log(`  casualty records  ${casualtyFile.records.length}`);
-  console.log(`  imperial KIA      ${empireKia.toLocaleString('en-GB')} (EVENT_CASUALTY rows only)`);
-  console.log(`  places            ${places.length}   nations ${nations.length}   theatres ${theatres.length}`);
-
-  if (warnings.length) {
-    console.log(`\n${warnings.length} warning(s):`);
-    for (const w of warnings) console.log(`  - ${w}`);
-  }
-
+  const t = casualtyFile.campaignTotals;
+  console.log(`Validating revision "${manifest.revision}"`);
+  console.log(`  frames            ${frameCount} (D${manifest.clock.firstDay}..D+${manifest.clock.lastDay})`);
+  console.log(`  events            ${events.length}  (${PROVENANCE_ORDER.map((p) => `${p.toLowerCase()} ${events.filter((e) => e.provenance === p).length}`).join(', ')})`);
+  console.log(`  forces            ${forces.length}  battles ${battles.length}  movements ${movementFile.movements.length}  characters ${characters.length}`);
+  console.log(`  imperial killed   ${t.empireKilled}  revived ${t.empireRevived}  permanent ${t.empirePermanentDead}`);
+  console.log(`  territories       ${geo.territories.length}  places ${places.length}  nations ${nations.length}`);
+  for (const w of warnings) console.log(`  warn  ${w}`);
   if (errors.length) {
-    console.error(`\n${errors.length} error(s):`);
-    for (const e of errors) console.error(`  - ${e}`);
-    console.error('\nDataset validation failed.\n');
+    console.error(`\nDataset validation FAILED with ${errors.length} error(s):`);
+    for (const e of errors.slice(0, 80)) console.error(`  - ${e}`);
     process.exit(1);
   }
-
-  console.log('\nDataset validation passed.\n');
+  console.log(`\nDataset validation passed${warnings.length ? ` with ${warnings.length} warning(s)` : ''}.`);
 }
 
 main();

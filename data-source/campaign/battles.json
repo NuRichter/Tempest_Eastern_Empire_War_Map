@@ -1,0 +1,12 @@
+[
+ { "name": "Battle of the Dwargon Gate", "type": "MAJOR_BATTLE" },
+ { "name": "Labyrinth Raider Operation", "type": "MAJOR_BATTLE" },
+ { "name": "Annihilation of the Imperial Camp", "type": "MAJOR_BATTLE" },
+ { "name": "Coup in Tidu", "type": "INTERCEPTION" },
+ { "name": "Destruction of the Composite Division", "type": "SPECIAL_COMBAT" },
+ { "name": "Battle of the Dwargon Eastern Front", "type": "MAJOR_BATTLE" },
+ { "name": "Dream Fortress trap", "type": "SPECIAL_COMBAT" },
+ { "name": "Dragon battle over the Jura forest", "type": "SPECIAL_COMBAT" },
+ { "name": "Magic Beast Division airlift", "type": "ENGAGEMENT" },
+ { "name": "Battle of the imperial flagship", "type": "SPECIAL_COMBAT" }
+]

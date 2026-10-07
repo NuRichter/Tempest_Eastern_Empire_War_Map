@@ -1,0 +1,1150 @@
+[
+ {
+  "id": "EVT-0450",
+  "day": 19,
+  "time": "18:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest",
+  "actor": "Rimuru Tempest",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "-",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "testarossa",
+   "carillon",
+   "benimaru",
+   "veldora",
+   "diablo"
+  ],
+  "forces": [
+   "F-TEM-030",
+   "F-DEM-001"
+  ],
+  "type": "AFTERMATH",
+  "title": "Return home and victory party",
+  "immediateResult": "With Michael and Feldway gone, Rimuru's side returns to capital Rimuru to celebrate; Carillon, Frey and others, still in evolution sleep, are left with Testarossa",
+  "operationalResult": "Fighting over; Tempest's leadership stands down for the night",
+  "strategicResult": "The officers take the next day off; settlement work deferred",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "-",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V15",
+    "chapter": "Epilogue",
+    "locator": "v15.txt:18045-18092"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch1",
+    "locator": "v16.txt:512-533"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch2",
+    "locator": "v16.txt:4872-4880"
+   }
+  ],
+  "evidence": "After Michael and Feldway leave, Rimuru wants to celebrate that everyone is safe; the sleeping Carillon and Frey are left with Testarossa, a party follows, and the officers take the next day off.",
+  "reconstructionNote": "Day D+19 and the 18:00 time are simulation placements (AUDIT-PLAN skeleton row 23): the novel gives no clock time for the return or the party.",
+  "notes": "Added in R5. The capital is found partly burned on the return (v16.txt:543-545).",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event: return home and party (v15.txt:18045-18092; v16.txt:512-533)",
+    "Officers' day off the next day (v16.txt:4880)",
+    "Theatres other than TH-DIP set to HOSTILITIES_SUSPENDED (combat over, v16.txt:516-518)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-030": {
+     "status": "RETURNED",
+     "movement": "STATIONARY",
+     "location": "jura-tempest-federation",
+     "locationText": "Capital Rimuru"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "status": "HOSTILITIES_SUSPENDED",
+     "battleStatus": "CONCLUDED",
+     "frontline": "No fighting; the war has not yet been formally closed"
+    },
+    "TH-LAB": {
+     "status": "HOSTILITIES_SUSPENDED",
+     "battleStatus": "CONCLUDED",
+     "frontline": "No fighting; the capital is back on the surface"
+    },
+    "TH-CAP": {
+     "status": "HOSTILITIES_SUSPENDED",
+     "battleStatus": "CONCLUDED",
+     "frontline": "Michael and Feldway withdrawn; no fighting"
+    },
+    "TH-DWE": {
+     "status": "HOSTILITIES_SUSPENDED",
+     "battleStatus": "CONCLUDED",
+     "frontline": "No fighting on the Dwargon eastern front"
+    },
+    "TH-DRG": {
+     "status": "HOSTILITIES_SUSPENDED",
+     "battleStatus": "CONCLUDED",
+     "frontline": "No dragon-tier fighting"
+    }
+   },
+   "campaign": {
+    "majorCombatants": "None engaged (Michael and Feldway withdrawn)"
+   }
+  }
+ },
+ {
+  "id": "EVT-0451",
+  "day": 20,
+  "time": "09:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "the next day",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest",
+  "actor": "Rigurd and the administrative staff",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "-",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "rimuru"
+  ],
+  "forces": [],
+  "type": "AFTERMATH",
+  "title": "Officers' day off; infrastructure checks in the capital",
+  "immediateResult": "Rigurd's staff check the city's water and sewer systems and inform the citizens; evacuees may return once the checks are complete",
+  "operationalResult": "Capital Rimuru, back on the surface, is prepared for the return of evacuees",
+  "strategicResult": "Civil life in Tempest restarts",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "-",
+  "intensity": "NONE",
+  "significance": "LOW",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch2",
+    "locator": "v16.txt:4880-4890"
+   }
+  ],
+  "evidence": "All officers take the day off, while Rigurd's administration checks the resurfaced city's water and sewer systems and tells citizens what is happening; evacuees return after the checks.",
+  "reconstructionNote": "Day is canonical relative to the party ('the next day'); 09:00 is a simulation placement.",
+  "notes": "Added in R5 (optional event in AUDIT-PLAN). Rigurd has no character id.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event: day off and safety checks (v16.txt:4880-4890)"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {
+    "TH-LAB": {
+     "frontline": "Capital Rimuru back on the surface; infrastructure safety checks before evacuees return"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0390",
+  "day": 23,
+  "time": "10:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "ten in the morning",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest (summit hall)",
+  "actor": "Rimuru Tempest",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Masayuki Rudra Nam Ul Nasca",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "benimaru",
+   "shion",
+   "diablo",
+   "testarossa",
+   "masayuki",
+   "velgrynd",
+   "calgurio",
+   "minitz",
+   "gazel"
+  ],
+  "forces": [],
+  "type": "POLITICAL",
+  "title": "Three-nation summit opens in Tempest",
+  "immediateResult": "Rimuru (Benimaru, Rigurd, Shion, Diablo, Testarossa) meets Masayuki (Velgrynd, Caligulio, Minitz, Bernie, Jiwu); King Gazel and Jaine join unannounced; Testarossa chairs",
+  "operationalResult": "Heads of state of Tempest, the Empire and Dwargon in session",
+  "strategicResult": "Formal settlement of the war begins",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru, Masayuki and Gazel as principals; Testarossa chairs",
+  "intensity": "NONE",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "HIGH",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:7966-7974"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8180-8193"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8365"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8400-8406"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8465"
+   }
+  ],
+  "evidence": "The day after the interviews, Rimuru meets Masayuki's delegation; King Gazel arrives unannounced and joins; at ten in the morning all are seated and Testarossa, as chair, opens the summit.",
+  "reconstructionNote": "Day D+23 follows the AUDIT-PLAN skeleton: party on D+19, officers' day off D+20, interviews to D+22, summit 'the next day' (v16.txt:4880, 7510). Clock time is a simulation placement inside the session the text names. The opening at ten is stated (v16.txt:8365).",
+  "notes": "Attendees: Tempest - Rimuru, Benimaru, Rigurd, Shion, Diablo, Testarossa; Empire - Masayuki, Velgrynd, Caligulio, Minitz, Bernie, Jiwu; Dwargon - Gazel, Jaine (and party of five). Several days after Rimuru last saw Velgrynd (v16.txt:7956).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+9 18:00 -> D+23 10:00 (v16.txt:7510, 7956, 8365)",
+    "Added Dwargon (Gazel, Jaine) as the third party (v16.txt:8180-8193, 8465)",
+    "Opponent named as Masayuki Rudra Nam Ul Nasca",
+    "Sources given locators"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {
+    "TH-DIP": {
+     "status": "ACTIVE",
+     "frontline": "Three-nation summit in session (Tempest, Empire, Dwargon)",
+     "battleStatus": "ACTIVE",
+     "control": "NEUTRAL"
+    }
+   },
+   "campaign": {
+    "majorCombatants": "None engaged; summit of Rimuru, Masayuki (with Velgrynd) and Gazel"
+   }
+  }
+ },
+ {
+  "id": "EVT-0391",
+  "day": 23,
+  "time": "10:10",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest (summit hall)",
+  "actor": "Testarossa",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "testarossa",
+   "masayuki",
+   "velgrynd"
+  ],
+  "forces": [],
+  "type": "NEGOTIATION",
+  "title": "Agenda confirmed: end-of-war agreement and a new pact",
+  "immediateResult": "Testarossa confirms that the Empire seeks an end-of-war agreement and a new pact on future relations; no objection is raised",
+  "operationalResult": "The summit's aim is fixed",
+  "strategicResult": "The war is to be closed by agreement",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Testarossa chairs",
+  "intensity": "NONE",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8424-8430"
+   }
+  ],
+  "evidence": "Testarossa asks all parties to confirm that the Empire wants an end-of-war agreement and a new pact on its future relationship with Tempest; nobody objects.",
+  "reconstructionNote": "Day D+23 follows the AUDIT-PLAN skeleton: party on D+19, officers' day off D+20, interviews to D+22, summit 'the next day' (v16.txt:4880, 7510). Clock time is a simulation placement inside the session the text names. Order within the morning session follows the text.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+9 18:20 -> D+23 10:10 (morning session)",
+    "Actor changed to Testarossa as chair (v16.txt:8424-8430)",
+    "Strategic result no longer states the war is terminated here"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {
+    "TH-DIP": {
+     "frontline": "Agenda: end-of-war agreement and a new pact"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0393",
+  "day": 23,
+  "time": "10:40",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest (summit hall)",
+  "actor": "Rimuru Tempest",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "michael",
+   "masayuki",
+   "calgurio",
+   "minitz"
+  ],
+  "forces": [],
+  "type": "POLITICAL",
+  "title": "No war-crimes pursuit of leaders who were under Michael",
+  "immediateResult": "Rimuru will not pursue imperial leaders for war crimes, since they were under Michael's rule, unless they keep fighting",
+  "operationalResult": "Imperial command cadre preserved",
+  "strategicResult": "Continuity of imperial administration secured",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8721-8723"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9012-9015"
+   }
+  ],
+  "evidence": "Because the imperial leaders were under Michael's control, Rimuru does not intend to pursue them for war crimes unless they continue the war; later he adds no one will be tried and reparations wait.",
+  "reconstructionNote": "Day D+23 follows the AUDIT-PLAN skeleton: party on D+19, officers' day off D+20, interviews to D+22, summit 'the next day' (v16.txt:4880, 7510). Clock time is a simulation placement inside the session the text names.",
+  "notes": "Confirmed later in the morning with the prisoner promise (EVT-0395).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+9 19:00 -> D+23 10:40 (morning session; before Minitz's briefing, v16.txt:8721 < 8754)",
+    "Condition 'unless they keep fighting' added (v16.txt:8722-8723)"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0392",
+  "day": 23,
+  "time": "11:00",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest (summit hall)",
+  "actor": "Minitz",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "minitz",
+   "rimuru"
+  ],
+  "forces": [
+   "F-EMP-000"
+  ],
+  "type": "NEGOTIATION",
+  "title": "Minitz: war power lost; ready for unconditional surrender",
+  "immediateResult": "Minitz states the Empire has lost more than two-thirds of its war power, cannot continue, and is prepared to accept an unconditional-surrender treaty",
+  "operationalResult": "Imperial military capability acknowledged as broken",
+  "strategicResult": "The Empire's first need is a recognised new leader",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Minitz for the imperial delegation",
+  "intensity": "NONE",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8752-8762"
+   }
+  ],
+  "evidence": "Minitz reports the Empire has lost over two-thirds of its war power, cannot continue hostilities, and will accept unconditional surrender, but first needs a properly ordained leader recognised.",
+  "reconstructionNote": "Day D+23 follows the AUDIT-PLAN skeleton: party on D+19, officers' day off D+20, interviews to D+22, summit 'the next day' (v16.txt:4880, 7510). Clock time is a simulation placement inside the session the text names.",
+  "notes": "Qualitative loss only (CAS-016); the novel gives no figure. About 700,000 imperial soldiers had been resurrected and were held in Tempest (v14.txt:875; v16.txt:7992).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+9 18:40 -> D+23 11:00 (morning session)",
+    "Actor changed to Minitz (v16.txt:8754)",
+    "Added readiness for an unconditional-surrender treaty (v16.txt:8756-8757)",
+    "Removed the 770,000 + 60,000 cross-check (project derivation)"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0394",
+  "day": 23,
+  "time": "11:20",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest (summit hall)",
+  "actor": "Velgrynd",
+  "actorFaction": "Eastern Empire",
+  "opponent": "-",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "velgrynd",
+   "masayuki",
+   "rimuru",
+   "gazel"
+  ],
+  "forces": [],
+  "type": "COMMAND_CHANGE",
+  "title": "Velgrynd to name Masayuki emperor; coronation pending",
+  "immediateResult": "Under court law whoever Velgrynd names is Emperor Ludora; she will declare Masayuki to be Ludora, and all parties agree to back him",
+  "operationalResult": "Imperial succession settled in principle; the coronation is still to come",
+  "strategicResult": "Tempest and Dwargon back the new emperor and the Empire's rebuilding",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Velgrynd naming; Masayuki designated",
+  "intensity": "NONE",
+  "significance": "CRITICAL",
+  "turningPoint": {
+   "rank": 15,
+   "summary": "Velgrynd will name Masayuki emperor and all three nations back him; the Empire's succession is settled in principle."
+  },
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8860-8865"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8884-8886"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:8970-8972"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9005-9016"
+   }
+  ],
+  "evidence": "Velgrynd cites court law that the person she names is Emperor Ludora and will name Masayuki; everyone agrees to back him, and arrangements follow once he is crowned.",
+  "reconstructionNote": "Day D+23 follows the AUDIT-PLAN skeleton: party on D+19, officers' day off D+20, interviews to D+22, summit 'the next day' (v16.txt:4880, 7510). Clock time is a simulation placement inside the session the text names.",
+  "notes": "Coronation pending: arrangements are deferred until Masayuki is crowned (v16.txt:9016). The narrator calls him Emperor Masayuki Ludora Nam-ul-Nasca (v16.txt:9098-9100).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+9 19:20 -> D+23 11:20 (morning session)",
+    "Retitled: designation agreed, coronation pending (v16.txt:9016)",
+    "All three nations back the decision (v16.txt:8864-8865)"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {
+    "activeCommanders": "Rimuru (Tempest); Masayuki Rudra Nam Ul Nasca to be named emperor by Velgrynd, coronation pending (Empire); King Gazel (Dwargon)"
+   }
+  }
+ },
+ {
+  "id": "EVT-0395",
+  "day": 23,
+  "time": "11:50",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest (summit hall)",
+  "actor": "Rimuru Tempest",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "masayuki"
+  ],
+  "forces": [
+   "F-EMP-010"
+  ],
+  "type": "POLITICAL",
+  "title": "Early release of the prisoners promised",
+  "immediateResult": "Rimuru promises to release the imperial officers and soldiers held in Tempest very soon; no war trials; reparations later; arrangements after the coronation",
+  "operationalResult": "Prisoner question settled in principle",
+  "strategicResult": "About 700,000 imperial soldiers will return to the Empire",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9012-9016"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:7992"
+   }
+  ],
+  "evidence": "Rimuru accepts the succession and promises the soldiers and officers held prisoner in Tempest will be released very soon; nobody will be tried, reparations come later.",
+  "reconstructionNote": "Day D+23 follows the AUDIT-PLAN skeleton: party on D+19, officers' day off D+20, interviews to D+22, summit 'the next day' (v16.txt:4880, 7510). Clock time is a simulation placement inside the session the text names. The morning closes with lunch (v16.txt:9102).",
+  "notes": "Promise only; the march home is EVT-0455 (MOV-036). The prisoners number about 700,000 (v16.txt:7992; CAS-014).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+9 19:40 -> D+23 11:50 (end of the morning session)",
+    "Retitled from 'repatriated' to a promise of early release (v16.txt:9012-9014)",
+    "Repatriation march split out as EVT-0455"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-010": {
+     "status": "PRISONERS (release promised)"
+    }
+   },
+   "theatres": {
+    "TH-DIP": {
+     "frontline": "Direction agreed: Masayuki backed as emperor; prisoners to be released; no war trials"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0399",
+  "day": 23,
+  "time": "12:30",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest (summit hall)",
+  "actor": "Testarossa",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "-",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "testarossa",
+   "rimuru",
+   "calgurio",
+   "samuel",
+   "velgrynd"
+  ],
+  "forces": [
+   "F-EMP-061"
+  ],
+  "type": "RESURRECTION",
+  "title": "Samuel (Zamdo) and his men restored at the lunch break",
+  "immediateResult": "Several dozen men led by Major General Samuel (Zamdo), killed aboard the flagship by the Death Streak, appear alive: Testarossa had kept their souls and Rimuru placed them in homunculi",
+  "operationalResult": "Caligulio is reunited with Samuel (Zamdo)'s group",
+  "strategicResult": "Selected imperial officers recovered; goodwill at the summit",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "-",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9155-9199"
+   }
+  ],
+  "evidence": "As Caligulio mourns his dead over lunch, Testarossa has Moss bring several dozen men: Samuel (Zamdo)'s group, whose souls she kept before the Death Streak and Rimuru put into homunculi.",
+  "reconstructionNote": "Day D+23 follows the AUDIT-PLAN skeleton: party on D+19, officers' day off D+20, interviews to D+22, summit 'the next day' (v16.txt:4880, 7510). Clock time is a simulation placement inside the session the text names. Lunch follows the morning session (v16.txt:9102); 12:30 is a placement.",
+  "notes": "Several dozen men; the number is not given (CAS-015, RESTORATION).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+9 21:00 -> D+23 12:30 (lunch break, before the 15:00 session, v16.txt:9155-9232)",
+    "Actor changed to Testarossa (souls) with Rimuru (homunculi) (v16.txt:9187-9196)",
+    "Named Samuel (Zamdo); deleted the 'does not offset 770,000' note"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-061": {
+     "status": "CREW PARTLY RESTORED (Samuel (Zamdo)'s group)"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0453",
+  "day": 23,
+  "time": "15:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "three in the afternoon",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest (summit hall)",
+  "actor": "Testarossa",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "-",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "testarossa",
+   "rimuru",
+   "gazel",
+   "masayuki"
+  ],
+  "forces": [],
+  "type": "POLITICAL",
+  "title": "Afternoon session: recognition of the emperor and a three-nation alliance agreed",
+  "immediateResult": "Tempest and Dwargon will co-sign recognition of the new emperor; then, under Emperor Masayuki, all three nations will declare the war over and form an alliance apart from the Council of the West",
+  "operationalResult": "Roles of each nation reaffirmed",
+  "strategicResult": "A new governmental framework separate from the Council of the West",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Testarossa chairs",
+  "intensity": "NONE",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "HIGH",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9232-9245"
+   }
+  ],
+  "evidence": "The summit resumes at three; the agreed order is that Tempest and Dwargon co-sign recognition of the crowning, after which all three nations declare an end to the war and a new alliance.",
+  "reconstructionNote": "Day D+23 follows the AUDIT-PLAN skeleton: party on D+19, officers' day off D+20, interviews to D+22, summit 'the next day' (v16.txt:4880, 7510). Clock time is a simulation placement inside the session the text names. The 15:00 resumption is stated (v16.txt:9232).",
+  "notes": "Agreed sequence, not yet carried out: the declaration is to be made under Emperor Masayuki after the coronation.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event: afternoon session from 15:00 (v16.txt:9232-9245)"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {
+    "TH-DIP": {
+     "frontline": "End of war and three-nation alliance agreed, to be declared under Emperor Masayuki"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0398",
+  "day": 23,
+  "time": "15:20",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest (summit hall)",
+  "actor": "Armed Nation of Dwargon",
+  "actorFaction": "Armed Nation of Dwargon",
+  "opponent": "-",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gazel",
+   "rimuru"
+  ],
+  "forces": [
+   "F-DWA-000"
+  ],
+  "type": "AFTERMATH",
+  "title": "Reconstruction plan agreed: border zone and a rail line",
+  "immediateResult": "Dwargon will rebuild the border zone (highways, nearby buildings, victims), then a rail line toward the imperial capital along the Magitank route at the Canaat Mountains, with Tempest foremen",
+  "operationalResult": "Plan agreed; work not yet begun",
+  "strategicResult": "Economic integration of the three states planned",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Dwargon lead; Tempest foremen",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9247-9259"
+   }
+  ],
+  "evidence": "Dwargon pledges to rebuild the borderland with the Empire; afterwards a train line to the imperial capital along the Magitank Force's path, built by dwarven engineers with Tempest foremen.",
+  "reconstructionNote": "Day D+23 follows the AUDIT-PLAN skeleton: party on D+19, officers' day off D+20, interviews to D+22, summit 'the next day' (v16.txt:4880, 7510). Clock time is a simulation placement inside the session the text names.",
+  "notes": "A plan only; no construction is shown at this point.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+9 20:40 -> D+23 15:20 (afternoon session)",
+    "Actor changed to Dwargon, with Tempest foremen (v16.txt:9247-9256)",
+    "Marked as a plan, not executed"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0396",
+  "day": 23,
+  "time": "15:40",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest (summit hall)",
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "testarossa",
+   "masayuki",
+   "velgrynd",
+   "diablo"
+  ],
+  "forces": [
+   "F-DEM-001"
+  ],
+  "type": "POLITICAL",
+  "title": "Testarossa designated to set up an embassy in the Empire",
+  "immediateResult": "Tempest will fully support Masayuki; Testarossa, helped by Moss, will establish an embassy to sweep away the Empire's old thinking; Venom stays as Masayuki's bodyguard",
+  "operationalResult": "Permanent Tempest presence in the Empire decided",
+  "strategicResult": "Long-term political influence in the Empire",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Rimuru",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9262-9265"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9288-9296"
+   }
+  ],
+  "evidence": "Tempest's role is full support for Masayuki: Testarossa will open an embassy in the Empire, using Moss to expose schemers, and Venom continues as Masayuki's bodyguard.",
+  "reconstructionNote": "Day D+23 follows the AUDIT-PLAN skeleton: party on D+19, officers' day off D+20, interviews to D+22, summit 'the next day' (v16.txt:4880, 7510). Clock time is a simulation placement inside the session the text names.",
+  "notes": "Decision only; her posting is MOV-017 and its date is not stated. Cien covers the Council of the West (v16.txt:9291-9293). Moss and Venom have no character ids.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved D+9 20:00 -> D+23 15:40 (afternoon session)",
+    "Retitled: designated, not yet despatched (v16.txt:9263)",
+    "Location changed to the decision site (Tempest)",
+    "Deleted the F-DEM-001 embassy location effect",
+    "Added Moss and Venom (v16.txt:9288-9296)"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0397",
+  "day": 23,
+  "time": "15:50",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest (summit hall)",
+  "actor": "-",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial home front",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "masayuki",
+   "minitz",
+   "calgurio",
+   "testarossa"
+  ],
+  "forces": [],
+  "type": "INTELLIGENCE",
+  "title": "Risk assessment: an empire that has never lost a war",
+  "immediateResult": "Rimuru judges that imperial citizens, who have never experienced losing a war, may resist Masayuki's anti-war line, sabotaging it while feigning loyalty",
+  "operationalResult": "Minitz to persuade the nobility, Caligulio to reunite the army; Testarossa and Moss to handle the schemers",
+  "strategicResult": "Domestic opposition identified as the main risk to the settlement",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "-",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9267-9287"
+   }
+  ],
+  "evidence": "Imperial citizens had never lost a war, so home-front interests might resent Masayuki's anti-war stance and quietly sabotage him; Minitz and Caligulio alone may not be enough.",
+  "reconstructionNote": "Day D+23 follows the AUDIT-PLAN skeleton: party on D+19, officers' day off D+20, interviews to D+22, summit 'the next day' (v16.txt:4880, 7510). Clock time is a simulation placement inside the session the text names.",
+  "notes": "Rimuru's assessment (narration), not an action. There was no memory alteration: the earlier row misread v16.txt:9267.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Replaced: no memory alteration by Veldora (v16.txt:9267-9276)",
+    "Actor removed (Rimuru's assessment); Veldora removed",
+    "Moved D+9 20:20 -> D+23 15:50 (afternoon session)",
+    "Location changed to the summit hall"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {
+    "TH-DIP": {
+     "status": "ACTIVE",
+     "battleStatus": "CONCLUDED",
+     "frontline": "Summit concluded; terms to be implemented after the coronation"
+    }
+   },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0454",
+  "day": 24,
+  "time": "08:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "the next morning",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru, Tempest",
+  "actor": "Gazel Dwargo",
+  "actorFaction": "Armed Nation of Dwargon",
+  "opponent": "-",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "gazel"
+  ],
+  "forces": [],
+  "type": "MOVEMENT",
+  "title": "Gazel's party leaves Tempest",
+  "immediateResult": "King Gazel and his party depart the morning after the summit",
+  "operationalResult": "Dwargon delegation returns home",
+  "strategicResult": "-",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "-",
+  "intensity": "NONE",
+  "significance": "LOW",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9767"
+   }
+  ],
+  "evidence": "Gazel and his party leave Tempest the morning after the summit.",
+  "reconstructionNote": "Day is canonical relative to the summit ('the next morning'); 08:00 is a simulation placement.",
+  "notes": "Added in R5 (optional event in AUDIT-PLAN).",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event: Gazel leaves the next morning (v16.txt:9767)"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0455",
+  "day": 31,
+  "time": "08:00",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "",
+  "theatreId": "TH-DIP",
+  "front": "Settlement",
+  "battle": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Tempest, departing east to the Empire",
+  "actor": "Caligulio",
+  "actorFaction": "Eastern Empire",
+  "opponent": "-",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "calgurio",
+   "adalmann",
+   "testarossa"
+  ],
+  "forces": [
+   "F-EMP-010",
+   "F-TEM-010A",
+   "F-DEM-001"
+  ],
+  "type": "MOVEMENT",
+  "title": "Caligulio marches the prisoners home",
+  "immediateResult": "Caligulio leads the captured imperial forces back to the Empire on roads still being built by Adalmann's troops; those wishing to stay must go home first",
+  "operationalResult": "Imperial prisoners leave Tempest",
+  "strategicResult": "About 700,000 imperial soldiers return to help stabilise the Empire; immigration possible later",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": "About 700,000 prisoners held in Tempest (v16.txt:7992); the marching number is not stated"
+  },
+  "commandStatus": "Caligulio",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9767-9777"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:7992"
+   }
+  ],
+  "evidence": "After Gazel leaves, Caligulio prepares to march the prisoners home; Adalmann's troops handle the roads; some wished to stay but go first; preparations take under a week, departure soon after.",
+  "reconstructionNote": "Day RECONSTRUCTED (AUDIT-PLAN skeleton row 27): 'done within a week, departure soon after' from the summit (v16.txt:9773); 08:00 is a placement. Testarossa's embassy posting is undated; it is placed here because she reports from the Empire by then (v16.txt:9775-9777).",
+  "notes": "Prisoner count about 700,000 (v16.txt:7992; CAS-014); the number who actually marched is not stated. Arrival in the Empire is not dated.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event: repatriation departure split from EVT-0395 (v16.txt:9767-9773)",
+    "Target of MOV-036",
+    "F-DEM-001 placed at the embassy here (reconstruction; posting undated)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-010": {
+     "status": "REPATRIATING",
+     "movement": "REPATRIATION",
+     "direction": "East, home to the Empire"
+    },
+    "F-DEM-001": {
+     "status": "DEPLOYED",
+     "movement": "DEPLOYMENT",
+     "location": "embassy-in-the-empire",
+     "locationText": "Embassy in the Empire"
+    }
+   },
+   "theatres": {
+    "TH-DIP": {
+     "frontline": "Prisoners marching home; Testarossa at the embassy in the Empire"
+    }
+   },
+   "campaign": {}
+  }
+ }
+]

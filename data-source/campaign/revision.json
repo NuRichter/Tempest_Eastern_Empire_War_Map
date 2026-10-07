@@ -1,0 +1,156 @@
+{
+ "revision": "R5-CANON-AUDIT (2026-10-07)",
+ "migratedFrom": {
+  "workbook": "Tempest_Eastern_Empire_War_Timeline.xlsx",
+  "workbookSha256": "e80ad9c2024c6cb3c512167a855a4187540177756d249a73ef1c4047d21915e8",
+  "markdown": "Tempest_Eastern_Empire_War_Timeline.md",
+  "markdownSha256": "ca2d3b5d3e9559878d5670371aafc7a237fdbca54ca195493eac951cc692ca19",
+  "gazetteer": "gazetteer.source.json"
+ },
+ "clock": {
+  "minutesPerFrame": 10,
+  "framesPerDay": 144,
+  "firstDay": -43,
+  "lastDay": 31,
+  "calendarStart": "01/01/9001"
+ },
+ "note": "R5 canon-audit skeleton. Battle day 0 is first contact (the day of Testarossa's ultimatum and the surface battle). Day placements are canonical only where AUDIT-PLAN.md marks them CANONICAL_RELATIVE; every clock time is a simulation placement on a 10-minute grid. calendarStart 01/01/9001 is the artificial date of D-43.",
+ "initial": {
+  "theatres": {
+   "TH-DWG": {
+    "status": "INACTIVE",
+    "frontline": "No imperial force in the theatre",
+    "battleStatus": null,
+    "control": null
+   },
+   "TH-LAB": {
+    "status": "INACTIVE",
+    "frontline": "Labyrinth held by the garrison; the capital is still on the surface",
+    "battleStatus": null,
+    "control": null
+   },
+   "TH-CAP": {
+    "status": "INACTIVE",
+    "frontline": "Imperial capital secure",
+    "battleStatus": null,
+    "control": null
+   },
+   "TH-DWE": {
+    "status": "INACTIVE",
+    "frontline": "No imperial presence before Isthmus",
+    "battleStatus": null,
+    "control": null
+   },
+   "TH-DRG": {
+    "status": "INACTIVE",
+    "frontline": "No dragon-tier engagement in progress",
+    "battleStatus": null,
+    "control": null
+   },
+   "TH-DIP": {
+    "status": "INACTIVE",
+    "frontline": "No negotiations in progress",
+    "battleStatus": null,
+    "control": null
+   }
+  },
+  "campaign": {
+   "phase": "STRATEGIC_PREPARATION",
+   "stage": "PRE_WAR_PREPARATION",
+   "tempestTotal": "UNKNOWN",
+   "tempestEffective": "UNKNOWN",
+   "empireTotal": "UNKNOWN",
+   "empireEffective": "UNKNOWN",
+   "activeCommanders": "Rimuru (Tempest head of state); Emperor Rudra (Empire)",
+   "majorCombatants": "None engaged"
+  }
+ },
+ "phaseMarks": [
+  {
+   "day": -43,
+   "time": "00:00",
+   "phase": "STRATEGIC_PREPARATION",
+   "stage": "PRE_WAR_PREPARATION"
+  },
+  {
+   "day": -40,
+   "time": "00:00",
+   "stage": "IMPERIAL_DECISION_AND_MOBILIZATION"
+  },
+  {
+   "day": -32,
+   "time": "00:00",
+   "phase": "OPERATIONAL_APPROACH",
+   "stage": "APPROACH_MARCH"
+  },
+  {
+   "day": -2,
+   "time": "00:00",
+   "phase": "DEPLOYMENT",
+   "stage": "HALT_AND_DEPLOYMENT"
+  },
+  {
+   "day": 0,
+   "time": "00:00",
+   "stage": "FIRST_CONTACT_AND_SURFACE_BATTLE"
+  },
+  {
+   "day": 0,
+   "time": "11:10",
+   "phase": "FIRST_CONTACT"
+  },
+  {
+   "day": 0,
+   "time": "11:30",
+   "phase": "ACTIVE_COMBAT"
+  },
+  {
+   "day": 1,
+   "time": "00:00",
+   "phase": "LABYRINTH_CAMPAIGN",
+   "stage": "LABYRINTH_RAID"
+  },
+  {
+   "day": 11,
+   "time": "00:00",
+   "phase": "JURA_ANNIHILATION",
+   "stage": "ANNIHILATION_OF_THE_OUTSIDE_CAMP"
+  },
+  {
+   "day": 12,
+   "time": "00:00",
+   "phase": "OPERATIONAL_PAUSE",
+   "stage": "RESURRECTION_AND_CONSOLIDATION"
+  },
+  {
+   "day": 18,
+   "time": "00:00",
+   "stage": "LONG_NIGHT"
+  },
+  {
+   "day": 18,
+   "time": "18:00",
+   "phase": "LONG_NIGHT"
+  },
+  {
+   "day": 19,
+   "time": "03:00",
+   "phase": "TERMINATION_AND_SETTLEMENT"
+  },
+  {
+   "day": 20,
+   "time": "00:00",
+   "stage": "POST_WAR_INTERVAL"
+  },
+  {
+   "day": 23,
+   "time": "00:00",
+   "stage": "SUMMIT_AND_SETTLEMENT"
+  },
+  {
+   "day": 25,
+   "time": "00:00",
+   "stage": "REPATRIATION_PREPARATION"
+  }
+ ]
+}

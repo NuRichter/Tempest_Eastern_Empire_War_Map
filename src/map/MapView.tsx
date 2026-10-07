@@ -4,88 +4,230 @@ import { useEffect, useRef, useState } from 'react';
 import maplibregl, { type Map as MapLibreMap, type StyleSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
-import { atlasCorners, campaignBounds, simToLngLatTuple } from '@/lib/coords';
-import { controlColor, INK } from '@/lib/palette';
+import { atlasBounds, atlasCorners, campaignBounds, ringToLngLat, simBoundsToLngLat, simToLngLatTuple } from '@/lib/coords';
+import { controlKey, FACTION_COLOR, factionKey, INK, mix, ROLE_FILL_WEIGHT } from '@/lib/palette';
+import { territoryControlAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
-import { ForceOverlay } from '@/map/ForceOverlay';
+import { prefersReducedMotion, usePreferences } from '@/state/preferences';
+import { Overlay } from '@/map/overlay/Overlay';
 import { MapControls } from '@/map/MapControls';
+import type { Dataset } from '@/data/loader';
+import type { FrameState } from '@/types/dataset';
 
-const ATLAS_URL = '/maps/base-atlas.png';
+const BASE_MAP_URL = '/maps/base-map.png';
+const MYTH_MAP_URL = '/maps/myth-map.jpg';
+
+const SEA = '#0b1419';
 
 /**
- * Base style.
- *
- * There is no tile server, no API key and no external style. The map is one
- * image on a dark ground, which is all a fictional world has and all it needs.
+ * Base style. No tile server and no API key: two images of one fictional world
+ * (Base Map and Myth Map, sharing one 2641 x 2035 frame), with the political
+ * geometry traced from the Base Map drawn on top as vector layers.
  */
 function baseStyle(): StyleSpecification {
+  const empty = { type: 'geojson' as const, data: { type: 'FeatureCollection' as const, features: [] } };
   return {
     version: 8,
     name: 'Tempest campaign atlas',
     sources: {
-      atlas: {
-        type: 'image',
-        url: ATLAS_URL,
-        coordinates: atlasCorners(),
-      },
-      theatres: { type: 'geojson', data: { type: 'FeatureCollection', features: [] } },
-      graticule: { type: 'geojson', data: { type: 'FeatureCollection', features: [] } },
+      base: { type: 'image', url: BASE_MAP_URL, coordinates: atlasCorners() },
+      myth: { type: 'image', url: MYTH_MAP_URL, coordinates: atlasCorners() },
+      territories: empty,
+      areas: empty,
+      grid: empty,
     },
     layers: [
-      { id: 'void', type: 'background', paint: { 'background-color': INK.base } },
+      { id: 'void', type: 'background', paint: { 'background-color': SEA } },
       {
-        id: 'atlas',
+        id: 'base-raster',
         type: 'raster',
-        source: 'atlas',
-        paint: { 'raster-opacity': 0.92, 'raster-fade-duration': 0 },
+        source: 'base',
+        paint: { 'raster-opacity': 1, 'raster-fade-duration': 0, 'raster-opacity-transition': { duration: 600 } },
       },
       {
-        id: 'theatre-fill',
+        id: 'myth-raster',
+        type: 'raster',
+        source: 'myth',
+        paint: { 'raster-opacity': 0, 'raster-fade-duration': 0, 'raster-opacity-transition': { duration: 600 } },
+      },
+      {
+        id: 'territory-fill',
         type: 'fill',
-        source: 'theatres',
+        source: 'territories',
+        paint: { 'fill-color': ['get', 'fill'], 'fill-opacity': ['get', 'opacity'], 'fill-antialias': true },
+      },
+      {
+        id: 'territory-hatch',
+        type: 'fill',
+        source: 'territories',
+        filter: ['==', ['get', 'hatch'], true],
+        paint: { 'fill-pattern': 'hatch-light', 'fill-opacity': 0.55 },
+      },
+      {
+        id: 'area-fill',
+        type: 'fill',
+        source: 'areas',
+        paint: { 'fill-color': ['get', 'fill'], 'fill-opacity': ['get', 'opacity'] },
+      },
+      {
+        id: 'area-hatch',
+        type: 'fill',
+        source: 'areas',
+        filter: ['==', ['get', 'hatch'], true],
+        paint: { 'fill-pattern': 'hatch-contested', 'fill-opacity': 0.45 },
+      },
+      {
+        id: 'territory-line',
+        type: 'line',
+        source: 'territories',
+        layout: { 'line-join': 'round' },
         paint: {
-          'fill-color': ['get', 'color'],
-          'fill-opacity': ['interpolate', ['linear'], ['zoom'], 1, 0.14, 6, 0.26],
+          'line-color': ['get', 'line'],
+          'line-width': ['interpolate', ['linear'], ['zoom'], 1, 0.6, 4, 1.2, 7, 2.2],
+          'line-opacity': 0.8,
         },
       },
       {
-        id: 'theatre-line',
+        id: 'territory-selected',
         type: 'line',
-        source: 'theatres',
+        source: 'territories',
+        filter: ['==', ['get', 'selected'], true],
+        layout: { 'line-join': 'round' },
+        paint: { 'line-color': INK.accent, 'line-width': ['interpolate', ['linear'], ['zoom'], 1, 1.4, 6, 3] },
+      },
+      {
+        id: 'area-line',
+        type: 'line',
+        source: 'areas',
+        layout: { 'line-join': 'round' },
         paint: {
-          'line-color': ['get', 'color'],
-          'line-width': ['interpolate', ['linear'], ['zoom'], 1, 0.8, 6, 2.2],
-          'line-opacity': 0.7,
+          'line-color': ['get', 'line'],
+          'line-width': ['interpolate', ['linear'], ['zoom'], 2, 0.8, 7, 2],
+          'line-opacity': 0.85,
           'line-dasharray': [3, 2],
         },
       },
       {
-        id: 'graticule-line',
+        id: 'grid-line',
         type: 'line',
-        source: 'graticule',
-        paint: { 'line-color': INK.brass, 'line-width': 0.5, 'line-opacity': 0.22 },
+        source: 'grid',
+        layout: { visibility: 'none' },
+        paint: { 'line-color': INK.text3, 'line-width': 0.5, 'line-opacity': 0.35 },
       },
     ],
   };
 }
 
-/** Simulation graticule: an evenly spaced grid in SIMULATION space, at 10% steps. */
-function graticuleFeatures(): GeoJSON.FeatureCollection {
+/** Simulation grid: 10% steps in simulation space. Not a geographic graticule. */
+function gridFeatures(): GeoJSON.FeatureCollection {
   const features: GeoJSON.Feature[] = [];
   for (let i = 0; i <= 10; i += 1) {
     const t = i / 10;
-    const vertical: [number, number][] = [];
-    const horizontal: [number, number][] = [];
+    const v: [number, number][] = [];
+    const h: [number, number][] = [];
     for (let s = 0; s <= 40; s += 1) {
-      const u = s / 40;
-      vertical.push(simToLngLatTuple(t, u));
-      horizontal.push(simToLngLatTuple(u, t));
+      v.push(simToLngLatTuple(t, s / 40));
+      h.push(simToLngLatTuple(s / 40, t));
     }
-    features.push({ type: 'Feature', properties: { axis: 'x', value: t }, geometry: { type: 'LineString', coordinates: vertical } });
-    features.push({ type: 'Feature', properties: { axis: 'y', value: t }, geometry: { type: 'LineString', coordinates: horizontal } });
+    features.push({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: v } });
+    features.push({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: h } });
   }
   return { type: 'FeatureCollection', features };
 }
+
+/** Diagonal hatch, drawn once into an image so MapLibre can tile it. */
+function hatchImage(color: string, background: string | null, size = 12, width = 2): { width: number; height: number; data: Uint8Array } {
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d')!;
+  if (background) {
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, size, size);
+  }
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width;
+  ctx.beginPath();
+  for (let o = -size; o <= size * 2; o += size / 2) {
+    ctx.moveTo(o, size);
+    ctx.lineTo(o + size, 0);
+  }
+  ctx.stroke();
+  const img = ctx.getImageData(0, 0, size, size);
+  return { width: size, height: size, data: new Uint8Array(img.data.buffer) };
+}
+
+/* ------------------------------------------------------------------ */
+/* Geometry for one frame                                              */
+/* ------------------------------------------------------------------ */
+
+function territoryFeatures(data: Dataset, frame: number, selectedId: string | null): GeoJSON.FeatureCollection {
+  const prefs = usePreferences.getState();
+  const features: GeoJSON.Feature[] = [];
+  for (const t of data.territories) {
+    const { segment, previous, transition } = territoryControlAt(t, frame);
+    const fillFor = (s: typeof segment) => (s.status === 'UNKNOWN' ? FACTION_COLOR.unknown : FACTION_COLOR[factionKey(s.controller)]);
+    const weightFor = (s: typeof segment) => (s.status === 'UNKNOWN' ? 0.25 : ROLE_FILL_WEIGHT[s.role] ?? 0.12);
+    let fill = fillFor(segment);
+    let weight = weightFor(segment);
+    // Two-step change: the old state recedes to a pale trace, then the new one
+    // arrives. A reader sees that something changed, and from what to what.
+    if (previous && transition < 1) {
+      if (transition < 0.4) {
+        fill = fillFor(previous);
+        weight = weightFor(previous) * (1 - (transition / 0.4) * 0.8);
+      } else {
+        const t2 = (transition - 0.4) / 0.6;
+        fill = mix(fillFor(previous), fillFor(segment), t2);
+        weight = weightFor(previous) * 0.2 * (1 - t2) + weightFor(segment) * t2;
+      }
+    }
+    const uninvolved = segment.role === 'UNINVOLVED';
+    features.push({
+      type: 'Feature',
+      id: t.id,
+      properties: {
+        id: t.id,
+        fill: uninvolved ? mix(fill, '#6b757a', 0.55) : fill,
+        opacity: prefs.territoryOpacity * weight,
+        line: uninvolved ? '#55626a' : mix(fill, '#ffffff', 0.25),
+        hatch: segment.status === 'UNKNOWN',
+        selected: selectedId === t.id,
+      },
+      geometry: { type: 'MultiPolygon', coordinates: t.geometry.coordinates.map((poly) => [ringToLngLat(poly[0])]) },
+    });
+  }
+  return { type: 'FeatureCollection', features };
+}
+
+function areaFeatures(data: Dataset, state: FrameState | null): GeoJSON.FeatureCollection {
+  const prefs = usePreferences.getState();
+  const features: GeoJSON.Feature[] = [];
+  if (!state) return { type: 'FeatureCollection', features };
+  for (const theatre of data.theatres) {
+    if (!theatre.area) continue;
+    const th = state.theatres[theatre.id];
+    if (!th || (th.status === 'INACTIVE' && !th.control)) continue;
+    const key = controlKey(th.control);
+    if (key === null) continue;
+    const contested = key === 'contested';
+    const color = contested ? INK.accent : FACTION_COLOR[key];
+    features.push({
+      type: 'Feature',
+      properties: {
+        id: theatre.id,
+        fill: color,
+        opacity: contested ? prefs.territoryOpacity * 0.35 : prefs.territoryOpacity * 0.55,
+        line: color,
+        hatch: contested,
+      },
+      geometry: { type: 'MultiPolygon', coordinates: theatre.area.coordinates.map((poly) => [ringToLngLat(poly[0])]) },
+    });
+  }
+  return { type: 'FeatureCollection', features };
+}
+
+/* ------------------------------------------------------------------ */
 
 export function MapView() {
   const container = useRef<HTMLDivElement | null>(null);
@@ -94,17 +236,24 @@ export function MapView() {
   const [failure, setFailure] = useState<string | null>(null);
 
   const data = useSimulation((s) => s.data);
+  const frame = useSimulation((s) => s.frame);
   const state = useSimulation((s) => s.state);
-  const layers = useSimulation((s) => s.layers);
-  const globe = useSimulation((s) => s.globe);
   const camera = useSimulation((s) => s.camera);
   const selection = useSimulation((s) => s.selection);
+
+  const mapStyle = usePreferences((s) => s.mapStyle);
+  const baseTone = usePreferences((s) => s.baseTone);
+  const globe = usePreferences((s) => s.globe);
+  const layers = usePreferences((s) => s.layers);
+  const territoryOpacity = usePreferences((s) => s.territoryOpacity);
+  const borderOpacity = usePreferences((s) => s.borderOpacity);
+  const railOpen = usePreferences((s) => s.railOpen);
+  const panelOpen = usePreferences((s) => s.panelOpen);
 
   /* -- create ------------------------------------------------------ */
 
   useEffect(() => {
     if (!container.current || mapRef.current) return;
-
     let map: MapLibreMap;
     try {
       map = new maplibregl.Map({
@@ -112,31 +261,42 @@ export function MapView() {
         style: baseStyle(),
         bounds: campaignBounds(),
         fitBoundsOptions: { padding: 40 },
-        minZoom: 0.8,
-        maxZoom: 8,
-        maxPitch: 70,
+        minZoom: 1,
+        maxZoom: 8.5,
+        maxPitch: 60,
         attributionControl: false,
-        dragRotate: true,
         renderWorldCopies: false,
+        dragRotate: true,
+        pitchWithRotate: false,
+        cooperativeGestures: false,
       });
     } catch (error) {
-      // WebGL unavailable is a real failure of a map application, not a
-      // degradation. Say so rather than presenting an empty frame.
       setFailure(error instanceof Error ? error.message : 'The map could not start.');
       return;
     }
-
+    // Calmer than the defaults: a wheel notch is a deliberate step, not a leap.
+    map.scrollZoom.setWheelZoomRate(1 / 600);
+    map.scrollZoom.setZoomRate(1 / 140);
+    map.keyboard.enable();
     mapRef.current = map;
+    // Exposed for browser QA, which inspects the camera and style directly.
+    (window as unknown as { __atlasMap?: MapLibreMap }).__atlasMap = map;
 
     map.on('load', () => {
-      const src = map.getSource('graticule');
-      if (src && 'setData' in src) (src as maplibregl.GeoJSONSource).setData(graticuleFeatures());
+      map.addImage('hatch-light', hatchImage('rgba(200,206,209,0.55)', null));
+      map.addImage('hatch-contested', hatchImage('rgba(212,171,87,0.75)', null, 10, 2));
+      // Open on the campaign, framed inside the panels rather than behind them.
+      const narrow = window.innerWidth < 1024;
+      const prefs = usePreferences.getState();
+      map.fitBounds(campaignBounds(), {
+        duration: 0,
+        padding: { top: 40, bottom: 40, left: narrow || !prefs.railOpen ? 60 : 360, right: narrow || !prefs.panelOpen ? 40 : 400 },
+      });
+      const grid = map.getSource('grid');
+      if (grid && 'setData' in grid) (grid as maplibregl.GeoJSONSource).setData(gridFeatures());
       setReady(true);
     });
-
     map.on('error', (event) => {
-      // Style and source errors are reported rather than swallowed, but they do
-      // not blank the application: the overlay still carries the campaign.
       console.error('[map]', event.error?.message ?? event);
     });
 
@@ -147,87 +307,153 @@ export function MapView() {
     };
   }, []);
 
-  /* -- projection -------------------------------------------------- */
+  /* -- map style & tone ------------------------------------------- */
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    const dark = baseTone === 'dark';
+    map.setPaintProperty('base-raster', 'raster-opacity', mapStyle === 'base' ? 1 : 0);
+    map.setPaintProperty('myth-raster', 'raster-opacity', mapStyle === 'myth' ? 1 : 0);
+    // The war-room treatment darkens the Base Map so faction colour carries the
+    // information; the Myth Map keeps its own painted colours, slightly dimmed.
+    map.setPaintProperty('base-raster', 'raster-brightness-max', dark ? 0.3 : 1);
+    map.setPaintProperty('base-raster', 'raster-brightness-min', dark ? 0.04 : 0);
+    map.setPaintProperty('base-raster', 'raster-saturation', dark ? -0.35 : 0);
+    map.setPaintProperty('base-raster', 'raster-contrast', dark ? 0.15 : 0);
+    map.setPaintProperty('myth-raster', 'raster-brightness-max', dark ? 0.78 : 1);
+    map.setPaintProperty('myth-raster', 'raster-saturation', dark ? -0.15 : 0);
+    map.setPaintProperty('void', 'background-color', mapStyle === 'myth' ? '#100c08' : SEA);
+  }, [mapStyle, baseTone, ready]);
+
+  /* -- projection ---------------------------------------------------- */
 
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready) return;
     try {
       map.setProjection({ type: globe ? 'globe' : 'mercator' });
+      map.setMaxBounds(globe ? null : (padBounds(atlasBounds(), 0.15) as maplibregl.LngLatBoundsLike));
     } catch {
-      // A renderer without globe support keeps the flat atlas. The campaign is
-      // unaffected; only the presentation is.
       setFailure(null);
     }
   }, [globe, ready]);
 
-  /* -- theatre zones ----------------------------------------------- */
+  /* -- territories and operational areas ---------------------------- */
+
+  const selectedTerritory =
+    selection.kind === 'territory'
+      ? selection.id
+      : selection.kind === 'nation'
+        ? (data?.nationById.get(selection.id)?.territoryId ?? null)
+        : null;
+
+  // Recompute only when the integer frame (or a dependency) changes. During a
+  // control transition the frame advances anyway, so the blend animates.
+  // Re-tiling GeoJSON is the most expensive thing the map does, so the sources
+  // are only updated when what they draw actually changes: a control segment,
+  // a step of a transition, the selection, or the opacity.
+  const territoryKey = data
+    ? data.territories
+        .map((t) => {
+          const c = territoryControlAt(t, frame);
+          return `${t.control.indexOf(c.segment)}:${Math.round(c.transition * 12)}`;
+        })
+        .join('|')
+    : '';
+  const areaKey = state ? data?.theatres.map((t) => `${state.theatres[t.id]?.status}:${state.theatres[t.id]?.control}`).join('|') ?? '' : '';
 
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready || !data) return;
-    const source = map.getSource('theatres');
-    if (!source || !('setData' in source)) return;
+    const src = map.getSource('territories') as maplibregl.GeoJSONSource | undefined;
+    src?.setData(territoryFeatures(data, useSimulation.getState().frame, selectedTerritory));
+  }, [data, territoryKey, ready, selectedTerritory, territoryOpacity]);
 
-    const features: GeoJSON.Feature[] = [];
-    for (const theatre of data.theatres) {
-      if (!theatre.zone) continue;
-      const control = state?.theatres[theatre.id]?.control ?? null;
-      const status = state?.theatres[theatre.id]?.status ?? 'INACTIVE';
-      if (status === 'INACTIVE' && !control) continue;
-      const ring = theatre.zone.map(([x, y]) => simToLngLatTuple(x, y));
-      ring.push(ring[0]);
-      features.push({
-        type: 'Feature',
-        properties: {
-          id: theatre.id,
-          name: theatre.name,
-          color: controlColor(control),
-          status,
-          selected: selection.kind === 'theatre' && selection.id === theatre.id,
-        },
-        geometry: { type: 'Polygon', coordinates: [ring] },
-      });
-    }
-    (source as maplibregl.GeoJSONSource).setData({ type: 'FeatureCollection', features });
-  }, [data, state, ready, selection]);
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !data) return;
+    const src = map.getSource('areas') as maplibregl.GeoJSONSource | undefined;
+    src?.setData(areaFeatures(data, useSimulation.getState().state));
+  }, [data, areaKey, ready, territoryOpacity]);
 
-  /* -- layer visibility -------------------------------------------- */
+  /* -- layer visibility & border opacity ---------------------------- */
 
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready) return;
-    const set = (id: string, visible: boolean) => {
-      if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none');
-    };
-    set('atlas', layers.base);
-    set('theatre-fill', layers.theatres);
-    set('theatre-line', layers.theatres);
-    set('graticule-line', layers.grid);
-  }, [layers, ready]);
+    const vis = (id: string, on: boolean) => map.getLayer(id) && map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
+    vis('territory-fill', layers.territories);
+    vis('territory-hatch', layers.territories);
+    vis('territory-line', true);
+    vis('area-fill', layers.operationalAreas);
+    vis('area-hatch', layers.operationalAreas);
+    vis('area-line', layers.operationalAreas);
+    vis('grid-line', layers.grid);
+    map.setPaintProperty('territory-line', 'line-opacity', borderOpacity);
+  }, [layers, borderOpacity, ready]);
 
-  /* -- camera ------------------------------------------------------ */
+  /* -- camera requests ---------------------------------------------- */
 
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready || !camera) return;
-    map.easeTo({
-      center: simToLngLatTuple(camera.x, camera.y),
-      zoom: camera.zoom ?? map.getZoom(),
-      duration: 1100,
+    const reduce = prefersReducedMotion();
+    const narrow = window.innerWidth < 1024;
+    const padding = {
+      top: 64,
+      bottom: narrow ? 160 : 140,
+      left: narrow || !railOpen ? 32 : 340,
+      right: narrow || !panelOpen ? 32 : 400,
+    };
+    if (camera.kind === 'campaign') {
+      map.fitBounds(campaignBounds(), { padding, duration: reduce ? 0 : 1200, bearing: 0, pitch: 0 });
+      return;
+    }
+    if (camera.kind === 'bounds') {
+      const b = camera.bounds;
+      const pad = 0.01;
+      map.fitBounds(simBoundsToLngLat([b[0] - pad, b[1] - pad, b[2] + pad, b[3] + pad]), {
+        padding,
+        maxZoom: camera.maxZoom ?? 6,
+        duration: reduce ? 0 : 1300,
+        essential: false,
+      });
+      return;
+    }
+    const target = simToLngLatTuple(camera.x, camera.y);
+    const zoom = camera.zoom ?? map.getZoom();
+    if (reduce) {
+      map.jumpTo({ center: target, zoom });
+      return;
+    }
+    // Controlled easing: offset the target so it lands in the visible part of
+    // the map, not behind a panel.
+    map.flyTo({
+      center: target,
+      zoom,
+      speed: 1.1,
+      curve: 1.3,
+      padding,
       easing: (t) => 1 - Math.pow(1 - t, 3),
+      essential: false,
     });
-  }, [camera, ready]);
+  }, [camera, ready, railOpen, panelOpen]);
+
+  // Keep the canvas sized when panels open or close.
+  useEffect(() => {
+    const id = window.setTimeout(() => mapRef.current?.resize(), 220);
+    return () => window.clearTimeout(id);
+  }, [railOpen, panelOpen]);
 
   if (failure) {
     return (
-      <div className="absolute inset-0 flex items-center justify-center bg-ink-900 p-8">
-        <div className="max-w-md border border-chart-rule/40 bg-ink-800 p-6">
-          <h2 className="font-atlas text-lg text-chart-paper">The map could not start</h2>
-          <p className="mt-3 text-sm leading-relaxed text-chart-faint">{failure}</p>
-          <p className="mt-3 text-sm leading-relaxed text-chart-faint">
-            This build renders the campaign with WebGL. Enable hardware acceleration in your browser,
-            or open the application in a browser that supports WebGL 2.
+      <div className="absolute inset-0 grid place-items-center bg-ink-900 p-8">
+        <div className="surface max-w-md p-6">
+          <h2 className="font-display text-lg text-fg">The map could not start</h2>
+          <p className="mt-3 text-sm leading-relaxed text-fg-2">{failure}</p>
+          <p className="mt-3 text-sm leading-relaxed text-fg-3">
+            The atlas renders with WebGL. Enable hardware acceleration, or open it in a browser that supports WebGL 2.
           </p>
         </div>
       </div>
@@ -235,17 +461,22 @@ export function MapView() {
   }
 
   return (
-    <div className="absolute inset-0">
-      {/*
-        MapLibre's own stylesheet sets .maplibregl-map { position: relative },
-        which lands after Tailwind's utilities and would override a positioning
-        class here. The inline style is deliberate: it is the only declaration
-        the library cannot outrank, and without it the container collapses to
-        zero height and the map never draws.
-      */}
+    <div className="absolute inset-0" role="region" aria-label="Campaign map">
+      {/* MapLibre's stylesheet sets position:relative on the container; the inline style is the only declaration it cannot outrank. */}
       <div ref={container} style={{ position: 'absolute', inset: 0 }} />
-      {ready ? <ForceOverlay map={mapRef.current} /> : null}
+      {ready ? <Overlay map={mapRef.current} /> : null}
       <MapControls map={mapRef.current} ready={ready} />
     </div>
   );
 }
+
+function padBounds(b: [[number, number], [number, number]], f: number): [[number, number], [number, number]] {
+  const dx = (b[1][0] - b[0][0]) * f;
+  const dy = (b[1][1] - b[0][1]) * f;
+  // Longitudes must stay inside ±180 or MapLibre clamps the camera to the antimeridian.
+  return [
+    [Math.max(-179.9, b[0][0] - dx), Math.max(-85, b[0][1] - dy)],
+    [Math.min(179.9, b[1][0] + dx), Math.min(85, b[1][1] + dy)],
+  ];
+}
+

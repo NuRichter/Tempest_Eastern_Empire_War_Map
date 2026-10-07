@@ -1,0 +1,122 @@
+{
+  "$schema": "internal://territory-control.source",
+  "about": {
+    "purpose": "Time-aware political state of every traced territory. Each entry starts at an event (never at a frame), so the control timeline moves with the campaign timeline if events are re-placed. Entries with fromEvent null hold from the first frame.",
+    "roles": {
+      "BELLIGERENT": "A principal party to the war at this point.",
+      "CO_BELLIGERENT": "Fights alongside a principal party, or is attacked by one, without being a principal.",
+      "CONTRIBUTOR": "Contributes named individuals or a small element to one side; not a party at war.",
+      "UNINVOLVED": "No recorded part in the campaign. Drawn as inactive territory.",
+      "ARMISTICE": "Hostilities suspended or ended by a recorded political act."
+    },
+    "status": {
+      "CONTROLLED": "Held by its own government. The war never transferred ownership of any traced national territory: imperial forces operated inside Jura and at Dwargon's eastern gate but occupied no national region, which is shown with operational areas instead.",
+      "UNKNOWN": "Control is not established by the record. Never drawn as a faction colour."
+    },
+    "provenance": "CANONICAL entries restate an event the canon audit supports. INFERRED entries follow from several recorded events. Every entry names its basis."
+  },
+  "territories": {
+    "T-EMP": [
+      {
+        "fromEvent": null,
+        "controller": "Eastern Empire",
+        "status": "CONTROLLED",
+        "role": "UNINVOLVED",
+        "provenance": "CANONICAL",
+        "basis": "Before the mobilization order the Empire is not yet at war."
+      },
+      {
+        "fromEvent": "EVT-0001",
+        "controller": "Eastern Empire",
+        "status": "CONTROLLED",
+        "role": "BELLIGERENT",
+        "provenance": "CANONICAL",
+        "basis": "Imperial mobilization ordered (EVT-0001)."
+      },
+      {
+        "fromEvent": "EVT-0386",
+        "controller": "Eastern Empire",
+        "status": "CONTROLLED",
+        "role": "ARMISTICE",
+        "provenance": "CANONICAL",
+        "basis": "Combat ends when Michael and Feldway withdraw (EVT-0386). There was no imperial armistice proposal: Benimaru demanded unconditional surrender, which the Empire accepts at the summit (EVT-0392)."
+      }
+    ],
+    "T-JTF": [
+      {
+        "fromEvent": null,
+        "controller": "Jura-Tempest Federation",
+        "status": "CONTROLLED",
+        "role": "UNINVOLVED",
+        "provenance": "INFERRED",
+        "basis": "No war footing recorded before the Control Room order of battle."
+      },
+      {
+        "fromEvent": "EVT-0004",
+        "controller": "Jura-Tempest Federation",
+        "status": "CONTROLLED",
+        "role": "BELLIGERENT",
+        "provenance": "CANONICAL",
+        "basis": "Tempest confirms its four-corps order of battle against the coming invasion (EVT-0004)."
+      },
+      {
+        "fromEvent": "EVT-0386",
+        "controller": "Jura-Tempest Federation",
+        "status": "CONTROLLED",
+        "role": "ARMISTICE",
+        "provenance": "CANONICAL",
+        "basis": "Combat ends with the withdrawal of Michael and Feldway (EVT-0386)."
+      }
+    ],
+    "T-DWG": [
+      {
+        "fromEvent": null,
+        "controller": "Armed Nation of Dwargon",
+        "status": "CONTROLLED",
+        "role": "UNINVOLVED",
+        "provenance": "INFERRED",
+        "basis": "Dwargon is not attacked before the blockade of its eastern gate."
+      },
+      {
+        "fromEvent": "EVT-0016",
+        "controller": "Armed Nation of Dwargon",
+        "status": "CONTROLLED",
+        "role": "CO_BELLIGERENT",
+        "provenance": "CANONICAL",
+        "basis": "The Empire blockades Dwargon's eastern gate (EVT-0016); the allied division of tasks follows (EVT-0018)."
+      },
+      {
+        "fromEvent": "EVT-0386",
+        "controller": "Armed Nation of Dwargon",
+        "status": "CONTROLLED",
+        "role": "ARMISTICE",
+        "provenance": "INFERRED",
+        "basis": "Fighting on the Dwargon front ends when the clowns are withdrawn (EVT-0385) and combat ends with the withdrawal (EVT-0386)."
+      }
+    ],
+    "T-EUR": [
+      {
+        "fromEvent": null,
+        "controller": "Beast Kingdom Eurazania",
+        "status": "CONTROLLED",
+        "role": "UNINVOLVED",
+        "provenance": "INFERRED",
+        "basis": "No Eurazanian participation recorded before the eastern-front reinforcement."
+      },
+      {
+        "fromEvent": "EVT-0350",
+        "controller": "Beast Kingdom Eurazania",
+        "status": "CONTROLLED",
+        "role": "CONTRIBUTOR",
+        "provenance": "CANONICAL",
+        "basis": "Phobio arrives on the Dwargon eastern front with the Kurenai advance force (EVT-0350)."
+      }
+    ]
+  },
+  "defaultForUnlisted": {
+    "status": "CONTROLLED",
+    "role": "UNINVOLVED",
+    "provenance": "INFERRED",
+    "basis": "The dataset records no part in the campaign for this territory."
+  }
+}

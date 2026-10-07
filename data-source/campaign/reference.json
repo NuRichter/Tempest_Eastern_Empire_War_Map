@@ -1,0 +1,326 @@
+{
+ "contradictions": [
+  {
+   "id": "CON-001",
+   "description": "Size of the invading army",
+   "claimA": "The invading army numbered ninety-four thousand (as rendered in the Indonesian text)",
+   "claimB": "700,000 + 200,000 + 40,000 = 940,000 across the component formations",
+   "sourceA": "V13 Ch3",
+   "sourceB": "V12 Ch4; V13 Ch1, Ch3",
+   "resolution": "The 'ninety-four thousand' rendering (v13.txt:7057, 18347) is a translation slip: 940,000 is stated outright elsewhere (v13.txt:16208; v14.txt:1124, 4650, 10133).",
+   "treatment": "Adopted 940,000 as EXPLICIT on F-EMP-010 (R5). The component sum 700,000 + 200,000 + 40,000 is kept only as a cross-check.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "CON-002",
+   "description": "Whether prisoners were taken",
+   "claimA": "No prisoners were taken; all were killed in action",
+   "claimB": "Captured imperial forces were returned to the Empire",
+   "sourceA": "V13 Ch3",
+   "sourceB": "V16 Ch3",
+   "resolution": "Not a contradiction: no prisoners were taken in the surface battle. The later prisoners are the ~700,000 resurrected soldiers (v14.txt:875; v16.txt:7992), held in Tempest until the repatriation.",
+   "treatment": "CAS-008 restates pow = 0 for the surface phase; CAS-014 records pow ~700,000 at the resurrection; CAS-021 records the revival. Killed, revived and captured are separate columns.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "CON-003",
+   "description": "Whether Shion and others died in the sealed space (resolved: misreading)",
+   "claimA": "Pre-R5 dataset: Shion and others are killed in the sealed space (EVT-0362, CAS-013, ACT-011)",
+   "claimB": "V15 Ch2 opens with Rimuru recalling the earlier time Shion and others were killed (the pre-war massacre) and saying this time is different; Shion fights right after and Benimaru says all are safe",
+   "sourceA": "V15 Ch2 (v15.txt:4672-4679), misread",
+   "sourceB": "V15 Ch2 (v15.txt:4986-4988, 5030-5034); V15 Epilogue (v15.txt:18080-18083); V16 Ch1 (v16.txt:516-519); V14 Intermission (v14.txt:4648)",
+   "resolution": "The cited line is a flashback, not a death in this war. No Tempest death is narrated in the long night.",
+   "treatment": "R5: CAS-013 deleted; EVT-0362 to be deleted by the phase editor; ACT-011 set to ACTIVE; CAS-026 records zero Tempest deaths for the long night (qualitative).",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "CON-004",
+   "description": "The figure 'one hundred thirteen thousand'",
+   "claimA": "A force of one hundred thirteen thousand could be sent on the emperor's order",
+   "claimB": "The legions described immediately before total far more than 113,000",
+   "sourceA": "V12 Ch4",
+   "sourceB": "V12 Ch4",
+   "resolution": "Internally inconsistent within a single passage. Possibly 1,130,000 mis-rendered, or a first-wave echelon.",
+   "treatment": "Excluded from the force database. Recorded here and in AMB-002 only.",
+   "confidence": "LOW"
+  },
+  {
+   "id": "CON-005",
+   "description": "Total imperial strength implied by the 70 percent figure",
+   "claimA": "The 700,000 entering the forest is about seventy percent of the whole imperial strength, implying roughly 1,000,000 total",
+   "claimB": "The Empire can mobilise more than two million including garrisons",
+   "sourceA": "V13 Ch1",
+   "sourceB": "V12 Ch4",
+   "resolution": "Reconcilable: '70% of all imperial strength' is measured against the Armored Division's deployable ceiling (~1,000,000), which V12 Ch4 states for that legion, not for the whole Empire.",
+   "treatment": "F-EMP-001 (Armored Division deployable ceiling) is the denominator. F-EMP-000 (whole Empire) has no stated total.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "CON-006",
+   "description": "When the Dwargon eastern blockade begins",
+   "claimA": "Gazel reports the eastern gate already blockaded, before first contact",
+   "claimB": "The blockade camp scene is narrated in V14, after the Jura campaign",
+   "sourceA": "V13 Ch1",
+   "sourceB": "V14 Ch4",
+   "resolution": "The blockade is in place before first contact (reported in the D+0 Gazel call) and persists to V14 Ch4; its start date is not stated.",
+   "treatment": "R5: EVT-0016 (Gazel reports the blockade) at D+0; blockade start RECONSTRUCTED between the council tasking (V12 Ch4) and D+0 (MOV-008). The old D-6 note was inconsistent with EVT-0016 and is withdrawn.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "CON-007",
+   "description": "What the 'month' and 'twenty-nine day' anchors are measured from",
+   "claimA": "A month has passed since the subordinates' gathering met (V13 Ch1 opening line)",
+   "claimB": "The chariot force was expected in about twenty-nine days or more, but the invasion was slower than expected",
+   "sourceA": "V13 Ch1",
+   "sourceB": "V13 Ch1",
+   "resolution": "Both anchors are measured from the V12 Ch5 Control Room war council (v12.txt:12108), not the V12 Ch2 office meeting. At that council the forecast was ~20 days (v12.txt:12444-12449); V13 Ch1 recalls ~29 days or more and says the advance was slower still.",
+   "treatment": "R5: war council (the gathering) = D-33; month mark = D-3 (CANONICAL_RELATIVE, 30 days); halt D-2; first contact D+0 = 33 days after the gathering, slower than both forecasts. See AMB-016.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "CON-008",
+   "description": "Who killed Gradim",
+   "claimA": "Revision brief: Gradim killed by Vega",
+   "claimB": "Carillon ('Carrion') attacks Gradim as he falls into his awakening sleep and he dies; Vega then devours his head and body",
+   "sourceA": "Audit brief",
+   "sourceB": "V15 Ch3 (v15.txt:9404-9502, 10511-10523)",
+   "resolution": "The text gives the kill to Carillon; Vega only devours the remains.",
+   "treatment": "CMD-035 / ACT-035 / CAS-025: killed by Carillon, remains devoured by Vega.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "CON-009",
+   "description": "Who holds the title 'Marshal'",
+   "claimA": "Pre-R5 dataset: 'Marshal Calgurio'",
+   "claimB": "The masked Marshal at the V12 Ch4 council is Caligulio's superior and is revealed as Velgrynd",
+   "sourceA": "Pre-R5 forces/commanders",
+   "sourceB": "V12 Ch4 (v12.txt:10491-10495, 10785-10796); V15 Ch1 (v15.txt:3522-3554); V16 Ch3 (v16.txt:7988)",
+   "resolution": "Caligulio is one of the Three Great Generals; Velgrynd is the Marshal.",
+   "treatment": "Renamed CMD-031/ACT-031 to General Caligulio; CMD-038/ACT-039 start at the V12 Ch4 council.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "CON-010",
+   "description": "Size of Shion's unit (Yomigaeri)",
+   "claimA": "V12 Ch2: number unknown, 'I don't think more than a thousand'",
+   "claimB": "V13 Ch4: 'ten thousand in all', B+",
+   "sourceA": "V12 Ch2 (v12.txt:3920-3930)",
+   "sourceB": "V13 Ch4 (v13.txt:13968-13973); official keyword page gives about 100",
+   "resolution": "The V12 figure is a guess; V13 states a number, but the fan TL may have inflated it (the official keyword says about 100).",
+   "treatment": "F-TEM-005 carries 10,000 (EXPLICIT per the TL) at MEDIUM confidence, with the conflict noted.",
+   "confidence": "LOW"
+  },
+  {
+   "id": "CON-011",
+   "description": "Number of Hiryuu (Flying Dragons)",
+   "claimA": "V12 Ch2: 'hundreds of Flying Dragons'",
+   "claimB": "V13 Ch1 and V15 Ch1: one hundred",
+   "sourceA": "V12 Ch2 (v12.txt:3784)",
+   "sourceB": "V13 Ch1 (v13.txt:2140-2142); V15 Ch1 (v15.txt:761, 1473-1475)",
+   "resolution": "Likely a translation variance; the ~300 'Flying' of V12 are the Blue Numbers' dragon mounts.",
+   "treatment": "F-TEM-003B = 100 Hiryuu; F-TEM-003C = ~300 Blue Numbers dragon riders.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "CON-012",
+   "description": "Forecast arrival of the imperial army",
+   "claimA": "V12 Ch5: ~1,500 km at ~80 km/day, about twenty days",
+   "claimB": "V13 Ch1: expected in about twenty-nine days or more, but slower",
+   "sourceA": "V12 Ch5 (v12.txt:12440-12449)",
+   "sourceB": "V13 Ch1 (v13.txt:300-305)",
+   "resolution": "Two forecasts at different times; both are overshot by the actual contact (D+0 = 33 days after the war council).",
+   "treatment": "Recorded on EVT-0027 (planned) and EVT-0013.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "CON-013",
+   "description": "Misread events removed in R5",
+   "claimA": "Pre-R5 events: EVT-0115 Veldora annihilates the air corps; EVT-0384 the Empire proposes an armistice; EVT-0397 Veldora leaves citizens without memory of the defeat; EVT-0321 the blockade loses its command",
+   "claimB": "Text: Ultima's Nuclear Flame destroyed the air corps (Gabil was mistaken for Veldora); no armistice proposal exists (Benimaru demanded surrender, refused); citizens had simply never lost a war; Zero restored order",
+   "sourceA": "Pre-R5 event file",
+   "sourceB": "V13 Ch2 (v13.txt:5298-5404); V15 Ch4-Epilogue (v15.txt:11190-11196, 18045-18073); V16 Ch3 (v16.txt:9267-9276); V14 Ch4 (v14.txt:12395-12407)",
+   "resolution": "Misreadings.",
+   "treatment": "AUDIT-PLAN.md: EVT-0115/EVT-0321/EVT-0397 corrected; EVT-0384 deleted.",
+   "confidence": "HIGH"
+  }
+ ],
+ "ambiguities": [
+  {
+   "id": "AMB-001",
+   "subject": "Total size of the invasion army",
+   "events": "EVT-0120, F-EMP-010",
+   "ambiguity": "The fan TL renders the invading army as 'ninety-four thousand' at v13.txt:7057 and 18347.",
+   "possibleOrder": "The fan TL renders the invading army as 'ninety-four thousand' at v13.txt:7057 and 18347.",
+   "chosenPlacement": "940,000, stated outright at v13.txt:16208 and v14.txt:1124/4650/10133. Resolved (R5).",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "AMB-002",
+   "subject": "The figure 'one hundred thirteen thousand' in V12 Ch4",
+   "events": "EVT-0001",
+   "ambiguity": "V12 Ch4 says a force of 'one hundred thirteen thousand' could be sent once the emperor gave the order, immediately after describing legions totalling far more. Readings: (a) 1,130,000 mis-rendered; (b) a first-wave echelon; (c) translation corruption.",
+   "possibleOrder": "V12 Ch4 says a force of 'one hundred thirteen thousand' could be sent once the emperor gave the order, immediately after describing legions totalling far more. Readings: (a) 1,130,000 mis-rendered; (b) a first-wave echelon; (c) translation corruption.",
+   "chosenPlacement": "Excluded from the force database rather than guessed at. Recorded here only.",
+   "confidence": "LOW"
+  },
+  {
+   "id": "AMB-003",
+   "subject": "Clock times across the whole campaign",
+   "events": "All events",
+   "ambiguity": "The corpus contains essentially no clock times. Only relative durations appear (under six seconds, ten minutes, less than an hour, three hours).",
+   "possibleOrder": "The corpus contains essentially no clock times. Only relative durations appear (under six seconds, ten minutes, less than an hour, three hours).",
+   "chosenPlacement": "All hour-and-minute placements are SIMULATION_RECONSTRUCTED. Only the relative durations are carried as EXPLICIT_RELATIVE.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "AMB-004",
+   "subject": "Calendar dates",
+   "events": "All events",
+   "ambiguity": "No in-world calendar date is given for any campaign event.",
+   "possibleOrder": "No in-world calendar date is given for any campaign event.",
+   "chosenPlacement": "Artificial marker year 9001 used. DATE_BASIS = SIMULATION_RECONSTRUCTED throughout.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "AMB-005",
+   "subject": "Duration of the labyrinth phase",
+   "events": "EVT-0201 to EVT-0207",
+   "ambiguity": "Labyrinth duration. V13 gives entries by day (350,000 / 150,000 / 30,000, v13.txt:9489-9493), raiders meeting on day four (v13.txt:10042), seven days elapsed at the opening of Ch4 (v13.txt:10599), Minitz entering the next day (v13.txt:11917) and Krishna returning two days after he was sent (v13.txt:16289).",
+   "possibleOrder": "Labyrinth duration. V13 gives entries by day (350,000 / 150,000 / 30,000, v13.txt:9489-9493), raiders meeting on day four (v13.txt:10042), seven days elapsed at the opening of Ch4 (v13.txt:10599), Minitz entering the next day (v13.txt:11917) and Krishna returning two days after he was sent (v13.txt:16289).",
+   "chosenPlacement": "Labyrinth Raider operation D+1..D+10 (day 1 = D+1 is RECONSTRUCTED; later days CANONICAL_RELATIVE); the camp outside is annihilated on D+11, after dawn (v13.txt:16004).",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "AMB-007",
+   "subject": "Strength of Shion's undocumented unit",
+   "events": "F-TEM-005",
+   "ambiguity": "V12 Ch2 says Shion's unit is of unknown size (guess under 1,000); V13 Ch4 says 10,000.",
+   "possibleOrder": "V12 Ch2 says Shion's unit is of unknown size (guess under 1,000); V13 Ch4 says 10,000.",
+   "chosenPlacement": "10,000 carried on F-TEM-005 at MEDIUM confidence (see CON-010).",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "AMB-008",
+   "subject": "V15 Chapters 4 and 5 internal structure",
+   "events": "EVT-0380 to EVT-0381",
+   "ambiguity": "Eight Gates and The Truth of the Emperor concern the nature of the imperial throne and skill-level conflict rather than force-on-force battle. Little of it maps onto conventional battlefield state.",
+   "possibleOrder": "Eight Gates and The Truth of the Emperor concern the nature of the imperial throne and skill-level conflict rather than force-on-force battle. Little of it maps onto conventional battlefield state.",
+   "chosenPlacement": "Recorded as chapter-level events at MEDIUM/LOW confidence. Further atomic breakdown would require modelling non-military developments.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "AMB-009",
+   "subject": "Destination of the Warcraft Legion after the space-time jump",
+   "events": "EVT-0373, MOV-015",
+   "ambiguity": "Destination of Velgrynd's Space-Time Connection.",
+   "possibleOrder": "Destination of Velgrynd's Space-Time Connection.",
+   "chosenPlacement": "Resolved (R5): the Dwargon eastern front, where the airship regiment appears before Gadora and the Magic Beast Division fights (v15.txt:3404-3435, 3618-3620, 8215-8237). MOV-015/MOV-030.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "AMB-010",
+   "subject": "Tempest casualties in the sealed space",
+   "events": "EVT-0362, CAS-013",
+   "ambiguity": "Tempest casualties in the sealed space.",
+   "possibleOrder": "Tempest casualties in the sealed space.",
+   "chosenPlacement": "Resolved (R5): none. The line was a flashback (CON-003). CAS-013 deleted.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "AMB-011",
+   "subject": "Whether the 60,000 ritual sacrifice is part of the 940,000",
+   "events": "F-EMP-031, CAS-012",
+   "ambiguity": "The Hybrid Legion is a separate legion from the Jura invasion force in V12 Ch4, and the 60,000 blockade the eastern metropolis rather than the Jura front.",
+   "possibleOrder": "The Hybrid Legion is a separate legion from the Jura invasion force in V12 Ch4, and the 60,000 blockade the eastern metropolis rather than the Jura front.",
+   "chosenPlacement": "Treated as SEPARATE from the 940,000. Campaign totals report the two figures distinctly.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "AMB-012",
+   "subject": "Number of imperial prisoners repatriated",
+   "events": "EVT-0395, CAS-014",
+   "ambiguity": "Number of imperial prisoners repatriated.",
+   "possibleOrder": "Number of imperial prisoners repatriated.",
+   "chosenPlacement": "About 700,000 (the resurrected soldiers; v14.txt:875, 5757-5795; v16.txt:7992). The number actually marched home is not stated (some wished to stay).",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "AMB-013",
+   "subject": "V16 scope boundary",
+   "events": "V16 Prologue, Ch1, Ch2",
+   "ambiguity": "Most of V16 concerns the Feldway and Michael conflict, which is a separate later war rather than part of the Tempest-Eastern Empire War.",
+   "possibleOrder": "Most of V16 concerns the Feldway and Michael conflict, which is a separate later war rather than part of the Tempest-Eastern Empire War.",
+   "chosenPlacement": "Only V16 Ch3 (post-war settlement and rebuilding) is extracted. The later conflict is deliberately excluded per scope.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "AMB-006",
+   "subject": "Interval between the Jura campaign and the second phase",
+   "events": "EVT-0207 to EVT-0310",
+   "ambiguity": "Interval between the Jura campaign and the coup night. V14 gives: resurrection day R; Ch1 = R+1 (v14.txt:875); calm three days after the revival (v14.txt:5010); then a Guy/Velzard visit, a next day, an all-night drink with Elmesia, and the next day the long night (v14.txt:12725-12920).",
+   "possibleOrder": "Interval between the Jura campaign and the coup night. V14 gives: resurrection day R; Ch1 = R+1 (v14.txt:875); calm three days after the revival (v14.txt:5010); then a Guy/Velzard visit, a next day, an all-night drink with Elmesia, and the next day the long night (v14.txt:12725-12920).",
+   "chosenPlacement": "Resurrection D+12; long night begins on the evening of D+18 (R+6): the minimum chain of stated day changes. RECONSTRUCTED.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "AMB-014",
+   "subject": "Distribution of the approach march across the interval",
+   "events": "EVT-0003 to EVT-0021",
+   "ambiguity": "The corpus fixes departure, two forecasts, the month mark, the border crossing and the halt, but no intermediate positions or distances along the march.",
+   "possibleOrder": "The corpus fixes departure, two forecasts, the month mark, the border crossing and the halt, but no intermediate positions or distances along the march.",
+   "chosenPlacement": "Approach D-32..D-2 by simulation placement; transit.json interpolates linearly between the canonical endpoints (RECONSTRUCTED). No distance is claimed.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "AMB-015",
+   "subject": "Interval between mobilization and the subordinates' gathering",
+   "events": "EVT-0001, EVT-0004",
+   "ambiguity": "Intervals between the V12 Ch2 order-of-battle meeting, the V12 Ch4 imperial council, Gadora's audience and the V12 Ch5 war council.",
+   "possibleOrder": "Intervals between the V12 Ch2 order-of-battle meeting, the V12 Ch4 imperial council, Gadora's audience and the V12 Ch5 war council.",
+   "chosenPlacement": "Ch2 meeting D-43; imperial council D-40; Gadora's audience and return D-34 (two 'several days' passages on the Tempest side); war council D-33. All RECONSTRUCTED; only the narrative order is canonical.",
+   "confidence": "LOW"
+  },
+  {
+   "id": "AMB-016",
+   "subject": "What the reference point for the month and 29-day anchors actually is",
+   "events": "EVT-0004, EVT-0012, EVT-0003",
+   "ambiguity": "V13 Ch1 opens 'a month has passed since the subordinates' gathering met'. Pre-R5 readings took this as the V12 Ch2 office meeting.",
+   "possibleOrder": "V13 Ch1 opens 'a month has passed since the subordinates' gathering met'. Pre-R5 readings took this as the V12 Ch2 office meeting.",
+   "chosenPlacement": "R5: the gathering is the V12 Ch5 Control Room war council, which opens \"today, in this control room, our subordinates gathered\" (v12.txt:12108). Placed at D-33; month mark D-3.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "AMB-017",
+   "subject": "The 50-day campaign window is a simulation window, not a canonical duration",
+   "events": "All frames",
+   "ambiguity": "No passage states how long the war lasted.",
+   "possibleOrder": "No passage states how long the war lasted.",
+   "chosenPlacement": "The clock D-43..D+31 (75 days) is a SIMULATION WINDOW assembled from the skeleton in AUDIT-PLAN.md. It must never be quoted as a canonical war duration.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "AMB-018",
+   "subject": "One clock for the long night",
+   "events": "EVT-0312..EVT-0386",
+   "ambiguity": "The Tidu scenes say 'middle of the night' / 'late at night' while Tempest's alarm comes 'after dinner'; the novels give no clock times and no time zones.",
+   "chosenPlacement": "One simulation clock: the coup night runs D+18 18:00 to D+19 ~03:00 in strict narrative order. Local-time wording is kept in canonicalTime.",
+   "confidence": "LOW"
+  },
+  {
+   "id": "AMB-019",
+   "subject": "Date of the summit and the repatriation",
+   "events": "EVT-0390..EVT-0399, EVT-0450..EVT-0455",
+   "ambiguity": "V16: return home and party; next day off; interviews starting in an evening and running on two further 'tomorrow's; summit 'the next day'; Gazel leaves the next morning; repatriation ready within a week, departure soon after.",
+   "chosenPlacement": "Party D+19, day off D+20, interviews D+20 (evening) to D+22, summit D+23 (morning session; afternoon from 15:00), Gazel leaves D+24, march departs D+31. Day counts after D+19 are CANONICAL_RELATIVE except the last (RECONSTRUCTED).",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "AMB-020",
+   "subject": "Halt and first contact",
+   "events": "EVT-0019, EVT-0020, EVT-0029, EVT-0030",
+   "ambiguity": "'Soon after' the month mark the imperial army halts and the infantry marches into the forest; the next narrated scene (Soei's report, the Gazel call, Testarossa's mission, the battle) is one day, on which Gaster's men are still pitching camp.",
+   "chosenPlacement": "Halt D-2, infantry camp established D-1, first contact D+0. RECONSTRUCTED spacing.",
+   "confidence": "MEDIUM"
+  }
+ ]
+}
