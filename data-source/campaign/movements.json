@@ -572,8 +572,15 @@
   "route": "SCHEMATIC",
   "basis": "SIMULATION_RECONSTRUCTED",
   "confidence": "MEDIUM",
-  "notes": "Added in R5. Caligulio marches the resurrected prisoners home; preparations done within a week of the summit and the departure soon after; roads still being built by Adalmann's troops (v16.txt:9767-9773).",
-  "destinationUnknown": false
+  "notes": "Added in R5. Caligulio marches the resurrected prisoners home; preparations done within a week of the summit and the departure soon after; roads still being built by Adalmann's troops (v16.txt:9767-9773). R5 canon resolution: the arrival is not dated and falls after the clock; the march is drawn at the pace of the approach march (EVT-0003 to EVT-0019) and only as far as that pace carries it by the last frame.",
+  "destinationUnknown": false,
+  "arrival": "AFTER_CLOCK",
+  "pace": {
+   "fromPlace": "imperial-interior",
+   "toPlace": "jura-forest-edge",
+   "startEvent": "EVT-0003",
+   "endEvent": "EVT-0019"
+  }
  },
  {
   "id": "MOV-037",

@@ -15,8 +15,8 @@ Peta, waktu, pasukan, wilayah, pergerakan — dan bukti di balik setiap klaim.
 [QA](./docs/QA.md)
 
 ![Revision](https://img.shields.io/badge/dataset-R5_canon_audit-d4ab57?style=flat-square)
-![Events](https://img.shields.io/badge/events-165-2f9e7e?style=flat-square)
-![Canon](https://img.shields.io/badge/canonical-141_·_visual_recon._24-cfe5dc?style=flat-square)
+![Events](https://img.shields.io/badge/events-166-2f9e7e?style=flat-square)
+![Canon](https://img.shields.io/badge/canonical-141_·_visual_recon._25-cfe5dc?style=flat-square)
 ![Clock](https://img.shields.io/badge/clock-D−43_→_D+31_·_10_min-5b8fd8?style=flat-square)
 ![Next.js](https://img.shields.io/badge/Next.js-15-000?style=flat-square&logo=nextdotjs)
 ![MapLibre](https://img.shields.io/badge/MapLibre_GL-5-396CB2?style=flat-square&logo=maplibre&logoColor=white)
@@ -117,7 +117,7 @@ Sources of Truth/   →   data-source/   →   compile-data   →   public/data 
                         karakter, istilah)
 ```
 
-- **Sumber kebenaran riset:** `Sources of Truth/` — novel vol. 12–16, peta, bendera, photocard + manifest, dan dataset Step 1 (diarsipkan tanpa diubah sebagai revisi pra-audit).
+- **Sumber kebenaran riset:** `Sources of Truth/` — peta, bendera, photocard + manifest, dan dataset Step 1 (diarsipkan tanpa diubah sebagai revisi pra-audit).
 - **Sumber atlas:** `data-source/` — kampanye R5 (event dengan efek, pasukan, pergerakan, korban, tahap), gazetteer, geometri wilayah, kontrol wilayah, karakter, terminologi.
 - **Runtime:** `public/data/` dihasilkan oleh `scripts/compile-data.ts` — jangan diedit tangan.
 
@@ -168,7 +168,7 @@ Fakta dihormati, ketidakpastian diakui, karangan tidak diterima. Setiap fakta ba
 
 Proyek ini milik **NuRichter** (NuRichter Workspace), dengan lisensi tiga lapis — lihat [LICENSE](./LICENSE): perangkat lunak (permisif), dataset & tulisan analitis (atribusi, non-komersial, berbagi serupa, wajib menjaga label integritas), dan materi pihak ketiga (tidak dilisensikan oleh proyek ini).
 
-*Tensei Shitara Slime Datta Ken* beserta dunia, tokoh, teks, dan ilustrasinya adalah milik pemegang haknya. Photocard karakter berasal dari situs resmi TenSura dan wiki Tensura sebagaimana tercatat di manifest repositori karakter, dan ditampilkan untuk identifikasi dalam proyek penggemar non-komersial. Belilah dan bacalah edisi resminya.
+*Tensei Shitara Slime Datta Ken* beserta dunia, tokoh, teks, dan ilustrasinya adalah milik pemegang haknya. Photocard karakter berasal dari situs resmi TenSura dan wiki Tensura sebagaimana tercatat di manifest repositori karakter; lisensinya **Open** (keputusan pemilik proyek), dengan sumber dan atribusi tetap dicantumkan di setiap kartu. Teks novel (PDF) tidak disertakan di repositori ini — audit kanon memakai salinan lokal pemilik proyek; rujukan hanya berupa volume, bab, dan lokator baris. Belilah dan bacalah edisi resminya.
 
 Sitasi: tombol **"Cite this repository"** di GitHub ([CITATION.cff](./CITATION.cff)).
 

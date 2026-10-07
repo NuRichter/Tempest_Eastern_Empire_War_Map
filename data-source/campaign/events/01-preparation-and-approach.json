@@ -29,7 +29,8 @@
    "F-TEM-001",
    "F-TEM-002",
    "F-TEM-003",
-   "F-TEM-005"
+   "F-TEM-005",
+   "F-TEM-005Y"
   ],
   "type": "STRATEGIC_PREPARATION",
   "title": "Tempest order of battle presented: three corps, about 52,000",
@@ -152,6 +153,17 @@
      "movement": "STATIONARY",
      "direction": "-",
      "confidence": "LOW",
+     "location": "jura-tempest-federation",
+     "locationText": "Jura-Tempest Federation"
+    },
+    "F-TEM-005Y": {
+     "strength": 100,
+     "effective": 100,
+     "sizeStatus": "RECONSTRUCTED",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "MEDIUM",
      "location": "jura-tempest-federation",
      "locationText": "Jura-Tempest Federation"
     }
@@ -1125,7 +1137,7 @@
   ],
   "evidence": "With commanders, the three demons, Gadora and Masayuki present, the screen shows the imperial gathering from above with 2,000 chariots; Raphael puts the total at millions.",
   "reconstructionNote": "R0 is placed at D-33 so that the month mark (EVT-0012, R0 + 30 days) falls three days before first contact. Its distance from the imperial council and Gadora's return is a placement.",
-  "notes": "Benimaru also says some imperial troops have already entered the Great Jura Forest while the chariots have not moved (v12.txt:12329-12331), and Moss tracks imperial squads in the eastern forest (v12.txt:12504-12506). This sits awkwardly with the V12 Epilogue departure \"the next day\" (EVT-0003); the plan keeps the Epilogue reading.",
+  "notes": "Benimaru also says some imperial troops have already entered the Great Jura Forest while the chariots have not moved (v12.txt:12329-12331), and Moss tracks imperial squads in the eastern forest (v12.txt:12504-12506). Resolved in R5: these are advance squads (F-EMP-016, EVT-0456); the main body leaves the next day as the V12 Epilogue says (EVT-0003).",
   "audit": {
    "status": "CORRECTED",
    "changes": [
@@ -1136,6 +1148,89 @@
   },
   "effects": {
    "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0456",
+  "day": -33,
+  "time": "10:20",
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "At the Control Room war council (same session as EVT-0008).",
+  "theatreId": "TH-DWG",
+  "front": "Imperial approach",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-forest-edge",
+  "locationText": "Eastern Great Jura Forest (Moss watching)",
+  "actor": "Imperial advance squads",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "benimaru",
+   "diablo"
+  ],
+  "forces": [
+   "F-EMP-016",
+   "F-EMP-010"
+  ],
+  "type": "INTELLIGENCE",
+  "title": "Imperial advance squads already in the eastern forest; the chariots have not moved",
+  "immediateResult": "Argos and Moss show imperial squads marching in the eastern Great Jura Forest while the chariot unit stays put.",
+  "operationalResult": "Benimaru plans to break the squads up one by one; the conspicuous chariot route along the Canaat foothills reads as a demonstration.",
+  "strategicResult": "Resolves the departure question: advance elements precede the main body, which leaves the next day (EVT-0003).",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": "No number is given for the squads."
+  },
+  "commandStatus": "UNKNOWN",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12329-12331"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12504-12506"
+   }
+  ],
+  "evidence": "Benimaru: some imperial forces have entered the Great Jura Forest, but the chariot unit has not moved; Moss's clones show the Imperial Army divided into several squads marching in the eastern forest.",
+  "reconstructionNote": "The squads' presence is canonical; their position at the eastern forest edge and their rejoining the main body at the D-2 halt (EVT-0019) are reconstructed.",
+  "notes": "Added in the R5 canon resolution of the departure question.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added: advance squads in the eastern forest at the war council (v12.txt:12329-12331, 12504-12506)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-016": {
+     "strength": "UNKNOWN",
+     "effective": "UNKNOWN",
+     "sizeStatus": "UNKNOWN",
+     "status": "ACTIVE",
+     "movement": "ADVANCE",
+     "direction": "West, through the eastern forest",
+     "confidence": "MEDIUM",
+     "location": "jura-forest-edge",
+     "locationText": "Eastern Great Jura Forest (position reconstructed)"
+    }
+   },
    "theatres": {},
    "campaign": {}
   }
@@ -1951,7 +2046,8 @@
   "forces": [
    "F-EMP-010",
    "F-EMP-011",
-   "F-EMP-012"
+   "F-EMP-012",
+   "F-EMP-016"
   ],
   "type": "DEPLOYMENT",
   "title": "The imperial army halts and begins issuing its formations",
@@ -2018,6 +2114,13 @@
      "direction": "-",
      "location": "jura-forest-edge",
      "locationText": "Halt inside Tempest territory (placed at the forest edge)"
+    },
+    "F-EMP-016": {
+     "status": "REJOINED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "location": null,
+     "locationText": "Rejoined the main body at the halt (reconstructed)"
     }
    },
    "theatres": {

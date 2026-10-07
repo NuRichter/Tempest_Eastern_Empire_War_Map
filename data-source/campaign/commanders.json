@@ -211,12 +211,13 @@
   "name": "Shion",
   "faction": "Jura-Tempest Federation",
   "role": "Rimuru's secretary; unit leader",
-  "scope": "Yomigaeri (10,000 per V13 Ch4)",
+  "scope": "Yomigaeri (~100) and the Pro-Guard (10,000 per V13 Ch4)",
   "startEvent": "EVT-0004",
   "endEvent": "EVT-0390",
   "status": "IN COMMAND",
   "subordinates": [
-   "Yomigaeri"
+   "Yomigaeri",
+   "Shion's Pro-Guard"
   ],
   "source": "V12 Ch2; V13 Ch4; V15; V16 Ch3",
   "confidence": "MEDIUM"

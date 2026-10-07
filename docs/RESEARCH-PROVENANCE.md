@@ -4,7 +4,7 @@ This atlas is a fan research project. Transparency is a feature: every claim on 
 
 ## Source hierarchy
 
-1. **Primary — the light novels, volumes 12–16.** Read from the local copies in `Sources of Truth/Sources/` (volumes 12–15 in an Indonesian fan translation, volume 16 in the Yen Press English edition). References are kept as volume, chapter and a line locator in the extracted text (`v13.txt:7475`). The novel text itself is never reproduced; evidence fields are short paraphrases.
+1. **Primary — the light novels, volumes 12–16.** Read from the maintainer's local copies in `Sources of Truth/Sources/`, which are **not published** in this repository (git-ignored; volumes 12–15 in an Indonesian fan translation, volume 16 in the Yen Press English edition). References are kept as volume, chapter and a line locator in the extracted text (`v13.txt:7475`). The novel text itself is never reproduced; evidence fields are short paraphrases.
 2. **Official material** — the official Tensura portal (ten-sura.com: character list, glossary, world map), Yen Press product pages and the official anime material. Used to fix names and identities.
 3. **Secondary — the Tensura fandom wiki.** Used only to locate passages, cross-check spellings and record conflicts. Never the sole basis of a claim.
 4. **Project research** — the Step 1 dataset (`Sources of Truth/Timeline Database/`), kept unchanged as the archived pre-audit revision.
@@ -44,4 +44,4 @@ Not allowed:
 | Audit report | `docs/audit/timeline-canon-audit.md` |
 | Human-readable claim register | `docs/research/RESEARCH_REGISTER.md` |
 | Names | `data-source/terminology.source.json` |
-| Photocards | `Sources of Truth/Character Photocard/metadata/` (source URL and tier per image; no licence is recorded there, so images stay the property of their rights holders) |
+| Photocards | `Sources of Truth/Character Photocard/metadata/` (source URL and tier per image); licence **Open**, as decided by the project owner and recorded on every card in `data-source/characters.source.json` |

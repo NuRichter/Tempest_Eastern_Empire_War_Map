@@ -198,6 +198,7 @@ function main(): void {
     else if (!existsSync(join(PUBLIC, c.photocard.src))) errors.push(`Character ${c.id}: photocard missing at public${c.photocard.src}. Run python scripts/characters/build_photocards.py.`);
     else cards += 1;
     if (!c.photocard.source) errors.push(`Character ${c.id}: photocard has no recorded source.`);
+    if (!c.photocard.licence) errors.push(`Character ${c.id}: photocard has no recorded licence.`);
   }
 
   /* -- report ------------------------------------------------------ */

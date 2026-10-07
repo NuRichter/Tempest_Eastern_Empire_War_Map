@@ -475,7 +475,7 @@ export function CharacterDossier({ id }: { id: string }) {
         {c.photocard ? (
           <p className="text-xs leading-relaxed text-fg-2">
             Local photocard from the project&apos;s character repository. Source: {c.photocard.source}
-            {c.photocard.sourceUrl ? <> (<a className="underline decoration-ink-400 hover:text-accent" href={c.photocard.sourceUrl} target="_blank" rel="noreferrer">{new URL(c.photocard.sourceUrl).hostname}</a>)</> : null}. Images remain the property of their rights holders.
+            {c.photocard.sourceUrl ? <> (<a className="underline decoration-ink-400 hover:text-accent" href={c.photocard.sourceUrl} target="_blank" rel="noreferrer">{new URL(c.photocard.sourceUrl).hostname}</a>)</> : null}. Licence: {c.photocard.licence ?? 'not recorded'}.
           </p>
         ) : (
           <Empty>No photocard exists for this character in the repository.</Empty>

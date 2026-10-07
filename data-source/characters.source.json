@@ -1,8 +1,10 @@
 {
  "$schema": "internal://characters.source",
  "about": {
-  "purpose": "Characters of the campaign and their photocards. Names follow data-source/terminology.source.json; every alias is searchable. Photocards are local files from Sources of Truth/Character Photocard and keep the provenance recorded in that repository's manifest (no licence is recorded there: the images remain the property of their rights holders and are shown for identification in a non-commercial fan project).",
-  "photocardRoot": "Sources of Truth/Character Photocard"
+  "purpose": "Characters of the campaign and their photocards. Names follow data-source/terminology.source.json; every alias is searchable. Photocards are local files from Sources of Truth/Character Photocard and keep the provenance recorded in that repository's manifest.",
+  "photocardRoot": "Sources of Truth/Character Photocard",
+  "photocardLicence": "Open",
+  "photocardLicenceNote": "Licence decided by the project owner (NuRichter): photocards are used under an open licence. Each card keeps its source and attribution from the repository manifest."
  },
  "characters": [
   {
@@ -36,7 +38,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.34
+    "upscaleFactor": 3.34,
+    "licence": "Open"
    }
   },
   {
@@ -60,7 +63,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.02
+    "upscaleFactor": 3.02,
+    "licence": "Open"
    }
   },
   {
@@ -83,7 +87,8 @@
      660,
      920
     ],
-    "upscaleFactor": 4.45
+    "upscaleFactor": 4.45,
+    "licence": "Open"
    }
   },
   {
@@ -106,7 +111,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.65
+    "upscaleFactor": 3.65,
+    "licence": "Open"
    }
   },
   {
@@ -130,7 +136,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.6
+    "upscaleFactor": 3.6,
+    "licence": "Open"
    }
   },
   {
@@ -169,7 +176,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.8
+    "upscaleFactor": 3.8,
+    "licence": "Open"
    }
   },
   {
@@ -195,7 +203,8 @@
      660,
      920
     ],
-    "upscaleFactor": 4.46
+    "upscaleFactor": 4.46,
+    "licence": "Open"
    }
   },
   {
@@ -221,7 +230,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.6
+    "upscaleFactor": 3.6,
+    "licence": "Open"
    }
   },
   {
@@ -248,7 +258,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.75
+    "upscaleFactor": 3.75,
+    "licence": "Open"
    }
   },
   {
@@ -274,7 +285,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.84
+    "upscaleFactor": 3.84,
+    "licence": "Open"
    }
   },
   {
@@ -300,7 +312,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.69
+    "upscaleFactor": 3.69,
+    "licence": "Open"
    }
   },
   {
@@ -311,7 +324,7 @@
    ],
    "japanese": "紫苑 (シオン)",
    "faction": "Jura-Tempest Federation",
-   "role": "Secretary; leads Yomigaeri (10,000 per V13 Ch4); in Rimuru's party in the Dream Fortress; summit attendee. Not killed in this war: the V15 Ch2 'killed' line is a flashback.",
+   "role": "Secretary; leads the Yomigaeri (~100) and her Pro-Guard (10,000 per V13 Ch4); in Rimuru's party in the Dream Fortress; summit attendee. Not killed in this war: the V15 Ch2 'killed' line is a flashback.",
    "nameConflicts": null,
    "photocard": {
     "file": "367_Shion.jpg",
@@ -323,7 +336,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.49
+    "upscaleFactor": 3.49,
+    "licence": "Open"
    }
   },
   {
@@ -357,7 +371,8 @@
      930,
      1210
     ],
-    "upscaleFactor": 2.16
+    "upscaleFactor": 2.16,
+    "licence": "Open"
    }
   },
   {
@@ -382,7 +397,8 @@
      332,
      764
     ],
-    "upscaleFactor": 6.63
+    "upscaleFactor": 6.63,
+    "licence": "Open"
    }
   },
   {
@@ -407,7 +423,8 @@
      1024,
      1376
     ],
-    "upscaleFactor": 2.89
+    "upscaleFactor": 2.89,
+    "licence": "Open"
    }
   },
   {
@@ -432,7 +449,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.65
+    "upscaleFactor": 3.65,
+    "licence": "Open"
    }
   },
   {
@@ -453,7 +471,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.7
+    "upscaleFactor": 3.7,
+    "licence": "Open"
    }
   },
   {
@@ -480,7 +499,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.54
+    "upscaleFactor": 3.54,
+    "licence": "Open"
    }
   },
   {
@@ -503,7 +523,8 @@
      1920,
      1080
     ],
-    "upscaleFactor": 3.15
+    "upscaleFactor": 3.15,
+    "licence": "Open"
    }
   },
   {
@@ -542,7 +563,8 @@
      1920,
      1080
     ],
-    "upscaleFactor": 3.15
+    "upscaleFactor": 3.15,
+    "licence": "Open"
    }
   },
   {
@@ -577,7 +599,8 @@
      1920,
      1080
     ],
-    "upscaleFactor": 3.15
+    "upscaleFactor": 3.15,
+    "licence": "Open"
    }
   },
   {
@@ -603,7 +626,8 @@
      236,
      898
     ],
-    "upscaleFactor": 3.5
+    "upscaleFactor": 3.5,
+    "licence": "Open"
    }
   },
   {
@@ -657,7 +681,8 @@
      1000,
      1778
     ],
-    "upscaleFactor": 1.87
+    "upscaleFactor": 1.87,
+    "licence": "Open"
    }
   },
   {
@@ -700,7 +725,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.77
+    "upscaleFactor": 3.77,
+    "licence": "Open"
    }
   },
   {
@@ -726,7 +752,8 @@
      834,
      1186
     ],
-    "upscaleFactor": 2.87
+    "upscaleFactor": 2.87,
+    "licence": "Open"
    }
   },
   {
@@ -761,7 +788,8 @@
      456,
      1348
     ],
-    "upscaleFactor": 2.27
+    "upscaleFactor": 2.27,
+    "licence": "Open"
    }
   },
   {
@@ -805,7 +833,8 @@
      660,
      920
     ],
-    "upscaleFactor": 3.92
+    "upscaleFactor": 3.92,
+    "licence": "Open"
    }
   },
   {
@@ -831,7 +860,8 @@
     "sourceType": "official_anime_character_art",
     "sourceUrl": "https://www.ten-sura.com/character/carrera",
     "attribution": "Official TenSura portal (ten-sura.com) character database",
-    "manifestId": 53
+    "manifestId": 53,
+    "licence": "Open"
    }
   },
   {
@@ -850,7 +880,8 @@
     "sourceType": "official_anime_character_art",
     "sourceUrl": "https://www.ten-sura.com/character/damrada",
     "attribution": "Official TenSura portal (ten-sura.com) character database",
-    "manifestId": 81
+    "manifestId": 81,
+    "licence": "Open"
    }
   },
   {
@@ -869,7 +900,8 @@
     "sourceType": "official_anime_character_art",
     "sourceUrl": "https://www.ten-sura.com/character/kagali",
     "attribution": "Official TenSura portal (ten-sura.com) character database",
-    "manifestId": 211
+    "manifestId": 211,
+    "licence": "Open"
    }
   },
   {
@@ -885,7 +917,8 @@
     "sourceType": "official_anime_character_art",
     "sourceUrl": "https://www.ten-sura.com/character/laplace",
     "attribution": "Official TenSura portal (ten-sura.com) character database",
-    "manifestId": 241
+    "manifestId": 241,
+    "licence": "Open"
    }
   },
   {
@@ -901,7 +934,8 @@
     "sourceType": "official_anime_character_art",
     "sourceUrl": "https://www.ten-sura.com/character/tear",
     "attribution": "Official TenSura portal (ten-sura.com) character database",
-    "manifestId": 385
+    "manifestId": 385,
+    "licence": "Open"
    }
   },
   {
@@ -917,7 +951,8 @@
     "sourceType": "official_anime_character_art",
     "sourceUrl": "https://www.ten-sura.com/character/footman",
     "attribution": "Official TenSura portal (ten-sura.com) character database",
-    "manifestId": 121
+    "manifestId": 121,
+    "licence": "Open"
    }
   },
   {
@@ -935,7 +970,8 @@
     "sourceType": "light_novel_illustration_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Vega",
     "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
-    "manifestId": 403
+    "manifestId": 403,
+    "licence": "Open"
    }
   },
   {
@@ -953,7 +989,8 @@
     "sourceType": "official_anime_character_art",
     "sourceUrl": "https://www.ten-sura.com/character/soei",
     "attribution": "Official TenSura portal (ten-sura.com) character database",
-    "manifestId": 372
+    "manifestId": 372,
+    "licence": "Open"
    }
   },
   {
@@ -969,7 +1006,8 @@
     "sourceType": "light_novel_illustration_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Feldway",
     "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
-    "manifestId": 117
+    "manifestId": 117,
+    "licence": "Open"
    }
   },
   {
@@ -985,7 +1023,8 @@
     "sourceType": "light_novel_illustration_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Michael",
     "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
-    "manifestId": 273
+    "manifestId": 273,
+    "licence": "Open"
    }
   },
   {
@@ -1038,7 +1077,8 @@
     "sourceType": "official_anime_character_art",
     "sourceUrl": "https://www.ten-sura.com/character/ranga",
     "attribution": "Official TenSura portal (ten-sura.com) character database",
-    "manifestId": 335
+    "manifestId": 335,
+    "licence": "Open"
    }
   },
   {
@@ -1054,7 +1094,8 @@
     "sourceType": "anime_screenshot_or_design_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Gobchi",
     "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
-    "manifestId": 157
+    "manifestId": 157,
+    "licence": "Open"
    }
   },
   {
@@ -1073,7 +1114,8 @@
     "sourceType": "light_novel_illustration_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Zegion",
     "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
-    "manifestId": 430
+    "manifestId": 430,
+    "licence": "Open"
    }
   },
   {
@@ -1091,8 +1133,31 @@
     "sourceType": "light_novel_illustration_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Albert",
     "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
-    "manifestId": 9
+    "manifestId": 9,
+    "licence": "Open"
    }
+  },
+  {
+   "id": "krishna",
+   "name": "Krishna",
+   "aliases": [
+    "Seventeenth of the Imperial Guardians"
+   ],
+   "japanese": null,
+   "faction": "Eastern Empire",
+   "role": "Imperial Guardian, 17th in rank; fought Albert in the labyrinth and returned to Caligulio",
+   "nameConflicts": null,
+   "photocard": null
+  },
+  {
+   "id": "bonnie",
+   "name": "Bonnie",
+   "aliases": [],
+   "japanese": null,
+   "faction": "Eastern Empire",
+   "role": "Wizard in Masayuki's party, revealed as an enemy in the attempt on Rimuru",
+   "nameConflicts": null,
+   "photocard": null
   }
  ]
 }

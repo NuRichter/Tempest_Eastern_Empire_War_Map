@@ -133,6 +133,14 @@ export interface MovementSrc {
   confidence: Confidence;
   notes: string;
   destinationUnknown: boolean;
+  /**
+   * 'AFTER_CLOCK': the movement departs inside the clock but its arrival is not
+   * dated and falls after the clock ends. It is drawn only as far as `pace`
+   * carries it, never as arriving.
+   */
+  arrival?: 'AFTER_CLOCK';
+  /** A recorded march whose average speed this movement is drawn at. */
+  pace?: { fromPlace: string; toPlace: string; startEvent: string; endEvent: string };
 }
 
 export interface CasualtySrc {

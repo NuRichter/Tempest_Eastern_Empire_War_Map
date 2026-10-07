@@ -117,7 +117,7 @@ interface ControlSource {
 }
 interface CharacterSrc {
   id: string; name: string; aliases: string[]; japanese: string | null; faction: string; role: string;
-  photocard: { file: string; sourceType: string | null; sourceUrl: string | null; attribution: string | null } | null;
+  photocard: { file: string; sourceType: string | null; sourceUrl: string | null; attribution: string | null; licence?: string | null } | null;
 }
 
 const revision = read<RevisionSrc>(join(CAMPAIGN, 'revision.json'));
@@ -413,6 +413,25 @@ const movements: Movement[] = movementSrc.map((m) => {
   checkPlace(m.fromPlace, `Movement ${m.id}.fromPlace`);
   checkPlace(m.toPlace, `Movement ${m.id}.toPlace`);
   if (!forceById.has(m.forceId)) throw new Error(`Movement ${m.id} references unknown force ${m.forceId}.`);
+  // An arrival after the clock: draw the march only as far as the recorded
+  // pace carries it by the last frame, so it never reads as arriving.
+  let reach = 1;
+  let endFrame = frameOfEvent(m.endEvent);
+  const afterClock = m.arrival === 'AFTER_CLOCK';
+  if (afterClock) {
+    if (!m.pace) throw new Error(`Movement ${m.id}: an AFTER_CLOCK arrival needs a recorded pace.`);
+    const dist = (p: string | null, q: string | null) => {
+      const a = coordsOf(p);
+      const b = coordsOf(q);
+      if (!a || !b) throw new Error(`Movement ${m.id}: pace places need positions.`);
+      return Math.hypot(b.x - a.x, b.y - a.y);
+    };
+    const paceFrames = (frameOfEvent(m.pace.endEvent) ?? 0) - (frameOfEvent(m.pace.startEvent) ?? 0);
+    if (paceFrames <= 0) throw new Error(`Movement ${m.id}: pace interval must be positive.`);
+    const perFrame = dist(m.pace.fromPlace, m.pace.toPlace) / paceFrames;
+    endFrame = FRAME_COUNT - 1;
+    reach = Math.min(1, (perFrame * (endFrame - (frameOfEvent(m.startEvent) ?? endFrame))) / dist(m.fromPlace, m.toPlace));
+  }
   return {
     id: m.id,
     forceId: m.forceId,
@@ -423,7 +442,7 @@ const movements: Movement[] = movementSrc.map((m) => {
     startEvent: m.startEvent,
     endEvent: m.endEvent,
     startFrame: frameOfEvent(m.startEvent),
-    endFrame: frameOfEvent(m.endEvent),
+    endFrame,
     type: m.type,
     route: m.destinationUnknown ? 'UNKNOWN' : m.route ?? ROUTE_FROM_BASIS[m.basis] ?? 'SCHEMATIC',
     basis: m.basis,
@@ -432,6 +451,8 @@ const movements: Movement[] = movementSrc.map((m) => {
     strengthAtEnd: UNKNOWN,
     notes: m.notes,
     destinationUnknown: m.destinationUnknown,
+    reach: Math.round(reach * 1e4) / 1e4,
+    arrivesAfterClock: afterClock,
   };
 });
 
@@ -663,6 +684,13 @@ for (const force of forces) {
       placeId: null, placement: 'RECONSTRUCTED', route: 'RECONSTRUCTED',
     });
   }
+  // Open-ended marches: at the start place on departure, part of the way by the last frame.
+  for (const m of movements.filter((x) => x.forceId === force.id && x.arrivesAfterClock && x.startFrame !== null)) {
+    const a = coordsOf(m.fromPlaceId)!;
+    const b = coordsOf(m.toPlaceId)!;
+    raw.push({ f: m.startFrame!, x: a.x, y: a.y, placeId: m.fromPlaceId, placement: a.placement, route: m.route });
+    raw.push({ f: FRAME_COUNT - 1, x: a.x + (b.x - a.x) * m.reach, y: a.y + (b.y - a.y) * m.reach, placeId: null, placement: 'RECONSTRUCTED', route: m.route });
+  }
   raw.sort((a, b) => a.f - b.f);
 
   const keys: PositionKey[] = [];
@@ -842,7 +870,7 @@ const characters: Character[] = characterSrc.map((c) => {
     faction: faction(c.faction),
     role: [...new Set(c.role.split(/;\s*/).map((r) => r.trim()).filter(Boolean))].join('; '),
     photocard: c.photocard
-      ? { src: `/assets/characters/${c.id}.jpg`, source: c.photocard.attribution ?? c.photocard.sourceType ?? 'Character photocard repository', sourceUrl: c.photocard.sourceUrl }
+      ? { src: `/assets/characters/${c.id}.jpg`, source: c.photocard.attribution ?? c.photocard.sourceType ?? 'Character photocard repository', sourceUrl: c.photocard.sourceUrl, licence: c.photocard.licence ?? null }
       : null,
     commanderIds: commanders.filter((m) => m.characterId === c.id).map((m) => m.id),
     combatantIds: combatants.filter((m) => m.characterId === c.id).map((m) => m.id),

@@ -20,3 +20,6 @@ qa-artifacts/
 
 # Playwright CLI session output
 .playwright-cli/
+
+# Novel PDFs: kept locally for the canon audit, never published
+Sources of Truth/Sources/

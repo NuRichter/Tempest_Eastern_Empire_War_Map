@@ -10,7 +10,7 @@ Recorded on 2026-10-07 against commit `cab4ebd` ("Use relative workbook paths in
 | Source | `data-source/Tempest_Eastern_Empire_War_Timeline.xlsx` (Step 1 workbook, 7,200 ten-minute frames, 105 events, 36 forces, 22 movements, 16 casualty rows) + `gazetteer.source.json` |
 | Pipeline | `compile-data.ts` (xlsx → `public/data`), `validate-data.ts`, `validate-assets.ts`, `test-runtime.ts`, `browser-qa.ts` |
 | Maps in use | `base-atlas.png` (= Myth Map / *Central World Tensura*), `base-outline.png` (= *Base Map - Blue*, **unused**), `reference-annotated.png` (unused at runtime, 3.6 MB served) |
-| Sources of Truth | Present twice: at the workspace root and mirrored inside the repo (identical except two generator path fixes). Contains the novel PDFs (vols. 12–16), maps, flags, 351 photocards with manifest, Step 1 generators and revisions r1–r3/final. The four reference videos are git-ignored. |
+| Sources of Truth | Present twice: at the workspace root and mirrored inside the repo (identical except two generator path fixes). Contained the novel PDFs (vols. 12–16; removed from the repository after the audit, kept locally), maps, flags, 351 photocards with manifest, Step 1 generators and revisions r1–r3/final. The four reference videos are git-ignored. |
 
 ## Baseline command results
 

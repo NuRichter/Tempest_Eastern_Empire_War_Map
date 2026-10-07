@@ -101,14 +101,14 @@
   },
   {
    "id": "CON-010",
-   "description": "Size of Shion's unit (Yomigaeri)",
+   "description": "Size of Shion's units (Yomigaeri and Pro-Guard)",
    "claimA": "V12 Ch2: number unknown, 'I don't think more than a thousand'",
    "claimB": "V13 Ch4: 'ten thousand in all', B+",
    "sourceA": "V12 Ch2 (v12.txt:3920-3930)",
    "sourceB": "V13 Ch4 (v13.txt:13968-13973); official keyword page gives about 100",
-   "resolution": "The V12 figure is a guess; V13 states a number, but the fan TL may have inflated it (the official keyword says about 100).",
-   "treatment": "F-TEM-005 carries 10,000 (EXPLICIT per the TL) at MEDIUM confidence, with the conflict noted.",
-   "confidence": "LOW"
+   "resolution": "Resolved from the text: not a contradiction. The 10,000 are the 'Pro-Guard of Shion, commonly known as the Shion Fan Club', explicitly 'distinct from the Yomigaeri' (v13.txt:13976-13978); the Yomigaeri number in the hundreds (v12.txt:3889; official keyword: about 100).",
+   "treatment": "F-TEM-005 is the Pro-Guard at 10,000 (EXPLICIT); F-TEM-005Y is the Yomigaeri at ~100 (RECONSTRUCTED).",
+   "confidence": "HIGH"
   },
   {
    "id": "CON-011",
@@ -193,11 +193,11 @@
   {
    "id": "AMB-007",
    "subject": "Strength of Shion's undocumented unit",
-   "events": "F-TEM-005",
+   "events": "F-TEM-005, F-TEM-005Y",
    "ambiguity": "V12 Ch2 says Shion's unit is of unknown size (guess under 1,000); V13 Ch4 says 10,000.",
    "possibleOrder": "V12 Ch2 says Shion's unit is of unknown size (guess under 1,000); V13 Ch4 says 10,000.",
-   "chosenPlacement": "10,000 carried on F-TEM-005 at MEDIUM confidence (see CON-010).",
-   "confidence": "MEDIUM"
+   "chosenPlacement": "10,000 on the Pro-Guard (F-TEM-005, EXPLICIT); ~100 on the Yomigaeri (F-TEM-005Y, RECONSTRUCTED). See CON-010.",
+   "confidence": "HIGH"
   },
   {
    "id": "AMB-008",

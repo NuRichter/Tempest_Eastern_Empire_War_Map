@@ -751,7 +751,7 @@
      "spelling": "Rudra Nam Ul Nasca"
     }
    ],
-   "conflicts": "UNRESOLVED official conflict: the Yen Press LN uses 'Ludora' (and 'Nam-ul-Nasca' once in v16); the katakana ルドラ and the anime-following wiki give 'Rudra'. Canonical kept as 'Rudra Nam Ul Nasca' (direct romanisation, matches wiki, photocard archive and project); 'Ludora' is the Yen Press alias. 'Naam', 'Ulu', 'Nazca' are fan-TL errors.",
+   "conflicts": "RESOLVED by project policy (canon reading): the katakana is romanised 'Rudra', matching the wiki and the photocard archive; the Yen Press 'Ludora' is kept as a searchable alias.",
    "confidence": "MEDIUM"
   },
   {
@@ -2649,7 +2649,7 @@
     "Shion's undocumented unit"
    ],
    "projectIdsUsing": [
-    "forces F-TEM-005 \"Shion's undocumented unit\""
+    "forces F-TEM-005Y"
    ],
    "sources": [
     {
@@ -2663,7 +2663,7 @@
      "spelling": "Yomigaeri"
     }
    ],
-   "conflicts": "Replace the project label only if the source confirms Yomigaeri was the unit engaged.",
+   "conflicts": "RESOLVED (R5): the source distinguishes the Yomigaeri (hundreds; about 100) from Shion's Pro-Guard / Shion Fan Club (10,000), v13.txt:13976-13978. F-TEM-005Y is the Yomigaeri; F-TEM-005 the Pro-Guard.",
    "confidence": "MEDIUM"
   },
   {
@@ -3169,6 +3169,74 @@
    ],
    "conflicts": "Project-coined label.",
    "confidence": "LOW"
+  },
+  {
+   "id": "krishna",
+   "kind": "character",
+   "canonical": "Krishna",
+   "display": "Krishna",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [
+    "Seventeenth of the Imperial Guardians"
+   ],
+   "projectIdsUsing": [
+    "characters krishna"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "v13.txt:11736-11787",
+     "spelling": "Krishna ('the 17th of the Imperial Emperor's Order of the Near Guard')"
+    }
+   ],
+   "conflicts": "Japanese and Yen Press spelling not verified.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "bonnie",
+   "kind": "character",
+   "canonical": "Bonnie",
+   "display": "Bonnie",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [],
+   "projectIdsUsing": [
+    "characters bonnie"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "v13.txt:14491-14689",
+     "spelling": "Bonnie (wizard in Masayuki's party)"
+    }
+   ],
+   "conflicts": "Japanese and Yen Press spelling not verified.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "pro-guard",
+   "kind": "force",
+   "canonical": "Shion's Pro-Guard",
+   "display": "Shion's Pro-Guard",
+   "japanese": null,
+   "romaji": null,
+   "aliases": [
+    "Shion Fan Club",
+    "Pro-Guard of Shion"
+   ],
+   "projectIdsUsing": [
+    "forces F-TEM-005"
+   ],
+   "sources": [
+    {
+     "type": "novel-local",
+     "ref": "v13.txt:13976-13978",
+     "spelling": "Pro-Guard of Shion - commonly known as Shion Fan Club"
+    }
+   ],
+   "conflicts": "Fan-TL wording; official English not verified.",
+   "confidence": "MEDIUM"
   }
  ]
 }

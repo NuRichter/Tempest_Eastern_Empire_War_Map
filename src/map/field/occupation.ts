@@ -179,6 +179,50 @@ export function computeField(data: Dataset, frame: number, hiddenForces: Set<str
     diff[i] = os === 'allied' ? v - BASE : os === 'empire' ? -v - BASE : -1;
   }
 
+  // Held ground must be connected to the army holding it. Where a large force's
+  // reach outruns a stronger force standing on top of it, the sum leaves a
+  // detached ring; such a ring holds no soldiers of its side and is dropped.
+  const seeds: Record<1 | 2, number[]> = { 1: [], 2: [] };
+  for (const s of src) {
+    const x = Math.min(GRID_W - 1, Math.max(0, Math.floor(s.x * GRID_W)));
+    const y = Math.min(GRID_H - 1, Math.max(0, Math.floor(s.y * GRID_H)));
+    seeds[s.side === 'empire' ? 1 : 2].push(y * GRID_W + x);
+  }
+  const held = (c: number, side: 1 | 2) => (side === 1 ? c === 1 || c === 3 : c === 2 || c === 4);
+  const keep = new Uint8Array(n);
+  for (const side of [1, 2] as const) {
+    const stack: number[] = [];
+    for (const s of seeds[side]) {
+      // A force stands near, not exactly on, its held cells: look a few cells around it.
+      for (let dy = -3; dy <= 3; dy += 1) {
+        for (let dx = -3; dx <= 3; dx += 1) {
+          const i = s + dy * GRID_W + dx;
+          if (i >= 0 && i < n && held(cls[i], side) && !keep[i]) {
+            keep[i] = 1;
+            stack.push(i);
+          }
+        }
+      }
+    }
+    while (stack.length) {
+      const i = stack.pop()!;
+      const x = i % GRID_W;
+      for (const j of [x > 0 ? i - 1 : -1, x < GRID_W - 1 ? i + 1 : -1, i - GRID_W, i + GRID_W]) {
+        if (j >= 0 && j < n && !keep[j] && held(cls[j], side)) {
+          keep[j] = 1;
+          stack.push(j);
+        }
+      }
+    }
+  }
+  for (let i = 0; i < n; i += 1) {
+    if (cls[i] && !keep[i]) {
+      if (cls[i] === 1 || cls[i] === 3) empireCells[owner[i]] -= 1;
+      cls[i] = 0;
+      diff[i] = -1;
+    }
+  }
+
   // Front: marching squares on the occupation margin (diff = 0) inside land.
   const segs: number[] = [];
   const at = (x: number, y: number) => diff[y * GRID_W + x];

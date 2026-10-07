@@ -36,7 +36,8 @@ export function drawMovements(dc: DrawContext): void {
     if (Math.hypot(b.sx - a.sx, b.sy - a.sy) < 6) continue;
 
     const span = Math.max(1, end - m.startFrame);
-    const progress = Math.min(1, Math.max(0, (frame - m.startFrame) / span));
+    // An open-ended march only gets as far as its recorded pace allows.
+    const progress = Math.min(1, Math.max(0, (frame - m.startFrame) / span)) * (m.reach ?? 1);
     const key = factionKey(force.faction);
     const style = ROUTE_STYLE[m.route];
     const fade = age > 0 ? Math.max(0.2, 1 - age / LINGER) : 1;
@@ -101,7 +102,7 @@ export function drawMovements(dc: DrawContext): void {
       const line1 = `${force.displayName}`;
       const atStart = formatStrength(m.strengthAtStart, force.sizeStatus);
       const atEnd = m.strengthAtEnd !== 'UNKNOWN' && m.strengthAtEnd !== m.strengthAtStart ? ` → ${formatStrength(m.strengthAtEnd, force.sizeStatus)}` : '';
-      const line2 = `${atStart}${atEnd} · ${m.route === 'SOLID' ? 'route stated' : m.route === 'RECONSTRUCTED' ? 'route reconstructed' : 'schematic'}`;
+      const line2 = `${atStart}${atEnd} · ${m.route === 'SOLID' ? 'route stated' : m.route === 'RECONSTRUCTED' ? 'route reconstructed' : 'schematic'}${m.arrivesAfterClock ? ' · arrives after the clock' : ''}`;
       ctx.font = `500 ${size}px ${dc.fonts.mono}`;
       const w2 = ctx.measureText(line2).width;
       ctx.font = `600 ${size}px ${dc.fonts.ui}`;

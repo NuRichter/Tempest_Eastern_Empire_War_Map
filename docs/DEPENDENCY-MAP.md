@@ -17,7 +17,7 @@ How every source in the workspace relates to what the atlas shows. "Workspace" i
 ## Flow
 
 ```
-Sources of Truth/ ─┬─ Sources/Tensura Volume 12–16.pdf ··········· canonical (primary text, read by the audit)
+Sources of Truth/ ─┬─ Sources/Tensura Volume 12–16.pdf ··········· canonical (primary text; local only, git-ignored)
                    ├─ Timeline Database/*.py, *.xlsx, *.md ········ stale/archived (Step 1, pre-audit revision)
                    ├─ Source Map/Base Map - Blue.png ─────────────▶ public/maps/base-map.png (derivative, renamed)
                    │                                              └▶ scripts/cartography/extract_territories.py
@@ -53,12 +53,12 @@ the atlas
 
 | Path | Class | Read by | Notes |
 |---|---|---|---|
-| `Sources of Truth/Sources/*.pdf` | canonical | the canon audit (offline) | Copyrighted fan translations (vols 12–15) and an edition (vol 16); see the README's attribution note. Not read by the build. |
+| `Sources of Truth/Sources/*.pdf` | canonical, **local only** | the canon audit (offline) | Copyrighted fan translations (vols 12–15) and an edition (vol 16). Removed from the repository and git-ignored; the maintainer keeps the local copies. Not read by the build. |
 | `Sources of Truth/Timeline Database/source_dataset_*.py` | stale/archived | — | Step 1 revisions r1 → r3 → final; the evidence chain of the pre-audit dataset. |
 | `Sources of Truth/Timeline Database/*.xlsx`, `*.md` | stale/archived | — | Step 1 output. The build read these until R5; now it reads `data-source/campaign/`. |
 | `Sources of Truth/Timeline Database/keyframe_generator.py`, `markdown_generator.py`, `validate_temporal.py` | stale/archived | — | Step 1 tooling (imports `dataset_lock`, a name the archive no longer contains). |
 | `Sources of Truth/Source Map/*` | canonical | cartography scripts, gazetteer measurements | All four share the 2641 × 2035 frame except the screenshot and the labelled reference. |
-| `Sources of Truth/Character Photocard/metadata/character_manifest.json` | canonical | characters source (offline), validation | Per-image source URL and tier; no licence recorded. |
+| `Sources of Truth/Character Photocard/metadata/character_manifest.json` | canonical | characters source (offline), validation | Per-image source URL and tier. Licence: Open (project owner's decision), recorded in `characters.source.json`. |
 | `Sources of Truth/Character Photocard/metadata/cache/*` | temporary | — | Scraper cache of the photocard tool. |
 | `Sources of Truth/Nation Flag/*` | canonical | — | Copied to `public/assets/nation-flags/`. |
 | `data-source/campaign/**` | source | `compile-data.ts` | The campaign. Edit here. |

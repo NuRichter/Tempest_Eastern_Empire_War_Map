@@ -234,7 +234,7 @@
  },
  {
   "id": "EVT-0203",
-  "day": 3,
+  "day": 2,
   "time": "07:00",
   "timePrecision": "RECONSTRUCTED",
   "canonicalTime": "the next morning; ten thousand destroyed in less than an hour",
@@ -289,7 +289,7 @@
    }
   ],
   "evidence": "After a first day on floors 60-69 and a closed gate, more than 10,000 imperial troops assemble next morning; the gate opens, Adalmann's undead sally, and ten thousand die in under an hour.",
-  "reconstructionNote": "The text dates this only as the morning after the first day on floors 60-69, not as a day of the operation. D+3 07:00 follows AUDIT-PLAN section 4; an earlier group could have reached Floor 70 on D+2, since routes changed for each wave (v13.txt:9489).",
+  "reconstructionNote": "Canon dates the sally as 'the next morning' after the first day of the operation: 'on the first day they explored almost all of floors 60-69 ... on the first day the gate was still closed ... the next morning' (v13.txt:9907-9937). R5 canon resolution places it on D+2; 07:00 is a simulation time.",
   "notes": "The 10,000 is a component of the 530,000 lost in the labyrinth (CAS-005, excluded from sums), so this event does not reduce the corps' strength.",
   "audit": {
    "status": "CORRECTED",
@@ -299,7 +299,8 @@
     "Title: not a rear attack but a sally from the gate (v13.txt:9935-9960)",
     "Empire strength 700,000 -> more than 10,000 local force (v13.txt:9935-9936)",
     "Source chapter Ch4 -> Ch3 (v13.txt:9907-10012)",
-    "Effects: removed strength 690,000 / empireEffective 690,000 (COMPONENT row CAS-005 must not reduce the corps)"
+    "Effects: removed strength 690,000 / empireEffective 690,000 (COMPONENT row CAS-005 must not reduce the corps)",
+    "Moved from D+3 to D+2: the text's \"first day\" is the first day of the operation (v13.txt:9907-9937)."
    ]
   },
   "effects": {
@@ -1337,7 +1338,8 @@
    "F-TEM-004",
    "F-TEM-005",
    "F-EMP-011B",
-   "F-ALL-003"
+   "F-ALL-003",
+   "F-TEM-005Y"
   ],
   "type": "ENGAGEMENT",
   "title": "Geld's 17,000 hold against more than 20,000 fleeing survivors",
@@ -1420,10 +1422,20 @@
      "status": "ENGAGED",
      "movement": "ADVANCE",
      "location": "imperial-siege-camp",
-     "locationText": "Around the imperial camp"
+     "locationText": "Around the imperial camp",
+     "strength": 10000,
+     "effective": 10000,
+     "sizeStatus": "EXPLICIT",
+     "confidence": "HIGH"
     },
     "F-EMP-011B": {
      "movement": "RETREAT"
+    },
+    "F-TEM-005Y": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "imperial-siege-camp",
+     "locationText": "Around the imperial camp, leading the Pro-Guard"
     }
    },
    "theatres": {},

@@ -542,6 +542,49 @@
   "notes": "R5: no longer merged with the Imperial Guardians (now F-EMP-015). Kondo holds the unique skill Reader."
  },
  {
+  "id": "F-EMP-016",
+  "faction": "Eastern Empire",
+  "army": "Imperial Intelligence",
+  "formation": "Imperial advance squads (eastern Jura forest)",
+  "displayName": "Imperial advance squads",
+  "parentId": "F-EMP-010",
+  "commander": "UNKNOWN",
+  "commanderIds": [],
+  "role": "Squads already marching in the eastern Great Jura Forest before the main body moved",
+  "unitType": "infantry (squads)",
+  "initialStrengthRaw": "'some forces' / 'divided into several squads' (V12 Ch5); no number",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "Benimaru: some imperial forces have entered the Great Jura Forest while the chariots have not moved (v12.txt:12329-12331); Moss's clones track the Imperial Army divided into several squads in the eastern forest (v12.txt:12504-12506). No number is given.",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Jura forest edge (rejoined the main body)",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "Rejoin the main body when it halts at the forest edge (D-2); RECONSTRUCTED",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch5",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12329-12331"
+   },
+   {
+    "volume": "12",
+    "chapter": "Ch5",
+    "locator": "v12.txt:12504-12506"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "R5 canon resolution of the departure question: the forest elements seen at the D-33 council are advance squads of the invasion army; the main body leaves the next day (V12 Epilogue). Inside the 940,000; never summed with its parent. Position and rejoining are RECONSTRUCTED."
+ },
+ {
   "id": "F-EMP-015",
   "faction": "Eastern Empire",
   "army": "Imperial Guard",
@@ -1725,21 +1768,21 @@
   "id": "F-TEM-005",
   "faction": "Jura-Tempest Federation",
   "army": "Tempest Army",
-  "formation": "Yomigaeri (Shion's unit)",
-  "displayName": "Yomigaeri",
+  "formation": "Shion's Pro-Guard (Shion Fan Club)",
+  "displayName": "Shion's Pro-Guard",
   "parentId": "F-TEM-000",
   "commander": "Shion",
   "commanderIds": [
    "shion"
   ],
-  "role": "Irregular unit outside the organisation chart",
-  "unitType": "infantry (irregular)",
-  "initialStrengthRaw": "'ten thousand in all', B+ (V13 Ch4); V12 Ch2 guessed not more than a thousand",
+  "role": "Irregular unit outside the organisation chart, led by the 'Purple Crowd'; its captains are sons of Dagruel",
+  "unitType": "mages (irregular)",
+  "initialStrengthRaw": "'ten thousand in all', B+ (V13 Ch4); '10,000 mages of every kind' in the battle (V13 Ch4)",
   "initialMin": 10000,
   "initialMax": 10000,
   "initialBest": 10000,
   "sizeStatus": "EXPLICIT",
-  "sizeEvidence": "Shion: ten thousand in all, all B+ survivors of her training (v13.txt:13968-13973). V12 Ch2 said the number was unknown and guessed under a thousand (v12.txt:3920-3930). The official keyword page describes Yomigaeri as about 100 (CON-010).",
+  "sizeEvidence": "Shion: ten thousand in all, all B+ survivors of her training (v13.txt:13968-13973); the text names them 'Pro-Guard of Shion, commonly known as the Shion Fan Club', explicitly distinct from the Yomigaeri (v13.txt:13976-13978); in the battle '10,000 mages of every kind' act under the Yomigaeri's lead (v13.txt:17198-17204).",
   "finalStrength": "UNKNOWN",
   "kia": "UNKNOWN",
   "wia": "UNKNOWN",
@@ -1754,17 +1797,67 @@
    {
     "volume": "12",
     "chapter": "Ch2",
-    "locator": "v12.txt:3920-3930"
+    "locator": "v12.txt:3907"
    },
    {
     "volume": "13",
     "chapter": "Ch4",
-    "locator": "v13.txt:13968-13973"
+    "locator": "v13.txt:13968-13978"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17198-17268"
+   }
+  ],
+  "confidence": "HIGH",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "R5 canon resolution (CON-010): the 10,000 are the Pro-Guard, not the Yomigaeri; earlier revisions merged the two units. The Yomigaeri are F-TEM-005Y. V12 says the unit is not under the regular command; parent set to the national node."
+ },
+ {
+  "id": "F-TEM-005Y",
+  "faction": "Jura-Tempest Federation",
+  "army": "Tempest Army",
+  "formation": "Yomigaeri (Shion's unit)",
+  "displayName": "Yomigaeri",
+  "parentId": "F-TEM-000",
+  "commander": "Shion",
+  "commanderIds": [
+   "shion"
+  ],
+  "role": "Shion's own unit of regenerating soldiers, B+ after her training",
+  "unitType": "infantry (elite)",
+  "initialStrengthRaw": "'hundreds of them' (V12 Ch2); about 100 (official keyword page)",
+  "initialMin": 100,
+  "initialMax": 999,
+  "initialBest": 100,
+  "sizeStatus": "RECONSTRUCTED",
+  "sizeEvidence": "V12 Ch2: the Yomigaeri led by Shion number in the hundreds (v12.txt:3889); the official keyword page describes about 100. Carried as ~100.",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Jura front (V13 Ch4 final battle)",
+  "finalMovementStatus": "STATIONARY",
+  "finalStatus": "ENGAGED on D+11 leading the Pro-Guard; no deaths stated",
+  "strengthBasis": "CANONICAL",
+  "source": "V12 Ch2; V13 Ch4",
+  "sourceRefs": [
+   {
+    "volume": "12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3889-3904"
+   },
+   {
+    "volume": "13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17198-17210"
    }
   ],
   "confidence": "MEDIUM",
   "hierarchyProvenance": "INFERRED",
-  "notes": "V12 says the unit is not under the regular command; parent set to the national node. 10,000 is the fan-TL reading of V13 Ch4 and conflicts with the official ~100 (CON-010)."
+  "notes": "Split from F-TEM-005 in the R5 canon resolution (CON-010). Strength from 'hundreds' and the official keyword page: RECONSTRUCTED."
  },
  {
   "id": "F-TEM-006",

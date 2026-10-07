@@ -266,6 +266,8 @@ function main(): void {
     ref(eventIds, m.startEvent, `${where}.startEvent`);
     ref(eventIds, m.endEvent, `${where}.endEvent`);
     if (m.startFrame !== null && m.endFrame !== null && m.endFrame < m.startFrame) fail(`${where}: ends before it starts.`);
+    if (!(m.reach > 0 && m.reach <= 1)) fail(`${where}: reach ${m.reach} outside (0, 1].`);
+    if (!m.arrivesAfterClock && m.reach !== 1) fail(`${where}: only an arrival after the clock may stop short of its destination.`);
     if (m.destinationUnknown && m.route !== 'UNKNOWN') fail(`${where}: unknown destination drawn with a ${m.route} route.`);
     if (m.route === 'SOLID' && m.basis === 'SIMULATION_RECONSTRUCTED') warn(`${where}: SOLID route on a simulation-reconstructed basis.`);
   }

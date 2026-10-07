@@ -426,7 +426,7 @@ export interface Character {
   japanese: string | null;
   faction: FactionId;
   role: string;
-  photocard: { src: string; source: string; sourceUrl: string | null } | null;
+  photocard: { src: string; source: string; sourceUrl: string | null; licence: string | null } | null;
   commanderIds: CommanderId[];
   combatantIds: string[];
   forceIds: ForceId[];
@@ -457,6 +457,10 @@ export interface Movement {
   strengthAtEnd: Quantity;
   notes: string;
   destinationUnknown: boolean;
+  /** Share of the route covered by the end of the movement: 1, or less when the arrival falls after the clock. */
+  reach: number;
+  /** The arrival is not dated and falls after the end of the campaign clock. */
+  arrivesAfterClock: boolean;
 }
 
 export interface TerritoryChange {
