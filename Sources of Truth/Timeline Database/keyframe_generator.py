@@ -674,7 +674,7 @@ readme = [
 ]
 sheet(wb.create_sheet("Readme"), ["Field","Value"], readme, widths={1:26,2:140})
 
-wb.save("/home/claude/Tempest_Eastern_Empire_War_Timeline.xlsx")
+wb.save("Tempest_Eastern_Empire_War_Timeline.xlsx")
 print("frames", NFRAMES, "| events", len(D.EVENTS), "| force-states", len(force_states),
       "| forces", len(D.FORCES), "| casualties", len(cas_rows),
       "| movements", len(D.MOVEMENTS), "| commanders", len(D.COMMANDERS),

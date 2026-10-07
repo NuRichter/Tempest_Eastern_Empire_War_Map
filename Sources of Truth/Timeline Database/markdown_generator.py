@@ -6,7 +6,7 @@ from collections import defaultdict
 import openpyxl
 import dataset_lock as D
 
-WB = openpyxl.load_workbook("/home/claude/Tempest_Eastern_Empire_War_Timeline.xlsx", data_only=True)
+WB = openpyxl.load_workbook("Tempest_Eastern_Empire_War_Timeline.xlsx", data_only=True)
 T = WB["Timeline"]
 H = [c.value for c in T[1]]
 X = {h: i for i, h in enumerate(H)}
@@ -684,5 +684,5 @@ w("")
 w("Nothing in this dataset is fabricated. Where the corpus is silent, the field reads `UNKNOWN`.")
 w("")
 
-open("/home/claude/Tempest_Eastern_Empire_War_Timeline.md", "w").write("\n".join(L))
+open("Tempest_Eastern_Empire_War_Timeline.md", "w").write("\n".join(L))
 print("markdown lines:", len(L))
