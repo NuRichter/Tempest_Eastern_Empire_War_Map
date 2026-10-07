@@ -7,6 +7,5 @@
  { "name": "Battle of the Dwargon Eastern Front", "type": "MAJOR_BATTLE" },
  { "name": "Dream Fortress trap", "type": "SPECIAL_COMBAT" },
  { "name": "Dragon battle over the Jura forest", "type": "SPECIAL_COMBAT" },
- { "name": "Magic Beast Division airlift", "type": "ENGAGEMENT" },
  { "name": "Battle of the imperial flagship", "type": "SPECIAL_COMBAT" }
 ]

@@ -4,7 +4,7 @@ The question is not whether the code is elegant but whether the map now **behave
 
 ## Evidence used
 
-- 0 / 25 / 50 / 75 / 100 % captures of every major transition: the D−5 → D−1 advance into Jura (EP-001…EP-011), the Isthmus blockade landing (EP-014), the D+11 collapse of the imperial pocket (EP-017), the Dwargon eastern front advance and collapse (EP-019, EP-020).
+- 0 / 25 / 50 / 75 / 100 % captures of every major transition: the D−5 → D−1 advance into Jura (EP-001…EP-011), the Isthmus blockade landing (EP-014), the D+11 collapse of the imperial pocket (EP-017), the Dwargon eastern front on the long night: the Isthmus blockade collapsing, the Magic Beast Division's ground taken and lost (EP-018, EP-019, EP-020).
 - Playback at 1×: captures inside the D+11 collapse all differ (the front moves while playing); paused: 0.00 % pixels change in 1.5 s; after scrubbing forward and backward and returning: 0.00 % differ.
 - Engine tests: half-way, advance, retreat, recapture, rim-inward collapse, continuity, determinism.
 
@@ -14,7 +14,7 @@ The question is not whether the code is elegant but whether the map now **behave
 |---|---|---|---|
 | Territory advance | 4 | **8** | Ground is taken from the border crossing (EVT-0015) along the line of march and stays taken; at 50 % the held area is strictly between the 0 % and 100 % states. Held areas are broad and rounded (sum of reaches), not the jagged lines of V1 |
 | Territory retreat | 2 | **6** | Ground is lost when its army is destroyed or cut off. Canon has few true retreats; the D+0 loss at the Dwargon gate is small because the infantry's ground still covers it |
-| Recapture | 3 | **8** | The D+11 collapse and the D+18–19 Dwargon east front show the loser receding, the pale band, and the owner's colour returning, rim first |
+| Recapture | 3 | **8** | The D+11 collapse and the D+18–19 Dwargon eastern front show the loser receding, the pale band, and the owner's colour returning, rim first |
 | Frontline movement | 4 | **8** | The front is the isochrone `t_flip = T`, moving continuously with the clock, frozen when paused, reversible |
 | Border behaviour | 8 | **9** | Borders never move; only control does (all four references) |
 | Territorial propagation | 2 | **8** | Flip times spread from the gaining side's ground (8-neighbour distance); landings grow outward |
@@ -41,4 +41,4 @@ The question is not whether the code is elegant but whether the map now **behave
 | Paused mid-advance, does the frontline look physically mid-way? | Yes — e.g. EP-011 at 50 %: the red edge is part-way between its 0 % and 100 % positions, with the seam on it |
 | Does retreat look like territory being lost? | Yes — the loser's colour recedes first, leaving the pale band, then the owner's colour returns |
 | Can I see the territory move back on recapture? | Yes — EP-017 and EP-020 sweep back from the rim |
-| Does a major change propagate spatially rather than change colour? | Yes — 2,548 cells change hands over 23 transitions, every one by a moving boundary; the only crossfade is a whole territory's political role |
+| Does a major change propagate spatially rather than change colour? | Yes — 2,071 cells change hands over 21 transitions, every one by a moving boundary; the only crossfade is a whole territory's political role |

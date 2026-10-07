@@ -54,6 +54,7 @@ Confidence: **H** high, **M** medium, **L** low.
 | Veldora destroyed the airship fleet | Ultima's spell (v13.txt:5298–5378) | Actor corrected | H |
 | Imperial citizens were left without memory of the defeat | They had simply never lost a war (v16.txt:9267) | Event replaced | H |
 | Gradim was killed by Vega | Carillon kills him; Vega devours the remains (v15.txt:9404–9502) | Recorded with the conflict (CON-008) | H |
+| The Magic Beast Division's airlift fought a battle over northern Ingracia | The fleet was 'scheduled to launch an attack from the northern part of the Kingdom of Ingracia' and still more than three days away when Space-Time Connection pulled it to Dwargon (v15.txt:3431-3435, 3452-3463) | No position in flight (ABSTRACT place, not drawn); no battle in Ingracia; the fleet's arrival (EVT-0373) belongs to the Battle of the Dwargon Eastern Front; the separate 'airlift' battle and the Ingracia airspace place were removed | H |
 | The fleet's destination after the space-time jump is unknown | It arrives on the Dwargon eastern front (v15.txt:3413–3435, 3618–3620) | Destination set; the jump itself is drawn as a discontinuity | H |
 
 ## Geography

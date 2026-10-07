@@ -4303,10 +4303,10 @@
   "canonicalTime": "concurrent flashback; the fleet was 'more than a few days' from its battlefield",
   "theatreId": "TH-DWE",
   "front": "Dwargon Eastern Front",
-  "battle": "Magic Beast Division airlift",
-  "battleType": "ENGAGEMENT",
-  "location": "northern-ingracia-airspace",
-  "locationText": "Airspace toward northern Ingracia",
+  "battle": null,
+  "battleType": null,
+  "location": "airlift-in-flight",
+  "locationText": "In flight toward northern Ingracia (position not stated)",
   "actor": "Airship flotilla (Samuel (Zamdo))",
   "actorFaction": "Eastern Empire",
   "opponent": "-",
@@ -4362,7 +4362,8 @@
     "Source chapter: V15 Ch1, not Ch3",
     "Theatre: TH-DWE (en route, then Dwargon), not TH-CAP",
     "Effects: F-EMP-061 (flagship) added",
-    "Names: Samuel (Zamdo), Gradim, Magic Beast Division"
+    "Names: Samuel (Zamdo), Gradim, Magic Beast Division",
+    "Not a battle and not in Ingracia: the airlift was in flight toward northern Ingracia at no stated position (v15.txt:3431-3435, 3452-3463); its fight is the Battle of the Dwargon Eastern Front."
    ]
   },
   "effects": {
@@ -4374,8 +4375,8 @@
      "status": "IN_TRANSIT",
      "movement": "IN_TRANSIT",
      "direction": "Toward the central continent",
-     "location": "northern-ingracia-airspace",
-     "locationText": "Airspace toward northern Ingracia",
+     "location": "airlift-in-flight",
+     "locationText": "In flight toward northern Ingracia (position not stated)",
      "confidence": "HIGH"
     },
     "F-EMP-060": {
@@ -4385,8 +4386,8 @@
      "status": "IN_TRANSIT",
      "movement": "IN_TRANSIT",
      "direction": "Toward the central continent",
-     "location": "northern-ingracia-airspace",
-     "locationText": "Airspace toward northern Ingracia",
+     "location": "airlift-in-flight",
+     "locationText": "In flight toward northern Ingracia (position not stated)",
      "confidence": "HIGH"
     },
     "F-EMP-061": {
@@ -4395,8 +4396,8 @@
      "status": "IN_TRANSIT",
      "movement": "IN_TRANSIT",
      "direction": "With the flotilla",
-     "location": "northern-ingracia-airspace",
-     "locationText": "Airspace toward northern Ingracia",
+     "location": "airlift-in-flight",
+     "locationText": "In flight toward northern Ingracia (position not stated)",
      "confidence": "MEDIUM"
     }
    },
@@ -4412,10 +4413,10 @@
   "canonicalTime": "",
   "theatreId": "TH-DWE",
   "front": "Dwargon Eastern Front",
-  "battle": "Magic Beast Division airlift",
-  "battleType": "ENGAGEMENT",
-  "location": "northern-ingracia-airspace",
-  "locationText": "Aboard Samuel's ship",
+  "battle": null,
+  "battleType": null,
+  "location": "airlift-in-flight",
+  "locationText": "In flight toward northern Ingracia (position not stated)",
   "actor": "Velgrynd",
   "actorFaction": "Eastern Empire",
   "opponent": "-",
@@ -4475,7 +4476,8 @@
     "Moved from D+8 11:20 to D+18 23:30 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Source chapter: V15 Ch1",
     "Rudra aboard the same ship (v15.txt:3568)",
-    "Theatre TH-DWE (en route)"
+    "Theatre TH-DWE (en route)",
+    "Not a battle and not in Ingracia: the airlift was in flight toward northern Ingracia at no stated position (v15.txt:3431-3435, 3452-3463); its fight is the Battle of the Dwargon Eastern Front."
    ]
   },
   "effects": {
@@ -4492,10 +4494,10 @@
   "canonicalTime": "",
   "theatreId": "TH-DWE",
   "front": "Dwargon Eastern Front",
-  "battle": "Magic Beast Division airlift",
-  "battleType": "ENGAGEMENT",
-  "location": "northern-ingracia-airspace",
-  "locationText": "Aboard Samuel's ship (screen link to Gradim)",
+  "battle": null,
+  "battleType": null,
+  "location": "airlift-in-flight",
+  "locationText": "In flight toward northern Ingracia (position not stated)",
   "actor": "Velgrynd",
   "actorFaction": "Eastern Empire",
   "opponent": "Gradim",
@@ -4548,7 +4550,8 @@
    "changes": [
     "Moved from D+8 11:40 to D+18 23:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Result: mission changed to suppressing Dwargon, capture alive (v15.txt:3618-3620, 3688-3691)",
-    "Source chapter: V15 Ch1"
+    "Source chapter: V15 Ch1",
+    "Not a battle and not in Ingracia: the airlift was in flight toward northern Ingracia at no stated position (v15.txt:3431-3435, 3452-3463); its fight is the Battle of the Dwargon Eastern Front."
    ]
   },
   "effects": {
@@ -4570,8 +4573,8 @@
   "canonicalTime": "",
   "theatreId": "TH-DWE",
   "front": "Dwargon Eastern Front",
-  "battle": "Magic Beast Division airlift",
-  "battleType": "ENGAGEMENT",
+  "battle": "Battle of the Dwargon Eastern Front",
+  "battleType": "MAJOR_BATTLE",
   "location": "dwargon-eastern-front",
   "locationText": "Dwargon eastern front, before Gadora",
   "actor": "Velgrynd",
@@ -4630,7 +4633,8 @@
     "Moved from D+8 12:00 to D+18 23:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Theatre TH-DWE; destination Dwargon eastern front (v15.txt:3413-3435), not unknown",
     "Effects: F-EMP-020 and F-EMP-060 to dwargon-eastern-front (not position-unknown)",
-    "F-EMP-061 placed over Jura at EVT-0339, the end of MOV-031, instead of here (deviation from AUDIT-PLAN, which set it on this event)"
+    "F-EMP-061 placed over Jura at EVT-0339, the end of MOV-031, instead of here (deviation from AUDIT-PLAN, which set it on this event)",
+    "Part of the Battle of the Dwargon Eastern Front, fought alongside the Dwargon front (v15.txt:3404-3435), not a separate airlift battle."
    ]
   },
   "effects": {

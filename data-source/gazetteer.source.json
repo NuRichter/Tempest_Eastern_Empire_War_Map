@@ -279,14 +279,12 @@
       "basis": "The dragon engagement takes place over the forest. Same ground position as great-jura-forest, air layer."
     },
     {
-      "id": "northern-ingracia-airspace",
-      "name": "Airspace over northern Ingracia",
-      "theatre": "TH-CAP",
-      "x": 0.4795,
-      "y": 0.4652,
-      "placement": "RECONSTRUCTED",
+      "id": "airlift-in-flight",
+      "name": "Airlift in flight (position not stated)",
+      "theatre": "TH-DWE",
+      "placement": "ABSTRACT",
       "altitude": "AIR",
-      "basis": "North of the MEASURED Englassia marker, in the western half of the central continent, which is where the corpus places the Ingracia region. Low confidence: the supplied maps do not label Ingracia."
+      "basis": "The Magic Beast Division's airship regiment in flight toward northern Ingracia, from where it was to attack (v15.txt:3431-3435, 3452-3463). The novel gives no position; by Rimuru's reckoning it was still more than three days from Dwargon when Velgrynd's Space-Time Connection pulled it to the Dwargon eastern front. It never reached Ingracia and fought no battle there. Deliberately given no coordinate."
     },
     {
       "id": "embassy-in-the-empire",
@@ -396,15 +394,6 @@
       "y": 0.418,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
-    },
-    {
-      "id": "central-continent",
-      "name": "Central continent (via northern Ingracia)",
-      "theatre": "TH-CAP",
-      "x": 0.5,
-      "y": 0.51,
-      "placement": "RECONSTRUCTED",
-      "basis": "Destination of the Warcraft Legion air movement (MOV-014). The corpus names the central continent by way of northern Ingracia and no finer place. Positioned in the western half of the central landmass, near the MEASURED Englassia and Siltrosso markers."
     },
     {
       "id": "imperial-infantry-camp",
@@ -605,8 +594,7 @@
     "Yuuki's staff room": "imperial-capital",
     "Yuuki's chamber": "imperial-capital",
     "Sealed space, Imperial Capital": "sealed-space",
-    "Aboard Samuel's flagship": "northern-ingracia-airspace",
-    "Airspace over northern Ingracia": "northern-ingracia-airspace",
+    "Aboard Samuel's flagship": "airlift-in-flight",
     "Embassy in the Empire": "embassy-in-the-empire",
     "Eastern Empire / Dwargon eastern approach": "dwargon-eastern-front",
     "Dwargon eastern approach": "dwargon-eastern-front",
@@ -670,8 +658,8 @@
     "Attempted rally point": "attempted-rally-point",
     "Dwargon defensive line": "dwargon-defensive-line",
     "Ritual caster position": "ritual-caster-position",
-    "Central continent (via northern Ingracia)": "central-continent",
-    "Inn town": "tempest-border"
+    "Inn town": "tempest-border",
+    "In flight toward northern Ingracia (position not stated)": "airlift-in-flight"
   },
   "transitAxis": {
     "note": "Locations of the form 'In transit, N% of the way from the imperial interior to the forest edge' are resolved parametrically along this axis, matching Approach_Progress_Pct_SIMULATED in the Timeline sheet. The endpoints are canonical statements of origin and destination; every intermediate point is linear interpolation and is reported as RECONSTRUCTED (see AMB-014).",

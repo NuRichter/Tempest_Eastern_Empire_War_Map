@@ -340,8 +340,6 @@
    ],
    "projectIdsUsing": [
     "nations.json:englassia",
-    "places.json:northern-ingracia-airspace ('Airspace over northern Ingracia')",
-    "places.json:central-continent ('via northern Ingracia')",
     "gazetteer aliases 'Airspace over northern Ingracia'",
     "events/movement/force-tracks text 'Ingracia'"
    ],

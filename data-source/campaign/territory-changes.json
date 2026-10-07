@@ -144,18 +144,6 @@
   "notes": "Rimuru's party confined after Laplace's teleport; no Tempest deaths (CON-003). Not a place in the capital."
  },
  {
-  "id": "LOC-013",
-  "name": "Airspace over northern Ingracia",
-  "theatreId": "TH-CAP",
-  "before": "NEUTRAL",
-  "after": "NEUTRAL",
-  "changeEventId": "EVT-0370",
-  "basis": "SEQUENTIAL_CANON",
-  "source": "V15 Ch1",
-  "confidence": "MEDIUM",
-  "notes": "Transit corridor only; the flotilla was diverted by Space-Time Connection to the Dwargon eastern front. No change of control."
- },
- {
   "id": "LOC-014",
   "name": "Eastern Empire (post-war)",
   "theatreId": "TH-DIP",
