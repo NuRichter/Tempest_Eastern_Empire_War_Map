@@ -42,6 +42,7 @@ import {
   type TimelineIndex,
   type WarEvent,
 } from '../src/types/dataset';
+import { decodeFront, HOLDER_ALLIED, HOLDER_EMPIRE, HOLDER_OWNER, type FrontFile } from '../src/map/field/front';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const DATA = join(HERE, '..', 'public', 'data');
@@ -409,6 +410,48 @@ function main(): void {
     prior = sequential;
   }
 
+  /* -- held ground (front.json) ------------------------------------- */
+
+  const frontFile = load<FrontFile>('front.json');
+  let front: ReturnType<typeof decodeFront> | null = null;
+  try {
+    front = decodeFront(frontFile);
+  } catch (e) {
+    fail(`front.json: ${(e as Error).message}`);
+  }
+  if (front) {
+    if (frontFile.provenance !== 'RECONSTRUCTED') fail('front.json: held ground must be labelled RECONSTRUCTED.');
+    const terrIds = new Set(geo.territories.map((t) => t.id));
+    if (front.territoryIds.length !== geo.territories.length || front.territoryIds.some((id) => !terrIds.has(id))) fail('front.json: territory list does not match the traced territories.');
+    for (let i = 0; i < front.owner.length; i += 1) {
+      if (front.owner[i] < -1 || front.owner[i] >= front.territoryIds.length) { fail(`front.json: cell ${i} has an invalid owner.`); break; }
+      let prevT = -Infinity;
+      let prevH = HOLDER_OWNER;
+      for (let k = front.offsets[i]; k < front.offsets[i + 1]; k += 1) {
+        const t = front.times[k];
+        const h = front.holders[k];
+        if (!Number.isFinite(t) || t < 0 || t >= frameCount) fail(`front.json: cell ${i} flips at ${t}, outside the clock.`);
+        if (t <= prevT) fail(`front.json: cell ${i} flips out of order.`);
+        if (h !== HOLDER_OWNER && h !== HOLDER_EMPIRE && h !== HOLDER_ALLIED) fail(`front.json: cell ${i} has holder ${h}.`);
+        if (h === prevH) fail(`front.json: cell ${i} flips to the holder it already has.`);
+        if (front.owner[i] < 0) fail(`front.json: sea cell ${i} changes hands.`);
+        prevT = t;
+        prevH = h;
+      }
+      if (errors.length > 40) break;
+    }
+    const epIds = new Set<string>();
+    for (const e of front.episodes) {
+      if (epIds.has(e.id)) fail(`front.json: duplicate episode ${e.id}.`);
+      epIds.add(e.id);
+      if (!(e.startFrame <= e.midFrame && e.midFrame <= e.endFrame)) fail(`front.json: ${e.id} times out of order.`);
+      if (e.eventId && !eventIds.has(e.eventId)) fail(`front.json: ${e.id} references unknown event ${e.eventId}.`);
+      for (const f of e.forceIds) if (!forceIds.has(f)) fail(`front.json: ${e.id} references unknown force ${f}.`);
+      for (const t of e.territoryIds) if (!terrIds.has(t)) fail(`front.json: ${e.id} references unknown territory ${t}.`);
+      if (e.gainer === e.loser) fail(`front.json: ${e.id} gains and loses on the same side.`);
+    }
+  }
+
   /* -- report -------------------------------------------------------- */
 
   const t = casualtyFile.campaignTotals;
@@ -418,6 +461,7 @@ function main(): void {
   console.log(`  forces            ${forces.length}  battles ${battles.length}  movements ${movementFile.movements.length}  characters ${characters.length}`);
   console.log(`  imperial killed   ${t.empireKilled}  revived ${t.empireRevived}  permanent ${t.empirePermanentDead}`);
   console.log(`  territories       ${geo.territories.length}  places ${places.length}  nations ${nations.length}  timeline gaps ${gaps.length}`);
+  if (front) console.log(`  held ground       ${front.w}x${front.h} cells, ${front.times.length} flips, ${front.episodes.length} transitions (RECONSTRUCTED)`);
   for (const w of warnings) console.log(`  warn  ${w}`);
   if (errors.length) {
     console.error(`\nDataset validation FAILED with ${errors.length} error(s):`);

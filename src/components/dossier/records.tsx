@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { battleDayLabel, phaseLabel } from '@/lib/format';
 import { FACTION_COLOR, factionKey } from '@/lib/palette';
@@ -27,6 +27,9 @@ import {
   Sources,
 } from '@/components/ui/primitives';
 import type { Dataset } from '@/data/loader';
+import { loadFront } from '@/map/field/occupation';
+import { getField, onField } from '@/map/field/fieldStore';
+import type { FrontEpisode } from '@/map/field/front';
 import type { WarEvent } from '@/types/dataset';
 
 const when = (data: Dataset, frame: number | null) => {
@@ -487,13 +490,93 @@ export function CharacterDossier({ id }: { id: string }) {
 
 /* ------------------------------------------------------------------ */
 
+const EPISODE_LABEL: Record<FrontEpisode['kind'], string> = {
+  ADVANCE: 'Advance',
+  RETREAT: 'Retreat',
+  RECAPTURE: 'Recapture',
+  COLLAPSE: 'Collapse of a cut-off area',
+  SETTLEMENT: 'Returned at the end of hostilities',
+};
+const SIDE_LABEL = { empire: 'Eastern Empire', allied: 'Allied side' } as const;
+
+/** Ground held inside a territory by the other side, and its latest change (RECONSTRUCTED). */
+function HeldGround({ territoryId }: { territoryId: string }) {
+  const data = useSimulation((s) => s.data);
+  const frame = useSimulation((s) => s.frame);
+  const seek = useSimulation((s) => s.seek);
+  const jumpToForce = useSimulation((s) => s.jumpToForce);
+  const jumpToEvent = useSimulation((s) => s.jumpToEvent);
+  const [episodes, setEpisodes] = useState<FrontEpisode[] | null>(null);
+  const [share, setShare] = useState<number | null>(null);
+  useEffect(() => {
+    let alive = true;
+    void loadFront().then((f) => alive && setEpisodes(f ? f.episodes.filter((e) => e.territoryIds.includes(territoryId)) : []));
+    return () => {
+      alive = false;
+    };
+  }, [territoryId]);
+  useEffect(() => {
+    const read = () => setShare(getField()?.occupiedShare[territoryId] ?? 0);
+    read();
+    return onField(read);
+  }, [territoryId]);
+  if (!data || !episodes || episodes.length === 0) return null;
+  const past = episodes.filter((e) => e.startFrame <= frame);
+  const latest = past[past.length - 1] ?? null;
+  const upcoming = episodes.find((e) => e.startFrame > frame) ?? null;
+  const row = (e: FrontEpisode) => (
+    <div className="space-y-1">
+      <p className="text-xs text-fg">
+        {EPISODE_LABEL[e.kind]} · {SIDE_LABEL[e.gainer]} gains from {SIDE_LABEL[e.loser]} · {e.cells} map cells
+      </p>
+      <p className="figure text-2xs text-fg-3">
+        <RecordLink onClick={() => seek(Math.floor(e.startFrame))}>{when(data, Math.floor(e.startFrame))}</RecordLink> → {when(data, Math.floor(e.endFrame))}
+        {e.eventId ? <> · near <RecordLink onClick={() => jumpToEvent(e.eventId!)}>{data.eventById.get(e.eventId)?.title ?? e.eventId}</RecordLink></> : null}
+      </p>
+      {e.forceIds.length ? (
+        <p className="text-2xs text-fg-3">
+          Formations:{' '}
+          {e.forceIds.map((fid, i) => (
+            <span key={fid}>
+              {i ? ', ' : ''}
+              <RecordLink onClick={() => jumpToForce(fid)}>{data.forceById.get(fid)?.displayName ?? fid}</RecordLink>
+            </span>
+          ))}
+        </p>
+      ) : null}
+    </div>
+  );
+  return (
+    <Section title="Held ground">
+      <Fields>
+        <Field label="Held by the other side">{share === null ? '—' : share > 0 ? `≈${Math.round(share * 100)}%` : 'none now'}</Field>
+        <Field label="Confidence">Reconstructed from formation positions and strengths; the novels draw no line of control.</Field>
+      </Fields>
+      {latest ? (
+        <div className="mt-2">
+          <p className="eyebrow">Latest transition</p>
+          {row(latest)}
+        </div>
+      ) : null}
+      {upcoming ? (
+        <div className="mt-2">
+          <p className="eyebrow">Next transition</p>
+          {row(upcoming)}
+        </div>
+      ) : null}
+      <p className="mt-1.5"><ProvenanceBadge value="RECONSTRUCTED" compact /></p>
+    </Section>
+  );
+}
+
 export function TerritoryDossier({ id }: { id: string }) {
   const data = useSimulation((s) => s.data);
   const frame = useSimulation((s) => s.frame);
   const jumpToEvent = useSimulation((s) => s.jumpToEvent);
   const t = data?.territoryById.get(id);
   if (!data || !t) return <Empty>That territory is not in the atlas.</Empty>;
-  const now = territoryControlAt(t, frame).segment;
+  const control = territoryControlAt(t, frame);
+  const now = control.segment;
   const changes = data.territoryChanges.filter((c) => (t.nationId === 'jura-tempest-federation' && ['TH-DWG', 'TH-LAB', 'TH-DRG'].includes(c.theatreId)) || (t.nationId === 'dwargon' && c.theatreId === 'TH-DWE') || (t.nationId === 'nasca-namrium-ulmeria' && ['TH-CAP', 'TH-DIP'].includes(c.theatreId)));
 
   return (
@@ -505,12 +588,14 @@ export function TerritoryDossier({ id }: { id: string }) {
       <Section title="Now">
         <Fields>
           <Field label="Controller">{now.status === 'UNKNOWN' ? <span className="italic text-fg-3">unknown</span> : now.controller ?? '—'}</Field>
+          <Field label="Previous controller">{control.previous ? control.previous.controller ?? 'unknown' : '—'}</Field>
           <Field label="Status">{now.status.toLowerCase()}</Field>
           <Field label="Role in the war">{ROLE_LABEL[now.role]}</Field>
           <Field label="Basis">{now.basis}</Field>
         </Fields>
         <p className="mt-1.5"><ProvenanceBadge value={now.provenance} compact /></p>
       </Section>
+      <HeldGround territoryId={t.id} />
       <Section title="History">
         <ol className="space-y-1.5">
           {t.control.map((s, i) => (

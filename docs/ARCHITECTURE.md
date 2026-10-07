@@ -12,7 +12,7 @@ data-source/                      hand-maintained, reviewable sources
   characters.source.json          characters + photocard provenance
   terminology.source.json         canonical names, aliases, Japanese names
         │
-        ▼  scripts/compile-data.ts   (deterministic: same sources → byte-identical output)
+        ▼  scripts/compile-data.ts, then scripts/compile-front.ts (held ground)   (deterministic: same sources → byte-identical output)
 public/data/                      runtime dataset: checkpoints + sparse deltas, tracks, reference tables, timeline gaps
         │
         ├─▶ scripts/validate-data.ts    identities, references, time order, quantities, casualty arithmetic,
@@ -44,7 +44,7 @@ Both need Python 3 with `numpy`, `opencv-python` and `Pillow`. Their outputs are
 | `src/simulation/store.ts` | Zustand store: data, frame, selection, filters, camera requests, navigation actions (`jumpTo*`) |
 | `src/state/preferences.ts` | Persisted reader preferences (map style, layers, opacities, scales, motion) with safe storage |
 | `src/map/MapView.tsx` | MapLibre: Base/Myth rasters, territory and operational-area layers, the held-ground canvas source, projection, camera requests |
-| `src/map/field/*` | The reconstructed occupation field (`occupation.ts`) and a tiny store that hands each computed field to the overlay (`fieldStore.ts`) |
+| `src/map/field/*` | Held ground: shared influence sources (`sources.ts`), the time-field model (`front.ts`), the viewport painter (`occupation.ts`) and a tiny store that hands each evaluated field to the overlay (`fieldStore.ts`) |
 | `src/map/Minimap.tsx`, `MapControls.tsx` | Overview map; zoom, compass, camera presets, flat/globe, style switcher |
 | `src/map/overlay/*` | One canvas for everything that moves with the clock; layer modules draw front seams, routes, forces, front strengths, battles, event rings, portraits and labels (with collision layout); hit-testing and tooltips; colours from the active `MAP_THEME` |
 | `src/components/*` | Shell, rail (layers, filters, feed, story), situation & dossiers, timeline, palette, legend, cinematic |
@@ -52,7 +52,7 @@ Both need Python 3 with `numpy`, `opencv-python` and `Pillow`. Their outputs are
 
 ## Rendering loop
 
-React re-renders only when the **integer** frame changes (10 simulated minutes). The overlay canvas repaints on demand — when the clock moves, the camera moves, a preference changes, or a battle is live — and reads the **continuous** clock position, so movement interpolates smoothly between keyframes without React in the loop. MapLibre layers (territories, operational areas) are rebuilt only when a change signature (control roles, filters, opacity) differs, not on every frame. The held-ground field is recomputed on a throttled loop (~8 Hz while playing, skipped when no formation moved) and pushed to MapLibre's canvas source; the overlay reads the same field for front seams, so map and overlay never disagree.
+React re-renders only when the **integer** frame changes (10 simulated minutes). The overlay canvas repaints on demand — when the clock moves, the camera moves, a preference changes, or a battle is live — and reads the **continuous** clock position, so movement interpolates smoothly between keyframes without React in the loop. MapLibre layers (territories, operational areas) are rebuilt only when a change signature (control roles, filters, opacity) differs, not on every frame. Held ground is precomputed (`scripts/compile-front.ts` → `front.json`) and evaluated on animation frames whenever the clock time or the view changes (≤ 30 Hz), painted into a canvas source that follows the view; the overlay reads the same field for front seams and front-strength placement, so map and overlay never disagree.
 
 ## Frame / delta model
 

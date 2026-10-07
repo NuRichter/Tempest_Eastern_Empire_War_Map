@@ -34,22 +34,18 @@ The supplied maps draw no theatre boundaries. Theatre areas therefore remain **s
 
 ## Time-aware political state
 
-`data-source/territory-control.source.json` gives every territory a sequence of states anchored to **events** (not frames): controller, status (`CONTROLLED` / `UNKNOWN` …) and role (`BELLIGERENT`, `CO_BELLIGERENT`, `CONTRIBUTOR`, `UNINVOLVED`, `ARMISTICE`), each with provenance and basis. No national border changed hands in this war; what changes is involvement, and the fighting inside Jura and at Dwargon's eastern gate, shown by the operational areas whose control (`CONTESTED`, `TEMPEST_CONTROLLED` …) comes from the campaign state. Unknown control is drawn grey and hatched, never as a faction colour. Changes animate in two steps over six simulated hours.
+`data-source/territory-control.source.json` gives every territory a sequence of states anchored to **events** (not frames): controller, status (`CONTROLLED` / `UNKNOWN` …) and role (`BELLIGERENT`, `CO_BELLIGERENT`, `CONTRIBUTOR`, `UNINVOLVED`, `ARMISTICE`), each with provenance and basis. No national border changed hands in this war; what changes is involvement, and the fighting inside Jura and at Dwargon's eastern gate, shown by the operational areas whose control (`CONTESTED`, `TEMPEST_CONTROLLED` …) comes from the campaign state. Unknown control is drawn grey and hatched, never as a faction colour. A change of role is a linear crossfade over one simulated hour.
 
 ## Held ground and fronts (reconstructed)
 
-The references show war as solid colour moving across borders. The novels state where formations are and what happens at each place, not a line of control, so the atlas **synthesises** held ground from the formations themselves (`src/map/field/occupation.ts`):
+The references show war as ground taken and lost through space (`docs/research/REFERENCE_VIDEO_FORENSICS.md`). The novels state where formations are and what happens at each place, not a line of control, so the atlas **reconstructs** held ground from the formations, with memory: ground an army takes stays taken until it is retaken, cut off, or returned at the end of hostilities.
 
-1. a grid of 1056 × 814 cells over the atlas frame (two fifths of the map's pixels), onto which the traced territories are rasterised once;
-2. every ground formation with a position contributes signed influence `∛strength × (1 − t²)²` within a reach of `0.0011·∛strength`, clamped to 0.012–0.055 of the frame width (Empire positive, allies negative). Formations whose strength is unknown use a nominal 2,000 so they still hold ground; single combatants (< 50), airborne or subterranean formations (airships, the labyrinth) and destroyed or captured formations hold none; a parent is dropped when its subordinates are drawn, so tiers are never counted twice;
-3. a belligerent's own land carries a home baseline of 18: a cell is drawn held by the other side only where that side's net influence exceeds it. Uninvolved, armistice and unknown-control territories are never coloured;
-4. within 4 units of the threshold the cell is contested and painted in the leading side's colour at half strength;
-5. held ground must be connected to the side's own formations: a detached ring (where a large force's reach outruns a stronger force standing on top of it) holds none of that side's soldiers and is dropped;
-6. the result is painted to a canvas, blurred 1.2 px, and drawn by MapLibre as a canvas source beneath the borders; it is recomputed at about 8 Hz while playing, and skipped when nothing moved (a signature of positions, strengths and roles);
-7. the front seam is the contour where net influence equals the baseline (marching squares), only between land cells, drawn white with a thin dark casing;
-8. the Situation panel reports each defender territory's held share.
+- The history is compiled once (`scripts/compile-front.ts` → `public/data/front.json`) on a 352 × 272 grid; flips spread from the front, pockets collapse from the rim inward, landings grow outward.
+- An army takes ground only in the territory it stands in, and only after the canon event that opens that front (`data-source/campaign/front-rules.json`).
+- The map draws the moving boundary, a pale band of ground about to change hands (the loser's colour lightened) and a white seam on the front; the canvas follows the view, so the edge is crisp at any zoom; coastlines come from the Base Map's own pixels.
+- Borders never move. Whole-territory political changes are short crossfades.
 
-The layer is labelled RECONSTRUCTED everywhere it is explained, and it can be switched off (Layers → *Fronts & occupation*). It never changes a territory's political state, which stays event-anchored (below).
+Full method, transition modes, tests and limits: `docs/TERRITORIAL-ANIMATION.md`. The layer is labelled RECONSTRUCTED everywhere it is explained and can be switched off (Layers → *Fronts & occupation*). It never changes a territory's political state, which stays event-anchored (below).
 
 ## Places
 

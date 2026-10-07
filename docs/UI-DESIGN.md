@@ -32,12 +32,12 @@ The atlas opens on the whole campaign in the **Documentary** look: light ground,
 
 | Reference practice | Where it lives here |
 |---|---|
-| Solid territory colour, white front where colours meet | Documentary theme; occupation field; `drawFronts` |
+| Ground taken and lost through space; pale band; white front where colours meet | Held-ground layer (`front.json`, `occupation.ts`); `drawFronts` |
 | One strength per side per front, rotated with the front | `drawFrontStrength` |
 | Still camera while time plays | Camera moves only on request or on a theatre change in cinematic mode |
 | Big fixed date readout | Cinematic date block; timeline readout |
 | Event ring + short label, then fade | `drawEvents` lifecycle (pop 110 ms, in 140 ms, hold 2.2 s, out 160 ms; max 4 labels) |
 | Rolling counters | `RollingNumber` in the ledger and the Situation panel |
-| Allies entering the war | Two-step territory role transition over six simulated hours |
+| Allies entering the war | Linear territory role crossfade over one simulated hour |
 | Leader inset | Photocard leader card in cinematic mode |
 | What the films lack | Legend, provenance, sources, unknowns, gaps, filters, search |

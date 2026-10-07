@@ -159,6 +159,8 @@ export const useSimulation = create<SimulationState>((set, get) => ({
       onIntegerFrame: (frame) => set({ frame, state: resolver.at(frame) }),
     });
     clock.setSpeed(SPEEDS[Math.min(SPEEDS.length - 1, usePreferences.getState().speedIndex)] ?? 1);
+    // Exposed for browser QA (exact fractional seeks), like window.__atlasMap.
+    if (typeof window !== 'undefined') (window as unknown as { __atlasClock?: SimulationClock }).__atlasClock = clock;
     clock.subscribe((_, playing) => {
       if (get().playing !== playing) set({ playing });
     });

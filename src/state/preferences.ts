@@ -46,7 +46,7 @@ export type WarLayer =
 export const WAR_LAYERS: { id: WarLayer; name: string; note: string }[] = [
   { id: 'territories', name: 'Territories', note: 'National regions traced from the drawn borders of the base map, coloured by their part in the war.' },
   { id: 'operationalAreas', name: 'Operational areas', note: 'Schematic theatre areas, clipped to the drawn borders. Not borders themselves.' },
-  { id: 'occupation', name: 'Fronts & occupation', note: 'Ground held around the armies, synthesised from force positions and strengths. RECONSTRUCTED: the novels draw no front line.' },
+  { id: 'occupation', name: 'Fronts & occupation', note: 'Ground taken and lost as the armies move: it stays held until retaken, cut off or returned, and the front moves with the clock. RECONSTRUCTED from recorded positions and strengths (the novels draw no front line); campaign-wide, so force filters do not change it.' },
   { id: 'frontlines', name: 'Contact marks', note: 'Schematic contact between opposed forces in a live theatre.' },
   { id: 'movement', name: 'Army movement', note: 'Recorded movements. Solid, reconstructed and schematic routes are drawn differently; unknown routes are not drawn.' },
   { id: 'trails', name: 'Movement trails', note: 'Where a formation has been.' },

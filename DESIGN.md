@@ -113,9 +113,10 @@ Map labels always carry a dark halo (3px) so they read on either base map. Army-
 | Territory | Traced border (measured) + role fill; unknown = grey hatch |
 | Operational area | Dashed outline, clipped to borders; contested = accent hatch |
 | Force | Faction shape, echelon-stepped size; dashed outline when strength unknown; struck through when destroyed |
-| Army size | White bold number with faction-deep outline beside the marker; front totals rotated along the contact (±35°), one per side per front |
-| Held ground (occupation) | Solid faction colour grown around each side's formations (influence ∝ ∛strength), over the home nation's baseline; nearly even ground = faded holder colour; RECONSTRUCTED, labelled as such in the legend and the Situation panel |
-| Front seam | White line with a thin dark casing where the held-ground colours meet (marching squares on the field) |
+| Army size | White bold number with faction-deep outline beside the marker; front totals one per side per front, on the side's own side of the seam, rotated along it, fixed size, counting smoothly to each recorded value |
+| Held ground | Solid faction colour on ground taken by the other side; stays taken until retaken, cut off or returned; RECONSTRUCTED, labelled in the legend and the Situation panel (`docs/TERRITORIAL-ANIMATION.md`) |
+| Changing hands | Pale band (the loser's colour lightened; a white wash over owner land) on ground about to change hands, 30 simulated minutes ahead of the winner |
+| Front seam | White line with a thin dark casing on the edge of held ground; moves with it |
 | Movement | Bowed route, travelled part solid/dashed/dotted by route confidence (SOLID/RECONSTRUCTED/SCHEMATIC); UNKNOWN not drawn; label = force + strength at departure |
 | Battle | Contact ring + type icon (blades, crenels, chevron, shield, burst, pennant); slow breath while live |
 | Event | Ring of ticks around a dark centre; pops in when reached, label for ~2 s, ring fades over one simulated day; turning points gold, numbered, persistent; broken ring if reconstructed/inferred; at most four labels at once |
@@ -131,11 +132,11 @@ Motion communicates; it never decorates.
 |---|---|
 | Camera to a record | `flyTo` speed 1.1, cubic-out; bounds `fitBounds` 1.3s |
 | Map style crossfade | 600ms |
-| Territory control change | two-step over 36 keyframes (6 simulated hours): old state recedes to a pale trace, new state arrives |
+| Territory role change | linear crossfade over 6 keyframes (one simulated hour) — the only crossfade, as in the references |
 | Battle breath | 0.5 + 0.5·sin(t/520ms), only while the battle is live |
 | Caption (cinematic) | 200ms rise-in, one at a time |
 | Event ring | pop 110ms (scale 1.4 → 1) · label in 140ms · hold 2200ms · label out 160ms |
-| Held ground / front | recomputed at ~8 Hz while playing, 1.2px blur; no tweening beyond the data |
+| Held ground / front | moving boundary at the isochrone t_flip = T, re-evaluated on animation frames whenever the clock moves (≤ 30 Hz); frozen when paused; reversible when scrubbing |
 | Rolling numbers | counters roll to the new value over ≤ 600ms (casualty ledger, Situation) |
 | Auto-slow | at a turning point playback drops to 1× for 2.5 seconds, then resumes the chosen speed (Layers → *Auto-slow*) |
 | Panels | instant or ≤150ms colour transitions |

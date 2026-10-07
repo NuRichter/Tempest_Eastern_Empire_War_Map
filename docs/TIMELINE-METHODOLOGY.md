@@ -28,7 +28,7 @@ The renderer may interpolate; it must not invent.
 - Between two recorded positions a force moves along a route whose confidence is shown (solid, reconstructed, schematic). An `UNKNOWN` route is not drawn; the force appears at its destination when the record puts it there (for example Velgrynd's space-time transfer).
 - A force holds its position until its recorded movement departs. A relocation without a recorded movement travels at a slow schematic pace proportional to the distance; if there is not enough time for a plausible journey, it is treated as an untraced transfer, never as a high-speed line.
 - The imperial approach march is interpolated linearly in two legs (departure → border crossing on D−5 → halt at the forest edge on D−2) and labelled `RECONSTRUCTED`.
-- Territory changes animate over six simulated hours. Unknown control is shown as unknown.
+- A territory's change of role crossfades over one simulated hour; held ground moves with the clock (`docs/TERRITORIAL-ANIMATION.md`). Unknown control is shown as unknown.
 - Strengths change only at events. The strength at departure is not assumed to hold through a march; intermediate strength is unknown unless recorded.
 
 ## Time semantics in the interface

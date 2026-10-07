@@ -96,8 +96,10 @@ export function Legend() {
             <Row swatch={<Fill color={FACTION_COLOR.neutral} opacity={0.25} />} label={ROLE_LABEL.CONTRIBUTOR} note="Contributes individuals or a small element." />
             <Row swatch={<Fill color="#6b757a" opacity={0.12} />} label={ROLE_LABEL.UNINVOLVED} note="Inactive territory." />
             <Row swatch={<Fill color={FACTION_COLOR.unknown} opacity={0.25} hatch />} label="Unknown control" note="Never drawn as any faction's colour." />
-            <Row swatch={<Fill color={FACTION_COLOR.empire} opacity={0.86} />} label="Held by the other side (reconstructed)" note="Ground held around the armies, synthesised from force positions and strengths. The white line is the front." />
-            <Row swatch={<Fill color={INK.accent} opacity={0.35} hatch />} label="Contested" note="Where the two sides' hold is nearly even, or a schematic theatre area is contested." />
+            <Row swatch={<Fill color={FACTION_COLOR.empire} opacity={0.86} />} label="Held by the other side (reconstructed)" note="Ground taken around the armies. It stays taken after they move on, until it is retaken, cut off or returned at the end of hostilities." />
+            <Row swatch={<svg width="30" height="16" aria-hidden><rect x="1" y="1" width="13" height="14" fill="#f2c9c4" /><rect x="14" y="1" width="15" height="14" fill={FACTION_COLOR.tempest} fillOpacity={0.6} /></svg>} label="Changing hands" note="The pale strip is ground about to change hands; the winner's colour follows it in from the front." />
+            <Row swatch={<svg width="30" height="12" aria-hidden><rect x="0" y="0" width="30" height="12" fill={FACTION_COLOR.empire} fillOpacity={0.7} /><line x1="2" y1="9" x2="28" y2="3" stroke="#ffffff" strokeWidth="2" /></svg>} label="Front" note="The edge of held ground. It moves with the clock, forwards and backwards." />
+            <Row swatch={<Fill color={INK.accent} opacity={0.35} hatch />} label="Contested operational area" note="A schematic theatre area the record marks as contested (Layers → Operational areas)." />
             <Row swatch={<svg width="30" height="12" aria-hidden><line x1="2" y1="6" x2="28" y2="6" stroke={INK.accent} strokeWidth="2" strokeDasharray="2 2" /></svg>} label="Reconstructed control change" note="A change of control the source does not state exactly." />
           </ul>
         </section>

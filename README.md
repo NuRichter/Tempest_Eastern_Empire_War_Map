@@ -12,7 +12,8 @@ Peta, waktu, pasukan, wilayah, pergerakan — dan bukti di balik setiap klaim.
 [Audit kanon](./docs/audit/timeline-canon-audit.md) ·
 [Register riset](./docs/research/RESEARCH_REGISTER.md) ·
 [Arsitektur](./docs/ARCHITECTURE.md) ·
-[QA](./docs/QA.md)
+[QA](./docs/QA.md) ·
+[Animasi wilayah](./docs/TERRITORIAL-ANIMATION.md)
 
 ![Revision](https://img.shields.io/badge/dataset-R5_canon_audit-d4ab57?style=flat-square)
 ![Events](https://img.shields.io/badge/events-166-2f9e7e?style=flat-square)
@@ -77,9 +78,20 @@ Kerangka waktu dibangun dari interval yang dinyatakan novel ("sebulan setelah pe
 
 **Wilayah mengikuti garis batas yang digambar**, bukan lingkaran atau poligon karangan: 20 wilayah dijiplak dari *Base Map - Blue* oleh `scripts/cartography/extract_territories.py`, dan pas di kedua gaya peta. Peran tiap negara berubah mengikuti waktu (belligerent, co-belligerent, contributor, tidak terlibat, permusuhan berakhir); kontrol yang tidak diketahui digambar abu-abu berarsir, tidak pernah dengan warna faksi. Area operasi teater tetap skematis, tapi dipotong mengikuti daratan dan batas. Detail: [`docs/CARTOGRAPHY.md`](./docs/CARTOGRAPHY.md).
 
-**Wilayah yang dikuasai & garis front (RECONSTRUCTED).** Novel tidak menggambar garis front. Seperti di video referensi, atlas menyintesis tanah yang dikuasai dari posisi dan kekuatan setiap formasi (pengaruh ∝ ∛kekuatan, dengan bobot "tanah sendiri" untuk negara pemilik): warna pihak lain tumbuh di sekitar pasukannya, dan garis putih muncul di tempat kedua warna bertemu. Lapisan ini selalu diberi label *rekonstruksi* (legenda, panel Situasi) dan bisa dimatikan; status politik wilayah tetap mengikuti event.
-
 Koordinat adalah **koordinat simulasi** pada peta fiksi — bukan lintang/bujur.
+
+## Territorial Ebb and Flow
+
+Peta ini menampilkan **tanah yang direbut dan hilang melalui ruang**, seperti empat video perang referensi — bukan warna yang memudar. Hasil forensik video (diukur bingkai demi bingkai) ada di [`docs/research/REFERENCE_VIDEO_FORENSICS.md`](./docs/research/REFERENCE_VIDEO_FORENSICS.md).
+
+- **Maju (advance):** setelah Kekaisaran menyeberangi perbatasan (EVT-0015), tanah Jura direbut dari garis depan ke arah barat mengikuti barisan pasukan, dan **tetap dikuasai** setelah pasukan lewat.
+- **Mundur & runtuh (retreat / collapse):** saat pasukan pemegangnya hancur atau terputus, tanah itu kembali — kantong menyusut **dari tepi ke dalam**, bagian tengah jatuh terakhir (mis. kamp Kekaisaran di dekat ibu kota, D+11).
+- **Rebut kembali (recapture):** pihak pemilik mendorong balik; warna pihak yang kalah mundur lebih dulu dan meninggalkan **pita pucat**, lalu warna pemenang menyusul dengan **garis front putih** di tepinya.
+- **Pendaratan:** pasukan yang muncul tanpa kontak menumbuhkan wilayah dari titiknya ke luar (blokade Isthmus di gerbang timur Dwargon).
+- **Garis waktu:** front bergerak terus-menerus mengikuti jam; berhenti saat dijeda; *scrub* maju-mundur menghasilkan gambar yang sama persis.
+- **Perubahan politik** seluruh wilayah (ikut perang, gencatan) memakai crossfade singkat satu jam simulasi — satu-satunya crossfade, seperti di referensi.
+
+Semuanya **RECONSTRUCTED**: novel tidak menggambar garis kendali, jadi tanah yang dikuasai disintesis dari posisi, kekuatan, dan nasib setiap formasi, dengan "gerbang" kanon (`data-source/campaign/front-rules.json`). Detail teknis: [`docs/TERRITORIAL-ANIMATION.md`](./docs/TERRITORIAL-ANIMATION.md) · audit kemiripan: [`docs/research/REFERENCE_MATCH_AUDIT.md`](./docs/research/REFERENCE_MATCH_AUDIT.md).
 
 ## Pasukan, ukuran, pergerakan
 
@@ -148,6 +160,8 @@ npm run verify   # compile → validate-data → validate-assets → lint → ty
 npm run qa       # QA browser sungguhan (Chromium via Puppeteer) terhadap build produksi
 npm run qa:visual       # regresi visual: 10 checkpoint vs docs/qa/checkpoints
 npm run qa:playwright   # smoke run Playwright CLI terhadap server yang sedang jalan
+npm run qa:front        # tangkapan 0/25/50/75/100 % tiap transisi wilayah besar
+npm run qa:playback     # front bergerak saat diputar, beku saat dijeda, sama setelah scrub
 ```
 
 `validate-data` menolak id duplikat, referensi yatim, NaN/Infinity, jumlah negatif, waktu mundur, pergerakan yang selesai sebelum mulai, total korban yang tidak cocok saat dihitung ulang, dan state yang berbeda antara diputar dan di-*scrub*. `test` memastikan tidak ada pasukan yang "teleport" di sepanjang rute yang digambar dan bahwa *unknown* tidak pernah tampil sebagai nol. `qa` menjalankan 40 cek, termasuk 8 lebar layar (320–1920 px), auto-slow, latensi seek, dan waktu buka dossier. Detail: [`docs/QA.md`](./docs/QA.md).

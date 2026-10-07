@@ -76,7 +76,7 @@ These are presentation, not research findings. They are listed here so nobody mi
 
 | Layer | Basis | Class | What it must not be read as |
 |---|---|---|---|
-| Held ground and front seams | Positions and strengths of the drawn formations at each frame (`src/map/field/occupation.ts`); home baseline for each belligerent's own land | RECONSTRUCTED | A line of control stated by the novels. The novels name places and formations, never a front. |
+| Held ground and front seams | Compiled history (`scripts/compile-front.ts` → `public/data/front.json`): formation positions and strengths with memory, canon gates (`front-rules.json`), collapse when cut off or destroyed, settlement at armistice; timing by propagation from the front | RECONSTRUCTED | A line of control stated by the novels. The novels name places and formations, never a front. |
 | Front strength totals | Sum of the most specific formations of each side near a front | DERIVED from the force register | A stated order of battle for that front |
 | Timeline gaps | Stretches of more than six simulated hours between consecutive events (`public/data/gaps.json`) | Derived from the placements | Periods in which "nothing happened"; only periods the record does not narrate |
 | Event pop and label timing, rolling counters | Reference documentaries (`docs/research/VISUAL-REFERENCES.md`) | Presentation | Any statement about duration or tempo |

@@ -28,7 +28,7 @@ Four war-documentary videos (kept locally in `Sources of Truth/Contoh Referensi 
 | Front strength per side | `drawFrontStrength`: one figure per side per active theatre, rotated ±35°, never upside down, summed over the most specific formations only, `+?` when a component is unknown |
 | Number styling | Bold white with faction-deep outline; size grows with value (`(n/1000)^0.18`, clamped 11–28px) |
 | Involvement levels | Territory role weights: belligerent / co-belligerent / contributor / uninvolved |
-| Two-step control change | Old state recedes to a pale trace, then the new arrives (from the Ukraine video), over 3 simulated hours |
+| Two-stage change of ground | The loser recedes first, leaving a pale band; the winner follows 30 simulated minutes later (measured in the Ukraine video: 25–27 frames). See `REFERENCE_VIDEO_FORENSICS.md` |
 | States the videos lack | Contested (hatch), unknown (grey hatch), reconstructed (dashed) |
 | Date as the strongest readout | Large `D±NN` + `HH:MM` with an explicit *SIMULATION* tag (the novels give no clock times) |
 | Speeds | 0.25× (7.5 sim-min/s) to 48× (one simulated day per second, the documentaries' pace) |

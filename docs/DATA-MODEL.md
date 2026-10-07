@@ -65,9 +65,9 @@ Killed, wounded, missing, captured and **revived** are separate fields. Scopes: 
 
 ## Derived on the client (not in the data)
 
-- **Held ground (occupation field)** — `src/map/field/occupation.ts`. RECONSTRUCTED. For each frame, every ground formation with a position projects signed influence ∝ ∛strength with a smooth `(1 − t²)²` kernel; a belligerent's own land carries a home baseline the other side must exceed; cells near the threshold are contested. The field is a pure function of the frame state, so it is deterministic and never stored. It shows *where armies stand*, not a stated line of control; the legend and the Situation panel say so. Details: `docs/CARTOGRAPHY.md`.
-- **Front seams** — the contour where the held side changes, traced by marching squares on the same field.
-- **Front strength** — the sum of the most specific drawn formations of each side within a front, never summing tiers.
+- **Held ground** — `public/data/front.json`, compiled by `scripts/compile-front.ts` (RECONSTRUCTED). A 352 × 272 grid; per cell the frames at which its holder changes (CSR: `counts`, `times`, `holders`, base64 typed arrays) and its territory (`owner`); `episodes` group the flips into transitions (`ADVANCE`, `RECAPTURE`, `COLLAPSE`, `SETTLEMENT`) with gaining and losing side, start / mid / end frame, cell count, territories, formations and nearest event. `src/map/field/front.ts` evaluates it for any continuous time (signed time fields `E`, `A`, pale band `P`/`Q`); the front is the isochrone `t_flip = T`. Canon gates for when a side may take ground in a territory: `data-source/campaign/front-rules.json`. Details: `docs/TERRITORIAL-ANIMATION.md`.
+- **Front seams** — the zero contour of the held-ground fields, traced by marching squares.
+- **Front strength** — the sum of the most specific drawn formations of each side within a front, never summing tiers; on the map it counts linearly to each newly recorded value over one simulated hour (`displayStrengthAt`), dossiers show recorded figures.
 
 ## Runtime additions
 

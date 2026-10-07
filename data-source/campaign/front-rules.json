@@ -1,0 +1,12 @@
+{
+  "$schema": "internal://front-rules",
+  "about": "Canon gates for the held-ground simulation (scripts/compile-front.ts). A side can take ground in a territory only from the event that opens that front. Each gate names its basis.",
+  "gates": [
+    {
+      "territoryId": "T-JTF",
+      "side": "empire",
+      "fromEvent": "EVT-0015",
+      "basis": "The Imperial Army has crossed the Tempest border (V13 Ch1). Before it, the column is inside the Empire and holds no Jura ground, whatever the reach of its numbers."
+    }
+  ]
+}

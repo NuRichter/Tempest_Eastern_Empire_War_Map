@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import maplibregl, { type Map as MapLibreMap, type StyleSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
-import { atlasBounds, atlasCorners, campaignBounds, ringToLngLat, simBoundsToLngLat, simToLngLatTuple } from '@/lib/coords';
+import { atlasBounds, atlasCorners, campaignBounds, lngLatToSim, ringToLngLat, simBoundsToLngLat, simToLngLatTuple } from '@/lib/coords';
 import { controlKey, FACTION_COLOR, factionKey, INK, MAP_THEME, mix, ROLE_FILL_WEIGHT } from '@/lib/palette';
-import { computeField, GRID_H, GRID_W, paintField } from '@/map/field/occupation';
+import { CANVAS_H, CANVAS_W, computeField, FULL_WINDOW, loadFront, paintField, type FieldWindow } from '@/map/field/occupation';
 import { setField } from '@/map/field/fieldStore';
 import { territoryControlAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
@@ -177,33 +177,33 @@ function territoryFeatures(data: Dataset, frame: number, selectedId: string | nu
   const features: GeoJSON.Feature[] = [];
   for (const t of data.territories) {
     const { segment, previous, transition } = territoryControlAt(t, frame);
-    const fillFor = (s: typeof segment) => (s.status === 'UNKNOWN' ? FACTION_COLOR.unknown : FACTION_COLOR[factionKey(s.controller)]);
-    const weightFor = (s: typeof segment) => (s.status === 'UNKNOWN' ? 0.25 : ROLE_FILL_WEIGHT[s.role] ?? 0.12);
-    let fill = fillFor(segment);
-    let weight = weightFor(segment);
-    // Two-step change: the old state recedes to a pale trace, then the new one
-    // arrives. A reader sees that something changed, and from what to what.
-    if (previous && transition < 1) {
-      if (transition < 0.4) {
-        fill = fillFor(previous);
-        weight = weightFor(previous) * (1 - (transition / 0.4) * 0.8);
-      } else {
-        const t2 = (transition - 0.4) / 0.6;
-        fill = mix(fillFor(previous), fillFor(segment), t2);
-        weight = weightFor(previous) * 0.2 * (1 - t2) + weightFor(segment) * t2;
-      }
-    }
-    const uninvolved = segment.role === 'UNINVOLVED';
     const theme = MAP_THEME[prefs.theme];
     const hiddenNation = t.nationId ? useSimulation.getState().filters.hiddenNations.includes(t.nationId) : false;
     const hiddenTerritory = useSimulation.getState().filters.hiddenTerritories.includes(t.id);
+    // A whole territory changing its part in the war is the one change the
+    // reference maps crossfade (a country joining a side): a short linear blend
+    // of colour and weight. Ground changing hands is the held-ground layer.
+    const look = (s: typeof segment) => {
+      if (s.role === 'UNINVOLVED') return { fill: theme.uninvolvedFill, opacity: theme.uninvolvedOpacity };
+      const weight = s.status === 'UNKNOWN' ? 0.25 : ROLE_FILL_WEIGHT[s.role] ?? 0.12;
+      return { fill: s.status === 'UNKNOWN' ? FACTION_COLOR.unknown : FACTION_COLOR[factionKey(s.controller)], opacity: prefs.territoryOpacity * weight };
+    };
+    const now = look(segment);
+    let fill = now.fill;
+    let opacity = now.opacity;
+    if (previous && transition < 1) {
+      const was = look(previous);
+      fill = mix(was.fill, now.fill, transition);
+      opacity = was.opacity + (now.opacity - was.opacity) * transition;
+    }
+    const uninvolved = segment.role === 'UNINVOLVED' && transition >= 1;
     features.push({
       type: 'Feature',
       id: t.id,
       properties: {
         id: t.id,
-        fill: uninvolved ? theme.uninvolvedFill : fill,
-        opacity: hiddenNation || hiddenTerritory ? 0 : uninvolved ? theme.uninvolvedOpacity : prefs.territoryOpacity * weight,
+        fill,
+        opacity: hiddenNation || hiddenTerritory ? 0 : opacity,
         line: uninvolved ? theme.border : prefs.theme === 'documentary' ? theme.border : mix(fill, '#ffffff', 0.25),
         reconstructed: Boolean(previous && transition < 1 && segment.provenance !== 'CANONICAL'),
         hatch: segment.status === 'UNKNOWN',
@@ -398,15 +398,14 @@ export function MapView() {
 
   const fieldCanvas = useRef<HTMLCanvasElement | null>(null);
   const occupationOn = layers.occupation;
-  const hiddenForcesKey = useSimulation((s) => s.filters.hiddenForces.join(','));
 
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready) return;
     if (!fieldCanvas.current) {
       fieldCanvas.current = document.createElement('canvas');
-      fieldCanvas.current.width = GRID_W;
-      fieldCanvas.current.height = GRID_H;
+      fieldCanvas.current.width = CANVAS_W;
+      fieldCanvas.current.height = CANVAS_H;
     }
     if (!map.getSource('occupation')) {
       map.addSource('occupation', { type: 'canvas', canvas: fieldCanvas.current, coordinates: atlasCorners(), animate: false });
@@ -417,8 +416,10 @@ export function MapView() {
     }
   }, [ready]);
 
-  // Recompute at most ~8 times a second; the field depends on positions that
-  // move continuously, so it follows the clock rather than integer frames.
+  // Held ground follows the continuous clock: re-evaluated on animation frames
+  // whenever T moves (at most ~30 times a second), frozen when it does not.
+  // The history is precomputed, so a frame costs one field evaluation and one
+  // canvas paint; the same T always gives the same picture (scrub = play).
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready || !data) return;
@@ -427,47 +428,70 @@ export function MapView() {
       if (map.getLayer('occupation')) map.setLayoutProperty('occupation', 'visibility', 'none');
       return;
     }
-    if (map.getLayer('occupation')) map.setLayoutProperty('occupation', 'visibility', 'visible');
-    let last = -1;
-    let lastSig = '';
-    let timer = 0;
-    let settling = -1;
-    const hidden = new Set(hiddenForcesKey ? hiddenForcesKey.split(',') : []);
-    const update = () => {
-      const clock = useSimulation.getState().clock;
-      const frame = clock ? clock.frame : 0;
-      // While the reader scrubs (big jumps between ticks), wait for the
-      // position to settle instead of recomputing for every intermediate frame.
-      const jump = last >= 0 && Math.abs(frame - last) > 36;
-      if (jump && settling !== frame) {
-        settling = frame;
-        timer = window.setTimeout(update, 125);
+    let raf = 0;
+    let cancelled = false;
+    let lastT = -1;
+    let lastPaint = 0;
+    let lastTheme = '';
+    let lastWin = '';
+    let pauseTimer = 0;
+    // The paint window follows the view (with a margin), so the canvas spends
+    // its pixels where the reader looks and the front stays crisp at any zoom.
+    const viewWindow = (): FieldWindow => {
+      if (map.getProjection()?.type === 'globe') return FULL_WINDOW;
+      const b = map.getBounds();
+      const a = lngLatToSim(b.getWest(), b.getNorth());
+      const c = lngLatToSim(b.getEast(), b.getSouth());
+      const mx = (c.x - a.x) * 0.25;
+      const my = (c.y - a.y) * 0.25;
+      const q = (v: number) => Math.round(v * 512) / 512;
+      const win = { x0: q(Math.max(0, a.x - mx)), y0: q(Math.max(0, a.y - my)), x1: q(Math.min(1, c.x + mx)), y1: q(Math.min(1, c.y + my)) };
+      if (win.x1 - win.x0 > 0.85 || win.x1 <= win.x0 || win.y1 <= win.y0) return FULL_WINDOW;
+      return win;
+    };
+    const src = () => map.getSource('occupation') as maplibregl.CanvasSource | undefined;
+    void loadFront().then((front) => {
+      if (cancelled) return;
+      if (!front) {
+        if (map.getLayer('occupation')) map.setLayoutProperty('occupation', 'visibility', 'none');
         return;
       }
-      settling = -1;
-      if (Math.abs(frame - last) >= 0.5 || last < 0) {
-        last = frame;
-        const field = computeField(data, frame, hidden);
-        const prefs = usePreferences.getState();
-        if (field.signature !== lastSig || prefs.theme !== themeRef.current) {
-          lastSig = field.signature;
-          themeRef.current = prefs.theme;
-          paintField(fieldCanvas.current!, field, { empire: FACTION_COLOR.empire, allied: FACTION_COLOR.tempest, contested: INK.accent }, MAP_THEME[prefs.theme].occupiedAlpha);
-          const src = map.getSource('occupation') as maplibregl.CanvasSource | undefined;
-          // A static canvas source re-uploads only while playing; play for one frame.
-          src?.play();
-          map.once('render', () => src?.pause());
-          map.triggerRepaint();
+      if (map.getLayer('occupation')) map.setLayoutProperty('occupation', 'visibility', 'visible');
+      const tick = (now: number) => {
+        raf = requestAnimationFrame(tick);
+        const clock = useSimulation.getState().clock;
+        const T = clock ? clock.frame : 0;
+        const theme = usePreferences.getState().theme;
+        const win = viewWindow();
+        const winKey = `${win.x0},${win.y0},${win.x1},${win.y1}`;
+        if (Math.abs(T - lastT) < 0.02 && theme === lastTheme && winKey === lastWin) return;
+        if (now - lastPaint < 33) return;
+        lastPaint = now;
+        const timeChanged = Math.abs(T - lastT) >= 0.02 || lastT < 0;
+        lastT = T;
+        lastTheme = theme;
+        const field = computeField(front, T);
+        paintField(fieldCanvas.current!, data, field, { empire: FACTION_COLOR.empire, allied: FACTION_COLOR.tempest }, MAP_THEME[theme].occupiedAlpha, win);
+        if (winKey !== lastWin) {
+          lastWin = winKey;
+          src()?.setCoordinates([simToLngLatTuple(win.x0, win.y0), simToLngLatTuple(win.x1, win.y0), simToLngLatTuple(win.x1, win.y1), simToLngLatTuple(win.x0, win.y1)]);
         }
-        setField(field);
-      }
-      timer = window.setTimeout(update, 125);
+        // A canvas source re-uploads only while playing: play during change, pause when idle.
+        src()?.play();
+        window.clearTimeout(pauseTimer);
+        pauseTimer = window.setTimeout(() => src()?.pause(), 250);
+        map.triggerRepaint();
+        if (timeChanged) setField(field);
+      };
+      raf = requestAnimationFrame(tick);
+    });
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(raf);
+      window.clearTimeout(pauseTimer);
     };
-    update();
-    return () => window.clearTimeout(timer);
-  }, [data, ready, occupationOn, hiddenForcesKey, theme]);
+  }, [data, ready, occupationOn, theme]);
 
-  const themeRef = useRef<string>('');
 
   /* -- layer visibility & border opacity ---------------------------- */
 

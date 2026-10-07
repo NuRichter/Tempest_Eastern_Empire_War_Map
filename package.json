@@ -5,7 +5,7 @@
   "description": "Fan-made campaign atlas of the Tempest-Eastern Empire War (Tensura LN vols 12-16): canon-audited timeline, traced territories, army sizes and movements, with every reconstruction labelled. Not official Tensura material.",
   "author": "NuRichter",
   "scripts": {
-    "compile-data": "tsx scripts/compile-data.ts",
+    "compile-data": "tsx scripts/compile-data.ts && tsx scripts/compile-front.ts",
     "validate-data": "tsx scripts/validate-data.ts",
     "validate-assets": "tsx scripts/validate-assets.ts",
     "prebuild": "npm run compile-data && npm run validate-data && npm run validate-assets",
@@ -18,7 +18,9 @@
     "verify": "npm run compile-data && npm run validate-data && npm run validate-assets && npm run lint && npm run typecheck && npm run test && npm run build",
     "qa": "tsx scripts/browser-qa.ts",
     "qa:visual": "tsx scripts/visual-regression.ts",
-    "qa:playwright": "node scripts/qa-playwright.mjs"
+    "qa:playwright": "node scripts/qa-playwright.mjs",
+    "qa:front": "tsx scripts/capture-front.ts",
+    "qa:playback": "tsx scripts/capture-playback.ts"
   },
   "dependencies": {
     "lucide-react": "^0.469.0",

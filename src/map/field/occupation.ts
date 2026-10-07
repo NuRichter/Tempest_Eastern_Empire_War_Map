@@ -1,82 +1,115 @@
 /**
- * Synthesised occupation and fronts — RECONSTRUCTED.
+ * Held ground and fronts on the map — RECONSTRUCTED.
  *
- * The novels never draw a front line. The reference documentaries show war as
- * ground changing colour around armies, so the atlas synthesises that picture
- * from what the record does hold: where each formation is and how strong it is.
+ * The history is precomputed (scripts/compile-front.ts → public/data/front.json)
+ * and evaluated here for the continuous clock time T (src/map/field/front.ts).
+ * What the reference war maps do, and this module reproduces
+ * (docs/research/REFERENCE_ANIMATION_DNA.md):
  *
- *   influence(p) = Σ strength^(1/3) · kernel(distance / reach)
- *   reach        = grows with strength^(1/3), clamped
- *   home ground  = a defender's own territory adds a baseline it must be beaten by
+ *   - ground changes hands by a moving boundary, not a fade: each pixel is
+ *     either held or not, and the boundary is the isochrone t_flip = T;
+ *   - the loser recedes first and a pale band (the loser's colour, lightened)
+ *     shows the ground about to change hands;
+ *   - the same T always gives the same picture, forwards or backwards.
  *
- * A cell of a belligerent's territory is drawn occupied by the other side where
- * that side's influence exceeds the owner's (forces + baseline); the front is
- * the contour where the two balance. Formations in the air or under ground
- * (airships, the labyrinth) hold no ground and are ignored.
- *
- * Deterministic: the same frame always yields the same field. Everything this
- * module draws is labelled RECONSTRUCTED in the legend and the Situation panel.
+ * Coastlines stay crisp: only land pixels of the traced territories are painted.
  */
 
 import type { Dataset } from '@/data/loader';
-import { forcePositionAt, forceSnapshotAt, territoryControlAt } from '@/simulation/resolver';
-import { factionKey } from '@/lib/palette';
+import {
+  createFields,
+  decodeFront,
+  evaluateFront,
+  frontSeams,
+  heldShare,
+  HOLDER_ALLIED,
+  HOLDER_EMPIRE,
+  type Front,
+  type FrontFields,
+  type FrontFile,
+} from '@/map/field/front';
 
-export const GRID_W = 1056;
-export const GRID_H = 814; // 2641 x 2035 at two fifths
-const ASPECT = GRID_H / GRID_W; // y units are shorter than x units in pixels
+/** Paint canvas: a fixed pixel budget spread over the visible window of the map. */
+export const CANVAS_W = 1280;
+export const CANVAS_H = 960;
+/** Land mask resolution: the Base Map pixels, so coastlines match it. */
+const MASK_W = 2641;
+const MASK_H = 2035;
 
-type Side = 'empire' | 'allied';
+/** A window of the map in simulation coordinates (0..1). */
+export interface FieldWindow { x0: number; y0: number; x1: number; y1: number }
+export const FULL_WINDOW: FieldWindow = { x0: 0, y0: 0, x1: 1, y1: 1 };
 
 export interface FieldResult {
-  /** Per cell: 0 nothing, 1 occupied by the Empire, 2 occupied by the allies, 3 contested (Empire ahead), 4 contested (allies ahead). */
-  cls: Uint8Array;
+  front: Front;
+  fields: FrontFields;
+  T: number;
   /** Front segments in simulation coordinates: x0,y0,x1,y1 repeated. */
   seams: Float32Array;
-  /** Occupied share of each defender territory, 0..1, for the Situation panel. */
+  /** Share of each territory held by the other side, 0..1, for the Situation panel. */
   occupiedShare: Record<string, number>;
-  signature: string;
 }
 
-interface Source {
-  side: Side;
-  x: number;
-  y: number;
-  w: number;
-  r: number;
+let frontPromise: Promise<Front | null> | null = null;
+
+/** Loads the held-ground history once. A missing or invalid file hides the layer. */
+export function loadFront(): Promise<Front | null> {
+  if (!frontPromise) {
+    frontPromise = fetch('/data/front.json')
+      .then((r) => (r.ok ? (r.json() as Promise<FrontFile>) : null))
+      .then((f) => (f ? decodeFront(f) : null))
+      .catch(() => null);
+  }
+  return frontPromise;
 }
 
-let ownerGrid: Int16Array | null = null;
+let ownerGrid: Int8Array | null = null;
 let ownerData: Dataset | null = null;
-const territoryCells = new Map<number, number>();
 
 /**
- * Rasterises the traced territories once: cell -> territory index (-1 = sea).
- * Each territory is drawn alone and a cell is taken at half coverage, so the
- * antialiased edge between two neighbours never blends into a third index.
+ * Land mask at the Base Map resolution: territory index per map pixel
+ * (-1 = sea). Each territory is drawn alone and read back only inside its own
+ * bounding box; a pixel is taken at half coverage, so neighbours never blend.
  */
-function ensureOwnerGrid(data: Dataset): Int16Array {
+function ensureOwnerGrid(data: Dataset): Int8Array {
   if (ownerGrid && ownerData === data) return ownerGrid;
   const canvas = document.createElement('canvas');
-  canvas.width = GRID_W;
-  canvas.height = GRID_H;
+  canvas.width = MASK_W;
+  canvas.height = MASK_H;
   const ctx = canvas.getContext('2d', { willReadFrequently: true })!;
-  ownerGrid = new Int16Array(GRID_W * GRID_H).fill(-1);
-  territoryCells.clear();
+  ownerGrid = new Int8Array(MASK_W * MASK_H).fill(-1);
   data.territories.forEach((t, i) => {
-    ctx.clearRect(0, 0, GRID_W, GRID_H);
+    let minX = MASK_W;
+    let minY = MASK_H;
+    let maxX = 0;
+    let maxY = 0;
+    ctx.clearRect(0, 0, MASK_W, MASK_H);
     ctx.fillStyle = '#000';
     ctx.beginPath();
     for (const poly of t.geometry.coordinates) {
-      poly[0].forEach(([x, y], k) => (k ? ctx.lineTo(x * GRID_W, y * GRID_H) : ctx.moveTo(x * GRID_W, y * GRID_H)));
+      poly[0].forEach(([x, y], k) => {
+        const px = x * MASK_W;
+        const py = y * MASK_H;
+        minX = Math.min(minX, px);
+        maxX = Math.max(maxX, px);
+        minY = Math.min(minY, py);
+        maxY = Math.max(maxY, py);
+        if (k) ctx.lineTo(px, py);
+        else ctx.moveTo(px, py);
+      });
       ctx.closePath();
     }
     ctx.fill();
-    const alpha = ctx.getImageData(0, 0, GRID_W, GRID_H).data;
-    for (let c = 0; c < GRID_W * GRID_H; c += 1) {
-      if (alpha[c * 4 + 3] >= 128 && ownerGrid![c] < 0) {
-        ownerGrid![c] = i;
-        territoryCells.set(i, (territoryCells.get(i) ?? 0) + 1);
+    const bx = Math.max(0, Math.floor(minX));
+    const by = Math.max(0, Math.floor(minY));
+    const bw = Math.min(MASK_W, Math.ceil(maxX) + 1) - bx;
+    const bh = Math.min(MASK_H, Math.ceil(maxY) + 1) - by;
+    if (bw <= 0 || bh <= 0) return;
+    const alpha = ctx.getImageData(bx, by, bw, bh).data;
+    for (let y = 0; y < bh; y += 1) {
+      for (let x = 0; x < bw; x += 1) {
+        const c = (by + y) * MASK_W + bx + x;
+        if (alpha[(y * bw + x) * 4 + 3] >= 128 && ownerGrid![c] < 0) ownerGrid![c] = i;
       }
     }
   });
@@ -84,225 +117,175 @@ function ensureOwnerGrid(data: Dataset): Int16Array {
   return ownerGrid;
 }
 
-function sideOf(faction: string | null | undefined): Side | null {
-  const k = factionKey(faction);
-  if (k === 'empire') return 'empire';
-  if (k === 'tempest' || k === 'dwargon' || k === 'neutral') return 'allied';
-  return null;
-}
-
-function sources(data: Dataset, frame: number, hidden: Set<string>): Source[] {
-  const drawn = new Map<string, Source>();
-  for (const force of data.forces) {
-    if (hidden.has(force.id)) continue;
-    const snap = forceSnapshotAt(data, force.id, Math.floor(frame));
-    if (!snap || /DESTROY|ANNIHILAT|CAPTURED|PRISONER|RESURRECTED/i.test(snap.status)) continue;
-    const pos = forcePositionAt(data, force.id, frame);
-    if (!pos) continue;
-    const place = pos.placeId ? data.placeById.get(pos.placeId) : null;
-    if (place && (place.altitude === 'AIR' || place.altitude === 'SUBSURFACE')) continue;
-    if (/air|airship|flying|fleet/i.test(force.unitType)) continue;
-    const side = sideOf(force.faction);
-    if (!side) continue;
-    const strength = typeof snap.strength === 'number' ? snap.strength : 2000;
-    if (strength < 50) continue; // single combatants hold no ground
-    const w = Math.cbrt(strength);
-    const r = Math.min(0.055, Math.max(0.012, 0.0011 * w));
-    drawn.set(force.id, { side, x: pos.x, y: pos.y, w, r });
-  }
-  // A parent and its subordinates are the same soldiers: keep the most specific.
-  for (const force of data.forces) {
-    if (drawn.has(force.id) && force.childIds.some((c) => drawn.has(c))) drawn.delete(force.id);
-  }
-  return [...drawn.values()];
-}
-
-let lastResult: FieldResult | null = null;
-
-export function computeField(data: Dataset, frame: number, hiddenForces: Set<string> = new Set()): FieldResult {
-  const owner = ensureOwnerGrid(data);
-  const src = sources(data, frame, hiddenForces);
-  const signature = src.map((s) => `${s.side}${s.x.toFixed(3)},${s.y.toFixed(3)},${Math.round(s.w)}`).sort().join('|') +
-    '#' + data.territories.map((t) => territoryControlAt(t, frame).segment.role).join('');
-  // Same formations in the same places: the field is the same.
-  if (lastResult && lastResult.signature === signature && ownerData === data) return lastResult;
-
-  // Which side owns each territory right now, and whether it is at war.
-  const ownerSide: (Side | null)[] = data.territories.map((t) => {
-    const seg = territoryControlAt(t, frame).segment;
-    if (seg.role === 'UNINVOLVED' || seg.role === 'ARMISTICE' || seg.status === 'UNKNOWN') return null;
-    return sideOf(seg.controller);
-  });
-
-  const n = GRID_W * GRID_H;
-  const diff = new Float32Array(n); // empire influence minus allied influence, with home baselines
-  const cls = new Uint8Array(n);
-  const empireCells = new Uint32Array(data.territories.length);
-  if (src.length) {
-    for (const s of src) {
-      const cx = s.x * GRID_W;
-      const cy = s.y * GRID_H;
-      const rr = s.r * GRID_W;
-      const x0 = Math.max(0, Math.floor(cx - rr));
-      const x1 = Math.min(GRID_W - 1, Math.ceil(cx + rr));
-      const y0 = Math.max(0, Math.floor(cy - rr));
-      const y1 = Math.min(GRID_H - 1, Math.ceil(cy + rr));
-      const sign = s.side === 'empire' ? 1 : -1;
-      for (let y = y0; y <= y1; y += 1) {
-        const dy = (y + 0.5 - cy) / rr;
-        for (let x = x0; x <= x1; x += 1) {
-          const dx = (x + 0.5 - cx) / rr;
-          const t = dx * dx + dy * dy;
-          if (t >= 1) continue;
-          const k = (1 - t) * (1 - t);
-          diff[y * GRID_W + x] += sign * s.w * k;
-        }
-      }
-    }
-  }
-  // Home ground: a belligerent's own land must be out-weighed to be occupied.
-  const BASE = 18;
-  // Contested margin, in influence units, either side of the balance line.
-  const MARGIN = 4;
-  for (let i = 0; i < n; i += 1) {
-    const t = owner[i];
-    if (t < 0) continue;
-    const os = ownerSide[t];
-    if (!os) continue;
-    const v = diff[i];
-    if (os === 'allied' && v > BASE) {
-      cls[i] = v - BASE < MARGIN ? 3 : 1;
-      empireCells[t] += 1;
-    } else if (os === 'empire' && -v > BASE) {
-      cls[i] = -v - BASE < MARGIN ? 4 : 2;
-    }
-    diff[i] = os === 'allied' ? v - BASE : os === 'empire' ? -v - BASE : -1;
-  }
-
-  // Held ground must be connected to the army holding it. Where a large force's
-  // reach outruns a stronger force standing on top of it, the sum leaves a
-  // detached ring; such a ring holds no soldiers of its side and is dropped.
-  const seeds: Record<1 | 2, number[]> = { 1: [], 2: [] };
-  for (const s of src) {
-    const x = Math.min(GRID_W - 1, Math.max(0, Math.floor(s.x * GRID_W)));
-    const y = Math.min(GRID_H - 1, Math.max(0, Math.floor(s.y * GRID_H)));
-    seeds[s.side === 'empire' ? 1 : 2].push(y * GRID_W + x);
-  }
-  const held = (c: number, side: 1 | 2) => (side === 1 ? c === 1 || c === 3 : c === 2 || c === 4);
-  const keep = new Uint8Array(n);
-  for (const side of [1, 2] as const) {
-    const stack: number[] = [];
-    for (const s of seeds[side]) {
-      // A force stands near, not exactly on, its held cells: look a few cells around it.
-      for (let dy = -3; dy <= 3; dy += 1) {
-        for (let dx = -3; dx <= 3; dx += 1) {
-          const i = s + dy * GRID_W + dx;
-          if (i >= 0 && i < n && held(cls[i], side) && !keep[i]) {
-            keep[i] = 1;
-            stack.push(i);
-          }
-        }
-      }
-    }
-    while (stack.length) {
-      const i = stack.pop()!;
-      const x = i % GRID_W;
-      for (const j of [x > 0 ? i - 1 : -1, x < GRID_W - 1 ? i + 1 : -1, i - GRID_W, i + GRID_W]) {
-        if (j >= 0 && j < n && !keep[j] && held(cls[j], side)) {
-          keep[j] = 1;
-          stack.push(j);
-        }
-      }
-    }
-  }
-  for (let i = 0; i < n; i += 1) {
-    if (cls[i] && !keep[i]) {
-      if (cls[i] === 1 || cls[i] === 3) empireCells[owner[i]] -= 1;
-      cls[i] = 0;
-      diff[i] = -1;
-    }
-  }
-
-  // Front: marching squares on the occupation margin (diff = 0) inside land.
-  const segs: number[] = [];
-  const at = (x: number, y: number) => diff[y * GRID_W + x];
-  for (let y = 0; y < GRID_H - 1; y += 1) {
-    for (let x = 0; x < GRID_W - 1; x += 1) {
-      const a = at(x, y);
-      const b = at(x + 1, y);
-      const c = at(x + 1, y + 1);
-      const d = at(x, y + 1);
-      const code = (a > 0 ? 8 : 0) | (b > 0 ? 4 : 0) | (c > 0 ? 2 : 0) | (d > 0 ? 1 : 0);
-      if (code === 0 || code === 15) continue;
-      // Only where the whole cell is land (no seam along coasts or border gaps).
-      if (owner[y * GRID_W + x] < 0 || owner[y * GRID_W + x + 1] < 0 || owner[(y + 1) * GRID_W + x] < 0 || owner[(y + 1) * GRID_W + x + 1] < 0) continue;
-      const lerp = (p: number, q: number) => (Math.abs(p - q) < 1e-6 ? 0.5 : p / (p - q));
-      const top: [number, number] = [x + lerp(a, b), y];
-      const right: [number, number] = [x + 1, y + lerp(b, c)];
-      const bottom: [number, number] = [x + lerp(d, c), y + 1];
-      const left: [number, number] = [x, y + lerp(a, d)];
-      const pairs: [[number, number], [number, number]][] = [];
-      switch (code) {
-        case 1: case 14: pairs.push([left, bottom]); break;
-        case 2: case 13: pairs.push([bottom, right]); break;
-        case 3: case 12: pairs.push([left, right]); break;
-        case 4: case 11: pairs.push([top, right]); break;
-        case 6: case 9: pairs.push([top, bottom]); break;
-        case 7: case 8: pairs.push([left, top]); break;
-        case 5: pairs.push([left, top], [bottom, right]); break;
-        case 10: pairs.push([top, right], [left, bottom]); break;
-      }
-      for (const [p, q] of pairs) segs.push((p[0] + 0.5) / GRID_W, (p[1] + 0.5) / GRID_H, (q[0] + 0.5) / GRID_W, (q[1] + 0.5) / GRID_H);
-    }
-  }
-
-  const occupiedShare: Record<string, number> = {};
-  data.territories.forEach((t, i) => {
-    if (empireCells[i]) occupiedShare[t.id] = empireCells[i] / (territoryCells.get(i) ?? 1);
-  });
-  void ASPECT;
-  lastResult = { cls, seams: new Float32Array(segs), occupiedShare, signature };
-  return lastResult;
-}
+let fieldsCache: FrontFields | null = null;
+let tmp: Float32Array | null = null;
 
 /**
- * Paints the occupation classes into a canvas the size of the grid. The
- * contested margin fades the holder's colour out rather than adding a third
- * hue, and a light blur softens the cell edges, so the held ground reads as a
- * continuous area with the white front on its edge, as in the reference films.
+ * A 3×3 box filter over a time field (rendering only; the data and the tests
+ * use exact values). It rounds the cell-sized steps out of the contour so the
+ * front reads as a smooth line, as in the reference maps.
  */
+function smooth(front: Front, f: Float32Array): void {
+  const { w, h } = front;
+  if (!tmp || tmp.length !== f.length) tmp = new Float32Array(f.length);
+  tmp.set(f);
+  for (let y = 1; y < h - 1; y += 1) {
+    for (let x = 1; x < w - 1; x += 1) {
+      const i = y * w + x;
+      f[i] = (tmp[i - w - 1] + tmp[i - w] + tmp[i - w + 1] + tmp[i - 1] + tmp[i] + tmp[i + 1] + tmp[i + w - 1] + tmp[i + w] + tmp[i + w + 1]) / 9;
+    }
+  }
+}
+
+export function computeField(front: Front, T: number): FieldResult {
+  if (!fieldsCache || fieldsCache.E.length !== front.w * front.h) fieldsCache = createFields(front);
+  const fields = evaluateFront(front, T, fieldsCache);
+  smooth(front, fields.E);
+  smooth(front, fields.A);
+  smooth(front, fields.P);
+  smooth(front, fields.Q);
+  const share = heldShare(front, fields);
+  const occupiedShare: Record<string, number> = {};
+  for (const [id, s] of Object.entries(share)) occupiedShare[id] = Math.max(s.empire, s.allied);
+  return { front, fields, T, seams: frontSeams(front, fields), occupiedShare };
+}
+
+/** Bounding box of the cells that ever change hands, in simulation coordinates. */
+let activeBox: { front: Front; x0: number; x1: number; y0: number; y1: number } | null = null;
+function activeBounds(front: Front) {
+  if (activeBox?.front === front) return activeBox;
+  let x0 = front.w;
+  let x1 = -1;
+  let y0 = front.h;
+  let y1 = -1;
+  for (const i of front.active) {
+    const x = i % front.w;
+    const y = Math.floor(i / front.w);
+    x0 = Math.min(x0, x);
+    x1 = Math.max(x1, x);
+    y0 = Math.min(y0, y);
+    y1 = Math.max(y1, y);
+  }
+  activeBox = { front, x0: (x0 - 2) / front.w, x1: (x1 + 3) / front.w, y0: (y0 - 2) / front.h, y1: (y1 + 3) / front.h };
+  return activeBox;
+}
+
+const rgb = (hex: string): [number, number, number] => [1, 3, 5].map((i) => Number.parseInt(hex.slice(i, i + 2), 16)) as [number, number, number];
+const mix = (a: [number, number, number], b: [number, number, number], k: number): [number, number, number] =>
+  [0, 1, 2].map((i) => Math.round(a[i] + (b[i] - a[i]) * k)) as [number, number, number];
+
 let scratch: HTMLCanvasElement | null = null;
-export function paintField(canvas: HTMLCanvasElement, field: FieldResult, colors: { empire: string; allied: string; contested: string }, alpha: number): void {
-  if (canvas.width !== GRID_W) {
-    canvas.width = GRID_W;
-    canvas.height = GRID_H;
+let image: ImageData | null = null;
+const colI0 = new Int32Array(CANVAS_W);
+const colT = new Float32Array(CANVAS_W);
+const colM = new Int32Array(CANVAS_W);
+const rowI0 = new Int32Array(CANVAS_H);
+const rowT = new Float32Array(CANVAS_H);
+const rowM = new Int32Array(CANVAS_H);
+
+/**
+ * Paints the held ground at the field time over `win` of the map into
+ * `canvas` (CANVAS_W x CANVAS_H): about one canvas pixel per screen pixel when
+ * the window follows the view, so the front stays crisp at any zoom.
+ * Held: the side colour at `alpha`. Pale band: the loser colour lightened
+ * (owner land: a white wash). A light blur antialiases the edge only.
+ */
+export function paintField(canvas: HTMLCanvasElement, data: Dataset, field: FieldResult, colors: { empire: string; allied: string }, alpha: number, win: FieldWindow = FULL_WINDOW): void {
+  const { front, fields } = field;
+  if (canvas.width !== CANVAS_W || canvas.height !== CANVAS_H) {
+    canvas.width = CANVAS_W;
+    canvas.height = CANVAS_H;
   }
   if (!scratch) {
     scratch = document.createElement('canvas');
-    scratch.width = GRID_W;
-    scratch.height = GRID_H;
+    scratch.width = CANVAS_W;
+    scratch.height = CANVAS_H;
   }
-  // CPU-backed contexts: the blur and the texture upload stay off the GPU
-  // process, which matters most on software GL.
   const sctx = scratch.getContext('2d', { willReadFrequently: true })!;
-  const img = sctx.createImageData(GRID_W, GRID_H);
-  const rgb = (hex: string) => [1, 3, 5].map((i) => Number.parseInt(hex.slice(i, i + 2), 16));
+  if (!image) image = sctx.createImageData(CANVAS_W, CANVAS_H);
+  const owner = ensureOwnerGrid(data);
+  const px = image.data;
+  px.fill(0);
+  const cw = front.w;
+  const ch = front.h;
+  const sx = (win.x1 - win.x0) / CANVAS_W;
+  const sy = (win.y1 - win.y0) / CANVAS_H;
+  for (let x = 0; x < CANVAS_W; x += 1) {
+    const u = win.x0 + (x + 0.5) * sx;
+    const g = Math.min(cw - 1.0001, Math.max(0, u * cw - 0.5));
+    colI0[x] = Math.floor(g);
+    colT[x] = g - colI0[x];
+    colM[x] = u < 0 || u >= 1 ? -1 : Math.floor(u * MASK_W);
+  }
+  for (let y = 0; y < CANVAS_H; y += 1) {
+    const v = win.y0 + (y + 0.5) * sy;
+    const g = Math.min(ch - 1.0001, Math.max(0, v * ch - 0.5));
+    rowI0[y] = Math.floor(g);
+    rowT[y] = g - rowI0[y];
+    rowM[y] = v < 0 || v >= 1 ? -1 : Math.floor(v * MASK_H);
+  }
+  // Only the part of the window where ground ever changes hands is visited.
+  const box = activeBounds(front);
+  const xa = Math.max(0, Math.floor((box.x0 - win.x0) / sx));
+  const xb = Math.min(CANVAS_W - 1, Math.ceil((box.x1 - win.x0) / sx));
+  const ya = Math.max(0, Math.floor((box.y0 - win.y0) / sy));
+  const yb = Math.min(CANVAS_H - 1, Math.ceil((box.y1 - win.y0) / sy));
   const empire = rgb(colors.empire);
   const allied = rgb(colors.allied);
+  const white: [number, number, number] = [255, 255, 255];
+  const paleEmpire = mix(empire, white, 0.62);
+  const paleAllied = mix(allied, white, 0.62);
   const a = Math.round(alpha * 255);
-  for (let i = 0; i < field.cls.length; i += 1) {
-    const c = field.cls[i];
-    if (!c) continue;
-    const col = c === 2 || c === 4 ? allied : empire;
-    img.data[i * 4] = col[0];
-    img.data[i * 4 + 1] = col[1];
-    img.data[i * 4 + 2] = col[2];
-    img.data[i * 4 + 3] = c >= 3 ? Math.round(a * 0.5) : a;
+  const { E, A, P, Q, paleOf } = fields;
+  for (let y = ya; y <= yb; y += 1) {
+    const my = rowM[y];
+    if (my < 0) continue;
+    const gy = rowI0[y];
+    const ty = rowT[y];
+    const row = gy * cw;
+    for (let x = xa; x <= xb; x += 1) {
+      const mx = colM[x];
+      if (mx < 0 || owner[my * MASK_W + mx] < 0) continue;
+      const gx = colI0[x];
+      const tx = colT[x];
+      const i = row + gx;
+      const w00 = (1 - tx) * (1 - ty);
+      const w10 = tx * (1 - ty);
+      const w01 = (1 - tx) * ty;
+      const w11 = tx * ty;
+      const e = E[i] * w00 + E[i + 1] * w10 + E[i + cw] * w01 + E[i + cw + 1] * w11;
+      let col: [number, number, number] | null = null;
+      let al = a;
+      if (e > 0) col = empire;
+      else {
+        const al2 = A[i] * w00 + A[i + 1] * w10 + A[i + cw] * w01 + A[i + cw + 1] * w11;
+        if (al2 > 0) col = allied;
+        else {
+          const pv = P[i] * w00 + P[i + 1] * w10 + P[i + cw] * w01 + P[i + cw + 1] * w11;
+          const qv = pv > 0 ? Q[i] * w00 + Q[i + 1] * w10 + Q[i + cw] * w01 + Q[i + cw + 1] * w11 : -1;
+          if (pv > 0 && qv > 0) {
+            const near = paleOf[(ty < 0.5 ? row : row + cw) + (tx < 0.5 ? gx : gx + 1)];
+            if (near === HOLDER_EMPIRE) col = paleEmpire;
+            else if (near === HOLDER_ALLIED) col = paleAllied;
+            else {
+              col = white;
+              al = Math.round(a * 0.62);
+            }
+          }
+        }
+      }
+      if (!col) continue;
+      const o = (y * CANVAS_W + x) * 4;
+      px[o] = col[0];
+      px[o + 1] = col[1];
+      px[o + 2] = col[2];
+      px[o + 3] = al;
+    }
   }
-  sctx.putImageData(img, 0, 0);
+  sctx.putImageData(image, 0, 0);
   const ctx = canvas.getContext('2d', { willReadFrequently: true })!;
-  ctx.clearRect(0, 0, GRID_W, GRID_H);
-  ctx.filter = 'blur(1.2px)';
+  ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+  ctx.filter = 'blur(0.6px)';
   ctx.drawImage(scratch, 0, 0);
   ctx.filter = 'none';
 }

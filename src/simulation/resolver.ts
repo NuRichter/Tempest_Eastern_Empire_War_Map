@@ -232,8 +232,8 @@ export function nextEvent(data: Dataset, frame: number) {
   return data.events.find((e) => e.frame > frame) ?? null;
 }
 
-/** Frames over which a change of political state is animated (6 simulated hours). */
-export const CONTROL_TRANSITION_FRAMES = 36;
+/** Frames over which a change of political state is crossfaded (one simulated hour, linear). */
+export const CONTROL_TRANSITION_FRAMES = 6;
 
 export interface ResolvedControl {
   segment: TerritoryControlSegment;
@@ -256,6 +256,35 @@ export function territoryControlAt(territory: Territory, frame: number): Resolve
   const since = frame - segment.fromFrame;
   const transition = previous && since < CONTROL_TRANSITION_FRAMES ? Math.max(0, since / CONTROL_TRANSITION_FRAMES) : 1;
   return { segment, previous, transition };
+}
+
+/** Frames over which a displayed strength counts to a newly recorded value (one simulated hour). */
+export const STRENGTH_TWEEN_FRAMES = 6;
+
+/**
+ * Strength for display at a continuous frame: the recorded value, except in
+ * the hour after a change, when it counts linearly from the previous recorded
+ * value (the reference maps' counters never jump). Dossiers show the recorded
+ * figures; this is for the map numbers only. Unknown stays unknown.
+ */
+export function displayStrengthAt(data: Dataset, forceId: string, frame: number): ForceSnapshot['strength'] {
+  const snaps = data.trackByForce.get(forceId)?.snapshots;
+  if (!snaps?.length) return 'UNKNOWN';
+  let i = -1;
+  for (let k = 0; k < snaps.length && snaps[k].f <= frame; k += 1) i = k;
+  if (i < 0) return 'UNKNOWN';
+  const cur = snaps[i].strength;
+  if (typeof cur !== 'number' || i === 0) return cur;
+  // Find the previous different value.
+  let j = i - 1;
+  while (j >= 0 && snaps[j].strength === cur) j -= 1;
+  if (j < 0) return cur;
+  // The change happened at the first snapshot carrying the current value.
+  const changedAt = snaps[j + 1].f;
+  const prev = snaps[j].strength;
+  const t = (frame - changedAt) / STRENGTH_TWEEN_FRAMES;
+  if (typeof prev !== 'number' || t >= 1) return cur;
+  return Math.round(prev + (cur - prev) * Math.max(0, t));
 }
 
 /** A force's strength history: the frames at which its recorded strength changed. */

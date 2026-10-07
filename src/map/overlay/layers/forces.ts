@@ -1,6 +1,7 @@
 import { FACTION_COLOR, FACTION_DEEP, FACTION_PALE, FACTION_SHAPE, factionKey, INK, type ColorKey } from '@/lib/palette';
 import { SIZE_STATUS_LABEL } from '@/lib/taxonomy';
-import { forcePositionAt, forceSnapshotAt, forceTrail } from '@/simulation/resolver';
+import { displayStrengthAt, forcePositionAt, forceSnapshotAt, forceTrail } from '@/simulation/resolver';
+import { getField } from '@/map/field/fieldStore';
 import { factionVisible, forceHidden, haloText, isSelected, meetsConfidence, trimTo, type DrawContext } from '@/map/overlay/context';
 import { tracePath } from '@/map/overlay/glyphs';
 import type { Force, ForceSnapshot, Quantity, SizeStatus } from '@/types/dataset';
@@ -195,7 +196,7 @@ export function drawForces(dc: DrawContext, placed: PlacedForce[]): void {
     const numSize = single ? Math.round(11 * dc.labelScale) : strengthFontSize(value, dc.labelScale);
     const nameSize = Math.round(11 * dc.labelScale);
     const name = trimTo(ctx, p.force.displayName, 200);
-    const number = single ? '' : formatStrength(p.snapshot.strength, p.snapshot.sizeStatus);
+    const number = single ? '' : formatStrength(displayStrengthAt(dc.data, p.force.id, dc.frame), p.snapshot.sizeStatus);
     ctx.font = `700 ${numSize}px ${dc.fonts.ui}`;
     const nw = number ? ctx.measureText(number).width : 0;
     ctx.font = `500 ${nameSize}px ${dc.fonts.ui}`;
@@ -222,64 +223,125 @@ export function drawForces(dc: DrawContext, placed: PlacedForce[]): void {
 }
 
 /**
- * Front strength, after the reference documentaries: one figure per side per
- * active front, summed only over the most specific formations on the map so no
- * soldier is counted twice. Any unknown component is admitted with "+?".
+ * Where a theatre's front runs between two groups of formations: the nearest
+ * point of the held-ground seam to the midpoint between them, and the seam's
+ * local direction there (simulation coordinates). Null when no seam is near.
+ */
+function seamAnchor(mx: number, my: number): { x: number; y: number; tx: number; ty: number } | null {
+  const seams = getField()?.seams;
+  if (!seams || seams.length === 0) return null;
+  let best = -1;
+  let bestD = 0.08;
+  for (let i = 0; i < seams.length; i += 4) {
+    const cx = (seams[i] + seams[i + 2]) / 2;
+    const cy = (seams[i + 1] + seams[i + 3]) / 2;
+    const d = Math.hypot(cx - mx, cy - my);
+    if (d < bestD) {
+      bestD = d;
+      best = i;
+    }
+  }
+  if (best < 0) return null;
+  const ax = (seams[best] + seams[best + 2]) / 2;
+  const ay = (seams[best + 1] + seams[best + 3]) / 2;
+  // Local direction: segments near the anchor, oriented consistently and summed.
+  let tx = 0;
+  let ty = 0;
+  for (let i = 0; i < seams.length; i += 4) {
+    const cx = (seams[i] + seams[i + 2]) / 2;
+    const cy = (seams[i + 1] + seams[i + 3]) / 2;
+    if (Math.hypot(cx - ax, cy - ay) > 0.03) continue;
+    let dx = seams[i + 2] - seams[i];
+    let dy = seams[i + 3] - seams[i + 1];
+    if (dx * tx + dy * ty < 0) {
+      dx = -dx;
+      dy = -dy;
+    }
+    tx += dx;
+    ty += dy;
+  }
+  const len = Math.hypot(tx, ty);
+  if (len < 1e-9) return null;
+  return { x: ax, y: ay, tx: tx / len, ty: ty / len };
+}
+
+/**
+ * Front strength, after the reference maps: one figure per side per active
+ * front, white, bold, at a fixed size, placed on its own side of the front seam
+ * and rotated along it, counting smoothly to each recorded value. Summed only
+ * over the most specific formations on the map so no soldier is counted twice;
+ * any unknown component is admitted with "+?".
  */
 export function drawFrontStrength(dc: DrawContext, placed: PlacedForce[]): void {
   if (!dc.prefs.layers.armySizes || !dc.state || dc.zoom < 2.6) return;
   const { ctx } = dc;
+  const size = Math.round(22 * dc.labelScale);
   for (const th of dc.data.theatres) {
     const live = dc.state.theatres[th.id];
     if (!live || live.status !== 'ACTIVE') continue;
     const here = placed.filter((p) => p.theatreId === th.id && !/DESTROYED|ANNIHILATED/i.test(p.snapshot.status));
     const sides = { empire: here.filter((p) => p.key === 'empire'), allied: here.filter((p) => p.key !== 'empire') };
     if (sides.empire.length === 0 || sides.allied.length === 0) continue;
-    const centroid = (list: PlacedForce[]) => ({ x: list.reduce((n, p) => n + p.sx, 0) / list.length, y: list.reduce((n, p) => n + p.sy, 0) / list.length });
+    const centroid = (list: PlacedForce[]) => ({
+      x: list.reduce((n, p) => n + p.sx, 0) / list.length,
+      y: list.reduce((n, p) => n + p.sy, 0) / list.length,
+      simX: list.reduce((n, p) => n + p.x, 0) / list.length,
+      simY: list.reduce((n, p) => n + p.y, 0) / list.length,
+    });
     const ce = centroid(sides.empire);
     const ca = centroid(sides.allied);
+    // Anchor and direction: along the seam when there is one, else across the groups.
+    const anchor = seamAnchor((ce.simX + ca.simX) / 2, (ce.simY + ca.simY) / 2);
+    let ax = (ce.x + ca.x) / 2;
+    let ay = (ce.y + ca.y) / 2;
     let angle = Math.atan2(ca.y - ce.y, ca.x - ce.x) + Math.PI / 2;
+    if (anchor) {
+      const a = dc.project(anchor.x, anchor.y);
+      const b = dc.project(anchor.x + anchor.tx * 0.01, anchor.y + anchor.ty * 0.01);
+      if (!a.occluded && !b.occluded) {
+        ax = a.sx;
+        ay = a.sy;
+        angle = Math.atan2(b.sy - a.sy, b.sx - a.sx);
+      }
+    }
     while (angle > Math.PI / 2) angle -= Math.PI;
-    while (angle < -Math.PI / 2) angle += Math.PI;
-    angle = Math.max(-0.61, Math.min(0.61, angle)); // ±35°, never upside down
-    for (const [sideKey, list, c, other] of [['empire', sides.empire, ce, ca], ['allied', sides.allied, ca, ce]] as const) {
+    while (angle < -Math.PI / 2) angle += Math.PI; // never upside down
+    const nx = -Math.sin(angle);
+    const ny = Math.cos(angle);
+    for (const [sideKey, list, c] of [['empire', sides.empire, ce], ['allied', sides.allied, ca]] as const) {
       // A single formation already carries its own number; a total would repeat it.
       if (list.length < 2) continue;
       let total = 0;
       let unknown = false;
       let estimated = false;
       for (const p of list) {
-        if (typeof p.snapshot.strength === 'number' && p.snapshot.sizeStatus !== 'UNKNOWN') {
-          total += p.snapshot.strength;
+        const shown = displayStrengthAt(dc.data, p.force.id, dc.frame);
+        if (typeof shown === 'number' && p.snapshot.sizeStatus !== 'UNKNOWN') {
+          total += shown;
           if (p.snapshot.sizeStatus !== 'EXPLICIT') estimated = true;
         } else unknown = true;
       }
       if (total === 0 && unknown) continue;
       const text = `${estimated ? '≈' : ''}${GROUP.format(total)}${unknown ? ' +?' : ''}`;
-      const size = Math.round(Math.min(40, strengthFontSize(total, 1) * 1.35) * dc.labelScale);
-      const dx = c.x - other.x;
-      const dy = c.y - other.y;
-      const d = Math.hypot(dx, dy) || 1;
+      // The side of the seam this group stands on.
+      const sgn = (c.x - ax) * nx + (c.y - ay) * ny >= 0 ? 1 : -1;
       ctx.font = `700 ${size}px ${dc.fonts.ui}`;
-      const tw = ctx.measureText(text).width;
-      // Step outward from the front until the total has room; give up rather than overlap.
+      const w = ctx.measureText(text).width;
       let ox = 0;
       let oy = 0;
-      let placed = false;
-      for (const k of [1.8, 2.8, 3.8]) {
-        ox = c.x + (dx / d) * size * k;
-        oy = c.y + (dy / d) * size * k;
-        if (dc.labels.fits(ox - tw / 2, oy - size, tw, size * 1.7)) {
-          placed = true;
+      let ok = false;
+      for (const k of [1.1, 1.8, 2.6]) {
+        ox = ax + nx * sgn * size * k;
+        oy = ay + ny * sgn * size * k;
+        if (dc.labels.fits(ox - w / 2, oy - size, w, size * 1.7)) {
+          ok = true;
           break;
         }
       }
-      if (!placed) continue;
+      if (!ok) continue;
       ctx.save();
       ctx.translate(ox, oy);
       ctx.rotate(angle);
-      ctx.font = `700 ${size}px ${dc.fonts.ui}`;
-      const w = ctx.measureText(text).width;
       const key: ColorKey = sideKey === 'empire' ? 'empire' : list[0].key;
       ctx.globalAlpha = 0.95;
       haloText(ctx, text, -w / 2, size * 0.35, '#ffffff', FACTION_DEEP[key], Math.max(4, size * 0.2));
@@ -292,4 +354,3 @@ export function drawFrontStrength(dc: DrawContext, placed: PlacedForce[]): void 
     }
   }
 }
-

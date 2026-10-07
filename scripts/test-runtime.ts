@@ -21,6 +21,7 @@ import { formatStrength, strengthFontSize } from '../src/map/overlay/layers/forc
 import { eventVisible, forceHidden } from '../src/map/overlay/context';
 import { EMPTY_FILTERS } from '../src/simulation/store';
 import type { FrameState } from '../src/types/dataset';
+import { createFields, decodeFront, evaluateFront, heldCells, HOLDER_EMPIRE, type FrontFile } from '../src/map/field/front';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const DATA = join(HERE, '..', 'public', 'data');
@@ -227,6 +228,155 @@ test('a battle filter hides exactly the events of that battle', () => {
   const battleId = withBattle[0].battleId!;
   const filters = { ...EMPTY_FILTERS, hiddenBattles: [battleId] };
   for (const e of data.events) assert(eventVisible(filters, e) === (e.battleId !== battleId), `${e.id} visibility is wrong under the battle filter`);
+});
+
+/* -- held ground (territorial ebb and flow) ---------------------------- */
+
+const front = decodeFront(read<FrontFile>('front.json'));
+const fields = createFields(front);
+const jtf = front.territoryIds.indexOf('T-JTF');
+const evalAt = (T: number) => evaluateFront(front, T, fields);
+const empireIn = (T: number, territory = -1) => heldCells(evalAt(T), front, HOLDER_EMPIRE, territory);
+const frameOf = (day: number, hhmm: string) => {
+  const [h, m] = hhmm.split(':').map(Number);
+  return (day - data.manifest.clock.firstDay) * 144 + h * 6 + m / 10;
+};
+const major = front.episodes.filter((e) => e.cells >= 100);
+/** The cells an episode itself changes: a flip of its direction inside its time window. */
+const episodeCells = (e: (typeof front.episodes)[number]) => {
+  const to = e.gainer === 'empire' ? HOLDER_EMPIRE : 0;
+  const cells: number[] = [];
+  for (let i = 0; i < front.owner.length; i += 1) {
+    for (let k = front.offsets[i]; k < front.offsets[i + 1]; k += 1) {
+      const t = front.times[k];
+      if (t >= e.startFrame - 0.01 && t <= e.endFrame + 0.01 && front.holders[k] === to) { cells.push(i); break; }
+    }
+  }
+  // Only cells whose sole change in the window is this episode's own flip, so an
+  // overlapping episode on the same ground (rapid ebb and flow) does not blur it.
+  return cells.filter((i) => {
+    let n = 0;
+    for (let k = front.offsets[i]; k < front.offsets[i + 1]; k += 1) if (front.times[k] >= e.startFrame - front.lead - 1 && front.times[k] <= e.endFrame + 1) n += 1;
+    return n === 1;
+  });
+};
+const empireOn = (cells: number[], T: number) => {
+  const f = evalAt(T);
+  return cells.reduce((n, i) => n + (f.E[i] > 0 ? 1 : 0), 0);
+};
+
+test('every major front transition shows a real intermediate state at 25 / 50 / 75 %', () => {
+  assert(major.length >= 4, `only ${major.length} major episodes`);
+  let checked = 0;
+  for (const e of major) {
+    const cells = episodeCells(e);
+    if (cells.length < 20) continue; // the episode re-takes ground still changing hands (rapid ebb and flow)
+    checked += 1;
+    const losing = e.loser === 'empire';
+    const at = (pct: number) => empireOn(cells, e.startFrame + ((e.endFrame - e.startFrame) * pct) / 100);
+    const before = empireOn(cells, e.startFrame - front.lead - 0.5);
+    const after = empireOn(cells, e.endFrame + 0.5);
+    const [q1, q2, q3] = [at(25), at(50), at(75)];
+    const lo = Math.min(before, after);
+    const hi = Math.max(before, after);
+    assert(q2 > lo && q2 < hi, `${e.id} ${e.kind}: at 50 % ${q2} cells, not between ${before} and ${after}`);
+    if (losing) assert(q1 >= q2 && q2 >= q3, `${e.id}: held ground does not shrink monotonically (${q1}, ${q2}, ${q3})`);
+    else assert(q1 <= q2 && q2 <= q3, `${e.id}: held ground does not grow monotonically (${q1}, ${q2}, ${q3})`);
+  }
+  assert(checked >= 4, `only ${checked} episodes could be checked`);
+});
+
+test('advance: imperial ground in Jura grows after the border crossing and moves west', () => {
+  const crossing = data.eventById.get('EVT-0015')!.frame;
+  assert(empireIn(crossing - 6, jtf) === 0, 'Jura ground held before the Imperial Army crossed the border');
+  const centroidX = (T: number) => {
+    const f = evalAt(T);
+    let sx = 0;
+    let n = 0;
+    for (let i = 0; i < f.E.length; i += 1) if (f.E[i] > 0 && front.owner[i] === jtf) { sx += (i % front.w) + 0.5; n += 1; }
+    return n ? sx / n / front.w : NaN;
+  };
+  const a = empireIn(frameOf(-5, '20:00'), jtf);
+  const b = empireIn(frameOf(-3, '12:00'), jtf);
+  const c = empireIn(frameOf(-1, '18:00'), jtf);
+  assert(a > 0 && a < b && b < c, `held cells ${a} → ${b} → ${c}`);
+  assert(centroidX(frameOf(-1, '18:00')) < centroidX(frameOf(-5, '20:00')), 'the held area does not move west');
+});
+
+test('retreat: ground is lost when the Magitank Force is destroyed on D+0', () => {
+  const before = empireIn(frameOf(0, '12:00'), jtf);
+  const after = empireIn(frameOf(0, '15:00'), jtf);
+  assert(after < before, `held cells ${before} → ${after}`);
+});
+
+test('recapture: imperial ground in Jura returns to Tempest after the camp falls on D+11', () => {
+  const held = empireIn(frameOf(5, '12:00'), jtf);
+  const after = empireIn(frameOf(12, '00:00'), jtf);
+  assert(held > 500, `only ${held} cells held on D+5`);
+  assert(after === 0, `${after} cells still held after D+11`);
+});
+
+test('a cut-off pocket collapses from the rim inward, interior last', () => {
+  const ep = front.episodes.find((e) => e.kind === 'COLLAPSE' && e.territoryIds.includes('T-JTF') && e.cells >= 500);
+  assert(ep, 'no major collapse in Jura');
+  const T0 = ep.startFrame - front.lead - 0.5;
+  const f0 = evalAt(T0);
+  const held = new Uint8Array(f0.E.length);
+  for (let i = 0; i < held.length; i += 1) held[i] = f0.E[i] > 0 && front.owner[i] === jtf ? 1 : 0;
+  // Distance (in cells) from the rim of the held area.
+  const dist = new Int32Array(held.length).fill(-1);
+  const queue: number[] = [];
+  for (let i = 0; i < held.length; i += 1) {
+    if (!held[i]) continue;
+    const x = i % front.w;
+    const rim = [x > 0 ? i - 1 : -1, x < front.w - 1 ? i + 1 : -1, i - front.w, i + front.w].some((j) => j < 0 || j >= held.length || !held[j]);
+    if (rim) { dist[i] = 0; queue.push(i); }
+  }
+  for (let q = 0; q < queue.length; q += 1) {
+    const i = queue[q];
+    const x = i % front.w;
+    for (const j of [x > 0 ? i - 1 : -1, x < front.w - 1 ? i + 1 : -1, i - front.w, i + front.w]) {
+      if (j >= 0 && j < held.length && held[j] && dist[j] < 0) { dist[j] = dist[i] + 1; queue.push(j); }
+    }
+  }
+  // Flip time of each held cell in the episode: its first flip after T0.
+  const pairs: [number, number][] = [];
+  for (let i = 0; i < held.length; i += 1) {
+    if (!held[i]) continue;
+    for (let k = front.offsets[i]; k < front.offsets[i + 1]; k += 1) {
+      if (front.times[k] >= ep.startFrame - 0.01 && front.times[k] <= ep.endFrame + 0.01) { pairs.push([dist[i], front.times[k]]); break; }
+    }
+  }
+  const maxD = Math.max(...pairs.map((p) => p[0]));
+  const mean = (lo: number, hi: number) => {
+    const sel = pairs.filter((p) => p[0] >= lo && p[0] <= hi);
+    return sel.reduce((n, p) => n + p[1], 0) / sel.length;
+  };
+  const outer = mean(0, Math.floor(maxD / 3));
+  const inner = mean(Math.ceil((2 * maxD) / 3), maxD);
+  assert(inner > outer, `interior falls at ${inner.toFixed(1)}, rim at ${outer.toFixed(1)}`);
+});
+
+test('held ground is a pure function of time: scrubbing equals playing, backwards too', () => {
+  const T = frameOf(11, '11:00');
+  const direct = Float32Array.from(evalAt(T).E);
+  evalAt(frameOf(-2, '06:00'));
+  evalAt(frameOf(19, '01:00'));
+  const again = evalAt(T).E;
+  assert(direct.every((v, i) => v === again[i]), 'the same time gave a different field');
+});
+
+test('the front moves continuously through a transition, not in one jump', () => {
+  for (const e of major) {
+    const cells = episodeCells(e);
+    if (cells.length < 20) continue;
+    const samples: number[] = [];
+    for (let k = 0; k <= 20; k += 1) samples.push(empireOn(cells, e.startFrame - front.lead + ((e.endFrame - e.startFrame + front.lead) * k) / 20));
+    const total = Math.abs(samples[20] - samples[0]);
+    const biggest = Math.max(...samples.slice(1).map((v, k) => Math.abs(v - samples[k])));
+    assert(new Set(samples).size >= 6, `${e.id}: only ${new Set(samples).size} distinct states in 21 samples`);
+    assert(biggest <= 0.5 * total, `${e.id}: one step carries ${biggest} of ${total} cells`);
+  }
 });
 
 test('the runtime manifest carries no build timestamp', () => {
