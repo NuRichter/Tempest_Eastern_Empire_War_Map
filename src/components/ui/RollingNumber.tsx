@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { useT } from '@/i18n';
 import { prefersReducedMotion } from '@/state/preferences';
 import type { Quantity } from '@/types/dataset';
 
@@ -16,6 +17,7 @@ export function RollingNumber({ value, className }: { value: Quantity; className
   const [shown, setShown] = useState<number | null>(typeof value === 'number' ? value : null);
   const from = useRef<number>(typeof value === 'number' ? value : 0);
   const raf = useRef(0);
+  const t = useT();
 
   useEffect(() => {
     if (typeof value !== 'number') {
@@ -41,6 +43,6 @@ export function RollingNumber({ value, className }: { value: Quantity; className
     // eslint-disable-next-line react-hooks/exhaustive-deps -- animate only when the target changes
   }, [value]);
 
-  if (shown === null) return <span className={`italic text-fg-3 ${className ?? ''}`}>unknown</span>;
+  if (shown === null) return <span className={`italic text-fg-3 ${className ?? ''}`}>{t('unknown')}</span>;
   return <span className={`figure tabular-nums ${className ?? ''}`}>{GROUP.format(shown)}</span>;
 }

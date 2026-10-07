@@ -21,15 +21,25 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#090d10',
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#090d10' },
+    { media: '(prefers-color-scheme: light)', color: '#eef1f3' },
+  ],
   width: 'device-width',
   initialScale: 1,
-  colorScheme: 'dark',
+  colorScheme: 'dark light',
 };
+
+// Applies the saved interface theme before the first paint, so a light-theme
+// reader never sees a dark flash. Reads the same key the preferences store writes.
+const THEME_BOOT = `try{var p=JSON.parse(localStorage.getItem('tempest-atlas.preferences.v3')||'{}').state||{};var d=document.documentElement;d.dataset.uiTheme=p.uiTheme==='light'?'light':'dark';d.style.colorScheme=d.dataset.uiTheme;if(p.pixelCursor)d.classList.add('pixel-cursor');}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${ui.variable} ${mono.variable} ${display.variable}`}>
+    <html lang="en" data-ui-theme="dark" suppressHydrationWarning className={`${ui.variable} ${mono.variable} ${display.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
+      </head>
       <body className="bg-ink-900 font-ui text-fg antialiased">{children}</body>
     </html>
   );

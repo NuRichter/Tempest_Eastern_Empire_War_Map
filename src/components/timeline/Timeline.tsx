@@ -13,6 +13,7 @@ import { useSimulation } from '@/simulation/store';
 import { usePreferences } from '@/state/preferences';
 import { eventVisible } from '@/map/overlay/context';
 import { ProvenanceBadge } from '@/components/ui/primitives';
+import { useT } from '@/i18n';
 import type { FrameState } from '@/types/dataset';
 
 const CATEGORY_COLOR: Record<string, string> = {
@@ -24,11 +25,11 @@ const CATEGORY_COLOR: Record<string, string> = {
 };
 
 /** Simulated time per second of wall clock at a speed: 1x = 30 simulated minutes. */
-function rateLabel(speed: number): string {
+function rateLabel(speed: number, t: ReturnType<typeof useT>): string {
   const minutes = speed * FRAMES_PER_SECOND_AT_1X * 10;
-  if (minutes < 60) return `${Math.round(minutes)} min/s`;
-  if (minutes < 60 * 24) return `${+(minutes / 60).toFixed(1)} h/s`;
-  return `${+(minutes / 1440).toFixed(1)} d/s`;
+  if (minutes < 60) return t('{n} min/s', { n: Math.round(minutes) });
+  if (minutes < 60 * 24) return t('{n} h/s', { n: +(minutes / 60).toFixed(1) });
+  return t('{n} d/s', { n: +(minutes / 1440).toFixed(1) });
 }
 
 /** Spans in which each theatre is live, computed once by replaying the state stream. */
@@ -53,6 +54,7 @@ function theatreLanes(data: Dataset): Record<string, [number, number][]> {
 }
 
 export function Timeline() {
+  const t = useT();
   const data = useSimulation((s) => s.data);
   const clock = useSimulation((s) => s.clock);
   const frame = useSimulation((s) => s.frame);
@@ -67,6 +69,7 @@ export function Timeline() {
   const speedIndex = usePreferences((s) => s.speedIndex);
   const autoSlowed = useSimulation((s) => s.autoSlowed);
   const bookmarks = usePreferences((s) => s.bookmarks);
+  const uiTheme = usePreferences((s) => s.uiTheme);
 
   const trackRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -117,25 +120,28 @@ export function Timeline() {
     ctx.clearRect(0, 0, width, height);
     const [r0, r1] = range;
     const px = (f: number) => ((f - r0) / Math.max(1, r1 - r0)) * width;
-    const font = getComputedStyle(document.documentElement).getPropertyValue('--font-mono').trim() || 'monospace';
+    const css = getComputedStyle(document.documentElement);
+    const font = css.getPropertyValue('--font-mono').trim() || 'monospace';
+    const token = (name: string, alpha = 1) => `rgb(${css.getPropertyValue(name).trim() || '125 137 142'} / ${alpha})`;
+    const light = uiTheme === 'light';
 
     // Stage bands (top), alternating tone, labelled when there is room.
     data.stages.forEach((s, i) => {
       const x0 = Math.max(0, px(s.startFrame));
       const x1 = Math.min(width, px(s.endFrame + 1));
       if (x1 <= 0 || x0 >= width) return;
-      ctx.fillStyle = i % 2 ? '#141c21' : '#10171b';
+      ctx.fillStyle = i % 2 ? token('--ink-600') : token('--ink-700');
       ctx.fillRect(x0, 0, x1 - x0, 14);
       ctx.font = `500 9.5px ${font}`;
       const label = s.name.replace(/_/g, ' ').toLowerCase();
       if (ctx.measureText(label).width < x1 - x0 - 6) {
-        ctx.fillStyle = INK.text3;
+        ctx.fillStyle = token('--fg-3');
         ctx.fillText(label, x0 + 3, 10);
       }
     });
 
     // Day rules.
-    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.strokeStyle = light ? 'rgba(20,25,28,0.08)' : 'rgba(255,255,255,0.05)';
     ctx.lineWidth = 1;
     const dayStep = (r1 - r0) / fpd > 20 ? 5 : 1;
     for (let d = Math.ceil(r0 / fpd); d * fpd <= r1; d += 1) {
@@ -206,7 +212,7 @@ export function Timeline() {
     for (const [v, f] of volumeMarks) {
       const x = px(f);
       if (x < 0 || x > width) continue;
-      ctx.fillStyle = INK.text3;
+      ctx.fillStyle = token('--fg-3');
       ctx.fillText(`V${v}`, x + 2, 33);
     }
 
@@ -235,7 +241,7 @@ export function Timeline() {
 
     // Playhead (continuous, so it glides between keyframes while playing).
     const hx = Math.round(px(clock.frame)) + 0.5;
-    ctx.strokeStyle = INK.text;
+    ctx.strokeStyle = token('--fg');
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(hx, 0);
@@ -248,7 +254,7 @@ export function Timeline() {
     ctx.lineTo(hx, 6);
     ctx.closePath();
     ctx.fill();
-  }, [data, clock, range, lanes, filters, volumeMarks, fpd, bookmarks]);
+  }, [data, clock, range, lanes, filters, volumeMarks, fpd, bookmarks, uiTheme]);
 
   useEffect(() => {
     draw();
@@ -275,8 +281,8 @@ export function Timeline() {
       const track = trackRef.current;
       if (!track) return 0;
       const rect = track.getBoundingClientRect();
-      const t = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
-      return Math.round(range[0] + t * (range[1] - range[0]));
+      const pos = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+      return Math.round(range[0] + pos * (range[1] - range[0]));
     },
     [range],
   );
@@ -309,72 +315,74 @@ export function Timeline() {
   const daysToContact = Math.ceil(toContact / fpd);
   const beforeContact =
     toContact < fpd
-      ? `${Math.max(1, Math.round((toContact / fpd) * 24))} h before first contact`
-      : `${daysToContact} day${daysToContact === 1 ? '' : 's'} before first contact`;
+      ? t('{n} h before first contact', { n: Math.max(1, Math.round((toContact / fpd) * 24)) })
+      : daysToContact === 1
+        ? t('1 day before first contact')
+        : t('{n} days before first contact', { n: daysToContact });
 
   const cinematic = viewMode === 'cinematic';
 
   return (
     <section
       id="timeline"
-      aria-label="Campaign timeline"
+      aria-label={t('Campaign timeline')}
       className={`z-30 shrink-0 border-t border-ink-500 bg-ink-850 px-3 pb-2 pt-1.5 ${cinematic ? 'absolute inset-x-0 bottom-0 bg-ink-850/90 opacity-0 transition-opacity duration-300 hover:opacity-100 focus-within:opacity-100' : 'relative'}`}
     >
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-        <div className="flex items-center gap-1" role="group" aria-label="Playback">
-          <button type="button" className="ctl w-8 px-0" onClick={() => seek(0)} aria-label="Campaign start" title="Campaign start">
+        <div className="flex items-center gap-1" role="group" aria-label={t('Playback')}>
+          <button type="button" className="ctl w-8 px-0" onClick={() => seek(0)} aria-label={t('Campaign start')} title={t('Campaign start')}>
             <SkipBack size={14} strokeWidth={1.7} />
           </button>
-          <button type="button" className="ctl w-8 px-0" onClick={() => stepEvent(-1)} aria-label="Previous event" title="Previous event ([)">
+          <button type="button" className="ctl w-8 px-0" onClick={() => stepEvent(-1)} aria-label={t('Previous event')} title={t('Previous event ([)')}>
             <ChevronsLeft size={15} strokeWidth={1.7} />
           </button>
-          <button type="button" className="ctl w-8 px-0" onClick={() => seek(frame - fpd)} aria-label="Back one day" title="Back one day (Shift+←)">
+          <button type="button" className="ctl w-8 px-0" onClick={() => seek(frame - fpd)} aria-label={t('Back one day')} title={t('Back one day (Shift+←)')}>
             <ChevronLeft size={15} strokeWidth={1.7} />
           </button>
-          <button type="button" onClick={toggle} aria-label={playing ? 'Pause' : 'Play'} title={playing ? 'Pause (Space)' : 'Play (Space)'} className="grid h-9 w-11 place-items-center rounded-[3px] border border-accent/70 bg-accent/15 text-fg hover:bg-accent/25">
+          <button type="button" onClick={toggle} aria-label={playing ? t('Pause') : t('Play')} title={playing ? t('Pause (Space)') : t('Play (Space)')} className="grid h-9 w-11 place-items-center rounded-[3px] border border-accent/70 bg-accent/15 text-fg hover:bg-accent/25">
             {playing ? <Pause size={16} strokeWidth={2} /> : <Play size={16} strokeWidth={2} />}
           </button>
-          <button type="button" className="ctl w-8 px-0" onClick={() => seek(frame + fpd)} aria-label="Forward one day" title="Forward one day (Shift+→)">
+          <button type="button" className="ctl w-8 px-0" onClick={() => seek(frame + fpd)} aria-label={t('Forward one day')} title={t('Forward one day (Shift+→)')}>
             <ChevronRight size={15} strokeWidth={1.7} />
           </button>
-          <button type="button" className="ctl w-8 px-0" onClick={() => stepEvent(1)} aria-label="Next event" title="Next event (])">
+          <button type="button" className="ctl w-8 px-0" onClick={() => stepEvent(1)} aria-label={t('Next event')} title={t('Next event (])')}>
             <ChevronsRight size={15} strokeWidth={1.7} />
           </button>
-          <button type="button" className="ctl w-8 px-0" onClick={() => seek(frameCount - 1)} aria-label="Campaign end" title="Campaign end">
+          <button type="button" className="ctl w-8 px-0" onClick={() => seek(frameCount - 1)} aria-label={t('Campaign end')} title={t('Campaign end')}>
             <SkipForward size={14} strokeWidth={1.7} />
           </button>
         </div>
 
         <label className="flex items-center gap-1.5 text-xs text-fg-3">
-          <span className="sr-only sm:not-sr-only">Speed</span>
-          <select value={speedIndex} onChange={(e) => setSpeedIndex(Number(e.target.value))} className="h-8 rounded-[3px] border border-ink-500 bg-ink-800 px-1.5 text-xs text-fg" aria-label="Playback speed">
+          <span className="sr-only sm:not-sr-only">{t('Speed')}</span>
+          <select value={speedIndex} onChange={(e) => setSpeedIndex(Number(e.target.value))} className="h-8 rounded-[3px] border border-ink-500 bg-ink-800 px-1.5 text-xs text-fg" aria-label={t('Playback speed')}>
             {SPEEDS.map((s, i) => (
               <option key={s} value={i}>
-                {s}× · {rateLabel(s)}
+                {s}× · {rateLabel(s, t)}
               </option>
             ))}
           </select>
         </label>
         {autoSlowed ? (
-          <span role="status" className="rounded-[2px] border border-accent/60 px-1.5 py-0.5 text-2xs font-semibold uppercase tracking-label text-accent" title="Playback slowed at a turning point; it resumes your speed in a moment. Turn off in Layers.">
-            1× turning point
+          <span role="status" className="rounded-[2px] border border-accent/60 px-1.5 py-0.5 text-2xs font-semibold uppercase tracking-label text-accent" title={t('Playback slowed at a turning point; it resumes your speed in a moment. Turn off in Layers.')}>
+            {t('1× turning point')}
           </span>
         ) : null}
 
         <div className="flex items-baseline gap-2" aria-live="off">
           <span className="figure text-lg leading-none text-fg">{battleDayLabel(day)}</span>
-          <span className="figure text-sm text-fg-2" title="Simulation time on a 10-minute grid. The novels give no clock times.">{hhmm}</span>
+          <span className="figure text-sm text-fg-2" title={t('Simulation time on a 10-minute grid. The novels give no clock times.')}>{hhmm}</span>
           <span className="rounded-[2px] border border-ink-400 px-1 text-2xs uppercase tracking-label text-fg-3" title={data.manifest.clock.calendarNote}>
-            simulation
+            {t('simulation')}
           </span>
-          <span className="hidden text-xs text-fg-3 lg:inline">{elapsedDays >= 0 ? `day ${elapsedDays + 1} of the fighting` : beforeContact}</span>
+          <span className="hidden text-xs text-fg-3 lg:inline">{elapsedDays >= 0 ? t('day {n} of the fighting', { n: elapsedDays + 1 }) : beforeContact}</span>
         </div>
 
         <div className="ml-auto flex items-center gap-2">
-          <div role="radiogroup" aria-label="Timeline window" className="hidden overflow-hidden rounded-[3px] border border-ink-500 sm:flex">
+          <div role="radiogroup" aria-label={t('Timeline window')} className="hidden overflow-hidden rounded-[3px] border border-ink-500 sm:flex">
             {(['all', 'combat'] as const).map((m, i) => (
               <button key={m} type="button" role="radio" aria-checked={windowMode === m} onClick={() => setWindowMode(m)} className={`h-7 px-2 text-xs ${i ? 'border-l border-ink-500' : ''} ${windowMode === m ? 'bg-accent/15 text-fg' : 'text-fg-3 hover:text-fg'}`}>
-                {m === 'all' ? 'Whole campaign' : 'Fighting'}
+                {m === 'all' ? t('Whole campaign') : t('Fighting')}
               </button>
             ))}
           </div>
@@ -386,11 +394,11 @@ export function Timeline() {
           ref={trackRef}
           role="slider"
           tabIndex={0}
-          aria-label="Campaign position"
+          aria-label={t('Campaign position')}
           aria-valuemin={0}
           aria-valuemax={frameCount - 1}
           aria-valuenow={frame}
-          aria-valuetext={`${battleDayLabel(day)} ${hhmm}, simulation time${latest ? `; latest event: ${latest.title}` : ''}`}
+          aria-valuetext={latest ? t('{day} {time}, simulation time; latest event: {title}', { day: battleDayLabel(day), time: hhmm, title: latest.title }) : t('{day} {time}, simulation time', { day: battleDayLabel(day), time: hhmm })}
           className="relative h-[58px] cursor-ew-resize touch-none select-none rounded-[2px]"
           onPointerDown={(e) => {
             try {
@@ -423,7 +431,7 @@ export function Timeline() {
                 {battleDayLabel(data.timeline.battleDay[hover.frame])} · {String(Math.floor(((hover.frame % fpd) * 10) / 60)).padStart(2, '0')}:{String(((hover.frame % fpd) * 10) % 60).padStart(2, '0')}
               </p>
               {hoverEvent ? <p className="truncate text-xs text-fg">{hoverEvent.title}</p> : null}
-              {hoverEvent ? <p className="text-2xs text-fg-3">double-click to open</p> : null}
+              {hoverEvent ? <p className="text-2xs text-fg-3">{t('double-click to open')}</p> : null}
             </div>
           ) : null}
         </div>
@@ -433,25 +441,25 @@ export function Timeline() {
         <div className="mt-1.5 flex min-h-6 items-center gap-3 text-xs">
           {latest ? (
             <button type="button" onClick={() => jumpToEvent(latest.id, { seek: false })} className="flex min-w-0 items-center gap-2 text-left hover:text-accent">
-              <span className="eyebrow shrink-0">Now</span>
+              <span className="eyebrow shrink-0">{t('Now')}</span>
               <span className="figure shrink-0 text-fg-3">{latest.warDay} {latest.simulationTime}</span>
               <span className="truncate text-fg">{latest.title}</span>
               <span className="hidden shrink-0 md:inline">
                 <ProvenanceBadge value={latest.provenance} compact />
               </span>
-              <span className="hidden shrink-0 text-2xs text-fg-3 xl:inline" title={TIME_PRECISION_LABEL[latest.timePrecision]}>
-                {TIME_PRECISION_LABEL[latest.timePrecision]}
+              <span className="hidden shrink-0 text-2xs text-fg-3 xl:inline" title={t(TIME_PRECISION_LABEL[latest.timePrecision])}>
+                {t(TIME_PRECISION_LABEL[latest.timePrecision])}
               </span>
             </button>
           ) : (
-            <span className="text-fg-3">No event recorded yet.</span>
+            <span className="text-fg-3">{t('No event recorded yet.')}</span>
           )}
           {upcoming ? (
             <button type="button" onClick={() => jumpToEvent(upcoming.id)} className="ml-auto hidden min-w-0 items-center gap-2 text-left text-fg-3 hover:text-accent md:flex">
-              <span className="eyebrow shrink-0">Next</span>
+              <span className="eyebrow shrink-0">{t('Next')}</span>
               <span className="figure shrink-0">{upcoming.warDay} {upcoming.simulationTime}</span>
               <span className="truncate">{upcoming.title}</span>
-              <span className="sr-only">({PROVENANCE_LABEL[upcoming.provenance].long})</span>
+              <span className="sr-only">({t(PROVENANCE_LABEL[upcoming.provenance].long)})</span>
             </button>
           ) : null}
         </div>

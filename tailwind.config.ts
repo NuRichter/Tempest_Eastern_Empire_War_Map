@@ -10,34 +10,36 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Interface tokens are CSS variables (globals.css) so the whole UI can
+        // switch between the dark and the light theme; faction colours are fixed.
         ink: {
-          950: '#06090b',
-          900: '#090d10',
-          850: '#0c1114',
-          800: '#0f1519',
-          700: '#151d22',
-          600: '#1c262c',
-          500: '#26323a',
-          400: '#3a4a54',
+          950: 'rgb(var(--ink-950) / <alpha-value>)',
+          900: 'rgb(var(--ink-900) / <alpha-value>)',
+          850: 'rgb(var(--ink-850) / <alpha-value>)',
+          800: 'rgb(var(--ink-800) / <alpha-value>)',
+          700: 'rgb(var(--ink-700) / <alpha-value>)',
+          600: 'rgb(var(--ink-600) / <alpha-value>)',
+          500: 'rgb(var(--ink-500) / <alpha-value>)',
+          400: 'rgb(var(--ink-400) / <alpha-value>)',
         },
         fg: {
-          DEFAULT: '#e3e7e8',
-          2: '#a7b1b5',
-          3: '#7d898e',
+          DEFAULT: 'rgb(var(--fg) / <alpha-value>)',
+          2: 'rgb(var(--fg-2) / <alpha-value>)',
+          3: 'rgb(var(--fg-3) / <alpha-value>)',
         },
-        accent: { DEFAULT: '#d4ab57', dim: '#8f7440' },
-        alert: '#e0614f',
+        accent: { DEFAULT: 'rgb(var(--accent) / <alpha-value>)', dim: 'rgb(var(--accent-dim) / <alpha-value>)' },
+        alert: 'rgb(var(--alert) / <alpha-value>)',
         empire: { DEFAULT: '#c9473d', deep: '#5c1914', pale: '#ee9086' },
         tempest: { DEFAULT: '#2f9e7e', deep: '#0f4636', pale: '#86d8bd' },
         dwargon: { DEFAULT: '#5b8fd8', deep: '#1c365e', pale: '#a9c8f2' },
         neutralstate: { DEFAULT: '#c29a45', deep: '#57421a', pale: '#e6cc91' },
         unknown: { DEFAULT: '#878f93', deep: '#363c40', pale: '#c3c9cc' },
         prov: {
-          canon: '#cfe5dc',
-          visual: '#8fc9b6',
-          inferred: '#d9b56a',
-          recon: '#c79a4e',
-          unresolved: '#e0614f',
+          canon: 'rgb(var(--prov-canon) / <alpha-value>)',
+          visual: 'rgb(var(--prov-visual) / <alpha-value>)',
+          inferred: 'rgb(var(--prov-inferred) / <alpha-value>)',
+          recon: 'rgb(var(--prov-recon) / <alpha-value>)',
+          unresolved: 'rgb(var(--prov-unresolved) / <alpha-value>)',
         },
       },
       fontFamily: {
@@ -55,7 +57,7 @@ const config: Config = {
         label: '0.08em',
       },
       boxShadow: {
-        panel: '0 1px 0 rgba(255,255,255,0.03) inset, 0 12px 32px -12px rgba(0,0,0,0.7)',
+        panel: 'var(--shadow-panel)',
       },
       transitionTimingFunction: {
         out: 'cubic-bezier(0.22, 0.61, 0.36, 1)',

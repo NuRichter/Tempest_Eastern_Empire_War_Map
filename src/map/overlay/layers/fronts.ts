@@ -2,6 +2,7 @@ import { simToLngLat } from '@/lib/coords';
 import { territoryControlAt } from '@/simulation/resolver';
 import { getField } from '@/map/field/fieldStore';
 import { haloText, type DrawContext } from '@/map/overlay/context';
+import { translate } from '@/i18n';
 
 /**
  * Fronts in the documentary register: the line where held ground meets held
@@ -51,7 +52,7 @@ export function drawControlChangeLabels(dc: DrawContext): void {
     if (!dc.onScreen(p, 0)) continue;
     const size = Math.round(10 * dc.labelScale);
     ctx.font = `700 ${size}px ${dc.fonts.mono}`;
-    const text = 'RECONSTRUCTED CONTROL CHANGE';
+    const text = translate('RECONSTRUCTED CONTROL CHANGE');
     const w = ctx.measureText(text).width;
     ctx.globalAlpha = 0.4 + 0.6 * Math.sin(Math.PI * c.transition);
     haloText(ctx, text, p.sx - w / 2, p.sy, dc.theme.accent, dc.theme.halo, 3);

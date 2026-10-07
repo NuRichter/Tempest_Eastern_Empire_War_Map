@@ -1,5 +1,77 @@
 [
  {
+  "id": "EVT-0457",
+  "day": -43,
+  "time": "09:00",
+  "timePrecision": "ORDERED",
+  "canonicalTime": "",
+  "theatreId": "TH-DWE",
+  "front": "",
+  "battle": null,
+  "battleType": null,
+  "location": "dwargon-eastern-metropolis",
+  "locationText": "Isthmus, Dwargon's eastern gate",
+  "actor": "Gazel Dwargo",
+  "actorFaction": "Armed Nation of Dwargon",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gazel"
+  ],
+  "forces": [
+   "F-DWA-000"
+  ],
+  "type": "DEPLOYMENT",
+  "title": "Gazel keeps Dwargon's army concentrated at the Isthmus to watch the Empire",
+  "immediateResult": "Gazel keeps Dwargon's army concentrated at the Isthmus to watch the Empire",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": ""
+  },
+  "commandStatus": "",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Ch2",
+    "locator": "v12.txt:3408-3412"
+   }
+  ],
+  "evidence": "Dwargon's army is concentrated at the Isthmus to watch the Empire.",
+  "reconstructionNote": "A standing disposition reported in V12 Ch2; placed at the start of the clock.",
+  "notes": "Added in R6 from the full novel audit.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added in R6 (full novel audit)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DWA-000": {
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "location": "dwargon-eastern-metropolis",
+     "locationText": "Isthmus (concentrated against the Empire)"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
   "id": "EVT-0004",
   "day": -43,
   "time": "10:00",
@@ -650,6 +722,237 @@
   }
  },
  {
+  "id": "EVT-0028",
+  "day": -40,
+  "time": "21:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "Evening of the imperial council day (v12.txt:12870-12876).",
+  "theatreId": "TH-CAP",
+  "front": "Strategic rear",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-capital",
+  "locationText": "Imperial Capital",
+  "actor": "Emperor Rudra and Velgrynd",
+  "actorFaction": "Eastern Empire",
+  "opponent": "None",
+  "opponentFaction": "-",
+  "characters": [
+   "rudra",
+   "velgrynd"
+  ],
+  "forces": [
+   "F-EMP-070"
+  ],
+  "type": "POLITICAL",
+  "title": "Rudra and Velgrynd resolve on world conquest; the army is to march the next day",
+  "immediateResult": "Velgrynd, seeing Rudra's mental exhaustion, asks how much time he has left; he promises not to fall before he has conquered the world.",
+  "operationalResult": "Velgrynd resolves to kill everyone who stands in the way of his domination.",
+  "strategicResult": "The next day an army of unprecedented size leaves the Empire for Tempest (EVT-0003).",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Emperor Rudra; Velgrynd",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Epilogue",
+    "locator": "v12.txt:13088"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Epilogue",
+    "locator": "v12.txt:13103"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Epilogue",
+    "locator": "v12.txt:13116"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Epilogue",
+    "locator": "v12.txt:13120"
+   }
+  ],
+  "evidence": "Rudra, near his limit, will not hand power to a prince; he vows to conquer the world and Velgrynd embraces him, resolving to kill all in his way. The next day the army departs.",
+  "reconstructionNote": "Same day as the imperial council (EVT-0001); 21:00 is a placement.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added from audit missingEvents (v12.txt:13088-13120).",
+    "R6 re-dated from D-33 22:00 to D-40 21:00: the V12 Epilogue is the evening of the imperial council (\"How did the meeting go?\" - \"The Great March has been decided\", v12.txt:12870-12876)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-070": {
+     "strength": 1,
+     "effective": 1,
+     "sizeStatus": "EXPLICIT",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "confidence": "HIGH",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0003",
+  "day": -39,
+  "time": "08:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "The next day the army left the Empire.",
+  "theatreId": "TH-DWG",
+  "front": "Imperial approach",
+  "battle": null,
+  "battleType": null,
+  "location": "imperial-capital",
+  "locationText": "Imperial Capital, marching to the border base",
+  "actor": "Jura invasion army (Armored Division)",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "calgurio",
+   "gaster",
+   "farraga"
+  ],
+  "forces": [
+   "F-EMP-010",
+   "F-EMP-011",
+   "F-EMP-012",
+   "F-EMP-013"
+  ],
+  "type": "DEPLOYMENT",
+  "title": "The invasion army leaves the Empire for Tempest",
+  "immediateResult": "An army of unprecedented size leaves the Empire and marches toward the Jura-Tempest Federation.",
+  "operationalResult": "Caligulio leads 940,000: the Restructured Armor Corps 700,000, the Magitank Force 200,000 and the Flying Combat Corps 40,000.",
+  "strategicResult": "The invasion of the Great Jura Forest begins.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 940000,
+   "note": "Stated: Caligulio \"originally led 940,000\" (v13.txt:16208)."
+  },
+  "commandStatus": "General Caligulio; Magitank Force under Lieutenant General Gaster",
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "V12",
+    "chapter": "Epilogue",
+    "locator": "v12.txt:13120"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:16208"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:302"
+   }
+  ],
+  "evidence": "The V12 Epilogue ends with the army leaving the Empire for Tempest the next day; V13 later says Caligulio originally led 940,000.",
+  "reconstructionNote": "Departure the day after the imperial council (CANONICAL_RELATIVE). The march from the capital to the border base (D-39 to D-34) and the slow advance from D-32 are interpolations.",
+  "notes": "The component split (700,000 / 200,000 / 40,000) is stated piecemeal (v12.txt:10215-10240; v13.txt:7531-7533).",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Source: V12 Epilogue (v12.txt:13120), with the forecast at v13.txt:302-305; V13 Prologue has nothing on the advance.",
+    "canonicalTime: \"the next day the army left the Empire\" (v12.txt:13120).",
+    "Dropped the \"slower than forecast\" text; that is EVT-0013 (v13.txt:302-305).",
+    "Strength 940,000 now EXPLICIT (v13.txt:16208).",
+    "Effects: F-EMP-010/011/012/013 at imperial-interior (were forest edge, labyrinth, gate front, gate airspace).",
+    "Commander: Gaster (fan TL \"Geist\").",
+    "R6 re-dated from D-32 08:00 to D-39 08:00: the army leaves \"the next day\" after the council evening (v12.txt:13120); it is massed at the border base by D-34 (EVT-0024)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-010": {
+     "strength": 940000,
+     "effective": 940000,
+     "sizeStatus": "EXPLICIT",
+     "status": "IN_TRANSIT",
+     "movement": "ADVANCE",
+     "direction": "West, to the border base",
+     "confidence": "MEDIUM",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital (departing)"
+    },
+    "F-EMP-011": {
+     "strength": 700000,
+     "effective": 700000,
+     "sizeStatus": "EXPLICIT",
+     "status": "IN_TRANSIT",
+     "movement": "ADVANCE",
+     "direction": "West, to the border base",
+     "confidence": "HIGH",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital (departing)"
+    },
+    "F-EMP-012": {
+     "strength": 200000,
+     "effective": 200000,
+     "sizeStatus": "EXPLICIT",
+     "status": "IN_TRANSIT",
+     "movement": "ADVANCE",
+     "direction": "West, to the border base",
+     "confidence": "HIGH",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital (departing)"
+    },
+    "F-EMP-013": {
+     "strength": 40000,
+     "effective": 40000,
+     "sizeStatus": "EXPLICIT",
+     "status": "IN_TRANSIT",
+     "movement": "ADVANCE",
+     "direction": "West, to the border base",
+     "confidence": "HIGH",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital (departing)"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "Imperial invasion army on the march from the Empire",
+     "battleStatus": "FORMING"
+    }
+   },
+   "campaign": {
+    "empireTotal": 940000,
+    "empireEffective": 940000,
+    "activeCommanders": "Rimuru (Tempest head of state), Benimaru supreme commander; General Caligulio leading the Jura invasion (Empire)"
+   }
+  }
+ },
+ {
   "id": "EVT-0024",
   "day": -34,
   "time": "09:00",
@@ -670,7 +973,10 @@
    "benimaru"
   ],
   "forces": [
-   "F-EMP-010"
+   "F-EMP-010",
+   "F-EMP-011",
+   "F-EMP-012",
+   "F-EMP-013"
   ],
   "type": "RECONNAISSANCE",
   "title": "Argos shows a large imperial army massed at the border base: no movement again",
@@ -720,7 +1026,8 @@
    "status": "ADDED",
    "changes": [
     "Added from audit missingEvents (v12.txt:11827-11836).",
-    "F-EMP-010 shown at the border with strength UNKNOWN (940,000 first applies at departure, EVT-0003)."
+    "F-EMP-010 shown at the border with strength UNKNOWN (940,000 first applies at departure, EVT-0003).",
+    "R6: the army that left the capital on D-39 is the force massed at the border base (v12.txt:11829-11831)."
    ]
   },
   "effects": {
@@ -729,12 +1036,33 @@
      "strength": "UNKNOWN",
      "effective": "UNKNOWN",
      "sizeStatus": "UNKNOWN",
-     "status": "ACTIVE",
+     "status": "MASSED",
      "movement": "STATIONARY",
      "direction": "-",
      "confidence": "LOW",
      "location": "imperial-interior",
-     "locationText": "Imperial border security base"
+     "locationText": "Border base (\"no movement today either\")"
+    },
+    "F-EMP-011": {
+     "status": "MASSED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "location": "imperial-interior",
+     "locationText": "Border base (\"no movement today either\")"
+    },
+    "F-EMP-012": {
+     "status": "MASSED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "location": "imperial-interior",
+     "locationText": "Border base (\"no movement today either\")"
+    },
+    "F-EMP-013": {
+     "status": "MASSED",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "location": "imperial-interior",
+     "locationText": "Border base (\"no movement today either\")"
     }
    },
    "theatres": {},
@@ -1459,235 +1787,6 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
-  }
- },
- {
-  "id": "EVT-0028",
-  "day": -33,
-  "time": "22:00",
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "Undated V12 Epilogue scene; the army leaves \"the next day\".",
-  "theatreId": "TH-CAP",
-  "front": "Strategic rear",
-  "battle": null,
-  "battleType": null,
-  "location": "imperial-capital",
-  "locationText": "Imperial Capital",
-  "actor": "Emperor Rudra and Velgrynd",
-  "actorFaction": "Eastern Empire",
-  "opponent": "None",
-  "opponentFaction": "-",
-  "characters": [
-   "rudra",
-   "velgrynd"
-  ],
-  "forces": [
-   "F-EMP-070"
-  ],
-  "type": "POLITICAL",
-  "title": "Rudra and Velgrynd resolve on world conquest; the army is to march the next day",
-  "immediateResult": "Velgrynd, seeing Rudra's mental exhaustion, asks how much time he has left; he promises not to fall before he has conquered the world.",
-  "operationalResult": "Velgrynd resolves to kill everyone who stands in the way of his domination.",
-  "strategicResult": "The next day an army of unprecedented size leaves the Empire for Tempest (EVT-0003).",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "commandStatus": "Emperor Rudra; Velgrynd",
-  "intensity": "NONE",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "LOW",
-   "overall": "HIGH"
-  },
-  "sources": [
-   {
-    "volume": "V12",
-    "chapter": "Epilogue",
-    "locator": "v12.txt:13088"
-   },
-   {
-    "volume": "V12",
-    "chapter": "Epilogue",
-    "locator": "v12.txt:13103"
-   },
-   {
-    "volume": "V12",
-    "chapter": "Epilogue",
-    "locator": "v12.txt:13116"
-   },
-   {
-    "volume": "V12",
-    "chapter": "Epilogue",
-    "locator": "v12.txt:13120"
-   }
-  ],
-  "evidence": "Rudra, near his limit, will not hand power to a prince; he vows to conquer the world and Velgrynd embraces him, resolving to kill all in his way. The next day the army departs.",
-  "reconstructionNote": "The Epilogue scene is undated. It is placed on the night of the war council (R0), because the council saw the army still near the border (v12.txt:12444-12445) and the departure follows \"the next day\".",
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "Added from audit missingEvents (v12.txt:13088-13120)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-070": {
-     "strength": 1,
-     "effective": 1,
-     "sizeStatus": "EXPLICIT",
-     "status": "ACTIVE",
-     "movement": "STATIONARY",
-     "direction": "-",
-     "confidence": "HIGH",
-     "location": "imperial-capital",
-     "locationText": "Imperial Capital"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  }
- },
- {
-  "id": "EVT-0003",
-  "day": -32,
-  "time": "08:00",
-  "timePrecision": "CANONICAL_RELATIVE",
-  "canonicalTime": "The next day the army left the Empire.",
-  "theatreId": "TH-DWG",
-  "front": "Imperial approach",
-  "battle": null,
-  "battleType": null,
-  "location": "imperial-interior",
-  "locationText": "Eastern Empire, departing westward",
-  "actor": "Jura invasion army (Armored Division)",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [
-   "calgurio",
-   "gaster",
-   "farraga"
-  ],
-  "forces": [
-   "F-EMP-010",
-   "F-EMP-011",
-   "F-EMP-012",
-   "F-EMP-013"
-  ],
-  "type": "DEPLOYMENT",
-  "title": "The invasion army leaves the Empire for Tempest",
-  "immediateResult": "An army of unprecedented size leaves the Empire and marches toward the Jura-Tempest Federation.",
-  "operationalResult": "Caligulio leads 940,000: the Restructured Armor Corps 700,000, the Magitank Force 200,000 and the Flying Combat Corps 40,000.",
-  "strategicResult": "The invasion of the Great Jura Forest begins.",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": 940000,
-   "note": "Stated: Caligulio \"originally led 940,000\" (v13.txt:16208)."
-  },
-  "commandStatus": "General Caligulio; Magitank Force under Lieutenant General Gaster",
-  "intensity": "LOW",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "V12",
-    "chapter": "Epilogue",
-    "locator": "v12.txt:13120"
-   },
-   {
-    "volume": "V13",
-    "chapter": "Ch4",
-    "locator": "v13.txt:16208"
-   },
-   {
-    "volume": "V13",
-    "chapter": "Ch1",
-    "locator": "v13.txt:302"
-   }
-  ],
-  "evidence": "The V12 Epilogue ends with the army leaving the Empire for Tempest the next day; V13 later says Caligulio originally led 940,000.",
-  "reconstructionNote": "Relative to the undated Epilogue scene (EVT-0028), itself placed on R0, so D-32 is a placement in absolute terms. The march to the halt (D-2) is a linear interpolation in transit.json.",
-  "notes": "The component split (700,000 / 200,000 / 40,000) is stated piecemeal (v12.txt:10215-10240; v13.txt:7531-7533).",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "Source: V12 Epilogue (v12.txt:13120), with the forecast at v13.txt:302-305; V13 Prologue has nothing on the advance.",
-    "canonicalTime: \"the next day the army left the Empire\" (v12.txt:13120).",
-    "Dropped the \"slower than forecast\" text; that is EVT-0013 (v13.txt:302-305).",
-    "Strength 940,000 now EXPLICIT (v13.txt:16208).",
-    "Effects: F-EMP-010/011/012/013 at imperial-interior (were forest edge, labyrinth, gate front, gate airspace).",
-    "Commander: Gaster (fan TL \"Geist\")."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-010": {
-     "strength": 940000,
-     "effective": 940000,
-     "sizeStatus": "EXPLICIT",
-     "status": "IN_TRANSIT",
-     "movement": "ADVANCE",
-     "direction": "West toward the Great Jura Forest",
-     "confidence": "MEDIUM",
-     "location": "imperial-interior",
-     "locationText": "On the march from the Eastern Empire (position interpolated)"
-    },
-    "F-EMP-011": {
-     "strength": 700000,
-     "effective": 700000,
-     "sizeStatus": "EXPLICIT",
-     "status": "IN_TRANSIT",
-     "movement": "ADVANCE",
-     "direction": "West",
-     "confidence": "HIGH",
-     "location": "imperial-interior",
-     "locationText": "On the march from the Eastern Empire (position interpolated)"
-    },
-    "F-EMP-012": {
-     "strength": 200000,
-     "effective": 200000,
-     "sizeStatus": "EXPLICIT",
-     "status": "IN_TRANSIT",
-     "movement": "ADVANCE",
-     "direction": "West",
-     "confidence": "HIGH",
-     "location": "imperial-interior",
-     "locationText": "On the march from the Eastern Empire (position interpolated)"
-    },
-    "F-EMP-013": {
-     "strength": 40000,
-     "effective": 40000,
-     "sizeStatus": "EXPLICIT",
-     "status": "IN_TRANSIT",
-     "movement": "ADVANCE",
-     "direction": "West",
-     "confidence": "HIGH",
-     "location": "imperial-interior",
-     "locationText": "Eastern Empire"
-    }
-   },
-   "theatres": {
-    "TH-DWG": {
-     "frontline": "Imperial invasion army on the march from the Empire",
-     "battleStatus": "FORMING"
-    }
-   },
-   "campaign": {
-    "empireTotal": 940000,
-    "empireEffective": 940000,
-    "activeCommanders": "Rimuru (Tempest head of state), Benimaru supreme commander; General Caligulio leading the Jura invasion (Empire)"
-   }
   }
  },
  {

@@ -116,6 +116,9 @@ function main(): void {
     if (!entry.asset.startsWith('/assets/nation-flags/')) {
       errors.push(`Nation ${id} declares an asset outside the flag root: ${entry.asset}`);
     }
+    if (entry.thumb && !existsSync(join(PUBLIC, entry.thumb))) {
+      errors.push(`Nation ${id} declares a flag thumbnail that does not exist: ${entry.thumb}`);
+    }
   }
 
   /* -- nation coverage --------------------------------------------- */
@@ -199,6 +202,7 @@ function main(): void {
     else cards += 1;
     if (!c.photocard.source) errors.push(`Character ${c.id}: photocard has no recorded source.`);
     if (!c.photocard.licence) errors.push(`Character ${c.id}: photocard has no recorded licence.`);
+    if (!c.photocard.thumb || !existsSync(join(PUBLIC, c.photocard.thumb))) errors.push(`Character ${c.id}: photocard thumbnail missing.`);
   }
 
   /* -- report ------------------------------------------------------ */

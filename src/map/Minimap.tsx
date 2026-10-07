@@ -6,12 +6,14 @@ import type { Map as MapLibreMap } from 'maplibre-gl';
 import { lngLatToSim, simToLngLatTuple } from '@/lib/coords';
 import { usePreferences } from '@/state/preferences';
 import { useSimulation } from '@/simulation/store';
+import { useT } from '@/i18n';
 
 const W = 148;
 const H = Math.round((W * 2035) / 2641);
 
 /** Overview of the whole world with the current view outlined; click to move there. */
 export function Minimap({ map }: { map: MapLibreMap | null }) {
+  const t = useT();
   const show = usePreferences((s) => s.showMinimap);
   const style = usePreferences((s) => s.mapStyle);
   const viewMode = useSimulation((s) => s.viewMode);
@@ -37,8 +39,8 @@ export function Minimap({ map }: { map: MapLibreMap | null }) {
   return (
     <button
       type="button"
-      aria-label="Overview map: click to move the view there"
-      className="absolute bottom-[4.75rem] left-[3.75rem] z-20 hidden overflow-hidden rounded-[3px] border border-ink-400 bg-ink-900 shadow-panel md:block"
+      aria-label={t('Overview map: click to move the view there')}
+      className="absolute bottom-[4.75rem] left-[3.75rem] z-20 hidden overflow-hidden rounded-[3px] border border-ink-400 bg-ink-900 shadow-panel md:block [@media(max-height:560px)]:hidden"
       style={{ width: W, height: H }}
       onClick={(e) => {
         const r = e.currentTarget.getBoundingClientRect();

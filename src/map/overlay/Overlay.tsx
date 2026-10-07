@@ -15,6 +15,7 @@ import { drawMovements } from '@/map/overlay/layers/movements';
 import { drawBattles, drawCharacters, drawCommanders, drawEvents, drawFrontlines, eventsAnimating, setPortraitListener } from '@/map/overlay/layers/incidents';
 import { drawControlChangeLabels, drawFronts, makeProjector } from '@/map/overlay/layers/fronts';
 import { onField } from '@/map/field/fieldStore';
+import { useI18n, useT } from '@/i18n';
 
 interface Props {
   map: MapLibreMap | null;
@@ -33,6 +34,7 @@ function cssFont(name: string, fallback: string): string {
  * atlas costs nothing.
  */
 export function Overlay({ map }: Props) {
+  const t = useT();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const hitsRef = useRef<Hit[]>([]);
   const dirtyRef = useRef(true);
@@ -143,6 +145,8 @@ export function Overlay({ map }: Props) {
     const unsubPrefs = usePreferences.subscribe(mark);
     setPortraitListener(mark);
     const unsubField = onField(mark);
+    // Canvas labels are translated at draw time: repaint when the language loads.
+    const unsubI18n = useI18n.subscribe(mark);
     const fontsReady = document.fonts?.ready.then(mark);
     void fontsReady;
 
@@ -166,6 +170,7 @@ export function Overlay({ map }: Props) {
       unsubSim();
       unsubPrefs();
       unsubField();
+      unsubI18n();
       setPortraitListener(null);
     };
   }, [map, draw]);
@@ -247,7 +252,7 @@ export function Overlay({ map }: Props) {
         >
           <p className="text-sm font-semibold leading-snug text-fg">{tip.hit.title}</p>
           <p className="mt-0.5 text-xs leading-snug text-fg-2">{tip.hit.detail}</p>
-          {tip.hit.provenance ? <p className="mt-1 text-2xs uppercase tracking-label text-fg-3">{PROVENANCE_LABEL[tip.hit.provenance].long}</p> : null}
+          {tip.hit.provenance ? <p className="mt-1 text-2xs uppercase tracking-label text-fg-3">{t(PROVENANCE_LABEL[tip.hit.provenance].long)}</p> : null}
         </div>
       ) : null}
     </>

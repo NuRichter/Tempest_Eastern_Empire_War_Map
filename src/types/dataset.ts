@@ -426,7 +426,7 @@ export interface Character {
   japanese: string | null;
   faction: FactionId;
   role: string;
-  photocard: { src: string; source: string; sourceUrl: string | null; licence: string | null } | null;
+  photocard: { src: string; thumb: string; source: string; sourceUrl: string | null; licence: string | null } | null;
   commanderIds: CommanderId[];
   combatantIds: string[];
   forceIds: ForceId[];
@@ -588,6 +588,8 @@ export interface NationFlagEntry {
   name: string;
   category: string;
   asset: string;
+  /** 96 x 64 WebP for interface use (scripts/flags/build_flag_thumbs.py); the PNG is the fallback. */
+  thumb: string | null;
 }
 
 export type NationFlagManifest = Record<NationId, NationFlagEntry>;

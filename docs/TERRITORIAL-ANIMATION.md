@@ -38,7 +38,7 @@ For time `T`, each cell gets signed **time fields**:
 Because these are times, **interpolating between cells and thresholding at zero gives a boundary that moves continuously** — the front is the isochrone `t_flip = T`. This is polygon interpolation without polygons: it handles pockets splitting off and islands closing, which vertex morphing does badly.
 
 - **Fill**: Empire red / allied green at the theme's held alpha.
-- **Pale band**: the loser's colour lightened (a white wash over owner land).
+- **Transition belt** (where `P > 0` and `Q > 0`, so it travels with the front). The **gradient** mode is the default: across the belt the colour runs from the loser's pale tone, where the loser has just receded, to the winner's colour, where the winner is about to arrive. The position in the belt is `Q / (P + Q)`, and `paleTo` in `front.ts` names the winner. The **pale band** mode draws the loser's colour lightened, flat. The modes are chosen in Layers → Front change. Measured widths in the references: 4–12 px (refs 3 and 4) up to 17–76 px (ref-01). See `research/REFERENCE_MATCH_REQUIREMENTS.md` R2.
 - **Seam**: the zero contour (marching squares, exactly the interpolated boundary), drawn white with a dark casing in the overlay.
 - **Canvas**: 1280 × 960 pixels spread over the visible window of the map (plus a margin), so the edge stays crisp at any zoom; on the globe the whole map is painted. Coastlines come from a land mask at the Base Map's own resolution.
 - **Army sizes**: one number per side per front, on its own side of the seam, rotated along it, at a fixed size, counting linearly to each new recorded value over one simulated hour.
@@ -70,4 +70,4 @@ All simulation, boolean deltas and timing happen at compile time (≈ 2–4 s). 
 
 ## Tests
 
-`scripts/test-runtime.ts`: half-way state at 25/50/75 % of every major transition; advance (grows after the border crossing and moves west); retreat (ground lost when the Magitank Force is destroyed); recapture (Jura clear after D+11); pocket collapse (interior falls after the rim); scrubbing equals playing; continuity (≥ 6 distinct states and no single step carrying more than half a transition). Browser: `npm run qa:front` (0/25/50/75/100 % captures of every major transition), `npm run qa:playback` (moving while playing, frozen when paused, identical after scrubbing back).
+`scripts/test-runtime.ts`: half-way state at 25/50/75 % of every major transition; advance (grows after the border crossing and moves west); retreat (ground lost when the Magitank Force is destroyed); recapture (Jura clear after D+10); pocket collapse (interior falls after the rim); scrubbing equals playing; continuity (≥ 6 distinct states and no single step carrying more than half a transition). Browser: `npm run qa:front` (0/25/50/75/100 % captures of every major transition), `npm run qa:playback` (moving while playing, frozen when paused, identical after scrubbing back).

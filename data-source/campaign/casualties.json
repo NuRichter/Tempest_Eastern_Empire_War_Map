@@ -723,7 +723,7 @@
  },
  {
   "id": "CAS-025",
-  "eventId": "EVT-0375",
+  "eventId": "EVT-0463",
   "faction": "Eastern Empire",
   "forceId": "F-EMP-020",
   "formation": "Magic Beast Division (remainder) and Gradim",
@@ -755,7 +755,7 @@
    }
   ],
   "evidence": "'The Warcraft Legion's men led by Gladim were all destroyed' (v15.txt:10511); Gradim dies in his awakening sleep under Carillon's attack (v15.txt:9404-9502); Vega devours his head and body (v15.txt:10515-10523).",
-  "notes": "Added in R5 (MISSING-B). At most 20,000 remained after the drug, but the number killed is not stated: kia stays UNKNOWN."
+  "notes": "Added in R5 (MISSING-B). At most 20,000 remained after the drug, but the number killed is not stated: kia stays UNKNOWN. R6: moved to the rout (EVT-0463); some soldiers fled before Gabil's attack (v15.txt:10902-10930)."
  },
  {
   "id": "CAS-026",

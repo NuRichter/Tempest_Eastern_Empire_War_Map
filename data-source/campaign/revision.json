@@ -11,7 +11,7 @@
   "minutesPerFrame": 10,
   "framesPerDay": 144,
   "firstDay": -43,
-  "lastDay": 31,
+  "lastDay": 27,
   "calendarStart": "01/01/9001"
  },
  "note": "R5 canon-audit skeleton. Battle day 0 is first contact (the day of Testarossa's ultimatum and the surface battle). Day placements are canonical only where AUDIT-PLAN.md marks them CANONICAL_RELATIVE; every clock time is a simulation placement on a 10-minute grid. calendarStart 01/01/9001 is the artificial date of D-43.",
@@ -78,7 +78,7 @@
    "stage": "IMPERIAL_DECISION_AND_MOBILIZATION"
   },
   {
-   "day": -32,
+   "day": -39,
    "time": "00:00",
    "phase": "OPERATIONAL_APPROACH",
    "stage": "APPROACH_MARCH"
@@ -111,44 +111,44 @@
    "stage": "LABYRINTH_RAID"
   },
   {
-   "day": 11,
+   "day": 10,
    "time": "00:00",
    "phase": "JURA_ANNIHILATION",
    "stage": "ANNIHILATION_OF_THE_OUTSIDE_CAMP"
   },
   {
-   "day": 12,
+   "day": 11,
    "time": "00:00",
    "phase": "OPERATIONAL_PAUSE",
    "stage": "RESURRECTION_AND_CONSOLIDATION"
   },
   {
-   "day": 18,
+   "day": 15,
    "time": "00:00",
    "stage": "LONG_NIGHT"
   },
   {
-   "day": 18,
+   "day": 15,
    "time": "18:00",
    "phase": "LONG_NIGHT"
   },
   {
-   "day": 19,
+   "day": 16,
    "time": "03:00",
    "phase": "TERMINATION_AND_SETTLEMENT"
   },
   {
-   "day": 20,
+   "day": 17,
    "time": "00:00",
    "stage": "POST_WAR_INTERVAL"
   },
   {
-   "day": 23,
+   "day": 19,
    "time": "00:00",
    "stage": "SUMMIT_AND_SETTLEMENT"
   },
   {
-   "day": 25,
+   "day": 21,
    "time": "00:00",
    "stage": "REPATRIATION_PREPARATION"
   }

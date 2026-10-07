@@ -52,7 +52,7 @@ const rules = JSON.parse(readFileSync(join(HERE, '..', 'data-source', 'campaign'
 
 const t0 = Date.now();
 const parts = Object.fromEntries(Object.entries(PART_FILES).map(([k, f]) => [k, read(f)])) as unknown as Omit<DatasetParts, 'checkpoints'>;
-const data = assembleDataset({ ...parts, checkpoints: parts.keyframeIndex.files.map((f) => read<FrameState>(f)) });
+const data = assembleDataset({ ...parts, checkpoints: parts.keyframeIndex.files.flatMap((f) => read<FrameState | FrameState[]>(f)) });
 const N = data.manifest.clock.frameCount;
 const W = GRID_W;
 const H = GRID_H;
@@ -279,7 +279,8 @@ for (let f = 0; f < N; f += STEP) {
   deadNow = new Set<number>();
   data.forces.forEach((force, fi) => {
     const snap = forceSnapshotAt(data, force.id, f);
-    if (snap && DEAD.test(snap.status)) deadNow.add(fi);
+    // Destroyed, or reduced to nothing (a strength of 0 whatever the status wording).
+    if (snap && (DEAD.test(snap.status) || snap.strength === 0)) deadNow.add(fi);
   });
   const sig = src.map((s) => `${s.forceId}:${s.x.toFixed(5)},${s.y.toFixed(5)},${s.w.toFixed(3)}`).join('|') + '#' + os.join(',') + '#' + [...deadNow].join(',') + '#' + data.territories.map((_, ti) => [HOLDER_EMPIRE, HOLDER_ALLIED].map((sd) => (gateOpen(ti, sd, f) ? 1 : 0)).join('')).join('');
   if (sig === lastSig) continue;

@@ -2,6 +2,7 @@
 
 import { Play } from 'lucide-react';
 
+import { useT } from '@/i18n';
 import { battleDayLabel, phaseLabel } from '@/lib/format';
 import { useSimulation } from '@/simulation/store';
 import { RecordLink } from '@/components/ui/primitives';
@@ -13,6 +14,7 @@ import { RecordLink } from '@/components/ui/primitives';
  */
 export function StoryPanel() {
   const data = useSimulation((s) => s.data);
+  const t = useT();
   const frame = useSimulation((s) => s.frame);
   const seek = useSimulation((s) => s.seek);
   const clock = useSimulation((s) => s.clock);
@@ -25,7 +27,7 @@ export function StoryPanel() {
   return (
     <div className="pb-4">
       <p className="px-3 pb-1 pt-2.5 text-xs leading-relaxed text-fg-3">
-        The campaign in stages. Pick one to move there; play to watch it unfold on the map.
+        {t('The campaign in stages. Pick one to move there; play to watch it unfold on the map.')}
       </p>
       <ol className="mt-1">
         {data.stages.map((s, i) => {
@@ -59,8 +61,8 @@ export function StoryPanel() {
                 <button
                   type="button"
                   className="ctl h-7 w-7 shrink-0 px-0"
-                  aria-label={`Play ${phaseLabel(s.name)}`}
-                  title="Play from the start of this stage"
+                  aria-label={t('Play {stage}', { stage: phaseLabel(s.name) })}
+                  title={t('Play from the start of this stage')}
                   onClick={() => {
                     seek(s.startFrame);
                     focusCampaign();
@@ -76,7 +78,7 @@ export function StoryPanel() {
       </ol>
       {data.turningPoints.length ? (
         <div className="mt-2 border-t border-ink-500 px-3 pt-2.5">
-          <p className="eyebrow">Turning points</p>
+          <p className="eyebrow">{t('Turning points')}</p>
           <ol className="mt-1.5 space-y-1.5">
             {data.turningPoints.map((e) => (
               <li key={e.id} className="flex gap-2 text-xs">

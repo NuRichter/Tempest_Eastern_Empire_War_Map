@@ -2,6 +2,16 @@ import { FACTION_COLOR, FACTION_DEEP, FACTION_PALE, factionKey, INK, ROUTE_STYLE
 import { factionVisible, forceHidden, haloText, isSelected, type DrawContext } from '@/map/overlay/context';
 import { drawArrowHead } from '@/map/overlay/glyphs';
 import { formatStrength } from '@/map/overlay/layers/forces';
+import { msg, translate } from '@/i18n';
+import type { RouteConfidence } from '@/types/dataset';
+
+/** Tooltip wording for each route grade. */
+const ROUTE_DETAIL: Record<RouteConfidence, string> = {
+  SOLID: msg('route solid'),
+  RECONSTRUCTED: msg('route reconstructed'),
+  SCHEMATIC: msg('route schematic'),
+  UNKNOWN: msg('route unknown'),
+};
 
 /** How long, in frames, a completed movement stays legible before it fades out. */
 const LINGER = 216;
@@ -92,7 +102,7 @@ export function drawMovements(dc: DrawContext): void {
       selection: { kind: 'movement', id: m.id },
       x: point(0.5).x, y: point(0.5).y, r: 12,
       title: `${force.displayName}: ${m.from} → ${m.to}`,
-      detail: `${m.type.toLowerCase()} · route ${m.route.toLowerCase()} · ${formatStrength(m.strengthAtStart, force.sizeStatus)} at departure`,
+      detail: `${m.type.toLowerCase()} · ${translate(ROUTE_DETAIL[m.route])} · ${translate('{strength} at departure', { strength: formatStrength(m.strengthAtStart, force.sizeStatus) })}`,
       priority: 4,
     });
 
@@ -102,7 +112,7 @@ export function drawMovements(dc: DrawContext): void {
       const line1 = `${force.displayName}`;
       const atStart = formatStrength(m.strengthAtStart, force.sizeStatus);
       const atEnd = m.strengthAtEnd !== 'UNKNOWN' && m.strengthAtEnd !== m.strengthAtStart ? ` → ${formatStrength(m.strengthAtEnd, force.sizeStatus)}` : '';
-      const line2 = `${atStart}${atEnd} · ${m.route === 'SOLID' ? 'route stated' : m.route === 'RECONSTRUCTED' ? 'route reconstructed' : 'schematic'}${m.arrivesAfterClock ? ' · arrives after the clock' : ''}`;
+      const line2 = `${atStart}${atEnd} · ${m.route === 'SOLID' ? translate('route stated') : m.route === 'RECONSTRUCTED' ? translate('route reconstructed') : translate('schematic')}${m.arrivesAfterClock ? ` · ${translate('arrives after the clock')}` : ''}`;
       ctx.font = `500 ${size}px ${dc.fonts.mono}`;
       const w2 = ctx.measureText(line2).width;
       ctx.font = `600 ${size}px ${dc.fonts.ui}`;

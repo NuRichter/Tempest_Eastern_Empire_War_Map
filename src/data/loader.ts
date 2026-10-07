@@ -233,7 +233,7 @@ export async function loadDataset(signal?: AbortSignal): Promise<Dataset> {
     (Object.entries(PART_FILES) as [keyof typeof PART_FILES, string][]).map(async ([k, f]) => [k, await json<unknown>(f, signal)] as const),
   );
   const parts = Object.fromEntries(entries) as unknown as Omit<DatasetParts, 'checkpoints'>;
-  const checkpoints = await Promise.all(parts.keyframeIndex.files.map((file) => json<FrameState>(file, signal)));
+  const checkpoints = (await Promise.all(parts.keyframeIndex.files.map((file) => json<FrameState | FrameState[]>(file, signal)))).flat();
   return assembleDataset({ ...parts, checkpoints });
 }
 

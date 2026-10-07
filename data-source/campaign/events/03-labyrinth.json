@@ -157,82 +157,6 @@
   }
  },
  {
-  "id": "EVT-0210",
-  "day": 2,
-  "time": "08:00",
-  "timePrecision": "CANONICAL_RELATIVE",
-  "canonicalTime": "the next day (day two of the operation)",
-  "theatreId": "TH-LAB",
-  "front": "Ramiris Labyrinth Front",
-  "battle": "Labyrinth Raider Operation",
-  "battleType": "MAJOR_BATTLE",
-  "location": "ramiris-labyrinth",
-  "locationText": "Labyrinth entrance",
-  "actor": "Restructured Armor Corps",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Labyrinth garrison",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [
-   "calgurio"
-  ],
-  "forces": [
-   "F-EMP-011A",
-   "F-EMP-011B"
-  ],
-  "type": "REINFORCEMENT",
-  "title": "Day two: 150,000 more enter the labyrinth",
-  "immediateResult": "A further 150,000 imperial troops enter, bringing the assault echelon to about 500,000",
-  "operationalResult": "The camp outside shrinks to about 200,000",
-  "strategicResult": "Imperial commitment to the labyrinth deepens",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": 150000,
-   "note": "150,000 entered on day two; 500,000 inside is a cumulative sum"
-  },
-  "commandStatus": "General Caligulio",
-  "intensity": "LOW",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "HIGH",
-   "overall": "HIGH"
-  },
-  "sources": [
-   {
-    "volume": "V13",
-    "chapter": "Ch3",
-    "locator": "v13.txt:9489-9491"
-   }
-  ],
-  "evidence": "After 350,000 on the first day, another 150,000 were added on the following day.",
-  "reconstructionNote": "Day is canonical relative to day one (itself placed on D+1); 08:00 is a simulation time. The cumulative 500,000 inside and 200,000 outside are DERIVED sums.",
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "New event per AUDIT-PLAN section 4 (v13.txt:9491)"
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-011A": {
-     "strength": 500000,
-     "effective": 500000,
-     "sizeStatus": "DERIVED"
-    },
-    "F-EMP-011B": {
-     "strength": 200000,
-     "effective": 200000,
-     "sizeStatus": "DERIVED"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  }
- },
- {
   "id": "EVT-0203",
   "day": 2,
   "time": "07:00",
@@ -317,6 +241,82 @@
      "battleStatus": "INTENSIFYING"
     }
    },
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0210",
+  "day": 2,
+  "time": "08:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "the next day (day two of the operation)",
+  "theatreId": "TH-LAB",
+  "front": "Ramiris Labyrinth Front",
+  "battle": "Labyrinth Raider Operation",
+  "battleType": "MAJOR_BATTLE",
+  "location": "ramiris-labyrinth",
+  "locationText": "Labyrinth entrance",
+  "actor": "Restructured Armor Corps",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Labyrinth garrison",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "calgurio"
+  ],
+  "forces": [
+   "F-EMP-011A",
+   "F-EMP-011B"
+  ],
+  "type": "REINFORCEMENT",
+  "title": "Day two: 150,000 more enter the labyrinth",
+  "immediateResult": "A further 150,000 imperial troops enter, bringing the assault echelon to about 500,000",
+  "operationalResult": "The camp outside shrinks to about 200,000",
+  "strategicResult": "Imperial commitment to the labyrinth deepens",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 150000,
+   "note": "150,000 entered on day two; 500,000 inside is a cumulative sum"
+  },
+  "commandStatus": "General Caligulio",
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:9489-9491"
+   }
+  ],
+  "evidence": "After 350,000 on the first day, another 150,000 were added on the following day.",
+  "reconstructionNote": "Day is canonical relative to day one (itself placed on D+1); 08:00 is a simulation time. The cumulative 500,000 inside and 200,000 outside are DERIVED sums.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event per AUDIT-PLAN section 4 (v13.txt:9491)"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-011A": {
+     "strength": 500000,
+     "effective": 500000,
+     "sizeStatus": "DERIVED"
+    },
+    "F-EMP-011B": {
+     "strength": 200000,
+     "effective": 200000,
+     "sizeStatus": "DERIVED"
+    }
+   },
+   "theatres": {},
    "campaign": {}
   }
  },
@@ -714,8 +714,8 @@
  },
  {
   "id": "EVT-0213",
-  "day": 9,
-  "time": "09:00",
+  "day": 8,
+  "time": "10:00",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "two days before Caligulio's dawn scene (the hundred elite were sent two days earlier)",
   "theatreId": "TH-LAB",
@@ -784,7 +784,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event: elite dispatch (v13.txt:10715-10800, 15990, 16137-16140)"
+    "New event: elite dispatch (v13.txt:10715-10800, 15990, 16137-16140)",
+    "R6 re-dated from D+09 09:00 to D+08 10:00: the elite are chosen in the same scene as the 7-day mark (v13.txt:10601, 10712-10822)."
    ]
   },
   "effects": {
@@ -795,7 +796,7 @@
  },
  {
   "id": "EVT-0212",
-  "day": 10,
+  "day": 9,
   "time": "13:00",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "the next day (after Minitz's night on floor 78)",
@@ -866,7 +867,8 @@
    "status": "ADDED",
    "changes": [
     "New event per AUDIT-PLAN section 4 (v13.txt:10724-10726, 11914-11920, 16268-16272)",
-    "Placed D+10 13:00 instead of the plan's D+9 09:00 (v13.txt:11917, 15990, 16280)"
+    "Placed D+10 13:00 instead of the plan's D+9 09:00 (v13.txt:11917, 15990, 16280)",
+    "R6 re-dated from D+10 13:00 to D+09 13:00: Krishna, sent with the elite on D+8, is back \"two days\" later (v13.txt:15989) and Treyni left \"about ten days ago\" (v13.txt:14318): the final battle is D+10."
    ]
   },
   "effects": {
@@ -881,7 +883,7 @@
  },
  {
   "id": "EVT-0207",
-  "day": 10,
+  "day": 9,
   "time": "18:00",
   "timePrecision": "RECONSTRUCTED",
   "canonicalTime": "-",
@@ -947,7 +949,8 @@
     "Operational result: the ground war continues with fewer than 200,000 outside (v13.txt:13716-13719)",
     "Effects: F-EMP-011A strength 0 / kia 530,000 / DESTROYED; F-EMP-011 170,000 (no longer DESTROYED); F-EMP-010 170,000 / kia 770,000 (DERIVED)",
     "TH-LAB no longer CLEARED/CONCLUDED: the camp outside is still in the field",
-    "activeCommanders: imperial field command not yet destroyed"
+    "activeCommanders: imperial field command not yet destroyed",
+    "R6 re-dated from D+10 18:00 to D+09 18:00: Krishna, sent with the elite on D+8, is back \"two days\" later (v13.txt:15989) and Treyni left \"about ten days ago\" (v13.txt:14318): the final battle is D+10."
    ]
   },
   "effects": {
@@ -992,7 +995,7 @@
  },
  {
   "id": "EVT-0209",
-  "day": 10,
+  "day": 9,
   "time": "18:10",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "-",
@@ -1048,7 +1051,8 @@
    "changes": [
     "Moved D+3 18:00 -> D+10 18:10",
     "Location Tempest -> labyrinth control room",
-    "Notes: V14 update (twelve qualify, nine evolve; v14.txt:1294-1297); removed '770,000 consistent' claim"
+    "Notes: V14 update (twelve qualify, nine evolve; v14.txt:1294-1297); removed '770,000 consistent' claim",
+    "R6 re-dated from D+10 18:10 to D+09 18:10: Krishna, sent with the elite on D+8, is back \"two days\" later (v13.txt:15989) and Treyni left \"about ten days ago\" (v13.txt:14318): the final battle is D+10."
    ]
   },
   "effects": {
@@ -1059,7 +1063,7 @@
  },
  {
   "id": "EVT-0208",
-  "day": 11,
+  "day": 10,
   "time": "07:00",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "after dawn broke; Krishna had been sent in two days earlier",
@@ -1126,7 +1130,8 @@
     "Title: no test performed; Caligulio's inference (v13.txt:16282-16296)",
     "Source Ch5/Epilogue -> Ch4 (V13 has no Ch5)",
     "Deleted 'no prospect of recovery': ~700,000 resurrected on D+12 (v13.txt:18489-18492)",
-    "Location imperial-capital -> imperial-siege-camp"
+    "Location imperial-capital -> imperial-siege-camp",
+    "R6 re-dated from D+11 07:00 to D+10 07:00: Krishna, sent with the elite on D+8, is back \"two days\" later (v13.txt:15989) and Treyni left \"about ten days ago\" (v13.txt:14318): the final battle is D+10."
    ]
   },
   "effects": {
@@ -1137,7 +1142,7 @@
  },
  {
   "id": "EVT-0214",
-  "day": 11,
+  "day": 10,
   "time": "07:30",
   "timePrecision": "RECONSTRUCTED",
   "canonicalTime": "-",
@@ -1196,7 +1201,8 @@
    "status": "ADDED",
    "changes": [
     "New event per AUDIT-PLAN section 4 (v13.txt:14242-14250)",
-    "Placed D+11 07:30 instead of the plan's D+10 19:00 (v13.txt:13723, 14602)"
+    "Placed D+11 07:30 instead of the plan's D+10 19:00 (v13.txt:13723, 14602)",
+    "R6 re-dated from D+11 07:30 to D+10 07:30: Krishna, sent with the elite on D+8, is back \"two days\" later (v13.txt:15989) and Treyni left \"about ten days ago\" (v13.txt:14318): the final battle is D+10."
    ]
   },
   "effects": {
@@ -1216,7 +1222,7 @@
  },
  {
   "id": "EVT-0216",
-  "day": 11,
+  "day": 10,
   "time": "10:00",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "-",
@@ -1281,7 +1287,9 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event per AUDIT-PLAN section 4 (v13.txt:16980-17132)"
+    "New event per AUDIT-PLAN section 4 (v13.txt:16980-17132)",
+    "R6 re-dated from D+11 10:00 to D+10 10:00: Krishna, sent with the elite on D+8, is back \"two days\" later (v13.txt:15989) and Treyni left \"about ten days ago\" (v13.txt:14318): the final battle is D+10.",
+    "R6: more than 80% of nearly 200,000 trapped, more than 100,000 turned to ash (v13.txt:17110-17112, 17290-17293): at most about 40,000 remain (DERIVED)."
    ]
   },
   "effects": {
@@ -1295,7 +1303,9 @@
     "F-EMP-011B": {
      "status": "ENGAGED",
      "movement": "ADVANCE",
-     "effective": "UNKNOWN"
+     "effective": 40000,
+     "strength": 40000,
+     "sizeStatus": "DERIVED"
     },
     "F-EMP-011": {
      "status": "ENGAGED"
@@ -1312,7 +1322,7 @@
  },
  {
   "id": "EVT-0217",
-  "day": 11,
+  "day": 10,
   "time": "10:20",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "-",
@@ -1389,7 +1399,9 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event per AUDIT-PLAN section 4 (v13.txt:13955-13973, 16756, 17160-17170)"
+    "New event per AUDIT-PLAN section 4 (v13.txt:13955-13973, 16756, 17160-17170)",
+    "R6 re-dated from D+11 10:20 to D+10 10:20: Krishna, sent with the elite on D+8, is back \"two days\" later (v13.txt:15989) and Treyni left \"about ten days ago\" (v13.txt:14318): the final battle is D+10.",
+    "R6: \"more than 20,000\" survivors run into Geld's wall (v13.txt:17165-17166)."
    ]
   },
   "effects": {
@@ -1429,7 +1441,10 @@
      "confidence": "HIGH"
     },
     "F-EMP-011B": {
-     "movement": "RETREAT"
+     "movement": "RETREAT",
+     "strength": 20000,
+     "effective": 20000,
+     "sizeStatus": "EXPLICIT"
     },
     "F-TEM-005Y": {
      "status": "ENGAGED",
@@ -1443,8 +1458,167 @@
   }
  },
  {
+  "id": "EVT-0459",
+  "day": 10,
+  "time": "10:40",
+  "timePrecision": "SEQUENTIAL_CANON",
+  "canonicalTime": "",
+  "theatreId": "TH-LAB",
+  "front": "",
+  "battle": "Annihilation of the Imperial Camp",
+  "battleType": "MAJOR_BATTLE",
+  "location": "imperial-siege-camp",
+  "locationText": "Flanks of the imperial camp",
+  "actor": "Shion and Albis",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial camp survivors",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "shion",
+   "albis"
+  ],
+  "forces": [
+   "F-TEM-005",
+   "F-TEM-005Y",
+   "F-ALL-003",
+   "F-EMP-011B"
+  ],
+  "type": "COMBAT",
+  "title": "Shion breaks the imperial left; Albis strikes the imperial right",
+  "immediateResult": "Shion breaks the imperial left; Albis strikes the imperial right",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": ""
+  },
+  "commandStatus": "",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17193-17421"
+   }
+  ],
+  "evidence": "Shion's force collapses the imperial left while Albis hits the right.",
+  "reconstructionNote": "Order canonical; the flank positions are reconstructed and the time is a placement between EVT-0217 and EVT-0218.",
+  "notes": "Added in R6 from the full novel audit.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added in R6 (full novel audit)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-005": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "camp-left-flank",
+     "locationText": "Imperial left flank"
+    },
+    "F-TEM-005Y": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "camp-left-flank",
+     "locationText": "Imperial left flank"
+    },
+    "F-ALL-003": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "camp-right-flank",
+     "locationText": "Imperial right flank"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0460",
+  "day": 10,
+  "time": "10:50",
+  "timePrecision": "SEQUENTIAL_CANON",
+  "canonicalTime": "",
+  "theatreId": "TH-LAB",
+  "front": "",
+  "battle": "Annihilation of the Imperial Camp",
+  "battleType": "MAJOR_BATTLE",
+  "location": "imperial-siege-camp",
+  "locationText": "Imperial camp headquarters",
+  "actor": "Momiji",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Imperial camp survivors",
+  "opponentFaction": "Eastern Empire",
+  "characters": [],
+  "forces": [
+   "F-EMP-011B"
+  ],
+  "type": "COMBAT",
+  "title": "Momiji's Red Flame clears the field; fewer than 2,000 fall back to the headquarters",
+  "immediateResult": "Momiji's Red Flame clears the field; fewer than 2,000 fall back to the headquarters",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": ""
+  },
+  "commandStatus": "",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch4",
+    "locator": "v13.txt:17426-17543"
+   }
+  ],
+  "evidence": "The Red Flame leaves no survivors on the field; fewer than 2,000, fugitives included, are left at the main camp.",
+  "reconstructionNote": "Time is a placement between EVT-0459 and EVT-0218.",
+  "notes": "Added in R6 from the full novel audit.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added in R6 (full novel audit)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-011B": {
+     "strength": 2000,
+     "effective": 2000,
+     "sizeStatus": "EXPLICIT",
+     "status": "ENGAGED",
+     "movement": "RETREAT",
+     "location": "imperial-siege-camp",
+     "locationText": "Headquarters"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
   "id": "EVT-0218",
-  "day": 11,
+  "day": 10,
   "time": "11:00",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "-",
@@ -1510,7 +1684,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event per AUDIT-PLAN section 4 (v13.txt:17620-17815)"
+    "New event per AUDIT-PLAN section 4 (v13.txt:17620-17815)",
+    "R6 re-dated from D+11 11:00 to D+10 11:00: Krishna, sent with the elite on D+8, is back \"two days\" later (v13.txt:15989) and Treyni left \"about ten days ago\" (v13.txt:14318): the final battle is D+10."
    ]
   },
   "effects": {
@@ -1535,7 +1710,7 @@
  },
  {
   "id": "EVT-0219",
-  "day": 11,
+  "day": 10,
   "time": "11:30",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "-",
@@ -1598,7 +1773,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event per AUDIT-PLAN section 4 (v13.txt:18008-18015, 18344-18349)"
+    "New event per AUDIT-PLAN section 4 (v13.txt:18008-18015, 18344-18349)",
+    "R6 re-dated from D+11 11:30 to D+10 11:30: Krishna, sent with the elite on D+8, is back \"two days\" later (v13.txt:15989) and Treyni left \"about ten days ago\" (v13.txt:14318): the final battle is D+10."
    ]
   },
   "effects": {
@@ -1645,7 +1821,7 @@
  },
  {
   "id": "EVT-0220",
-  "day": 12,
+  "day": 11,
   "time": "10:00",
   "timePrecision": "RECONSTRUCTED",
   "canonicalTime": "the spell ran all day; V14 Ch1 opens the day after the resurrection",
@@ -1721,7 +1897,8 @@
    "status": "ADDED",
    "changes": [
     "New event per AUDIT-PLAN section 4 (v13.txt:18328-18395, 18484-18492)",
-    "Unrevivable 240,000 described per the text, not as 'surface dead' only (v13.txt:18372-18386)"
+    "Unrevivable 240,000 described per the text, not as 'surface dead' only (v13.txt:18372-18386)",
+    "R6 re-dated from D+12 10:00 to D+11 10:00: Krishna, sent with the elite on D+8, is back \"two days\" later (v13.txt:15989) and Treyni left \"about ten days ago\" (v13.txt:14318): the final battle is D+10."
    ]
   },
   "effects": {

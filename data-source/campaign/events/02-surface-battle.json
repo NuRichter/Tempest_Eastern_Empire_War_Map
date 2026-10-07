@@ -954,6 +954,78 @@
   }
  },
  {
+  "id": "EVT-0458",
+  "day": 0,
+  "time": "11:50",
+  "timePrecision": "SEQUENTIAL_CANON",
+  "canonicalTime": "",
+  "theatreId": "TH-DWG",
+  "front": "",
+  "battle": "Battle of the Dwargon Gate",
+  "battleType": "MAJOR_BATTLE",
+  "location": "magitank-rear",
+  "locationText": "Behind the Magitank Force",
+  "actor": "Hakuro",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Magitank Force",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "hakuro"
+  ],
+  "forces": [
+   "F-TEM-001"
+  ],
+  "type": "MANOEUVRE",
+  "title": "Hakuro takes 12,000 on a detour of more than 40 km to the magitank rear",
+  "immediateResult": "Hakuro takes 12,000 on a detour of more than 40 km to the magitank rear",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": ""
+  },
+  "commandStatus": "",
+  "intensity": "NONE",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:4084-4088"
+   }
+  ],
+  "evidence": "The First Corps makes a detour of more than 40 km to reach the rear of the Magitank Force.",
+  "reconstructionNote": "The route of the detour and the rear position are reconstructed.",
+  "notes": "Added in R6 from the full novel audit.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added in R6 (full novel audit)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-001": {
+     "status": "MANOEUVRING",
+     "movement": "FLANKING",
+     "direction": "Round to the magitank rear",
+     "location": "magitank-rear",
+     "locationText": "Magitank rear (after a >40 km detour)"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
   "id": "EVT-0106",
   "day": 0,
   "time": "12:00",
@@ -2135,7 +2207,7 @@
   "forces": [
    "F-DEM-001",
    "F-EMP-012",
-   "F-EMP-014"
+   "F-EMP-015"
   ],
   "type": "ASSASSINATION",
   "title": "Testarossa breaks the Imperial Sealing Array and kills Gaster",
@@ -2190,7 +2262,8 @@
    "status": "ADDED",
    "changes": [
     "New event per AUDIT-PLAN file 02 (v13.txt:5934-6200, 6560-6585, 6664-6670)",
-    "Turning point rank 8 moved here from EVT-0118"
+    "Turning point rank 8 moved here from EVT-0118",
+    "R6: Tibbs, Balder and Gordon pose as Intelligence officers but are Imperial Guard knights (v13.txt:5968-5985): F-EMP-015, not F-EMP-014."
    ]
   },
   "effects": {

@@ -1,0 +1,38 @@
+{
+ "about": "Names that must stay exactly as written in every locale (CJK may use the official Japanese form given). Generated for translators.",
+ "terms": [
+  {
+   "name": "Eastern Empire",
+   "japanese": "ナスカ・ナムリウム・ウルメリア東方連合統一帝国 (common name: 東の帝国)"
+  },
+  {
+   "name": "Tempest",
+   "japanese": "ジュラ・テンペスト連邦国 (common: 魔国連邦〈テンペスト〉)"
+  },
+  {
+   "name": "Dwargon",
+   "japanese": "武装国家ドワルゴン"
+  }
+ ],
+ "alsoKeep": [
+  "Tempest",
+  "Eastern Empire",
+  "Dwargon",
+  "Jura",
+  "Tensura",
+  "NuRichter",
+  "NuRichter Workspace",
+  "Fuse",
+  "Mitz Vah",
+  "Micro Magazine",
+  "Kodansha",
+  "Yen Press",
+  "GC Novels",
+  "Magazine Pocket",
+  "Shōsetsuka ni Narō",
+  "Monthly Shōnen Sirius",
+  "MapLibre",
+  "Base Map",
+  "Myth Map"
+ ]
+}

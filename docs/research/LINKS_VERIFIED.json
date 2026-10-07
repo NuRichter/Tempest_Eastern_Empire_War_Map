@@ -1,0 +1,446 @@
+{
+  "retrieved": "2026-10-08",
+  "links": [
+    {
+      "category": "official-anime",
+      "label": "Tensura official portal (Japanese)",
+      "url": "https://www.ten-sura.com/",
+      "verified": true,
+      "evidence": "HTTP 200; official JP portal for anime, comics, novels and games; footer links to the official social accounts.",
+      "notes": "No English page is linked from the portal nav or footer."
+    },
+    {
+      "category": "official-anime",
+      "label": "Tensura TV anime page (portal)",
+      "url": "https://www.ten-sura.com/anime/tensura",
+      "verified": true,
+      "evidence": "Fetched; TV anime page; announces Season 4 broadcast from July 2027.",
+      "notes": ""
+    },
+    {
+      "category": "official-anime",
+      "label": "Official anime X/Twitter @ten_sura_anime",
+      "url": "https://x.com/ten_sura_anime",
+      "verified": true,
+      "evidence": "Linked from the ten-sura.com footer; HTTP 200.",
+      "notes": ""
+    },
+    {
+      "category": "official-anime",
+      "label": "Official Instagram @tensura_official",
+      "url": "https://www.instagram.com/tensura_official/",
+      "verified": true,
+      "evidence": "Linked from the ten-sura.com footer; HTTP 200.",
+      "notes": ""
+    },
+    {
+      "category": "official-anime",
+      "label": "Official TikTok @ten_sura_anime",
+      "url": "https://www.tiktok.com/@ten_sura_anime",
+      "verified": true,
+      "evidence": "Linked from the ten-sura.com footer; HTTP 200.",
+      "notes": ""
+    },
+    {
+      "category": "official-novel",
+      "label": "Tensura novel page (portal, Micro Magazine)",
+      "url": "https://www.ten-sura.com/novel/tensura",
+      "verified": true,
+      "evidence": "Fetched; names Micro Magazine (マイクロマガジン社) as publisher and Fuse as author.",
+      "notes": ""
+    },
+    {
+      "category": "official-novel",
+      "label": "GC Novels (Micro Magazine) - Tensura vol. 12",
+      "url": "https://gcnovels.jp/book/112",
+      "verified": true,
+      "evidence": "Page title '転生したらスライムだった件 12 | GCノベルズ'; release 2018-03-09; ISBN 9784896376982.",
+      "notes": "No single GC Novels series URL was found, so the volume pages are used."
+    },
+    {
+      "category": "official-novel",
+      "label": "GC Novels - Tensura vol. 13",
+      "url": "https://gcnovels.jp/book/136",
+      "verified": true,
+      "evidence": "Release 2018-09-28; ISBN 9784896378160.",
+      "notes": ""
+    },
+    {
+      "category": "official-novel",
+      "label": "GC Novels - Tensura vol. 14",
+      "url": "https://gcnovels.jp/book/157",
+      "verified": true,
+      "evidence": "Release 2019-03-29; ISBN 9784896378627.",
+      "notes": ""
+    },
+    {
+      "category": "official-novel",
+      "label": "GC Novels - Tensura vol. 15",
+      "url": "https://gcnovels.jp/book/590",
+      "verified": true,
+      "evidence": "Release 2019-09-30; ISBN 9784896379235.",
+      "notes": "Wikipedia says Sept 28, 2019, but the official page says 2019年09月30日."
+    },
+    {
+      "category": "official-novel",
+      "label": "GC Novels - Tensura vol. 16",
+      "url": "https://gcnovels.jp/book/628",
+      "verified": true,
+      "evidence": "Release 2020-03-27; ISBN 9784896379891; 小説: 伏瀬, イラスト: みっつばー; GCノベルズ.",
+      "notes": ""
+    },
+    {
+      "category": "official-novel",
+      "label": "Yen Press English light novel series page",
+      "url": "https://yenpress.com/series/that-time-i-got-reincarnated-as-a-slime-light-novel",
+      "verified": true,
+      "evidence": "HTTP 200; lists vols. 1-22 (Yen On imprint).",
+      "notes": ""
+    },
+    {
+      "category": "official-novel",
+      "label": "Original web novel on Shōsetsuka ni Narō (Fuse)",
+      "url": "https://ncode.syosetu.com/n6316bn/",
+      "verified": true,
+      "evidence": "Fetched; title 転生したらスライムだった件, author 伏瀬, status complete.",
+      "notes": ""
+    },
+    {
+      "category": "official-manga",
+      "label": "Kodansha (JP) manga series page",
+      "url": "https://www.kodansha.co.jp/titles/1000026036",
+      "verified": true,
+      "evidence": "HTTP 200; page title '『転生したらスライムだった件』既刊・関連作品一覧｜講談社'.",
+      "notes": "Art: 川上泰樹 (Taiki Kawakami); original story: 伏瀬; character design: みっつばー; serialised in Monthly Shōnen Sirius (per ten-sura.com/comic/tensura)."
+    },
+    {
+      "category": "official-manga",
+      "label": "Monthly Shōnen Sirius label page (Kodansha)",
+      "url": "https://www.kodansha.co.jp/comic/labels/shonen-sirius",
+      "verified": true,
+      "evidence": "HTTP 200; page title '月刊少年シリウス作品一覧｜講談社'.",
+      "notes": ""
+    },
+    {
+      "category": "official-manga",
+      "label": "Tensura manga page (portal)",
+      "url": "https://www.ten-sura.com/comic/tensura",
+      "verified": true,
+      "evidence": "Fetched; credits Taiki Kawakami (art), Fuse (story), Kodansha, Monthly Shōnen Sirius.",
+      "notes": ""
+    },
+    {
+      "category": "official-manga",
+      "label": "Magazine Pocket free read, ch. 1",
+      "url": "https://pocket.shonenmagazine.com/title/00380/episode/185457",
+      "verified": true,
+      "evidence": "HTTP 200; page title '転生したらスライムだった件 | 【第1話】死亡～そして転生 / マガポケ'; ten-sura.com/comic/tensura links to it as the sample read.",
+      "notes": ""
+    },
+    {
+      "category": "official-manga",
+      "label": "Kodansha USA English manga series page",
+      "url": "https://kodansha.us/series/that-time-i-got-reincarnated-as-a-slime/",
+      "verified": false,
+      "evidence": "Direct fetch blocked (HTTP 403, bot protection). The URL appears in kodansha.us-restricted search results titled 'That Time I Got Reincarnated as a Slime'.",
+      "notes": "Probably correct; open it in a browser to confirm."
+    },
+    {
+      "category": "streaming",
+      "label": "Crunchyroll series page",
+      "url": "https://www.crunchyroll.com/series/GYZJ43JMR/that-time-i-got-reincarnated-as-a-slime",
+      "verified": false,
+      "evidence": "HTTP 403 to automated fetch; no search result confirmed the series ID.",
+      "notes": "Open it in a browser to confirm before using."
+    },
+    {
+      "category": "wiki",
+      "label": "Tensei Shitara Slime Datta Ken Wiki (Fandom)",
+      "url": "https://tensura.fandom.com/",
+      "verified": false,
+      "evidence": "Direct fetch blocked (Cloudflare 403/402). Search results show pages on tensura.fandom.com titled 'Tensei Shitara Slime Datta Ken Wiki'.",
+      "notes": "The domain is confirmed via search; the exact main-page path is not."
+    },
+    {
+      "category": "creator",
+      "label": "NuRichter GitHub profile",
+      "url": "https://github.com/NuRichter",
+      "verified": true,
+      "evidence": "GitHub API: company 'NuRichter Workspace', blog https://nurichter-workspace.vercel.app/, bio \"by the end, Where's my Scara?\", 51 public repos, 127 followers, created 2023-08-28.",
+      "notes": ""
+    },
+    {
+      "category": "creator",
+      "label": "Project repository",
+      "url": "https://github.com/NuRichter/Tempest_Eastern_Empire_War_Map",
+      "verified": true,
+      "evidence": "HTTP 200.",
+      "notes": ""
+    },
+    {
+      "category": "creator",
+      "label": "Live site",
+      "url": "https://tempestwar.vercel.app/",
+      "verified": true,
+      "evidence": "HTTP 200.",
+      "notes": ""
+    },
+    {
+      "category": "creator",
+      "label": "NuRichter Workspace website",
+      "url": "https://nurichter-workspace.vercel.app/",
+      "verified": true,
+      "evidence": "This is the profile's 'blog' field; HTTP 200, page title 'NuRichter Workspace — Richterize The Infinity!'.",
+      "notes": ""
+    },
+    {
+      "category": "creator",
+      "label": "NuRichter LinkedIn",
+      "url": "https://www.linkedin.com/in/nurichter/",
+      "verified": true,
+      "evidence": "Listed in the GitHub API social_accounts for NuRichter (provider linkedin), so it belongs to the same owner.",
+      "notes": "LinkedIn returns HTTP 999 to bots, so the page content was not read."
+    },
+    {
+      "category": "creator",
+      "label": "NuRichter Instagram (@ibnu_lpg)",
+      "url": "https://www.instagram.com/ibnu_lpg/",
+      "verified": true,
+      "evidence": "Listed in the GitHub API social_accounts for NuRichter (provider instagram); HTTP 200.",
+      "notes": ""
+    },
+    {
+      "category": "creator",
+      "label": "NuRichter YouTube",
+      "url": "https://www.youtube.com/@NuRichter",
+      "verified": true,
+      "evidence": "Listed in the GitHub API social_accounts; HTTP 200, page title 'NuRichter - YouTube'.",
+      "notes": ""
+    },
+    {
+      "category": "reference-video",
+      "label": "Russian Invade Ukraine War Every day to January 12th 2025 using Christopher style",
+      "url": "https://www.youtube.com/watch?v=8gUi4-nCBsQ",
+      "verified": true,
+      "evidence": "Watch page: exact title; channel 'k manager' (@kmanager-h3u); uploadDate 2025-01-13T03:48:47-08:00.",
+      "notes": ""
+    },
+    {
+      "category": "reference-video",
+      "label": "The Korean War using Google Earth [Extended]",
+      "url": "https://www.youtube.com/watch?v=lJx6M7SqkvI",
+      "verified": true,
+      "evidence": "Watch page: exact title; channel 'mapsinanutshell' (@mapsinanutshell); uploadDate 2023-07-20T06:00:28-07:00.",
+      "notes": ""
+    },
+    {
+      "category": "reference-video",
+      "label": "World War II Every Front with Army Sizes",
+      "url": "https://www.youtube.com/watch?v=nPFk_64JKZ8",
+      "verified": true,
+      "evidence": "Watch page: exact title; channel 'Italian Mapper' (@Italian_Mapper); uploadDate 2024-06-19T02:13:05-07:00.",
+      "notes": ""
+    },
+    {
+      "category": "reference-video",
+      "label": "World War III Every Day Operation Unthinkable with Army Sizes",
+      "url": "https://www.youtube.com/watch?v=vOYKWBOB5fw",
+      "verified": true,
+      "evidence": "Watch page: exact title; channel 'AlterGhz' (@Alt-in-a-nutshell); uploadDate 2026-05-03T09:50:10-07:00.",
+      "notes": ""
+    }
+  ],
+  "references": [
+    {
+      "group": "light-novel",
+      "apa": "Fuse. (2021). *That time I got reincarnated as a slime* (Vol. 12; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2018)",
+      "url": "https://yenpress.com/titles/9781975314439-that-time-i-got-reincarnated-as-a-slime-vol-12-light-novel",
+      "verified": true,
+      "notes": "Yen Press page: Author Fuse; Artist Mitz Vah; Translated by Kevin Gifford; Imprint Yen On; EN release Nov 09, 2021. Original Japanese edition: Micro Magazine (GC Novels), 2018 (https://gcnovels.jp/book/112). In APA 7 a print book takes no URL; the URL is listed here only for verification."
+    },
+    {
+      "group": "light-novel",
+      "apa": "Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 13; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2018)",
+      "url": "https://yenpress.com/titles/9781975314453-that-time-i-got-reincarnated-as-a-slime-vol-13-light-novel",
+      "verified": true,
+      "notes": "Yen Press page: Author Fuse; Artist Mitz Vah; Translated by Kevin Gifford; Imprint Yen On; EN release Apr 05, 2022. Original Japanese edition: Micro Magazine (GC Novels), 2018 (https://gcnovels.jp/book/136). In APA 7 a print book takes no URL; the URL is listed here only for verification."
+    },
+    {
+      "group": "light-novel",
+      "apa": "Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 14; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2019)",
+      "url": "https://yenpress.com/titles/9781975314477-that-time-i-got-reincarnated-as-a-slime-vol-14-light-novel",
+      "verified": true,
+      "notes": "Yen Press page: Author Fuse; Artist Mitz Vah; Translated by Kevin Gifford; Imprint Yen On; EN release Jul 26, 2022. Original Japanese edition: Micro Magazine (GC Novels), 2019 (https://gcnovels.jp/book/157). In APA 7 a print book takes no URL; the URL is listed here only for verification."
+    },
+    {
+      "group": "light-novel",
+      "apa": "Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 15; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2019)",
+      "url": "https://yenpress.com/titles/9781975314491-that-time-i-got-reincarnated-as-a-slime-vol-15-light-novel",
+      "verified": true,
+      "notes": "Yen Press page: Author Fuse; Artist Mitz Vah; Translated by Kevin Gifford; Imprint Yen On; EN release Nov 22, 2022. Original Japanese edition: Micro Magazine (GC Novels), 2019 (https://gcnovels.jp/book/590). In APA 7 a print book takes no URL; the URL is listed here only for verification."
+    },
+    {
+      "group": "light-novel",
+      "apa": "Fuse. (2023). *That time I got reincarnated as a slime* (Vol. 16; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2020)",
+      "url": "https://yenpress.com/titles/9781975369750-that-time-i-got-reincarnated-as-a-slime-vol-16-light-novel",
+      "verified": true,
+      "notes": "Yen Press page: Author Fuse; Artist Mitz Vah; Translated by Kevin Gifford; Imprint Yen On; EN release Aug 22, 2023. Original Japanese edition: Micro Magazine (GC Novels), 2020 (https://gcnovels.jp/book/628). In APA 7 a print book takes no URL; the URL is listed here only for verification. Vol. 16 translator, verified on its Yen Press page: Kevin Gifford."
+    },
+    {
+      "group": "light-novel",
+      "apa": "Fuse. (2013–2016). *Tensei shitara suraimu datta ken* [That time I got reincarnated as a slime]. Shōsetsuka ni Narō. https://ncode.syosetu.com/n6316bn/",
+      "url": "https://ncode.syosetu.com/n6316bn/",
+      "verified": true,
+      "notes": "Author and title were verified on the page. The years 2013–2016 come from Wikipedia (first Feb 20, 2013; last Jan 1, 2016) and were not checked on the page itself. This entry is optional."
+    },
+    {
+      "group": "anime",
+      "apa": "Kondō, B. (Executive Producer). (2018–present). *Tensei shitara suraimu datta ken* [That time I got reincarnated as a slime] [TV series]. Eight Bit; Tensura Production Committee.",
+      "url": "https://www.ten-sura.com/anime/tensura",
+      "verified": true,
+      "notes": "Credits were verified only via English Wikipedia's TV-series infobox, a secondary source: executive producer Bungo Kondō; animation Eight Bit; first aired 2018-10-02; ongoing. The official portal confirms the series is still running, with Season 4 from July 2027. If you prefer director credit: Kikuchi, Y. (S1) / Nakayama, A. (S2–3)."
+    },
+    {
+      "group": "reference-video",
+      "apa": "k manager. (2025, January 13). *Russian invade Ukraine war every day to January 12th 2025 using Christopher style* [Video]. YouTube. https://www.youtube.com/watch?v=8gUi4-nCBsQ",
+      "url": "https://www.youtube.com/watch?v=8gUi4-nCBsQ",
+      "verified": true,
+      "notes": "Upload date comes from the watch page's uploadDate (US Pacific time). Titles are in APA sentence case; keep the original capitalisation if you prefer."
+    },
+    {
+      "group": "reference-video",
+      "apa": "mapsinanutshell. (2023, July 20). *The Korean War using Google Earth [Extended]* [Video]. YouTube. https://www.youtube.com/watch?v=lJx6M7SqkvI",
+      "url": "https://www.youtube.com/watch?v=lJx6M7SqkvI",
+      "verified": true,
+      "notes": "Upload date comes from the watch page's uploadDate (US Pacific time). Titles are in APA sentence case; keep the original capitalisation if you prefer."
+    },
+    {
+      "group": "reference-video",
+      "apa": "Italian Mapper. (2024, June 19). *World War II every front with army sizes* [Video]. YouTube. https://www.youtube.com/watch?v=nPFk_64JKZ8",
+      "url": "https://www.youtube.com/watch?v=nPFk_64JKZ8",
+      "verified": true,
+      "notes": "Upload date comes from the watch page's uploadDate (US Pacific time). Titles are in APA sentence case; keep the original capitalisation if you prefer."
+    },
+    {
+      "group": "reference-video",
+      "apa": "AlterGhz. (2026, May 3). *World War III every day Operation Unthinkable with army sizes* [Video]. YouTube. https://www.youtube.com/watch?v=vOYKWBOB5fw",
+      "url": "https://www.youtube.com/watch?v=vOYKWBOB5fw",
+      "verified": true,
+      "notes": "Upload date comes from the watch page's uploadDate (US Pacific time). Titles are in APA sentence case; keep the original capitalisation if you prefer."
+    },
+    {
+      "group": "wiki",
+      "apa": "Tensei Shitara Slime Datta Ken Wiki. (n.d.). *Tensei Shitara Slime Datta Ken Wiki*. Fandom. Retrieved October 8, 2026, from https://tensura.fandom.com/",
+      "url": "https://tensura.fandom.com/",
+      "verified": false,
+      "notes": "Fandom blocked automated fetch; the domain is confirmed via search. A retrieval date is included because a wiki is designed to change. Cite specific wiki pages if possible."
+    },
+    {
+      "group": "software",
+      "apa": "MapLibre contributors. (2026). *MapLibre GL JS* (Version 5.24.0) [Computer software]. MapLibre. https://maplibre.org/maplibre-gl-js/docs/",
+      "url": "https://maplibre.org/maplibre-gl-js/docs/",
+      "verified": true,
+      "notes": "Installed version in node_modules is 5.24.0 (npm publish 2026-04-23); the package.json range is ^5.6.0. Docs URL: HTTP 200."
+    },
+    {
+      "group": "software",
+      "apa": "Vercel. (2026). *Next.js* (Version 15.5.25) [Computer software]. https://nextjs.org/docs",
+      "url": "https://nextjs.org/docs",
+      "verified": true,
+      "notes": "package.json pins 15.5.25; npm publish 2026-08-31. Docs URL: HTTP 200."
+    },
+    {
+      "group": "software",
+      "apa": "Meta Platforms. (2024). *React* (Version 19.0.0) [Computer software]. https://react.dev/",
+      "url": "https://react.dev/",
+      "verified": true,
+      "notes": "package.json pins 19.0.0; npm publish 2024-12-05. 'Meta Platforms' as author is conventional and was not verified on react.dev."
+    },
+    {
+      "group": "software",
+      "apa": "Poimandres. (2026). *Zustand* (Version 5.0.15) [Computer software]. https://zustand.docs.pmnd.rs/",
+      "url": "https://zustand.docs.pmnd.rs/",
+      "verified": true,
+      "notes": "Installed 5.0.15 (npm publish 2026-08-13); the package.json range is ^5.0.3. Docs are hosted at pmnd.rs."
+    },
+    {
+      "group": "software",
+      "apa": "Tailwind Labs. (2025). *Tailwind CSS* (Version 3.4.19) [Computer software]. https://tailwindcss.com/docs",
+      "url": "https://tailwindcss.com/docs",
+      "verified": true,
+      "notes": "Installed 3.4.19 (npm publish 2025-12-10). The /docs URL now redirects to the v4 docs, so v3 docs live at v3.tailwindcss.com, which was not fetched."
+    },
+    {
+      "group": "software",
+      "apa": "Google. (2026). *Puppeteer* (Version 25.10.0) [Computer software]. https://pptr.dev/",
+      "url": "https://pptr.dev/",
+      "verified": true,
+      "notes": "Installed 25.10.0 (npm publish 2026-09-03). Google as author is conventional and was not verified on pptr.dev."
+    },
+    {
+      "group": "software",
+      "apa": "Microsoft. (n.d.). *Playwright* [Computer software]. https://playwright.dev/",
+      "url": "https://playwright.dev/",
+      "verified": true,
+      "notes": "Used via the global @playwright/cli 0.1.22; the Playwright core version is unverified, so none is given. Docs URL: HTTP 200."
+    },
+    {
+      "group": "software",
+      "apa": "OpenCV team. (2026). *OpenCV* (Version 4.14.0) [Computer software]. https://opencv.org/",
+      "url": "https://opencv.org/",
+      "verified": true,
+      "notes": "Local cv2.__version__ is 4.14.0; opencv-python 4.14.0.94 was published on PyPI 2026-07-29. opencv.org returned 403 to automated fetch."
+    },
+    {
+      "group": "software",
+      "apa": "FFmpeg developers. (2026). *FFmpeg* [Computer software]. https://ffmpeg.org/",
+      "url": "https://ffmpeg.org/",
+      "verified": true,
+      "notes": "The local build is a 2026-09-17 git build (gyan.dev full_build) with no numbered release, so no version is given. ffmpeg.org: HTTP 200."
+    },
+    {
+      "group": "software",
+      "apa": "Artifex Software. (2026). *PyMuPDF* (Version 1.28.2) [Computer software]. https://pymupdf.readthedocs.io/en/latest/",
+      "url": "https://pymupdf.readthedocs.io/en/latest/",
+      "verified": true,
+      "notes": "Local pymupdf 1.28.2 (PyPI 2026-08-06). Artifex as author is conventional and was not verified."
+    },
+    {
+      "group": "docs",
+      "apa": "Vercel. (n.d.). *Deployment protection*. Vercel Documentation. Retrieved October 8, 2026, from https://vercel.com/docs/deployment-protection",
+      "url": "https://vercel.com/docs/deployment-protection",
+      "verified": true,
+      "notes": "HTTP 200. Living documentation, so a retrieval date is included."
+    }
+  ],
+  "unverified": [
+    {
+      "item": "Official Tensura anime YouTube channel",
+      "reason": "ten-sura.com links to no YouTube channel. YouTube channel search shows many fan and game channels, and none is clearly the official anime channel. Press results (not verified) mention Kodansha's 'フル☆アニメTV' streaming S1."
+    },
+    {
+      "item": "Official English Tensura anime website",
+      "reason": "ten-sura.com links to no English page."
+    },
+    {
+      "item": "Crunchyroll series URL (GYZJ43JMR)",
+      "reason": "HTTP 403 to automated fetch and not confirmed by search."
+    },
+    {
+      "item": "Kodansha USA series page",
+      "reason": "HTTP 403 to fetch; seen only in site-restricted search results."
+    },
+    {
+      "item": "Tensura Fandom wiki main-page path",
+      "reason": "Cloudflare blocked the fetch; the domain is confirmed via search only."
+    },
+    {
+      "item": "Playwright core version",
+      "reason": "Not in package.json; only @playwright/cli 0.1.22 is installed globally."
+    },
+    {
+      "item": "Anime TV-series APA credits",
+      "reason": "The executive producer and studio come from Wikipedia, not from an official staff page."
+    }
+  ]
+}

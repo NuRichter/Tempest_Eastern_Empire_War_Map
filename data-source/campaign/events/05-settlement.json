@@ -1,7 +1,7 @@
 [
  {
   "id": "EVT-0450",
-  "day": 19,
+  "day": 16,
   "time": "18:00",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "",
@@ -70,7 +70,8 @@
    "changes": [
     "New event: return home and party (v15.txt:18045-18092; v16.txt:512-533)",
     "Officers' day off the next day (v16.txt:4880)",
-    "Theatres other than TH-DIP set to HOSTILITIES_SUSPENDED (combat over, v16.txt:516-518)"
+    "Theatres other than TH-DIP set to HOSTILITIES_SUSPENDED (combat over, v16.txt:516-518)",
+    "R6 re-dated from D+19 18:00 to D+16 18:00: the return and victory party follow the long night."
    ]
   },
   "effects": {
@@ -116,7 +117,7 @@
  },
  {
   "id": "EVT-0451",
-  "day": 20,
+  "day": 17,
   "time": "09:00",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "the next day",
@@ -165,7 +166,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event: day off and safety checks (v16.txt:4880-4890)"
+    "New event: day off and safety checks (v16.txt:4880-4890)",
+    "R6 re-dated from D+20 09:00 to D+17 09:00: \"the next day off\" (v16.txt:4880)."
    ]
   },
   "effects": {
@@ -180,7 +182,7 @@
  },
  {
   "id": "EVT-0390",
-  "day": 23,
+  "day": 19,
   "time": "10:00",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "ten in the morning",
@@ -261,7 +263,8 @@
     "Moved D+9 18:00 -> D+23 10:00 (v16.txt:7510, 7956, 8365)",
     "Added Dwargon (Gazel, Jaine) as the third party (v16.txt:8180-8193, 8465)",
     "Opponent named as Masayuki Rudra Nam Ul Nasca",
-    "Sources given locators"
+    "Sources given locators",
+    "R6 re-dated from D+23 10:00 to D+19 10:00: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
    ]
   },
   "effects": {
@@ -281,7 +284,7 @@
  },
  {
   "id": "EVT-0391",
-  "day": 23,
+  "day": 19,
   "time": "10:10",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "",
@@ -334,7 +337,8 @@
    "changes": [
     "Moved D+9 18:20 -> D+23 10:10 (morning session)",
     "Actor changed to Testarossa as chair (v16.txt:8424-8430)",
-    "Strategic result no longer states the war is terminated here"
+    "Strategic result no longer states the war is terminated here",
+    "R6 re-dated from D+23 10:10 to D+19 10:10: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
    ]
   },
   "effects": {
@@ -349,7 +353,7 @@
  },
  {
   "id": "EVT-0393",
-  "day": 23,
+  "day": 19,
   "time": "10:40",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "",
@@ -408,7 +412,8 @@
    "status": "CORRECTED",
    "changes": [
     "Moved D+9 19:00 -> D+23 10:40 (morning session; before Minitz's briefing, v16.txt:8721 < 8754)",
-    "Condition 'unless they keep fighting' added (v16.txt:8722-8723)"
+    "Condition 'unless they keep fighting' added (v16.txt:8722-8723)",
+    "R6 re-dated from D+23 10:40 to D+19 10:40: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
    ]
   },
   "effects": {
@@ -419,7 +424,7 @@
  },
  {
   "id": "EVT-0392",
-  "day": 23,
+  "day": 19,
   "time": "11:00",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "",
@@ -474,7 +479,8 @@
     "Moved D+9 18:40 -> D+23 11:00 (morning session)",
     "Actor changed to Minitz (v16.txt:8754)",
     "Added readiness for an unconditional-surrender treaty (v16.txt:8756-8757)",
-    "Removed the 770,000 + 60,000 cross-check (project derivation)"
+    "Removed the 770,000 + 60,000 cross-check (project derivation)",
+    "R6 re-dated from D+23 11:00 to D+19 11:00: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
    ]
   },
   "effects": {
@@ -485,7 +491,7 @@
  },
  {
   "id": "EVT-0394",
-  "day": 23,
+  "day": 19,
   "time": "11:20",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "",
@@ -557,7 +563,8 @@
    "changes": [
     "Moved D+9 19:20 -> D+23 11:20 (morning session)",
     "Retitled: designation agreed, coronation pending (v16.txt:9016)",
-    "All three nations back the decision (v16.txt:8864-8865)"
+    "All three nations back the decision (v16.txt:8864-8865)",
+    "R6 re-dated from D+23 11:20 to D+19 11:20: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
    ]
   },
   "effects": {
@@ -570,7 +577,7 @@
  },
  {
   "id": "EVT-0395",
-  "day": 23,
+  "day": 19,
   "time": "11:50",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "",
@@ -629,7 +636,8 @@
    "changes": [
     "Moved D+9 19:40 -> D+23 11:50 (end of the morning session)",
     "Retitled from 'repatriated' to a promise of early release (v16.txt:9012-9014)",
-    "Repatriation march split out as EVT-0455"
+    "Repatriation march split out as EVT-0455",
+    "R6 re-dated from D+23 11:50 to D+19 11:50: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
    ]
   },
   "effects": {
@@ -648,7 +656,7 @@
  },
  {
   "id": "EVT-0399",
-  "day": 23,
+  "day": 19,
   "time": "12:30",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "",
@@ -705,7 +713,8 @@
    "changes": [
     "Moved D+9 21:00 -> D+23 12:30 (lunch break, before the 15:00 session, v16.txt:9155-9232)",
     "Actor changed to Testarossa (souls) with Rimuru (homunculi) (v16.txt:9187-9196)",
-    "Named Samuel (Zamdo); deleted the 'does not offset 770,000' note"
+    "Named Samuel (Zamdo); deleted the 'does not offset 770,000' note",
+    "R6 re-dated from D+23 12:30 to D+19 12:30: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
    ]
   },
   "effects": {
@@ -720,7 +729,7 @@
  },
  {
   "id": "EVT-0453",
-  "day": 23,
+  "day": 19,
   "time": "15:00",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "three in the afternoon",
@@ -772,7 +781,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event: afternoon session from 15:00 (v16.txt:9232-9245)"
+    "New event: afternoon session from 15:00 (v16.txt:9232-9245)",
+    "R6 re-dated from D+23 15:00 to D+19 15:00: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
    ]
   },
   "effects": {
@@ -787,7 +797,7 @@
  },
  {
   "id": "EVT-0398",
-  "day": 23,
+  "day": 19,
   "time": "15:20",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "",
@@ -841,7 +851,8 @@
    "changes": [
     "Moved D+9 20:40 -> D+23 15:20 (afternoon session)",
     "Actor changed to Dwargon, with Tempest foremen (v16.txt:9247-9256)",
-    "Marked as a plan, not executed"
+    "Marked as a plan, not executed",
+    "R6 re-dated from D+23 15:20 to D+19 15:20: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
    ]
   },
   "effects": {
@@ -852,7 +863,7 @@
  },
  {
   "id": "EVT-0396",
-  "day": 23,
+  "day": 19,
   "time": "15:40",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "",
@@ -915,7 +926,8 @@
     "Retitled: designated, not yet despatched (v16.txt:9263)",
     "Location changed to the decision site (Tempest)",
     "Deleted the F-DEM-001 embassy location effect",
-    "Added Moss and Venom (v16.txt:9288-9296)"
+    "Added Moss and Venom (v16.txt:9288-9296)",
+    "R6 re-dated from D+23 15:40 to D+19 15:40: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
    ]
   },
   "effects": {
@@ -926,7 +938,7 @@
  },
  {
   "id": "EVT-0397",
-  "day": 23,
+  "day": 19,
   "time": "15:50",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "",
@@ -982,7 +994,8 @@
     "Replaced: no memory alteration by Veldora (v16.txt:9267-9276)",
     "Actor removed (Rimuru's assessment); Veldora removed",
     "Moved D+9 20:20 -> D+23 15:50 (afternoon session)",
-    "Location changed to the summit hall"
+    "Location changed to the summit hall",
+    "R6 re-dated from D+23 15:50 to D+19 15:50: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
    ]
   },
   "effects": {
@@ -999,7 +1012,7 @@
  },
  {
   "id": "EVT-0454",
-  "day": 24,
+  "day": 20,
   "time": "08:00",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "the next morning",
@@ -1048,7 +1061,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event: Gazel leaves the next morning (v16.txt:9767)"
+    "New event: Gazel leaves the next morning (v16.txt:9767)",
+    "R6 re-dated from D+24 08:00 to D+20 08:00: \"Gazel and his team left the next morning\" (v16.txt:9767)."
    ]
   },
   "effects": {
@@ -1059,7 +1073,7 @@
  },
  {
   "id": "EVT-0455",
-  "day": 31,
+  "day": 26,
   "time": "08:00",
   "timePrecision": "RECONSTRUCTED",
   "canonicalTime": "",
@@ -1122,7 +1136,8 @@
    "changes": [
     "New event: repatriation departure split from EVT-0395 (v16.txt:9767-9773)",
     "Target of MOV-036",
-    "F-DEM-001 placed at the embassy here (reconstruction; posting undated)"
+    "F-DEM-001 placed at the embassy here (reconstruction; posting undated)",
+    "R6 re-dated from D+31 08:00 to D+26 08:00: preparations \"within a week\" of the summit, departure soon after (v16.txt:9773); day RECONSTRUCTED."
    ]
   },
   "effects": {

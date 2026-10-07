@@ -14,6 +14,7 @@ import { prefersReducedMotion, usePreferences } from '@/state/preferences';
 import { Overlay } from '@/map/overlay/Overlay';
 import { MapControls } from '@/map/MapControls';
 import { Minimap } from '@/map/Minimap';
+import { translate, useT } from '@/i18n';
 import type { Dataset } from '@/data/loader';
 import type { FrameState } from '@/types/dataset';
 
@@ -245,6 +246,7 @@ function areaFeatures(data: Dataset, state: FrameState | null): GeoJSON.FeatureC
 /* ------------------------------------------------------------------ */
 
 export function MapView() {
+  const t = useT();
   const container = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const [ready, setReady] = useState(false);
@@ -286,7 +288,7 @@ export function MapView() {
         cooperativeGestures: false,
       });
     } catch (error) {
-      setFailure(error instanceof Error ? error.message : 'The map could not start.');
+      setFailure(error instanceof Error ? error.message : translate('The map could not start.'));
       return;
     }
     // Calmer than the defaults: a wheel notch is a deliberate step, not a leap.
@@ -461,17 +463,17 @@ export function MapView() {
         raf = requestAnimationFrame(tick);
         const clock = useSimulation.getState().clock;
         const T = clock ? clock.frame : 0;
-        const theme = usePreferences.getState().theme;
+        const { theme, transitionBelt: belt } = usePreferences.getState();
         const win = viewWindow();
         const winKey = `${win.x0},${win.y0},${win.x1},${win.y1}`;
-        if (Math.abs(T - lastT) < 0.02 && theme === lastTheme && winKey === lastWin) return;
+        if (Math.abs(T - lastT) < 0.02 && theme + belt === lastTheme && winKey === lastWin) return;
         if (now - lastPaint < 33) return;
         lastPaint = now;
         const timeChanged = Math.abs(T - lastT) >= 0.02 || lastT < 0;
         lastT = T;
-        lastTheme = theme;
+        lastTheme = theme + belt;
         const field = computeField(front, T);
-        paintField(fieldCanvas.current!, data, field, { empire: FACTION_COLOR.empire, allied: FACTION_COLOR.tempest }, MAP_THEME[theme].occupiedAlpha, win);
+        paintField(fieldCanvas.current!, data, field, { empire: FACTION_COLOR.empire, allied: FACTION_COLOR.tempest }, MAP_THEME[theme].occupiedAlpha, win, belt);
         if (winKey !== lastWin) {
           lastWin = winKey;
           src()?.setCoordinates([simToLngLatTuple(win.x0, win.y0), simToLngLatTuple(win.x1, win.y0), simToLngLatTuple(win.x1, win.y1), simToLngLatTuple(win.x0, win.y1)]);
@@ -566,10 +568,10 @@ export function MapView() {
     return (
       <div className="absolute inset-0 grid place-items-center bg-ink-900 p-8">
         <div className="surface max-w-md p-6">
-          <h2 className="font-display text-lg text-fg">The map could not start</h2>
+          <h2 className="font-display text-lg text-fg">{t('The map could not start')}</h2>
           <p className="mt-3 text-sm leading-relaxed text-fg-2">{failure}</p>
           <p className="mt-3 text-sm leading-relaxed text-fg-3">
-            The atlas renders with WebGL. Enable hardware acceleration, or open it in a browser that supports WebGL 2.
+            {t('The atlas renders with WebGL. Enable hardware acceleration, or open it in a browser that supports WebGL 2.')}
           </p>
         </div>
       </div>
@@ -577,7 +579,9 @@ export function MapView() {
   }
 
   return (
-    <div className="absolute inset-0" role="region" aria-label="Campaign map">
+    // The map surface keeps one direction in every language: canvas labels and
+    // their offsets are placed left to right.
+    <div className="absolute inset-0" dir="ltr" role="region" aria-label={t('Campaign map')}>
       {/* MapLibre's stylesheet sets position:relative on the container; the inline style is the only declaration it cannot outrank. */}
       <div ref={container} style={{ position: 'absolute', inset: 0 }} />
       {ready ? <Overlay map={mapRef.current} /> : null}

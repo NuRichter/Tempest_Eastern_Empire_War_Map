@@ -4,41 +4,58 @@
 
 # Tempest–Eastern Empire War · Campaign Atlas
 
-**Atlas kampanye interaktif bergaya dokumenter untuk Perang Tempest–Kekaisaran Timur dari light novel *Tensura*.**
-Peta, waktu, pasukan, wilayah, pergerakan — dan bukti di balik setiap klaim.
+**Satu perang, sembilan ratus empat puluh ribu prajurit, dan satu bulan yang mengubah peta dunia *Tensura* — sekarang bisa kamu putar seperti film dokumenter.**
 
-[**▶ Buka atlas — tempestwar.vercel.app**](https://tempestwar.vercel.app/) ·
-[Desain](./DESIGN.md) ·
-[Audit kanon](./docs/audit/timeline-canon-audit.md) ·
-[Register riset](./docs/research/RESEARCH_REGISTER.md) ·
-[Arsitektur](./docs/ARCHITECTURE.md) ·
-[QA](./docs/QA.md) ·
-[Animasi wilayah](./docs/TERRITORIAL-ANIMATION.md)
+[**▶ Buka atlasnya — tempestwar.vercel.app**](https://tempestwar.vercel.app/)
 
-![Revision](https://img.shields.io/badge/dataset-R5_canon_audit-d4ab57?style=flat-square)
-![Events](https://img.shields.io/badge/events-166-2f9e7e?style=flat-square)
-![Canon](https://img.shields.io/badge/canonical-141_·_visual_recon._25-cfe5dc?style=flat-square)
-![Clock](https://img.shields.io/badge/clock-D−43_→_D+31_·_10_min-5b8fd8?style=flat-square)
+![Dataset](https://img.shields.io/badge/dataset-R6_synthesis_audit-d4ab57?style=flat-square)
+![Events](https://img.shields.io/badge/events-179-2f9e7e?style=flat-square)
+![Canon](https://img.shields.io/badge/canonical-143_·_visual_recon._36-cfe5dc?style=flat-square)
+![Clock](https://img.shields.io/badge/clock-D−43_→_D+27_·_10_min-5b8fd8?style=flat-square)
+![Languages](https://img.shields.io/badge/bahasa-30-8fc9b6?style=flat-square)
+![Themes](https://img.shields.io/badge/tema-dark_·_light-a7b1b5?style=flat-square)
 ![Next.js](https://img.shields.io/badge/Next.js-15-000?style=flat-square&logo=nextdotjs)
 ![MapLibre](https://img.shields.io/badge/MapLibre_GL-5-396CB2?style=flat-square&logo=maplibre&logoColor=white)
+
+<img src="./assets/readme/screenshots/hero-dark.webp" width="100%" alt="Atlas pada D+10 10:50: kantong pasukan Kekaisaran di Jura runtuh dari tepinya, panel Situasi menampilkan Kekaisaran Timur vs Federasi Jura Tempest dan Dwargon">
 
 </div>
 
 > [!IMPORTANT]
-> **Proyek penggemar, bukan materi resmi Tensura.** Dibuat oleh **NuRichter Workspace** sebagai dedikasi untuk komunitas Tensura, menyambut periode anime musim 4 cour 3 (2027). Tidak berafiliasi dengan pemegang hak. Semua yang direkonstruksi — waktu, posisi, rute, sebagian urutan — **diberi label** di dalam atlas.
+> **Ini proyek penggemar, bukan materi resmi Tensura.** Dibuat oleh **NuRichter** (NuRichter Workspace) untuk sesama penggemar, menyambut anime musim 4 (2027). Tidak berafiliasi dengan pemegang hak mana pun. Semua yang direkonstruksi — jam, posisi, rute, garis depan — **diberi label** di dalam atlas.
 
 ---
 
-## Apa ini
+## Kenapa peta ini ada
 
-Sebuah peta perang yang bisa diputar: dari rapat perang Kekaisaran, pawai 940.000 tentara menuju Hutan Jura, pertempuran permukaan yang selesai dalam kurang dari dua jam, operasi Labirin, satu malam panjang (kudeta, Velgrynd, Veldora), sampai pertemuan puncak dan repatriasi tawanan.
+Waktu membaca volume 12 sampai 16, aku selalu ingin melihat perang ini *bergerak*. Rapat perang di ibu kota Kekaisaran. Pawai panjang ke perbatasan. Pertempuran permukaan yang selesai dalam kurang dari dua jam. Labirin yang menelan ratusan ribu prajurit. Lalu satu malam panjang di Dwargon yang hampir membalik segalanya.
 
-Yang bisa dijawab di layar untuk setiap momen:
+Novelnya tidak pernah menggambar garis depan. Jadi aku membaca ulang semuanya dengan buku catatan terbuka. Setiap pergerakan, pertempuran, dan korban ditempatkan dari teks, lalu disusun di satu jam simulasi berlangkah sepuluh menit. Kalau bukunya diam, atlasnya juga bilang begitu.
 
-- **Apa yang terjadi, di mana, kapan** (relatif terhadap kampanye)
-- **Siapa yang bergerak, berapa besar pasukannya**, dan seberapa yakin angka itu
-- **Siapa menguasai wilayah**, dan apa yang berubah
-- **Dari mana kita tahu** — volume, bab, lokator baris, dan kelas provenans
+<div align="center">
+<img src="./assets/readme/gifs/front-advance-into-jura.gif" width="49%" alt="Garis depan Kekaisaran maju ke barat menembus hutan Jura, D−2 sampai D−1">
+<img src="./assets/readme/gifs/pocket-collapse-d10.gif" width="49%" alt="Kantong Kekaisaran di Jura runtuh dari tepi ke dalam pada D+10">
+<br><sub>Kiri: 700.000 infanteri masuk ke hutan (D−2 → D−1). Kanan: kantong itu runtuh dari tepinya setelah kamp dimusnahkan (D+10). Keduanya direkam langsung dari atlas.</sub>
+</div>
+
+## Yang bisa kamu lihat di setiap detik
+
+- **Siapa melawan siapa.** Bendera, warna faksi, dan korban tewas tiap sisi yang bergulir. Saat sebuah peristiwa terjadi, photocard tokohnya muncul berhadapan: A vs B.
+- **Apa yang terjadi, di mana, kapan.** Waktunya relatif terhadap hari pertempuran (`D−05`, `D+10`), bukan kalender karangan.
+- **Seberapa besar pasukannya**, dan seberapa yakin angka itu: eksplisit, `≈` turunan, `~` rekonstruksi, `?` tidak diketahui.
+- **Tanah yang direbut dan hilang.** Garis depan bergerak lewat ruang, dengan sabuk transisi gradien dari warna pucat pihak yang kalah ke warna pemenang.
+- **Dari mana kita tahu.** Volume, lokator baris, dan kelas provenans di setiap klaim.
+
+<table>
+<tr>
+<td width="50%"><img src="./assets/readme/screenshots/light-theme.webp" alt="Tema terang dengan panel Situasi"><br><sub><b>Tema terang</b>, setara dengan tema gelap, bukan sekadar dibalik.</sub></td>
+<td width="50%"><img src="./assets/readme/screenshots/about-panel.webp" alt="Panel About dengan pesan dari pembuat"><br><sub><b>About</b>: cerita singkat, tautan resmi seri, dan referensi APA.</sub></td>
+</tr>
+<tr>
+<td><img src="./assets/readme/screenshots/japanese.webp" alt="Antarmuka dalam bahasa Jepang"><br><sub><b>30 bahasa</b>, termasuk RTL (Arab, Ibrani, Persia, Urdu). Nama tokoh tidak pernah diterjemahkan.</sub></td>
+<td align="center"><img src="./assets/readme/screenshots/mobile.webp" width="46%" alt="Atlas di layar ponsel"><br><sub><b>Ponsel</b>: situasi tetap terlihat di chip kecil; panel jadi bottom sheet.</sub></td>
+</tr>
+</table>
 
 ## Kanon vs rekonstruksi
 
@@ -47,62 +64,85 @@ Setiap event membawa satu kelas provenans:
 | Kelas | Arti |
 |---|---|
 | `CANONICAL` | Didukung eksplisit oleh novel |
-| `CANONICAL_WITH_VISUAL_RECONSTRUCTION` | Kejadiannya kanon; posisi/rute/waktu di peta direkonstruksi |
+| `CANONICAL_WITH_VISUAL_RECONSTRUCTION` | Kejadiannya kanon; posisi, rute, atau jam di peta direkonstruksi |
 | `INFERRED` | Mengikuti dari beberapa petunjuk, tidak dinyatakan |
 | `RECONSTRUCTED` | Jembatan antara titik-titik yang diketahui, dibuat proyek ini |
-| `UNRESOLVED` | Bukti tidak cukup — tetap ditampilkan agar celahnya kelihatan |
+| `UNRESOLVED` | Bukti tidak cukup; tetap ditampilkan supaya celahnya kelihatan |
 
-**Boleh:** interpolasi gerakan di antara dua posisi kanonik, waktu simulasi untuk event yang di novel hanya bertanggal hari, posisi peta untuk tempat yang tidak ditandai di peta mana pun (dengan alasan tertulis).
+**Boleh:** interpolasi gerakan di antara dua posisi kanonik, jam simulasi untuk event yang di novel hanya bertanggal hari, dan posisi peta untuk tempat yang tidak ditandai (dengan alasan tertulis).
 **Tidak boleh:** mengarang pertempuran, korban, jumlah pasukan, keputusan komandan, atau presisi palsu. Angka yang tidak diketahui tetap **unknown**, tidak pernah menjadi 0.
 
-Audit kanon R5 menemukan 117 error dan 44 event kanonik yang hilang di dataset Step 1, lalu memperbaikinya dengan lokator teks. Ringkasannya di [`docs/audit/timeline-canon-audit.md`](./docs/audit/timeline-canon-audit.md); setiap event mencatat perubahannya sendiri (terlihat di dossier).
+### Audit sintesis R6
+
+Kelima volume (2.101 halaman PDF) dibaca ulang per adegan. Ada 305 adegan perang yang diekstrak dan 187 event lama yang diperiksa ulang. Koreksi terbesarnya ada di **hitungan hari**:
+
+- Rapat perang Kekaisaran ternyata **D−40**, bukan D−33.
+- Pertempuran akhir di kamp jatuh di **D+10**.
+- Malam panjang di Dwargon jatuh di **D+15 → D+16**.
+- Pertemuan puncak jatuh di **D+19**.
+
+Ada 13 event baru dengan lokator teks, misalnya:
+
+- detour 40 km pasukan Hakuro;
+- serangan sayap Shion dan Albis;
+- Black Numbers yang terjun ke Legiun;
+- front kedua di labirin pada malam panjang.
+
+Ringkasannya ada di [`docs/research/SYNTHESIS_AUDIT.md`](./docs/research/SYNTHESIS_AUDIT.md). Riwayat audit sebelumnya ada di [`docs/audit/timeline-canon-audit.md`](./docs/audit/timeline-canon-audit.md).
 
 ## Cara kerja timeline
 
-Novel tidak pernah memberi jam atau tanggal kalender. Jadi:
+Novel tidak pernah memberi jam atau tanggal kalender, jadi atlas memakai empat lapisan:
 
 | Lapisan | Contoh | Kanon? |
 |---|---|---|
-| Waktu kanonik | "kurang dari dua jam setelah dimulai" | Ya — kata-kata novel |
-| Hari pertempuran | `D+00` (hari ultimatum & pertempuran permukaan) | Penempatan, dengan presisi tercatat |
-| Waktu simulasi | `11:30` | **Bukan** — grid 10 menit, diberi tag *SIMULATION* |
-| Kalender | `…/9001` | **Bukan** — penanda buatan |
+| Waktu kanonik | "kurang dari dua jam setelah dimulai" | Ya, kata-kata novel |
+| Hari pertempuran | `D+00` (hari ultimatum dan pertempuran permukaan) | Penempatan, dengan presisi tercatat |
+| Jam simulasi | `11:30` | **Bukan**: grid 10 menit, diberi tag *SIMULATION* |
+| Kalender | `…/9001` | **Bukan**: penanda buatan |
 
-Kerangka waktu dibangun dari interval yang dinyatakan novel ("sebulan setelah pertemuan", "tujuh hari sejak operasi dimulai", "keesokan harinya"). Celah yang tidak dinyatakan diberi penempatan `RECONSTRUCTED` beserta alasannya. Detail: [`docs/TIMELINE-METHODOLOGY.md`](./docs/TIMELINE-METHODOLOGY.md).
+Kerangka waktunya dibangun dari interval yang dinyatakan novel, seperti "keesokan harinya", "tujuh hari sejak operasi dimulai", dan "malam yang sangat panjang dimulai". Detailnya di [`docs/TIMELINE-METHODOLOGY.md`](./docs/TIMELINE-METHODOLOGY.md).
 
-## Peta
+## Tanah yang bergerak
 
-- **Base Map (default)** — peta garis bersih untuk analisis operasional, dalam dua *look*: **Documentary** (default — dasar terang, warna negara solid, garis front putih, seperti video referensi) dan **War room** (gelap, analitis). Ganti di Layers → *Look*.
-- **Myth Map** — peta dunia bergambar, untuk konteks geografis dan lore.
-- **Flat / Globe** — atlas datar untuk keterbacaan, globe untuk imersi. Ganti gaya atau proyeksi tidak mereset waktu, seleksi, maupun filter.
+Atlas ini meniru *cara* empat video perang referensi menggerakkan wilayah. Video-videonya diukur bingkai demi bingkai, dua kali. Hasil yang dipakai:
 
-**Wilayah mengikuti garis batas yang digambar**, bukan lingkaran atau poligon karangan: 20 wilayah dijiplak dari *Base Map - Blue* oleh `scripts/cartography/extract_territories.py`, dan pas di kedua gaya peta. Peran tiap negara berubah mengikuti waktu (belligerent, co-belligerent, contributor, tidak terlibat, permusuhan berakhir); kontrol yang tidak diketahui digambar abu-abu berarsir, tidak pernah dengan warna faksi. Area operasi teater tetap skematis, tapi dipotong mengikuti daratan dan batas. Detail: [`docs/CARTOGRAPHY.md`](./docs/CARTOGRAPHY.md).
+- **Area yang bergerak, bukan warna yang berganti.** Garis depan adalah isokron `t_flip = T`, jadi bergerak mulus mengikuti jam, berhenti saat dijeda, dan identik saat di-*scrub* mundur.
+- **Sabuk transisi.** Di antara warna lama dan warna baru ada sabuk yang ikut bergerak bersama front, dari warna pucat pihak yang kalah ke warna pemenang, dengan garis putih di tepinya. Pilihan *Pale band* (pita pucat datar, gaya video referensi pertama) ada di Layers → Front change.
+- **Kebanyakan perubahan kecil, diselingi diam yang panjang.** Ada 22 transisi: 17 di bawah 250 sel, satu besar (runtuhnya kantong Jura, 1.773 sel). Hari-hari tenang memang tenang.
+- **Kantong runtuh dari tepi ke dalam**, bagian tengah jatuh terakhir.
+- **Perubahan politik** (seluruh wilayah ikut perang) memakai crossfade satu jam simulasi. Hanya itu yang memakai crossfade, sama seperti di referensi.
 
-Koordinat adalah **koordinat simulasi** pada peta fiksi — bukan lintang/bujur.
+Semua lapisan ini **RECONSTRUCTED**: disintesis dari posisi, kekuatan, dan nasib setiap formasi, dengan "gerbang" kanon. Bacaan lanjut:
 
-## Territorial Ebb and Flow
-
-Peta ini menampilkan **tanah yang direbut dan hilang melalui ruang**, seperti empat video perang referensi — bukan warna yang memudar. Hasil forensik video (diukur bingkai demi bingkai) ada di [`docs/research/REFERENCE_VIDEO_FORENSICS.md`](./docs/research/REFERENCE_VIDEO_FORENSICS.md).
-
-- **Maju (advance):** setelah Kekaisaran menyeberangi perbatasan (EVT-0015), tanah Jura direbut dari garis depan ke arah barat mengikuti barisan pasukan, dan **tetap dikuasai** setelah pasukan lewat.
-- **Mundur & runtuh (retreat / collapse):** saat pasukan pemegangnya hancur atau terputus, tanah itu kembali — kantong menyusut **dari tepi ke dalam**, bagian tengah jatuh terakhir (mis. kamp Kekaisaran di dekat ibu kota, D+11).
-- **Rebut kembali (recapture):** pihak pemilik mendorong balik; warna pihak yang kalah mundur lebih dulu dan meninggalkan **pita pucat**, lalu warna pemenang menyusul dengan **garis front putih** di tepinya.
-- **Pendaratan:** pasukan yang muncul tanpa kontak menumbuhkan wilayah dari titiknya ke luar (blokade Isthmus di gerbang timur Dwargon).
-- **Garis waktu:** front bergerak terus-menerus mengikuti jam; berhenti saat dijeda; *scrub* maju-mundur menghasilkan gambar yang sama persis.
-- **Perubahan politik** seluruh wilayah (ikut perang, gencatan) memakai crossfade singkat satu jam simulasi — satu-satunya crossfade, seperti di referensi.
-
-Semuanya **RECONSTRUCTED**: novel tidak menggambar garis kendali, jadi tanah yang dikuasai disintesis dari posisi, kekuatan, dan nasib setiap formasi, dengan "gerbang" kanon (`data-source/campaign/front-rules.json`). Detail teknis: [`docs/TERRITORIAL-ANIMATION.md`](./docs/TERRITORIAL-ANIMATION.md) · audit kemiripan: [`docs/research/REFERENCE_MATCH_AUDIT.md`](./docs/research/REFERENCE_MATCH_AUDIT.md).
-
-## Pasukan, ukuran, pergerakan
-
-- **Ukuran pasukan** tampil sebagai angka besar di samping simbol (gaya video dokumenter perang), dengan status: eksplisit, `≈` turunan, `~` rekonstruksi, `?` tidak diketahui. Total per sisi per front dijumlah hanya dari formasi paling spesifik — tidak ada prajurit yang terhitung dua kali.
-- **Bentuk + warna + label** untuk identitas faksi (persegi = Kekaisaran, lingkaran = Tempest, belah ketupat = Dwargon), tidak hanya warna.
-- **Pergerakan** digambar menurut keyakinan rute: penuh (rute dinyatakan), putus-putus (titik ujung kanon, garis direkonstruksi), titik-titik (skematis), dan **tidak digambar** jika rute tidak diketahui (mis. lompatan ruang-waktu Velgrynd). Label menyebut kekuatan saat berangkat — bukan diasumsikan tetap.
-- **Korban** dipisah: tewas, dibangkitkan, ditawan, luka, hilang. Kebangkitan tidak menghapus kematian; keduanya ditampilkan berdampingan.
+- [`docs/TERRITORIAL-ANIMATION.md`](./docs/TERRITORIAL-ANIMATION.md)
+- [`docs/research/TERRITORIAL_RECONSTRUCTION.md`](./docs/research/TERRITORIAL_RECONSTRUCTION.md) (setiap transisi beserta alasannya)
+- [`docs/research/REFERENCE_MATCH_AUDIT.md`](./docs/research/REFERENCE_MATCH_AUDIT.md) (skor jujur 1–10)
 
 ## Fitur
 
-Timeline dengan pita tahap, lajur teater, rentang pertempuran, penanda volume, **celah waktu berarsir** (rentang ≥ 6 jam simulasi tanpa catatan), bookmark, lompat event/hari/frame dan kecepatan 0,25×–48×, plus *auto-slow* di titik balik · event muncul sebagai cincin yang "pop" dengan label ±2 detik lalu memudar · angka korban dan kekuatan yang bergulir · panel Situasi (intelijen kampanye saat ini) · dossier untuk pasukan, event, pertempuran, karakter (photocard lokal), wilayah, teater, dan pergerakan — saling tertaut · pencarian + palet perintah (`/` atau `Ctrl+K`, fuzzy, alias, nama Jepang) · filter (faksi, negara, pasukan, pertempuran, wilayah, teater, jenis event, status kanon, keyakinan) dengan chip yang mengumumkan filter aktif · Cerita Kampanye per tahap · legenda · mode sinematik (tanggal besar, satu caption, kartu pemimpin, buku korban, kartu penutup) · kontrol look, opasitas, ketebalan jejak, ukuran label/penanda, kepadatan panel, dan gerak — tersimpan lokal · minimap dan preset kamera · deep link (`?frame=…&event=…`).
+- **Timeline.**
+  - Pita tahap, lajur teater, rentang pertempuran, dan celah waktu berarsir.
+  - Bookmark, serta lompat per event, hari, atau frame.
+  - Kecepatan 0,25×–48×, dengan *auto-slow* di titik balik.
+- **Panel Situasi.** Siapa vs siapa, korban, jumlah event, momen sekarang, event terakhir dengan photocard, lalu bagian sekunder yang bisa dibuka.
+- **Dossier saling tertaut.** Untuk pasukan, event, pertempuran, karakter, wilayah, teater, dan pergerakan.
+- **Pencarian dan palet perintah.** Buka dengan `/` atau `Ctrl+K`; fuzzy, mengenali alias, dan nama Jepang.
+- **Filter.** Faksi, negara, pasukan, pertempuran, wilayah, teater, jenis event, status kanon, dan keyakinan.
+- **Peta.**
+  - Base Map / Myth Map, Flat / Globe.
+  - Look Documentary atau War room.
+  - Sabuk transisi Gradient atau Pale band.
+- **Tampilan.**
+  - **Dark / light** dan **30 bahasa** (lihat di bawah).
+  - Kursor *pixel slime* opsional, digambar sendiri; mati secara default.
+- **Mode sinematik.** Tanggal besar, satu caption, buku korban, dan kartu penutup.
+- **Deep link.** Contoh: `?frame=7697&event=EVT-0214`. Address bar selalu menyimpan momen yang sedang tampil.
+
+**Bahasa:**
+English, Bahasa Indonesia, 日本語, 한국어, 简体中文, 繁體中文, Español, Português, Français, Deutsch, Italiano, Nederlands, Русский, Українська, Polski, Türkçe, العربية, हिन्दी, বাংলা, اردو, Tiếng Việt, ไทย, Bahasa Melayu, Filipino, Kiswahili, עברית, فارسی, Română, Čeština, Ελληνικά.
+
+Nama tokoh, negara, dan tempat tidak pernah diterjemahkan (glosarium di [`i18n/glossary.json`](./i18n/glossary.json)). Isi catatan kampanye tetap dalam bahasa Inggris.
 
 <details>
 <summary><b>Pintasan keyboard</b></summary>
@@ -115,29 +155,36 @@ Timeline dengan pita tahap, lajur teater, rentang pertempuran, penanda volume, *
 | `[` `]` | Event sebelumnya / berikutnya | `L` | Legenda |
 | `,` `.` | ±1 keyframe (10 menit) | `C` | Mode sinematik |
 | `1`–`8` | Kecepatan | `0` | Bingkai seluruh kampanye |
-| `Esc` | Tutup / batal pilih | `?` | Tentang & pintasan |
+| `Esc` | Tutup / batal pilih | `?` | Bantuan & pintasan |
 | `B` | Bookmark momen ini | | |
 
 </details>
 
+## Wallpaper
+
+Direkam langsung dari atlas, tanpa antarmuka. Bebas dipakai untuk layarmu sendiri.
+
+<table>
+<tr>
+<td width="40%"><a href="./assets/readme/wallpapers/wallpaper-1920x1080-advance.png"><img src="./assets/readme/wallpapers/wallpaper-1920x1080-advance.png" alt="Wallpaper 1920×1080: pasukan Kekaisaran di hutan Jura, D−1"></a><br><sub>1920 × 1080 · D−1, 700.000 di hutan</sub></td>
+<td width="40%"><a href="./assets/readme/wallpapers/wallpaper-2560x1440-collapse.png"><img src="./assets/readme/wallpapers/wallpaper-2560x1440-collapse.png" alt="Wallpaper 2560×1440: runtuhnya kantong Jura, D+10"></a><br><sub>2560 × 1440 · D+10, kantong runtuh</sub></td>
+<td width="20%"><a href="./assets/readme/wallpapers/wallpaper-phone-advance.png"><img src="./assets/readme/wallpapers/wallpaper-phone-advance.png" alt="Wallpaper ponsel"></a><br><sub>Ponsel · 1170 × 2532</sub></td>
+</tr>
+</table>
+
 ## Arsitektur data
 
 ```
-Sources of Truth/   →   data-source/   →   compile-data   →   public/data   →   atlas
-(novel, peta,          (event + efek,      (deterministik,     (checkpoint +
- photocard, Step 1)     pasukan, wilayah,   tervalidasi)        delta jarang)
-                        karakter, istilah)
+Sources of Truth/   →   data-source/campaign/   →   compile-data + compile-front   →   public/data   →   atlas
+(novel lokal, peta,     (event + efek, pasukan,     (deterministik, tervalidasi)      (checkpoint + delta,
+ photocard, bendera)     pergerakan, aturan front)                                     sejarah tanah dikuasai)
 ```
-
-- **Sumber kebenaran riset:** `Sources of Truth/` — peta, bendera, photocard + manifest, dan dataset Step 1 (diarsipkan tanpa diubah sebagai revisi pra-audit).
-- **Sumber atlas:** `data-source/` — kampanye R5 (event dengan efek, pasukan, pergerakan, korban, tahap), gazetteer, geometri wilayah, kontrol wilayah, karakter, terminologi.
-- **Runtime:** `public/data/` dihasilkan oleh `scripts/compile-data.ts` — jangan diedit tangan.
 
 Detail: [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) · [`docs/DATA-MODEL.md`](./docs/DATA-MODEL.md) · [`docs/DEPENDENCY-MAP.md`](./docs/DEPENDENCY-MAP.md) · [`docs/RESEARCH-PROVENANCE.md`](./docs/RESEARCH-PROVENANCE.md).
 
-## Pengembangan
+## Menjalankan sendiri
 
-Butuh **Node 20.11+**. Tidak ada API key, database, atau penyedia peta eksternal.
+Butuh **Node 20.11+**. Tidak perlu API key, database, atau penyedia peta eksternal.
 
 ```bash
 git clone https://github.com/NuRichter/Tempest_Eastern_Empire_War_Map.git
@@ -146,48 +193,116 @@ npm install
 npm run dev            # http://localhost:3000
 ```
 
-Alat offline (opsional, Python 3 + numpy, opencv-python, Pillow):
+Alat offline (opsional; Python 3 + numpy, opencv-python, Pillow):
 
 ```bash
 python scripts/cartography/extract_territories.py   # geometri wilayah dari Base Map
-python scripts/characters/build_photocards.py       # aset photocard dari repositori karakter
+python scripts/characters/build_photocards.py       # photocard WebP + thumbnail
+python scripts/flags/build_flag_thumbs.py           # thumbnail bendera WebP
 ```
 
 ## Validasi & QA
 
 ```bash
-npm run verify   # compile → validate-data → validate-assets → lint → typecheck → test → build
-npm run qa       # QA browser sungguhan (Chromium via Puppeteer) terhadap build produksi
-npm run qa:visual       # regresi visual: 10 checkpoint vs docs/qa/checkpoints
-npm run qa:playwright   # smoke run Playwright CLI terhadap server yang sedang jalan
-npm run qa:front        # tangkapan 0/25/50/75/100 % tiap transisi wilayah besar
-npm run qa:playback     # front bergerak saat diputar, beku saat dijeda, sama setelah scrub
+npm run verify        # compile → validate-data → validate-assets → lint → typecheck → i18n → test → build
+npm run qa            # 40 cek di Chromium sungguhan, 8 lebar layar (320–1920 px)
+npm run qa:visual     # regresi visual, 10 checkpoint
+npm run qa:front      # tangkapan 0/25/50/75/100 % tiap transisi wilayah besar
+npm run qa:playback   # front bergerak saat diputar, beku saat dijeda, sama setelah scrub
+npm run qa:perf       # waktu siap, transfer, heap, dan seek di 6 perangkat
 ```
 
-`validate-data` menolak id duplikat, referensi yatim, NaN/Infinity, jumlah negatif, waktu mundur, pergerakan yang selesai sebelum mulai, total korban yang tidak cocok saat dihitung ulang, dan state yang berbeda antara diputar dan di-*scrub*. `test` memastikan tidak ada pasukan yang "teleport" di sepanjang rute yang digambar dan bahwa *unknown* tidak pernah tampil sebagai nol. `qa` menjalankan 40 cek, termasuk 8 lebar layar (320–1920 px), auto-slow, latensi seek, dan waktu buka dossier. Detail: [`docs/QA.md`](./docs/QA.md).
+Hasil terakhir:
+
+- `verify`: lulus, termasuk 25/25 tes engine dan 30 bahasa dengan cakupan 100 %.
+- `qa`: lulus, 40/40.
+- `qa:visual`: lulus, 10/10.
+- `qa:playback`: lulus, 3/3.
+- `qa:perf`: muatan pertama sekitar 2,0 MB dalam 51–69 request (sebelumnya 124).
+
+Detail: [`docs/QA.md`](./docs/QA.md).
 
 ## Deploy
 
-Frontend statis di Vercel: import repositori, setelan default. `prebuild` meng-compile dan memvalidasi dataset, jadi build tidak bisa mengirim data yang belum diperiksa.
+Frontend statis di Vercel dengan setelan default. `prebuild` meng-compile dan memvalidasi dataset, jadi build tidak bisa mengirim data yang belum diperiksa. Data, peta, dan bahasa dikirim dengan header cache masing-masing (`next.config.mjs`).
 
-## Referensi desain
+## Dukung seri resminya
 
-Prinsip visual diambil (tanpa menyalin aset) dari empat video dokumenter perang dan dua peta perang interaktif — kamera diam saat waktu berjalan, angka kekuatan di front, tanggal sebagai readout terkuat — lalu ditambah yang tidak mereka punya: legenda, sumber, dan ketidakpastian. Lihat [`docs/research/VISUAL-REFERENCES.md`](./docs/research/VISUAL-REFERENCES.md) kontrak desain [`DESIGN.md`](./DESIGN.md), dan anatomi layar [`docs/UI-DESIGN.md`](./docs/UI-DESIGN.md).
+Kalau peta ini bikin kamu ingin baca atau nonton lagi, ini rumah resminya:
+
+- **Anime:** [ten-sura.com](https://www.ten-sura.com/) · [X @ten_sura_anime](https://x.com/ten_sura_anime) · [Instagram @tensura_official](https://www.instagram.com/tensura_official/) · [TikTok @ten_sura_anime](https://www.tiktok.com/@ten_sura_anime)
+- **Light novel:** [Micro Magazine / GC Novels](https://www.ten-sura.com/novel/tensura) · [Yen Press (Inggris)](https://yenpress.com/series/that-time-i-got-reincarnated-as-a-slime-light-novel) · [web novel asli di Shōsetsuka ni Narō](https://ncode.syosetu.com/n6316bn/)
+- **Manga:** [Kodansha](https://www.kodansha.co.jp/titles/1000026036) · [baca bab 1 gratis di Magazine Pocket](https://pocket.shonenmagazine.com/title/00380/episode/185457)
+
+Semua tautan dicek pada 8 Oktober 2026. Buktinya ada di [`docs/research/LINKS_VERIFIED.json`](./docs/research/LINKS_VERIFIED.json).
+
+## Referensi
+
+<details>
+<summary><b>Daftar pustaka (APA 7)</b></summary>
+
+**Sumber primer**
+
+- Fuse. (2021). *That time I got reincarnated as a slime* (Vol. 12; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2018)
+- Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 13; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2018)
+- Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 14; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2019)
+- Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 15; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2019)
+- Fuse. (2023). *That time I got reincarnated as a slime* (Vol. 16; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2020)
+- Fuse. (2013–2016). *Tensei shitara suraimu datta ken* [That time I got reincarnated as a slime]. Shōsetsuka ni Narō. https://ncode.syosetu.com/n6316bn/
+- Kondō, B. (Executive Producer). (2018–present). *Tensei shitara suraimu datta ken* [That time I got reincarnated as a slime] [TV series]. Eight Bit; Tensura Production Committee.
+
+**Referensi animasi peta**
+
+- k manager. (2025, January 13). *Russian invade Ukraine war every day to January 12th 2025 using Christopher style* [Video]. YouTube. https://www.youtube.com/watch?v=8gUi4-nCBsQ
+- mapsinanutshell. (2023, July 20). *The Korean War using Google Earth [Extended]* [Video]. YouTube. https://www.youtube.com/watch?v=lJx6M7SqkvI
+- Italian Mapper. (2024, June 19). *World War II every front with army sizes* [Video]. YouTube. https://www.youtube.com/watch?v=nPFk_64JKZ8
+- AlterGhz. (2026, May 3). *World War III every day Operation Unthinkable with army sizes* [Video]. YouTube. https://www.youtube.com/watch?v=vOYKWBOB5fw
+
+**Perangkat lunak**
+
+- MapLibre contributors. (2026). *MapLibre GL JS* (Version 5.24.0) [Computer software]. MapLibre. https://maplibre.org/maplibre-gl-js/docs/
+- Vercel. (2026). *Next.js* (Version 15.5.25) [Computer software]. https://nextjs.org/docs
+- Meta Platforms. (2024). *React* (Version 19.0.0) [Computer software]. https://react.dev/
+- Poimandres. (2026). *Zustand* (Version 5.0.15) [Computer software]. https://zustand.docs.pmnd.rs/
+- Tailwind Labs. (2025). *Tailwind CSS* (Version 3.4.19) [Computer software]. https://tailwindcss.com/docs
+- Google. (2026). *Puppeteer* (Version 25.10.0) [Computer software]. https://pptr.dev/
+- Microsoft. (n.d.). *Playwright* [Computer software]. https://playwright.dev/
+- OpenCV team. (2026). *OpenCV* (Version 4.14.0) [Computer software]. https://opencv.org/
+- FFmpeg developers. (2026). *FFmpeg* [Computer software]. https://ffmpeg.org/
+- Artifex Software. (2026). *PyMuPDF* (Version 1.28.2) [Computer software]. https://pymupdf.readthedocs.io/en/latest/
+- Vercel. (n.d.). *Deployment protection*. Vercel Documentation. Retrieved October 8, 2026, from https://vercel.com/docs/deployment-protection
+
+</details>
 
 ## Berkontribusi
 
-Fakta dihormati, ketidakpastian diakui, karangan tidak diterima. Setiap fakta baru butuh penunjuk sumber (volume, bab, lokator) — tanpa kutipan panjang dari novel. Lihat [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md) dan [Code of Conduct](./CODE_OF_CONDUCT.md).
+Fakta dihormati, ketidakpastian diakui, karangan tidak diterima. Setiap fakta baru butuh penunjuk sumber (volume, bab, lokator), tanpa kutipan panjang dari novel. Lihat [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md) dan [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Lisensi & atribusi
 
-Proyek ini milik **NuRichter** (NuRichter Workspace), dengan lisensi tiga lapis — lihat [LICENSE](./LICENSE): perangkat lunak (permisif), dataset & tulisan analitis (atribusi, non-komersial, berbagi serupa, wajib menjaga label integritas), dan materi pihak ketiga (tidak dilisensikan oleh proyek ini).
+Proyek ini milik **NuRichter** (NuRichter Workspace), dengan lisensi tiga lapis (lihat [LICENSE](./LICENSE)):
 
-*Tensei Shitara Slime Datta Ken* beserta dunia, tokoh, teks, dan ilustrasinya adalah milik pemegang haknya. Photocard karakter berasal dari situs resmi TenSura dan wiki Tensura sebagaimana tercatat di manifest repositori karakter; lisensinya **Open** (keputusan pemilik proyek), dengan sumber dan atribusi tetap dicantumkan di setiap kartu. Teks novel (PDF) tidak disertakan di repositori ini — audit kanon memakai salinan lokal pemilik proyek; rujukan hanya berupa volume, bab, dan lokator baris. Belilah dan bacalah edisi resminya.
+- perangkat lunak: permisif;
+- dataset dan tulisan analitis: atribusi, non-komersial, berbagi serupa, dan wajib menjaga label integritas;
+- materi pihak ketiga: tidak dilisensikan oleh proyek ini.
+
+*Tensei Shitara Slime Datta Ken* beserta dunia, tokoh, teks, dan ilustrasinya adalah milik Fuse, Mitz Vah, Micro Magazine, Kodansha, dan komite produksi anime. Photocard karakter berasal dari situs resmi TenSura dan wiki Tensura sebagaimana tercatat di manifest; lisensinya **Open** (keputusan pemilik proyek), dengan sumber tetap dicantumkan di setiap kartu.
+
+Teks novel (PDF) tidak disertakan di repositori ini. Audit kanon memakai salinan lokal; rujukannya hanya berupa volume, bab, dan lokator baris. Belilah dan bacalah edisi resminya.
 
 Sitasi: tombol **"Cite this repository"** di GitHub ([CITATION.cff](./CITATION.cff)).
+
+## Pesan dari pembuat
+
+> *Semoga tim produksi Tensura bisa melihat proyekku ini suatu hari nanti.*
+>
+> — NuRichter
 
 <div align="center">
 <br>
 <img src="./Sources%20of%20Truth/GIF%20Assets/Footer.gif" width="100%" alt="">
-<sub>Dibuat oleh penggemar, untuk penggemar. Ketidaktahuan itu data. Karangan itu bug.</sub>
+
+**[GitHub](https://github.com/NuRichter)** · **[NuRichter Workspace](https://nurichter-workspace.vercel.app/)** · **[YouTube](https://www.youtube.com/@NuRichter)** · **[Instagram](https://www.instagram.com/ibnu_lpg/)** · **[LinkedIn](https://www.linkedin.com/in/nurichter/)**
+
+<sub>Dibuat oleh penggemar, untuk penggemar. Ketidaktahuan itu data. Karangan itu bug.<br>Kalau suatu hari kamu yang bekerja di balik layar <i>Tensura</i> membaca ini — terima kasih untuk ceritanya.</sub>
 </div>

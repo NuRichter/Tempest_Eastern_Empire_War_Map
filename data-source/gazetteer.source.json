@@ -178,12 +178,12 @@
     },
     {
       "id": "imperial-interior",
-      "name": "Eastern Empire interior",
+      "name": "Imperial border base (assembly area)",
       "theatre": "TH-CAP",
       "x": 0.7955,
       "y": 0.3925,
       "placement": "RECONSTRUCTED",
-      "basis": "The assembly area of the invasion column before it marched. Placed just inside the Empire on the bearing from the capital towards the Great Jura Forest, so that the approach march reads as leaving the Empire westward. The corpus states only 'Eastern Empire'."
+      "basis": "The assembly area of the invasion column before it marched. Placed just inside the Empire on the bearing from the capital towards the Great Jura Forest, so that the approach march reads as leaving the Empire westward. The corpus states only 'Eastern Empire'. The text shows \"a large number of troops gathered around the security base\" at the military border (v12.txt:11829-11831): this is that base."
     },
     {
       "id": "great-jura-forest",
@@ -438,6 +438,42 @@
       "placement": "RECONSTRUCTED",
       "altitude": "AIR",
       "basis": "The imperial flagship carrying Rudra hangs over the Jura theatre during the dragon battle and the flagship duels (V15 Ch1-Ch5, v15.txt:4771-4772, 11173-11177). Placed as an air layer just north-east of jura-airspace; no finer position is stated."
+    },
+    {
+      "id": "camp-left-flank",
+      "name": "Imperial camp, left flank",
+      "theatre": "TH-LAB",
+      "x": 0.6528,
+      "y": 0.5516,
+      "placement": "RECONSTRUCTED",
+      "basis": "Shion breaks the imperial left (v13.txt:17193-17421). The text gives no orientation; the left is placed on the camp's north-east side, facing the labyrinth to the south-west."
+    },
+    {
+      "id": "camp-right-flank",
+      "name": "Imperial camp, right flank",
+      "theatre": "TH-LAB",
+      "x": 0.6423,
+      "y": 0.5671,
+      "placement": "RECONSTRUCTED",
+      "basis": "Albis strikes the imperial right (v13.txt:17193-17421). Placed on the camp's south side, facing the labyrinth."
+    },
+    {
+      "id": "legion-landing-ground",
+      "name": "Magic Beast Division landing ground",
+      "theatre": "TH-DWE",
+      "x": 0.7232,
+      "y": 0.4168,
+      "placement": "RECONSTRUCTED",
+      "basis": "The Legion descends from the airships onto the field in front of the allied line (v15.txt:3404-3420, 7981-7986, 9198-9204). Placed east of the Dwargon defensive line, on the Empire side."
+    },
+    {
+      "id": "magitank-rear",
+      "name": "Magitank Force rear",
+      "theatre": "TH-DWG",
+      "x": 0.6835,
+      "y": 0.4945,
+      "placement": "RECONSTRUCTED",
+      "basis": "Hakuro takes 12,000 on a detour of more than 40 km to the magitank rear (v13.txt:4084-4088). Placed behind (east of) the magitank main camp."
     }
   ],
   "theatreZones": {

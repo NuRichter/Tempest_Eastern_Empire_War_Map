@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef } from 'react';
 
+import { useT } from '@/i18n';
 import { battleDayLabel } from '@/lib/format';
 import { eventCategory } from '@/lib/taxonomy';
 import { useSimulation } from '@/simulation/store';
@@ -15,6 +16,7 @@ const CATEGORY_MARK: Record<string, string> = { COMBAT: '⚔', MOVEMENT: '➤', 
 /** The record as a feed: grouped by battle day, following the playhead. */
 export function FeedPanel() {
   const data = useSimulation((s) => s.data);
+  const t = useT();
   const frame = useSimulation((s) => s.frame);
   const filters = useSimulation((s) => s.filters);
   const selection = useSimulation((s) => s.selection);
@@ -42,17 +44,17 @@ export function FeedPanel() {
     <div className="flex h-full flex-col">
       <div className="border-b border-ink-500 px-3 py-2">
         <div className="flex items-center justify-between">
-          <p className="eyebrow">Bookmarks</p>
+          <p className="eyebrow">{t('Bookmarks')}</p>
           <button
             type="button"
             className="ctl h-7 gap-1"
-            title="Bookmark this moment (B)"
+            title={t('Bookmark this moment (B)')}
             onClick={() => {
               const at = data.events.filter((e) => e.frame <= frame).pop();
               addBookmark({ frame, eventId: at && at.frame === frame ? at.id : null, label: at && at.frame === frame ? at.title : `${battleDayLabel(data.timeline.battleDay[frame])} ${String(Math.floor(((frame % 144) * 10) / 60)).padStart(2, '0')}:${String(((frame % 144) * 10) % 60).padStart(2, '0')}` });
             }}
           >
-            <Bookmark size={12} /> This moment
+            <Bookmark size={12} /> {t('This moment')}
           </button>
         </div>
         {bookmarks.length ? (
@@ -63,20 +65,20 @@ export function FeedPanel() {
                   <span className="figure shrink-0 text-2xs text-accent">{battleDayLabel(data.timeline.battleDay[b.frame])}</span>
                   <span className="truncate text-fg">{b.label}</span>
                 </button>
-                <button type="button" onClick={() => removeBookmark(b.id)} className="grid h-6 w-6 place-items-center text-fg-3 hover:text-fg" aria-label={`Remove bookmark ${b.label}`}>
+                <button type="button" onClick={() => removeBookmark(b.id)} className="grid h-6 w-6 place-items-center text-fg-3 hover:text-fg" aria-label={t('Remove bookmark {name}', { name: b.label })}>
                   <X size={11} />
                 </button>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="mt-1 text-2xs text-fg-3">Saved on this device. Press B anywhere to bookmark the current moment.</p>
+          <p className="mt-1 text-2xs text-fg-3">{t('Saved on this device. Press B anywhere to bookmark the current moment.')}</p>
         )}
       </div>
       <p className="px-3 py-2 text-xs text-fg-3">
-        {visible.length} of {data.events.length} events · click to move the map and timeline there
+        {t('{shown} of {total} events · click to move the map and timeline there', { shown: visible.length, total: data.events.length })}
       </p>
-      <ol ref={listRef} className="min-h-0 flex-1 overflow-y-auto pb-3" aria-label="Campaign events">
+      <ol ref={listRef} className="min-h-0 flex-1 overflow-y-auto pb-3" aria-label={t('Campaign events')}>
         {visible.map((e) => {
           const header = e.battleDay !== lastDay;
           lastDay = e.battleDay;

@@ -45,7 +45,7 @@ function assert(condition: unknown, message: string): asserts condition {
 }
 
 const parts = Object.fromEntries(Object.entries(PART_FILES).map(([k, f]) => [k, read(f)])) as unknown as Omit<DatasetParts, 'checkpoints'>;
-const data = assembleDataset({ ...parts, checkpoints: parts.keyframeIndex.files.map((f) => read<FrameState>(f)) });
+const data = assembleDataset({ ...parts, checkpoints: parts.keyframeIndex.files.flatMap((f) => read<FrameState | FrameState[]>(f)) });
 const N = data.manifest.clock.frameCount;
 
 console.log('Engine tests\n');
@@ -309,11 +309,11 @@ test('retreat: ground is lost when the Magitank Force is destroyed on D+0', () =
   assert(after < before, `held cells ${before} → ${after}`);
 });
 
-test('recapture: imperial ground in Jura returns to Tempest after the camp falls on D+11', () => {
+test('recapture: imperial ground in Jura returns to Tempest after the camp falls on D+10', () => {
   const held = empireIn(frameOf(5, '12:00'), jtf);
   const after = empireIn(frameOf(12, '00:00'), jtf);
   assert(held > 500, `only ${held} cells held on D+5`);
-  assert(after === 0, `${after} cells still held after D+11`);
+  assert(after === 0, `${after} cells still held after D+10`);
 });
 
 test('a cut-off pocket collapses from the rim inward, interior last', () => {

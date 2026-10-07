@@ -1,7 +1,7 @@
 [
  {
   "id": "EVT-0400",
-  "day": 13,
+  "day": 12,
   "time": "10:00",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "the day after the resurrection of nearly 700,000",
@@ -70,7 +70,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event for V14 Ch1 (v14.txt:873-881, 1109-1116, 1292-1297); AUDIT-PLAN section 5"
+    "New event for V14 Ch1 (v14.txt:873-881, 1109-1116, 1292-1297); AUDIT-PLAN section 5",
+    "R6 re-dated from D+13 10:00 to D+12 10:00: \"the day after the revival\" (v14.txt:875) with the revival on D+11."
    ]
   },
   "effects": {
@@ -85,7 +86,7 @@
  },
  {
   "id": "EVT-0401",
-  "day": 13,
+  "day": 12,
   "time": "14:00",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "reported on the rewards day",
@@ -139,7 +140,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v14.txt:1120-1126); AUDIT-PLAN section 5"
+    "New event (v14.txt:1120-1126); AUDIT-PLAN section 5",
+    "R6 re-dated from D+13 14:00 to D+12 14:00: \"the day after the revival\" (v14.txt:875) with the revival on D+11."
    ]
   },
   "effects": {
@@ -155,7 +157,7 @@
  },
  {
   "id": "EVT-0310",
-  "day": 13,
+  "day": 12,
   "time": "15:00",
   "timePrecision": "RECONSTRUCTED",
   "canonicalTime": "",
@@ -228,7 +230,8 @@
     "Deleted the canonicalTime 'several days after the Jura campaign concluded': not in the text (v14.txt:38-861)",
     "Location: Composite Division fortress, place not stated (v14.txt:71-73)",
     "Damrada added as attendee (v14.txt:662-663, 840-861); Yuuki decides to proceed (v14.txt:851-861)",
-    "Effect: F-EMP-050 to position-unknown"
+    "Effect: F-EMP-050 to position-unknown",
+    "R6 re-dated from D+13 15:00 to D+12 15:00: \"the day after the revival\" (v14.txt:875) with the revival on D+11."
    ]
   },
   "effects": {
@@ -254,7 +257,7 @@
  },
  {
   "id": "EVT-0405",
-  "day": 13,
+  "day": 12,
   "time": "16:00",
   "timePrecision": "RECONSTRUCTED",
   "canonicalTime": "on the day the order was given; the leaders gather within days",
@@ -307,76 +310,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v14.txt:10080-10090); AUDIT-PLAN section 5 (optional row)"
-   ]
-  },
-  "effects": {
-   "forces": {},
-   "theatres": {},
-   "campaign": {}
-  }
- },
- {
-  "id": "EVT-0402",
-  "day": 14,
-  "time": "19:00",
-  "timePrecision": "CANONICAL_RELATIVE",
-  "canonicalTime": "the banquet had to wait for the next day",
-  "theatreId": "TH-LAB",
-  "front": "Tempest and the labyrinth",
-  "battle": null,
-  "battleType": null,
-  "location": "ramiris-labyrinth",
-  "locationText": "Capital Rimuru (inside the labyrinth)",
-  "actor": "Rimuru Tempest",
-  "actorFaction": "Jura-Tempest Federation",
-  "opponent": "-",
-  "opponentFaction": "-",
-  "characters": [
-   "rimuru"
-  ],
-  "forces": [
-   "F-TEM-000",
-   "F-EMP-010"
-  ],
-  "type": "AFTERMATH",
-  "title": "Victory banquet: Federation casualties zero, 940,000 imperial soldiers killed",
-  "immediateResult": "At the banquet Rimuru is told that the Federation suffered zero casualties and that 940,000 imperial soldiers were killed",
-  "operationalResult": "The war's first phase closes with no Tempest dead",
-  "strategicResult": "Tempest's tally for the Jura campaign: zero dead against 940,000 imperial killed",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "commandStatus": "-",
-  "intensity": "NONE",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "HIGH",
-   "overall": "HIGH"
-  },
-  "sources": [
-   {
-    "volume": "V14",
-    "chapter": "Ch1",
-    "locator": "v14.txt:4078-4083"
-   },
-   {
-    "volume": "V14",
-    "chapter": "Intermission",
-    "locator": "v14.txt:4644-4651"
-   }
-  ],
-  "evidence": "The full banquet waits for the next day; there Rimuru hears that Federation casualties were zero while 940,000 imperial soldiers were killed.",
-  "reconstructionNote": "Day canonical relative to the rewards day; the evening hour is a placement.",
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "New event (v14.txt:4078-4083, 4644-4651); anchor for CAS-009 and CAS-020 (AUDIT-PLAN section 7)"
+    "New event (v14.txt:10080-10090); AUDIT-PLAN section 5 (optional row)",
+    "R6 re-dated from D+13 16:00 to D+12 16:00: \"the day after the revival\" (v14.txt:875) with the revival on D+11."
    ]
   },
   "effects": {
@@ -387,7 +322,7 @@
  },
  {
   "id": "EVT-0403",
-  "day": 15,
+  "day": 13,
   "time": "10:00",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "three days after the revival",
@@ -395,8 +330,8 @@
   "front": "Tempest and the labyrinth",
   "battle": null,
   "battleType": null,
-  "location": "jura-tempest-federation",
-  "locationText": "Prisoner camp and conference room in Tempest",
+  "location": "ramiris-labyrinth",
+  "locationText": "Floor 70 of the labyrinth (the prisoners' tents)",
   "actor": "Rimuru Tempest",
   "actorFaction": "Jura-Tempest Federation",
   "opponent": "Resurrected imperial prisoners",
@@ -457,7 +392,9 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v14.txt:5010-5016, 5208, 5662, 5757-5795); AUDIT-PLAN section 5"
+    "New event (v14.txt:5010-5016, 5208, 5662, 5757-5795); AUDIT-PLAN section 5",
+    "R6 re-dated from D+15 10:00 to D+13 10:00: \"yesterday's ceremony\" (v14.txt:4841, 5533); the \"three days after the revival\" wording (5010) counts inclusively.",
+    "R6 location: the prisoners and their conference are on Floor 70 of the labyrinth (v14.txt:5037-5039, 5616)."
    ]
   },
   "effects": {
@@ -465,8 +402,8 @@
     "F-EMP-010": {
      "status": "PRISONERS",
      "movement": "STATIONARY",
-     "location": "jura-tempest-federation",
-     "locationText": "Prisoner camp in Tempest",
+     "location": "ramiris-labyrinth",
+     "locationText": "Floor 70 of the labyrinth",
      "confidence": "HIGH"
     }
    },
@@ -475,8 +412,78 @@
   }
  },
  {
+  "id": "EVT-0402",
+  "day": 13,
+  "time": "19:00",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "the banquet had to wait for the next day",
+  "theatreId": "TH-LAB",
+  "front": "Tempest and the labyrinth",
+  "battle": null,
+  "battleType": null,
+  "location": "ramiris-labyrinth",
+  "locationText": "Capital Rimuru (inside the labyrinth)",
+  "actor": "Rimuru Tempest",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "-",
+  "opponentFaction": "-",
+  "characters": [
+   "rimuru"
+  ],
+  "forces": [
+   "F-TEM-000",
+   "F-EMP-010"
+  ],
+  "type": "AFTERMATH",
+  "title": "Victory banquet: Federation casualties zero, 940,000 imperial soldiers killed",
+  "immediateResult": "At the banquet Rimuru is told that the Federation suffered zero casualties and that 940,000 imperial soldiers were killed",
+  "operationalResult": "The war's first phase closes with no Tempest dead",
+  "strategicResult": "Tempest's tally for the Jura campaign: zero dead against 940,000 imperial killed",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "-",
+  "intensity": "NONE",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V14",
+    "chapter": "Ch1",
+    "locator": "v14.txt:4078-4083"
+   },
+   {
+    "volume": "V14",
+    "chapter": "Intermission",
+    "locator": "v14.txt:4644-4651"
+   }
+  ],
+  "evidence": "The full banquet waits for the next day; there Rimuru hears that Federation casualties were zero while 940,000 imperial soldiers were killed.",
+  "reconstructionNote": "Day canonical relative to the rewards day; the evening hour is a placement.",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event (v14.txt:4078-4083, 4644-4651); anchor for CAS-009 and CAS-020 (AUDIT-PLAN section 7)",
+    "R6 re-dated from D+14 19:00 to D+13 19:00: the all-round banquet waits for \"the next day\" after the ceremony (v14.txt:4081)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
   "id": "EVT-0404",
-  "day": 18,
+  "day": 15,
   "time": "12:00",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "the day after drinking with Elmesia; the meeting ends at dusk",
@@ -551,7 +558,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v14.txt:12725-12920, 13636-13645); AUDIT-PLAN section 5. The final party of four is chosen only in the evening council (v14.txt:14514-14517), so it is noted, not dated here"
+    "New event (v14.txt:12725-12920, 13636-13645); AUDIT-PLAN section 5. The final party of four is chosen only in the evening council (v14.txt:14514-14517), so it is noted, not dated here",
+    "R6 re-dated from D+18 12:00 to D+15 12:00: \"the day after drinking with Elmesia\" (v14.txt:12723), four days after the revival."
    ]
   },
   "effects": {
@@ -572,7 +580,7 @@
  },
  {
   "id": "EVT-0311",
-  "day": 18,
+  "day": 15,
   "time": "18:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "several days after Yuuki's report",
@@ -628,7 +636,8 @@
     "Moved from D+6 11:00 to D+18 18:00 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "canonicalTime set from v14.txt:9815; not the same day as EVT-0310",
     "Removed the TH-CAP battleStatus ACTIVE: no fighting yet",
-    "Force F-EMP-051 (Cerberus), not the clowns"
+    "Force F-EMP-051 (Cerberus), not the clowns",
+    "R6 re-dated from D+18 18:00 to D+15 18:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -647,7 +656,7 @@
  },
  {
   "id": "EVT-0317",
-  "day": 18,
+  "day": 15,
   "time": "18:30",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "only a few people will come tomorrow",
@@ -710,7 +719,8 @@
    "changes": [
     "Moved from D+7 09:00 to D+18 18:30 (same night as Miranda's errand: both name the same 'tomorrow') (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Actor faction: Tempest (Gadora relays for Rimuru, v14.txt:10274-10276)",
-    "Location: meeting hall of Yuuki's mansion (v14.txt:10086, 10110)"
+    "Location: meeting hall of Yuuki's mansion (v14.txt:10086, 10110)",
+    "R6 re-dated from D+18 18:30 to D+15 18:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -729,7 +739,7 @@
  },
  {
   "id": "EVT-0318",
-  "day": 18,
+  "day": 15,
   "time": "18:40",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -781,7 +791,8 @@
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "Moved from D+7 10:00 to D+18 18:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)"
+    "Moved from D+7 10:00 to D+18 18:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
+    "R6 re-dated from D+18 18:40 to D+15 18:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -792,7 +803,7 @@
  },
  {
   "id": "EVT-0312",
-  "day": 18,
+  "day": 15,
   "time": "19:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "in the middle of the night (Tidu's local wording)",
@@ -851,7 +862,8 @@
    "status": "CORRECTED",
    "changes": [
     "Moved from D+6 21:00 to D+18 19:00 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Purpose added: Damrada's rendezvous about tomorrow's talks (v14.txt:9900-9908)"
+    "Purpose added: Damrada's rendezvous about tomorrow's talks (v14.txt:9900-9908)",
+    "R6 re-dated from D+18 19:00 to D+15 19:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -862,7 +874,7 @@
  },
  {
   "id": "EVT-0313",
-  "day": 18,
+  "day": 15,
   "time": "19:10",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "in the middle of the night",
@@ -916,7 +928,8 @@
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "Moved from D+6 21:20 to D+18 19:10 (AMB-018 one-night clock; AUDIT-PLAN section 5)"
+    "Moved from D+6 21:20 to D+18 19:10 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
+    "R6 re-dated from D+18 19:10 to D+15 19:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -940,7 +953,7 @@
  },
  {
   "id": "EVT-0314",
-  "day": 18,
+  "day": 15,
   "time": "19:20",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -994,7 +1007,8 @@
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "Moved from D+6 21:30 to D+18 19:20 (AMB-018 one-night clock; AUDIT-PLAN section 5)"
+    "Moved from D+6 21:30 to D+18 19:20 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
+    "R6 re-dated from D+18 19:20 to D+15 19:20: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1005,7 +1019,7 @@
  },
  {
   "id": "EVT-0315",
-  "day": 18,
+  "day": 15,
   "time": "19:30",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -1063,7 +1077,8 @@
     "Moved from D+6 21:40 to D+18 19:30 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Effect moved from F-EMP-050 (clowns, deleted DESTROYED) to F-EMP-051 kia 1 (Miranda was one of the Three Greats)",
     "Removed TH-CAP CONCLUDED / EMPIRE_CONTROLLED: the coup is crushed later that night (EVT-0323)",
-    "Turning point moved to EVT-0323"
+    "Turning point moved to EVT-0323",
+    "R6 re-dated from D+18 19:30 to D+15 19:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1084,7 +1099,7 @@
  },
  {
   "id": "EVT-0316",
-  "day": 18,
+  "day": 15,
   "time": "19:30",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "not even a second was needed",
@@ -1139,7 +1154,8 @@
    "status": "CORRECTED",
    "changes": [
     "Moved from D+6 21:50 to D+18 19:30 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Opponent: Miranda (the read target), not Yuuki (v14.txt:10015-10018)"
+    "Opponent: Miranda (the read target), not Yuuki (v14.txt:10015-10018)",
+    "R6 re-dated from D+18 19:30 to D+15 19:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1152,7 +1168,7 @@
  },
  {
   "id": "EVT-0322",
-  "day": 18,
+  "day": 15,
   "time": "19:40",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "immediately after the shot",
@@ -1207,7 +1223,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v14.txt:10023-10077); AUDIT-PLAN section 5"
+    "New event (v14.txt:10023-10077); AUDIT-PLAN section 5",
+    "R6 re-dated from D+18 19:40 to D+15 19:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1218,7 +1235,7 @@
  },
  {
   "id": "EVT-0323",
-  "day": 18,
+  "day": 15,
   "time": "20:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "the same night; the sky turns red late at night",
@@ -1291,7 +1308,8 @@
    "status": "ADDED",
    "changes": [
     "New event (v14.txt:10973-11555, 11930-12342); AUDIT-PLAN section 5 and 7 (start of MOV-009)",
-    "Campaign empireTotal / empireEffective set to UNKNOWN: no canonical aggregate exists for the long night"
+    "Campaign empireTotal / empireEffective set to UNKNOWN: no canonical aggregate exists for the long night",
+    "R6 re-dated from D+18 20:00 to D+15 20:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1344,7 +1362,7 @@
  },
  {
   "id": "EVT-0319",
-  "day": 18,
+  "day": 15,
   "time": "20:30",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "at night, 'on such an important day'",
@@ -1401,7 +1419,8 @@
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "Moved from D+7 12:00 to D+18 20:30 (night scene, v14.txt:12340-12342) (AMB-018 one-night clock; AUDIT-PLAN section 5)"
+    "Moved from D+7 12:00 to D+18 20:30 (night scene, v14.txt:12340-12342) (AMB-018 one-night clock; AUDIT-PLAN section 5)",
+    "R6 re-dated from D+18 20:30 to D+15 20:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1423,7 +1442,7 @@
  },
  {
   "id": "EVT-0320",
-  "day": 18,
+  "day": 15,
   "time": "20:30",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "late at night, the sky dyed bright red",
@@ -1482,7 +1501,8 @@
    "status": "CORRECTED",
    "changes": [
     "Moved from D+7 14:00 to D+18 20:30 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Cause added: the purge launched by Rudra and Velgrynd (v14.txt:12336-12339)"
+    "Cause added: the purge launched by Rudra and Velgrynd (v14.txt:12336-12339)",
+    "R6 re-dated from D+18 20:30 to D+15 20:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1497,7 +1517,7 @@
  },
  {
   "id": "EVT-0321",
-  "day": 18,
+  "day": 15,
   "time": "20:40",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -1553,7 +1573,8 @@
     "Moved from D+7 14:30 to D+18 20:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Inverted: Zero kept command; the collapse is only hypothetical in the text (v14.txt:12395-12407)",
     "Type COMMAND_CHANGE to COMMAND",
-    "Campaign activeCommanders: blockade under Zero"
+    "Campaign activeCommanders: blockade under Zero",
+    "R6 re-dated from D+18 20:40 to D+15 20:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1576,7 +1597,7 @@
  },
  {
   "id": "EVT-0324",
-  "day": 18,
+  "day": 15,
   "time": "20:50",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "the same night ('good evening')",
@@ -1630,7 +1651,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v14.txt:12415-12480); AUDIT-PLAN section 5 and 7 (end of MOV-026; CMD-041 Zero ends here)"
+    "New event (v14.txt:12415-12480); AUDIT-PLAN section 5 and 7 (end of MOV-026; CMD-041 Zero ends here)",
+    "R6 re-dated from D+18 20:50 to D+15 20:50: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1658,7 +1680,7 @@
  },
  {
   "id": "EVT-0325",
-  "day": 18,
+  "day": 15,
   "time": "21:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -1722,7 +1744,8 @@
    "status": "ADDED",
    "changes": [
     "New event (v14.txt:13851-13884); AUDIT-PLAN section 5 and 7 (CAS-012 target)",
-    "F-EMP-031 effect (0 / kia 60,000 / DESTROYED) moved here from EVT-0343"
+    "F-EMP-031 effect (0 / kia 60,000 / DESTROYED) moved here from EVT-0343",
+    "R6 re-dated from D+18 21:00 to D+15 21:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1750,7 +1773,7 @@
  },
  {
   "id": "EVT-0341",
-  "day": 18,
+  "day": 15,
   "time": "21:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "narrated afterwards: the end had been witnessed while waiting for Gazel",
@@ -1811,7 +1834,8 @@
    "changes": [
     "Moved from D+8 06:20 to D+18 21:00 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Opponent: Velgrynd (Gravity Collapse), the Composite Division is the victim",
-    "Recast as the observation of EVT-0325; CAS-012 to be retargeted to EVT-0325 (AUDIT-PLAN section 7)"
+    "Recast as the observation of EVT-0325; CAS-012 to be retargeted to EVT-0325 (AUDIT-PLAN section 7)",
+    "R6 re-dated from D+18 21:00 to D+15 21:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1822,7 +1846,7 @@
  },
  {
   "id": "EVT-0326",
-  "day": 18,
+  "day": 15,
   "time": "21:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "a few minutes after the first report",
@@ -1881,7 +1905,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v14.txt:12531-12559, 12720-12722); AUDIT-PLAN section 5"
+    "New event (v14.txt:12531-12559, 12720-12722); AUDIT-PLAN section 5",
+    "R6 re-dated from D+18 21:00 to D+15 21:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -1900,7 +1925,7 @@
  },
  {
   "id": "EVT-0343",
-  "day": 18,
+  "day": 15,
   "time": "21:10",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "the ritual had begun less than an hour before Rimuru's council",
@@ -1922,7 +1947,8 @@
   ],
   "forces": [
    "F-EMP-050",
-   "F-EMP-014"
+   "F-EMP-014",
+   "F-EMP-052"
   ],
   "type": "SPECIAL_ABILITY",
   "title": "Kagali begins the forbidden undead ritual on the 60,000 dead",
@@ -1977,7 +2003,9 @@
     "Sources: V14 Ch4 primary plus V15 Ch1",
     "Deleted the F-EMP-031 effect (moved to EVT-0325)",
     "Type CASUALTY_EVENT to SPECIAL_ABILITY",
-    "Turning point moved to EVT-0325"
+    "Turning point moved to EVT-0325",
+    "R6 re-dated from D+18 21:10 to D+15 21:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542).",
+    "R6: the undead raised by the ritual hold the ritual ground (F-EMP-052, v14.txt:13914-13931, 15251)."
    ]
   },
   "effects": {
@@ -1995,6 +2023,16 @@
      "location": "ritual-caster-position",
      "locationText": "Kagali's ritual ground",
      "confidence": "HIGH"
+    },
+    "F-EMP-052": {
+     "strength": "UNKNOWN",
+     "effective": "UNKNOWN",
+     "sizeStatus": "UNKNOWN",
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-",
+     "location": "ritual-caster-position",
+     "locationText": "Ritual ground"
     }
    },
    "theatres": {
@@ -2007,7 +2045,7 @@
  },
  {
   "id": "EVT-0327",
-  "day": 18,
+  "day": 15,
   "time": "21:10",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "after dinner",
@@ -2066,7 +2104,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v14.txt:13778-13789, 13847-13884); AUDIT-PLAN section 5"
+    "New event (v14.txt:13778-13789, 13847-13884); AUDIT-PLAN section 5",
+    "R6 re-dated from D+18 21:10 to D+15 21:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -2077,7 +2116,7 @@
  },
  {
   "id": "EVT-0328",
-  "day": 18,
+  "day": 15,
   "time": "21:30",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "the ritual had begun less than an hour before",
@@ -2152,7 +2191,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v14.txt:14386-14540); AUDIT-PLAN section 5 and 7 (start of MOV-010, MOV-011, MOV-029, MOV-033..035)"
+    "New event (v14.txt:14386-14540); AUDIT-PLAN section 5 and 7 (start of MOV-010, MOV-011, MOV-029, MOV-033..035)",
+    "R6 re-dated from D+18 21:30 to D+15 21:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -2230,7 +2270,7 @@
  },
  {
   "id": "EVT-0340",
-  "day": 18,
+  "day": 15,
   "time": "21:30",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "just as Rimuru was preparing to infiltrate the Imperial Capital",
@@ -2295,7 +2335,8 @@
     "Moved from D+8 06:00 to D+18 21:30 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "canonicalTime: 'preparing to infiltrate' (v15.txt:577), not the infiltration itself",
     "Sources: V15 Ch1 plus V14 Ch4 for Gazel's arrival",
-    "Location: Gazel's command post (dwargon-defensive-line)"
+    "Location: Gazel's command post (dwargon-defensive-line)",
+    "R6 re-dated from D+18 21:30 to D+15 21:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -2335,7 +2376,7 @@
  },
  {
   "id": "EVT-0360",
-  "day": 18,
+  "day": 15,
   "time": "21:40",
   "timePrecision": "CANONICAL_RELATIVE",
   "canonicalTime": "after sending Gabil off; 'a very long night began'",
@@ -2396,7 +2437,8 @@
     "Moved from D+8 09:00 to D+18 21:40 (before Velgrynd attacks Tempest) (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Source: V14 Ch4, not V15 Ch1",
     "Result: diverted into a distorted-space hall, not 'enters the capital' (v14.txt:14549-14559)",
-    "Effects: F-TEM-030 to dream-fortress; the F-TEM-012 and F-ALL-001 effects moved to EVT-0336 and EVT-0350"
+    "Effects: F-TEM-030 to dream-fortress; the F-TEM-012 and F-ALL-001 effects moved to EVT-0336 and EVT-0350",
+    "R6 re-dated from D+18 21:40 to D+15 21:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -2422,7 +2464,7 @@
  },
  {
   "id": "EVT-0361",
-  "day": 18,
+  "day": 15,
   "time": "21:40",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -2490,7 +2532,8 @@
    "changes": [
     "Moved from D+8 10:00 to D+18 21:40 (before and during the dragon battle) (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Location: dream-fortress (separate dimension), not a sealed space in the capital",
-    "Sources: V14 Ch4/Epilogue plus V15 Ch2"
+    "Sources: V14 Ch4/Epilogue plus V15 Ch2",
+    "R6 re-dated from D+18 21:40 to D+15 21:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -2513,7 +2556,7 @@
  },
  {
   "id": "EVT-0342",
-  "day": 18,
+  "day": 15,
   "time": "21:40",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -2567,7 +2610,8 @@
    "status": "CORRECTED",
    "changes": [
     "Moved from D+8 06:40 to D+18 21:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Names: Jaine (not Lady Jane); opponent Kagali's ritual"
+    "Names: Jaine (not Lady Jane); opponent Kagali's ritual",
+    "R6 re-dated from D+18 21:40 to D+15 21:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -2578,7 +2622,7 @@
  },
  {
   "id": "EVT-0344",
-  "day": 18,
+  "day": 15,
   "time": "21:40",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -2631,7 +2675,8 @@
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "Moved from D+8 07:20 to D+18 21:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)"
+    "Moved from D+8 07:20 to D+18 21:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
+    "R6 re-dated from D+18 21:40 to D+15 21:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -2648,7 +2693,7 @@
  },
  {
   "id": "EVT-0345",
-  "day": 18,
+  "day": 15,
   "time": "21:50",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "the decision came somewhat too late",
@@ -2711,7 +2756,8 @@
     "Moved from D+8 07:40 to D+18 21:50 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Type ATTACK to COMMAND: the decision; the sortie itself reaches the ritual ground in EVT-0338",
     "Objective: delay the defenders so Gazel can duel Kondo (v15.txt:1453-1458)",
-    "Names: Pegasus Knights (not Sky Knights)"
+    "Names: Pegasus Knights (not Sky Knights)",
+    "R6 re-dated from D+18 21:50 to D+15 21:50: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -2734,7 +2780,7 @@
  },
  {
   "id": "EVT-0336",
-  "day": 18,
+  "day": 15,
   "time": "21:50",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -2808,7 +2854,8 @@
    "status": "ADDED",
    "changes": [
     "New event (v15.txt:759-882); AUDIT-PLAN section 5 and 7 (end of MOV-010, MOV-011, MOV-029, MOV-033..035; start of MOV-012, MOV-027, MOV-028)",
-    "F-TEM-012 / F-ALL-001 effects moved here from EVT-0360"
+    "F-TEM-012 / F-ALL-001 effects moved here from EVT-0360",
+    "R6 re-dated from D+18 21:50 to D+15 21:50: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -2880,7 +2927,7 @@
  },
  {
   "id": "EVT-0330",
-  "day": 18,
+  "day": 15,
   "time": "22:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "although it was late at night, the sky was very bright",
@@ -2947,7 +2994,8 @@
    "changes": [
     "Moved from D+7 22:00 to D+18 22:00 (after Rimuru's party is trapped) (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Notes: Rimuru authorises full power (v14.txt:15040-15050)",
-    "Effects: F-EMP-070 location jura-airspace (end of MOV-009)"
+    "Effects: F-EMP-070 location jura-airspace (end of MOV-009)",
+    "R6 re-dated from D+18 22:00 to D+15 22:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -2984,7 +3032,7 @@
  },
  {
   "id": "EVT-0337",
-  "day": 18,
+  "day": 15,
   "time": "22:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -3047,7 +3095,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:899-1307, 3758-3923); AUDIT-PLAN section 5"
+    "New event (v15.txt:899-1307, 3758-3923); AUDIT-PLAN section 5",
+    "R6 re-dated from D+18 22:00 to D+15 22:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -3086,7 +3135,7 @@
  },
  {
   "id": "EVT-0331",
-  "day": 18,
+  "day": 15,
   "time": "22:10",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -3142,7 +3191,8 @@
    "changes": [
     "Moved from D+7 22:10 to D+18 22:10 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Actor: the battle, not Velgrynd alone (v14.txt:15480-15482)",
-    "Theatre effect moved from TH-DWG to TH-DRG"
+    "Theatre effect moved from TH-DWG to TH-DRG",
+    "R6 re-dated from D+18 22:10 to D+15 22:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -3157,7 +3207,7 @@
  },
  {
   "id": "EVT-0338",
-  "day": 18,
+  "day": 15,
   "time": "22:10",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -3224,7 +3274,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:1352-1377); AUDIT-PLAN section 5 and 7 (end of MOV-013)"
+    "New event (v15.txt:1352-1377); AUDIT-PLAN section 5 and 7 (end of MOV-013)",
+    "R6 re-dated from D+18 22:10 to D+15 22:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -3261,7 +3312,7 @@
  },
  {
   "id": "EVT-0332",
-  "day": 18,
+  "day": 15,
   "time": "22:20",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -3314,7 +3365,8 @@
    "changes": [
     "Moved from D+7 22:20 to D+18 22:20 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Upper floors only possibly destroyed (Rimuru's guess)",
-    "Turning point removed (re-ranked to the domination and break-out)"
+    "Turning point removed (re-ranked to the domination and break-out)",
+    "R6 re-dated from D+18 22:20 to D+15 22:20: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -3331,7 +3383,7 @@
  },
  {
   "id": "EVT-0333",
-  "day": 18,
+  "day": 15,
   "time": "22:20",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -3385,7 +3437,8 @@
    "status": "CORRECTED",
    "changes": [
     "Moved from D+7 22:30 to D+18 22:20 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Type EVACUATION to OUTCOME: the city was concealed before the war"
+    "Type EVACUATION to OUTCOME: the city was concealed before the war",
+    "R6 re-dated from D+18 22:20 to D+15 22:20: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -3396,7 +3449,7 @@
  },
  {
   "id": "EVT-0346",
-  "day": 18,
+  "day": 15,
   "time": "22:30",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "'I'm a little late'",
@@ -3453,7 +3506,8 @@
     "Moved from D+8 08:00 to D+18 22:30 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Only the second arrival (at the ritual ground); the first, by spatial transfer, is EVT-0336",
     "Strength 100 (not 3,000); force F-TEM-003B (not F-TEM-003)",
-    "Location: ritual-caster-position (end of MOV-027/028)"
+    "Location: ritual-caster-position (end of MOV-027/028)",
+    "R6 re-dated from D+18 22:30 to D+15 22:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -3479,7 +3533,7 @@
  },
  {
   "id": "EVT-0334",
-  "day": 18,
+  "day": 15,
   "time": "22:30",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -3539,7 +3593,8 @@
    "status": "CORRECTED",
    "changes": [
     "Moved from D+7 22:40 to D+18 22:30 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Strategic result: Velgrynd only partly committed (v14.txt:15489-15490, 15692-15700)"
+    "Strategic result: Velgrynd only partly committed (v14.txt:15489-15490, 15692-15700)",
+    "R6 re-dated from D+18 22:30 to D+15 22:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -3553,8 +3608,73 @@
   }
  },
  {
+  "id": "EVT-0464",
+  "day": 15,
+  "time": "22:30",
+  "timePrecision": "INFERRED",
+  "canonicalTime": "",
+  "theatreId": "TH-LAB",
+  "front": "",
+  "battle": null,
+  "battleType": null,
+  "location": "ramiris-labyrinth",
+  "locationText": "Ramiris Labyrinth",
+  "actor": "Feldway's faction (Mystics and Fallen), allied with Michael",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "forces": [],
+  "type": "COMBAT",
+  "title": "Mystic raid on the labyrinth: Zarario and five generals break in",
+  "immediateResult": "Mystic raid on the labyrinth: Zarario and five generals break in",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": ""
+  },
+  "commandStatus": "",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch1",
+    "locator": "v16.txt:939-1013"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch1",
+    "locator": "v16.txt:1071-1110"
+   }
+  ],
+  "evidence": "Mystic raid on the labyrinth: Zarario and five generals break in.",
+  "reconstructionNote": "V16 narrates this second front of the same night without clock times; the times are inferred from cross-references to the long-night events.",
+  "notes": "Added in R6 from the full novel audit.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added in R6 (full novel audit)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
   "id": "EVT-0347",
-  "day": 18,
+  "day": 15,
   "time": "22:40",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -3622,7 +3742,8 @@
    "changes": [
     "Moved from D+8 08:20 to D+18 22:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Result: Gadora stalls Velgrynd by talk; she leaves on her own (v15.txt:3391-3404)",
-    "Name: Gadora"
+    "Name: Gadora",
+    "R6 re-dated from D+18 22:40 to D+15 22:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -3633,7 +3754,7 @@
  },
  {
   "id": "EVT-0335",
-  "day": 18,
+  "day": 15,
   "time": "22:40",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -3687,7 +3808,73 @@
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "Moved from D+7 22:50 to D+18 22:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)"
+    "Moved from D+7 22:50 to D+18 22:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
+    "R6 re-dated from D+18 22:40 to D+15 22:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0465",
+  "day": 15,
+  "time": "22:40",
+  "timePrecision": "INFERRED",
+  "canonicalTime": "",
+  "theatreId": "TH-LAB",
+  "front": "",
+  "battle": null,
+  "battleType": null,
+  "location": "ramiris-labyrinth",
+  "locationText": "Floor 70 of the labyrinth",
+  "actor": "Feldway's faction (Mystics and Fallen), allied with Michael",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "forces": [],
+  "type": "COMBAT",
+  "title": "Cornu attacks Masayuki on Floor 70; the imperial prisoners fight beside Tempest",
+  "immediateResult": "Cornu attacks Masayuki on Floor 70; the imperial prisoners fight beside Tempest",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": ""
+  },
+  "commandStatus": "",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch1",
+    "locator": "v16.txt:1336-1537"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch1",
+    "locator": "v16.txt:2886-2924"
+   }
+  ],
+  "evidence": "Cornu attacks Masayuki on Floor 70; the imperial prisoners fight beside Tempest.",
+  "reconstructionNote": "V16 narrates this second front of the same night without clock times; the times are inferred from cross-references to the long-night events.",
+  "notes": "Added in R6 from the full novel audit.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added in R6 (full novel audit)."
    ]
   },
   "effects": {
@@ -3698,7 +3885,7 @@
  },
  {
   "id": "EVT-0348",
-  "day": 18,
+  "day": 15,
   "time": "22:50",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -3753,7 +3940,8 @@
    "status": "CORRECTED",
    "changes": [
     "Moved from D+8 08:30 to D+18 22:50 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Strength 100 (Hiryuu present), not 3,000"
+    "Strength 100 (Hiryuu present), not 3,000",
+    "R6 re-dated from D+18 22:50 to D+15 22:50: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -3766,7 +3954,7 @@
  },
  {
   "id": "EVT-0349",
-  "day": 18,
+  "day": 15,
   "time": "22:50",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -3828,7 +4016,8 @@
     "Moved from D+8 08:40 to D+18 22:50 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Opponent: Malcolm (v15.txt:2303-2313); defeat recorded in EVT-0353",
     "Removed 'rear turned' result (belongs to Gobwa's unit)",
-    "Strength 1 (solo attack)"
+    "Strength 1 (solo attack)",
+    "R6 re-dated from D+18 22:50 to D+15 22:50: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -3839,7 +4028,7 @@
  },
  {
   "id": "EVT-0350",
-  "day": 18,
+  "day": 15,
   "time": "23:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "barely made it before the fighting began",
@@ -3896,7 +4085,8 @@
    "changes": [
     "Moved from D+8 09:00 to D+18 23:00 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Strength 300 (v15.txt:761-762)",
-    "Effects: F-TEM-012 (300) and F-ALL-001 to ritual-caster-position (end of MOV-012)"
+    "Effects: F-TEM-012 (300) and F-ALL-001 to ritual-caster-position (end of MOV-012)",
+    "R6 re-dated from D+18 23:00 to D+15 23:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -3924,7 +4114,7 @@
  },
  {
   "id": "EVT-0352",
-  "day": 18,
+  "day": 15,
   "time": "23:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -3990,7 +4180,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:1393-1410, 1669-2104, 2183-2260); AUDIT-PLAN section 5"
+    "New event (v15.txt:1393-1410, 1669-2104, 2183-2260); AUDIT-PLAN section 5",
+    "R6 re-dated from D+18 23:00 to D+15 23:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4010,7 +4201,7 @@
  },
  {
   "id": "EVT-0353",
-  "day": 18,
+  "day": 15,
   "time": "23:10",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -4068,7 +4259,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:2496-2649, 2768-2777); AUDIT-PLAN section 5"
+    "New event (v15.txt:2496-2649, 2768-2777); AUDIT-PLAN section 5",
+    "R6 re-dated from D+18 23:10 to D+15 23:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4079,7 +4271,7 @@
  },
  {
   "id": "EVT-0354",
-  "day": 18,
+  "day": 15,
   "time": "23:10",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -4139,7 +4331,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:2779-2984); AUDIT-PLAN section 5"
+    "New event (v15.txt:2779-2984); AUDIT-PLAN section 5",
+    "R6 re-dated from D+18 23:10 to D+15 23:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4150,7 +4343,7 @@
  },
  {
   "id": "EVT-0351",
-  "day": 18,
+  "day": 15,
   "time": "23:20",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "at an unknown time",
@@ -4210,7 +4403,8 @@
    "status": "CORRECTED",
    "changes": [
     "Moved from D+8 09:20 to D+18 23:20 (after Gabil's defeat, EVT-0353) (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Result: rescue of Gabil; Malcolm recalled (v15.txt:2772-2777)"
+    "Result: rescue of Gabil; Malcolm recalled (v15.txt:2772-2777)",
+    "R6 re-dated from D+18 23:20 to D+15 23:20: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4231,7 +4425,7 @@
  },
  {
   "id": "EVT-0355",
-  "day": 18,
+  "day": 15,
   "time": "23:30",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -4286,7 +4480,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:2986-3150); AUDIT-PLAN section 5"
+    "New event (v15.txt:2986-3150); AUDIT-PLAN section 5",
+    "R6 re-dated from D+18 23:30 to D+15 23:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4297,7 +4492,7 @@
  },
  {
   "id": "EVT-0370",
-  "day": 18,
+  "day": 15,
   "time": "23:30",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "concurrent flashback; the fleet was 'more than a few days' from its battlefield",
@@ -4363,7 +4558,8 @@
     "Theatre: TH-DWE (en route, then Dwargon), not TH-CAP",
     "Effects: F-EMP-061 (flagship) added",
     "Names: Samuel (Zamdo), Gradim, Magic Beast Division",
-    "Not a battle and not in Ingracia: the airlift was in flight toward northern Ingracia at no stated position (v15.txt:3431-3435, 3452-3463); its fight is the Battle of the Dwargon Eastern Front."
+    "Not a battle and not in Ingracia: the airlift was in flight toward northern Ingracia at no stated position (v15.txt:3431-3435, 3452-3463); its fight is the Battle of the Dwargon Eastern Front.",
+    "R6 re-dated from D+18 23:30 to D+15 23:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4407,7 +4603,7 @@
  },
  {
   "id": "EVT-0371",
-  "day": 18,
+  "day": 15,
   "time": "23:30",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "",
@@ -4477,7 +4673,8 @@
     "Source chapter: V15 Ch1",
     "Rudra aboard the same ship (v15.txt:3568)",
     "Theatre TH-DWE (en route)",
-    "Not a battle and not in Ingracia: the airlift was in flight toward northern Ingracia at no stated position (v15.txt:3431-3435, 3452-3463); its fight is the Battle of the Dwargon Eastern Front."
+    "Not a battle and not in Ingracia: the airlift was in flight toward northern Ingracia at no stated position (v15.txt:3431-3435, 3452-3463); its fight is the Battle of the Dwargon Eastern Front.",
+    "R6 re-dated from D+18 23:30 to D+15 23:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4488,7 +4685,7 @@
  },
  {
   "id": "EVT-0372",
-  "day": 18,
+  "day": 15,
   "time": "23:40",
   "timePrecision": "SEQUENTIAL",
   "canonicalTime": "",
@@ -4551,7 +4748,8 @@
     "Moved from D+8 11:40 to D+18 23:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Result: mission changed to suppressing Dwargon, capture alive (v15.txt:3618-3620, 3688-3691)",
     "Source chapter: V15 Ch1",
-    "Not a battle and not in Ingracia: the airlift was in flight toward northern Ingracia at no stated position (v15.txt:3431-3435, 3452-3463); its fight is the Battle of the Dwargon Eastern Front."
+    "Not a battle and not in Ingracia: the airlift was in flight toward northern Ingracia at no stated position (v15.txt:3431-3435, 3452-3463); its fight is the Battle of the Dwargon Eastern Front.",
+    "R6 re-dated from D+18 23:40 to D+15 23:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4567,7 +4765,7 @@
  },
  {
   "id": "EVT-0373",
-  "day": 18,
+  "day": 15,
   "time": "23:40",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -4634,7 +4832,8 @@
     "Theatre TH-DWE; destination Dwargon eastern front (v15.txt:3413-3435), not unknown",
     "Effects: F-EMP-020 and F-EMP-060 to dwargon-eastern-front (not position-unknown)",
     "F-EMP-061 placed over Jura at EVT-0339, the end of MOV-031, instead of here (deviation from AUDIT-PLAN, which set it on this event)",
-    "Part of the Battle of the Dwargon Eastern Front, fought alongside the Dwargon front (v15.txt:3404-3435), not a separate airlift battle."
+    "Part of the Battle of the Dwargon Eastern Front, fought alongside the Dwargon front (v15.txt:3404-3435), not a separate airlift battle.",
+    "R6 re-dated from D+18 23:40 to D+15 23:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4643,16 +4842,16 @@
      "status": "DEPLOYED",
      "movement": "STATIONARY",
      "direction": "-",
-     "location": "dwargon-eastern-front",
-     "locationText": "Dwargon eastern front",
+     "location": "legion-landing-ground",
+     "locationText": "Landing ground in front of the allied line",
      "confidence": "HIGH"
     },
     "F-EMP-060": {
      "status": "DEPLOYED",
      "movement": "STATIONARY",
      "direction": "-",
-     "location": "dwargon-eastern-front",
-     "locationText": "Dwargon eastern front",
+     "location": "legion-landing-ground",
+     "locationText": "Landing ground in front of the allied line",
      "confidence": "HIGH"
     },
     "F-EMP-061": {
@@ -4672,7 +4871,7 @@
  },
  {
   "id": "EVT-0339",
-  "day": 18,
+  "day": 15,
   "time": "23:50",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -4740,7 +4939,8 @@
    "status": "ADDED",
    "changes": [
     "New event (v14.txt:15630-15734; v15.txt:4561-4667); AUDIT-PLAN section 5 and 7 (end of MOV-031)",
-    "F-EMP-061 placed at imperial-flagship-jura here (end of MOV-031)"
+    "F-EMP-061 placed at imperial-flagship-jura here (end of MOV-031)",
+    "R6 re-dated from D+18 23:50 to D+15 23:50: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4771,7 +4971,7 @@
  },
  {
   "id": "EVT-0363",
-  "day": 18,
+  "day": 15,
   "time": "23:50",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -4834,7 +5034,8 @@
     "Moved from D+8 10:40 to D+18 23:50 (after the domination, EVT-0339) (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Actor: Rimuru (realisation)",
     "Location: dream-fortress",
-    "Turning point moved to EVT-0364"
+    "Turning point moved to EVT-0364",
+    "R6 re-dated from D+18 23:50 to D+15 23:50: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4845,7 +5046,7 @@
  },
  {
   "id": "EVT-0364",
-  "day": 19,
+  "day": 16,
   "time": "00:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -4924,7 +5125,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:4715-4762, 4866-4885, 5207-5249); AUDIT-PLAN section 5 and 7 (MOV-032 start and end)"
+    "New event (v15.txt:4715-4762, 4866-4885, 5207-5249); AUDIT-PLAN section 5 and 7 (MOV-032 start and end)",
+    "R6 re-dated from D+19 00:00 to D+16 00:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -4992,8 +5194,68 @@
   }
  },
  {
+  "id": "EVT-0466",
+  "day": 16,
+  "time": "00:00",
+  "timePrecision": "INFERRED",
+  "canonicalTime": "",
+  "theatreId": "TH-LAB",
+  "front": "",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru (surface)",
+  "actor": "Feldway's faction (Mystics and Fallen), allied with Michael",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "forces": [],
+  "type": "COMBAT",
+  "title": "The capital is pushed out of the labyrinth back to the surface",
+  "immediateResult": "The capital is pushed out of the labyrinth back to the surface",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": ""
+  },
+  "commandStatus": "",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch1",
+    "locator": "v16.txt:1685-1734"
+   }
+  ],
+  "evidence": "The capital is pushed out of the labyrinth back to the surface.",
+  "reconstructionNote": "V16 narrates this second front of the same night without clock times; the times are inferred from cross-references to the long-night events.",
+  "notes": "Added in R6 from the full novel audit.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added in R6 (full novel audit)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
   "id": "EVT-0365",
-  "day": 19,
+  "day": 16,
   "time": "00:10",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -5061,7 +5323,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:5126-5141, 5305-5380); AUDIT-PLAN section 5"
+    "New event (v15.txt:5126-5141, 5305-5380); AUDIT-PLAN section 5",
+    "R6 re-dated from D+19 00:10 to D+16 00:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -5080,7 +5343,7 @@
  },
  {
   "id": "EVT-0374",
-  "day": 19,
+  "day": 16,
   "time": "00:20",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -5149,7 +5412,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:8215-8237, 9276-9311); AUDIT-PLAN section 5 and 7 (CAS-024 target)"
+    "New event (v15.txt:8215-8237, 9276-9311); AUDIT-PLAN section 5 and 7 (CAS-024 target)",
+    "R6 re-dated from D+19 00:20 to D+16 00:20: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -5160,8 +5424,8 @@
      "kia": 10000,
      "status": "ENGAGED",
      "movement": "STATIONARY",
-     "location": "dwargon-eastern-front",
-     "locationText": "Dwargon eastern front",
+     "location": "legion-landing-ground",
+     "locationText": "Landing ground in front of the allied line",
      "confidence": "HIGH"
     },
     "F-TEM-003B": {
@@ -5190,7 +5454,7 @@
  },
  {
   "id": "EVT-0366",
-  "day": 19,
+  "day": 16,
   "time": "00:30",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -5256,7 +5520,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:6804-6868, 7253, 7345); AUDIT-PLAN section 5 (ACT-005 lastEvent target)"
+    "New event (v15.txt:6804-6868, 7253, 7345); AUDIT-PLAN section 5 (ACT-005 lastEvent target)",
+    "R6 re-dated from D+19 00:30 to D+16 00:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -5281,8 +5546,343 @@
   }
  },
  {
+  "id": "EVT-0467",
+  "day": 16,
+  "time": "00:30",
+  "timePrecision": "INFERRED",
+  "canonicalTime": "",
+  "theatreId": "TH-LAB",
+  "front": "",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru (surface)",
+  "actor": "Feldway's faction (Mystics and Fallen), allied with Michael",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "forces": [],
+  "type": "COMBAT",
+  "title": "Pico and Garasha fight Geld and Kumara on the surface; Geld's men shield the city",
+  "immediateResult": "Pico and Garasha fight Geld and Kumara on the surface; Geld's men shield the city",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": ""
+  },
+  "commandStatus": "",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch1",
+    "locator": "v16.txt:1737-1803"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch2",
+    "locator": "v16.txt:3934-4092"
+   }
+  ],
+  "evidence": "Pico and Garasha fight Geld and Kumara on the surface; Geld's men shield the city.",
+  "reconstructionNote": "V16 narrates this second front of the same night without clock times; the times are inferred from cross-references to the long-night events.",
+  "notes": "Added in R6 from the full novel audit.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added in R6 (full novel audit)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0377",
+  "day": 16,
+  "time": "00:40",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "",
+  "theatreId": "TH-DRG",
+  "front": "Jura airspace",
+  "battle": "Battle of the imperial flagship",
+  "battleType": "SPECIAL_COMBAT",
+  "location": "imperial-flagship-jura",
+  "locationText": "Emperor's flagship over the Great Jura Forest",
+  "actor": "Testarossa",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Crew and Imperial Guardians aboard the flagship",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "testarossa",
+   "samuel"
+  ],
+  "forces": [
+   "F-DEM-001",
+   "F-EMP-061",
+   "F-EMP-015"
+  ],
+  "type": "ATTACK",
+  "title": "Testarossa's Death Streak over the flagship",
+  "immediateResult": "Testarossa wraps the flagship in the nuclear spell Death Streak; nearly everyone aboard dies, Guardian knights included; she keeps the souls of Zamdo's group",
+  "operationalResult": "The flagship is stripped of its crew and guard",
+  "strategicResult": "The Emperor is left with only his champions",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "kia": "UNKNOWN",
+  "commandStatus": "Testarossa",
+  "intensity": "EXTREME",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V15",
+    "chapter": "Ch4",
+    "locator": "v15.txt:11073-11165"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9187-9191"
+   }
+  ],
+  "evidence": "Testarossa casts the nuclear Blessing of Death over the whole airship; nearly all aboard die; in V16 she had kept the souls of Zamdo and his team before casting. See CAS-023.",
+  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
+  "notes": "See CAS-023 (count not stated). Zamdo's group is restored at the summit (EVT-0399).",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event (v15.txt:11073-11165; v16.txt:9187-9191); AUDIT-PLAN section 5 and 7 (CAS-023 target)",
+    "Placed before Benimaru's demand (EVT-0376): the raid on the dead deck follows the spell (v15.txt:11150-11198)",
+    "R6 re-dated from D+19 01:20 to D+16 01:20: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542).",
+    "R6 re-timed from 01:20 to 00:40: the raid on the flagship starts the moment Rimuru seals Velgrynd's other body, during his fight (v15.txt:11250-11260), before the Magic Beast Division's rout."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DEM-001": {
+     "status": "ENGAGED",
+     "movement": "STATIONARY",
+     "location": "imperial-flagship-jura",
+     "locationText": "Emperor's flagship over Jura",
+     "confidence": "HIGH"
+    },
+    "F-EMP-061": {
+     "status": "CREW_KILLED",
+     "confidence": "HIGH"
+    },
+    "F-EMP-015": {
+     "kia": "UNKNOWN",
+     "status": "ENGAGED",
+     "location": "imperial-flagship-jura",
+     "locationText": "Emperor's flagship over Jura (knights killed by Death Streak)",
+     "confidence": "MEDIUM"
+    }
+   },
+   "theatres": {
+    "TH-DRG": {
+     "frontline": "Death Streak over the imperial flagship; Benimaru's strike team boarding"
+    }
+   },
+   "campaign": {
+    "majorCombatants": "Testarossa; Benimaru; Shion; Soei; Ultima; Carrera; Kondo; Rudra; Rimuru; Velgrynd"
+   }
+  }
+ },
+ {
+  "id": "EVT-0461",
+  "day": 16,
+  "time": "00:40",
+  "timePrecision": "SEQUENTIAL_CANON",
+  "canonicalTime": "",
+  "theatreId": "TH-DWE",
+  "front": "",
+  "battle": "Battle of the Dwargon Eastern Front",
+  "battleType": "MAJOR_BATTLE",
+  "location": "dwargon-defensive-line",
+  "locationText": "Allied line on the Dwargon eastern front",
+  "actor": "Magic Beast Division",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Allied line",
+  "opponentFaction": "Armed Nation of Dwargon",
+  "characters": [],
+  "forces": [
+   "F-EMP-020",
+   "F-TEM-003B"
+  ],
+  "type": "COMBAT",
+  "title": "The Legion's fused berserkers storm the allied line",
+  "immediateResult": "The Legion's fused berserkers storm the allied line",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": ""
+  },
+  "commandStatus": "",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V15",
+    "chapter": "Ch3",
+    "locator": "v15.txt:9198-9204"
+   },
+   {
+    "volume": "V15",
+    "chapter": "Ch3",
+    "locator": "v15.txt:9269-9273"
+   }
+  ],
+  "evidence": "Legion soldiers land and the fused berserkers storm the allied line; the line holds.",
+  "reconstructionNote": "Order canonical (after the fusion drug, EVT-0374); positions reconstructed.",
+  "notes": "Added in R6 from the full novel audit.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added in R6 (full novel audit)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-020": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "direction": "Into the allied line",
+     "location": "dwargon-defensive-line",
+     "locationText": "Storming the allied line"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0376",
+  "day": 16,
+  "time": "00:50",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "",
+  "theatreId": "TH-DRG",
+  "front": "Jura airspace",
+  "battle": "Battle of the imperial flagship",
+  "battleType": "SPECIAL_COMBAT",
+  "location": "imperial-flagship-jura",
+  "locationText": "Bow of the Emperor's flagship",
+  "actor": "Benimaru",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Emperor Rudra",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "benimaru",
+   "rudra",
+   "kondo",
+   "damrada",
+   "velgrynd"
+  ],
+  "forces": [
+   "F-DEM-002",
+   "F-DEM-003",
+   "F-EMP-061",
+   "F-EMP-014"
+  ],
+  "type": "ULTIMATUM",
+  "title": "Benimaru demands that Rudra halt and surrender unconditionally",
+  "immediateResult": "On the bow, with Kondo and Damrada beside Rudra, Benimaru as Rimuru's agent demands an end to all fighting and unconditional surrender; Rudra refuses",
+  "operationalResult": "The flagship duels begin",
+  "strategicResult": "The Empire is given, and rejects, a chance to end the war",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Benimaru as Rimuru's agent",
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V15",
+    "chapter": "Ch4",
+    "locator": "v15.txt:11150-11198"
+   }
+  ],
+  "evidence": "The strike team walks among dead Guardian knights to the bow; Rudra, Kondo and Damrada meet them; Rudra lets Benimaru answer as Rimuru's agent; Benimaru demands an unconditional halt and surrender, refused.",
+  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
+  "notes": "There is no imperial armistice proposal in V15 (the deleted pre-R5 EVT-0384); the demand runs the other way.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event (v15.txt:11173-11198); AUDIT-PLAN section 5",
+    "Placed after the Death Streak (EVT-0377), following the text order (v15.txt:11073-11198); the plan had it 10 minutes earlier",
+    "R6 re-dated from D+19 01:30 to D+16 01:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542).",
+    "R6 re-timed from 01:30 to 00:50: the raid on the flagship starts the moment Rimuru seals Velgrynd's other body, during his fight (v15.txt:11250-11260), before the Magic Beast Division's rout."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DEM-002": {
+     "status": "ENGAGED",
+     "movement": "STATIONARY",
+     "location": "imperial-flagship-jura",
+     "locationText": "Emperor's flagship over Jura",
+     "confidence": "HIGH"
+    },
+    "F-DEM-003": {
+     "status": "ENGAGED",
+     "movement": "STATIONARY",
+     "location": "imperial-flagship-jura",
+     "locationText": "Emperor's flagship over Jura",
+     "confidence": "HIGH"
+    },
+    "F-EMP-014": {
+     "status": "ENGAGED",
+     "location": "imperial-flagship-jura",
+     "locationText": "Emperor's flagship (Kondo)",
+     "confidence": "HIGH"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
   "id": "EVT-0375",
-  "day": 19,
+  "day": 16,
   "time": "01:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -5352,18 +5952,18 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:9404-9502, 10250-10256, 10509-10526); AUDIT-PLAN section 5 and 7 (CAS-025 target; CMD-005, CMD-035, ACT-004, ACT-035, ACT-043 end here)"
+    "New event (v15.txt:9404-9502, 10250-10256, 10509-10526); AUDIT-PLAN section 5 and 7 (CAS-025 target; CMD-005, CMD-035, ACT-004, ACT-035, ACT-043 end here)",
+    "R6 re-dated from D+19 01:00 to D+16 01:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542).",
+    "R6: Gradim's death does not end the Legion; part of it fights on until the rout (EVT-0463, v15.txt:10888-10930)."
    ]
   },
   "effects": {
    "forces": {
     "F-EMP-020": {
-     "strength": 0,
-     "effective": 0,
-     "kia": "UNKNOWN",
-     "status": "DESTROYED",
+     "status": "ENGAGED",
      "movement": "STATIONARY",
-     "confidence": "HIGH"
+     "location": "dwargon-defensive-line",
+     "locationText": "Leaderless, still fighting"
     }
    },
    "theatres": {
@@ -5376,7 +5976,7 @@
  },
  {
   "id": "EVT-0380",
-  "day": 19,
+  "day": 16,
   "time": "01:10",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -5437,7 +6037,8 @@
    "changes": [
     "Moved from D+9 08:00 to D+19 01:10 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Location: above the Jura forest (jura-airspace), not the Imperial Capital; theatre TH-DRG",
-    "Battle renamed from 'Eight Gates' (a chapter title)"
+    "Battle renamed from 'Eight Gates' (a chapter title)",
+    "R6 re-dated from D+19 01:10 to D+16 01:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -5447,43 +6048,39 @@
   }
  },
  {
-  "id": "EVT-0377",
-  "day": 19,
-  "time": "01:20",
-  "timePrecision": "DAY_LEVEL",
+  "id": "EVT-0462",
+  "day": 16,
+  "time": "01:10",
+  "timePrecision": "SEQUENTIAL_CANON",
   "canonicalTime": "",
-  "theatreId": "TH-DRG",
-  "front": "Jura airspace",
-  "battle": "Battle of the imperial flagship",
-  "battleType": "SPECIAL_COMBAT",
-  "location": "imperial-flagship-jura",
-  "locationText": "Emperor's flagship over the Great Jura Forest",
-  "actor": "Testarossa",
+  "theatreId": "TH-DWE",
+  "front": "",
+  "battle": "Battle of the Dwargon Eastern Front",
+  "battleType": "MAJOR_BATTLE",
+  "location": "dwargon-defensive-line",
+  "locationText": "Dwargon eastern front",
+  "actor": "Black Numbers",
   "actorFaction": "Jura-Tempest Federation",
-  "opponent": "Crew and Imperial Guardians aboard the flagship",
+  "opponent": "Magic Beast Division",
   "opponentFaction": "Eastern Empire",
-  "characters": [
-   "testarossa",
-   "samuel"
-  ],
+  "characters": [],
   "forces": [
-   "F-DEM-001",
-   "F-EMP-061",
-   "F-EMP-015"
+   "F-DEM-005",
+   "F-EMP-020"
   ],
-  "type": "ATTACK",
-  "title": "Testarossa's Death Streak over the flagship",
-  "immediateResult": "Testarossa wraps the flagship in the nuclear spell Death Streak; nearly everyone aboard dies, Guardian knights included; she keeps the souls of Zamdo's group",
-  "operationalResult": "The flagship is stripped of its crew and guard",
-  "strategicResult": "The Emperor is left with only his champions",
+  "type": "COMBAT",
+  "title": "The Black Numbers drop onto the disorganised Legion",
+  "immediateResult": "The Black Numbers drop onto the disorganised Legion",
+  "operationalResult": "",
+  "strategicResult": "",
   "strength": {
    "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
+   "empire": "UNKNOWN",
+   "note": ""
   },
-  "kia": "UNKNOWN",
-  "commandStatus": "Testarossa",
-  "intensity": "EXTREME",
-  "significance": "CRITICAL",
+  "commandStatus": "",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
   "turningPoint": null,
   "provenance": "CANONICAL",
   "confidence": {
@@ -5494,99 +6091,73 @@
   "sources": [
    {
     "volume": "V15",
-    "chapter": "Ch4",
-    "locator": "v15.txt:11073-11165"
-   },
-   {
-    "volume": "V16",
     "chapter": "Ch3",
-    "locator": "v16.txt:9187-9191"
+    "locator": "v15.txt:10249-10260"
    }
   ],
-  "evidence": "Testarossa casts the nuclear Blessing of Death over the whole airship; nearly all aboard die; in V16 she had kept the souls of Zamdo and his team before casting. See CAS-023.",
-  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
-  "notes": "See CAS-023 (count not stated). Zamdo's group is restored at the summit (EVT-0399).",
+  "evidence": "About 500 Black Numbers drop from the sky onto the disorganised Legion.",
+  "reconstructionNote": "After Gradim's death (EVT-0375); time is a placement.",
+  "notes": "Added in R6 from the full novel audit.",
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:11073-11165; v16.txt:9187-9191); AUDIT-PLAN section 5 and 7 (CAS-023 target)",
-    "Placed before Benimaru's demand (EVT-0376): the raid on the dead deck follows the spell (v15.txt:11150-11198)"
+    "Added in R6 (full novel audit)."
    ]
   },
   "effects": {
    "forces": {
-    "F-DEM-001": {
+    "F-DEM-005": {
      "status": "ENGAGED",
-     "movement": "STATIONARY",
-     "location": "imperial-flagship-jura",
-     "locationText": "Emperor's flagship over Jura",
-     "confidence": "HIGH"
-    },
-    "F-EMP-061": {
-     "status": "CREW_KILLED",
-     "confidence": "HIGH"
-    },
-    "F-EMP-015": {
-     "kia": "UNKNOWN",
-     "status": "ENGAGED",
-     "location": "imperial-flagship-jura",
-     "locationText": "Emperor's flagship over Jura (knights killed by Death Streak)",
-     "confidence": "MEDIUM"
+     "movement": "ADVANCE",
+     "location": "dwargon-defensive-line",
+     "locationText": "Dropped onto the Legion"
     }
    },
-   "theatres": {
-    "TH-DRG": {
-     "frontline": "Death Streak over the imperial flagship; Benimaru's strike team boarding"
-    }
-   },
-   "campaign": {
-    "majorCombatants": "Testarossa; Benimaru; Shion; Soei; Ultima; Carrera; Kondo; Rudra; Rimuru; Velgrynd"
-   }
+   "theatres": {},
+   "campaign": {}
   }
  },
  {
-  "id": "EVT-0376",
-  "day": 19,
+  "id": "EVT-0463",
+  "day": 16,
   "time": "01:30",
-  "timePrecision": "DAY_LEVEL",
+  "timePrecision": "SEQUENTIAL_CANON",
   "canonicalTime": "",
-  "theatreId": "TH-DRG",
-  "front": "Jura airspace",
-  "battle": "Battle of the imperial flagship",
-  "battleType": "SPECIAL_COMBAT",
-  "location": "imperial-flagship-jura",
-  "locationText": "Bow of the Emperor's flagship",
-  "actor": "Benimaru",
+  "theatreId": "TH-DWE",
+  "front": "",
+  "battle": "Battle of the Dwargon Eastern Front",
+  "battleType": "MAJOR_BATTLE",
+  "location": "legion-landing-ground",
+  "locationText": "Dwargon eastern front",
+  "actor": "Gabil",
   "actorFaction": "Jura-Tempest Federation",
-  "opponent": "Emperor Rudra",
+  "opponent": "Magic Beast Division",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "benimaru",
-   "rudra",
-   "kondo",
-   "damrada",
-   "velgrynd"
+   "gabiru"
   ],
   "forces": [
-   "F-DEM-002",
-   "F-DEM-003",
-   "F-EMP-061",
-   "F-EMP-014"
+   "F-TEM-003B",
+   "F-TEM-012",
+   "F-DEM-005",
+   "F-DWA-002",
+   "F-EMP-020"
   ],
-  "type": "ULTIMATUM",
-  "title": "Benimaru demands that Rudra halt and surrender unconditionally",
-  "immediateResult": "On the bow, with Kondo and Damrada beside Rudra, Benimaru as Rimuru's agent demands an end to all fighting and unconditional surrender; Rudra refuses",
-  "operationalResult": "The flagship duels begin",
-  "strategicResult": "The Empire is given, and rejects, a chance to end the war",
+  "type": "COMBAT",
+  "title": "The Legion wavers and some flee; Gabil orders the general attack",
+  "immediateResult": "The Legion wavers and some flee; Gabil orders the general attack",
+  "operationalResult": "",
+  "strategicResult": "",
   "strength": {
    "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
+   "empire": "UNKNOWN",
+   "note": ""
   },
-  "commandStatus": "Benimaru as Rimuru's agent",
-  "intensity": "LOW",
-  "significance": "HIGH",
+  "commandStatus": "",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
   "turningPoint": null,
-  "provenance": "CANONICAL",
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
   "confidence": {
    "time": "MEDIUM",
    "numbers": "MEDIUM",
@@ -5595,41 +6166,40 @@
   "sources": [
    {
     "volume": "V15",
-    "chapter": "Ch4",
-    "locator": "v15.txt:11150-11198"
+    "chapter": "Ch3",
+    "locator": "v15.txt:10888-10930"
    }
   ],
-  "evidence": "The strike team walks among dead Guardian knights to the bow; Rudra, Kondo and Damrada meet them; Rudra lets Benimaru answer as Rimuru's agent; Benimaru demands an unconditional halt and surrender, refused.",
-  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
-  "notes": "There is no imperial armistice proposal in V15 (the deleted pre-R5 EVT-0384); the demand runs the other way.",
+  "evidence": "The Imperial Legion wavers, some soldiers flee, and Gabil orders the attack: the allied line advances.",
+  "reconstructionNote": "Order canonical (after Rimuru beats Velgrynd and the raid enters the flagship); the fate of the fugitives is not stated.",
+  "notes": "Added in R6 from the full novel audit.",
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:11173-11198); AUDIT-PLAN section 5",
-    "Placed after the Death Streak (EVT-0377), following the text order (v15.txt:11073-11198); the plan had it 10 minutes earlier"
+    "Added in R6 (full novel audit)."
    ]
   },
   "effects": {
    "forces": {
-    "F-DEM-002": {
-     "status": "ENGAGED",
-     "movement": "STATIONARY",
-     "location": "imperial-flagship-jura",
-     "locationText": "Emperor's flagship over Jura",
-     "confidence": "HIGH"
+    "F-EMP-020": {
+     "strength": 0,
+     "effective": 0,
+     "status": "DESTROYED",
+     "movement": "RETREAT",
+     "location": null,
+     "locationText": "Routed; the rest destroyed or fled"
     },
-    "F-DEM-003": {
+    "F-TEM-003B": {
      "status": "ENGAGED",
-     "movement": "STATIONARY",
-     "location": "imperial-flagship-jura",
-     "locationText": "Emperor's flagship over Jura",
-     "confidence": "HIGH"
+     "movement": "ADVANCE",
+     "location": "legion-landing-ground",
+     "locationText": "Pursuing to the landing ground"
     },
-    "F-EMP-014": {
+    "F-DEM-005": {
      "status": "ENGAGED",
-     "location": "imperial-flagship-jura",
-     "locationText": "Emperor's flagship (Kondo)",
-     "confidence": "HIGH"
+     "movement": "ADVANCE",
+     "location": "legion-landing-ground",
+     "locationText": "Pursuing to the landing ground"
     }
    },
    "theatres": {},
@@ -5638,7 +6208,7 @@
  },
  {
   "id": "EVT-0378",
-  "day": 19,
+  "day": 16,
   "time": "01:40",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -5709,7 +6279,8 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v15.txt:15015-15054, 16022-16074; v16.txt:7364-7376, 7984-7988); AUDIT-PLAN section 5 and 7 (CAS-027 target; CMD-011, CMD-037, ACT-016, ACT-036 end here)"
+    "New event (v15.txt:15015-15054, 16022-16074; v16.txt:7364-7376, 7984-7988); AUDIT-PLAN section 5 and 7 (CAS-027 target; CMD-011, CMD-037, ACT-016, ACT-036 end here)",
+    "R6 re-dated from D+19 01:40 to D+16 01:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -5730,7 +6301,7 @@
  },
  {
   "id": "EVT-0382",
-  "day": 19,
+  "day": 16,
   "time": "01:50",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -5796,7 +6367,8 @@
     "Source chapter: V15 Ch5, not Epilogue",
     "Opponent: Velgrynd (body aboard)",
     "Result: delaying tactical victory, not decisive",
-    "Location imperial-flagship-jura; theatre TH-DRG"
+    "Location imperial-flagship-jura; theatre TH-DRG",
+    "R6 re-dated from D+19 01:50 to D+16 01:50: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -5807,7 +6379,7 @@
  },
  {
   "id": "EVT-0383",
-  "day": 19,
+  "day": 16,
   "time": "02:00",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "the taboo spell seems to have ended long ago",
@@ -5827,7 +6399,8 @@
    "vega"
   ],
   "forces": [
-   "F-EMP-050"
+   "F-EMP-050",
+   "F-EMP-052"
   ],
   "type": "AFTERMATH",
   "title": "Kagali's undead ritual has lapsed",
@@ -5865,11 +6438,19 @@
     "Actor: Kagali (Empire side, controlled), not Adalmann",
     "Source chapter: V15 Ch5",
     "Theatre TH-DWE, location ritual-caster-position",
-    "Deleted the labyrinth wording"
+    "Deleted the labyrinth wording",
+    "R6 re-dated from D+19 02:00 to D+16 02:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
-   "forces": {},
+   "forces": {
+    "F-EMP-052": {
+     "status": "DISSOLVED",
+     "movement": "STATIONARY",
+     "location": null,
+     "locationText": "Ritual lapsed"
+    }
+   },
    "theatres": {
     "TH-DWE": {
      "frontline": "Kagali's ritual has lapsed; fighting cools"
@@ -5880,7 +6461,7 @@
  },
  {
   "id": "EVT-0385",
-  "day": 19,
+  "day": 16,
   "time": "02:10",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -5949,7 +6530,8 @@
     "Actor: Feldway (withdrawal); Diablo's intervention added (v15.txt:16960-17079)",
     "Source chapter: V15 Ch5 end",
     "Theatre TH-DWE, location ritual-caster-position",
-    "Added: all subordinates confirmed alive (v15.txt:17100-17101)"
+    "Added: all subordinates confirmed alive (v15.txt:17100-17101)",
+    "R6 re-dated from D+19 02:10 to D+16 02:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -5981,7 +6563,7 @@
  },
  {
   "id": "EVT-0381",
-  "day": 19,
+  "day": 16,
   "time": "02:20",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "",
@@ -6046,7 +6628,8 @@
     "Moved from D+9 10:00 to D+19 02:20 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
     "Source chapter: Epilogue (v15.txt:17482-17675)",
     "Location: imperial-flagship-jura; theatre TH-DRG",
-    "Actor: Michael in Rudra's body"
+    "Actor: Michael in Rudra's body",
+    "R6 re-dated from D+19 02:20 to D+16 02:20: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
@@ -6059,7 +6642,7 @@
  },
  {
   "id": "EVT-0386",
-  "day": 19,
+  "day": 16,
   "time": "02:30",
   "timePrecision": "DAY_LEVEL",
   "canonicalTime": "the same night; 'let's go home and celebrate'",
@@ -6084,11 +6667,8 @@
   "forces": [
    "F-TEM-030",
    "F-EMP-070",
-   "F-TEM-001",
-   "F-TEM-003",
    "F-DEM-001",
    "F-DEM-002",
-   "F-TEM-010",
    "F-DWA-002",
    "F-TEM-011",
    "F-TEM-012",
@@ -6147,7 +6727,9 @@
    "changes": [
     "New event (v15.txt:17114, 18045-18092; v16.txt:516-533); AUDIT-PLAN section 5",
     "Received the DEPLOYED statuses of the deleted EVT-0384 except F-DRG-001 (dominated, then recovered) and F-EMP-014 (Kondo dead)",
-    "Received the theatre HOSTILITIES_SUSPENDED statuses of EVT-0384; no armistice wording"
+    "Received the theatre HOSTILITIES_SUSPENDED statuses of EVT-0384; no armistice wording",
+    "R6 re-dated from D+19 02:30 to D+16 02:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542).",
+    "R6: Velgrynd departs by shift into another world (v15.txt:17924, 18110-18116); F-TEM-001, F-TEM-003 and F-TEM-010 take no part in this battle."
    ]
   },
   "effects": {
@@ -6158,27 +6740,16 @@
      "confidence": "HIGH"
     },
     "F-EMP-070": {
-     "status": "DEPLOYED",
+     "status": "DEPARTED",
      "movement": "STATIONARY",
-     "location": "jura-airspace",
-     "locationText": "With Rimuru, freed from Michael's hold",
-     "confidence": "MEDIUM"
-    },
-    "F-TEM-001": {
-     "status": "DEPLOYED",
-     "movement": "STATIONARY"
-    },
-    "F-TEM-003": {
-     "status": "DEPLOYED",
-     "movement": "STATIONARY"
+     "direction": "-",
+     "location": null,
+     "locationText": "Left this world by \"shift\" (v15.txt:17924, 18110-18116)"
     },
     "F-DEM-002": {
      "status": "DEPLOYED"
     },
     "F-DEM-001": {
-     "status": "DEPLOYED"
-    },
-    "F-TEM-010": {
      "status": "DEPLOYED"
     },
     "F-DWA-002": {
@@ -6229,6 +6800,136 @@
     "activeCommanders": "Rimuru (Tempest); Gazel (Dwargon); Empire leaderless: Michael and Feldway withdrawn",
     "majorCombatants": "None engaged"
    }
+  }
+ },
+ {
+  "id": "EVT-0468",
+  "day": 16,
+  "time": "02:30",
+  "timePrecision": "INFERRED",
+  "canonicalTime": "",
+  "theatreId": "TH-LAB",
+  "front": "",
+  "battle": null,
+  "battleType": null,
+  "location": "ramiris-labyrinth",
+  "locationText": "Floor 70 of the labyrinth",
+  "actor": "Feldway's faction (Mystics and Fallen), allied with Michael",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "forces": [],
+  "type": "COMBAT",
+  "title": "Velgrynd appears on Floor 70 and kills Cornu",
+  "immediateResult": "Velgrynd appears on Floor 70 and kills Cornu",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": ""
+  },
+  "commandStatus": "",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch1",
+    "locator": "v16.txt:2946-3076"
+   }
+  ],
+  "evidence": "Velgrynd appears on Floor 70 and kills Cornu.",
+  "reconstructionNote": "V16 narrates this second front of the same night without clock times; the times are inferred from cross-references to the long-night events.",
+  "notes": "Added in R6 from the full novel audit.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added in R6 (full novel audit)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  }
+ },
+ {
+  "id": "EVT-0469",
+  "day": 16,
+  "time": "02:50",
+  "timePrecision": "INFERRED",
+  "canonicalTime": "",
+  "theatreId": "TH-LAB",
+  "front": "",
+  "battle": null,
+  "battleType": null,
+  "location": "ramiris-labyrinth",
+  "locationText": "Ramiris Labyrinth",
+  "actor": "Feldway's faction (Mystics and Fallen), allied with Michael",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "forces": [],
+  "type": "COMBAT",
+  "title": "The raiders withdraw; the labyrinth is secured",
+  "immediateResult": "The raiders withdraw; the labyrinth is secured",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": ""
+  },
+  "commandStatus": "",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch2",
+    "locator": "v16.txt:4027-4092"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch2",
+    "locator": "v16.txt:4355-4372"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch2",
+    "locator": "v16.txt:4423"
+   }
+  ],
+  "evidence": "The raiders withdraw; the labyrinth is secured.",
+  "reconstructionNote": "V16 narrates this second front of the same night without clock times; the times are inferred from cross-references to the long-night events.",
+  "notes": "Added in R6 from the full novel audit.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "Added in R6 (full novel audit)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
   }
  }
 ]

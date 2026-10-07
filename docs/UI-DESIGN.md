@@ -10,12 +10,12 @@ The atlas opens on the whole campaign in the **Documentary** look: light ground,
 
 | Region | Contents | Behaviour |
 |---|---|---|
-| Top bar (44 px) | Title · battle day · phase · latest event + provenance · search · legend · cinematic · about | Always visible except in cinematic mode |
+| Top bar (44 px) | Title ("Tempest War" on phones) · battle day · phase · latest event + provenance · search · language (30) · dark/light · legend · cinematic · help | Always visible except in cinematic mode; legend and help move into search on phones |
 | Tool strip (48 px, left) | Layers · Filters · Events · Story | Opens a 312 px drawer over the map edge; closed by default so the map leads |
 | Map | Base Map or Myth Map; territories; held ground and fronts; routes; formations and strengths; battles; event rings; portraits; labels | Fills the viewport; panels float over it |
 | Filter chip (top centre) | "N filters active · reset" | Only when something is hidden |
-| Right panel (384 px) | **Situation**: now, active theatres, fronts, strength, movement, battles, casualties, territory, sources, command. **Dossier** for any selection | Bottom sheet below 1024 px |
-| Map corners | Style switcher (bottom-left) + minimap + simulation coordinates; zoom, compass, campaign frame, camera presets, flat/globe, fullscreen (bottom-right) | Hidden in cinematic mode |
+| Right panel (384 px) | Tabs **Situation** and **About**. Situation opens with the **Situation bar**: who vs who (flags, faction colours), killed on each side (rolling), events so far, now, the latest event, and the photocards of the people in it, side A vs side B. The next event follows; then the secondary sections (theatres, fronts, strength, movement, battles, casualties, territory, sources, command), collapsed except Fronts. **About**: the creator's note and message, links, official series links, APA references. **Dossier** for any selection | Bottom sheet below 1024 px with a drag handle |
+| Map corners | Style switcher (bottom-left; its menu opens beside it, above the minimap) + minimap (hidden on screens under 560 px tall) + simulation coordinates; zoom, compass, campaign frame, camera presets, flat/globe, fullscreen (bottom-right) | Hidden in cinematic mode |
 | Timeline | Transport, speed in simulated time per second, battle day + simulation tag; stage bands, theatre lanes, gaps (hatched), battle spans, event ticks, turning points, volume marks, bookmarks; Now / Next | Overlay that appears on hover in cinematic mode |
 
 ## Reading flows

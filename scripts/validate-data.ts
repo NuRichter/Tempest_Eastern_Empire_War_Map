@@ -381,7 +381,8 @@ function main(): void {
   // Dual-path replay. Every frame is resolved twice: sequentially from frame 0
   // through the delta stream, and by seeking from the nearest checkpoint. If
   // the two disagree, scrubbing would show a different campaign from playing.
-  const checkpoints = keyIndex.files.map((f) => load<FrameState>(f));
+  const checkpoints = keyIndex.files.flatMap((f) => load<FrameState | FrameState[]>(f));
+  if (checkpoints.length !== keyIndex.frames.length) fail(`keyframes: ${checkpoints.length} checkpoints for ${keyIndex.frames.length} checkpoint frames.`);
   let sequential: FrameState = checkpoints[0];
   let mismatches = 0;
   for (let f = 0; f < frameCount; f += 1) {

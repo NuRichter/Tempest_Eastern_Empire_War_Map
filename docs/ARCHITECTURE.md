@@ -42,7 +42,9 @@ Both need Python 3 with `numpy`, `opencv-python` and `Pillow`. Their outputs are
 | `src/simulation/clock.ts` | One deterministic clock outside React; continuous frame position; 0.25×–48× |
 | `src/simulation/resolver.ts` | Frame state from checkpoint + deltas; force snapshot and interpolated position; territory control with transition; strength history |
 | `src/simulation/store.ts` | Zustand store: data, frame, selection, filters, camera requests, navigation actions (`jumpTo*`) |
-| `src/state/preferences.ts` | Persisted reader preferences (map style, layers, opacities, scales, motion) with safe storage |
+| `src/state/preferences.ts` | Persisted reader preferences (map style, layers, opacities, scales, motion, interface theme, transition belt, pixel cursor) with safe storage |
+| `src/i18n/*` | Interface languages: the 30-locale list, `useT()` / `translate()` / `msg()`, lazy-loaded `public/locales/<code>.json` with English fallback, `lang`/`dir` on `<html>` (RTL for ar, he, fa, ur) |
+| `src/content/about.ts` | About panel content: verified links and APA references |
 | `src/map/MapView.tsx` | MapLibre: Base/Myth rasters, territory and operational-area layers, the held-ground canvas source, projection, camera requests |
 | `src/map/field/*` | Held ground: shared influence sources (`sources.ts`), the time-field model (`front.ts`), the viewport painter (`occupation.ts`) and a tiny store that hands each evaluated field to the overlay (`fieldStore.ts`) |
 | `src/map/Minimap.tsx`, `MapControls.tsx` | Overview map; zoom, compass, camera presets, flat/globe, style switcher |

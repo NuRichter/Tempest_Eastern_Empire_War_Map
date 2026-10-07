@@ -1,5 +1,6 @@
 'use client';
 
+import { useT } from '@/i18n';
 import { EVENT_CATEGORIES } from '@/lib/taxonomy';
 import { activeFilterCount, useSimulation } from '@/simulation/store';
 import { PROVENANCE_ORDER } from '@/types/dataset';
@@ -24,6 +25,7 @@ function Check({ checked, onChange, children }: { checked: boolean; onChange: ()
  */
 export function FiltersPanel() {
   const data = useSimulation((s) => s.data);
+  const t = useT();
   const filters = useSimulation((s) => s.filters);
   const setFilters = useSimulation((s) => s.setFilters);
   const resetFilters = useSimulation((s) => s.resetFilters);
@@ -35,13 +37,13 @@ export function FiltersPanel() {
   return (
     <div>
       <div className="flex items-center justify-between px-3 py-2.5">
-        <p className="text-xs text-fg-2">{count ? `${count} filter${count > 1 ? 's' : ''} active` : 'Showing everything in the record'}</p>
+        <p className="text-xs text-fg-2">{count ? (count > 1 ? t('{n} filters active', { n: count }) : t('1 filter active')) : t('Showing everything in the record')}</p>
         <button type="button" onClick={resetFilters} disabled={!count} className="ctl h-7">
-          Reset filters
+          {t('Reset filters')}
         </button>
       </div>
 
-      <Section title="Factions">
+      <Section title={t('Factions')}>
         <div className="-mx-1.5">
           {data.factions.map((f) => (
             <Check key={f.id} checked={!filters.hiddenFactions.includes(f.id)} onChange={() => setFilters({ hiddenFactions: toggleIn(filters.hiddenFactions, f.id) })}>
@@ -53,8 +55,8 @@ export function FiltersPanel() {
         </div>
       </Section>
 
-      <Section title="Nations" defaultOpen={false}>
-        <p className="px-1.5 pb-1 text-2xs text-fg-3">Hides the nation&apos;s territory fill and its formations.</p>
+      <Section title={t('Nations')} defaultOpen={false}>
+        <p className="px-1.5 pb-1 text-2xs text-fg-3">{t("Hides the nation's territory fill and its formations.")}</p>
         <div className="-mx-1.5 max-h-56 overflow-y-auto">
           {data.nations.filter((n) => n.territoryId).map((n) => (
             <Check key={n.id} checked={!filters.hiddenNations.includes(n.id)} onChange={() => setFilters({ hiddenNations: toggleIn(filters.hiddenNations, n.id) })}>
@@ -64,8 +66,8 @@ export function FiltersPanel() {
         </div>
       </Section>
 
-      <Section title="Forces" defaultOpen={false}>
-        <p className="px-1.5 pb-1 text-2xs text-fg-3">Hiding a formation hides everything it contains.</p>
+      <Section title={t('Forces')} defaultOpen={false}>
+        <p className="px-1.5 pb-1 text-2xs text-fg-3">{t('Hiding a formation hides everything it contains.')}</p>
         <div className="-mx-1.5 max-h-72 overflow-y-auto">
           {data.forces.filter((f) => f.depth <= 2).map((f) => (
             <Check key={f.id} checked={!filters.hiddenForces.includes(f.id)} onChange={() => setFilters({ hiddenForces: toggleIn(filters.hiddenForces, f.id) })}>
@@ -78,7 +80,7 @@ export function FiltersPanel() {
         </div>
       </Section>
 
-      <Section title="Battles" defaultOpen={false}>
+      <Section title={t('Battles')} defaultOpen={false}>
         <div className="-mx-1.5">
           {data.battles.map((b) => (
             <Check key={b.id} checked={!filters.hiddenBattles.includes(b.id)} onChange={() => setFilters({ hiddenBattles: toggleIn(filters.hiddenBattles, b.id) })}>
@@ -88,39 +90,39 @@ export function FiltersPanel() {
         </div>
       </Section>
 
-      <Section title="Territories" defaultOpen={false}>
+      <Section title={t('Territories')} defaultOpen={false}>
         <div className="-mx-1.5 max-h-56 overflow-y-auto">
-          {data.territories.map((t) => (
-            <Check key={t.id} checked={!filters.hiddenTerritories.includes(t.id)} onChange={() => setFilters({ hiddenTerritories: toggleIn(filters.hiddenTerritories, t.id) })}>
-              <span className="truncate">{t.display}</span>
+          {data.territories.map((tr) => (
+            <Check key={tr.id} checked={!filters.hiddenTerritories.includes(tr.id)} onChange={() => setFilters({ hiddenTerritories: toggleIn(filters.hiddenTerritories, tr.id) })}>
+              <span className="truncate">{tr.display}</span>
             </Check>
           ))}
         </div>
       </Section>
 
-      <Section title="Theatres">
+      <Section title={t('Theatres')}>
         <div className="-mx-1.5">
-          {data.theatres.map((t) => (
-            <Check key={t.id} checked={!filters.hiddenTheatres.includes(t.id)} onChange={() => setFilters({ hiddenTheatres: toggleIn(filters.hiddenTheatres, t.id) })}>
-              <span className="figure w-8 text-2xs text-fg-3">{t.code}</span>
-              <span className="truncate">{t.name}</span>
-              <span className="figure ml-auto text-2xs text-fg-3">{t.eventCount}</span>
+          {data.theatres.map((th) => (
+            <Check key={th.id} checked={!filters.hiddenTheatres.includes(th.id)} onChange={() => setFilters({ hiddenTheatres: toggleIn(filters.hiddenTheatres, th.id) })}>
+              <span className="figure w-8 text-2xs text-fg-3">{th.code}</span>
+              <span className="truncate">{th.name}</span>
+              <span className="figure ml-auto text-2xs text-fg-3">{th.eventCount}</span>
             </Check>
           ))}
         </div>
       </Section>
 
-      <Section title="Event types">
+      <Section title={t('Event types')}>
         <div className="-mx-1.5">
           {EVENT_CATEGORIES.map((c) => (
             <Check key={c.id} checked={!filters.hiddenCategories.includes(c.id)} onChange={() => setFilters({ hiddenCategories: toggleIn(filters.hiddenCategories, c.id) })}>
-              {c.label}
+              {t(c.label)}
             </Check>
           ))}
         </div>
       </Section>
 
-      <Section title="Canon status">
+      <Section title={t('Canon status')}>
         <div className="-mx-1.5">
           {PROVENANCE_ORDER.map((p) => (
             <Check key={p} checked={!filters.hiddenProvenance.includes(p)} onChange={() => setFilters({ hiddenProvenance: toggleIn(filters.hiddenProvenance, p) })}>
@@ -129,15 +131,15 @@ export function FiltersPanel() {
             </Check>
           ))}
         </div>
-        <Segmented label="Minimum confidence" value={filters.minConfidence} onChange={(v) => setFilters({ minConfidence: v })} options={[{ id: 'ANY', label: 'Any' }, { id: 'MEDIUM', label: 'Medium+' }, { id: 'HIGH', label: 'High' }]} />
+        <Segmented label={t('Minimum confidence')} value={filters.minConfidence} onChange={(v) => setFilters({ minConfidence: v })} options={[{ id: 'ANY', label: t('Any') }, { id: 'MEDIUM', label: t('Medium+') }, { id: 'HIGH', label: t('High') }]} />
       </Section>
 
-      <Section title="Command" defaultOpen={Boolean(commanderFocus)}>
+      <Section title={t('Command')} defaultOpen={Boolean(commanderFocus)}>
         <label className="block px-1.5 text-xs text-fg-2" htmlFor="commander-focus">
-          Show only one commander&apos;s formations
+          {t("Show only one commander's formations")}
         </label>
         <select id="commander-focus" value={commanderFocus ?? ''} onChange={(e) => setCommanderFocus(e.target.value || null)} className="mt-1 h-8 w-full rounded-[3px] border border-ink-500 bg-ink-800 px-2 text-sm text-fg">
-          <option value="">All commanders</option>
+          <option value="">{t('All commanders')}</option>
           {data.commanders.filter((c) => c.forceIds.length).map((c) => (
             <option key={c.id} value={c.id}>
               {c.name} · {c.faction}

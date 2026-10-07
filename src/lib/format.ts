@@ -1,3 +1,4 @@
+import { msg } from '@/i18n/msg';
 import type { Confidence, Quantity } from '@/types/dataset';
 
 const GROUP = new Intl.NumberFormat('en-GB');
@@ -6,9 +7,10 @@ const GROUP = new Intl.NumberFormat('en-GB');
  * Renders a quantity. An unknown quantity is shown as unknown, never as zero
  * and never as an estimate. This is the single place the interface decides how
  * absence looks, so absence cannot quietly become a number anywhere else.
+ * The word 'unknown' is msg()-marked: render the result with t(...).
  */
 export function quantity(value: Quantity): string {
-  if (value === 'UNKNOWN' || value === undefined || value === null) return 'unknown';
+  if (value === 'UNKNOWN' || value === undefined || value === null) return msg('unknown');
   return GROUP.format(value);
 }
 
@@ -75,7 +77,7 @@ export function titleCase(value: string): string {
 
 /** Readable phase name: ACTIVE_COMBAT -> Active combat. */
 export function phaseLabel(value: string): string {
-  if (!value) return 'Unknown phase';
+  if (!value) return msg('Unknown phase');
   const cleaned = value.replace(/^PHASE_\d+_/, '').replace(/_/g, ' ').toLowerCase();
   return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
 }
@@ -83,13 +85,13 @@ export function phaseLabel(value: string): string {
 export function confidenceLabel(value: Confidence): string {
   switch (value) {
     case 'HIGH':
-      return 'High confidence';
+      return msg('High confidence');
     case 'MEDIUM':
-      return 'Medium confidence';
+      return msg('Medium confidence');
     case 'LOW':
-      return 'Low confidence';
+      return msg('Low confidence');
     default:
-      return 'Confidence not established';
+      return msg('Confidence not established');
   }
 }
 

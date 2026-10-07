@@ -23,6 +23,7 @@ import {
   frontSeams,
   heldShare,
   HOLDER_ALLIED,
+  HOLDER_OWNER,
   HOLDER_EMPIRE,
   type Front,
   type FrontFields,
@@ -190,7 +191,9 @@ const rowM = new Int32Array(CANVAS_H);
  * Held: the side colour at `alpha`. Pale band: the loser colour lightened
  * (owner land: a white wash). A light blur antialiases the edge only.
  */
-export function paintField(canvas: HTMLCanvasElement, data: Dataset, field: FieldResult, colors: { empire: string; allied: string }, alpha: number, win: FieldWindow = FULL_WINDOW): void {
+export type TransitionBelt = 'gradient' | 'pale';
+
+export function paintField(canvas: HTMLCanvasElement, data: Dataset, field: FieldResult, colors: { empire: string; allied: string }, alpha: number, win: FieldWindow = FULL_WINDOW, belt: TransitionBelt = 'gradient'): void {
   const { front, fields } = field;
   if (canvas.width !== CANVAS_W || canvas.height !== CANVAS_H) {
     canvas.width = CANVAS_W;
@@ -236,7 +239,8 @@ export function paintField(canvas: HTMLCanvasElement, data: Dataset, field: Fiel
   const paleEmpire = mix(empire, white, 0.62);
   const paleAllied = mix(allied, white, 0.62);
   const a = Math.round(alpha * 255);
-  const { E, A, P, Q, paleOf } = fields;
+  const { E, A, P, Q, paleOf, paleTo } = fields;
+  const blend: [number, number, number] = [0, 0, 0];
   for (let y = ya; y <= yb; y += 1) {
     const my = rowM[y];
     if (my < 0) continue;
@@ -264,13 +268,27 @@ export function paintField(canvas: HTMLCanvasElement, data: Dataset, field: Fiel
           const pv = P[i] * w00 + P[i + 1] * w10 + P[i + cw] * w01 + P[i + cw + 1] * w11;
           const qv = pv > 0 ? Q[i] * w00 + Q[i + 1] * w10 + Q[i + cw] * w01 + Q[i + cw + 1] * w11 : -1;
           if (pv > 0 && qv > 0) {
-            const near = paleOf[(ty < 0.5 ? row : row + cw) + (tx < 0.5 ? gx : gx + 1)];
-            if (near === HOLDER_EMPIRE) col = paleEmpire;
-            else if (near === HOLDER_ALLIED) col = paleAllied;
-            else {
-              col = white;
-              al = Math.round(a * 0.62);
-            }
+            // The transition belt: across the moving band the colour runs from
+            // the loser's pale tone (where it has just receded) to the winner's
+            // colour (where it is about to arrive), as in reference 4's soft
+            // blend and references 1 and 3's pale strip. It moves with the front.
+            const c = (ty < 0.5 ? row : row + cw) + (tx < 0.5 ? gx : gx + 1);
+            const from = paleOf[c];
+            const to = paleTo[c];
+            const f = belt === 'gradient' ? Math.min(1, Math.max(0, qv / (pv + qv))) : 0;
+            const pale = from === HOLDER_EMPIRE ? paleEmpire : from === HOLDER_ALLIED ? paleAllied : white;
+            const paleA = from === HOLDER_OWNER ? a * 0.62 : a;
+            const goal = to === HOLDER_EMPIRE ? empire : to === HOLDER_ALLIED ? allied : pale;
+            const goalA = to === HOLDER_OWNER ? 0 : a;
+            const k = 1 - f; // 0 at the loser's edge, 1 at the winner's edge
+            if (belt === 'gradient') {
+              const kk = k * 0.85;
+              blend[0] = Math.round(pale[0] + (goal[0] - pale[0]) * kk);
+              blend[1] = Math.round(pale[1] + (goal[1] - pale[1]) * kk);
+              blend[2] = Math.round(pale[2] + (goal[2] - pale[2]) * kk);
+              col = blend;
+            } else col = pale;
+            al = Math.round(belt === 'gradient' ? paleA + (goalA - paleA) * k * 0.85 : paleA);
           }
         }
       }

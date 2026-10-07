@@ -870,7 +870,7 @@ const characters: Character[] = characterSrc.map((c) => {
     faction: faction(c.faction),
     role: [...new Set(c.role.split(/;\s*/).map((r) => r.trim()).filter(Boolean))].join('; '),
     photocard: c.photocard
-      ? { src: `/assets/characters/${c.id}.jpg`, source: c.photocard.attribution ?? c.photocard.sourceType ?? 'Character photocard repository', sourceUrl: c.photocard.sourceUrl, licence: c.photocard.licence ?? null }
+      ? { src: `/assets/characters/${c.id}.webp`, thumb: `/assets/characters/thumb/${c.id}.webp`, source: c.photocard.attribution ?? c.photocard.sourceType ?? 'Character photocard repository', sourceUrl: c.photocard.sourceUrl, licence: c.photocard.licence ?? null }
       : null,
     commanderIds: commanders.filter((m) => m.characterId === c.id).map((m) => m.id),
     combatantIds: combatants.filter((m) => m.characterId === c.id).map((m) => m.id),
@@ -895,7 +895,8 @@ const nationsInDataset = new Set(FACTION_DEFS.filter((d) => datasetFactions.has(
 const flagManifest: NationFlagManifest = {};
 const nations: Nation[] = gazetteer.nations.map((n) => {
   const asset = n.hasFlag !== false ? `/assets/nation-flags/${n.category}/Flag - ${n.name}.png` : null;
-  if (asset) flagManifest[n.id] = { name: n.name, category: n.category, asset };
+  const thumb = `/assets/nation-flags/thumb/${n.id}.webp`;
+  if (asset) flagManifest[n.id] = { name: n.name, category: n.category, asset, thumb: existsSync(join(ROOT, 'public', thumb)) ? thumb : null };
   return {
     id: n.id, name: n.name, category: n.category, x: n.x, y: n.y, placement: n.placement, flag: asset,
     inDataset: nationsInDataset.has(n.id),
@@ -1050,8 +1051,9 @@ function put(name: string, value: unknown): void {
 put('manifest.json', manifest);
 put('timeline.index.json', timelineIndex);
 put('state.deltas.json', { interval: CHECKPOINT_INTERVAL, frameCount: FRAME_COUNT, deltaFrames, deltas });
-put('keyframes.index.json', { interval: CHECKPOINT_INTERVAL, frames: checkpointFrames, files: checkpointFrames.map((f) => `keyframes/checkpoint-${String(f).padStart(4, '0')}.json`) });
-for (const f of checkpointFrames) put(`keyframes/checkpoint-${String(f).padStart(4, '0')}.json`, checkpoints[String(f)]);
+// All checkpoints in one file: one request instead of one per simulated day.
+put('keyframes.index.json', { interval: CHECKPOINT_INTERVAL, frames: checkpointFrames, files: ['keyframes/checkpoints.json'] });
+put('keyframes/checkpoints.json', checkpointFrames.map((f) => checkpoints[String(f)]));
 put('events.json', events);
 put('battles.json', battles);
 put('forces.json', forces);

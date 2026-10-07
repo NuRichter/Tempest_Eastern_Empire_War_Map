@@ -168,3 +168,24 @@ Mask / track-matte / circular reveals; border "draw-on" animations; glow, flash 
 - Keep army sizes as one number per side per front, rotated along the seam, fixed size, counting smoothly to each recorded value.
 
 Details: `docs/research/REFERENCE_ANIMATION_DNA.md`, `docs/research/TERRITORIAL_ANIMATION_IMPLEMENTATION.md`.
+
+## Pass 2 (R6): the transition belt, change sizes and pacing
+
+A second pass measured what the first left qualitative. Frames were sampled at 4K. Sizes are given in pixels and as a share of frame width. Change sizes are net changes over 10-second windows: small < 0.5 % of the frame, medium 0.5–2 %, large ≥ 2 %.
+
+| Question | ref-01 (Ukraine) | ref-02 (Korea) | ref-03 (WWII) | ref-04 (WWIII) |
+|---|---|---|---|---|
+| Band between old and new colour | Flat pale band of the **loser's** colour: pale blue (175,212,252) or pale pink (254,229,226). Median 17–76 px (0.44–1.98 %), p90 120 px. A 3–4 px white seam sits on the winner's edge | None. Advancing edges almost hard (2–6 px) with a faint 3–5 px light rim. Shrinking pockets soft (11–21 px) | Pale band 4–8 px with a hard edge (a stroke) | Soft blend 5–12 px, no stroke |
+| Change sizes | 130 small, 3 medium, 0 large. All medium changes before 20 s | 129 small, 9 medium, 1 large (Inchon, 3.86 %) | Mostly small | Mostly small |
+| Share of seconds with change | 26 % | Long runs of 6–28 s, then still for up to 286 s | 21–28 % | 21–28 % |
+| Regions captured one at a time | No | No | Only for joining a side (crossfade) | No |
+| Direction | All 8 sectors | All 8, mostly N–S | Irregular | Irregular |
+| Area moves or only colour | Area, 2–4 px per frame | Area. China fades in as a new faction | Area | Area |
+| Army labels | Constant size, no highlight | Grow with army size | Two per front, constant size | Two per front, constant size |
+
+**Consequences for the atlas.** These findings are written up as requirements in `REFERENCE_MATCH_REQUIREMENTS.md`.
+
+- A transition belt that moves with the front. The default is a gradient: refs 1, 3 and 4 combined into a loser-pale-to-winner blend. A flat pale-band option is also available.
+- No region-by-region capture.
+- Long holds.
+- Constant-size labels.

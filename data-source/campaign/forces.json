@@ -910,6 +910,49 @@
   "notes": "Fan TL 'Clown faction'. R5: no longer a child of the Composite Division (it is Yuuki's private faction); Miranda and Vega moved to Cerberus (F-EMP-051)."
  },
  {
+  "id": "F-EMP-052",
+  "faction": "Eastern Empire",
+  "army": "Moderate Harlequin Alliance",
+  "formation": "Undead raised by Kagali's ritual",
+  "displayName": "Undead of the ritual",
+  "parentId": null,
+  "commander": "Kagali (through Kondo)",
+  "commanderIds": [],
+  "role": "Undead raised from the 60,000 dead of the Composite Division",
+  "unitType": "undead",
+  "initialStrengthRaw": "raised from the 60,000 dead; number produced not stated (v14.txt:13914-13931; v15.txt:16796)",
+  "initialMin": "UNKNOWN",
+  "initialMax": "UNKNOWN",
+  "initialBest": "UNKNOWN",
+  "sizeStatus": "UNKNOWN",
+  "sizeEvidence": "The ritual uses the 60,000 dead (v14.txt:13914-13931); how many undead it produced is not stated (v15.txt:16796).",
+  "finalStrength": "UNKNOWN",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "finalLocation": "Withdrawn by Feldway",
+  "finalMovementStatus": "WITHDRAWN",
+  "finalStatus": "Ritual lapsed; loaded into vehicles and shifted away by Feldway (v15.txt:16809-16810, 17090-17101)",
+  "strengthBasis": "CANONICAL",
+  "source": "V14 Ch4; V15",
+  "sourceRefs": [
+   {
+    "volume": "14",
+    "chapter": "Ch4",
+    "locator": "v14.txt:13914-13931"
+   },
+   {
+    "volume": "15",
+    "chapter": "Ch5",
+    "locator": "v15.txt:16796-16810"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "INFERRED",
+  "notes": "Added in R6. Holds the ritual ground on the Dwargon eastern front after Velgrynd destroyed the blockade camp (v14.txt:13914-13931, 15251)."
+ },
+ {
   "id": "F-EMP-051",
   "faction": "Eastern Empire",
   "army": "Cerberus",

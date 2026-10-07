@@ -5,6 +5,7 @@ import { getField } from '@/map/field/fieldStore';
 import { factionVisible, forceHidden, haloText, isSelected, meetsConfidence, trimTo, type DrawContext } from '@/map/overlay/context';
 import { tracePath } from '@/map/overlay/glyphs';
 import type { Force, ForceSnapshot, Quantity, SizeStatus } from '@/types/dataset';
+import { translate } from '@/i18n';
 
 export interface PlacedForce {
   force: Force;
@@ -346,7 +347,7 @@ export function drawFrontStrength(dc: DrawContext, placed: PlacedForce[]): void 
       ctx.globalAlpha = 0.95;
       haloText(ctx, text, -w / 2, size * 0.35, '#ffffff', FACTION_DEEP[key], Math.max(4, size * 0.2));
       ctx.font = `600 ${Math.round(9.5 * dc.labelScale)}px ${dc.fonts.mono}`;
-      const cap = `${th.code} FRONT · ${sideKey === 'empire' ? 'EMPIRE' : 'ALLIED'}`;
+      const cap = sideKey === 'empire' ? translate('{code} FRONT · EMPIRE', { code: th.code }) : translate('{code} FRONT · ALLIED', { code: th.code });
       const cw = ctx.measureText(cap).width;
       haloText(ctx, cap, -cw / 2, size * 0.35 + 13, dc.theme.labelDim, dc.theme.halo, 3);
       ctx.restore();

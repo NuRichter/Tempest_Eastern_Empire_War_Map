@@ -1,6 +1,8 @@
 import { FACTION_DEEP, FACTION_PALE, factionKey, INK } from '@/lib/palette';
 import { territoryControlAt } from '@/simulation/resolver';
 import { haloText, isSelected, type DrawContext } from '@/map/overlay/context';
+import { ROLE_LABEL } from '@/lib/taxonomy';
+import { translate } from '@/i18n';
 
 /**
  * Scale-aware geographic labels.
@@ -45,7 +47,7 @@ export function drawGeographyLabels(dc: DrawContext): void {
         y: p.sy - size / 2,
         r: Math.max(18, w / 2),
         title: t.name,
-        detail: involved ? `${segment.role.replace('_', '-').toLowerCase()} · ${segment.controller ?? ''}` : 'Not involved in the campaign',
+        detail: involved ? `${ROLE_LABEL[segment.role] ? translate(ROLE_LABEL[segment.role]) : segment.role.replace('_', '-').toLowerCase()} · ${segment.controller ?? ''}` : translate('Not involved in the campaign'),
         priority: 9,
       });
     }

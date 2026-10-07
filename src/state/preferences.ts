@@ -3,6 +3,8 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist, type StateStorage } from 'zustand/middleware';
 
+import { msg } from '@/i18n/msg';
+
 /**
  * Reader preferences: how the map is drawn, never what it shows.
  *
@@ -17,6 +19,10 @@ export type MapStyle = 'base' | 'myth';
  * of the reference war documentaries. War room: the dark analytic register.
  */
 export type MapTheme = 'documentary' | 'warroom';
+/** Interface colours (panels, bars, text): both are first-class. */
+export type UiTheme = 'dark' | 'light';
+/** How ground changing hands is drawn: a blend from the loser's pale tone to the winner's colour, or a flat pale band. */
+export type TransitionBelt = 'gradient' | 'pale';
 
 export interface Bookmark {
   id: string;
@@ -44,20 +50,20 @@ export type WarLayer =
   | 'grid';
 
 export const WAR_LAYERS: { id: WarLayer; name: string; note: string }[] = [
-  { id: 'territories', name: 'Territories', note: 'National regions traced from the drawn borders of the base map, coloured by their part in the war.' },
-  { id: 'operationalAreas', name: 'Operational areas', note: 'Schematic theatre areas, clipped to the drawn borders. Not borders themselves.' },
-  { id: 'occupation', name: 'Fronts & occupation', note: 'Ground taken and lost as the armies move: it stays held until retaken, cut off or returned, and the front moves with the clock. RECONSTRUCTED from recorded positions and strengths (the novels draw no front line); campaign-wide, so force filters do not change it.' },
-  { id: 'frontlines', name: 'Contact marks', note: 'Schematic contact between opposed forces in a live theatre.' },
-  { id: 'movement', name: 'Army movement', note: 'Recorded movements. Solid, reconstructed and schematic routes are drawn differently; unknown routes are not drawn.' },
-  { id: 'trails', name: 'Movement trails', note: 'Where a formation has been.' },
-  { id: 'forces', name: 'Forces', note: 'Formations at their recorded positions.' },
-  { id: 'armySizes', name: 'Army sizes', note: 'Strength labels. Explicit, derived, reconstructed and unknown sizes are marked.' },
-  { id: 'battles', name: 'Battles', note: 'Engagements, sieges, interceptions and special combat.' },
-  { id: 'events', name: 'Events', note: 'Recorded changes in the campaign, fading with age.' },
-  { id: 'commanders', name: 'Commanders', note: 'Command posts of commanders in command at this moment.' },
-  { id: 'characters', name: 'Character markers', note: 'Photocards of characters active in the current event.' },
-  { id: 'labels', name: 'Labels', note: 'Nation, place and formation names, by zoom.' },
-  { id: 'grid', name: 'Simulation grid', note: 'A 10% grid in simulation space. Not a geographic graticule.' },
+  { id: 'territories', name: msg('Territories'), note: msg('National regions traced from the drawn borders of the base map, coloured by their part in the war.') },
+  { id: 'operationalAreas', name: msg('Operational areas'), note: msg('Schematic theatre areas, clipped to the drawn borders. Not borders themselves.') },
+  { id: 'occupation', name: msg('Fronts & occupation'), note: msg('Ground taken and lost as the armies move: it stays held until retaken, cut off or returned, and the front moves with the clock. RECONSTRUCTED from recorded positions and strengths (the novels draw no front line); campaign-wide, so force filters do not change it.') },
+  { id: 'frontlines', name: msg('Contact marks'), note: msg('Schematic contact between opposed forces in a live theatre.') },
+  { id: 'movement', name: msg('Army movement'), note: msg('Recorded movements. Solid, reconstructed and schematic routes are drawn differently; unknown routes are not drawn.') },
+  { id: 'trails', name: msg('Movement trails'), note: msg('Where a formation has been.') },
+  { id: 'forces', name: msg('Forces'), note: msg('Formations at their recorded positions.') },
+  { id: 'armySizes', name: msg('Army sizes'), note: msg('Strength labels. Explicit, derived, reconstructed and unknown sizes are marked.') },
+  { id: 'battles', name: msg('Battles'), note: msg('Engagements, sieges, interceptions and special combat.') },
+  { id: 'events', name: msg('Events'), note: msg('Recorded changes in the campaign, fading with age.') },
+  { id: 'commanders', name: msg('Commanders'), note: msg('Command posts of commanders in command at this moment.') },
+  { id: 'characters', name: msg('Character markers'), note: msg('Photocards of characters active in the current event.') },
+  { id: 'labels', name: msg('Labels'), note: msg('Nation, place and formation names, by zoom.') },
+  { id: 'grid', name: msg('Simulation grid'), note: msg('A 10% grid in simulation space. Not a geographic graticule.') },
 ];
 
 export const DEFAULT_LAYERS: Record<WarLayer, boolean> = {
@@ -97,6 +103,10 @@ export interface Preferences {
   /** Slow to 1x for a moment when playback reaches a turning point. */
   autoSlow: boolean;
   showMinimap: boolean;
+  uiTheme: UiTheme;
+  transitionBelt: TransitionBelt;
+  /** The small pixel-slime pointer (an original drawing). Off by default. */
+  pixelCursor: boolean;
   bookmarks: Bookmark[];
 }
 
@@ -129,6 +139,9 @@ export const DEFAULT_PREFERENCES: Preferences = {
   reducedMotion: 'system',
   autoSlow: true,
   showMinimap: true,
+  uiTheme: 'dark',
+  transitionBelt: 'gradient',
+  pixelCursor: false,
   bookmarks: [],
 };
 

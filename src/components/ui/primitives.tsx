@@ -3,7 +3,9 @@
 import { useId, useState, type ReactNode } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-import { FACTION_COLOR, factionKey, PROVENANCE_COLOR } from '@/lib/palette';
+import { useT } from '@/i18n';
+import { msg } from '@/i18n/msg';
+import { FACTION_COLOR, factionKey } from '@/lib/palette';
 import { PROVENANCE_LABEL, ROUTE_LABEL, SIZE_STATUS_LABEL } from '@/lib/taxonomy';
 import { useSimulation } from '@/simulation/store';
 import type { Provenance, Quantity, RouteConfidence, SizeStatus, SourceRef } from '@/types/dataset';
@@ -63,43 +65,57 @@ export function Empty({ children }: { children: ReactNode }) {
 /* ------------------------------------------------------------------ */
 
 /** Provenance: colour + glyph + words, never colour alone. */
+const PROVENANCE_VAR: Record<Provenance, string> = {
+  CANONICAL: '--prov-canon',
+  CANONICAL_WITH_VISUAL_RECONSTRUCTION: '--prov-visual',
+  INFERRED: '--prov-inferred',
+  RECONSTRUCTED: '--prov-recon',
+  UNRESOLVED: '--prov-unresolved',
+};
+
 export function ProvenanceBadge({ value, compact = false }: { value: Provenance; compact?: boolean }) {
+  const t = useT();
   const label = PROVENANCE_LABEL[value];
-  const color = PROVENANCE_COLOR[value];
+  const color = PROVENANCE_VAR[value];
   const glyph = value === 'CANONICAL' ? '■' : value === 'CANONICAL_WITH_VISUAL_RECONSTRUCTION' ? '◧' : value === 'INFERRED' ? '◇' : value === 'RECONSTRUCTED' ? '◌' : '?';
   return (
     <span
       className="inline-flex shrink-0 items-center gap-1 rounded-[2px] border px-1.5 py-px text-2xs font-semibold uppercase tracking-label"
-      style={{ borderColor: `${color}66`, color }}
-      title={`${label.long}. ${label.note}`}
+      style={{ borderColor: `rgb(var(${color}) / 0.45)`, color: `rgb(var(${color}))` }}
+      title={t('{label}. {note}', { label: t(label.long), note: t(label.note) })}
     >
       <span aria-hidden>{glyph}</span>
-      {compact ? label.short : label.long}
+      {compact ? t(label.short) : t(label.long)}
     </span>
   );
 }
 
 export function SizeBadge({ value }: { value: SizeStatus }) {
+  const t = useT();
   const s = SIZE_STATUS_LABEL[value];
   return (
-    <span className="inline-flex items-center rounded-[2px] border border-ink-400 px-1 py-px text-2xs uppercase tracking-label text-fg-2" title={s.note}>
-      {s.label}
+    <span className="inline-flex items-center rounded-[2px] border border-ink-400 px-1 py-px text-2xs uppercase tracking-label text-fg-2" title={t(s.note)}>
+      {t(s.label)}
     </span>
   );
 }
 
 export function RouteBadge({ value }: { value: RouteConfidence }) {
+  const t = useT();
   const s = ROUTE_LABEL[value];
   return (
-    <span className="inline-flex items-center rounded-[2px] border border-ink-400 px-1 py-px text-2xs uppercase tracking-label text-fg-2" title={s.note}>
-      {s.label}
+    <span className="inline-flex items-center rounded-[2px] border border-ink-400 px-1 py-px text-2xs uppercase tracking-label text-fg-2" title={t(s.note)}>
+      {t(s.label)}
     </span>
   );
 }
 
+const CONFIDENCE_WORD: Record<string, string> = { HIGH: msg('high'), MEDIUM: msg('medium'), LOW: msg('low'), UNKNOWN: msg('not established') };
+
 export function ConfidenceText({ value }: { value: string }) {
+  const t = useT();
   const tone = value === 'HIGH' ? 'text-fg' : value === 'MEDIUM' ? 'text-fg-2' : value === 'LOW' ? 'text-accent' : 'text-fg-3 italic';
-  return <span className={tone}>{value === 'UNKNOWN' ? 'not established' : value.toLowerCase()}</span>;
+  return <span className={tone}>{CONFIDENCE_WORD[value] ? t(CONFIDENCE_WORD[value]) : value.toLowerCase()}</span>;
 }
 
 /**
@@ -107,10 +123,11 @@ export function ConfidenceText({ value }: { value: string }) {
  * can never be mistaken for zero at a glance.
  */
 export function Figure({ value, status, unit }: { value: Quantity; status?: SizeStatus; unit?: string }) {
-  if (value === 'UNKNOWN' || status === 'UNKNOWN') return <span className="text-xs italic text-fg-3">unknown</span>;
+  const t = useT();
+  if (value === 'UNKNOWN' || status === 'UNKNOWN') return <span className="text-xs italic text-fg-3">{t('unknown')}</span>;
   const mark = status ? SIZE_STATUS_LABEL[status].mark : '';
   return (
-    <span className="figure text-fg" title={status ? SIZE_STATUS_LABEL[status].note : undefined}>
+    <span className="figure text-fg" title={status ? t(SIZE_STATUS_LABEL[status].note) : undefined}>
       {mark}
       {GROUP.format(value)}
       {unit ? <span className="ml-1 font-ui text-fg-3">{unit}</span> : null}
@@ -119,13 +136,14 @@ export function Figure({ value, status, unit }: { value: Quantity; status?: Size
 }
 
 export function Sources({ refs }: { refs: SourceRef[] }) {
-  if (!refs.length) return <Empty>No source reference recorded.</Empty>;
+  const t = useT();
+  if (!refs.length) return <Empty>{t('No source reference recorded.')}</Empty>;
   return (
     <ul className="space-y-0.5">
       {refs.map((r, i) => (
         <li key={i} className="flex gap-2 text-xs">
-          <span className="figure shrink-0 text-accent">{r.volume.startsWith('V') ? r.volume : `Vol. ${r.volume}`}</span>
-          <span className="text-fg-2">{r.chapter ?? 'chapter not recorded'}</span>
+          <span className="figure shrink-0 text-accent">{r.volume.startsWith('V') ? r.volume : t('Vol. {volume}', { volume: r.volume })}</span>
+          <span className="text-fg-2">{r.chapter ?? t('chapter not recorded')}</span>
           {r.locator ? <span className="figure ml-auto shrink-0 text-fg-3">{r.locator}</span> : null}
         </li>
       ))}
@@ -143,35 +161,37 @@ export function FactionDot({ faction, size = 8 }: { faction: string; size?: numb
 
 /** A nation flag, resolved by id through the generated manifest. Never substituted. */
 export function Flag({ nationId, size = 16 }: { nationId: string | null | undefined; size?: number }) {
+  const t = useT();
   const flags = useSimulation((s) => s.data?.flags);
   const [broken, setBroken] = useState(false);
   const entry = nationId ? flags?.[nationId] : undefined;
   if (!entry || broken) {
     return (
       <span
-        title={entry ? `Flag not supplied: ${entry.name}` : 'No flag for this entity'}
+        title={entry ? t('Flag not supplied: {name}', { name: entry.name }) : t('No flag for this entity')}
         className="inline-block shrink-0 rounded-[1px] border border-ink-400"
         style={{ width: size * 1.5, height: size, backgroundImage: 'repeating-linear-gradient(45deg, rgba(212,171,87,0.25) 0 2px, transparent 2px 5px)' }}
       />
     );
   }
   return (
-    <img src={entry.asset} alt={`Flag of ${entry.name}`} width={size * 1.5} height={size} loading="lazy" onError={() => setBroken(true)} className="inline-block shrink-0 rounded-[1px] border border-ink-400 object-cover" style={{ width: size * 1.5, height: size }} />
+    <img src={entry.thumb ?? entry.asset} alt={t('Flag of {name}', { name: entry.name })} width={size * 1.5} height={size} loading="lazy" onError={() => setBroken(true)} className="inline-block shrink-0 rounded-[1px] border border-ink-400 object-cover" style={{ width: size * 1.5, height: size }} />
   );
 }
 
 /** A character photocard. Local asset only; provenance on hover. */
 export function Portrait({ src, name, source, size = 56, faction }: { src: string | null; name: string; source?: string; size?: number; faction?: string }) {
+  const t = useT();
   const border = faction ? FACTION_COLOR[factionKey(faction)] : '#3a4a54';
   if (!src) {
     return (
-      <span className="grid shrink-0 place-items-center rounded-[3px] border bg-ink-700 font-display text-fg-3" style={{ width: size, height: (size * 17) / 11, borderColor: border, fontSize: size * 0.4 }} title={`No photocard in the repository for ${name}`}>
+      <span className="grid shrink-0 place-items-center rounded-[3px] border bg-ink-700 font-display text-fg-3" style={{ width: size, height: (size * 17) / 11, borderColor: border, fontSize: size * 0.4 }} title={t('No photocard in the repository for {name}', { name })}>
         {name.slice(0, 1)}
       </span>
     );
   }
   return (
-    <img src={src} alt={`Photocard of ${name}`} title={source ? `Photocard source: ${source}` : undefined} loading="lazy" className="shrink-0 rounded-[3px] border bg-white object-cover" style={{ width: size, height: (size * 17) / 11, borderColor: border }} />
+    <img src={src} alt={t('Photocard of {name}', { name })} title={source ? t('Photocard source: {source}', { source }) : undefined} loading="lazy" className="shrink-0 rounded-[3px] border bg-white object-cover" style={{ width: size, height: (size * 17) / 11, borderColor: border }} />
   );
 }
 
@@ -223,7 +243,7 @@ export function Segmented<T extends string>({ label, value, options, onChange }:
 /** An inline link to another record in the atlas. */
 export function RecordLink({ onClick, children, title }: { onClick: () => void; children: ReactNode; title?: string }) {
   return (
-    <button type="button" onClick={onClick} title={title} className="text-left text-fg underline decoration-ink-400 underline-offset-2 hover:text-accent hover:decoration-accent">
+    <button type="button" dir="auto" onClick={onClick} title={title} className="text-start text-fg underline decoration-ink-400 underline-offset-2 hover:text-accent hover:decoration-accent">
       {children}
     </button>
   );

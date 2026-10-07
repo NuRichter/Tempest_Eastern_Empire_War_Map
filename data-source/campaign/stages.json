@@ -15,20 +15,12 @@
   "id": "S02",
   "name": "IMPERIAL_DECISION_AND_MOBILIZATION",
   "startWarDay": "D-40",
-  "endWarDay": "D-33",
-  "definition": "Imperial council and war decree; legion taskings; Gadora's audience and return; the Control Room war council (the 'gathering', reference point R0 = D-33).",
+  "endWarDay": "D-40",
+  "definition": "Imperial council and war decree, legion taskings; that evening Rudra and Velgrynd hear that the Great March is decided (V12 Ch4, Epilogue).",
   "anchorEvents": [
    "EVT-0002",
    "EVT-0001",
-   "EVT-0009",
-   "EVT-0010",
-   "EVT-0011",
-   "EVT-0008",
    "EVT-0023",
-   "EVT-0024",
-   "EVT-0025",
-   "EVT-0026",
-   "EVT-0027",
    "EVT-0028"
   ],
   "source": "V12 Ch4-Ch5; V13 Prologue"
@@ -36,10 +28,18 @@
  {
   "id": "S03",
   "name": "APPROACH_MARCH",
-  "startWarDay": "D-32",
+  "startWarDay": "D-39",
   "endWarDay": "D-3",
-  "definition": "The army leaves the Empire 'the next day' (V12 Epilogue) and advances slowly; border crossed before the month mark (R0 + a month = D-3).",
+  "definition": "The army leaves the capital 'the next day' (V12 Epilogue), masses at the border base (D-34), and advances slowly while Tempest holds its war council (the 'gathering', R0 = D-33); the border is crossed on D-5.",
   "anchorEvents": [
+   "EVT-0009",
+   "EVT-0010",
+   "EVT-0011",
+   "EVT-0008",
+   "EVT-0024",
+   "EVT-0025",
+   "EVT-0026",
+   "EVT-0027",
    "EVT-0003",
    "EVT-0015",
    "EVT-0012",
@@ -91,7 +91,7 @@
   "id": "S06",
   "name": "LABYRINTH_RAID",
   "startWarDay": "D+1",
-  "endWarDay": "D+10",
+  "endWarDay": "D+9",
   "definition": "Labyrinth Raider operation: 350,000 / 150,000 / 30,000 enter on days 1-3 (170,000 stay outside); seven days elapsed at V13 Ch4; Minitz falls; more than 530,000 killed inside with no Tempest losses.",
   "anchorEvents": [
    "EVT-0201",
@@ -112,8 +112,8 @@
  {
   "id": "S07",
   "name": "ANNIHILATION_OF_THE_OUTSIDE_CAMP",
-  "startWarDay": "D+11",
-  "endWarDay": "D+11",
+  "startWarDay": "D+10",
+  "endWarDay": "D+10",
   "definition": "After dawn Caligulio learns the labyrinth troops are dead; Carrera's Gravity Collapse, Geld's Second Corps and Diablo destroy the ~170,000 outside; Caligulio killed. Jura army: 940,000 killed.",
   "anchorEvents": [
    "EVT-0208",
@@ -128,9 +128,9 @@
  {
   "id": "S08",
   "name": "RESURRECTION_AND_CONSOLIDATION",
-  "startWarDay": "D+12",
-  "endWarDay": "D+17",
-  "definition": "Resurrection of ~700,000 (D+12), held as prisoners; rewards and evolution (D+13); prisoners calm (D+15); Yuuki prepares the coup; Rimuru arranges the meeting with Yuuki.",
+  "startWarDay": "D+11",
+  "endWarDay": "D+14",
+  "definition": "Resurrection of ~700,000 (D+11), held as prisoners; rewards and evolution (D+12); prisoners calm (D+13); Yuuki prepares the coup; Rimuru arranges the meeting with Yuuki.",
   "anchorEvents": [
    "EVT-0310",
    "EVT-0220",
@@ -143,9 +143,9 @@
  {
   "id": "S09",
   "name": "LONG_NIGHT",
-  "startWarDay": "D+18",
-  "endWarDay": "D+19",
-  "definition": "The single long night from the evening of D+18 to the early hours of D+19: Miranda killed and the coup crushed in Tidu; Velgrynd destroys the 60,000 at Isthmus; Dwargon eastern front; Rimuru's party trapped; dragon battle and Veldora's domination; Magic Beast Division destroyed; flagship battles; Michael and Feldway withdraw. Includes the D+18 daytime planning.",
+  "startWarDay": "D+15",
+  "endWarDay": "D+16",
+  "definition": "The single long night from the evening of D+15 to the early hours of D+16: Miranda killed and the coup crushed in Tidu; Velgrynd destroys the 60,000 at Isthmus; Dwargon eastern front; Rimuru's party trapped; dragon battle and Veldora's domination; Magic Beast Division destroyed; flagship battles; Michael and Feldway withdraw. Includes the D+18 daytime planning.",
   "anchorEvents": [
    "EVT-0315",
    "EVT-0319",
@@ -176,8 +176,8 @@
  {
   "id": "S10",
   "name": "POST_WAR_INTERVAL",
-  "startWarDay": "D+19",
-  "endWarDay": "D+22",
+  "startWarDay": "D+16",
+  "endWarDay": "D+18",
   "definition": "Officers take a day off; the capital returns to the surface; Rimuru interviews his subordinates. No fighting.",
   "anchorEvents": [
    "EVT-0450",
@@ -188,8 +188,8 @@
  {
   "id": "S11",
   "name": "SUMMIT_AND_SETTLEMENT",
-  "startWarDay": "D+23",
-  "endWarDay": "D+24",
+  "startWarDay": "D+19",
+  "endWarDay": "D+20",
   "definition": "Three-nation summit: end-of-war agreement, Masayuki to be named emperor by Velgrynd, no war-crimes trials, prisoners to be released, reconstruction, Testarossa to open an embassy; Zamdo restored at the lunch break; Gazel leaves the next morning.",
   "anchorEvents": [
    "EVT-0390",
@@ -210,9 +210,9 @@
  {
   "id": "S12",
   "name": "REPATRIATION_PREPARATION",
-  "startWarDay": "D+25",
-  "endWarDay": "D+31",
-  "definition": "Caligulio prepares to march the resurrected prisoners home; preparations done within a week and the departure follows (D+31 RECONSTRUCTED).",
+  "startWarDay": "D+21",
+  "endWarDay": "D+27",
+  "definition": "Caligulio prepares to march the resurrected prisoners home; preparations done within a week and the departure follows (D+26 RECONSTRUCTED).",
   "anchorEvents": [
    "EVT-0455"
   ],

@@ -71,7 +71,13 @@ the atlas
 | `scripts/migrate/runtime-to-campaign.mjs` | stale/archived | — | One-time migration from the Step 1 runtime to the campaign source. Re-running it would overwrite R5. |
 | `public/data/**` | generated | the browser | Deterministic; committed. |
 | `public/maps/base-map.png`, `myth-map.jpg` | derivative | MapLibre | Validated at 2641 × 2035. |
-| `public/assets/characters/*.jpg` | derivative | dossiers, map portraits | 360 × 556 from the 2200 × 3400 cards. |
+| `public/assets/characters/*.webp`, `thumb/*.webp` | derivative | dossiers, map portraits, the Situation photocards | WebP 360 × 556 (q80) and 120 × 185 thumbnails (q78) from the 2200 × 3400 cards (`scripts/characters/build_photocards.py`). |
+| `public/data/keyframes/checkpoints.json` | generated | the browser, tests, validation | All checkpoint frames bundled in one file (one request instead of dozens). |
+| `public/locales/*.json` | source (translations) | the browser, `i18n:check` | 29 interface languages; English is the source text. Keys are the English strings. |
+| `i18n/catalog.json` | generated | translators, `i18n:check` | Every `t()` / `msg()` string with the files using it (`npm run i18n:extract`). |
+| `i18n/glossary.json` | source | translators | Names that stay unchanged in every language. |
+| `src/content/about.ts` | source | the About panel | Verified links and APA references; evidence in `docs/research/LINKS_VERIFIED.json`. |
+| `public/assets/cursor/slime.svg` | source (original drawing) | the optional pixel cursor | Drawn for this project. |
 | `public/assets/nation-flags/**` | derivative | `Flag` component | Validated by `validate-assets`. |
 | `docs/audit/baseline/*.jpg`, `docs/qa/checkpoints/*.jpg` | generated | humans, `qa:visual` | Small JPEGs: the pre-upgrade baseline and the visual-regression references. |
 | `qa-artifacts/`, `.playwright-cli/`, `.next/` | temporary | — | Git-ignored. |

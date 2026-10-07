@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 
 import { loadDataset } from '@/data/loader';
+import { syncLocale, useT } from '@/i18n';
 import { SPEEDS } from '@/simulation/clock';
 import { useSimulation, type Selection } from '@/simulation/store';
 import { usePreferences } from '@/state/preferences';
@@ -32,8 +33,24 @@ export function AppShell() {
   const failed = useSimulation((s) => s.failed);
   const viewMode = useSimulation((s) => s.viewMode);
   const density = usePreferences((s) => s.density);
+  const uiTheme = usePreferences((s) => s.uiTheme);
+  const pixelCursor = usePreferences((s) => s.pixelCursor);
+  const t = useT();
   const [hydrated, setHydrated] = useState(false);
   const started = useRef(false);
+
+  /* -- language and appearance -------------------------------------- */
+
+  useEffect(() => {
+    void syncLocale();
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.dataset.uiTheme = uiTheme;
+    root.style.colorScheme = uiTheme;
+    root.classList.toggle('pixel-cursor', pixelCursor);
+  }, [uiTheme, pixelCursor]);
 
   /* -- load ---------------------------------------------------------- */
 
@@ -231,11 +248,11 @@ export function AppShell() {
     return (
       <main className="grid min-h-dvh place-items-center bg-ink-900 p-6">
         <div className="surface max-w-lg rounded-[4px] p-6">
-          <h1 className="font-display text-xl text-fg">The campaign dataset did not load</h1>
+          <h1 className="font-display text-xl text-fg">{t('The campaign dataset did not load')}</h1>
           <p className="mt-3 text-sm leading-relaxed text-fg-2">{error}</p>
           <p className="mt-3 text-sm leading-relaxed text-fg-3">
-            The runtime dataset is generated at build time. Run <code className="figure text-accent">npm run compile-data</code> and{' '}
-            <code className="figure text-accent">npm run validate-data</code>, then reload.
+            {t('The runtime dataset is generated at build time. Run the compile and validate steps, then reload.')}{' '}
+            <code className="figure text-accent">npm run compile-data</code> · <code className="figure text-accent">npm run validate-data</code>
           </p>
         </div>
       </main>
@@ -246,9 +263,9 @@ export function AppShell() {
     return (
       <main className="grid min-h-dvh place-items-center bg-ink-900 p-6" aria-busy="true">
         <div className="text-center">
-          <p className="eyebrow">Campaign Atlas</p>
+          <p className="eyebrow">{t('Campaign Atlas')}</p>
           <p className="mt-2 font-display text-2xl text-fg">Tempest–Eastern Empire War</p>
-          <p className="mt-2 text-sm text-fg-3">Loading the campaign record…</p>
+          <p className="mt-2 text-sm text-fg-3">{t('Loading the campaign record…')}</p>
           <div className="mx-auto mt-5 h-px w-56 overflow-hidden bg-ink-500">
             <div className="h-full w-1/3 animate-[shimmer_1.4s_ease-in-out_infinite] bg-accent" />
           </div>
@@ -262,7 +279,7 @@ export function AppShell() {
   return (
     <main className="flex h-dvh flex-col overflow-hidden bg-ink-900 text-fg" data-density={density}>
       <a href="#timeline" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:bg-ink-800 focus:px-3 focus:py-2">
-        Skip to the campaign timeline
+        {t('Skip to the campaign timeline')}
       </a>
       {cinematic ? null : <TopBar />}
       <div className="relative min-h-0 flex-1">

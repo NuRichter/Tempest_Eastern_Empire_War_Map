@@ -92,6 +92,8 @@ export interface FrontFields {
   hold: Uint8Array;
   /** Loser of the flip nearest in time (colour of the pale band). */
   paleOf: Uint8Array;
+  /** Winner of that flip (the colour the transition belt blends towards). */
+  paleTo: Uint8Array;
 }
 
 function bytes(b64: string): Uint8Array {
@@ -130,7 +132,7 @@ export function decodeFront(file: FrontFile): Front {
 
 export function createFields(front: Front): FrontFields {
   const n = front.w * front.h;
-  return { E: new Float32Array(n), A: new Float32Array(n), P: new Float32Array(n), Q: new Float32Array(n), hold: new Uint8Array(n), paleOf: new Uint8Array(n) };
+  return { E: new Float32Array(n), A: new Float32Array(n), P: new Float32Array(n), Q: new Float32Array(n), hold: new Uint8Array(n), paleOf: new Uint8Array(n), paleTo: new Uint8Array(n) };
 }
 
 /**
@@ -153,7 +155,7 @@ const ib: number[] = [];
 
 /** Evaluates the held-ground fields at time T into `out` (reused between calls). */
 export function evaluateFront(front: Front, T: number, out: FrontFields): FrontFields {
-  const { E, A, P, Q, hold, paleOf } = out;
+  const { E, A, P, Q, hold, paleOf, paleTo } = out;
   const C = front.clamp;
   const L = front.lead;
   E.fill(-C);
@@ -162,6 +164,7 @@ export function evaluateFront(front: Front, T: number, out: FrontFields): FrontF
   Q.fill(-C);
   hold.fill(HOLDER_OWNER);
   paleOf.fill(HOLDER_OWNER);
+  paleTo.fill(HOLDER_OWNER);
   const { offsets, times, holders } = front;
   for (let q = 0; q < front.active.length; q += 1) {
     const i = front.active[q];
@@ -209,6 +212,7 @@ export function evaluateFront(front: Front, T: number, out: FrontFields): FrontF
         best = d;
         tStar = times[k];
         paleOf[i] = prevH;
+        paleTo[i] = holders[k];
       }
       prevH = holders[k];
     }

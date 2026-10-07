@@ -4,6 +4,7 @@ import { forcePositionAt } from '@/simulation/resolver';
 import { eventVisible, haloText, isSelected, trimTo, type DrawContext } from '@/map/overlay/context';
 import { drawBattleIcon } from '@/map/overlay/glyphs';
 import type { PlacedForce } from '@/map/overlay/layers/forces';
+import { translate } from '@/i18n';
 
 const EVENT_WINDOW = 144; // an event marker stays a full simulated day, then fades
 const BATTLE_LINGER = 72;
@@ -45,7 +46,7 @@ export function drawBattles(dc: DrawContext): void {
     drawBattleIcon(ctx, b.type, p.sx, p.sy, size * 0.9, selected ? INK.accent : '#f2d7d2');
     ctx.restore();
     dc.labels.reserve(p.sx - size, p.sy - size, size * 2, size * 2);
-    dc.hits.push({ selection: { kind: 'battle', id: b.id }, x: p.sx, y: p.sy, r: size + 4, title: b.name, detail: `${BATTLE_TYPE_LABEL[b.type]} · ${live ? 'in progress' : 'concluded'}`, provenance: b.provenance, priority: 2 });
+    dc.hits.push({ selection: { kind: 'battle', id: b.id }, x: p.sx, y: p.sy, r: size + 4, title: b.name, detail: `${translate(BATTLE_TYPE_LABEL[b.type])} · ${live ? translate('in progress') : translate('concluded')}`, provenance: b.provenance, priority: 2 });
     if (dc.prefs.layers.labels && (dc.zoom >= 4 || live || selected)) {
       const fs = Math.round(11.5 * dc.labelScale);
       ctx.font = `600 ${fs}px ${dc.fonts.ui}`;
@@ -129,7 +130,7 @@ export function drawEvents(dc: DrawContext): void {
     }
     ctx.restore();
     dc.labels.reserve(p.sx - r, p.sy - r, r * 2, r * 2);
-    dc.hits.push({ selection: { kind: 'event', id: e.id }, x: p.sx, y: p.sy, r: r + 5, title: e.title, detail: `${e.warDay} ${e.simulationTime} · ${PROVENANCE_LABEL[e.provenance].short}`, provenance: e.provenance, priority: 3 });
+    dc.hits.push({ selection: { kind: 'event', id: e.id }, x: p.sx, y: p.sy, r: r + 5, title: e.title, detail: `${e.warDay} ${e.simulationTime} · ${translate(PROVENANCE_LABEL[e.provenance].short)}`, provenance: e.provenance, priority: 3 });
 
     // Label lifecycle: in after the pop, hold, out. Paused: the moment's events stay labelled.
     let alpha = 0;
@@ -190,7 +191,7 @@ export function drawCharacters(dc: DrawContext): void {
     people.forEach((cid, i) => {
       const c = dc.data.characterById.get(cid);
       if (!c?.photocard) return;
-      const img = portrait(c.photocard.src);
+      const img = portrait(c.photocard.thumb ?? c.photocard.src);
       const x = p.sx - ((people.length - 1) * (size + 4)) / 2 + i * (size + 4);
       const y = p.sy - size - 14;
       if (!dc.labels.place(x - size / 2, y - size / 2, size, size)) return;

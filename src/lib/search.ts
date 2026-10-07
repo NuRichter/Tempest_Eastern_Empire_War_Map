@@ -1,7 +1,20 @@
 import type { Dataset } from '@/data/loader';
+import { msg } from '@/i18n/msg';
 import type { Selection } from '@/simulation/store';
 
 export type ResultGroup = 'Characters' | 'Forces' | 'Battles' | 'Events' | 'Territories' | 'Theatres' | 'Places' | 'Movements';
+
+/** Group headings as shown to the reader. The values equal the group ids, so they render as `t(group)`. */
+export const RESULT_GROUP_LABEL: Record<ResultGroup, string> = {
+  Characters: msg('Characters'),
+  Forces: msg('Forces'),
+  Battles: msg('Battles'),
+  Events: msg('Events'),
+  Territories: msg('Territories'),
+  Theatres: msg('Theatres'),
+  Places: msg('Places'),
+  Movements: msg('Movements'),
+};
 
 export interface SearchItem {
   group: ResultGroup;

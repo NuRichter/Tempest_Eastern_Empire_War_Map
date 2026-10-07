@@ -1,6 +1,6 @@
 {
   "name": "tempest-eastern-empire-war-map",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "description": "Fan-made campaign atlas of the Tempest-Eastern Empire War (Tensura LN vols 12-16): canon-audited timeline, traced territories, army sizes and movements, with every reconstruction labelled. Not official Tensura material.",
   "author": "NuRichter",
@@ -15,12 +15,15 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "tsx scripts/test-runtime.ts",
-    "verify": "npm run compile-data && npm run validate-data && npm run validate-assets && npm run lint && npm run typecheck && npm run test && npm run build",
+    "verify": "npm run compile-data && npm run validate-data && npm run validate-assets && npm run lint && npm run typecheck && npm run i18n:extract && npm run i18n:check && npm run test && npm run build",
     "qa": "tsx scripts/browser-qa.ts",
     "qa:visual": "tsx scripts/visual-regression.ts",
     "qa:playwright": "node scripts/qa-playwright.mjs",
     "qa:front": "tsx scripts/capture-front.ts",
-    "qa:playback": "tsx scripts/capture-playback.ts"
+    "qa:playback": "tsx scripts/capture-playback.ts",
+    "qa:perf": "tsx scripts/perf-baseline.ts",
+    "i18n:extract": "tsx scripts/i18n-extract.ts",
+    "i18n:check": "tsx scripts/i18n-check.ts"
   },
   "dependencies": {
     "lucide-react": "^0.469.0",
