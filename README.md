@@ -7,7 +7,7 @@
 **Atlas kampanye interaktif bergaya dokumenter untuk Perang Tempest–Kekaisaran Timur dari light novel *Tensura*.**
 Peta, waktu, pasukan, wilayah, pergerakan — dan bukti di balik setiap klaim.
 
-[**▶ Buka atlas**](https://tempest-eastern-empire-war-map.vercel.app/) ·
+[**▶ Buka atlas — tempestwar.vercel.app**](https://tempestwar.vercel.app/) ·
 [Desain](./DESIGN.md) ·
 [Audit kanon](./docs/audit/timeline-canon-audit.md) ·
 [Register riset](./docs/research/RESEARCH_REGISTER.md) ·
