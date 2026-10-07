@@ -18,6 +18,7 @@ const KEYS: [string, string][] = [
   ['L', 'Legend'],
   ['C', 'Cinematic mode'],
   ['0', 'Frame the whole campaign'],
+  ['B', 'Bookmark the current moment'],
   ['Esc', 'Close, deselect, leave cinematic mode'],
   ['?', 'This dialog'],
 ];

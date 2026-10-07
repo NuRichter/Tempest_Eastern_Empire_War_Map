@@ -7,6 +7,7 @@ import { FACTION_COLOR, factionKey } from '@/lib/palette';
 import { BATTLE_TYPE_LABEL, PROVENANCE_LABEL, ROLE_LABEL, ROUTE_LABEL, SIZE_STATUS_LABEL, TIME_PRECISION_LABEL } from '@/lib/taxonomy';
 import { forcePositionAt, forceSnapshotAt, strengthHistory, territoryControlAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
+import { usePreferences } from '@/state/preferences';
 import { Masthead } from '@/components/dossier/Dossier';
 import {
   ConfidenceText,
@@ -281,6 +282,18 @@ export function EventDossier({ id }: { id: string }) {
       </Section>
 
       <Section title="Time">
+        {(() => {
+          const gap = data.gaps.find((g) => g.toEvent === e.id);
+          return gap ? (
+            <div className="mb-2 border-l-2 border-accent/70 pl-2 text-xs">
+              <p className="eyebrow">Before this event · timeline gap</p>
+              <p className="mt-0.5 text-fg">
+                {gap.hours >= 48 ? `${Math.round(gap.hours / 24)} days` : `${gap.hours} hours`} since the previous event · confidence <ConfidenceText value={gap.confidence} />
+              </p>
+              <p className="mt-0.5 leading-relaxed text-fg-2">{gap.reconstructionBasis}</p>
+            </div>
+          ) : null;
+        })()}
         <Fields>
           <Field label="Simulation">{e.warDay} {e.simulationTime}</Field>
           <Field label="Precision">{TIME_PRECISION_LABEL[e.timePrecision]}</Field>
@@ -307,7 +320,12 @@ export function EventDossier({ id }: { id: string }) {
         ) : null}
       </Section>
 
-      <div className="flex gap-2 px-3 pb-4 pt-1">
+      <div className="px-3 pt-1">
+        <button type="button" className="ctl w-full" onClick={() => usePreferences.getState().addBookmark({ frame: e.frame, eventId: e.id, label: e.title })}>
+          Bookmark this event
+        </button>
+      </div>
+      <div className="flex gap-2 px-3 pb-4 pt-2">
         <button type="button" className="ctl flex-1" disabled={!e.prevId} onClick={() => e.prevId && jumpToEvent(e.prevId)}>
           ← Previous event
         </button>

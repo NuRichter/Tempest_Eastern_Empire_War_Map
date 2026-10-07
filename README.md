@@ -11,7 +11,8 @@ Peta, waktu, pasukan, wilayah, pergerakan — dan bukti di balik setiap klaim.
 [Desain](./DESIGN.md) ·
 [Audit kanon](./docs/audit/timeline-canon-audit.md) ·
 [Register riset](./docs/research/RESEARCH_REGISTER.md) ·
-[Arsitektur](./docs/ARCHITECTURE.md)
+[Arsitektur](./docs/ARCHITECTURE.md) ·
+[QA](./docs/QA.md)
 
 ![Revision](https://img.shields.io/badge/dataset-R5_canon_audit-d4ab57?style=flat-square)
 ![Events](https://img.shields.io/badge/events-165-2f9e7e?style=flat-square)
@@ -70,11 +71,13 @@ Kerangka waktu dibangun dari interval yang dinyatakan novel ("sebulan setelah pe
 
 ## Peta
 
-- **Base Map (default)** — peta garis bersih, ditampilkan dengan nada gelap "war room" (atau warna asli). Untuk analisis operasional.
+- **Base Map (default)** — peta garis bersih untuk analisis operasional, dalam dua *look*: **Documentary** (default — dasar terang, warna negara solid, garis front putih, seperti video referensi) dan **War room** (gelap, analitis). Ganti di Layers → *Look*.
 - **Myth Map** — peta dunia bergambar, untuk konteks geografis dan lore.
 - **Flat / Globe** — atlas datar untuk keterbacaan, globe untuk imersi. Ganti gaya atau proyeksi tidak mereset waktu, seleksi, maupun filter.
 
 **Wilayah mengikuti garis batas yang digambar**, bukan lingkaran atau poligon karangan: 20 wilayah dijiplak dari *Base Map - Blue* oleh `scripts/cartography/extract_territories.py`, dan pas di kedua gaya peta. Peran tiap negara berubah mengikuti waktu (belligerent, co-belligerent, contributor, tidak terlibat, permusuhan berakhir); kontrol yang tidak diketahui digambar abu-abu berarsir, tidak pernah dengan warna faksi. Area operasi teater tetap skematis, tapi dipotong mengikuti daratan dan batas. Detail: [`docs/CARTOGRAPHY.md`](./docs/CARTOGRAPHY.md).
+
+**Wilayah yang dikuasai & garis front (RECONSTRUCTED).** Novel tidak menggambar garis front. Seperti di video referensi, atlas menyintesis tanah yang dikuasai dari posisi dan kekuatan setiap formasi (pengaruh ∝ ∛kekuatan, dengan bobot "tanah sendiri" untuk negara pemilik): warna pihak lain tumbuh di sekitar pasukannya, dan garis putih muncul di tempat kedua warna bertemu. Lapisan ini selalu diberi label *rekonstruksi* (legenda, panel Situasi) dan bisa dimatikan; status politik wilayah tetap mengikuti event.
 
 Koordinat adalah **koordinat simulasi** pada peta fiksi — bukan lintang/bujur.
 
@@ -87,7 +90,7 @@ Koordinat adalah **koordinat simulasi** pada peta fiksi — bukan lintang/bujur.
 
 ## Fitur
 
-Timeline dengan pita tahap, lajur teater, rentang pertempuran, penanda volume, lompat event/hari/frame dan kecepatan 0,25×–48× · panel Situasi (intelijen kampanye saat ini) · dossier untuk pasukan, event, pertempuran, karakter (photocard lokal), wilayah, teater, dan pergerakan — saling tertaut · pencarian + palet perintah (`/` atau `Ctrl+K`, fuzzy, alias, nama Jepang) · filter (faksi, teater, jenis event, status kanon, keyakinan) dengan chip yang mengumumkan filter aktif · Cerita Kampanye per tahap · legenda · mode sinematik (tanggal besar, satu caption, kartu pemimpin, buku korban, kartu penutup) · kontrol opasitas, ketebalan jejak, ukuran label/penanda, kepadatan, dan gerak — tersimpan lokal · deep link (`?frame=…&event=…`).
+Timeline dengan pita tahap, lajur teater, rentang pertempuran, penanda volume, **celah waktu berarsir** (rentang ≥ 6 jam simulasi tanpa catatan), bookmark, lompat event/hari/frame dan kecepatan 0,25×–48×, plus *auto-slow* di titik balik · event muncul sebagai cincin yang "pop" dengan label ±2 detik lalu memudar · angka korban dan kekuatan yang bergulir · panel Situasi (intelijen kampanye saat ini) · dossier untuk pasukan, event, pertempuran, karakter (photocard lokal), wilayah, teater, dan pergerakan — saling tertaut · pencarian + palet perintah (`/` atau `Ctrl+K`, fuzzy, alias, nama Jepang) · filter (faksi, negara, pasukan, pertempuran, wilayah, teater, jenis event, status kanon, keyakinan) dengan chip yang mengumumkan filter aktif · Cerita Kampanye per tahap · legenda · mode sinematik (tanggal besar, satu caption, kartu pemimpin, buku korban, kartu penutup) · kontrol look, opasitas, ketebalan jejak, ukuran label/penanda, kepadatan panel, dan gerak — tersimpan lokal · minimap dan preset kamera · deep link (`?frame=…&event=…`).
 
 <details>
 <summary><b>Pintasan keyboard</b></summary>
@@ -101,6 +104,7 @@ Timeline dengan pita tahap, lajur teater, rentang pertempuran, penanda volume, l
 | `,` `.` | ±1 keyframe (10 menit) | `C` | Mode sinematik |
 | `1`–`8` | Kecepatan | `0` | Bingkai seluruh kampanye |
 | `Esc` | Tutup / batal pilih | `?` | Tentang & pintasan |
+| `B` | Bookmark momen ini | | |
 
 </details>
 
@@ -117,7 +121,7 @@ Sources of Truth/   →   data-source/   →   compile-data   →   public/data 
 - **Sumber atlas:** `data-source/` — kampanye R5 (event dengan efek, pasukan, pergerakan, korban, tahap), gazetteer, geometri wilayah, kontrol wilayah, karakter, terminologi.
 - **Runtime:** `public/data/` dihasilkan oleh `scripts/compile-data.ts` — jangan diedit tangan.
 
-Detail: [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) · [`docs/DATA-MODEL.md`](./docs/DATA-MODEL.md) · [`docs/RESEARCH-PROVENANCE.md`](./docs/RESEARCH-PROVENANCE.md).
+Detail: [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) · [`docs/DATA-MODEL.md`](./docs/DATA-MODEL.md) · [`docs/DEPENDENCY-MAP.md`](./docs/DEPENDENCY-MAP.md) · [`docs/RESEARCH-PROVENANCE.md`](./docs/RESEARCH-PROVENANCE.md).
 
 ## Pengembangan
 
@@ -142,9 +146,11 @@ python scripts/characters/build_photocards.py       # aset photocard dari reposi
 ```bash
 npm run verify   # compile → validate-data → validate-assets → lint → typecheck → test → build
 npm run qa       # QA browser sungguhan (Chromium via Puppeteer) terhadap build produksi
+npm run qa:visual       # regresi visual: 10 checkpoint vs docs/qa/checkpoints
+npm run qa:playwright   # smoke run Playwright CLI terhadap server yang sedang jalan
 ```
 
-`validate-data` menolak id duplikat, referensi yatim, NaN/Infinity, jumlah negatif, waktu mundur, pergerakan yang selesai sebelum mulai, total korban yang tidak cocok saat dihitung ulang, dan state yang berbeda antara diputar dan di-*scrub*. `test` memastikan tidak ada pasukan yang "teleport" di sepanjang rute yang digambar dan bahwa *unknown* tidak pernah tampil sebagai nol. `qa` menjalankan 35 cek di 7 lebar layar (320–1920 px). Detail: [`docs/QA.md`](./docs/QA.md).
+`validate-data` menolak id duplikat, referensi yatim, NaN/Infinity, jumlah negatif, waktu mundur, pergerakan yang selesai sebelum mulai, total korban yang tidak cocok saat dihitung ulang, dan state yang berbeda antara diputar dan di-*scrub*. `test` memastikan tidak ada pasukan yang "teleport" di sepanjang rute yang digambar dan bahwa *unknown* tidak pernah tampil sebagai nol. `qa` menjalankan 40 cek, termasuk 8 lebar layar (320–1920 px), auto-slow, latensi seek, dan waktu buka dossier. Detail: [`docs/QA.md`](./docs/QA.md).
 
 ## Deploy
 
@@ -152,7 +158,7 @@ Frontend statis di Vercel: import repositori, setelan default. `prebuild` meng-c
 
 ## Referensi desain
 
-Prinsip visual diambil (tanpa menyalin aset) dari empat video dokumenter perang dan dua peta perang interaktif — kamera diam saat waktu berjalan, angka kekuatan di front, tanggal sebagai readout terkuat — lalu ditambah yang tidak mereka punya: legenda, sumber, dan ketidakpastian. Lihat [`docs/research/VISUAL-REFERENCES.md`](./docs/research/VISUAL-REFERENCES.md) dan kontrak desain [`DESIGN.md`](./DESIGN.md).
+Prinsip visual diambil (tanpa menyalin aset) dari empat video dokumenter perang dan dua peta perang interaktif — kamera diam saat waktu berjalan, angka kekuatan di front, tanggal sebagai readout terkuat — lalu ditambah yang tidak mereka punya: legenda, sumber, dan ketidakpastian. Lihat [`docs/research/VISUAL-REFERENCES.md`](./docs/research/VISUAL-REFERENCES.md) kontrak desain [`DESIGN.md`](./DESIGN.md), dan anatomi layar [`docs/UI-DESIGN.md`](./docs/UI-DESIGN.md).
 
 ## Berkontribusi
 

@@ -69,3 +69,14 @@ Confidence: **H** high, **M** medium, **L** low.
 ## Names
 
 Canonical spellings, Japanese names and every alias are in `data-source/terminology.source.json` (99 terms), with sources and conflicts. Key decisions: **Nasca Namrium Ulmeria United Eastern Empire** (not Nazca / Namlium); **Jura-Tempest Federation**; **Gaster**, **Farraga**, **Minitz**, **Gobwa**, **Vaughn**, **Caligulio**, **Gradim**; **Armored Division**, **Magic Beast Division**, **Composite Division**. Open conflicts: Rudra / Ludora (Yen Press), Gabiru / Gabil, Hakuro / Hakurou, Gadora / Gadra.
+
+## Synthesised visual layers
+
+These are presentation, not research findings. They are listed here so nobody mistakes them for claims.
+
+| Layer | Basis | Class | What it must not be read as |
+|---|---|---|---|
+| Held ground and front seams | Positions and strengths of the drawn formations at each frame (`src/map/field/occupation.ts`); home baseline for each belligerent's own land | RECONSTRUCTED | A line of control stated by the novels. The novels name places and formations, never a front. |
+| Front strength totals | Sum of the most specific formations of each side near a front | DERIVED from the force register | A stated order of battle for that front |
+| Timeline gaps | Stretches of more than six simulated hours between consecutive events (`public/data/gaps.json`) | Derived from the placements | Periods in which "nothing happened"; only periods the record does not narrate |
+| Event pop and label timing, rolling counters | Reference documentaries (`docs/research/VISUAL-REFERENCES.md`) | Presentation | Any statement about duration or tempo |

@@ -13,7 +13,7 @@ data-source/                      hand-maintained, reviewable sources
   terminology.source.json         canonical names, aliases, Japanese names
         │
         ▼  scripts/compile-data.ts   (deterministic: same sources → byte-identical output)
-public/data/                      runtime dataset: checkpoints + sparse deltas, tracks, reference tables
+public/data/                      runtime dataset: checkpoints + sparse deltas, tracks, reference tables, timeline gaps
         │
         ├─▶ scripts/validate-data.ts    identities, references, time order, quantities, casualty arithmetic,
         │                               dual-path replay, geometry
@@ -43,14 +43,16 @@ Both need Python 3 with `numpy`, `opencv-python` and `Pillow`. Their outputs are
 | `src/simulation/resolver.ts` | Frame state from checkpoint + deltas; force snapshot and interpolated position; territory control with transition; strength history |
 | `src/simulation/store.ts` | Zustand store: data, frame, selection, filters, camera requests, navigation actions (`jumpTo*`) |
 | `src/state/preferences.ts` | Persisted reader preferences (map style, layers, opacities, scales, motion) with safe storage |
-| `src/map/MapView.tsx` | MapLibre: Base/Myth rasters, territory and operational-area layers, projection, camera requests |
-| `src/map/overlay/*` | One canvas for everything that moves with the clock; layer modules draw labels, routes, forces, battles, events, portraits; hit-testing and tooltips |
+| `src/map/MapView.tsx` | MapLibre: Base/Myth rasters, territory and operational-area layers, the held-ground canvas source, projection, camera requests |
+| `src/map/field/*` | The reconstructed occupation field (`occupation.ts`) and a tiny store that hands each computed field to the overlay (`fieldStore.ts`) |
+| `src/map/Minimap.tsx`, `MapControls.tsx` | Overview map; zoom, compass, camera presets, flat/globe, style switcher |
+| `src/map/overlay/*` | One canvas for everything that moves with the clock; layer modules draw front seams, routes, forces, front strengths, battles, event rings, portraits and labels (with collision layout); hit-testing and tooltips; colours from the active `MAP_THEME` |
 | `src/components/*` | Shell, rail (layers, filters, feed, story), situation & dossiers, timeline, palette, legend, cinematic |
-| `src/lib/*` | Coordinates, palette, taxonomy (shared vocabulary), search, formatting |
+| `src/lib/*` | Coordinates, palette and map themes, taxonomy (shared vocabulary), search, formatting |
 
 ## Rendering loop
 
-React re-renders only when the **integer** frame changes (10 simulated minutes). The overlay canvas repaints on demand — when the clock moves, the camera moves, a preference changes, or a battle is live — and reads the **continuous** clock position, so movement interpolates smoothly between keyframes without React in the loop. MapLibre layers (territories, operational areas) are updated with `setData` once per integer frame; with 20 territories and 5 areas that is cheap.
+React re-renders only when the **integer** frame changes (10 simulated minutes). The overlay canvas repaints on demand — when the clock moves, the camera moves, a preference changes, or a battle is live — and reads the **continuous** clock position, so movement interpolates smoothly between keyframes without React in the loop. MapLibre layers (territories, operational areas) are rebuilt only when a change signature (control roles, filters, opacity) differs, not on every frame. The held-ground field is recomputed on a throttled loop (~8 Hz while playing, skipped when no formation moved) and pushed to MapLibre's canvas source; the overlay reads the same field for front seams, so map and overlay never disagree.
 
 ## Frame / delta model
 
@@ -59,3 +61,5 @@ Every 144 frames (one simulated day) a full checkpoint is stored; between them o
 ## Determinism
 
 No randomness, no wall-clock-dependent state, no build timestamps. Formation fan-outs are ordered by id. Given the same dataset, frame, filters and projection, the same picture is drawn.
+
+See also `docs/DEPENDENCY-MAP.md` (what every file is and what reads it) and `docs/UI-DESIGN.md` (screen anatomy and reading flows).

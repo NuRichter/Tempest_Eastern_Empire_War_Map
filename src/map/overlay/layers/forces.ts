@@ -1,7 +1,7 @@
 import { FACTION_COLOR, FACTION_DEEP, FACTION_PALE, FACTION_SHAPE, factionKey, INK, type ColorKey } from '@/lib/palette';
 import { SIZE_STATUS_LABEL } from '@/lib/taxonomy';
 import { forcePositionAt, forceSnapshotAt, forceTrail } from '@/simulation/resolver';
-import { factionVisible, haloText, isSelected, meetsConfidence, trimTo, type DrawContext } from '@/map/overlay/context';
+import { factionVisible, forceHidden, haloText, isSelected, meetsConfidence, trimTo, type DrawContext } from '@/map/overlay/context';
 import { tracePath } from '@/map/overlay/glyphs';
 import type { Force, ForceSnapshot, Quantity, SizeStatus } from '@/types/dataset';
 
@@ -49,7 +49,7 @@ export function placeForces(dc: DrawContext): PlacedForce[] {
   const placed: PlacedForce[] = [];
   const drawn = new Set<string>();
   for (const force of data.forces) {
-    if (!factionVisible(dc.filters, force.faction)) continue;
+    if (!factionVisible(dc.filters, force.faction) || forceHidden(data, dc.filters, force.id)) continue;
     const snapshot = forceSnapshotAt(data, force.id, dc.intFrame);
     if (!snapshot || !meetsConfidence(dc.filters, snapshot.confidence)) continue;
     if (/DESTROYED|ANNIHILATED/i.test(snapshot.status) && dc.intFrame - snapshot.f > 432) continue; // a destroyed formation lingers three days, struck through
@@ -216,7 +216,7 @@ export function drawForces(dc: DrawContext, placed: PlacedForce[]): void {
     if (showName) {
       y += nameSize;
       ctx.font = `500 ${nameSize}px ${dc.fonts.ui}`;
-      haloText(ctx, name, x, y, INK.text2, INK.halo, 3);
+      haloText(ctx, name, x, y, dc.theme.labelDim, dc.theme.halo, 3);
     }
   }
 }
@@ -286,7 +286,7 @@ export function drawFrontStrength(dc: DrawContext, placed: PlacedForce[]): void 
       ctx.font = `600 ${Math.round(9.5 * dc.labelScale)}px ${dc.fonts.mono}`;
       const cap = `${th.code} FRONT · ${sideKey === 'empire' ? 'EMPIRE' : 'ALLIED'}`;
       const cw = ctx.measureText(cap).width;
-      haloText(ctx, cap, -cw / 2, size * 0.35 + 13, INK.text2, INK.halo, 3);
+      haloText(ctx, cap, -cw / 2, size * 0.35 + 13, dc.theme.labelDim, dc.theme.halo, 3);
       ctx.restore();
       dc.labels.reserve(ox - w / 2, oy - size, w, size * 1.7);
     }

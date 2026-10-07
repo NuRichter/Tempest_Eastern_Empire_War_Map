@@ -16,7 +16,9 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx scripts/test-runtime.ts",
     "verify": "npm run compile-data && npm run validate-data && npm run validate-assets && npm run lint && npm run typecheck && npm run test && npm run build",
-    "qa": "tsx scripts/browser-qa.ts"
+    "qa": "tsx scripts/browser-qa.ts",
+    "qa:visual": "tsx scripts/visual-regression.ts",
+    "qa:playwright": "node scripts/qa-playwright.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.469.0",

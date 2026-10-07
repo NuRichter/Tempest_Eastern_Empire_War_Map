@@ -5,12 +5,15 @@ import maplibregl, { type Map as MapLibreMap, type StyleSpecification } from 'ma
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 import { atlasBounds, atlasCorners, campaignBounds, ringToLngLat, simBoundsToLngLat, simToLngLatTuple } from '@/lib/coords';
-import { controlKey, FACTION_COLOR, factionKey, INK, mix, ROLE_FILL_WEIGHT } from '@/lib/palette';
+import { controlKey, FACTION_COLOR, factionKey, INK, MAP_THEME, mix, ROLE_FILL_WEIGHT } from '@/lib/palette';
+import { computeField, GRID_H, GRID_W, paintField } from '@/map/field/occupation';
+import { setField } from '@/map/field/fieldStore';
 import { territoryControlAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
 import { prefersReducedMotion, usePreferences } from '@/state/preferences';
 import { Overlay } from '@/map/overlay/Overlay';
 import { MapControls } from '@/map/MapControls';
+import { Minimap } from '@/map/Minimap';
 import type { Dataset } from '@/data/loader';
 import type { FrameState } from '@/types/dataset';
 
@@ -94,6 +97,14 @@ function baseStyle(): StyleSpecification {
         filter: ['==', ['get', 'selected'], true],
         layout: { 'line-join': 'round' },
         paint: { 'line-color': INK.accent, 'line-width': ['interpolate', ['linear'], ['zoom'], 1, 1.4, 6, 3] },
+      },
+      {
+        id: 'territory-recon',
+        type: 'line',
+        source: 'territories',
+        filter: ['==', ['get', 'reconstructed'], true],
+        layout: { 'line-join': 'round' },
+        paint: { 'line-color': INK.accent, 'line-width': 2, 'line-dasharray': [2, 2] },
       },
       {
         id: 'area-line',
@@ -183,14 +194,18 @@ function territoryFeatures(data: Dataset, frame: number, selectedId: string | nu
       }
     }
     const uninvolved = segment.role === 'UNINVOLVED';
+    const theme = MAP_THEME[prefs.theme];
+    const hiddenNation = t.nationId ? useSimulation.getState().filters.hiddenNations.includes(t.nationId) : false;
+    const hiddenTerritory = useSimulation.getState().filters.hiddenTerritories.includes(t.id);
     features.push({
       type: 'Feature',
       id: t.id,
       properties: {
         id: t.id,
-        fill: uninvolved ? mix(fill, '#6b757a', 0.55) : fill,
-        opacity: prefs.territoryOpacity * weight,
-        line: uninvolved ? '#55626a' : mix(fill, '#ffffff', 0.25),
+        fill: uninvolved ? theme.uninvolvedFill : fill,
+        opacity: hiddenNation || hiddenTerritory ? 0 : uninvolved ? theme.uninvolvedOpacity : prefs.territoryOpacity * weight,
+        line: uninvolved ? theme.border : prefs.theme === 'documentary' ? theme.border : mix(fill, '#ffffff', 0.25),
+        reconstructed: Boolean(previous && transition < 1 && segment.provenance !== 'CANONICAL'),
         hatch: segment.status === 'UNKNOWN',
         selected: selectedId === t.id,
       },
@@ -242,7 +257,7 @@ export function MapView() {
   const selection = useSimulation((s) => s.selection);
 
   const mapStyle = usePreferences((s) => s.mapStyle);
-  const baseTone = usePreferences((s) => s.baseTone);
+  const theme = usePreferences((s) => s.theme);
   const globe = usePreferences((s) => s.globe);
   const layers = usePreferences((s) => s.layers);
   const territoryOpacity = usePreferences((s) => s.territoryOpacity);
@@ -312,19 +327,20 @@ export function MapView() {
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready) return;
-    const dark = baseTone === 'dark';
+    const dark = theme === 'warroom';
     map.setPaintProperty('base-raster', 'raster-opacity', mapStyle === 'base' ? 1 : 0);
     map.setPaintProperty('myth-raster', 'raster-opacity', mapStyle === 'myth' ? 1 : 0);
     // The war-room treatment darkens the Base Map so faction colour carries the
     // information; the Myth Map keeps its own painted colours, slightly dimmed.
     map.setPaintProperty('base-raster', 'raster-brightness-max', dark ? 0.3 : 1);
     map.setPaintProperty('base-raster', 'raster-brightness-min', dark ? 0.04 : 0);
-    map.setPaintProperty('base-raster', 'raster-saturation', dark ? -0.35 : 0);
+    map.setPaintProperty('base-raster', 'raster-saturation', dark ? -0.35 : -0.25);
     map.setPaintProperty('base-raster', 'raster-contrast', dark ? 0.15 : 0);
     map.setPaintProperty('myth-raster', 'raster-brightness-max', dark ? 0.78 : 1);
     map.setPaintProperty('myth-raster', 'raster-saturation', dark ? -0.15 : 0);
-    map.setPaintProperty('void', 'background-color', mapStyle === 'myth' ? '#100c08' : SEA);
-  }, [mapStyle, baseTone, ready]);
+    map.setPaintProperty('void', 'background-color', mapStyle === 'myth' ? '#100c08' : MAP_THEME[theme].void);
+    map.setPaintProperty('territory-line', 'line-width', ['interpolate', ['linear'], ['zoom'], 1, dark ? 0.6 : 0.5, 4, dark ? 1.2 : 0.9, 7, dark ? 2.2 : 1.6]);
+  }, [mapStyle, theme, ready]);
 
   /* -- projection ---------------------------------------------------- */
 
@@ -361,6 +377,7 @@ export function MapView() {
         })
         .join('|')
     : '';
+  const territoryFilterKey = useSimulation((s) => `${s.filters.hiddenNations.join(',')}|${s.filters.hiddenTerritories.join(',')}`);
   const areaKey = state ? data?.theatres.map((t) => `${state.theatres[t.id]?.status}:${state.theatres[t.id]?.control}`).join('|') ?? '' : '';
 
   useEffect(() => {
@@ -368,7 +385,7 @@ export function MapView() {
     if (!map || !ready || !data) return;
     const src = map.getSource('territories') as maplibregl.GeoJSONSource | undefined;
     src?.setData(territoryFeatures(data, useSimulation.getState().frame, selectedTerritory));
-  }, [data, territoryKey, ready, selectedTerritory, territoryOpacity]);
+  }, [data, territoryKey, ready, selectedTerritory, territoryOpacity, theme, territoryFilterKey]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -376,6 +393,81 @@ export function MapView() {
     const src = map.getSource('areas') as maplibregl.GeoJSONSource | undefined;
     src?.setData(areaFeatures(data, useSimulation.getState().state));
   }, [data, areaKey, ready, territoryOpacity]);
+
+  /* -- synthesised occupation (RECONSTRUCTED) ----------------------- */
+
+  const fieldCanvas = useRef<HTMLCanvasElement | null>(null);
+  const occupationOn = layers.occupation;
+  const hiddenForcesKey = useSimulation((s) => s.filters.hiddenForces.join(','));
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    if (!fieldCanvas.current) {
+      fieldCanvas.current = document.createElement('canvas');
+      fieldCanvas.current.width = GRID_W;
+      fieldCanvas.current.height = GRID_H;
+    }
+    if (!map.getSource('occupation')) {
+      map.addSource('occupation', { type: 'canvas', canvas: fieldCanvas.current, coordinates: atlasCorners(), animate: false });
+      map.addLayer(
+        { id: 'occupation', type: 'raster', source: 'occupation', paint: { 'raster-resampling': 'linear', 'raster-fade-duration': 0, 'raster-opacity': 1 } },
+        'area-fill',
+      );
+    }
+  }, [ready]);
+
+  // Recompute at most ~8 times a second; the field depends on positions that
+  // move continuously, so it follows the clock rather than integer frames.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !data) return;
+    if (!occupationOn) {
+      setField(null);
+      if (map.getLayer('occupation')) map.setLayoutProperty('occupation', 'visibility', 'none');
+      return;
+    }
+    if (map.getLayer('occupation')) map.setLayoutProperty('occupation', 'visibility', 'visible');
+    let last = -1;
+    let lastSig = '';
+    let timer = 0;
+    let settling = -1;
+    const hidden = new Set(hiddenForcesKey ? hiddenForcesKey.split(',') : []);
+    const update = () => {
+      const clock = useSimulation.getState().clock;
+      const frame = clock ? clock.frame : 0;
+      // While the reader scrubs (big jumps between ticks), wait for the
+      // position to settle instead of recomputing for every intermediate frame.
+      const jump = last >= 0 && Math.abs(frame - last) > 36;
+      if (jump && settling !== frame) {
+        settling = frame;
+        timer = window.setTimeout(update, 125);
+        return;
+      }
+      settling = -1;
+      if (Math.abs(frame - last) >= 0.5 || last < 0) {
+        last = frame;
+        const field = computeField(data, frame, hidden);
+        const prefs = usePreferences.getState();
+        if (field.signature !== lastSig || prefs.theme !== themeRef.current) {
+          lastSig = field.signature;
+          themeRef.current = prefs.theme;
+          paintField(fieldCanvas.current!, field, { empire: FACTION_COLOR.empire, allied: FACTION_COLOR.tempest, contested: INK.accent }, MAP_THEME[prefs.theme].occupiedAlpha);
+          const src = map.getSource('occupation') as maplibregl.CanvasSource | undefined;
+          // A static canvas source re-uploads only while playing; play for one frame.
+          src?.play();
+          map.once('render', () => src?.pause());
+          map.triggerRepaint();
+        }
+        setField(field);
+      }
+      timer = window.setTimeout(update, 125);
+    };
+    update();
+    return () => window.clearTimeout(timer);
+  }, [data, ready, occupationOn, hiddenForcesKey, theme]);
+
+  const themeRef = useRef<string>('');
 
   /* -- layer visibility & border opacity ---------------------------- */
 
@@ -466,6 +558,7 @@ export function MapView() {
       <div ref={container} style={{ position: 'absolute', inset: 0 }} />
       {ready ? <Overlay map={mapRef.current} /> : null}
       <MapControls map={mapRef.current} ready={ready} />
+      {ready ? <Minimap map={mapRef.current} /> : null}
     </div>
   );
 }

@@ -12,6 +12,18 @@ import { createJSONStorage, persist, type StateStorage } from 'zustand/middlewar
  */
 
 export type MapStyle = 'base' | 'myth';
+/**
+ * Documentary: light ground, solid faction fills, white fronts — the register
+ * of the reference war documentaries. War room: the dark analytic register.
+ */
+export type MapTheme = 'documentary' | 'warroom';
+
+export interface Bookmark {
+  id: string;
+  frame: number;
+  eventId: string | null;
+  label: string;
+}
 export type Scale = 'S' | 'M' | 'L';
 export type Density = 'compact' | 'comfortable';
 
@@ -19,6 +31,7 @@ export type WarLayer =
   | 'territories'
   | 'operationalAreas'
   | 'frontlines'
+  | 'occupation'
   | 'movement'
   | 'trails'
   | 'forces'
@@ -33,7 +46,8 @@ export type WarLayer =
 export const WAR_LAYERS: { id: WarLayer; name: string; note: string }[] = [
   { id: 'territories', name: 'Territories', note: 'National regions traced from the drawn borders of the base map, coloured by their part in the war.' },
   { id: 'operationalAreas', name: 'Operational areas', note: 'Schematic theatre areas, clipped to the drawn borders. Not borders themselves.' },
-  { id: 'frontlines', name: 'Frontlines', note: 'Contact between opposed forces in a live theatre. Schematic.' },
+  { id: 'occupation', name: 'Fronts & occupation', note: 'Ground held around the armies, synthesised from force positions and strengths. RECONSTRUCTED: the novels draw no front line.' },
+  { id: 'frontlines', name: 'Contact marks', note: 'Schematic contact between opposed forces in a live theatre.' },
   { id: 'movement', name: 'Army movement', note: 'Recorded movements. Solid, reconstructed and schematic routes are drawn differently; unknown routes are not drawn.' },
   { id: 'trails', name: 'Movement trails', note: 'Where a formation has been.' },
   { id: 'forces', name: 'Forces', note: 'Formations at their recorded positions.' },
@@ -48,8 +62,9 @@ export const WAR_LAYERS: { id: WarLayer; name: string; note: string }[] = [
 
 export const DEFAULT_LAYERS: Record<WarLayer, boolean> = {
   territories: true,
-  operationalAreas: true,
-  frontlines: true,
+  operationalAreas: false,
+  occupation: true,
+  frontlines: false,
   movement: true,
   trails: false,
   forces: true,
@@ -64,8 +79,7 @@ export const DEFAULT_LAYERS: Record<WarLayer, boolean> = {
 
 export interface Preferences {
   mapStyle: MapStyle;
-  /** Base map rendering: the war-room dark treatment, or the source colours. */
-  baseTone: 'dark' | 'original';
+  theme: MapTheme;
   globe: boolean;
   layers: Record<WarLayer, boolean>;
   territoryOpacity: number;
@@ -80,6 +94,10 @@ export interface Preferences {
   railOpen: boolean;
   panelOpen: boolean;
   reducedMotion: 'system' | 'reduce' | 'full';
+  /** Slow to 1x for a moment when playback reaches a turning point. */
+  autoSlow: boolean;
+  showMinimap: boolean;
+  bookmarks: Bookmark[];
 }
 
 interface PreferenceActions {
@@ -87,14 +105,17 @@ interface PreferenceActions {
   toggleLayer: (id: WarLayer) => void;
   setLayer: (id: WarLayer, on: boolean) => void;
   reset: () => void;
+  setTheme: (theme: MapTheme) => void;
+  addBookmark: (b: Omit<Bookmark, 'id'>) => void;
+  removeBookmark: (id: string) => void;
 }
 
 export const DEFAULT_PREFERENCES: Preferences = {
   mapStyle: 'base',
-  baseTone: 'dark',
+  theme: 'documentary',
   globe: false,
   layers: DEFAULT_LAYERS,
-  territoryOpacity: 0.35,
+  territoryOpacity: 0.7,
   borderOpacity: 0.8,
   movementOpacity: 0.9,
   trailWidth: 1.5,
@@ -106,6 +127,9 @@ export const DEFAULT_PREFERENCES: Preferences = {
   railOpen: false,
   panelOpen: true,
   reducedMotion: 'system',
+  autoSlow: true,
+  showMinimap: true,
+  bookmarks: [],
 };
 
 /** localStorage can throw (private mode, blocked storage); preferences then simply don't persist. */
@@ -140,12 +164,16 @@ export const usePreferences = create<Preferences & PreferenceActions>()(
       set: (key, value) => set({ [key]: value } as Partial<Preferences>),
       toggleLayer: (id) => set((s) => ({ layers: { ...s.layers, [id]: !s.layers[id] } })),
       setLayer: (id, on) => set((s) => ({ layers: { ...s.layers, [id]: on } })),
-      reset: () => set({ ...DEFAULT_PREFERENCES }),
+      reset: () => set((s) => ({ ...DEFAULT_PREFERENCES, bookmarks: s.bookmarks })),
+      // Each theme has its own sensible fill strength; switching restores it.
+      setTheme: (theme) => set({ theme, territoryOpacity: theme === 'documentary' ? 0.7 : 0.35 }),
+      addBookmark: (b) => set((s) => ({ bookmarks: [...s.bookmarks, { ...b, id: `bm-${b.frame}-${s.bookmarks.length}` }].sort((x, y) => x.frame - y.frame) })),
+      removeBookmark: (id) => set((s) => ({ bookmarks: s.bookmarks.filter((b) => b.id !== id) })),
     }),
     {
-      name: 'tempest-atlas.preferences.v2',
+      name: 'tempest-atlas.preferences.v3',
       storage: createJSONStorage(() => safeStorage),
-      version: 2,
+      version: 3,
       merge: (persisted, current) => {
         const p = (persisted ?? {}) as Partial<Preferences>;
         return { ...current, ...p, layers: { ...DEFAULT_LAYERS, ...(p.layers ?? {}) } };

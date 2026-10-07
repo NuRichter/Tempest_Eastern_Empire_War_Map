@@ -8,6 +8,9 @@ import { PROVENANCE_LABEL } from '@/lib/taxonomy';
 import { currentEvent } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
 import { Figure, Portrait, ProvenanceBadge } from '@/components/ui/primitives';
+import { RollingNumber } from '@/components/ui/RollingNumber';
+import { usePreferences } from '@/state/preferences';
+import { FRAMES_PER_SECOND_AT_1X } from '@/simulation/clock';
 import type { WarEvent } from '@/types/dataset';
 
 const CAPTION_FRAMES = 30; // a caption belongs to its event for five simulated hours
@@ -51,7 +54,15 @@ export function CinematicOverlay() {
     return () => window.clearTimeout(id);
   }, [cinematic]);
 
+  const theme = usePreferences((s) => s.theme);
+  const speed = useSimulation((s) => s.clock?.currentSpeed ?? 1);
+  const playing = useSimulation((s) => s.playing);
   if (!cinematic || !data || !state) return null;
+  const light = theme === 'documentary';
+  const dateText = light ? 'text-[#111417] [text-shadow:0_0_6px_rgba(255,255,255,0.9)]' : 'text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.85)]';
+  const subText = light ? 'text-[#2a3237] [text-shadow:0_0_5px_rgba(255,255,255,0.9)]' : 'text-white/80 [text-shadow:0_1px_6px_rgba(0,0,0,0.9)]';
+  const simPerSec = speed * FRAMES_PER_SECOND_AT_1X * 10;
+  const rate = simPerSec < 60 ? `${Math.round(simPerSec)} min / s` : simPerSec < 1440 ? `${+(simPerSec / 60).toFixed(1)} h / s` : `${+(simPerSec / 1440).toFixed(1)} days / s`;
   const day = data.timeline.battleDay[frame];
   const fpd = data.manifest.clock.framesPerDay;
   const hhmm = `${String(Math.floor(((frame % fpd) * 10) / 60)).padStart(2, '0')}:${String(((frame % fpd) * 10) % 60).padStart(2, '0')}`;
@@ -61,25 +72,26 @@ export function CinematicOverlay() {
 
   return (
     <div className="pointer-events-none absolute inset-0 z-20">
-      {/* Date: the strongest readout. */}
+      {/* Date: the strongest readout, fixed top-left, like the reference films. */}
       <div className="absolute left-5 top-4">
-        <p className="figure text-[clamp(28px,5.2vh,52px)] font-medium leading-none text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.85)]">{battleDayLabel(day)}</p>
-        <p className="figure mt-1 text-[clamp(14px,2.4vh,22px)] text-white/85 [text-shadow:0_1px_6px_rgba(0,0,0,0.9)]">
-          {hhmm} <span className="text-[0.6em] uppercase tracking-label text-white/60">simulation time</span>
+        <p className={`figure text-[clamp(30px,5.4vh,56px)] font-bold leading-none tracking-tight ${dateText}`}>{battleDayLabel(day)}</p>
+        <p className={`figure mt-1 text-[clamp(15px,2.6vh,24px)] font-semibold ${subText}`}>
+          {hhmm} <span className="text-[0.55em] font-medium uppercase tracking-label opacity-75">simulation time</span>
         </p>
-        <p className="mt-1 text-sm uppercase tracking-label text-white/70 [text-shadow:0_1px_6px_rgba(0,0,0,0.9)]">{phaseLabel(state.phase)}</p>
+        <p className={`mt-1 text-sm font-semibold uppercase tracking-label ${subText}`}>{phaseLabel(state.phase)}</p>
+        <p className={`figure mt-1 text-2xs uppercase tracking-label ${subText}`}>{playing ? `▶ ${speed}× · ${rate}` : '❚❚ paused'}</p>
       </div>
 
       {/* Ledger, top right. */}
-      <div className="absolute right-5 top-4 w-[min(17rem,40vw)] rounded-[4px] border border-white/10 bg-ink-950/55 p-3 backdrop-blur-sm">
+      <div className="absolute right-5 top-4 w-[min(17rem,40vw)] rounded-[4px] border border-white/10 bg-ink-950/70 p-3">
         <p className="eyebrow text-white/60">Imperial losses to date</p>
         <div className="mt-1.5 grid grid-cols-2 gap-x-3 gap-y-1 text-sm">
           <span className="text-white/70">Killed</span>
-          <span className="text-right"><Figure value={state.casualties.empire.kia} /></span>
+          <span className="text-right text-white"><RollingNumber value={state.casualties.empire.kia} /></span>
           <span className="text-white/70">Revived</span>
-          <span className="text-right"><Figure value={state.casualties.empire.revived} /></span>
+          <span className="text-right text-white"><RollingNumber value={state.casualties.empire.revived} /></span>
           <span className="text-white/70">Captured</span>
-          <span className="text-right"><Figure value={state.casualties.empire.pow} /></span>
+          <span className="text-right text-white"><RollingNumber value={state.casualties.empire.pow} /></span>
         </div>
         <p className="mt-2 border-t border-white/10 pt-1.5 text-2xs text-white/55">Tempest killed: <Figure value={state.casualties.tempest.kia} /></p>
       </div>
@@ -111,7 +123,7 @@ export function CinematicOverlay() {
 
       {/* Opening disclaimer, then the closing card. */}
       {intro && !ended ? (
-        <div className="absolute left-5 top-[9.5rem] max-w-xs rounded-[4px] border border-white/10 bg-ink-950/75 px-3 py-2 text-2xs leading-relaxed text-white/75">
+        <div className="absolute left-5 top-[11rem] max-w-xs rounded-[4px] border border-white/10 bg-ink-950/75 px-3 py-2 text-2xs leading-relaxed text-white/75">
           A fan-made reconstruction from the Tensura light novels, vols. 12–16. Not official material. Times are simulation placements; reconstructed elements are labelled.
         </div>
       ) : null}

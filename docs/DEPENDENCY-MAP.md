@@ -1,0 +1,80 @@
+# Dependency map
+
+How every source in the workspace relates to what the atlas shows. "Workspace" is `C:\Users\NuRichter\Documents\Tempest-Eastern Empire War\`; the repository is its `Tempest_Eastern_Empire_War_Map\` folder, which carries a mirror of `Sources of Truth\` (identical except two generator path fixes and the git-ignored videos and photocard work files).
+
+## Classes
+
+| Class | Meaning |
+|---|---|
+| **Canonical** | Research authority. Never edited by the build. |
+| **Source** | Hand-maintained input to the compiler, derived from canonical material, edited deliberately and reviewed. |
+| **Generated** | Written by a script; never edit by hand; reproducible. |
+| **Derivative** | A processed copy of a canonical asset (resized, re-encoded, renamed). |
+| **Visual reference** | Studied for design principles only; not shipped. |
+| **Temporary** | Work files of a tool; safe to delete. |
+| **Stale / archived** | Kept for the evidence chain; no longer read by the build. |
+
+## Flow
+
+```
+Sources of Truth/ ─┬─ Sources/Tensura Volume 12–16.pdf ··········· canonical (primary text, read by the audit)
+                   ├─ Timeline Database/*.py, *.xlsx, *.md ········ stale/archived (Step 1, pre-audit revision)
+                   ├─ Source Map/Base Map - Blue.png ─────────────▶ public/maps/base-map.png (derivative, renamed)
+                   │                                              └▶ scripts/cartography/extract_territories.py
+                   │                                                 └▶ data-source/territories.geo.source.json (generated)
+                   ├─ Source Map/Central World Tensura.png ───────▶ public/maps/myth-map.jpg (derivative, re-encoded)
+                   ├─ Source Map/… with Tick.png ·················· canonical (pin positions measured into the gazetteer)
+                   ├─ Source Map/… All Territories … Capital.png ··· canonical (region identities in regions.config.json)
+                   ├─ Pilihan Map/ ································ duplicate of the two style maps (reference)
+                   ├─ Nation Flag/ ───────────────────────────────▶ public/assets/nation-flags/ (derivative copy)
+                   ├─ Character Photocard/*.jpg + metadata ────────▶ scripts/characters/build_photocards.py
+                   │                                                 └▶ public/assets/characters/*.jpg (derivative)
+                   ├─ Character Photocard/_work/ ·················· temporary (git-ignored)
+                   ├─ Character Photocard/tools/__pycache__/ ······ temporary
+                   ├─ Contoh Referensi Tujuan Proyek/*.mp4 ········ visual reference (git-ignored, not shipped)
+                   └─ GIF Assets/ ································· README decoration (third-party, not licensed by the project)
+
+data-source/ ──────┬─ campaign/*.json, events/*.json ············· source (R5 canon audit)
+                   ├─ campaign/AUDIT-PLAN.md ······················ source documentation (clock skeleton)
+                   ├─ gazetteer.source.json ······················· source (positions + placement grades)
+                   ├─ territory-control.source.json ··············· source
+                   ├─ characters.source.json ······················ source (names from terminology, photocard provenance)
+                   ├─ terminology.source.json ····················· source
+                   └─ territories.geo.source.json ················· generated (extract_territories.py)
+        │
+        ▼ scripts/compile-data.ts
+public/data/*.json ··········································· generated (deterministic; committed so the site can deploy as-is)
+        │
+        ▼ src/data/loader.ts → src/simulation → src/map, src/components
+the atlas
+```
+
+## Per-file classification (repository)
+
+| Path | Class | Read by | Notes |
+|---|---|---|---|
+| `Sources of Truth/Sources/*.pdf` | canonical | the canon audit (offline) | Copyrighted fan translations (vols 12–15) and an edition (vol 16); see the README's attribution note. Not read by the build. |
+| `Sources of Truth/Timeline Database/source_dataset_*.py` | stale/archived | — | Step 1 revisions r1 → r3 → final; the evidence chain of the pre-audit dataset. |
+| `Sources of Truth/Timeline Database/*.xlsx`, `*.md` | stale/archived | — | Step 1 output. The build read these until R5; now it reads `data-source/campaign/`. |
+| `Sources of Truth/Timeline Database/keyframe_generator.py`, `markdown_generator.py`, `validate_temporal.py` | stale/archived | — | Step 1 tooling (imports `dataset_lock`, a name the archive no longer contains). |
+| `Sources of Truth/Source Map/*` | canonical | cartography scripts, gazetteer measurements | All four share the 2641 × 2035 frame except the screenshot and the labelled reference. |
+| `Sources of Truth/Character Photocard/metadata/character_manifest.json` | canonical | characters source (offline), validation | Per-image source URL and tier; no licence recorded. |
+| `Sources of Truth/Character Photocard/metadata/cache/*` | temporary | — | Scraper cache of the photocard tool. |
+| `Sources of Truth/Nation Flag/*` | canonical | — | Copied to `public/assets/nation-flags/`. |
+| `data-source/campaign/**` | source | `compile-data.ts` | The campaign. Edit here. |
+| `data-source/territories.geo.source.json` | generated | `compile-data.ts` | From `extract_territories.py`; do not hand-edit. |
+| `data-source/*.source.json` (others) | source | `compile-data.ts` | |
+| `scripts/cartography/regions.config.json` | source | `extract_territories.py` | Seed points and names for the traced regions. |
+| `scripts/migrate/runtime-to-campaign.mjs` | stale/archived | — | One-time migration from the Step 1 runtime to the campaign source. Re-running it would overwrite R5. |
+| `public/data/**` | generated | the browser | Deterministic; committed. |
+| `public/maps/base-map.png`, `myth-map.jpg` | derivative | MapLibre | Validated at 2641 × 2035. |
+| `public/assets/characters/*.jpg` | derivative | dossiers, map portraits | 360 × 556 from the 2200 × 3400 cards. |
+| `public/assets/nation-flags/**` | derivative | `Flag` component | Validated by `validate-assets`. |
+| `docs/audit/baseline/*.jpg`, `docs/qa/checkpoints/*.jpg` | generated | humans, `qa:visual` | Small JPEGs: the pre-upgrade baseline and the visual-regression references. |
+| `qa-artifacts/`, `.playwright-cli/`, `.next/` | temporary | — | Git-ignored. |
+
+## Stale or duplicated items noticed
+
+- `Sources of Truth/Pilihan Map/` duplicates two files of `Source Map/` byte for byte.
+- The Step 1 generators reference module names (`dataset_lock`, `dataset_final`, `dataset_v1_backup`) that were renamed when archived, so they no longer run as-is; they are evidence, not tools.
+- The Step 1 workbook copies that used to sit in `data-source/` were removed in the 2.0 commit (identical to the archive).

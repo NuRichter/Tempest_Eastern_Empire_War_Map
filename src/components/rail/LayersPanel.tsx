@@ -31,7 +31,7 @@ export function LayersPanel() {
             </button>
           ))}
         </div>
-        <Segmented label="Base map tone" value={p.baseTone} onChange={(v) => p.set('baseTone', v)} options={[{ id: 'dark', label: 'War room' }, { id: 'original', label: 'Original' }]} />
+        <Segmented label="Look" value={p.theme} onChange={(v) => p.setTheme(v)} options={[{ id: 'documentary', label: 'Documentary' }, { id: 'warroom', label: 'War room' }]} />
         <Segmented label="Projection" value={p.globe ? 'globe' : 'flat'} onChange={(v) => p.set('globe', v === 'globe')} options={[{ id: 'flat', label: 'Flat' }, { id: 'globe', label: 'Globe' }]} />
       </Section>
 
@@ -55,6 +55,10 @@ export function LayersPanel() {
           <Segmented label="Force markers" value={p.markerScale} onChange={(v) => p.set('markerScale', v)} options={SCALES} />
           <Segmented label="Event markers" value={p.eventMarkerScale} onChange={(v) => p.set('eventMarkerScale', v)} options={SCALES} />
           <Segmented label="Panel density" value={p.density} onChange={(v) => p.set('density', v)} options={[{ id: 'compact', label: 'Compact' }, { id: 'comfortable', label: 'Comfort' }]} />
+          <div className="-mx-0">
+            <Toggle checked={p.autoSlow} onChange={(v) => p.set('autoSlow', v)} label="Slow down at turning points" note="Playback drops to 1× for a moment when it reaches a turning point, as documentaries do." />
+            <Toggle checked={p.showMinimap} onChange={(v) => p.set('showMinimap', v)} label="Overview minimap" />
+          </div>
           <Segmented label="Motion" value={p.reducedMotion} onChange={(v) => p.set('reducedMotion', v)} options={[{ id: 'system', label: 'System' }, { id: 'reduce', label: 'Reduce' }, { id: 'full', label: 'Full' }]} />
         </div>
         <button type="button" onClick={p.reset} className="ctl mt-2 w-full">

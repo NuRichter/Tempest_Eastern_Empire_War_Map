@@ -38,6 +38,7 @@ import {
   type Territory,
   type TerritoryChange,
   type Theatre,
+  type TimelineGap,
   type TimelineIndex,
   type WarEvent,
 } from '../src/types/dataset';
@@ -109,6 +110,7 @@ function main(): void {
   const factions = load<Faction[]>('factions.json');
   const stages = load<CampaignStage[]>('stages.json');
   const terms = load<TermEntry[]>('terms.json');
+  const gaps = load<TimelineGap[]>('gaps.json');
   const keyIndex = load<{ interval: number; frames: number[]; files: string[] }>('keyframes.index.json');
   const deltaFile = load<{ deltaFrames: number[]; deltas: Record<string, Partial<FrameState>> }>('state.deltas.json');
 
@@ -354,6 +356,15 @@ function main(): void {
     for (const a of s.anchorEvents) ref(eventIds, a, `stage ${s.id}.anchorEvents`);
   }
 
+  uniqueIds(gaps, 'timeline gaps');
+  for (const g of gaps) {
+    ref(eventIds, g.fromEvent, `gap ${g.id}.fromEvent`);
+    ref(eventIds, g.toEvent, `gap ${g.id}.toEvent`);
+    if (g.toFrame <= g.fromFrame) fail(`gap ${g.id}: ends before it starts.`);
+    if (!g.reconstructionBasis) fail(`gap ${g.id}: no reconstruction basis.`);
+  }
+  for (const t of geo.territories) if (t.sourceGrade !== 'MEASURED' || !['LOW', 'MEDIUM', 'HIGH'].includes(t.uncertainty)) fail(`territory ${t.id}: missing source grade or uncertainty.`);
+
   /* -- timeline index & state stream ------------------------------- */
 
   for (const k of ['date', 'phase', 'stage'] as const) {
@@ -404,7 +415,7 @@ function main(): void {
   console.log(`  events            ${events.length}  (${PROVENANCE_ORDER.map((p) => `${p.toLowerCase()} ${events.filter((e) => e.provenance === p).length}`).join(', ')})`);
   console.log(`  forces            ${forces.length}  battles ${battles.length}  movements ${movementFile.movements.length}  characters ${characters.length}`);
   console.log(`  imperial killed   ${t.empireKilled}  revived ${t.empireRevived}  permanent ${t.empirePermanentDead}`);
-  console.log(`  territories       ${geo.territories.length}  places ${places.length}  nations ${nations.length}`);
+  console.log(`  territories       ${geo.territories.length}  places ${places.length}  nations ${nations.length}  timeline gaps ${gaps.length}`);
   for (const w of warnings) console.log(`  warn  ${w}`);
   if (errors.length) {
     console.error(`\nDataset validation FAILED with ${errors.length} error(s):`);

@@ -53,6 +53,51 @@ export function FiltersPanel() {
         </div>
       </Section>
 
+      <Section title="Nations" defaultOpen={false}>
+        <p className="px-1.5 pb-1 text-2xs text-fg-3">Hides the nation&apos;s territory fill and its formations.</p>
+        <div className="-mx-1.5 max-h-56 overflow-y-auto">
+          {data.nations.filter((n) => n.territoryId).map((n) => (
+            <Check key={n.id} checked={!filters.hiddenNations.includes(n.id)} onChange={() => setFilters({ hiddenNations: toggleIn(filters.hiddenNations, n.id) })}>
+              <span className="truncate">{n.name}</span>
+            </Check>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Forces" defaultOpen={false}>
+        <p className="px-1.5 pb-1 text-2xs text-fg-3">Hiding a formation hides everything it contains.</p>
+        <div className="-mx-1.5 max-h-72 overflow-y-auto">
+          {data.forces.filter((f) => f.depth <= 2).map((f) => (
+            <Check key={f.id} checked={!filters.hiddenForces.includes(f.id)} onChange={() => setFilters({ hiddenForces: toggleIn(filters.hiddenForces, f.id) })}>
+              <span style={{ paddingLeft: f.depth * 10 }} className="flex min-w-0 items-center gap-1.5">
+                <FactionDot faction={f.faction} size={6} />
+                <span className="truncate">{f.displayName}</span>
+              </span>
+            </Check>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Battles" defaultOpen={false}>
+        <div className="-mx-1.5">
+          {data.battles.map((b) => (
+            <Check key={b.id} checked={!filters.hiddenBattles.includes(b.id)} onChange={() => setFilters({ hiddenBattles: toggleIn(filters.hiddenBattles, b.id) })}>
+              <span className="truncate">{b.name}</span>
+            </Check>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Territories" defaultOpen={false}>
+        <div className="-mx-1.5 max-h-56 overflow-y-auto">
+          {data.territories.map((t) => (
+            <Check key={t.id} checked={!filters.hiddenTerritories.includes(t.id)} onChange={() => setFilters({ hiddenTerritories: toggleIn(filters.hiddenTerritories, t.id) })}>
+              <span className="truncate">{t.display}</span>
+            </Check>
+          ))}
+        </div>
+      </Section>
+
       <Section title="Theatres">
         <div className="-mx-1.5">
           {data.theatres.map((t) => (

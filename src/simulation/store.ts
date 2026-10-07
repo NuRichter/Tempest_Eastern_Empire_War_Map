@@ -31,6 +31,12 @@ export type CameraRequest =
 
 export interface Filters {
   hiddenFactions: string[];
+  /** Nations whose territory fill and formations are hidden. */
+  hiddenNations: string[];
+  /** Formations hidden, with everything they contain. */
+  hiddenForces: string[];
+  hiddenBattles: string[];
+  hiddenTerritories: string[];
   hiddenTheatres: string[];
   hiddenCategories: EventCategory[];
   hiddenProvenance: Provenance[];
@@ -40,6 +46,10 @@ export interface Filters {
 
 export const EMPTY_FILTERS: Filters = {
   hiddenFactions: [],
+  hiddenNations: [],
+  hiddenForces: [],
+  hiddenBattles: [],
+  hiddenTerritories: [],
   hiddenTheatres: [],
   hiddenCategories: [],
   hiddenProvenance: [],
@@ -47,7 +57,7 @@ export const EMPTY_FILTERS: Filters = {
 };
 
 export function activeFilterCount(f: Filters): number {
-  return f.hiddenFactions.length + f.hiddenTheatres.length + f.hiddenCategories.length + f.hiddenProvenance.length + (f.minConfidence === 'ANY' ? 0 : 1);
+  return f.hiddenFactions.length + f.hiddenNations.length + f.hiddenForces.length + f.hiddenBattles.length + f.hiddenTerritories.length + f.hiddenTheatres.length + f.hiddenCategories.length + f.hiddenProvenance.length + (f.minConfidence === 'ANY' ? 0 : 1);
 }
 
 interface SimulationState {
@@ -72,6 +82,8 @@ interface SimulationState {
   filters: Filters;
   commanderFocus: string | null;
   camera: CameraRequest | null;
+  /** True while auto-slow holds playback at 1x after a turning point. */
+  autoSlowed: boolean;
 
   init: (data: Dataset) => void;
   failed: (message: string) => void;
@@ -132,6 +144,7 @@ export const useSimulation = create<SimulationState>((set, get) => ({
   railTab: 'layers',
   paletteOpen: false,
   legendOpen: false,
+  autoSlowed: false,
   helpOpen: false,
   debug: false,
   filters: EMPTY_FILTERS,
@@ -168,6 +181,8 @@ export const useSimulation = create<SimulationState>((set, get) => ({
     const i = Math.max(0, Math.min(SPEEDS.length - 1, index));
     get().clock?.setSpeed(SPEEDS[i]);
     usePreferences.getState().set('speedIndex', i);
+    // A speed the reader chooses overrides a pending auto-slow restore.
+    set({ autoSlowed: false });
   },
 
   stepEvent: (direction) => {

@@ -494,7 +494,12 @@ export interface Territory {
   name: string;
   display: string;
   nationId: NationId | null;
+  /** The faction that holds the territory at the start of the campaign. */
+  faction: FactionId | null;
   identification: 'LABELLED' | 'PARTIAL' | 'UNLABELLED';
+  sourceGrade: 'MEASURED';
+  /** Uncertainty of the region's identity (its border is always measured). */
+  uncertainty: 'LOW' | 'MEDIUM' | 'HIGH';
   boundarySource: string;
   boundaryGrade: 'MEASURED';
   labelPoint: [number, number];
@@ -503,6 +508,25 @@ export interface Territory {
   notes: string;
   geometry: GeoMultiPolygon;
   control: TerritoryControlSegment[];
+}
+
+/**
+ * A stretch of the clock between two events that the record does not fill
+ * minute by minute: how long it is, how the novel words it, and on what basis
+ * its length was placed.
+ */
+export interface TimelineGap {
+  id: string;
+  fromEvent: EventId;
+  toEvent: EventId;
+  fromFrame: number;
+  toFrame: number;
+  hours: number;
+  canonicalWording: string;
+  timePrecision: TimePrecision;
+  reconstructionBasis: string;
+  confidence: Confidence;
+  sourceRefs: SourceRef[];
 }
 
 export interface Faction {

@@ -22,6 +22,7 @@ import type {
   Territory,
   TerritoryChange,
   Theatre,
+  TimelineGap,
   TimelineIndex,
   WarEvent,
 } from '@/types/dataset';
@@ -64,6 +65,7 @@ export interface Dataset {
   factions: Faction[];
   stages: CampaignStage[];
   terms: TermEntry[];
+  gaps: TimelineGap[];
   flags: NationFlagManifest;
   /* derived indexes, built once */
   eventById: Map<string, WarEvent>;
@@ -141,6 +143,7 @@ export interface DatasetParts {
   factions: Faction[];
   stages: CampaignStage[];
   terms: TermEntry[];
+  gaps: TimelineGap[];
   flags: NationFlagManifest;
 }
 
@@ -171,6 +174,7 @@ export function assembleDataset(p: DatasetParts): Dataset {
     factions: p.factions,
     stages: p.stages,
     terms: p.terms,
+    gaps: p.gaps,
     flags: p.flags,
     eventById: new Map(p.events.map((e) => [e.id, e])),
     eventsByFrame: groupBy(p.events, (e) => e.frame),
@@ -214,6 +218,7 @@ export const PART_FILES: Record<Exclude<keyof DatasetParts, 'checkpoints'>, stri
   factions: 'factions.json',
   stages: 'stages.json',
   terms: 'terms.json',
+  gaps: 'gaps.json',
   flags: 'nation-flags.json',
 };
 

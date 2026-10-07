@@ -45,6 +45,19 @@ const Shape = ({ d, color, deep, dashed = false }: { d: string; color: string; d
   </svg>
 );
 
+/** The event marker: a dark centre in a ring of short ticks. */
+const EventRing = ({ stroke, broken = false }: { stroke: string; broken?: boolean }) => (
+  <svg width="18" height="18" viewBox="-9 -9 18 18" aria-hidden>
+    <circle r="4.3" fill="rgba(12,16,18,0.62)" />
+    {Array.from({ length: 16 }, (_, i) => i)
+      .filter((i) => !broken || i % 2 === 0)
+      .map((i) => {
+        const a = (i / 16) * Math.PI * 2;
+        return <line key={i} x1={Math.cos(a) * 5.5} y1={Math.sin(a) * 5.5} x2={Math.cos(a) * 8} y2={Math.sin(a) * 8} stroke={stroke} strokeWidth="1.2" strokeLinecap="round" opacity={broken ? 0.75 : 1} />;
+      })}
+  </svg>
+);
+
 const SHAPES = {
   square: 'M-7-7H7V7H-7Z',
   circle: 'M0-8A8 8 0 1 1 0 8A8 8 0 1 1 0-8Z',
@@ -83,7 +96,9 @@ export function Legend() {
             <Row swatch={<Fill color={FACTION_COLOR.neutral} opacity={0.25} />} label={ROLE_LABEL.CONTRIBUTOR} note="Contributes individuals or a small element." />
             <Row swatch={<Fill color="#6b757a" opacity={0.12} />} label={ROLE_LABEL.UNINVOLVED} note="Inactive territory." />
             <Row swatch={<Fill color={FACTION_COLOR.unknown} opacity={0.25} hatch />} label="Unknown control" note="Never drawn as any faction's colour." />
-            <Row swatch={<Fill color={INK.accent} opacity={0.2} hatch />} label="Contested operational area" note="Schematic theatre area, clipped to borders." />
+            <Row swatch={<Fill color={FACTION_COLOR.empire} opacity={0.86} />} label="Held by the other side (reconstructed)" note="Ground held around the armies, synthesised from force positions and strengths. The white line is the front." />
+            <Row swatch={<Fill color={INK.accent} opacity={0.35} hatch />} label="Contested" note="Where the two sides' hold is nearly even, or a schematic theatre area is contested." />
+            <Row swatch={<svg width="30" height="12" aria-hidden><line x1="2" y1="6" x2="28" y2="6" stroke={INK.accent} strokeWidth="2" strokeDasharray="2 2" /></svg>} label="Reconstructed control change" note="A change of control the source does not state exactly." />
           </ul>
         </section>
         <section>
@@ -128,9 +143,9 @@ export function Legend() {
         <section>
           <p className="eyebrow">Events</p>
           <ul className="mt-1">
-            <Row swatch={<svg width="16" height="16" viewBox="-8 -8 16 16" aria-hidden><path d="M0-6L6 0L0 6L-6 0Z" fill={INK.surface} stroke="#cfe5dc" strokeWidth="1.4" /></svg>} label="Event" note="Fades over a simulated day." />
-            <Row swatch={<svg width="16" height="16" viewBox="-8 -8 16 16" aria-hidden><path d="M0-7L7 0L0 7L-7 0Z" fill={INK.surface} stroke={INK.accent} strokeWidth="2" /></svg>} label="Turning point" note="Stays on the map, numbered by rank." />
-            <Row swatch={<svg width="16" height="16" viewBox="-8 -8 16 16" aria-hidden><path d="M0-6L6 0L0 6L-6 0Z" fill={INK.surface} stroke="#c79a4e" strokeWidth="1.4" strokeDasharray="2 2" /></svg>} label="Reconstructed or inferred event" note="Dashed outline." />
+            <Row swatch={<EventRing stroke="#ffffff" />} label="Event" note="Pops in when reached; its label shows for about two seconds, then the ring fades over a simulated day." />
+            <Row swatch={<EventRing stroke="#f3d58d" />} label="Turning point" note="Gold ring; stays on the map, numbered by rank." />
+            <Row swatch={<EventRing stroke="#ffffff" broken />} label="Reconstructed or inferred event" note="Broken ring." />
           </ul>
         </section>
         <section>
@@ -140,7 +155,7 @@ export function Legend() {
               <li key={p}><ProvenanceBadge value={p} /></li>
             ))}
           </ul>
-          <p className="mt-2 text-2xs leading-relaxed text-fg-3">Times are simulation placements on a 10-minute grid. Coordinates are simulation coordinates on a fictional map, not latitude and longitude.</p>
+          <p className="mt-2 text-2xs leading-relaxed text-fg-3">On the timeline, hatched stretches are gaps the record does not fill (gold: low confidence). Times are simulation placements on a 10-minute grid. Coordinates are simulation coordinates on a fictional map, not latitude and longitude.</p>
         </section>
       </div>
     </aside>

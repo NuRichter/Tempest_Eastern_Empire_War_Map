@@ -29,14 +29,14 @@ export function TopBar() {
   return (
     <header className="relative z-30 flex h-11 shrink-0 items-center gap-3 border-b border-ink-500 bg-ink-850 px-3">
       <div className="flex min-w-0 items-baseline gap-2">
-        <h1 className="truncate font-display text-[15px] font-semibold tracking-wide text-fg">Tempest–Eastern Empire War</h1>
-        <span className="hidden text-2xs uppercase tracking-label text-fg-3 lg:inline">Campaign Atlas · fan research</span>
+        <h1 className="shrink-0 whitespace-nowrap font-display text-[15px] font-semibold tracking-wide text-fg">Tempest–Eastern Empire War</h1>
+        <span className="hidden whitespace-nowrap text-2xs uppercase tracking-label text-fg-3 2xl:inline">Campaign Atlas · fan research</span>
       </div>
 
       <div className="mx-auto hidden min-w-0 items-center gap-3 md:flex">
         <span className="figure text-sm text-fg">{day < 0 ? `D−${String(-day).padStart(2, '0')}` : `D+${String(day).padStart(2, '0')}`}</span>
         <span className="h-3 w-px bg-ink-400" aria-hidden />
-        <span className="text-sm text-fg-2">{phaseLabel(state.phase)}</span>
+        <span className="whitespace-nowrap text-sm text-fg-2">{phaseLabel(state.phase)}</span>
         {latest ? (
           <>
             <span className="h-3 w-px bg-ink-400" aria-hidden />

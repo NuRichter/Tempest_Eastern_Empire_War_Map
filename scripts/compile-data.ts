@@ -62,6 +62,7 @@ import type {
   TheatreFrameState,
   TimelineIndex,
   TimePrecision,
+  TimelineGap,
   WarEvent,
 } from '../src/types/dataset';
 import type {
@@ -915,7 +916,11 @@ const territories: Territory[] = geo.territories.map((t) => {
     : [{ fromFrame: 0, fromEvent: null, controller: nation?.name ?? null, ...controlSrc.defaultForUnlisted }];
   control.sort((a, b) => a.fromFrame - b.fromFrame);
   return {
-    id: t.id, name: t.name, display: t.display, nationId: t.nationId, identification: t.identification,
+    id: t.id, name: t.name, display: t.display, nationId: t.nationId,
+    faction: control[0]?.controller ?? null,
+    identification: t.identification,
+    sourceGrade: 'MEASURED',
+    uncertainty: t.identification === 'LABELLED' ? 'LOW' : t.identification === 'PARTIAL' ? 'MEDIUM' : 'HIGH',
     boundarySource: t.boundarySource, boundaryGrade: t.boundaryGrade, labelPoint: t.labelPoint,
     bounds: boundsOf(t.geometry), areaFraction: t.areaFraction, notes: t.notes, geometry: t.geometry, control,
   };
@@ -935,6 +940,34 @@ const campaignStages: CampaignStage[] = stageSrc.map((s) => {
 });
 
 const terms: TermEntry[] = terminologySrc.map((t) => ({ id: t.id, kind: t.kind, canonical: t.canonical, display: t.display, japanese: t.japanese, aliases: t.aliases }));
+
+/* ------------------------------------------------------------------ */
+/* Timeline gaps                                                       */
+/* ------------------------------------------------------------------ */
+
+// Every stretch longer than six simulated hours between consecutive events is
+// recorded as a gap: its length is a placement, and the record says on what basis.
+const GAP_FRAMES = 36;
+const GAP_CONFIDENCE: Record<TimePrecision, Confidence> = { CANONICAL_RELATIVE: 'HIGH', DAY_LEVEL: 'MEDIUM', SEQUENTIAL: 'MEDIUM', RECONSTRUCTED: 'LOW' };
+const timelineGaps: TimelineGap[] = [];
+for (let i = 1; i < events.length; i += 1) {
+  const a = events[i - 1];
+  const b = events[i];
+  if (b.frame - a.frame <= GAP_FRAMES) continue;
+  timelineGaps.push({
+    id: `GAP-${String(timelineGaps.length + 1).padStart(3, '0')}`,
+    fromEvent: a.id,
+    toEvent: b.id,
+    fromFrame: a.frame,
+    toFrame: b.frame,
+    hours: Math.round(((b.frame - a.frame) * MPF) / 60),
+    canonicalWording: b.canonicalTime,
+    timePrecision: b.timePrecision,
+    reconstructionBasis: b.reconstructionNote || (b.timePrecision === 'CANONICAL_RELATIVE' ? 'Interval stated by the source.' : 'Placement between canonical anchors; see the clock skeleton in AUDIT-PLAN.md.'),
+    confidence: GAP_CONFIDENCE[b.timePrecision],
+    sourceRefs: b.sourceRefs,
+  });
+}
 
 /* ------------------------------------------------------------------ */
 /* Manifest & write                                                    */
@@ -968,7 +1001,7 @@ const manifest: Manifest = {
     casualties: casualties.length, commanders: commanders.length, combatants: combatants.length, characters: characters.length,
     movements: movements.length, territories: territories.length, territoryChanges: territoryChanges.length,
     theatres: theatres.length, nations: nations.length, factions: factions.length, stages: campaignStages.length,
-    contradictions: referenceSrc.contradictions.length, ambiguities: referenceSrc.ambiguities.length, terms: terms.length,
+    contradictions: referenceSrc.contradictions.length, ambiguities: referenceSrc.ambiguities.length, terms: terms.length, gaps: timelineGaps.length,
   },
 };
 
@@ -1009,6 +1042,7 @@ put('nation-flags.json', flagManifest);
 put('factions.json', factions);
 put('stages.json', campaignStages);
 put('terms.json', terms);
+put('gaps.json', timelineGaps);
 put('reference.json', {
   contradictions: referenceSrc.contradictions,
   ambiguities: referenceSrc.ambiguities.map((a) => ({ id: a.id, subject: a.subject, ambiguity: a.ambiguity ?? a.possibleOrder ?? '', chosenPlacement: a.chosenPlacement, confidence: a.confidence })),

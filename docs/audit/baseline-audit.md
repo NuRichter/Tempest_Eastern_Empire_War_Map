@@ -28,7 +28,9 @@ Recorded on 2026-10-07 against commit `cab4ebd` ("Use relative workbook paths in
 
 ## Browser inspection (production build, Chromium, software GL)
 
-Screenshots: `docs/audit/baseline/`.
+Screenshots: `docs/audit/baseline/` — `default-globe`, `first-contact`, `battle` (frame 4600), `late-campaign` (frame 7000), `desktop-1440`, `cinematic`, `mobile-390`.
+
+The command results above were reproduced on a clean `git worktree` of `cab4ebd` with a fresh `npm ci`: install, compile, validate, lint, typecheck, test and build all exit 0; `npm run qa` fails with the same `spawn npx ENOENT`. The extra screenshots were taken from that worktree's production build, and the worktree was then removed.
 
 | Observation | Severity |
 |---|---|

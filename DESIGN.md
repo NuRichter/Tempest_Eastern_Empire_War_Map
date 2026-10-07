@@ -42,7 +42,24 @@ Defined once in `src/lib/palette.ts`, mirrored in `tailwind.config.ts`.
 
 **Provenance** — `CANONICAL #cfe5dc ■`, `CANONICAL_WITH_VISUAL_RECONSTRUCTION #8fc9b6 ◧`, `INFERRED #d9b56a ◇`, `RECONSTRUCTED #c79a4e ◌`, `UNRESOLVED #e0614f ?`. Always glyph + label + colour.
 
-**Territory fill** = faction base × role weight × user opacity (default 35%): belligerent 1.0, co-belligerent 0.75, armistice 0.55, contributor 0.45, uninvolved 0.12 (desaturated toward grey). Unknown control is grey with a light hatch. Contested operational areas use the accent hatch.
+**Territory fill** = faction base × role weight × user opacity (default 70% in Documentary, 35% in War room): belligerent 1.0, co-belligerent 0.75, armistice 0.55, contributor 0.45, uninvolved = the theme's neutral land tone. Unknown control is grey with a light hatch. Contested operational areas use the accent hatch.
+
+### Map looks (`MAP_THEME` in `palette.ts`)
+
+The chrome is always dark; the **map** has two looks, switched in Layers → *Look* and persisted.
+
+| Token | Documentary (default) | War room |
+|---|---|---|
+| `void` (sea / outside) | `#d8e3ea` | `#0b1419` |
+| `label` / `labelDim` | `#1c252b` / `#4f5b62` | `#c3c9cc` / `#8b979c` |
+| `halo` | warm white 92% | near-black 92% |
+| `border` (drawn borders) | `#9b6b74` (rose, as in the references) | `#55626a` |
+| uninvolved land | `#c8ccc4` @ 0.32 | `#6b757a` @ 0.12 |
+| `seam` / `seamCasing` (front line) | white on 45% dark casing | `#f1efe8` on 55% black |
+| `battle` (live battle label) | `#8f1d16` | `#f6d4cd` |
+| `occupiedAlpha` (held ground) | 0.86 | 0.62 |
+
+Documentary follows the reference films: light ground, solid nation colour, a white front where two colours meet. War room is the earlier dark analytic look. Every map label colour comes from these tokens, so both looks keep ≥ 4.5:1 label contrast against their halo.
 
 ## 3. Typography
 
@@ -67,13 +84,18 @@ Map labels always carry a dark halo (3px) so they read on either base map. Army-
 ┌ Top bar 44px: identity · campaign state (D±, phase, latest event + provenance) · search · legend · cinematic · help ┐
 │ Tool strip 48px │                MAP (full bleed)                 │ Situation / Dossier 384px │
 │ + drawer 312px  │   filter chip (top centre, only when filtering) │  (bottom sheet < 1024px)  │
-│                 │   map style (bottom left) · navigation (b-right)│                           │
+│                 │   minimap + map style (bottom left, clear of the│                           │
+│                 │   tool strip) · navigation + presets (b-right)  │                           │
 └ Timeline: transport · speed · D± HH:MM SIMULATION · stage bands · theatre lanes · battles · events · Now / Next ┘
 ```
 
 - **Left drawer** tabs: Layers, Filters, Events (feed), Story. Closed by default.
 - **Right panel**: *Situation* (campaign intelligence at this moment) or a *Dossier* for the selection.
 - **Below 1024px** the right panel becomes a bottom sheet (max 58% height) and drawers overlay the map.
+- **Panel density** (Layers → *Panel density*: compact / comfort) sets `data-density` on the shell; compact tightens row heights and section padding, never type below 10.5px.
+- **Minimap** (md and up, optional): the whole world with the current view outlined; click to move there.
+- **Camera presets** (bottom-right): whole campaign, central continent, Jura & Dwargon front, Dwargon eastern front, imperial capital, Eastern Empire.
+- **Bookmarks**: `B` or the dossier's bookmark button saves the moment; listed in Events, flagged on the timeline.
 
 ## 6. Components
 
@@ -91,11 +113,14 @@ Map labels always carry a dark halo (3px) so they read on either base map. Army-
 | Territory | Traced border (measured) + role fill; unknown = grey hatch |
 | Operational area | Dashed outline, clipped to borders; contested = accent hatch |
 | Force | Faction shape, echelon-stepped size; dashed outline when strength unknown; struck through when destroyed |
-| Army size | White bold number with faction-deep outline beside the marker; front totals rotated along the contact (±35°) |
+| Army size | White bold number with faction-deep outline beside the marker; front totals rotated along the contact (±35°), one per side per front |
+| Held ground (occupation) | Solid faction colour grown around each side's formations (influence ∝ ∛strength), over the home nation's baseline; nearly even ground = faded holder colour; RECONSTRUCTED, labelled as such in the legend and the Situation panel |
+| Front seam | White line with a thin dark casing where the held-ground colours meet (marching squares on the field) |
 | Movement | Bowed route, travelled part solid/dashed/dotted by route confidence (SOLID/RECONSTRUCTED/SCHEMATIC); UNKNOWN not drawn; label = force + strength at departure |
 | Battle | Contact ring + type icon (blades, crenels, chevron, shield, burst, pennant); slow breath while live |
-| Event | Diamond, fading over one simulated day; turning points gold, numbered, persistent; dashed if reconstructed/inferred |
-| Frontline | Dashed warm-white contact mark with ticks, schematic only |
+| Event | Ring of ticks around a dark centre; pops in when reached, label for ~2 s, ring fades over one simulated day; turning points gold, numbered, persistent; broken ring if reconstructed/inferred; at most four labels at once |
+| Contact marks (schematic, off by default) | Dashed warm-white contact mark with ticks |
+| Timeline gap | Hatched band on the timeline where nothing is recorded for ≥ 6 simulated hours (gold when the neighbouring placements are low confidence) |
 | Character | Round photocard crop at the place of the latest event they appear in |
 
 ## 8. Motion
@@ -106,12 +131,16 @@ Motion communicates; it never decorates.
 |---|---|
 | Camera to a record | `flyTo` speed 1.1, cubic-out; bounds `fitBounds` 1.3s |
 | Map style crossfade | 600ms |
-| Territory control change | two-step over 18 keyframes (3 simulated hours): old state recedes to a pale trace, new state arrives |
+| Territory control change | two-step over 36 keyframes (6 simulated hours): old state recedes to a pale trace, new state arrives |
 | Battle breath | 0.5 + 0.5·sin(t/520ms), only while the battle is live |
 | Caption (cinematic) | 200ms rise-in, one at a time |
+| Event ring | pop 110ms (scale 1.4 → 1) · label in 140ms · hold 2200ms · label out 160ms |
+| Held ground / front | recomputed at ~8 Hz while playing, 1.2px blur; no tweening beyond the data |
+| Rolling numbers | counters roll to the new value over ≤ 600ms (casualty ledger, Situation) |
+| Auto-slow | at a turning point playback drops to 1× for 2.5 seconds, then resumes the chosen speed (Layers → *Auto-slow*) |
 | Panels | instant or ≤150ms colour transitions |
 
-`prefers-reduced-motion` (or the in-app *Motion: Reduce* setting) turns camera flights into jumps and stops the battle breath.
+`prefers-reduced-motion` (or the in-app *Motion: Reduce* setting) turns camera flights into jumps, stops the battle breath and the event pop, and shows rolling numbers at their final value.
 
 ## 9. Accessibility
 

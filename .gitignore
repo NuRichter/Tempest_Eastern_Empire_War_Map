@@ -17,3 +17,6 @@ __pycache__/
 
 # Browser QA output
 qa-artifacts/
+
+# Playwright CLI session output
+.playwright-cli/

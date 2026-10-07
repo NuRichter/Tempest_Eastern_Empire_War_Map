@@ -232,8 +232,8 @@ export function nextEvent(data: Dataset, frame: number) {
   return data.events.find((e) => e.frame > frame) ?? null;
 }
 
-/** Frames over which a change of political state is animated (3 simulated hours). */
-export const CONTROL_TRANSITION_FRAMES = 18;
+/** Frames over which a change of political state is animated (6 simulated hours). */
+export const CONTROL_TRANSITION_FRAMES = 36;
 
 export interface ResolvedControl {
   segment: TerritoryControlSegment;

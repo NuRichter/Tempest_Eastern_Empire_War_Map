@@ -65,6 +65,8 @@ export function Timeline() {
   const filters = useSimulation((s) => s.filters);
   const viewMode = useSimulation((s) => s.viewMode);
   const speedIndex = usePreferences((s) => s.speedIndex);
+  const autoSlowed = useSimulation((s) => s.autoSlowed);
+  const bookmarks = usePreferences((s) => s.bookmarks);
 
   const trackRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -156,6 +158,26 @@ export function Timeline() {
     });
     ctx.globalAlpha = 1;
 
+    // Timeline gaps: stretches the record does not fill; their length is a placement.
+    for (const g of data.gaps) {
+      const x0 = px(g.fromFrame);
+      const x1 = px(g.toFrame);
+      if (x1 < 0 || x0 > width) continue;
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(x0, 34, Math.max(1, x1 - x0), 3);
+      ctx.clip();
+      ctx.strokeStyle = g.confidence === 'LOW' ? 'rgba(212,171,87,0.75)' : 'rgba(167,177,181,0.45)';
+      ctx.lineWidth = 1;
+      for (let x = x0 - 4; x < x1 + 4; x += 4) {
+        ctx.beginPath();
+        ctx.moveTo(x, 37);
+        ctx.lineTo(x + 3, 34);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
     // Battle spans.
     for (const b of data.battles) {
       const x0 = px(b.startFrame);
@@ -188,6 +210,19 @@ export function Timeline() {
       ctx.fillText(`V${v}`, x + 2, 33);
     }
 
+    // Bookmarks: small accent flags along the bottom edge.
+    ctx.fillStyle = INK.accent;
+    for (const b of bookmarks) {
+      const x = px(b.frame);
+      if (x < 0 || x > width) continue;
+      ctx.beginPath();
+      ctx.moveTo(x, height);
+      ctx.lineTo(x - 4, height - 6);
+      ctx.lineTo(x + 4, height - 6);
+      ctx.closePath();
+      ctx.fill();
+    }
+
     // First contact.
     const cx = Math.round(px(data.manifest.campaign.firstContactFrame)) + 0.5;
     ctx.strokeStyle = FACTION_COLOR.empire;
@@ -213,7 +248,7 @@ export function Timeline() {
     ctx.lineTo(hx, 6);
     ctx.closePath();
     ctx.fill();
-  }, [data, clock, range, lanes, filters, volumeMarks, fpd]);
+  }, [data, clock, range, lanes, filters, volumeMarks, fpd, bookmarks]);
 
   useEffect(() => {
     draw();
@@ -270,6 +305,12 @@ export function Timeline() {
     return d < (range[1] - range[0]) / 120 + 2 && (!best || d < best.d) ? { e, d } : best;
   }, null)?.e ?? null : null;
   const elapsedDays = Math.floor((frame - data.manifest.campaign.firstContactFrame) / fpd);
+  const toContact = data.manifest.campaign.firstContactFrame - frame;
+  const daysToContact = Math.ceil(toContact / fpd);
+  const beforeContact =
+    toContact < fpd
+      ? `${Math.max(1, Math.round((toContact / fpd) * 24))} h before first contact`
+      : `${daysToContact} day${daysToContact === 1 ? '' : 's'} before first contact`;
 
   const cinematic = viewMode === 'cinematic';
 
@@ -314,6 +355,11 @@ export function Timeline() {
             ))}
           </select>
         </label>
+        {autoSlowed ? (
+          <span role="status" className="rounded-[2px] border border-accent/60 px-1.5 py-0.5 text-2xs font-semibold uppercase tracking-label text-accent" title="Playback slowed at a turning point; it resumes your speed in a moment. Turn off in Layers.">
+            1× turning point
+          </span>
+        ) : null}
 
         <div className="flex items-baseline gap-2" aria-live="off">
           <span className="figure text-lg leading-none text-fg">{battleDayLabel(day)}</span>
@@ -321,7 +367,7 @@ export function Timeline() {
           <span className="rounded-[2px] border border-ink-400 px-1 text-2xs uppercase tracking-label text-fg-3" title={data.manifest.clock.calendarNote}>
             simulation
           </span>
-          <span className="hidden text-xs text-fg-3 lg:inline">{elapsedDays >= 0 ? `day ${elapsedDays + 1} of the fighting` : `${-elapsedDays} days before first contact`}</span>
+          <span className="hidden text-xs text-fg-3 lg:inline">{elapsedDays >= 0 ? `day ${elapsedDays + 1} of the fighting` : beforeContact}</span>
         </div>
 
         <div className="ml-auto flex items-center gap-2">

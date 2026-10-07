@@ -5,13 +5,16 @@ import type { Map as MapLibreMap } from 'maplibre-gl';
 
 import { simToLngLat } from '@/lib/coords';
 import { PROVENANCE_LABEL } from '@/lib/taxonomy';
+import { MAP_THEME } from '@/lib/palette';
 import { useSimulation } from '@/simulation/store';
 import { prefersReducedMotion, SCALE_FACTOR, usePreferences } from '@/state/preferences';
 import { LabelLayout, type DrawContext, type Hit } from '@/map/overlay/context';
 import { drawGeographyLabels } from '@/map/overlay/layers/geography';
 import { drawForces, drawFrontStrength, drawTrails, placeForces } from '@/map/overlay/layers/forces';
 import { drawMovements } from '@/map/overlay/layers/movements';
-import { drawBattles, drawCharacters, drawCommanders, drawEvents, drawFrontlines, setPortraitListener } from '@/map/overlay/layers/incidents';
+import { drawBattles, drawCharacters, drawCommanders, drawEvents, drawFrontlines, eventsAnimating, setPortraitListener } from '@/map/overlay/layers/incidents';
+import { drawControlChangeLabels, drawFronts, makeProjector } from '@/map/overlay/layers/fronts';
+import { onField } from '@/map/field/fieldStore';
 
 interface Props {
   map: MapLibreMap | null;
@@ -87,6 +90,9 @@ export function Overlay({ map }: Props) {
       commanderFocus: sim.commanderFocus,
       cinematic: sim.viewMode === 'cinematic',
       reducedMotion: prefersReducedMotion(),
+      theme: MAP_THEME[prefs.theme],
+      globe,
+      playing: clock.isPlaying,
       now: performance.now(),
       fonts: { ui: cssFont('--font-ui', 'system-ui, sans-serif'), mono: cssFont('--font-mono', 'ui-monospace, monospace') },
       labelScale: SCALE_FACTOR[prefs.labelScale],
@@ -97,9 +103,18 @@ export function Overlay({ map }: Props) {
       hits: [],
     };
 
+    // Keep labels out from under the map chrome: the tool strip, the minimap
+    // and style switcher (bottom left) and the navigation stack (bottom right).
+    if (!dc.cinematic) {
+      dc.labels.reserve(0, 0, 52, height);
+      if (width >= 768) dc.labels.reserve(0, height - (prefs.showMinimap ? 196 : 76), 216, height);
+      dc.labels.reserve(width - 52, height - 300, 52, 300);
+    }
+
     // Draw order is the visual hierarchy: territory context, then routes,
     // then incidents, then formations and their strength on top.
     const placed = prefs.layers.forces ? placeForces(dc) : [];
+    drawFronts(dc, makeProjector(map, globe, project));
     drawTrails(dc, placed);
     drawMovements(dc);
     drawFrontlines(dc, placed);
@@ -109,6 +124,7 @@ export function Overlay({ map }: Props) {
     drawFrontStrength(dc, placed);
     drawCommanders(dc);
     drawCharacters(dc);
+    drawControlChangeLabels(dc);
     drawGeographyLabels(dc);
 
     hitsRef.current = dc.hits;
@@ -126,6 +142,7 @@ export function Overlay({ map }: Props) {
     const unsubSim = useSimulation.subscribe(mark);
     const unsubPrefs = usePreferences.subscribe(mark);
     setPortraitListener(mark);
+    const unsubField = onField(mark);
     const fontsReady = document.fonts?.ready.then(mark);
     void fontsReady;
 
@@ -135,7 +152,7 @@ export function Overlay({ map }: Props) {
       const clock = sim.clock;
       const frame = clock ? Math.floor(clock.frame) : 0;
       // Live animation only while playing or while a battle is in progress.
-      const live = Boolean(clock?.isPlaying) || (!prefersReducedMotion() && Boolean(sim.data?.battles.some((b) => frame >= b.startFrame && frame <= b.endFrame)));
+      const live = Boolean(clock?.isPlaying) || eventsAnimating() || (!prefersReducedMotion() && Boolean(sim.data?.battles.some((b) => frame >= b.startFrame && frame <= b.endFrame)));
       if (dirtyRef.current || live) {
         dirtyRef.current = false;
         draw();
@@ -148,6 +165,7 @@ export function Overlay({ map }: Props) {
       for (const e of events) map.off(e, mark);
       unsubSim();
       unsubPrefs();
+      unsubField();
       setPortraitListener(null);
     };
   }, [map, draw]);

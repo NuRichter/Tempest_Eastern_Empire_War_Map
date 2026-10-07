@@ -1,13 +1,16 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { battleDayLabel, phaseLabel } from '@/lib/format';
 import { controlKey, FACTION_COLOR, INK } from '@/lib/palette';
 import { ROLE_LABEL } from '@/lib/taxonomy';
 import { currentEvent, forcePositionAt, forceSnapshotAt, nextEvent, territoryControlAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
-import { Empty, Field, Fields, Figure, ProvenanceBadge, RecordLink, Section } from '@/components/ui/primitives';
+import { Empty, Field, Fields, Figure, ProvenanceBadge, RecordLink, RouteBadge, Section, Sources } from '@/components/ui/primitives';
+import { RollingNumber } from '@/components/ui/RollingNumber';
+import { BATTLE_TYPE_LABEL } from '@/lib/taxonomy';
+import { getField, onField } from '@/map/field/fieldStore';
 import type { Quantity } from '@/types/dataset';
 
 /**
@@ -22,6 +25,14 @@ export function SituationPanel() {
   const jumpToTheatre = useSimulation((s) => s.jumpToTheatre);
   const jumpToForce = useSimulation((s) => s.jumpToForce);
   const jumpToTerritory = useSimulation((s) => s.jumpToTerritory);
+  const jumpToMovement = useSimulation((s) => s.jumpToMovement);
+  const jumpToBattle = useSimulation((s) => s.jumpToBattle);
+  const [occupied, setOccupied] = useState<Record<string, number>>({});
+  useEffect(() => {
+    const read = () => setOccupied({ ...(getField()?.occupiedShare ?? {}) });
+    read();
+    return onField(read);
+  }, []);
 
   const onMap = useMemo(() => {
     if (!data) return [];
@@ -44,6 +55,10 @@ export function SituationPanel() {
     .filter((x) => x.c.role !== 'UNINVOLVED');
   const cas = state.casualties;
   const side = (q: Quantity) => <Figure value={q} />;
+  const roll = (q: Quantity) => <RollingNumber value={q} className="text-fg" />;
+  const movingNow = data.movements.filter((m) => m.startFrame !== null && m.endFrame !== null && frame >= m.startFrame && frame <= Math.max(m.endFrame, m.startFrame + 6));
+  const battlesNow = data.battles.filter((b) => frame >= b.startFrame && frame <= b.endFrame + 144);
+  const fronts = Object.entries(occupied).filter(([, v]) => v > 0.002);
 
   return (
     <div>
@@ -106,6 +121,29 @@ export function SituationPanel() {
         )}
       </Section>
 
+      <Section title={`Fronts · ${fronts.length}`}>
+        {fronts.length ? (
+          <ul className="space-y-1">
+            {fronts.map(([tid, share]) => {
+              const t = data.territories.find((x) => x.id === tid);
+              return (
+                <li key={tid}>
+                  <button type="button" onClick={() => jumpToTerritory(tid)} className="flex w-full items-center gap-2 rounded-[3px] px-1.5 py-0.5 text-left text-xs hover:bg-ink-700/60">
+                    <span className="flex-1 truncate text-fg">Imperial forces inside {t?.display ?? tid}</span>
+                    <span className="figure text-fg-2">≈{Math.max(1, Math.round(share * 100))}%</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <Empty>No ground is held across a border at this moment.</Empty>
+        )}
+        <p className="mt-1.5 text-2xs leading-relaxed text-fg-3">
+          <span className="font-semibold uppercase tracking-label text-prov-recon">Reconstructed</span> — fronts and held ground are synthesised from force positions and strengths; the novels draw no front line. Shares are of the territory&apos;s area and only indicative.
+        </p>
+      </Section>
+
       <Section title="Strength">
         <Fields>
           <Field label="Empire, total">{side(state.strength.empire.total)}</Field>
@@ -134,6 +172,41 @@ export function SituationPanel() {
         ) : null}
       </Section>
 
+      <Section title={`Movement · ${movingNow.length}`} defaultOpen={movingNow.length > 0}>
+        {movingNow.length ? (
+          <ul className="space-y-1.5">
+            {movingNow.map((m) => {
+              const f = data.forceById.get(m.forceId);
+              return (
+                <li key={m.id} className="text-xs">
+                  <RecordLink onClick={() => jumpToMovement(m.id)}>{f?.displayName ?? m.forceId}</RecordLink>
+                  <span className="mt-0.5 flex flex-wrap items-center gap-1.5 text-2xs text-fg-3">
+                    {m.from} → {m.destinationUnknown ? 'unknown' : m.to} · <Figure value={m.strengthAtStart} /> at departure <RouteBadge value={m.route} />
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <Empty>No recorded movement under way.</Empty>
+        )}
+      </Section>
+
+      <Section title={`Battles · ${battlesNow.length}`} defaultOpen={battlesNow.length > 0}>
+        {battlesNow.length ? (
+          <ul className="space-y-1">
+            {battlesNow.map((b) => (
+              <li key={b.id} className="text-xs">
+                <RecordLink onClick={() => jumpToBattle(b.id)}>{b.name}</RecordLink>{' '}
+                <span className="text-2xs text-fg-3">· {BATTLE_TYPE_LABEL[b.type].toLowerCase()} · {frame <= b.endFrame ? 'in progress' : 'concluded'}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <Empty>No battle in progress or in the last day.</Empty>
+        )}
+      </Section>
+
       <Section title="Casualties to date">
         <table className="w-full text-xs">
           <thead>
@@ -147,8 +220,8 @@ export function SituationPanel() {
             {([['Killed', 'kia'], ['Revived', 'revived'], ['Captured', 'pow'], ['Wounded', 'wia'], ['Missing', 'mia']] as const).map(([label, k]) => (
               <tr key={k}>
                 <th scope="row" className="py-1 text-left font-normal text-fg-3">{label}</th>
-                <td className="text-right">{side(cas.empire[k])}</td>
-                <td className="text-right">{side(cas.tempest[k])}</td>
+                <td className="text-right">{roll(cas.empire[k])}</td>
+                <td className="text-right">{roll(cas.tempest[k])}</td>
               </tr>
             ))}
           </tbody>
@@ -170,6 +243,19 @@ export function SituationPanel() {
           ))}
         </ul>
         <p className="mt-1.5 text-2xs leading-relaxed text-fg-3">No national border changed hands in this war. Imperial operations inside Jura and Dwargon are shown as operational areas.</p>
+      </Section>
+
+      <Section title="Sources" defaultOpen={false}>
+        {latest ? (
+          <>
+            <p className="mb-1 text-2xs text-fg-3">For the latest event:</p>
+            <Sources refs={latest.sourceRefs} />
+            {latest.reconstructionNote ? <p className="mt-1.5 text-2xs leading-relaxed text-fg-2">{latest.reconstructionNote}</p> : null}
+          </>
+        ) : (
+          <Empty>No event yet.</Empty>
+        )}
+        <p className="mt-1.5 text-2xs text-fg-3">Dataset revision {data.manifest.revision}.</p>
       </Section>
 
       <Section title="Command" defaultOpen={false}>

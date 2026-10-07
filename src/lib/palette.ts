@@ -117,3 +117,57 @@ export function mix(a: string, b: string, t: number): string {
   const ch = (shift: number) => Math.round(((pa >> shift) & 255) * (1 - t) + ((pb >> shift) & 255) * t);
   return `#${[16, 8, 0].map((s) => ch(s).toString(16).padStart(2, '0')).join('')}`;
 }
+
+/**
+ * Map-surface tokens per theme. Documentary follows the reference films: light
+ * ground and pale sea, solid faction fills, thin rose borders, white fronts and
+ * dark type. War room is the dark analytic surface.
+ */
+export interface MapThemeTokens {
+  void: string;
+  label: string;
+  labelDim: string;
+  halo: string;
+  border: string;
+  uninvolvedFill: string;
+  uninvolvedOpacity: number;
+  seam: string;
+  seamCasing: string;
+  place: string;
+  accent: string;
+  battle: string;
+  occupiedAlpha: number;
+}
+
+export const MAP_THEME: Record<'documentary' | 'warroom', MapThemeTokens> = {
+  documentary: {
+    void: '#d8e3ea',
+    label: '#1c252b',
+    labelDim: '#4f5b62',
+    halo: 'rgba(250, 251, 249, 0.92)',
+    border: '#9b6b74',
+    uninvolvedFill: '#c8ccc4',
+    uninvolvedOpacity: 0.32,
+    seam: '#ffffff',
+    seamCasing: 'rgba(20, 24, 26, 0.45)',
+    place: '#26323a',
+    accent: '#8a6420',
+    battle: '#8f1d16',
+    occupiedAlpha: 0.86,
+  },
+  warroom: {
+    void: '#0b1419',
+    label: '#c3c9cc',
+    labelDim: '#8b979c',
+    halo: 'rgba(6, 9, 11, 0.92)',
+    border: '#55626a',
+    uninvolvedFill: '#6b757a',
+    uninvolvedOpacity: 0.12,
+    seam: '#f1efe8',
+    seamCasing: 'rgba(0, 0, 0, 0.55)',
+    place: '#e3e7e8',
+    accent: '#d4ab57',
+    battle: '#f6d4cd',
+    occupiedAlpha: 0.62,
+  },
+};

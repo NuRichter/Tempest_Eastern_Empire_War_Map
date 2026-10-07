@@ -1,4 +1,4 @@
-import { FACTION_COLOR, factionKey, INK, PROVENANCE_COLOR } from '@/lib/palette';
+import { FACTION_COLOR, factionKey, INK } from '@/lib/palette';
 import { BATTLE_TYPE_LABEL, PROVENANCE_LABEL } from '@/lib/taxonomy';
 import { forcePositionAt } from '@/simulation/resolver';
 import { eventVisible, haloText, isSelected, trimTo, type DrawContext } from '@/map/overlay/context';
@@ -19,7 +19,7 @@ export function drawBattles(dc: DrawContext): void {
   if (!dc.prefs.layers.battles) return;
   const { ctx, intFrame } = dc;
   for (const b of dc.data.battles) {
-    if (dc.filters.hiddenTheatres.includes(b.theatreId) || dc.filters.hiddenProvenance.includes(b.provenance)) continue;
+    if (dc.filters.hiddenTheatres.includes(b.theatreId) || dc.filters.hiddenProvenance.includes(b.provenance) || dc.filters.hiddenBattles.includes(b.id)) continue;
     const selected = isSelected(dc.selection, 'battle', b.id);
     if (!selected && (intFrame < b.startFrame || intFrame > b.endFrame + BATTLE_LINGER)) continue;
     const xy = placeXY(dc, b.placeId);
@@ -53,48 +53,105 @@ export function drawBattles(dc: DrawContext): void {
       const w = ctx.measureText(text).width;
       const x = p.sx - w / 2;
       const y = p.sy + size + fs + 2;
-      if (dc.labels.place(x - 3, y - fs, w + 6, fs + 4, selected)) haloText(ctx, text, x, y, live ? '#f6d4cd' : INK.text2, INK.halo, 3);
+      if (dc.labels.place(x - 3, y - fs, w + 6, fs + 4, selected)) haloText(ctx, text, x, y, live ? dc.theme.battle : dc.theme.labelDim, dc.theme.halo, 3);
     }
   }
 }
 
+/* -- event markers: ring lifecycle (after the WWIII reference) -------- */
+
+/** Real time, in ms, at which each event was reached on screen. */
+const seenAt = new Map<string, number>();
+let lastIntFrame = -1;
+const POP = 110;
+const TEXT_IN = 140;
+const HOLD = 2200;
+const TEXT_OUT = 160;
+let eventAnimating = false;
+
+/** True while any event marker is mid-animation, so the overlay keeps repainting. */
+export function eventsAnimating(): boolean {
+  return eventAnimating;
+}
+
 export function drawEvents(dc: DrawContext): void {
   if (!dc.prefs.layers.events) return;
-  const { ctx, intFrame } = dc;
+  const { ctx, intFrame, now } = dc;
+  // A seek backwards forgets what lies ahead, so it replays when reached again.
+  if (intFrame < lastIntFrame) for (const e of dc.data.events) if (e.frame > intFrame) seenAt.delete(e.id);
+  lastIntFrame = intFrame;
+  const playing = Boolean(dc.playing);
   const s = 5.5 * dc.eventScale;
+  const labelled: { e: (typeof dc.data.events)[number]; sx: number; sy: number; alpha: number }[] = [];
+  eventAnimating = false;
+
   for (const e of dc.data.events) {
     if (e.frame > intFrame) break;
     if (!eventVisible(dc.filters, e)) continue;
-    const selected = isSelected(dc.selection, 'event', e.id);
     const age = intFrame - e.frame;
+    const selected = isSelected(dc.selection, 'event', e.id);
+    if (!seenAt.has(e.id)) seenAt.set(e.id, age <= 12 && playing ? now : now - 60_000);
     if (age > EVENT_WINDOW && !e.turningPoint && !selected) continue;
     const xy = placeXY(dc, e.placeId);
     if (!xy) continue;
     const p = dc.project(xy.x, xy.y);
     if (!dc.onScreen(p)) continue;
-    const fade = selected ? 1 : e.turningPoint && age > EVENT_WINDOW ? 0.55 : Math.max(0.3, 1 - age / EVENT_WINDOW);
-    const r = (e.turningPoint ? s * 1.35 : s) * (selected ? 1.3 : 1);
+
+    const t = now - seenAt.get(e.id)!;
+    const pop = dc.reducedMotion ? 1 : t < POP ? 1.4 - 0.4 * (t / POP) : 1;
+    if (t < POP + TEXT_IN + HOLD + TEXT_OUT) eventAnimating = true;
+    const fade = selected ? 1 : e.turningPoint && age > EVENT_WINDOW ? 0.6 : Math.max(0.35, 1 - age / EVENT_WINDOW);
+    const r = (e.turningPoint ? s * 1.5 : s * 1.25) * (selected ? 1.25 : 1) * pop;
+
     ctx.save();
     ctx.globalAlpha = fade;
+    // Dark centre, ring of short ticks: reads on light and dark ground alike.
     ctx.beginPath();
-    ctx.moveTo(p.sx, p.sy - r);
-    ctx.lineTo(p.sx + r, p.sy);
-    ctx.lineTo(p.sx, p.sy + r);
-    ctx.lineTo(p.sx - r, p.sy);
-    ctx.closePath();
-    ctx.fillStyle = 'rgba(9,13,16,0.8)';
+    ctx.arc(p.sx, p.sy, r * 0.62, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(12, 16, 18, 0.62)';
     ctx.fill();
-    ctx.strokeStyle = selected ? INK.accent : e.turningPoint ? INK.accent : PROVENANCE_COLOR[e.provenance];
-    ctx.lineWidth = e.turningPoint || selected ? 2 : 1.3;
-    if (e.provenance === 'RECONSTRUCTED' || e.provenance === 'INFERRED') ctx.setLineDash([2, 2]);
-    ctx.stroke();
-    ctx.setLineDash([]);
+    const ticks = 16;
+    ctx.strokeStyle = selected || e.turningPoint ? '#f3d58d' : '#ffffff';
+    ctx.lineWidth = Math.max(1.2, r * 0.16);
+    ctx.lineCap = 'round';
+    if (e.provenance === 'RECONSTRUCTED' || e.provenance === 'INFERRED') ctx.globalAlpha = fade * 0.75;
+    for (let i = 0; i < ticks; i += 1) {
+      if ((e.provenance === 'RECONSTRUCTED' || e.provenance === 'INFERRED') && i % 2) continue;
+      const a = (i / ticks) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.moveTo(p.sx + Math.cos(a) * r * 0.8, p.sy + Math.sin(a) * r * 0.8);
+      ctx.lineTo(p.sx + Math.cos(a) * r * 1.15, p.sy + Math.sin(a) * r * 1.15);
+      ctx.stroke();
+    }
     if (e.turningPoint && dc.zoom > 3.2 && e.turningPointRank !== null) {
-      ctx.font = `600 ${Math.round(10 * dc.labelScale)}px ${dc.fonts.mono}`;
-      haloText(ctx, String(e.turningPointRank), p.sx + r + 3, p.sy - r, INK.accent, INK.halo, 3);
+      ctx.font = `700 ${Math.round(10 * dc.labelScale)}px ${dc.fonts.mono}`;
+      haloText(ctx, String(e.turningPointRank), p.sx + r + 3, p.sy - r, dc.theme.accent, dc.theme.halo, 3);
     }
     ctx.restore();
+    dc.labels.reserve(p.sx - r, p.sy - r, r * 2, r * 2);
     dc.hits.push({ selection: { kind: 'event', id: e.id }, x: p.sx, y: p.sy, r: r + 5, title: e.title, detail: `${e.warDay} ${e.simulationTime} · ${PROVENANCE_LABEL[e.provenance].short}`, provenance: e.provenance, priority: 3 });
+
+    // Label lifecycle: in after the pop, hold, out. Paused: the moment's events stay labelled.
+    let alpha = 0;
+    if (selected || (!playing && age <= 3)) alpha = 1;
+    else if (t > POP && t < POP + TEXT_IN) alpha = (t - POP) / TEXT_IN;
+    else if (t >= POP + TEXT_IN && t < POP + TEXT_IN + HOLD) alpha = 1;
+    else if (t >= POP + TEXT_IN + HOLD && t < POP + TEXT_IN + HOLD + TEXT_OUT) alpha = 1 - (t - POP - TEXT_IN - HOLD) / TEXT_OUT;
+    if (dc.reducedMotion && alpha > 0) alpha = 1;
+    if (alpha > 0 && dc.prefs.layers.labels) labelled.push({ e, sx: p.sx + r + 6, sy: p.sy + 4, alpha });
+  }
+
+  // At most four event labels at once, newest first; the rest are in the feed.
+  labelled.sort((a, b) => b.e.frame - a.e.frame);
+  for (const l of labelled.slice(0, 4)) {
+    const size = Math.round(12 * dc.labelScale);
+    ctx.font = `600 ${size}px ${dc.fonts.ui}`;
+    const text = trimTo(ctx, l.e.title, 260);
+    const w = ctx.measureText(text).width;
+    if (!dc.labels.place(l.sx - 2, l.sy - size, w + 4, size + 5)) continue;
+    ctx.globalAlpha = l.alpha;
+    haloText(ctx, text, l.sx, l.sy, dc.theme.label, dc.theme.halo, 3.5);
+    ctx.globalAlpha = 1;
   }
 }
 
@@ -191,7 +248,7 @@ export function drawCommanders(dc: DrawContext): void {
     ctx.fill();
     if (dc.zoom >= 5 && dc.prefs.layers.labels) {
       ctx.font = `600 ${Math.round(10 * dc.labelScale)}px ${dc.fonts.ui}`;
-      haloText(ctx, c.name, p.sx - 12, p.sy - 34, INK.text, INK.halo, 3);
+      haloText(ctx, c.name, p.sx - 12, p.sy - 34, dc.theme.label, dc.theme.halo, 3);
     }
     ctx.restore();
     dc.hits.push({ selection: c.characterId ? { kind: 'character', id: c.characterId } : { kind: 'force', id: fid }, x: p.sx - 10, y: p.sy - 26, r: 9, title: c.name, detail: `${c.role} · ${c.faction}`, priority: 2 });

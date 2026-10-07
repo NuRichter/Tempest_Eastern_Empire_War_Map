@@ -3,6 +3,7 @@ import type { Filters, Selection } from '@/simulation/store';
 import type { Preferences } from '@/state/preferences';
 import type { Confidence, FrameState, Provenance } from '@/types/dataset';
 import { eventCategory } from '@/lib/taxonomy';
+import type { MapThemeTokens } from '@/lib/palette';
 
 export interface Projected {
   sx: number;
@@ -40,6 +41,9 @@ export interface DrawContext {
   commanderFocus: string | null;
   cinematic: boolean;
   reducedMotion: boolean;
+  theme: MapThemeTokens;
+  globe: boolean;
+  playing: boolean;
   now: number;
   fonts: { ui: string; mono: string };
   labelScale: number;
@@ -81,14 +85,28 @@ export function factionVisible(filters: Filters, faction: string): boolean {
   return !filters.hiddenFactions.includes(faction);
 }
 
-export function eventVisible(filters: Filters, e: { theatreId: string; type: string; provenance: Provenance; confidence: Confidence; actorFaction: string }): boolean {
+export function eventVisible(filters: Filters, e: { theatreId: string; type: string; provenance: Provenance; confidence: Confidence; actorFaction: string; battleId?: string | null }): boolean {
   return (
+    !(e.battleId && filters.hiddenBattles.includes(e.battleId)) &&
     !filters.hiddenTheatres.includes(e.theatreId) &&
     !filters.hiddenCategories.includes(eventCategory(e.type)) &&
     !filters.hiddenProvenance.includes(e.provenance) &&
     meetsConfidence(filters, e.confidence) &&
     factionVisible(filters, e.actorFaction)
   );
+}
+
+/** A formation is hidden if it, or any formation containing it, is filtered out, or its nation is. */
+export function forceHidden(data: Dataset, filters: Filters, forceId: string): boolean {
+  if (!filters.hiddenForces.length && !filters.hiddenNations.length) return false;
+  let f = data.forceById.get(forceId);
+  const nation = f ? data.factionById.get(f.faction)?.nationId : null;
+  if (nation && filters.hiddenNations.includes(nation)) return true;
+  while (f) {
+    if (filters.hiddenForces.includes(f.id)) return true;
+    f = f.parentId ? data.forceById.get(f.parentId) : undefined;
+  }
+  return false;
 }
 
 export function isSelected(sel: Selection, kind: Selection['kind'], id: string): boolean {

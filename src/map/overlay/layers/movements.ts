@@ -1,5 +1,5 @@
 import { FACTION_COLOR, FACTION_DEEP, FACTION_PALE, factionKey, INK, ROUTE_STYLE } from '@/lib/palette';
-import { factionVisible, haloText, isSelected, type DrawContext } from '@/map/overlay/context';
+import { factionVisible, forceHidden, haloText, isSelected, type DrawContext } from '@/map/overlay/context';
 import { drawArrowHead } from '@/map/overlay/glyphs';
 import { formatStrength } from '@/map/overlay/layers/forces';
 
@@ -26,7 +26,7 @@ export function drawMovements(dc: DrawContext): void {
     if (age > LINGER && !selected) continue;
     if (m.route === 'UNKNOWN' || !m.fromPlaceId || !m.toPlaceId) continue;
     const force = data.forceById.get(m.forceId);
-    if (!force || !factionVisible(dc.filters, force.faction)) continue;
+    if (!force || !factionVisible(dc.filters, force.faction) || forceHidden(data, dc.filters, force.id)) continue;
     const from = data.placeById.get(m.fromPlaceId) ?? data.nationById.get(m.fromPlaceId);
     const to = data.placeById.get(m.toPlaceId) ?? data.nationById.get(m.toPlaceId);
     if (from?.x == null || to?.x == null || from.y == null || to.y == null) continue;
@@ -102,13 +102,15 @@ export function drawMovements(dc: DrawContext): void {
       const atStart = formatStrength(m.strengthAtStart, force.sizeStatus);
       const atEnd = m.strengthAtEnd !== 'UNKNOWN' && m.strengthAtEnd !== m.strengthAtStart ? ` → ${formatStrength(m.strengthAtEnd, force.sizeStatus)}` : '';
       const line2 = `${atStart}${atEnd} · ${m.route === 'SOLID' ? 'route stated' : m.route === 'RECONSTRUCTED' ? 'route reconstructed' : 'schematic'}`;
+      ctx.font = `500 ${size}px ${dc.fonts.mono}`;
+      const w2 = ctx.measureText(line2).width;
       ctx.font = `600 ${size}px ${dc.fonts.ui}`;
-      const w = Math.max(ctx.measureText(line1).width, ctx.measureText(line2).width);
+      const w = Math.max(ctx.measureText(line1).width, w2);
       if (dc.labels.place(mid.x + 8, mid.y - size - 2, w + 4, size * 2 + 6, selected)) {
         ctx.globalAlpha = fade;
-        haloText(ctx, line1, mid.x + 8, mid.y - 2, INK.text, INK.halo, 3);
+        haloText(ctx, line1, mid.x + 8, mid.y - 2, dc.theme.label, dc.theme.halo, 3);
         ctx.font = `500 ${size}px ${dc.fonts.mono}`;
-        haloText(ctx, line2, mid.x + 8, mid.y + size + 1, INK.text2, INK.halo, 3);
+        haloText(ctx, line2, mid.x + 8, mid.y + size + 1, dc.theme.labelDim, dc.theme.halo, 3);
       }
     }
   }

@@ -18,6 +18,8 @@ import { buildIndex, scoreKey, search } from '../src/lib/search';
 import { SimulationClock } from '../src/simulation/clock';
 import { CONTROL_TRANSITION_FRAMES, forcePositionAt, forceSnapshotAt, StateResolver, territoryControlAt } from '../src/simulation/resolver';
 import { formatStrength, strengthFontSize } from '../src/map/overlay/layers/forces';
+import { eventVisible, forceHidden } from '../src/map/overlay/context';
+import { EMPTY_FILTERS } from '../src/simulation/store';
 import type { FrameState } from '../src/types/dataset';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -190,6 +192,42 @@ test('search finds aliases and Japanese names', () => {
 });
 
 /* -- determinism of the build ------------------------------------------ */
+
+/* -- timeline gaps and filters -------------------------------------- */
+
+test('timeline gaps cover exactly the unrecorded stretches longer than six hours', () => {
+  const byId = new Map(data.events.map((e) => [e.id, e]));
+  for (const g of data.gaps) {
+    const a = byId.get(g.fromEvent);
+    const b = byId.get(g.toEvent);
+    assert(a && b, `${g.id} references a missing event`);
+    assert(a.frame === g.fromFrame && b.frame === g.toFrame, `${g.id} frames do not match its events`);
+    assert(g.toFrame - g.fromFrame > 36, `${g.id} is not longer than six hours`);
+    assert(!data.events.some((e) => e.frame > g.fromFrame && e.frame < g.toFrame), `${g.id} contains an event`);
+  }
+  const sorted = [...data.events].sort((x, y) => x.frame - y.frame);
+  const expected = sorted.slice(1).filter((e, i) => e.frame - sorted[i].frame > 36).length;
+  assert(data.gaps.length === expected, `expected ${expected} gaps, found ${data.gaps.length}`);
+});
+
+test('hiding a formation hides its subordinates, not its parent', () => {
+  const parent = data.forces.find((f) => f.childIds.length > 0);
+  assert(parent, 'no formation with subordinates');
+  const child = parent.childIds[0];
+  const filters = { ...EMPTY_FILTERS, hiddenForces: [parent.id] };
+  assert(forceHidden(data, filters, parent.id) && forceHidden(data, filters, child), 'parent filter must hide the child');
+  const childOnly = { ...EMPTY_FILTERS, hiddenForces: [child] };
+  assert(!forceHidden(data, childOnly, parent.id), 'child filter must not hide the parent');
+  assert(!forceHidden(data, EMPTY_FILTERS, child), 'nothing is hidden without filters');
+});
+
+test('a battle filter hides exactly the events of that battle', () => {
+  const withBattle = data.events.filter((e) => e.battleId);
+  assert(withBattle.length > 0, 'no event is linked to a battle');
+  const battleId = withBattle[0].battleId!;
+  const filters = { ...EMPTY_FILTERS, hiddenBattles: [battleId] };
+  for (const e of data.events) assert(eventVisible(filters, e) === (e.battleId !== battleId), `${e.id} visibility is wrong under the battle filter`);
+});
 
 test('the runtime manifest carries no build timestamp', () => {
   assert(!JSON.stringify(data.manifest).includes('generatedAt'), 'manifest contains a timestamp, so builds are not reproducible');

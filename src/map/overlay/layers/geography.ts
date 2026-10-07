@@ -1,4 +1,4 @@
-import { FACTION_PALE, factionKey, INK } from '@/lib/palette';
+import { FACTION_DEEP, FACTION_PALE, factionKey, INK } from '@/lib/palette';
 import { territoryControlAt } from '@/simulation/resolver';
 import { haloText, isSelected, type DrawContext } from '@/map/overlay/context';
 
@@ -34,9 +34,9 @@ export function drawGeographyLabels(dc: DrawContext): void {
         continue;
       }
       const selected = isSelected(dc.selection, 'territory', t.id);
-      const color = selected ? INK.accent : involved ? FACTION_PALE[factionKey(segment.controller)] : '#8b979c';
+      const color = selected ? dc.theme.accent : involved ? (dc.prefs.theme === 'documentary' ? FACTION_DEEP[factionKey(segment.controller)] : FACTION_PALE[factionKey(segment.controller)]) : dc.theme.labelDim;
       ctx.globalAlpha = involved ? 0.92 : 0.6;
-      haloText(ctx, text, x, y, color, INK.halo, 3.5);
+      haloText(ctx, text, x, y, color, dc.theme.halo, 3.5);
       ctx.globalAlpha = 1;
       ctx.letterSpacing = '0px';
       dc.hits.push({
@@ -65,7 +65,7 @@ export function drawGeographyLabels(dc: DrawContext): void {
       const text = `${th.code} · ${live.status.replace(/_/g, ' ')}`;
       const w = ctx.measureText(text).width;
       if (!labels.place(p.sx - w / 2 - 4, p.sy - size - 8, w + 8, size + 6)) continue;
-      haloText(ctx, text, p.sx - w / 2, p.sy - 6, INK.accent, INK.halo, 3);
+      haloText(ctx, text, p.sx - w / 2, p.sy - 6, dc.theme.accent, dc.theme.halo, 3);
       dc.hits.push({ selection: { kind: 'theatre', id: th.id }, x: p.sx, y: p.sy - 10, r: Math.max(14, w / 2), title: th.name, detail: live.status.toLowerCase(), priority: 8 });
     }
   }
@@ -89,7 +89,7 @@ export function drawGeographyLabels(dc: DrawContext): void {
       ctx.beginPath();
       ctx.arc(p.sx, p.sy, 2, 0, Math.PI * 2);
       ctx.fill();
-      haloText(ctx, place.name, x, y, place.placement === 'MEASURED' ? INK.text : INK.text2, INK.halo, 3);
+      haloText(ctx, place.name, x, y, place.placement === 'MEASURED' ? dc.theme.place : dc.theme.labelDim, dc.theme.halo, 3);
     }
   }
 }

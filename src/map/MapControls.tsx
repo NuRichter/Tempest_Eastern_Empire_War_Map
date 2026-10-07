@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import type { Map as MapLibreMap } from 'maplibre-gl';
-import { Compass, Crosshair, Globe2, Map as MapIcon, Maximize2, Minimize2, Minus, Plus } from 'lucide-react';
+import { Compass, Crosshair, Globe2, Map as MapIcon, Maximize2, Minimize2, Minus, Plus, ScanSearch } from 'lucide-react';
 
 import { lngLatToSim } from '@/lib/coords';
 import { useSimulation } from '@/simulation/store';
@@ -24,6 +24,18 @@ export function MapControls({ map, ready }: Props) {
   const mapStyle = usePreferences((s) => s.mapStyle);
   const setPref = usePreferences((s) => s.set);
   const focusCampaign = useSimulation((s) => s.focusCampaign);
+  const focusBounds = useSimulation((s) => s.focusBounds);
+  const data = useSimulation((s) => s.data);
+  const [presetsOpen, setPresetsOpen] = useState(false);
+  // Camera presets: named views a reader returns to, eased to like any other camera move.
+  const presets: { name: string; run: () => void }[] = [
+    { name: 'Whole campaign', run: focusCampaign },
+    { name: 'Central continent', run: () => focusBounds([0.04, 0.26, 0.96, 0.92], 3) },
+    { name: 'Jura & Dwargon front', run: () => focusBounds([0.6, 0.38, 0.74, 0.6], 5) },
+    { name: 'Dwargon eastern front', run: () => { const t = data?.theatreById.get('TH-DWE'); if (t?.bounds) focusBounds(t.bounds, 5.5); } },
+    { name: 'Imperial capital', run: () => { const t = data?.theatreById.get('TH-CAP'); if (t?.bounds) focusBounds(t.bounds, 5); } },
+    { name: 'Eastern Empire', run: () => { const t = data?.territoryById.get('T-EMP'); if (t) focusBounds(t.bounds, 4.5); } },
+  ];
   const viewMode = useSimulation((s) => s.viewMode);
   const [bearing, setBearing] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
@@ -77,6 +89,22 @@ export function MapControls({ map, ready }: Props) {
         <button type="button" className="ctl w-8 px-0" onClick={focusCampaign} aria-label="Frame the whole campaign" title="Frame the whole campaign (0)">
           <Crosshair size={15} strokeWidth={1.7} />
         </button>
+        <div className="relative">
+          <button type="button" className="ctl w-8 px-0" aria-expanded={presetsOpen} onClick={() => setPresetsOpen((v) => !v)} aria-label="Camera presets" title="Camera presets">
+            <ScanSearch size={15} strokeWidth={1.7} />
+          </button>
+          {presetsOpen ? (
+            <ul className="surface absolute bottom-0 right-10 w-48 rounded-[4px] py-1" role="menu" aria-label="Camera presets">
+              {presets.map((p) => (
+                <li key={p.name} role="none">
+                  <button type="button" role="menuitem" className="w-full px-3 py-1.5 text-left text-xs text-fg hover:bg-ink-600" onClick={() => { p.run(); setPresetsOpen(false); }}>
+                    {p.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
         <div className="flex overflow-hidden rounded-[3px] border border-ink-500 bg-ink-800/90" role="radiogroup" aria-label="Projection">
           <button type="button" role="radio" aria-checked={!globe} onClick={() => setPref('globe', false)} title="Flat atlas (G)" className={`flex h-8 items-center gap-1 px-2 text-xs ${!globe ? 'bg-accent/15 text-fg' : 'text-fg-3 hover:text-fg'}`}>
             <MapIcon size={13} strokeWidth={1.7} /> Flat
@@ -97,7 +125,7 @@ export function MapControls({ map, ready }: Props) {
       </div>
 
       {/* Map style switcher: bottom left, Google-Maps style. */}
-      <div className="absolute bottom-3 left-3 z-20 flex items-end gap-2">
+      <div className="absolute bottom-3 left-[3.75rem] z-20 flex items-end gap-2">
         <div className="relative">
           <button
             type="button"

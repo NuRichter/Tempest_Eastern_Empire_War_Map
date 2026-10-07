@@ -31,6 +31,7 @@ export function AppShell() {
   const init = useSimulation((s) => s.init);
   const failed = useSimulation((s) => s.failed);
   const viewMode = useSimulation((s) => s.viewMode);
+  const density = usePreferences((s) => s.density);
   const [hydrated, setHydrated] = useState(false);
   const started = useRef(false);
 
@@ -97,6 +98,36 @@ export function AppShell() {
       if (s.frame === prev.frame && s.selection === prev.selection && s.viewMode === prev.viewMode) return;
       window.clearTimeout(timer);
       timer = window.setTimeout(() => write(useSimulation.getState()), 350);
+    });
+    return () => {
+      unsub();
+      window.clearTimeout(timer);
+    };
+  }, [status]);
+
+  /* -- documentary pacing: slow down at turning points ---------------- */
+
+  useEffect(() => {
+    if (status !== 'ready') return;
+    let restore: number | null = null;
+    let timer = 0;
+    const unsub = useSimulation.subscribe((s, prev) => {
+      if (!s.playing || s.frame <= prev.frame || !s.data || !s.clock) return;
+      if (!usePreferences.getState().autoSlow) return;
+      const speed = s.clock.currentSpeed;
+      let hit = false;
+      for (let f = prev.frame + 1; f <= s.frame && !hit; f += 1) hit = Boolean(s.data.eventsByFrame.get(f)?.some((e) => e.turningPoint));
+      if (!hit || speed <= 1) return;
+      restore = restore ?? speed;
+      s.clock.setSpeed(1);
+      useSimulation.setState({ autoSlowed: true });
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        const { clock: c, autoSlowed } = useSimulation.getState();
+        if (c && restore !== null && autoSlowed) c.setSpeed(restore);
+        restore = null;
+        useSimulation.setState({ autoSlowed: false });
+      }, 2500);
     });
     return () => {
       unsub();
@@ -177,6 +208,12 @@ export function AppShell() {
         case 'd':
           s.setDebug(!s.debug);
           return;
+        case 'b': {
+          if (!s.data) return;
+          const at = s.data.eventsByFrame.get(s.frame)?.[0];
+          p.addBookmark({ frame: s.frame, eventId: at?.id ?? null, label: at?.title ?? `Moment at frame ${s.frame}` });
+          return;
+        }
         default:
           if (/^[1-8]$/.test(e.key)) {
             const i = Number(e.key) - 1;
@@ -223,7 +260,7 @@ export function AppShell() {
   const cinematic = viewMode === 'cinematic';
 
   return (
-    <main className="flex h-dvh flex-col overflow-hidden bg-ink-900 text-fg">
+    <main className="flex h-dvh flex-col overflow-hidden bg-ink-900 text-fg" data-density={density}>
       <a href="#timeline" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:bg-ink-800 focus:px-3 focus:py-2">
         Skip to the campaign timeline
       </a>

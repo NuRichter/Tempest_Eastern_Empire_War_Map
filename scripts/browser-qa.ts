@@ -138,7 +138,15 @@ async function main(): Promise<void> {
     const ms = await mapState(page);
     check('application loads and the map initialises', Boolean(ms?.loaded), `${loadMs} ms to an idle map`);
     check('Base Map is the default style', ms?.base === 1 && ms?.myth === 0);
+    const occupation = await page.evaluate(() => Boolean((window as unknown as { __atlasMap?: { getLayer: (id: string) => unknown } }).__atlasMap?.getLayer('occupation')));
+    check('the reconstructed occupation layer is present', occupation);
     check('the dataset is available', manifest.counts.events > 0 && manifest.counts.territories > 0, `${manifest.counts.events} events, ${manifest.counts.territories} territories`);
+    const timelineMs = await page.evaluate(() => {
+      const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+      const mark = (performance.getEntriesByType('resource') as PerformanceResourceTiming[]).filter((r) => r.name.includes('/data/')).reduce((m, r) => Math.max(m, r.responseEnd), 0);
+      return Math.round(mark - (nav?.startTime ?? 0));
+    });
+    check('timeline data is ready quickly', timelineMs < 8000, `${timelineMs} ms from navigation to the last dataset file`);
     await shot('01-default');
 
     /* -- playback -------------------------------------------------- */
@@ -155,12 +163,24 @@ async function main(): Promise<void> {
     await sleep(800);
     const still = await probe(page);
     check('pause holds time', !still.playing && still.frame === paused.frame);
+    // 48x on a stretch without turning points, so auto-slow does not intervene.
+    await go('?frame=3000', 1500);
+    const calm = await probe(page);
     await page.keyboard.press('8');
     await page.keyboard.press('Space');
     await sleep(1000);
     const fast = await probe(page);
     await page.keyboard.press('Space');
-    check('48x advances about a simulated day per second', fast.frame - still.frame > 60, `${fast.frame - still.frame} keyframes in 1 s`);
+    check('48x advances about a simulated day per second', fast.frame - calm.frame > 60, `${fast.frame - calm.frame} keyframes in 1 s`);
+
+    // Auto-slow: crossing a turning point at speed drops playback to 1x for a moment.
+    await go('?frame=5490', 1500);
+    await page.keyboard.press('8');
+    await page.keyboard.press('Space');
+    await page.waitForFunction(() => Number(document.querySelector('[role="slider"][aria-label="Campaign position"]')?.getAttribute('aria-valuenow')) > 5520, { timeout: 15000 }).catch(() => undefined);
+    const slowed = await page.evaluate(() => [...document.querySelectorAll('[role="status"]')].map((n) => n.textContent ?? '').find((t) => /turning point/i.test(t)) ?? '');
+    await page.keyboard.press('Space');
+    check('auto-slow drops to 1x at a turning point', /1×/.test(slowed), slowed || 'no auto-slow indicator');
     await page.keyboard.press('3');
 
     /* -- stepping & scrubbing -------------------------------------- */
@@ -190,6 +210,14 @@ async function main(): Promise<void> {
       return (performance.now() - t) / 40;
     });
     check('random seeks stay interactive', seekMs < 120, `${seekMs.toFixed(1)} ms per seek incl. a frame (software GL)`);
+
+    /* -- dossier opening time -------------------------------------- */
+    await go(`?frame=${fc}`);
+    const tOpen = Date.now();
+    await page.keyboard.press(']');
+    await page.waitForSelector('aside[aria-label="Dossier"]', { timeout: 5000 });
+    const dossierMs = Date.now() - tOpen;
+    check('a dossier opens promptly', dossierMs < 1500, `${dossierMs} ms from keypress to dossier`);
 
     /* -- dossiers -------------------------------------------------- */
     await go('?event=EVT-0119');
@@ -272,7 +300,7 @@ async function main(): Promise<void> {
     check('refresh restores the moment from the URL', (await probe(page)).frame === fc + 44);
 
     /* -- responsive -------------------------------------------------- */
-    for (const [w, h] of [[320, 640], [375, 812], [390, 844], [768, 1024], [1024, 768], [1280, 800], [1920, 1080]] as const) {
+    for (const [w, h] of [[320, 640], [375, 812], [390, 844], [768, 1024], [1024, 768], [1280, 800], [1440, 900], [1920, 1080]] as const) {
       await page.setViewport({ width: w, height: h });
       await go(`?frame=${fc + 30}`, 1500);
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);

@@ -60,6 +60,24 @@ body {
   }
 }
 
+/* Compact density: tighter panels for small laptops and dense reading. */
+[data-density='compact'] aside section > div[id] {
+  padding-top: 0;
+  padding-bottom: 0.5rem;
+}
+[data-density='compact'] aside section > div:first-child {
+  padding-top: 0.375rem;
+}
+[data-density='compact'] aside dt,
+[data-density='compact'] aside dd {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+[data-density='compact'] aside .text-sm {
+  font-size: 12.5px;
+  line-height: 17px;
+}
+
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(300%); }
