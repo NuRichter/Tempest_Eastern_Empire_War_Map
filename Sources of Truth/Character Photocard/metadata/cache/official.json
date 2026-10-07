@@ -1,0 +1,1082 @@
+{
+ "adalmann": {
+  "slug": "adalmann",
+  "page_url": "https://www.ten-sura.com/character/adalmann",
+  "japanese_name": "アダルマン",
+  "english_name": "Adalmann",
+  "cv": "杉田 智和",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/adalmann/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "agera": {
+  "slug": "agera",
+  "page_url": "https://www.ten-sura.com/character/agera",
+  "japanese_name": "アゲーラ",
+  "english_name": "Agera",
+  "cv": "中谷 一博",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/agera/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "albis": {
+  "slug": "albis",
+  "page_url": "https://www.ten-sura.com/character/albis",
+  "japanese_name": "アルビス",
+  "english_name": "Albis",
+  "cv": "加隈 亜衣",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/albis/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "alice": {
+  "slug": "alice",
+  "page_url": "https://www.ten-sura.com/character/alice",
+  "japanese_name": "アリス",
+  "english_name": "Alice",
+  "cv": "白石晴香",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/alice/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "arnaud": {
+  "slug": "arnaud",
+  "page_url": "https://www.ten-sura.com/character/arnaud",
+  "japanese_name": "アルノー",
+  "english_name": "Arnaud",
+  "cv": "竹本 英史",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/arnaud/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "ayn": {
+  "slug": "ayn",
+  "page_url": "https://www.ten-sura.com/character/ayn",
+  "japanese_name": "アイン",
+  "english_name": "Ayn",
+  "cv": "天海 由梨奈",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/ayn/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "bacchus": {
+  "slug": "bacchus",
+  "page_url": "https://www.ten-sura.com/character/bacchus",
+  "japanese_name": "バッカス",
+  "english_name": "Bacchus",
+  "cv": "飯島 肇",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/bacchus/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "benimaru": {
+  "slug": "benimaru",
+  "page_url": "https://www.ten-sura.com/character/benimaru",
+  "japanese_name": "ベニマル",
+  "english_name": "Benimaru",
+  "cv": "古川慎",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/benimaru/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "beretta": {
+  "slug": "beretta",
+  "page_url": "https://www.ten-sura.com/character/beretta",
+  "japanese_name": "ベレッタ",
+  "english_name": "Beretta",
+  "cv": "川澄 綾子",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/beretta/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "bernie": {
+  "slug": "bernie",
+  "page_url": "https://www.ten-sura.com/character/bernie",
+  "japanese_name": "バーニィ",
+  "english_name": "Bernie",
+  "cv": "石毛翔弥",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/bernie/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "bovix_equix": {
+  "slug": "bovix_equix",
+  "page_url": "https://www.ten-sura.com/character/bovix_equix",
+  "japanese_name": "ゴズール・メズール",
+  "english_name": null,
+  "cv": null,
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/bovix_equix/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "carrera": {
+  "slug": "carrera",
+  "page_url": "https://www.ten-sura.com/character/carrera",
+  "japanese_name": "カレラ",
+  "english_name": "Carrera",
+  "cv": "長谷川 育美",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/carrera/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "carrion": {
+  "slug": "carrion",
+  "page_url": "https://www.ten-sura.com/character/carrion",
+  "japanese_name": "カリオン",
+  "english_name": "Carrion",
+  "cv": "内匠靖明",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/carrion/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "charys": {
+  "slug": "charys",
+  "page_url": "https://www.ten-sura.com/character/charys",
+  "japanese_name": "カリス",
+  "english_name": "Charys",
+  "cv": "八代 拓／東内 マリ子",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/charys/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "chloe": {
+  "slug": "chloe",
+  "page_url": "https://www.ten-sura.com/character/chloe",
+  "japanese_name": "クロエ",
+  "english_name": "Chloe",
+  "cv": "田所あずさ",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/chloe/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "chronoa": {
+  "slug": "chronoa",
+  "page_url": "https://www.ten-sura.com/character/chronoa",
+  "japanese_name": "クロノア",
+  "english_name": "Chronoa",
+  "cv": "田所あずさ/沼倉 愛美",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/chronoa/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "cien": {
+  "slug": "cien",
+  "page_url": "https://www.ten-sura.com/character/cien",
+  "japanese_name": "シエン",
+  "english_name": "Cien",
+  "cv": "橘 龍丸",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/cien/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "clayman": {
+  "slug": "clayman",
+  "page_url": "https://www.ten-sura.com/character/clayman",
+  "japanese_name": "クレイマン",
+  "english_name": "Clayman",
+  "cv": "子安武人",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/clayman/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "count_gaban": {
+  "slug": "count_gaban",
+  "page_url": "https://www.ten-sura.com/character/count_gaban",
+  "japanese_name": "ギャバン",
+  "english_name": "Count Gaban",
+  "cv": "清水 健佑",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/count_gaban/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "daggra_liura_chonkra": {
+  "slug": "daggra_liura_chonkra",
+  "page_url": "https://www.ten-sura.com/character/daggra_liura_chonkra",
+  "japanese_name": "ダグラ・リューラ・デブラ",
+  "english_name": null,
+  "cv": null,
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/daggra_liura_chonkra/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "daggrull": {
+  "slug": "daggrull",
+  "page_url": "https://www.ten-sura.com/character/daggrull",
+  "japanese_name": "ダグリュール",
+  "english_name": "Daggrull",
+  "cv": "小山 力也",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/daggrull/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "damrada": {
+  "slug": "damrada",
+  "page_url": "https://www.ten-sura.com/character/damrada",
+  "japanese_name": "ダムラダ",
+  "english_name": "Damrada",
+  "cv": "浪川 大輔",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/damrada/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "deeno": {
+  "slug": "deeno",
+  "page_url": "https://www.ten-sura.com/character/deeno",
+  "japanese_name": "ディーノ",
+  "english_name": "Deeno",
+  "cv": "小林 裕介",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/deeno/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "diablo": {
+  "slug": "diablo",
+  "page_url": "https://www.ten-sura.com/character/diablo",
+  "japanese_name": "ディアブロ",
+  "english_name": "Diablo",
+  "cv": "櫻井孝宏",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/diablo/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "edgar": {
+  "slug": "edgar",
+  "page_url": "https://www.ten-sura.com/character/edgar",
+  "japanese_name": "エドガー",
+  "english_name": "Edgar",
+  "cv": "南真由",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/edgar/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "elmesia": {
+  "slug": "elmesia",
+  "page_url": "https://www.ten-sura.com/character/elmesia",
+  "japanese_name": "エルメシア",
+  "english_name": "Elmesia",
+  "cv": "金元寿子",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/elmesia/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "erald": {
+  "slug": "erald",
+  "page_url": "https://www.ten-sura.com/character/erald",
+  "japanese_name": "エラルド",
+  "english_name": "Erald",
+  "cv": "浜田 賢二",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/erald/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "eren": {
+  "slug": "eren",
+  "page_url": "https://www.ten-sura.com/character/eren",
+  "japanese_name": "エレン",
+  "english_name": "Eren",
+  "cv": "熊田茜音",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/eren/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "esprit": {
+  "slug": "esprit",
+  "page_url": "https://www.ten-sura.com/character/esprit",
+  "japanese_name": "エスプリ",
+  "english_name": "Esprit",
+  "cv": "久保 ユリカ",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/esprit/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "eva": {
+  "slug": "eva",
+  "page_url": "https://www.ten-sura.com/character/eva",
+  "japanese_name": "エヴァ",
+  "english_name": "Eva",
+  "cv": "豊崎 愛生",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/eva/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "footman": {
+  "slug": "footman",
+  "page_url": "https://www.ten-sura.com/character/footman",
+  "japanese_name": "フットマン",
+  "english_name": "Footman",
+  "cv": "川田 紳司",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/footman/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "frey": {
+  "slug": "frey",
+  "page_url": "https://www.ten-sura.com/character/frey",
+  "japanese_name": "フレイ",
+  "english_name": "Frey",
+  "cv": "大原 さやか",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/frey/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "fritz": {
+  "slug": "fritz",
+  "page_url": "https://www.ten-sura.com/character/fritz",
+  "japanese_name": "フリッツ",
+  "english_name": "Fritz",
+  "cv": "村田 太志",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/fritz/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "fuze": {
+  "slug": "fuze",
+  "page_url": "https://www.ten-sura.com/character/fuze",
+  "japanese_name": "フューズ",
+  "english_name": "Fuze",
+  "cv": "成田 剣",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/fuze/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "gabiru": {
+  "slug": "gabiru",
+  "page_url": "https://www.ten-sura.com/character/gabiru",
+  "japanese_name": "ガビル",
+  "english_name": "Gabiru",
+  "cv": "福島潤",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/gabiru/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "gaia": {
+  "slug": "gaia",
+  "page_url": "https://www.ten-sura.com/character/gaia",
+  "japanese_name": "ガイア",
+  "english_name": "Gaia",
+  "cv": "菱川 花菜",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/gaia/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "gail": {
+  "slug": "gail",
+  "page_url": "https://www.ten-sura.com/character/gail",
+  "japanese_name": "ゲイル",
+  "english_name": "Gail",
+  "cv": "佐藤 元",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/gail/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "gaiye": {
+  "slug": "gaiye",
+  "page_url": "https://www.ten-sura.com/character/gaiye",
+  "japanese_name": "ガイ",
+  "english_name": "Gaiye",
+  "cv": "峯田大夢",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/gaiye/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "garde": {
+  "slug": "garde",
+  "page_url": "https://www.ten-sura.com/character/garde",
+  "japanese_name": "ギャルド",
+  "english_name": "Garde",
+  "cv": "駒田 航",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/garde/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "gazel": {
+  "slug": "gazel",
+  "page_url": "https://www.ten-sura.com/character/gazel",
+  "japanese_name": "ガゼル・ドワルゴ",
+  "english_name": "Gazel",
+  "cv": "土師孝也",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/gazel/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "geld": {
+  "slug": "geld",
+  "page_url": "https://www.ten-sura.com/character/geld",
+  "japanese_name": "ゲルド",
+  "english_name": "Geld",
+  "cv": "山口太郎",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/geld/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "gido": {
+  "slug": "gido",
+  "page_url": "https://www.ten-sura.com/character/gido",
+  "japanese_name": "ギド",
+  "english_name": "Gido",
+  "cv": "木島隆一",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/gido/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "girard": {
+  "slug": "girard",
+  "page_url": "https://www.ten-sura.com/character/girard",
+  "japanese_name": "ジラード",
+  "english_name": "Girard",
+  "cv": "沖野 晃司",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/girard/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "glenda": {
+  "slug": "glenda",
+  "page_url": "https://www.ten-sura.com/character/glenda",
+  "japanese_name": "グレンダ",
+  "english_name": "Glenda",
+  "cv": "日野 まり",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/glenda/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "gobta": {
+  "slug": "gobta",
+  "page_url": "https://www.ten-sura.com/character/gobta",
+  "japanese_name": "ゴブタ",
+  "english_name": "Gobta",
+  "cv": "泊明日菜",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/gobta/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "gobuemon": {
+  "slug": "gobuemon",
+  "page_url": "https://www.ten-sura.com/character/gobuemon",
+  "japanese_name": "ゴブエモン",
+  "english_name": "Gobuemon",
+  "cv": "安田陸矢",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/gobuemon/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "gobwa": {
+  "slug": "gobwa",
+  "page_url": "https://www.ten-sura.com/character/gobwa",
+  "japanese_name": "ゴブア",
+  "english_name": "Gobwa",
+  "cv": "永瀬アンナ",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/gobwa/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "granville": {
+  "slug": "granville",
+  "page_url": "https://www.ten-sura.com/character/granville",
+  "japanese_name": "グラン/グランベル",
+  "english_name": null,
+  "cv": null,
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/granville/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "greatsage": {
+  "slug": "greatsage",
+  "page_url": "https://www.ten-sura.com/character/greatsage",
+  "japanese_name": "大賢者",
+  "english_name": "Greatsage",
+  "cv": "豊口めぐみ",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/greatsage/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "grigori": {
+  "slug": "grigori",
+  "page_url": "https://www.ten-sura.com/character/grigori",
+  "japanese_name": "グレゴリー",
+  "english_name": "Grigori",
+  "cv": "山根 雅史",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/grigori/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "grucius": {
+  "slug": "grucius",
+  "page_url": "https://www.ten-sura.com/character/grucius",
+  "japanese_name": "グルーシス",
+  "english_name": "Grucius",
+  "cv": "日野 聡",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/grucius/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "gunther": {
+  "slug": "gunther",
+  "page_url": "https://www.ten-sura.com/character/gunther",
+  "japanese_name": "ギュンター",
+  "english_name": "Gunther",
+  "cv": "片山 公輔",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/gunther/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "guy": {
+  "slug": "guy",
+  "page_url": "https://www.ten-sura.com/character/guy",
+  "japanese_name": "ギィ",
+  "english_name": "Guy",
+  "cv": "石田 彰",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/guy/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "hakuro": {
+  "slug": "hakuro",
+  "page_url": "https://www.ten-sura.com/character/hakuro",
+  "japanese_name": "ハクロウ",
+  "english_name": "Hakuro",
+  "cv": "大塚芳忠",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/hakuro/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "hermes": {
+  "slug": "hermes",
+  "page_url": "https://www.ten-sura.com/character/hermes",
+  "japanese_name": "ヘルメス",
+  "english_name": "Hermes",
+  "cv": "小林 大紀",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/hermes/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "hinata": {
+  "slug": "hinata",
+  "page_url": "https://www.ten-sura.com/character/hinata",
+  "japanese_name": "ヒナタ",
+  "english_name": "Hinata",
+  "cv": "沼倉 愛美",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/hinata/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "ifrit": {
+  "slug": "ifrit",
+  "page_url": "https://www.ten-sura.com/character/ifrit",
+  "japanese_name": "イフリート",
+  "english_name": "Ifrit",
+  "cv": "八代 拓",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/ifrit/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "jinrai": {
+  "slug": "jinrai",
+  "page_url": "https://www.ten-sura.com/character/jinrai",
+  "japanese_name": "ジンライ",
+  "english_name": "Jinrai",
+  "cv": "木内太郎",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/jinrai/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "jiwu": {
+  "slug": "jiwu",
+  "page_url": "https://www.ten-sura.com/character/jiwu",
+  "japanese_name": "ジウ",
+  "english_name": "Jiwu",
+  "cv": "稲垣好",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/jiwu/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "johann_rostia": {
+  "slug": "johann_rostia",
+  "page_url": "https://www.ten-sura.com/character/johann_rostia",
+  "japanese_name": "ヨハン",
+  "english_name": "Johann Rostia",
+  "cv": "石狩 勇気",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/johann_rostia/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "kaede": {
+  "slug": "kaede",
+  "page_url": "https://www.ten-sura.com/character/kaede",
+  "japanese_name": "カエデ",
+  "english_name": "Kaede",
+  "cv": "甲斐田裕子",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/kaede/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "kagali": {
+  "slug": "kagali",
+  "page_url": "https://www.ten-sura.com/character/kagali",
+  "japanese_name": "カガリ",
+  "english_name": "Kagali",
+  "cv": "石川 由依",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/kagali/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "kaijin": {
+  "slug": "kaijin",
+  "page_url": "https://www.ten-sura.com/character/kaijin",
+  "japanese_name": "カイジン",
+  "english_name": "Kaijin",
+  "cv": "斧 アツシ",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/kaijin/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "kaoru_yoshida": {
+  "slug": "kaoru_yoshida",
+  "page_url": "https://www.ten-sura.com/character/kaoru_yoshida",
+  "japanese_name": "吉田薫",
+  "english_name": "Kaoru Yoshida",
+  "cv": "小山剛志",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/kaoru_yoshida/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "kaval": {
+  "slug": "kaval",
+  "page_url": "https://www.ten-sura.com/character/kaval",
+  "japanese_name": "カバル",
+  "english_name": "Kaval",
+  "cv": "高梨謙吾",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/kaval/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "kenya": {
+  "slug": "kenya",
+  "page_url": "https://www.ten-sura.com/character/kenya",
+  "japanese_name": "ケンヤ",
+  "english_name": "Kenya",
+  "cv": "朝井彩加",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/kenya/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "kirara": {
+  "slug": "kirara",
+  "page_url": "https://www.ten-sura.com/character/kirara",
+  "japanese_name": "キララ",
+  "english_name": "Kirara",
+  "cv": "河野 ひより",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/kirara/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "kurobe": {
+  "slug": "kurobe",
+  "page_url": "https://www.ten-sura.com/character/kurobe",
+  "japanese_name": "クロベエ",
+  "english_name": "Kurobe",
+  "cv": "柳田淳一",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/kurobe/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "kyoya": {
+  "slug": "kyoya",
+  "page_url": "https://www.ten-sura.com/character/kyoya",
+  "japanese_name": "キョウヤ",
+  "english_name": "Kyoya",
+  "cv": "野上 翔",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/kyoya/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "laplace": {
+  "slug": "laplace",
+  "page_url": "https://www.ten-sura.com/character/laplace",
+  "japanese_name": "ラプラス",
+  "english_name": "Laplace",
+  "cv": "中井和哉",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/laplace/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "leon": {
+  "slug": "leon",
+  "page_url": "https://www.ten-sura.com/character/leon",
+  "japanese_name": "レオン",
+  "english_name": "Leon",
+  "cv": "福山 潤",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/leon/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "louis": {
+  "slug": "louis",
+  "page_url": "https://www.ten-sura.com/character/louis",
+  "japanese_name": "ルイ",
+  "english_name": "Louis",
+  "cv": "水中雅章",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/louis/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "luminus": {
+  "slug": "luminus",
+  "page_url": "https://www.ten-sura.com/character/luminus",
+  "japanese_name": "ルミナス",
+  "english_name": "Luminus",
+  "cv": "Lynn",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/luminus/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "maria": {
+  "slug": "maria",
+  "page_url": "https://www.ten-sura.com/character/maria",
+  "japanese_name": "マリア",
+  "english_name": "Maria",
+  "cv": "水瀬 いのり",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/maria/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "maribel": {
+  "slug": "maribel",
+  "page_url": "https://www.ten-sura.com/character/maribel",
+  "japanese_name": "マリアベル",
+  "english_name": "Maribel",
+  "cv": "水瀬 いのり",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/maribel/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "masayuki": {
+  "slug": "masayuki",
+  "page_url": "https://www.ten-sura.com/character/masayuki",
+  "japanese_name": "マサユキ",
+  "english_name": "Masayuki",
+  "cv": "松岡禎丞",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/masayuki/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "middray": {
+  "slug": "middray",
+  "page_url": "https://www.ten-sura.com/character/middray",
+  "japanese_name": "ミッドレイ",
+  "english_name": "Middray",
+  "cv": "伊丸岡 篤",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/middray/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "milim": {
+  "slug": "milim",
+  "page_url": "https://www.ten-sura.com/character/milim",
+  "japanese_name": "ミリム・ナーヴァ",
+  "english_name": "Milim",
+  "cv": "日高里菜",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/milim/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "misha": {
+  "slug": "misha",
+  "page_url": "https://www.ten-sura.com/character/misha",
+  "japanese_name": "ミーシャ",
+  "english_name": "Misha",
+  "cv": "佐藤 はな",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/misha/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "mizeri": {
+  "slug": "mizeri",
+  "page_url": "https://www.ten-sura.com/character/mizeri",
+  "japanese_name": "ミザリー",
+  "english_name": "Mizeri",
+  "cv": "広瀬 ゆうき",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/mizeri/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "mjollmile": {
+  "slug": "mjollmile",
+  "page_url": "https://www.ten-sura.com/character/mjollmile",
+  "japanese_name": "ミョルマイル",
+  "english_name": "Mjollmile",
+  "cv": "青山 穣",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/mjollmile/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "mjurran": {
+  "slug": "mjurran",
+  "page_url": "https://www.ten-sura.com/character/mjurran",
+  "japanese_name": "ミュウラン",
+  "english_name": "Mjurran",
+  "cv": "種﨑 敦美",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/mjurran/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "momiji": {
+  "slug": "momiji",
+  "page_url": "https://www.ten-sura.com/character/momiji",
+  "japanese_name": "モミジ",
+  "english_name": "Momiji",
+  "cv": "佳原萌枝",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/momiji/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "moss": {
+  "slug": "moss",
+  "page_url": "https://www.ten-sura.com/character/moss",
+  "japanese_name": "モス",
+  "english_name": "Moss",
+  "cv": "松岡 美里",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/moss/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "nine-head": {
+  "slug": "nine-head",
+  "page_url": "https://www.ten-sura.com/character/nine-head",
+  "japanese_name": "クマラ",
+  "english_name": "Kumara",
+  "cv": "鈴代 紗弓",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/nine-head/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "raine": {
+  "slug": "raine",
+  "page_url": "https://www.ten-sura.com/character/raine",
+  "japanese_name": "レイン",
+  "english_name": "Raine",
+  "cv": "幸村 恵理",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/raine/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "ramiris": {
+  "slug": "ramiris",
+  "page_url": "https://www.ten-sura.com/character/ramiris",
+  "japanese_name": "ラミリス",
+  "english_name": "Ramiris",
+  "cv": "春野杏",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/ramiris/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "ranga": {
+  "slug": "ranga",
+  "page_url": "https://www.ten-sura.com/character/ranga",
+  "japanese_name": "ランガ",
+  "english_name": "Ranga",
+  "cv": "小林親弘",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/ranga/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "raphael": {
+  "slug": "raphael",
+  "page_url": "https://www.ten-sura.com/character/raphael",
+  "japanese_name": "智慧之王(ラファエル)",
+  "english_name": null,
+  "cv": null,
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/raphael/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "razul": {
+  "slug": "razul",
+  "page_url": "https://www.ten-sura.com/character/razul",
+  "japanese_name": "ラズル",
+  "english_name": "Razul",
+  "cv": "楠 大典",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/razul/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "renard": {
+  "slug": "renard",
+  "page_url": "https://www.ten-sura.com/character/renard",
+  "japanese_name": "レナード",
+  "english_name": "Renard",
+  "cv": "野島 健児",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/renard/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "rigur": {
+  "slug": "rigur",
+  "page_url": "https://www.ten-sura.com/character/rigur",
+  "japanese_name": "リグル",
+  "english_name": "Rigur",
+  "cv": "石谷春貴",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/rigur/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "rigurd": {
+  "slug": "rigurd",
+  "page_url": "https://www.ten-sura.com/character/rigurd",
+  "japanese_name": "リグルド",
+  "english_name": "Rigurd",
+  "cv": "山本兼平",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/rigurd/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "rimuru": {
+  "slug": "rimuru",
+  "page_url": "https://www.ten-sura.com/character/rimuru",
+  "japanese_name": "リムル=テンペスト",
+  "english_name": "Rimuru Tempest",
+  "cv": "岡咲美保",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/rimuru/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "ritus": {
+  "slug": "ritus",
+  "page_url": "https://www.ten-sura.com/character/ritus",
+  "japanese_name": "リティス",
+  "english_name": "Ritus",
+  "cv": "相川 遥花",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/ritus/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "roy": {
+  "slug": "roy",
+  "page_url": "https://www.ten-sura.com/character/roy",
+  "japanese_name": "ロイ・ヴァレンタイン",
+  "english_name": null,
+  "cv": null,
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/roy/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "ryota": {
+  "slug": "ryota",
+  "page_url": "https://www.ten-sura.com/character/ryota",
+  "japanese_name": "リョウタ",
+  "english_name": "Ryota",
+  "cv": "石上静香",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/ryota/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "saare": {
+  "slug": "saare",
+  "page_url": "https://www.ten-sura.com/character/saare",
+  "japanese_name": "サーレ",
+  "english_name": "Saare",
+  "cv": "千葉 翔也",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/saare/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "seven_days_clergy": {
+  "slug": "seven_days_clergy",
+  "page_url": "https://www.ten-sura.com/character/seven_days_clergy",
+  "japanese_name": "七曜の老師",
+  "english_name": "Seven Days Clergy",
+  "cv": null,
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/seven_days_clergy/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "shion": {
+  "slug": "shion",
+  "page_url": "https://www.ten-sura.com/character/shion",
+  "japanese_name": "シオン",
+  "english_name": "Shion",
+  "cv": "M・A・O",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/shion/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "shizu": {
+  "slug": "shizu",
+  "page_url": "https://www.ten-sura.com/character/shizu",
+  "japanese_name": "シズ",
+  "english_name": "Shizu",
+  "cv": "花守ゆみり",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/shizu/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "shogo": {
+  "slug": "shogo",
+  "page_url": "https://www.ten-sura.com/character/shogo",
+  "japanese_name": "ショウゴ",
+  "english_name": "Shogo",
+  "cv": "小林 千晃",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/shogo/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "shuna": {
+  "slug": "shuna",
+  "page_url": "https://www.ten-sura.com/character/shuna",
+  "japanese_name": "シュナ",
+  "english_name": "Shuna",
+  "cv": "千本木彩花",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/shuna/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "soei": {
+  "slug": "soei",
+  "page_url": "https://www.ten-sura.com/character/soei",
+  "japanese_name": "ソウエイ",
+  "english_name": "Soei",
+  "cv": "江口拓也",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/soei/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "soka": {
+  "slug": "soka",
+  "page_url": "https://www.ten-sura.com/character/soka",
+  "japanese_name": "ソーカ",
+  "english_name": "Soka",
+  "cv": "大久保瑠美",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/soka/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "suphia": {
+  "slug": "suphia",
+  "page_url": "https://www.ten-sura.com/character/suphia",
+  "japanese_name": "スフィア",
+  "english_name": "Suphia",
+  "cv": "大地 葉",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/suphia/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "tear": {
+  "slug": "tear",
+  "page_url": "https://www.ten-sura.com/character/tear",
+  "japanese_name": "ティア",
+  "english_name": "Tear",
+  "cv": "本渡 楓",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/tear/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "testarossa": {
+  "slug": "testarossa",
+  "page_url": "https://www.ten-sura.com/character/testarossa",
+  "japanese_name": "テスタロッサ",
+  "english_name": "Testarossa",
+  "cv": "内山 夕実",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/testarossa/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "treyni": {
+  "slug": "treyni",
+  "page_url": "https://www.ten-sura.com/character/treyni",
+  "japanese_name": "トレイニー",
+  "english_name": "Treyni",
+  "cv": "田中理恵",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/treyni/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "ultima": {
+  "slug": "ultima",
+  "page_url": "https://www.ten-sura.com/character/ultima",
+  "japanese_name": "ウルティマ",
+  "english_name": "Ultima",
+  "cv": "富田 美憂",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/ultima/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "veldora": {
+  "slug": "veldora",
+  "page_url": "https://www.ten-sura.com/character/veldora",
+  "japanese_name": "ヴェルドラ",
+  "english_name": "Veldora",
+  "cv": "前野智昭",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/veldora/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "velzard": {
+  "slug": "velzard",
+  "page_url": "https://www.ten-sura.com/character/velzard",
+  "japanese_name": "ヴェルザード",
+  "english_name": "Velzard",
+  "cv": "井口 裕香",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/velzard/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "venom": {
+  "slug": "venom",
+  "page_url": "https://www.ten-sura.com/character/venom",
+  "japanese_name": "ヴェノム",
+  "english_name": "Venom",
+  "cv": "沢城 千春",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/venom/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "veryard": {
+  "slug": "veryard",
+  "page_url": "https://www.ten-sura.com/character/veryard",
+  "japanese_name": "ベルヤード",
+  "english_name": "Veryard",
+  "cv": "山本 格",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/veryard/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "veryon": {
+  "slug": "veryon",
+  "page_url": "https://www.ten-sura.com/character/veryon",
+  "japanese_name": "ヴェイロン",
+  "english_name": "Veryon",
+  "cv": "麦人",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/veryon/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "vesta": {
+  "slug": "vesta",
+  "page_url": "https://www.ten-sura.com/character/vesta",
+  "japanese_name": "ベスター",
+  "english_name": "Vesta",
+  "cv": "津田健次郎",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/vesta/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "yamza": {
+  "slug": "yamza",
+  "page_url": "https://www.ten-sura.com/character/yamza",
+  "japanese_name": "ヤムザ",
+  "english_name": "Yamza",
+  "cv": "広瀬 裕也",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/yamza/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "youm": {
+  "slug": "youm",
+  "page_url": "https://www.ten-sura.com/character/youm",
+  "japanese_name": "ヨウム",
+  "english_name": "Youm",
+  "cv": "細谷佳正",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/youm/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "yuuki": {
+  "slug": "yuuki",
+  "page_url": "https://www.ten-sura.com/character/yuuki",
+  "japanese_name": "ユウキ",
+  "english_name": "Yuuki",
+  "cv": "花江夏樹",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/yuuki/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ },
+ "zonda": {
+  "slug": "zonda",
+  "page_url": "https://www.ten-sura.com/character/zonda",
+  "japanese_name": "ゾンダ",
+  "english_name": "Zonda",
+  "cv": "中島 ヨシキ",
+  "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/zonda/character-image.png?v=6",
+  "accessed": "2026-10-07"
+ }
+}

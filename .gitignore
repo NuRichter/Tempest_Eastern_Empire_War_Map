@@ -6,3 +6,11 @@ out
 next-env.d.ts
 .vercel
 .env*
+
+# Windows
+desktop.ini
+
+# Video referensi besar (>100MB, melebihi batas GitHub)
+Sources of Truth/Contoh Referensi Tujuan Proyek/*.mp4
+Sources of Truth/Character Photocard/_work/
+__pycache__/

@@ -1,0 +1,555 @@
+[
+ {
+  "name": "Rimuru Tempest",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/rimuru/character-image.png?v=6"
+  },
+  "forms": [
+   "Human",
+   "Slime"
+  ]
+ },
+ {
+  "name": "Abiru",
+  "chosen": {
+   "medium": "manga",
+   "section": "Human Form",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/b/b6/Abiru_Human_Manga.png/revision/latest?cb=20230504001438"
+  },
+  "forms": [
+   "Dragonewt Form",
+   "Human Form"
+  ]
+ },
+ {
+  "name": "Agera",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/agera/character-image.png?v=6"
+  },
+  "forms": [
+   "Agera",
+   "Byakuya Araki"
+  ]
+ },
+ {
+  "name": "Albis",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/albis/character-image.png?v=6"
+  },
+  "forms": [
+   "Beast Form",
+   "Half-Beast Form",
+   "Human Form"
+  ]
+ },
+ {
+  "name": "Angelus",
+  "chosen": {
+   "medium": "game",
+   "section": "Concealed Form",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/c/cb/ISEKAI_Chronicles_-_Angelus.png/revision/latest?cb=20240816093004"
+  },
+  "forms": [
+   "Concealed Form",
+   "True Form"
+  ]
+ },
+ {
+  "name": "Apito",
+  "chosen": {
+   "medium": "manga",
+   "section": "Queen wasp",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/8/86/Chapter_119_-_Apito_Queen_Wasp.jpg/revision/latest?cb=20240626184401"
+  },
+  "forms": [
+   "Divine wasp",
+   "Insect",
+   "Queen wasp",
+   "Star wasp"
+  ]
+ },
+ {
+  "name": "Carrera",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/carrera/character-image.png?v=6"
+  },
+  "forms": [
+   "Anime",
+   "Light Novel",
+   "Manga"
+  ]
+ },
+ {
+  "name": "Carrion",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/carrion/character-image.png?v=6"
+  },
+  "forms": [
+   "Beast Form",
+   "Human Form"
+  ]
+ },
+ {
+  "name": "Charys",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/charys/character-image.png?v=6"
+  },
+  "forms": [
+   "Female Form",
+   "Male Form"
+  ]
+ },
+ {
+  "name": "Chloe Aubert",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/chloe/character-image.png?v=6"
+  },
+  "forms": [
+   "Adult Form",
+   "Child Form"
+  ]
+ },
+ {
+  "name": "Clayman",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/clayman/character-image.png?v=6"
+  },
+  "forms": [
+   "Battle Form",
+   "Regular Form"
+  ]
+ },
+ {
+  "name": "Dino",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/deeno/character-image.png?v=6"
+  },
+  "forms": [
+   "Concealed Form",
+   "True Form"
+  ]
+ },
+ {
+  "name": "Elyun Grimwald",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/eren/character-image.png?v=6"
+  },
+  "forms": [
+   "Elf",
+   "Human disguise"
+  ]
+ },
+ {
+  "name": "Erald Grimwald",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/erald/character-image.png?v=6"
+  },
+  "forms": [
+   "Elf",
+   "Human disguise"
+  ]
+ },
+ {
+  "name": "Eva",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/eva/character-image.png?v=6"
+  },
+  "forms": [
+   "Anime",
+   "Light Novel",
+   "Manga"
+  ]
+ },
+ {
+  "name": "Feldway",
+  "chosen": {
+   "medium": "light_novel",
+   "section": "Concealed Form",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/9/98/Feldway_LN.png/revision/latest?cb=20230131230129"
+  },
+  "forms": [
+   "Concealed Form",
+   "True Form"
+  ]
+ },
+ {
+  "name": "Gadra",
+  "chosen": {
+   "medium": "light_novel",
+   "section": "Previous Form",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/8/88/Gadra.PNG/revision/latest?cb=20180509082056"
+  },
+  "forms": [
+   "Current Form",
+   "Previous Form"
+  ]
+ },
+ {
+  "name": "Granbell Rosso",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/granville/character-image.png?v=6"
+  },
+  "forms": [
+   "Granbell",
+   "Youth"
+  ]
+ },
+ {
+  "name": "Grucius",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/grucius/character-image.png?v=6"
+  },
+  "forms": [
+   "Half-Beast Form",
+   "Human Form"
+  ]
+ },
+ {
+  "name": "Izis",
+  "chosen": {
+   "medium": "game",
+   "section": "Original Form",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/c/cf/Izis_ISEKAI_Memories.png/revision/latest?cb=20210908072051"
+  },
+  "forms": [
+   "Evolved Form",
+   "Original Form"
+  ]
+ },
+ {
+  "name": "Jahil",
+  "chosen": {
+   "medium": "manga",
+   "section": "High human",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/2/2e/Chapter_82_-_Jahil.png/revision/latest?cb=20220919084044"
+  },
+  "forms": [
+   "Footman",
+   "High human"
+  ]
+ },
+ {
+  "name": "Kagali",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/kagali/character-image.png?v=6"
+  },
+  "forms": [
+   "Kagali",
+   "Kazalim"
+  ]
+ },
+ {
+  "name": "Kataki",
+  "chosen": {
+   "medium": "game",
+   "section": "Astral Goblin",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/1/1c/ISEKAI_Chronicles_-_Astral_goblin.png/revision/latest?cb=20240816054136"
+  },
+  "forms": [
+   "Astral Goblin",
+   "Evil Goblin"
+  ]
+ },
+ {
+  "name": "Kumara",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/nine-head/character-image.png?v=6"
+  },
+  "forms": [
+   "Adult Form",
+   "Child Form",
+   "Fox Form"
+  ]
+ },
+ {
+  "name": "Luvelgé",
+  "chosen": {
+   "medium": "light_novel",
+   "section": "Luvelgé",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/b/b8/LN_23_11.jpg/revision/latest?cb=20251128152455"
+  },
+  "forms": [
+   "As Lucia Nasca",
+   "Initial Human form",
+   "Luvelgé"
+  ]
+ },
+ {
+  "name": "Milim Nava",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/milim/character-image.png?v=6"
+  },
+  "forms": [
+   "Concealed form",
+   "Stampede state",
+   "True form"
+  ]
+ },
+ {
+  "name": "Mjur Farmenas",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/mjurran/character-image.png?v=6"
+  },
+  "forms": [
+   "Concealed Form",
+   "True Form"
+  ]
+ },
+ {
+  "name": "Moss",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/moss/character-image.png?v=6"
+  },
+  "forms": [
+   "Concealed Form",
+   "True Form"
+  ]
+ },
+ {
+  "name": "Quo",
+  "chosen": {
+   "medium": "manga",
+   "section": "Alive",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/2/2c/Clayman_Chapter_28_-_Cryptid_Mistress.png/revision/latest?cb=20240725161354"
+  },
+  "forms": [
+   "Alive",
+   "Ninehead of Darkness"
+  ]
+ },
+ {
+  "name": "Ramiris",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/ramiris/character-image.png?v=6"
+  },
+  "forms": [
+   "Pixie Form",
+   "True Form"
+  ]
+ },
+ {
+  "name": "Razen",
+  "chosen": {
+   "medium": "anime",
+   "section": "Shogo's Body",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/d/db/Episode_35_-_Razen_tries_to_reason_with_Rimuru.png/revision/latest?cb=20240124003556"
+  },
+  "forms": [
+   "Previous Form",
+   "Shogo's Body"
+  ]
+ },
+ {
+  "name": "Shinsha",
+  "chosen": {
+   "medium": "game",
+   "section": "Human",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/3/3f/Shinsha_ISEKAI_Memories.png/revision/latest?cb=20240620082647"
+  },
+  "forms": [
+   "Human",
+   "Slime"
+  ]
+ },
+ {
+  "name": "Shizu",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/shizu/character-image.png?v=6"
+  },
+  "forms": [
+   "Adult",
+   "Child"
+  ]
+ },
+ {
+  "name": "Suphia",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/suphia/character-image.png?v=6"
+  },
+  "forms": [
+   "Beast Form",
+   "Half-Beast Form",
+   "Human Form"
+  ]
+ },
+ {
+  "name": "Tear",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/tear/character-image.png?v=6"
+  },
+  "forms": [
+   "Mask",
+   "Maskless"
+  ]
+ },
+ {
+  "name": "Testarossa",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/testarossa/character-image.png?v=6"
+  },
+  "forms": [
+   "Anime",
+   "Light Novel",
+   "Manga"
+  ]
+ },
+ {
+  "name": "Ultima",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/ultima/character-image.png?v=6"
+  },
+  "forms": [
+   "Anime",
+   "Light Novel",
+   "Manga"
+  ]
+ },
+ {
+  "name": "Vega",
+  "chosen": {
+   "medium": "light_novel",
+   "section": "Human Form",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/0/05/Vega_Human_LN.png/revision/latest?cb=20230301220813"
+  },
+  "forms": [
+   "Armored Form",
+   "Human Form",
+   "Majin Form"
+  ]
+ },
+ {
+  "name": "Veldanava",
+  "chosen": {
+   "medium": "unknown",
+   "section": "Human form",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/c/c9/Veldanava_Human_form.png/revision/latest?cb=20251212222442"
+  },
+  "forms": [
+   "Dragon form",
+   "Human form"
+  ]
+ },
+ {
+  "name": "Veldora Tempest",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/veldora/character-image.png?v=6"
+  },
+  "forms": [
+   "Dragon Form",
+   "Human Form"
+  ]
+ },
+ {
+  "name": "Velgaia",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/gaia/character-image.png?v=6"
+  },
+  "forms": [
+   "Chaos Dragon",
+   "Elemental Dragon"
+  ]
+ },
+ {
+  "name": "Velgrynd",
+  "chosen": {
+   "medium": "light_novel",
+   "section": "Human Form",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/c/c0/Velgrynd_LN.png/revision/latest?cb=20210525224438"
+  },
+  "forms": [
+   "Dragon Form",
+   "Human Form"
+  ]
+ },
+ {
+  "name": "Velzard",
+  "chosen": {
+   "medium": "anime",
+   "section": "",
+   "image_url": "https://www.ten-sura.com/4GfGdAp7/wp-content/themes/tensura_portal/assets/images/character/velzard/character-image.png?v=6"
+  },
+  "forms": [
+   "Dragon Form",
+   "Immature Form",
+   "True Form"
+  ]
+ },
+ {
+  "name": "Venti",
+  "chosen": {
+   "medium": "light_novel",
+   "section": "Human form",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/9/97/Venti_LN.png/revision/latest?cb=20221113182741"
+  },
+  "forms": [
+   "Dragon form",
+   "Human form"
+  ]
+ },
+ {
+  "name": "Zegion",
+  "chosen": {
+   "medium": "light_novel",
+   "section": "Insectar",
+   "image_url": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/e/eb/LN16_-_10.jpg/revision/latest?cb=20200504155713"
+  },
+  "forms": [
+   "Insect",
+   "Insectar"
+  ]
+ }
+]
