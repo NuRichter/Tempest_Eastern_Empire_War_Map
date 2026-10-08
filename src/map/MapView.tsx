@@ -21,7 +21,6 @@ import type { Dataset } from '@/data/loader';
 import type { FrameState } from '@/types/dataset';
 
 const BASE_MAP_URL = '/maps/base-map.png';
-const MYTH_MAP_URL = '/maps/myth-map.jpg';
 
 const SEA = '#0b1419';
 
@@ -37,7 +36,10 @@ function baseStyle(): StyleSpecification {
     name: 'Tempest campaign atlas',
     sources: {
       base: { type: 'image', url: BASE_MAP_URL, coordinates: atlasCorners() },
-      myth: { type: 'image', url: MYTH_MAP_URL, coordinates: atlasCorners() },
+      // The painted map as super-resolved tiles (scripts/cartography/build_hd_maps.py):
+      // only the part in view loads, and detail holds up when zoomed in.
+      myth: { type: 'raster', tiles: [`${typeof window === 'undefined' ? '' : window.location.origin}/tiles/myth/{z}/{x}/{y}.jpg`], tileSize: 256, minzoom: 0, maxzoom: 5, bounds: atlasBoundsFlat() },
+      coast: empty,
       territories: empty,
       areas: empty,
       grid: empty,
@@ -51,6 +53,11 @@ function baseStyle(): StyleSpecification {
         source: 'base',
         paint: { 'raster-opacity': 1, 'raster-fade-duration': 0, 'raster-opacity-transition': { duration: 600 } },
       },
+      // Vector Base Map: sea, land and coastline that stay sharp at any zoom.
+      // It takes over from the Base Map image as the reader zooms in.
+      { id: 'sea-hd', type: 'fill', source: 'coast', filter: ['==', ['get', 'kind'], 'sea'], paint: { 'fill-color': '#a3d3e0', 'fill-opacity': 0, 'fill-antialias': false } },
+      { id: 'land-hd', type: 'fill', source: 'coast', filter: ['==', ['get', 'kind'], 'land'], paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-antialias': true } },
+      { id: 'coast-hd', type: 'line', source: 'coast', filter: ['==', ['get', 'kind'], 'land'], layout: { 'line-join': 'round' }, paint: { 'line-color': '#000000', 'line-opacity': 0, 'line-width': ['interpolate', ['linear'], ['zoom'], 4, 0.8, 8, 2.2] } },
       {
         id: 'myth-raster',
         type: 'raster',
@@ -171,6 +178,27 @@ function settlementFeatures(data: Dataset): GeoJSON.FeatureCollection {
       geometry: { type: 'Polygon', coordinates: [s.ring.map(([x, y]) => simToLngLatTuple(x, y))] },
     })),
   };
+}
+
+/** Atlas bounds as [west, south, east, north] for a tiled source. */
+function atlasBoundsFlat(): [number, number, number, number] {
+  const [[w, s], [e, n]] = atlasBounds();
+  return [w, s, e, n];
+}
+
+/** Vector Base Map: an atlas-wide sea rectangle and the traced land (lakes as holes). */
+function coastFeatures(coast: { polygons: [number, number][][][] }): GeoJSON.FeatureCollection {
+  const sea: GeoJSON.Feature = {
+    type: 'Feature',
+    properties: { kind: 'sea' },
+    geometry: { type: 'Polygon', coordinates: [[[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]].map(([x, y]) => simToLngLatTuple(x, y))] },
+  };
+  const land = coast.polygons.map((rings) => ({
+    type: 'Feature' as const,
+    properties: { kind: 'land' },
+    geometry: { type: 'Polygon' as const, coordinates: rings.map((ring) => ring.map(([x, y]) => simToLngLatTuple(x, y))) },
+  }));
+  return { type: 'FeatureCollection', features: [sea, ...land] };
 }
 
 /** Simulation grid: 10% steps in simulation space. Not a geographic graticule. */
@@ -373,8 +401,20 @@ export function MapView() {
     const map = mapRef.current;
     if (!map || !ready) return;
     const dark = theme === 'warroom';
-    map.setPaintProperty('base-raster', 'raster-opacity', mapStyle === 'base' ? 1 : 0);
+    // Base Map: the image up to zoom 4.6, then the vector map by 5.6.
+    const zin = (a: number, b: number) => ['interpolate', ['linear'], ['zoom'], 4.6, a, 5.6, b] as unknown as number;
+    map.setPaintProperty('base-raster', 'raster-opacity', mapStyle === 'base' ? zin(1, 0) : 0);
+    map.setPaintProperty('sea-hd', 'fill-opacity', mapStyle === 'base' ? zin(0, 1) : 0);
+    map.setPaintProperty('land-hd', 'fill-opacity', mapStyle === 'base' ? zin(0, 1) : 0);
+    map.setPaintProperty('coast-hd', 'line-opacity', mapStyle === 'base' ? zin(0, 0.9) : 0);
+    // Same tones as the image after its own raster adjustments below.
+    map.setPaintProperty('sea-hd', 'fill-color', dark ? '#2f3f45' : '#a3d3e0');
+    map.setPaintProperty('land-hd', 'fill-color', dark ? '#4c4e4f' : '#ffffff');
+    map.setPaintProperty('coast-hd', 'line-color', dark ? '#0b0b0b' : '#000000');
     map.setPaintProperty('myth-raster', 'raster-opacity', mapStyle === 'myth' ? 1 : 0);
+    // A hidden style downloads nothing: switch its layer off, not only transparent.
+    map.setLayoutProperty('myth-raster', 'visibility', mapStyle === 'myth' ? 'visible' : 'none');
+    map.setLayoutProperty('base-raster', 'visibility', mapStyle === 'base' ? 'visible' : 'none');
     // The war-room treatment darkens the Base Map so faction colour carries the
     // information; the Myth Map keeps its own painted colours, slightly dimmed.
     map.setPaintProperty('base-raster', 'raster-brightness-max', dark ? 0.3 : 1);
@@ -438,6 +478,19 @@ export function MapView() {
     const src = map.getSource('areas') as maplibregl.GeoJSONSource | undefined;
     src?.setData(areaFeatures(data, useSimulation.getState().state));
   }, [data, areaKey, ready, territoryOpacity]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    let alive = true;
+    void fetch('/maps/coast.json')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((c) => {
+        if (alive && c) (map.getSource('coast') as maplibregl.GeoJSONSource | undefined)?.setData(coastFeatures(c));
+      })
+      .catch(() => undefined);
+    return () => { alive = false; };
+  }, [ready]);
 
   useEffect(() => {
     const map = mapRef.current;

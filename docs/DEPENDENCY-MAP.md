@@ -80,6 +80,9 @@ the atlas
 | `Sources of Truth/Tensura Theme/raw/*`, `manifest.json` | canonical, third-party art | `scripts/theme/build_theme_assets.py` | Light-novel covers (vols 12–16) and slime-Rimuru art from the Tensura wiki, with source URL per file. © the rights holders; licence for this project: Open (owner's decision, as for the photocards). |
 | `data-source/settlements.source.json` | source | `compile-data.ts`, `compile-front.ts` | Capitals, major cities and the Labyrinth. Positions measured from *Central World All Territories Nation and Capital.png*, registered to the Base Map by a land-mask ECC homography (correlation 0.992, land IoU 0.96), or taken from the gazetteer. Outline shapes are RECONSTRUCTED from canon descriptions. |
 | `public/data/settlements.json` | generated | the browser (polygons, icons), `compile-front.ts` (cities are never captured) | Outline rings in simulation coordinates. |
+| `public/tiles/myth/**` | derivative | MapLibre (Myth Map) | 609 Web-Mercator tiles, zoom 0 to 5, from a ×4 FSRCNN super-resolution of `myth-map.jpg` (`scripts/cartography/build_hd_maps.py`). |
+| `public/maps/coast.json` | generated | MapLibre (vector Base Map past zoom 5) | Land and lake polygons traced from `base-map.png`. |
+| `public/maps/3d/*` | generated | the 3D view | `height.png` (stylised relief), `myth-4k.jpg` and `base-4k.jpg` textures. |
 | `public/assets/theme/**` | derivative | About panel (wallpapers), loading screen, Situation bar, 404, cursor, tour guides | Wallpapers 1920 × 1080 and 1170 × 2532, slime stickers (WebP), tour guide stickers from the official *Slime Diaries* art (head and shoulders, WebP), Rimuru cursor (32 px PNG). |
 | `public/assets/nation-flags/**` | derivative | `Flag` component | Validated by `validate-assets`. |
 | `docs/audit/baseline/*.jpg`, `docs/qa/checkpoints/*.jpg` | generated | humans, `qa:visual` | Small JPEGs: the pre-upgrade baseline and the visual-regression references. |

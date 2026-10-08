@@ -19,6 +19,9 @@ import { CinematicOverlay } from '@/components/overlays/CinematicOverlay';
 import { FilterChip } from '@/components/overlays/FilterChip';
 import { Tour } from '@/components/overlays/Tour';
 
+// The three.js view loads only when someone opens it.
+const Atlas3D = dynamic(() => import('@/map/three/Atlas3D'), { ssr: false });
+
 // MapLibre needs a DOM and WebGL, so the map is client-only.
 const MapView = dynamic(() => import('@/map/MapView').then((m) => m.MapView), {
   ssr: false,
@@ -36,6 +39,8 @@ export function AppShell() {
   const density = usePreferences((s) => s.density);
   const uiTheme = usePreferences((s) => s.uiTheme);
   const themeCursor = usePreferences((s) => s.themeCursor);
+  const view3d = usePreferences((s) => s.view3d);
+  const cinema3d = usePreferences((s) => s.cinema3d);
   const t = useT();
   const [hydrated, setHydrated] = useState(false);
   const started = useRef(false);
@@ -132,6 +137,8 @@ export function AppShell() {
     const unsub = useSimulation.subscribe((s, prev) => {
       if (!s.playing || s.frame <= prev.frame || !s.data || !s.clock) return;
       if (!usePreferences.getState().autoSlow) return;
+      // In cinematic mode Auto Timing owns the speed.
+      if (s.viewMode === 'cinematic' && usePreferences.getState().autoTiming) return;
       const speed = s.clock.currentSpeed;
       let hit = false;
       for (let f = prev.frame + 1; f <= s.frame && !hit; f += 1) hit = Boolean(s.data.eventsByFrame.get(f)?.some((e) => e.turningPoint));
@@ -210,6 +217,11 @@ export function AppShell() {
           return;
         case 'g':
           p.set('globe', !p.globe);
+          p.set('view3d', false);
+          return;
+        case 'v':
+          if (s.viewMode === 'cinematic') p.set('cinema3d', !p.cinema3d);
+          else p.set('view3d', !p.view3d);
           return;
         case 'm':
           p.set('mapStyle', p.mapStyle === 'base' ? 'myth' : 'base');
@@ -286,6 +298,7 @@ export function AppShell() {
       {cinematic ? null : <TopBar />}
       <div className="relative min-h-0 flex-1">
         <MapView />
+        {(cinematic ? cinema3d : view3d) ? <Atlas3D auto={cinematic} /> : null}
         {cinematic ? null : (
           <>
             <LeftRail />

@@ -81,8 +81,10 @@ const mapState = (page: Page) =>
     return {
       loaded: m.loaded(),
       projection: m.getProjection()?.type ?? 'mercator',
-      base: m.getPaintProperty('base-raster', 'raster-opacity'),
-      myth: m.getPaintProperty('myth-raster', 'raster-opacity'),
+      // A style is shown when its layer is visible and not fully transparent
+      // (the Base Map's opacity is a zoom expression: image, then vector).
+      base: m.getLayoutProperty('base-raster', 'visibility') !== 'none' && m.getPaintProperty('base-raster', 'raster-opacity') !== 0 ? 1 : 0,
+      myth: m.getLayoutProperty('myth-raster', 'visibility') !== 'none' && m.getPaintProperty('myth-raster', 'raster-opacity') !== 0 ? 1 : 0,
       territories: m.getLayoutProperty('territory-fill', 'visibility') ?? 'visible',
       zoom: m.getZoom(),
     };
@@ -109,6 +111,8 @@ async function main(): Promise<void> {
     });
     page.on('pageerror', (e) => consoleErrors.push(`pageerror: ${e instanceof Error ? e.message : String(e)}`));
     page.on('requestfailed', (r) => {
+      // MapLibre cancels tile requests the view no longer needs: a cancellation, not a failure.
+      if (/\/tiles\//.test(r.url()) && r.failure()?.errorText === 'net::ERR_ABORTED') return;
       if (!/favicon/.test(r.url())) badRequests.push(`${r.url()} ${r.failure()?.errorText}`);
     });
     page.on('response', (r) => {

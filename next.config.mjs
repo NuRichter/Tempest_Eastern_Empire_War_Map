@@ -15,6 +15,7 @@ const nextConfig = {
   async headers() {
     const longLived = 'public, max-age=604800, stale-while-revalidate=86400';
     return [
+      { source: '/tiles/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' }] },
       { source: '/maps/:path*', headers: [{ key: 'Cache-Control', value: longLived }] },
       { source: '/assets/:path*', headers: [{ key: 'Cache-Control', value: longLived }] },
       // The dataset must always match the deployed assets: revalidate on every load (ETag, 304).

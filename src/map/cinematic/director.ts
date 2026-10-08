@@ -41,8 +41,8 @@ export const SHOT_LABEL: Record<Shot, string> = {
 
 export const useDirector = create<{ shot: Shot; fronts: number }>(() => ({ shot: 'ESTABLISHING', fronts: 0 }));
 
-interface Pt { x: number; y: number; w: number; kind: 'event' | 'battle' | 'front' | 'march' }
-interface Cluster { x0: number; y0: number; x1: number; y1: number; w: number; cx: number; cy: number; kinds: Set<Pt['kind']> }
+export interface Pt { x: number; y: number; w: number; kind: 'event' | 'battle' | 'front' | 'march' }
+export interface Cluster { x0: number; y0: number; x1: number; y1: number; w: number; cx: number; cy: number; kinds: Set<Pt['kind']> }
 
 const SIG: Record<string, number> = { CRITICAL: 3, HIGH: 2, MEDIUM: 1.2 };
 const CLUSTER_RADIUS = 0.07; // simulation units
@@ -54,7 +54,7 @@ function placeXY(data: Dataset, id: string | null): { x: number; y: number } | n
 }
 
 /** Everything that is happening around frame T, as weighted points. */
-function gatherAction(data: Dataset, episodes: FrontEpisode[], T: number): { pts: Pt[]; battleLive: boolean; battleEnded: boolean } {
+export function gatherAction(data: Dataset, episodes: FrontEpisode[], T: number): { pts: Pt[]; battleLive: boolean; battleEnded: boolean } {
   const pts: Pt[] = [];
   let battleLive = false;
   let battleEnded = false;
@@ -91,7 +91,7 @@ function gatherAction(data: Dataset, episodes: FrontEpisode[], T: number): { pts
   return { pts, battleLive, battleEnded };
 }
 
-function cluster(pts: Pt[]): Cluster[] {
+export function cluster(pts: Pt[]): Cluster[] {
   const out: Cluster[] = [];
   for (const p of [...pts].sort((a, b) => b.w - a.w)) {
     const c = out.find((k) => Math.hypot(k.cx - p.x, k.cy - p.y) < CLUSTER_RADIUS);
@@ -113,7 +113,7 @@ interface Target { cx: number; cy: number; zoom: number; pitch: number; bearing:
  * arrives at the same moment whatever the frame rate (a slow device gets
  * fewer, larger steps, never a slower camera).
  */
-class Spring {
+export class Spring {
   v = 0;
   constructor(public x: number) {}
   step(target: number, tau: number, dt: number): number {

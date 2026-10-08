@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import type { Map as MapLibreMap } from 'maplibre-gl';
-import { Compass, Crosshair, Globe2, Map as MapIcon, Maximize2, Minimize2, Minus, Plus, ScanSearch } from 'lucide-react';
+import { Box, Compass, Crosshair, Globe2, Map as MapIcon, Maximize2, Minimize2, Minus, Plus, ScanSearch } from 'lucide-react';
 
 import { lngLatToSim } from '@/lib/coords';
 import { useSimulation } from '@/simulation/store';
@@ -23,6 +23,7 @@ const STYLES: { id: MapStyle; name: string; note: string; thumb: string }[] = [
 export function MapControls({ map, ready }: Props) {
   const t = useT();
   const globe = usePreferences((s) => s.globe);
+  const view3d = usePreferences((s) => s.view3d);
   const mapStyle = usePreferences((s) => s.mapStyle);
   const setPref = usePreferences((s) => s.set);
   const focusCampaign = useSimulation((s) => s.focusCampaign);
@@ -76,7 +77,7 @@ export function MapControls({ map, ready }: Props) {
     <>
       {/* Navigation: bottom right, above the timeline. */}
       <div data-tour="map-controls" className="absolute bottom-3 right-3 z-20 flex flex-col items-end gap-1.5" role="group" aria-label={t('Map navigation')}>
-        <div className="flex flex-col overflow-hidden rounded-[3px] border border-ink-500 bg-ink-800/90">
+        <div className={`flex flex-col overflow-hidden rounded-[3px] border border-ink-500 bg-ink-800/90 ${view3d ? 'hidden' : ''}`}>
           <button type="button" className="grid h-8 w-8 place-items-center text-fg-2 hover:bg-ink-600 hover:text-fg" onClick={() => zoomBy(0.75)} aria-label={t('Zoom in')} title={t('Zoom in (+)')}>
             <Plus size={15} strokeWidth={1.7} />
           </button>
@@ -85,7 +86,7 @@ export function MapControls({ map, ready }: Props) {
             <Minus size={15} strokeWidth={1.7} />
           </button>
         </div>
-        <button type="button" className="ctl w-8 px-0" onClick={() => map?.easeTo({ bearing: 0, pitch: 0, duration: prefersReducedMotion() ? 0 : 450 })} aria-label={t('Face north')} title={t('Face north')}>
+        <button type="button" className={`ctl w-8 px-0 ${view3d ? 'hidden' : ''}`} onClick={() => map?.easeTo({ bearing: 0, pitch: 0, duration: prefersReducedMotion() ? 0 : 450 })} aria-label={t('Face north')} title={t('Face north')}>
           <Compass size={15} strokeWidth={1.7} style={{ transform: `rotate(${-bearing}deg)` }} />
         </button>
         <button type="button" className="ctl w-8 px-0" onClick={focusCampaign} aria-label={t('Frame the whole campaign')} title={t('Frame the whole campaign (0)')}>
@@ -108,11 +109,14 @@ export function MapControls({ map, ready }: Props) {
           ) : null}
         </div>
         <div className="flex overflow-hidden rounded-[3px] border border-ink-500 bg-ink-800/90" role="radiogroup" aria-label={t('Projection')}>
-          <button type="button" role="radio" aria-checked={!globe} onClick={() => setPref('globe', false)} title={t('Flat atlas (G)')} className={`flex h-8 items-center gap-1 px-2 text-xs ${!globe ? 'bg-accent/15 text-fg' : 'text-fg-3 hover:text-fg'}`}>
+          <button type="button" role="radio" aria-checked={!globe && !view3d} onClick={() => { setPref('globe', false); setPref('view3d', false); }} title={t('Flat atlas (G)')} className={`flex h-8 items-center gap-1 px-2 text-xs ${!globe && !view3d ? 'bg-accent/15 text-fg' : 'text-fg-3 hover:text-fg'}`}>
             <MapIcon size={13} strokeWidth={1.7} /> {t('Flat')}
           </button>
-          <button type="button" role="radio" aria-checked={globe} onClick={() => setPref('globe', true)} title={t('Globe (G)')} className={`flex h-8 items-center gap-1 border-l border-ink-500 px-2 text-xs ${globe ? 'bg-accent/15 text-fg' : 'text-fg-3 hover:text-fg'}`}>
+          <button type="button" role="radio" aria-checked={globe && !view3d} onClick={() => { setPref('globe', true); setPref('view3d', false); }} title={t('Globe (G)')} className={`flex h-8 items-center gap-1 border-l border-ink-500 px-2 text-xs ${globe && !view3d ? 'bg-accent/15 text-fg' : 'text-fg-3 hover:text-fg'}`}>
             <Globe2 size={13} strokeWidth={1.7} /> {t('Globe')}
+          </button>
+          <button type="button" role="radio" aria-checked={view3d} onClick={() => setPref('view3d', true)} title={t('3D terrain (V)')} className={`flex h-8 items-center gap-1 border-l border-ink-500 px-2 text-xs ${view3d ? 'bg-accent/15 text-fg' : 'text-fg-3 hover:text-fg'}`}>
+            <Box size={13} strokeWidth={1.7} /> 3D
           </button>
         </div>
         <button

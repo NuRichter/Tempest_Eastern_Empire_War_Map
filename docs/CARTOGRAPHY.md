@@ -74,3 +74,15 @@ Full method, transition modes, tests and limits: `docs/TERRITORIAL-ANIMATION.md`
 - **The other capitals and cities** get organic outlines at indicative sizes.
 
 **Cities hold.** No settlement falls in this war, so held ground never covers a city outline (`docs/TERRITORIAL-ANIMATION.md`).
+
+## High definition and 3D
+
+**HD up close.** `scripts/cartography/build_hd_maps.py` builds two layers so the map stays sharp up close:
+- **Base Map, vector.** Land and lakes are traced from `base-map.png` and stored as polygons in `public/maps/coast.json`. Past zoom 4.6 to 5.6 the image fades out and the vector sea, land and coast fade in, sharp at any zoom.
+- **Myth Map, tiles.** The painted map is super-resolved ×4 with FSRCNN (Dong, Loy and Tang, 2016), lightly sharpened, then cut into 609 Web-Mercator tiles, zoom 0 to 5, in `public/tiles/myth/`. The atlas projection maps simulation x and y linearly onto Mercator x and y, so a tile pixel maps to an image pixel by an affine transform.
+
+**The 3D view.** `src/map/three/Atlas3D.tsx` (three.js, loaded only when opened) draws the following:
+- **Terrain:** a relief mesh from `public/maps/3d/height.png`. The relief is STYLISED, because the novels give no elevations. Land rises inland, the painted map's rugged ground becomes ranges, and the Kanaat Mountains around Dwargon are raised because Dwargon is carved into them. Its skin is the super-resolved Myth Map.
+- **War:** territory roles, held ground and glowing fronts are painted onto the terrain from the same data as the 2D map.
+- **Forces and places:** armies as lit pillars sized by strength, battles as rings, sparks and firelight, capitals as extruded cities with crowns, and the Labyrinth as a portal.
+- **Sky and light:** an animated sea, sky, fog, clouds and bloom. Sun and moon follow the simulation hour.

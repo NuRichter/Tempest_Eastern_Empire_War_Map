@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Play, X } from 'lucide-react';
+import { Box, Map as MapIcon, Play, Timer, X } from 'lucide-react';
 
 import { useT } from '@/i18n';
 import { battleDayLabel, phaseLabel } from '@/lib/format';
@@ -11,13 +11,49 @@ import { currentEvent } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
 import { Figure, Flag, Portrait, ProvenanceBadge } from '@/components/ui/primitives';
 import { RollingNumber } from '@/components/ui/RollingNumber';
-import { FRAMES_PER_SECOND_AT_1X } from '@/simulation/clock';
+import { FRAMES_PER_SECOND_AT_1X, SPEEDS } from '@/simulation/clock';
+import { usePreferences } from '@/state/preferences';
 import { SHOT_LABEL, useDirector } from '@/map/cinematic/director';
 import type { Battle, Character, WarEvent } from '@/types/dataset';
 
 const CAPTION_FRAMES = 30; // a caption belongs to its event for five simulated hours
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV'];
 const FILM_SPEED_INDEX = 4; // 4×: a simulated day in a few seconds, battles still readable
+
+/**
+ * Auto Timing: the film sets its own pace from what is happening.
+ * Speed indices into SPEEDS (0.25, 0.5, 1, 2, 4, 8, 16, 48).
+ */
+const STAGE_PACE: Record<string, number> = {
+  PRE_WAR_PREPARATION: 6, // 16×
+  IMPERIAL_DECISION_AND_MOBILIZATION: 6,
+  APPROACH_MARCH: 6, // 16× until the border is crossed, then 8×
+  HALT_AND_DEPLOYMENT: 5, // 8×: the first advance
+  FIRST_CONTACT_AND_SURFACE_BATTLE: 3, // 2×, battles at 1×
+  LABYRINTH_RAID: 5,
+  ANNIHILATION_OF_THE_OUTSIDE_CAMP: 3,
+  RESURRECTION_AND_CONSOLIDATION: 5,
+  LONG_NIGHT: 3,
+  POST_WAR_INTERVAL: 6,
+  SUMMIT_AND_SETTLEMENT: 5,
+  REPATRIATION_PREPARATION: 6,
+};
+function autoPace(data: NonNullable<ReturnType<typeof useSimulation.getState>['data']>, stage: string, frame: number): number {
+  const st = data.stages.find((s) => s.id === stage || s.name === stage);
+  let pace = st ? STAGE_PACE[st.name] ?? 4 : 4;
+  const crossing = data.eventById.get('EVT-0015')?.frame ?? Infinity;
+  if (st?.name === 'APPROACH_MARCH' && frame >= crossing) pace = 5;
+  for (const b of data.battles) {
+    if (b.endFrame - b.startFrame > 144) continue; // the labyrinth operation runs for days
+    if (frame >= b.startFrame && frame <= b.endFrame) return 2; // 1× in battle
+    if (frame >= b.startFrame - 12 && frame < b.startFrame) pace = Math.min(pace, 3); // ease in before it
+    if (frame > b.endFrame && frame <= b.endFrame + 6) pace = Math.min(pace, 3); // and out after
+  }
+  // Many events close together: slow one step so they can be read.
+  const soon = data.events.filter((e) => e.frame > frame && e.frame <= frame + 12).length;
+  if (soon >= 3) pace = Math.max(2, pace - 1);
+  return pace;
+}
 
 /**
  * Cinematic mode: the war as a film.
@@ -45,7 +81,22 @@ export function CinematicOverlay() {
   const cinematic = viewMode === 'cinematic';
 
   const [title, setTitle] = useState(true);
+  const [cold, setCold] = useState<number | null>(null);
+  const autoTiming = usePreferences((s) => s.autoTiming);
+  const cinema3d = usePreferences((s) => s.cinema3d);
+  const setPref = usePreferences((s) => s.set);
   const [chapter, setChapter] = useState<{ n: number; name: string; key: number } | null>(null);
+  const hooks = useMemo(() => {
+    const out = new Map<string, string>();
+    if (!data) return out;
+    const rank: Record<string, number> = { CRITICAL: 3, HIGH: 2, MEDIUM: 1 };
+    for (const st of data.stages) {
+      const evs = st.anchorEvents.map((id) => data.eventById.get(id)).filter((e): e is WarEvent => Boolean(e));
+      const best = [...evs].sort((a, b) => (rank[b.significance] ?? 0) - (rank[a.significance] ?? 0))[0];
+      if (best) out.set(st.name, best.title);
+    }
+    return out;
+  }, [data]);
   const [splash, setSplash] = useState<{ battle: Battle; key: number } | null>(null);
   const lastStage = useRef<string | null>(null);
   const liveBattles = useRef<Set<string>>(new Set());
@@ -89,6 +140,7 @@ export function CinematicOverlay() {
     if (first || idx < 0) return;
     setChapter({ n: idx + 1, name: data.stages[idx].name, key: frame });
     window.clearTimeout(chapterTimer.current);
+    window.clearTimeout(chapterTimer.current);
     chapterTimer.current = window.setTimeout(() => setChapter(null), 4200);
   }, [cinematic, data, state, frame]);
 
@@ -104,6 +156,23 @@ export function CinematicOverlay() {
     window.clearTimeout(splashTimer.current);
     splashTimer.current = window.setTimeout(() => setSplash(null), 4000);
   }, [cinematic, data, frame, title]);
+
+  // Auto Timing: follow the pace of the war while the film plays.
+  useEffect(() => {
+    if (!cinematic || !data || !state || !playing || !autoTiming || cold !== null) return;
+    const want = autoPace(data, state.stage, frame);
+    const s = useSimulation.getState();
+    if (s.clock && Math.abs(s.clock.currentSpeed - SPEEDS[want]) > 1e-6) s.setSpeedIndex(want);
+  }, [cinematic, data, state, frame, playing, autoTiming, cold]);
+
+  // The cold open: three hook lines from the record before the film runs.
+  const coldTimer = useRef(0);
+  useEffect(() => () => window.clearTimeout(coldTimer.current), []);
+  useEffect(() => {
+    if (cold === null) return;
+    if (cold >= 4) { setCold(null); return; }
+    coldTimer.current = window.setTimeout(() => setCold((c) => (c === null ? null : c + 1)), 2600);
+  }, [cold]);
 
   const stageTicks = useMemo(() => {
     if (!data) return [];
@@ -129,10 +198,19 @@ export function CinematicOverlay() {
   const playFilm = () => {
     const s = useSimulation.getState();
     if (s.frame >= N - 2) s.seek(0);
-    s.setSpeedIndex(FILM_SPEED_INDEX);
+    s.setSpeedIndex(autoTiming ? autoPace(data, state.stage, s.frame) : FILM_SPEED_INDEX);
     if (!s.playing) s.toggle();
     setTitle(false);
+    if (!usePreferences.getState().reducedMotion || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) setCold(0);
   };
+  const council = data.events.find((e) => /council adopts the invasion/i.test(e.title));
+  const coldLines = [
+    council ? t('{day}. The Empire decides on war.', { day: battleDayLabel(council.battleDay) }) : null,
+    typeof totals.empireKilled === 'number' ? t('{n} imperial soldiers will fall.', { n: totals.empireKilled.toLocaleString('en-GB') }) : null,
+    typeof totals.empireRevived === 'number' && totals.empireRevived > 0 ? t('{n} of them will rise again.', { n: totals.empireRevived.toLocaleString('en-GB') }) : null,
+    totals.tempestKilled === 0 ? t('Tempest will not lose a single soldier.') : null,
+  ];
+  const coldLine = cold !== null ? coldLines[cold] : null;
 
   return (
     <div className="cine pointer-events-none absolute inset-0 z-20 overflow-hidden">
@@ -210,6 +288,7 @@ export function CinematicOverlay() {
             <p className="text-xs font-semibold uppercase tracking-[0.5em] text-[#d4ab57]">{t('Chapter {n}', { n: ROMAN[chapter.n - 1] ?? chapter.n })}</p>
             <p className="mt-3 font-display text-[clamp(28px,5.5vh,58px)] leading-tight text-white [text-shadow:0_4px_24px_rgba(0,0,0,0.9)]">{t(phaseLabel(chapter.name))}</p>
             <div className="cine-rule mx-auto mt-4 h-px bg-gradient-to-r from-transparent via-[#d4ab57] to-transparent" />
+            {hooks.get(chapter.name) ? <p className="cine-hook mx-auto mt-4 max-w-2xl px-6 font-display text-[clamp(15px,2.4vh,22px)] italic leading-snug text-white/90 [text-shadow:0_2px_12px_rgba(0,0,0,0.9)]">{hooks.get(chapter.name)}</p> : null}
             <p className="figure mt-3 text-sm uppercase tracking-[0.3em] text-white/70">{battleDayLabel(day)} · {hhmm}</p>
           </div>
         </div>
@@ -217,6 +296,28 @@ export function CinematicOverlay() {
 
       {/* Battle splash: who meets whom. */}
       {splash && !title ? <BattleSplash key={splash.key} battle={splash.battle} /> : null}
+
+      {/* Cold open: hook lines from the record, one at a time. */}
+      {coldLine ? (
+        <div key={cold} className="cine-cold absolute inset-0 grid place-items-center bg-black/80">
+          <p className="max-w-3xl px-8 text-center font-display text-[clamp(26px,5.4vh,60px)] leading-tight text-white [text-shadow:0_6px_30px_rgba(0,0,0,0.9)]">{coldLine}</p>
+        </div>
+      ) : null}
+
+      {/* Film controls: Auto Timing and the 2D / 3D stage. */}
+      <div className="pointer-events-auto absolute left-1/2 top-[calc(var(--cine-bar)+44px)] flex -translate-x-1/2 items-center gap-2">
+        <button type="button" onClick={() => setPref('autoTiming', !autoTiming)} aria-pressed={autoTiming} title={t('Auto Timing for Cinematic Mode: the film sets its own speed, fast through preparation, slow in battle')} className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] backdrop-blur-sm ${autoTiming ? 'border-[#d4ab57]/80 bg-[#d4ab57]/20 text-white' : 'border-white/20 bg-black/50 text-white/60 hover:text-white'}`}>
+          <Timer size={12} strokeWidth={2} /> {t('Auto timing')}{autoTiming && playing ? <span className="figure text-[#d4ab57]">· {speed}×</span> : null}
+        </button>
+        <div className="flex overflow-hidden rounded-full border border-white/20 bg-black/50 text-[10px] font-semibold uppercase tracking-[0.16em] backdrop-blur-sm" role="radiogroup" aria-label={t('Film stage')}>
+          <button type="button" role="radio" aria-checked={!cinema3d} onClick={() => setPref('cinema3d', false)} className={`flex items-center gap-1 px-3 py-1 ${!cinema3d ? 'bg-white/20 text-white' : 'text-white/55 hover:text-white'}`}>
+            <MapIcon size={12} strokeWidth={2} /> 2D
+          </button>
+          <button type="button" role="radio" aria-checked={cinema3d} onClick={() => setPref('cinema3d', true)} className={`flex items-center gap-1 border-l border-white/20 px-3 py-1 ${cinema3d ? 'bg-white/20 text-white' : 'text-white/55 hover:text-white'}`}>
+            <Box size={12} strokeWidth={2} /> 3D
+          </button>
+        </div>
+      </div>
 
       {/* Opening title. */}
       {title && !ended ? (

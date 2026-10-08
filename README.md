@@ -40,6 +40,7 @@
 [**Kenapa ada**](#-kenapa-peta-ini-ada) ·
 [**Lihat bergerak**](#-lihat-perangnya-bergerak) ·
 [**Sinematik**](#-mode-sinematik) ·
+[**3D**](#%EF%B8%8F-mode-3d) ·
 [**Aturan perang**](#%EF%B8%8F-aturan-perang-di-peta-ini) ·
 [**Linimasa**](#%EF%B8%8F-linimasa-perang) ·
 [**Tur**](#-tur-pemandu) ·
@@ -131,7 +132,34 @@ Sutradaranya membaca perang setiap seperempat detik: event terbaru, pertempuran 
 | 🌫️ **Aftermath** | Pertempuran baru selesai | Menarik diri perlahan |
 | 🏞️ **Establishing** | Tidak ada yang terjadi | Lebar, tinggi, melayang |
 
+**Auto Timing.** Filmnya mengatur kecepatannya sendiri: 16× saat persiapan, 8× saat serbuan pertama, melambat ke 2× menjelang pertempuran, dan 1× tepat saat pertempuran berlangsung. Tombolnya ada di atas layar dan bisa dimatikan kapan saja.
+
+**Cold open.** Sebelum film berjalan, empat kalimat pembuka muncul satu per satu, semuanya dari catatan perang: *"D−40. The Empire decides on war."*, *"1,010,002 imperial soldiers will fall."*, *"700,000 of them will rise again."*, *"Tempest will not lose a single soldier."* Setiap kartu bab juga membawa kalimat pemikat dari event terpenting di bab itu.
+
 Kamera tidak pernah melompat. Pusat, zoom, kemiringan, dan arah pandang masing-masing mengikuti pegas teredam kritis yang dihitung persis, jadi gerakannya sama mulusnya di komputer kencang maupun ponsel lambat. Di atasnya ada kartu judul pembuka, **kartu bab** di setiap tahap perang, **kartu VS** saat pertempuran dimulai (bendera dan photocard kedua pihak), caption yang diketik di sepertiga bawah, buku korban, dan pita film yang menandai setiap bab. Sentuh peta kapan saja untuk mengambil alih kamera, sutradara kembali beberapa detik kemudian.
+
+<br>
+
+## 🏔️ Mode 3D
+
+Tekan `V` (atau pilih **3D** di sebelah Datar dan Bola dunia) dan seluruh atlas berdiri jadi dunia tiga dimensi, dibangun dengan **three.js**. Mode sinematik memakai panggung yang sama secara default, dengan tombol **2D | 3D** di bagian atas.
+
+<div align="center">
+<img src="./assets/readme/gifs/cinematic-3d.gif" width="100%" alt="Mode sinematik 3D: pertempuran gerbang Dwargon, portal Labirin, dan malam panjang">
+</div>
+
+| | Yang ada di layar |
+|:---:|---|
+| 🏔️ | **Relief** dengan Myth Map yang di-*super-resolve* sebagai kulitnya. Pegunungan Kanaat berdiri tinggi di sekitar Dwargon. Reliefnya rekonstruksi bergaya, novel tidak memberi ketinggian. |
+| 🌊 | **Laut beranimasi** dengan ombak, pantulan langit, dan kilau matahari |
+| 🟥 | **Wilayah dan front** dari data yang sama dengan peta 2D, dilukis di atas medan, garis depannya menyala |
+| 🗼 | **Pasukan** sebagai pilar bercahaya warna faksi, tingginya mengikuti kekuatan, angkanya melayang di atas |
+| 💥 | **Pertempuran** dengan cincin berdenyut, percikan api, dan cahaya kobaran selama berlangsung |
+| 👑 | **Ibu kota** sebagai kota 3D bermahkota, **Labirin** sebagai portal ungu dengan pilar cahaya |
+| 🌗 | **Siang dan malam mengikuti jam simulasi.** Matahari bergerak sesuai jam, malam panjang D+15 benar-benar terjadi di bawah cahaya bulan |
+| 🎥 | **Kamera sutradara** yang sama, diterjemahkan ke orbit 3D |
+
+**Peta lebih HD saat di-zoom.** Base Map berubah jadi vektor (garis pantai dan perbatasan tetap tajam di zoom berapa pun), dan Myth Map dilukis ulang dengan super-resolusi ×4 (FSRCNN) lalu dipotong jadi 609 tile, jadi detailnya bertahan saat didekati.
 
 <br>
 
@@ -222,7 +250,8 @@ Spotlight-nya meluncur mulus ke setiap tombol. Di langkah peta, tur memindahkan 
 <td width="50%" valign="top">
 
 **🗺️ Peta**
-- Base Map yang bersih atau Myth Map yang dilukis
+- Base Map yang bersih atau Myth Map yang dilukis, keduanya HD saat di-zoom
+- Mode 3D three.js dengan relief, laut, siang dan malam
 - Datar atau bola dunia, waktu tetap tidak bergeser
 - Look *Documentary* atau *War room*
 - Sabuk transisi *Gradient* atau *Pale band*
@@ -364,6 +393,7 @@ python scripts/cartography/extract_territories.py   # geometri wilayah dari Base
 python scripts/characters/build_photocards.py       # photocard WebP dan thumbnail
 python scripts/flags/build_flag_thumbs.py           # thumbnail bendera WebP
 python scripts/theme/build_theme_assets.py          # wallpaper, stiker, pemandu tur, kursor
+python scripts/cartography/build_hd_maps.py --model FSRCNN_x4.pb   # tile HD, garis pantai vektor, relief 3D
 ```
 
 </details>
@@ -452,6 +482,8 @@ Kalau peta ini bikin kamu ingin baca atau nonton lagi, ini rumah resminya:
 - Microsoft. (n.d.). *Playwright* [Computer software]. https://playwright.dev/
 - OpenCV team. (2026). *OpenCV* (Version 4.14.0) [Computer software]. https://opencv.org/
 - FFmpeg developers. (2026). *FFmpeg* [Computer software]. https://ffmpeg.org/
+- three.js authors. (2026). *three.js* (Version 0.186.1) [Computer software]. https://threejs.org/
+- Dong, C., Loy, C. C., & Tang, X. (2016). Accelerating the super-resolution convolutional neural network. In *Computer Vision, ECCV 2016* (pp. 391–407). Springer.
 - Artifex Software. (2026). *PyMuPDF* (Version 1.28.2) [Computer software]. https://pymupdf.readthedocs.io/en/latest/
 - Vercel. (n.d.). *Deployment protection*. Vercel Documentation. Retrieved October 8, 2026, from https://vercel.com/docs/deployment-protection
 

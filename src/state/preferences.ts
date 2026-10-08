@@ -110,6 +110,12 @@ export interface Preferences {
   transitionBelt: TransitionBelt;
   /** The slime-Rimuru pointer (Tensura theme). On by default; the system cursor is the fallback. */
   themeCursor: boolean;
+  /** The three.js 3D view of the atlas (instead of the flat map or globe). */
+  view3d: boolean;
+  /** Cinematic mode films in 3D (three.js) rather than on the 2D map. */
+  cinema3d: boolean;
+  /** Cinematic mode sets the playback speed by what is happening (Auto Timing). */
+  autoTiming: boolean;
   /** The first-run tour has been seen (or skipped). */
   tourDone: boolean;
   bookmarks: Bookmark[];
@@ -148,6 +154,9 @@ export const DEFAULT_PREFERENCES: Preferences = {
   transitionBelt: 'gradient',
   themeCursor: true,
   tourDone: false,
+  view3d: false,
+  cinema3d: true,
+  autoTiming: true,
   bookmarks: [],
 };
 

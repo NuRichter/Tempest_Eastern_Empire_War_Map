@@ -16,6 +16,9 @@
   "{day} {time}, simulation time. Latest event: {title}": [
    "src/components/timeline/Timeline.tsx"
   ],
+  "{day}. The Empire decides on war.": [
+   "src/components/overlays/CinematicOverlay.tsx"
+  ],
   "{gainer} gains from {loser}": [
    "src/components/dossier/records.tsx"
   ],
@@ -59,6 +62,9 @@
   "{n} hours since the previous event": [
    "src/components/dossier/records.tsx"
   ],
+  "{n} imperial soldiers will fall.": [
+   "src/components/overlays/CinematicOverlay.tsx"
+  ],
   "{n} map cells": [
    "src/components/dossier/records.tsx"
   ],
@@ -67,6 +73,9 @@
   ],
   "{n} min/s": [
    "src/components/timeline/Timeline.tsx"
+  ],
+  "{n} of them will rise again.": [
+   "src/components/overlays/CinematicOverlay.tsx"
   ],
   "{pct}% of the leg, route {route}": [
    "src/components/dossier/records.tsx"
@@ -91,6 +100,9 @@
   ],
   "1× turning point": [
    "src/components/timeline/Timeline.tsx"
+  ],
+  "3D terrain (V)": [
+   "src/map/MapControls.tsx"
   ],
   "A 10% grid in simulation space. Not a geographic graticule.": [
    "src/state/preferences.ts"
@@ -228,6 +240,12 @@
   ],
   "Audit changes ({n})": [
    "src/components/dossier/records.tsx"
+  ],
+  "Auto timing": [
+   "src/components/overlays/CinematicOverlay.tsx"
+  ],
+  "Auto Timing for Cinematic Mode: the film sets its own speed, fast through preparation, slow in battle": [
+   "src/components/overlays/CinematicOverlay.tsx"
   ],
   "Back": [
    "src/components/overlays/Tour.tsx"
@@ -667,6 +685,9 @@
   ],
   "Fights beside a party, or is attacked by one.": [
    "src/components/overlays/Legend.tsx"
+  ],
+  "Film stage": [
+   "src/components/overlays/CinematicOverlay.tsx"
   ],
   "Filters": [
    "src/components/rail/LeftRail.tsx"
@@ -1786,6 +1807,9 @@
   ],
   "Tempest strength": [
    "src/components/dossier/records.tsx"
+  ],
+  "Tempest will not lose a single soldier.": [
+   "src/components/overlays/CinematicOverlay.tsx"
   ],
   "Tempest, effective": [
    "src/components/shell/SituationPanel.tsx"
