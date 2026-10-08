@@ -324,6 +324,7 @@ export function Timeline() {
 
   return (
     <section
+      data-tour="timeline"
       id="timeline"
       aria-label={t('Campaign timeline')}
       className={`z-30 shrink-0 border-t border-ink-500 bg-ink-850 px-3 pb-2 pt-1.5 ${cinematic ? 'absolute inset-x-0 bottom-0 bg-ink-850/90 opacity-0 transition-opacity duration-300 hover:opacity-100 focus-within:opacity-100' : 'relative'}`}
@@ -339,7 +340,7 @@ export function Timeline() {
           <button type="button" className="ctl w-8 px-0" onClick={() => seek(frame - fpd)} aria-label={t('Back one day')} title={t('Back one day (Shift+←)')}>
             <ChevronLeft size={15} strokeWidth={1.7} />
           </button>
-          <button type="button" onClick={toggle} aria-label={playing ? t('Pause') : t('Play')} title={playing ? t('Pause (Space)') : t('Play (Space)')} className="grid h-9 w-11 place-items-center rounded-[3px] border border-accent/70 bg-accent/15 text-fg hover:bg-accent/25">
+          <button type="button" data-tour="play" onClick={toggle} aria-label={playing ? t('Pause') : t('Play')} title={playing ? t('Pause (Space)') : t('Play (Space)')} className="grid h-9 w-11 place-items-center rounded-[3px] border border-accent/70 bg-accent/15 text-fg hover:bg-accent/25">
             {playing ? <Pause size={16} strokeWidth={2} /> : <Play size={16} strokeWidth={2} />}
           </button>
           <button type="button" className="ctl w-8 px-0" onClick={() => seek(frame + fpd)} aria-label={t('Forward one day')} title={t('Forward one day (Shift+→)')}>
@@ -364,7 +365,7 @@ export function Timeline() {
           </select>
         </label>
         {autoSlowed ? (
-          <span role="status" className="rounded-[2px] border border-accent/60 px-1.5 py-0.5 text-2xs font-semibold uppercase tracking-label text-accent" title={t('Playback slowed at a turning point; it resumes your speed in a moment. Turn off in Layers.')}>
+          <span role="status" className="rounded-[2px] border border-accent/60 px-1.5 py-0.5 text-2xs font-semibold uppercase tracking-label text-accent" title={t('Playback slowed at a turning point. It resumes your speed in a moment. Turn off in Layers.')}>
             {t('1× turning point')}
           </span>
         ) : null}
@@ -398,7 +399,7 @@ export function Timeline() {
           aria-valuemin={0}
           aria-valuemax={frameCount - 1}
           aria-valuenow={frame}
-          aria-valuetext={latest ? t('{day} {time}, simulation time; latest event: {title}', { day: battleDayLabel(day), time: hhmm, title: latest.title }) : t('{day} {time}, simulation time', { day: battleDayLabel(day), time: hhmm })}
+          aria-valuetext={latest ? t('{day} {time}, simulation time. Latest event: {title}', { day: battleDayLabel(day), time: hhmm, title: latest.title }) : t('{day} {time}, simulation time', { day: battleDayLabel(day), time: hhmm })}
           className="relative h-[58px] cursor-ew-resize touch-none select-none rounded-[2px]"
           onPointerDown={(e) => {
             try {

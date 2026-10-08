@@ -32,7 +32,7 @@ export function LeftRail() {
 
   return (
     <div className="pointer-events-none absolute inset-y-0 left-0 z-20 flex">
-      <nav aria-label={t('Tools')} className="pointer-events-auto flex w-12 flex-col items-center gap-1 border-r border-ink-500 bg-ink-850/95 py-2">
+      <nav data-tour="rail" aria-label={t('Tools')} className="pointer-events-auto flex w-12 flex-col items-center gap-1 border-r border-ink-500 bg-ink-850/95 py-2">
         {TABS.map((x) => {
           const Icon = x.icon;
           const active = open && tab === x.id;

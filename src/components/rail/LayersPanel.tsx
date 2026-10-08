@@ -2,6 +2,7 @@
 
 import { usePreferences, WAR_LAYERS, type Scale } from '@/state/preferences';
 import { useT } from '@/i18n';
+import { useTour } from '@/components/overlays/Tour';
 import { Section, Segmented, Slider, Toggle } from '@/components/ui/primitives';
 
 const pct = (v: number) => `${Math.round(v * 100)}%`;
@@ -62,10 +63,13 @@ export function LayersPanel() {
           <div className="-mx-0">
             <Toggle checked={p.autoSlow} onChange={(v) => p.set('autoSlow', v)} label={t('Slow down at turning points')} note={t('Playback drops to 1× for a moment when it reaches a turning point, as documentaries do.')} />
             <Toggle checked={p.showMinimap} onChange={(v) => p.set('showMinimap', v)} label={t('Overview minimap')} />
-            <Toggle checked={p.pixelCursor} onChange={(v) => p.set('pixelCursor', v)} label={t('Pixel slime cursor')} note={t('A small pixel pointer drawn for this map. The normal cursor returns if it cannot load.')} />
+            <Toggle checked={p.themeCursor} onChange={(v) => p.set('themeCursor', v)} label={t('Rimuru cursor')} note={t('A slime Rimuru pointer. The normal cursor returns if it cannot load.')} />
           </div>
           <Segmented label={t('Motion')} value={p.reducedMotion} onChange={(v) => p.set('reducedMotion', v)} options={[{ id: 'system', label: t('System') }, { id: 'reduce', label: t('Reduce') }, { id: 'full', label: t('Full') }]} />
         </div>
+        <button type="button" onClick={() => useTour.getState().start()} className="ctl mt-2 w-full">
+          {t('Replay the tour')}
+        </button>
         <button type="button" onClick={p.reset} className="ctl mt-2 w-full">
           {t('Reset display settings')}
         </button>

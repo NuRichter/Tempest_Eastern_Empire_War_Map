@@ -102,6 +102,13 @@ export function SituationBar() {
         </div>
       ) : null}
 
+      {!sideA.length && !sideB.length ? (
+        <div className="mt-2.5 flex items-center gap-2.5 rounded-[3px] bg-ink-700/40 px-2 py-1.5">
+          <img src="/assets/theme/chibi/slime-leaves.webp" alt="" width={44} height={44} loading="lazy" className="h-11 w-auto shrink-0" />
+          <p className="text-2xs leading-snug text-fg-3">{t('Nobody is in the spotlight right now. Play on, or jump to the next event.')}</p>
+        </div>
+      ) : null}
+
       {sideA.length || sideB.length ? (
         <div className="mt-2.5 flex items-center justify-center gap-2" aria-label={t('People in this event')}>
           <Cards people={sideA} onPick={jumpToCharacter} />
@@ -142,7 +149,19 @@ function Cards({ people, onPick }: { people: Character[]; onPick: (id: string) =
         return (
           <button key={c.id} type="button" onClick={() => onPick(c.id)} className="group flex w-[4.5rem] flex-col items-center gap-0.5" title={c.name}>
             {c.photocard ? (
-              <img src={c.photocard.thumb ?? c.photocard.src} alt={c.name} loading="lazy" width={72} height={111} className="h-[111px] w-[4.5rem] rounded-[3px] border-2 bg-white object-cover transition-transform group-hover:-translate-y-0.5" style={{ borderColor: color }} />
+              <img
+                src={c.photocard.thumb ?? c.photocard.src}
+                alt={c.name}
+                loading="lazy"
+                width={72}
+                height={111}
+                onError={(e) => {
+                  // Thumbnail missing: try the full card once, then hide the image (the name stays).
+                  const img = e.currentTarget;
+                  if (c.photocard && img.src.includes('/thumb/')) img.src = c.photocard.src;
+                  else img.style.visibility = 'hidden';
+                }}
+                className="h-[111px] w-[4.5rem] rounded-[3px] border-2 bg-white object-cover transition-transform group-hover:-translate-y-0.5" style={{ borderColor: color }} />
             ) : (
               <span className="grid h-[111px] w-[4.5rem] place-items-center rounded-[3px] border-2 bg-ink-700 font-display text-lg text-fg-3" style={{ borderColor: color }}>
                 {c.name.slice(0, 1)}

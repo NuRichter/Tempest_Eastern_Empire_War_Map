@@ -3,7 +3,7 @@
 import { ExternalLink } from 'lucide-react';
 import type { ReactNode } from 'react';
 
-import { CREATOR_LINKS, CREATOR_MESSAGE, CREATOR_MESSAGE_EN, OFFICIAL_LINKS, PROJECT_LINKS, REFERENCES, type AboutLink } from '@/content/about';
+import { CREATOR_LINKS, CREATOR_MESSAGE, CREATOR_MESSAGE_EN, OFFICIAL_LINKS, PROJECT_LINKS, REFERENCES, WALLPAPERS, type AboutLink } from '@/content/about';
 import { useI18n, useT } from '@/i18n';
 import { Section } from '@/components/ui/primitives';
 
@@ -17,10 +17,15 @@ export function AboutPanel() {
   return (
     <div>
       <section className="px-3 pb-3 pt-3">
-        <p className="eyebrow">{t('A fan project')}</p>
-        <h3 className="mt-1 font-display text-lg leading-snug text-fg">{t('Hi, I’m NuRichter.')}</h3>
+        <div className="flex items-end justify-between gap-3">
+          <div>
+            <p className="eyebrow">{t('A fan project')}</p>
+            <h3 className="mt-1 font-display text-lg leading-snug text-fg">{t('Hi, I’m NuRichter.')}</h3>
+          </div>
+          <img src="/assets/theme/chibi/slime-mitz-vah.webp" alt="" width={84} height={64} className="h-16 w-auto shrink-0 -rotate-3" />
+        </div>
         <p className="mt-2 text-sm leading-relaxed text-fg-2">
-          {t('I love the Tempest–Eastern Empire war arc, so I read volumes 12 to 16 again with a notebook open and turned the war into a map you can play like a documentary. Every movement, battle and loss is placed from the novels; where the books are silent, the map says so.')}
+          {t('I love the Tempest–Eastern Empire war arc, so I read volumes 12 to 16 again with a notebook open and turned the war into a map you can play like a documentary. Every movement, battle and loss is placed from the novels. Where the books are silent, the map says so.')}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-fg-2">
           {t('This is not official Tensura material. It is made for fun, for other fans, and as a thank-you to the people who made the story.')}
@@ -28,9 +33,30 @@ export function AboutPanel() {
         <blockquote className="mt-3 rounded-[3px] border-l-2 border-accent bg-ink-700/60 px-3 py-2">
           <p lang="id" className="text-sm italic leading-relaxed text-fg">“{CREATOR_MESSAGE}”</p>
           {locale !== 'id' ? <p className="mt-1 text-xs leading-relaxed text-fg-3">{t(CREATOR_MESSAGE_EN)}</p> : null}
-          <p className="mt-1 text-2xs uppercase tracking-label text-fg-3">— NuRichter</p>
+          <p className="mt-1 text-2xs uppercase tracking-label text-fg-3">NuRichter</p>
         </blockquote>
       </section>
+
+      <Section title={t('Wallpapers')}>
+        <p className="mb-2 text-xs leading-relaxed text-fg-3">{t('The five covers of this war’s volumes, made into wallpapers, plus two moments from the map. Tap to save.')}</p>
+        <ul className="grid grid-cols-4 gap-2">
+          {WALLPAPERS.map((w) => (
+            <li key={w.desktop} className="flex flex-col gap-1">
+              <a href={w.desktop} download className="block overflow-hidden rounded-[3px] border border-ink-500 hover:border-accent" title={w.credit}>
+                <img src={w.thumb} alt={w.title} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+              </a>
+              <span className="text-center text-2xs text-fg-2">{w.title}</span>
+              <span className="flex justify-center gap-1.5 text-2xs">
+                <a href={w.desktop} download className="text-accent hover:underline">{t('Desktop')}</a>
+                {w.phone ? (
+                  <a href={w.phone} download className="text-accent hover:underline">{t('Phone')}</a>
+                ) : null}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-2 text-2xs leading-relaxed text-fg-3">{t('Cover art © Fuse, Mitz Vah and Micro Magazine. For your own screens only.')}</p>
+      </Section>
 
       <Section title={t('Find me')}>
         <LinkList links={[...CREATOR_LINKS, ...PROJECT_LINKS]} />

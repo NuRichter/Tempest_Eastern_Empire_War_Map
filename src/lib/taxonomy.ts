@@ -36,7 +36,7 @@ export const PROVENANCE_LABEL: Record<Provenance, { short: string; long: string;
   CANONICAL_WITH_VISUAL_RECONSTRUCTION: {
     short: msg('Canon · visual recon.'),
     long: msg('Canonical, visually reconstructed'),
-    note: msg('The event is canonical; its exact position, path or timing on this map is reconstructed.'),
+    note: msg('The event is canonical. Its exact position, path or timing on this map is reconstructed.'),
   },
   INFERRED: { short: msg('Inferred'), long: msg('Inferred'), note: msg('Follows from several source clues but is not stated.') },
   RECONSTRUCTED: { short: msg('Reconstructed'), long: msg('Reconstructed'), note: msg('A plausible bridging sequence made by this project between known points.') },
@@ -52,7 +52,7 @@ export const SIZE_STATUS_LABEL: Record<SizeStatus, { mark: string; label: string
 
 export const ROUTE_LABEL: Record<RouteConfidence, { label: string; note: string }> = {
   SOLID: { label: msg('Solid'), note: msg('Origin, destination and route are stated.') },
-  RECONSTRUCTED: { label: msg('Reconstructed route'), note: msg('Endpoints are canonical; the line between them is drawn by the project.') },
+  RECONSTRUCTED: { label: msg('Reconstructed route'), note: msg('Endpoints are canonical. The line between them is drawn by the project.') },
   SCHEMATIC: { label: msg('Schematic'), note: msg('Only the direction of the movement is known.') },
   UNKNOWN: { label: msg('Unknown route'), note: msg('Not drawn: the source does not establish where the force went.') },
 };
@@ -71,8 +71,8 @@ export const BATTLE_TYPE_LABEL: Record<BattleType, string> = {
 
 export const TIME_PRECISION_LABEL: Record<string, string> = {
   CANONICAL_RELATIVE: msg('Relative time stated by the source'),
-  DAY_LEVEL: msg('Day stated; hour reconstructed'),
-  SEQUENTIAL: msg('Order stated; time reconstructed'),
+  DAY_LEVEL: msg('Day stated. Hour reconstructed'),
+  SEQUENTIAL: msg('Order stated. Time reconstructed'),
   RECONSTRUCTED: msg('Time reconstructed'),
 };
 

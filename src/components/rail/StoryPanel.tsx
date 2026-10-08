@@ -27,7 +27,7 @@ export function StoryPanel() {
   return (
     <div className="pb-4">
       <p className="px-3 pb-1 pt-2.5 text-xs leading-relaxed text-fg-3">
-        {t('The campaign in stages. Pick one to move there; play to watch it unfold on the map.')}
+        {t('The campaign in stages. Pick one to move there. Play to watch it unfold on the map.')}
       </p>
       <ol className="mt-1">
         {data.stages.map((s, i) => {

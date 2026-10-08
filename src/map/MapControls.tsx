@@ -165,7 +165,7 @@ export function MapControls({ map, ready }: Props) {
           ) : null}
         </div>
         <p className="hidden select-none rounded-[3px] bg-ink-900/90 px-1.5 py-0.5 font-mono text-2xs text-fg-3 md:block" title={t('Simulation coordinates on a fictional map. Not latitude and longitude.')}>
-          {cursor ? `SIM ${cursor.x.toFixed(3)}, ${cursor.y.toFixed(3)}` : 'SIM —'} · {t('not lat/long')}
+          {cursor ? `SIM ${cursor.x.toFixed(3)}, ${cursor.y.toFixed(3)}` : 'SIM ·'} · {t('not lat/long')}
         </p>
       </div>
     </>

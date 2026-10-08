@@ -868,7 +868,7 @@ const characters: Character[] = characterSrc.map((c) => {
     aliases: c.aliases,
     japanese: c.japanese,
     faction: faction(c.faction),
-    role: [...new Set(c.role.split(/;\s*/).map((r) => r.trim()).filter(Boolean))].join('; '),
+    role: [...new Set(c.role.split(/;\s*/).map((r) => r.trim()).filter(Boolean))].join(', '),
     photocard: c.photocard
       ? { src: `/assets/characters/${c.id}.webp`, thumb: `/assets/characters/thumb/${c.id}.webp`, source: c.photocard.attribution ?? c.photocard.sourceType ?? 'Character photocard repository', sourceUrl: c.photocard.sourceUrl, licence: c.photocard.licence ?? null }
       : null,
@@ -1042,8 +1042,36 @@ const timelineIndex: TimelineIndex = {
 rmSync(OUT_DIR, { recursive: true, force: true });
 mkdirSync(join(OUT_DIR, 'keyframes'), { recursive: true });
 const written: Record<string, number> = {};
+/**
+ * House style for everything the website shows: no em dashes and no
+ * semicolons. The research sources keep their wording; the published text is
+ * rewritten here. An em dash becomes a comma; a semicolon becomes a comma
+ * inside parentheses and a full stop (next word capitalised) elsewhere.
+ */
+function houseStyle(text: string): string {
+  if (!text.includes('—') && !text.includes(';')) return text;
+  if (text.trim() === '—') return '-';
+  let s = text.replace(/\s*—\s*/g, ', ');
+  let out = '';
+  let depth = 0;
+  for (let i = 0; i < s.length; i += 1) {
+    const ch = s[i];
+    if (ch === '(' || ch === '[') depth += 1;
+    else if ((ch === ')' || ch === ']') && depth > 0) depth -= 1;
+    if (ch !== ';') { out += ch; continue; }
+    if (depth > 0) { out += ','; continue; }
+    out += '.';
+    // Capitalise the next word of the new sentence.
+    let j = i + 1;
+    while (j < s.length && s[j] === ' ') { out += ' '; j += 1; }
+    if (j < s.length) { out += s[j].toUpperCase(); i = j; }
+  }
+  s = out.replace(/,\s*,/g, ',').replace(/\.\s*\./g, '.').replace(/,\s*([.)\]])/g, '$1').replace(/^,\s*/, '').replace(/\s+,/g, ',');
+  return s;
+}
+
 function put(name: string, value: unknown): void {
-  const body = JSON.stringify(value);
+  const body = JSON.stringify(value, (_k, v: unknown) => (typeof v === 'string' ? houseStyle(v) : v));
   writeFileSync(join(OUT_DIR, name), body);
   written[name] = Buffer.byteLength(body);
 }

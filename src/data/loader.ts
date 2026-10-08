@@ -94,7 +94,9 @@ export interface ReferenceRegister {
 const BASE = '/data';
 
 async function json<T>(path: string, signal?: AbortSignal): Promise<T> {
-  const response = await fetch(`${BASE}/${path}`, { signal, cache: 'force-cache' });
+  // Revalidate every time (a cheap 304 when unchanged): a cached copy from an
+  // earlier deploy could point at assets that no longer exist.
+  const response = await fetch(`${BASE}/${path}`, { signal, cache: 'no-cache' });
   if (!response.ok) {
     throw new Error(`Could not load ${path} (${response.status}). Run "npm run compile-data" and rebuild.`);
   }

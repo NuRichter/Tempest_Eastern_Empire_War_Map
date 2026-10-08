@@ -63,14 +63,14 @@ export function TopBar() {
       </div>
 
       <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-1.5 md:ml-0">
-        <button type="button" onClick={() => setPaletteOpen(true)} className="ctl w-8 gap-2 px-0 sm:w-auto sm:min-w-[13rem] sm:justify-between sm:px-2.5 sm:pr-1.5" aria-label={t('Search and commands')} aria-keyshortcuts="/ Control+K">
+        <button type="button" data-tour="search" onClick={() => setPaletteOpen(true)} className="ctl w-8 gap-2 px-0 sm:w-auto sm:min-w-[13rem] sm:justify-between sm:px-2.5 sm:pr-1.5" aria-label={t('Search and commands')} aria-keyshortcuts="/ Control+K">
           <span className="flex items-center gap-1.5">
             <Search size={14} strokeWidth={1.8} />
             <span className="hidden sm:inline">{t('Search the campaign')}</span>
           </span>
           <kbd className="hidden rounded-[2px] border border-ink-400 px-1 font-mono text-2xs text-fg-3 sm:inline">/</kbd>
         </button>
-        <label className="ctl relative w-8 px-0 sm:w-auto sm:px-2" title={t('Language')}>
+        <label data-tour="language" className="ctl relative w-8 px-0 sm:w-auto sm:px-2" title={t('Language')}>
           <Languages size={15} strokeWidth={1.7} aria-hidden />
           <span className="hidden max-w-[6.5rem] truncate text-xs lg:inline">{LOCALES.find((l) => l.code === locale)?.native ?? 'English'}</span>
           <select
@@ -85,7 +85,7 @@ export function TopBar() {
             {LOCALES.map((l) => (
               <option key={l.code} value={l.code} lang={l.code}>
                 {l.native}
-                {l.native !== l.english ? ` — ${l.english}` : ''}
+                {l.native !== l.english ? ` · ${l.english}` : ''}
               </option>
             ))}
           </select>

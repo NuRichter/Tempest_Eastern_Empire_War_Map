@@ -18,6 +18,15 @@ The atlas opens on the whole campaign in the **Documentary** look: light ground,
 | Map corners | Style switcher (bottom-left; its menu opens beside it, above the minimap) + minimap (hidden on screens under 560 px tall) + simulation coordinates; zoom, compass, campaign frame, camera presets, flat/globe, fullscreen (bottom-right) | Hidden in cinematic mode |
 | Timeline | Transport, speed in simulated time per second, battle day + simulation tag; stage bands, theatre lanes, gaps (hatched), battle spans, event ticks, turning points, volume marks, bookmarks; Now / Next | Overlay that appears on hover in cinematic mode |
 
+## First-run tour
+
+On a first visit (never for automated browsers or deep links), a nine-step tour opens after the map is ready (`src/components/overlays/Tour.tsx`):
+- **Look:** a 《Notice》 card in the style of the Great Sage's announcements, with a bouncing slime as the guide.
+- **Motion:** a spotlight (one element with a large box-shadow) glides between the play button, timeline, map, Situation panel, search, language and theme, and the tool rail (520 ms ease-out). The card slides in beside its target, or above or below it on phones.
+- **Controls:** Next / Back / Skip, → ← Enter Esc, and progress dots. Reduced motion turns the movement off.
+- **Remembering it:** finishing or skipping stores `tourDone`. Layers → *Replay the tour* and the link `?tour=1` open it again.
+- **Language:** all copy is in the catalog, in 30 languages, casual in tone.
+
 ## Reading flows
 
 1. **Watch the war.** Press Space. The camera stays still; held ground grows and recedes, fronts move, numbers change, event rings pop and their labels fade after a couple of seconds. At turning points playback slows to 1× for a moment.

@@ -581,7 +581,7 @@ export function MapView() {
   return (
     // The map surface keeps one direction in every language: canvas labels and
     // their offsets are placed left to right.
-    <div className="absolute inset-0" dir="ltr" role="region" aria-label={t('Campaign map')}>
+    <div className="absolute inset-0" dir="ltr" data-tour="map" role="region" aria-label={t('Campaign map')}>
       {/* MapLibre's stylesheet sets position:relative on the container; the inline style is the only declaration it cannot outrank. */}
       <div ref={container} style={{ position: 'absolute', inset: 0 }} />
       {ready ? <Overlay map={mapRef.current} /> : null}

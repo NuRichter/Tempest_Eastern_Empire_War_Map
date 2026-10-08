@@ -177,7 +177,8 @@ function portrait(src: string): HTMLImageElement | null {
 
 /** Photocards of the characters in the most recent events, at the event's place. */
 export function drawCharacters(dc: DrawContext): void {
-  if (!dc.prefs.layers.characters || dc.zoom < 3.4) return;
+  // From the campaign's default framing on a desktop (zoom ≈ 2.5) upward.
+  if (!dc.prefs.layers.characters || dc.zoom < 2.2) return;
   const { ctx, intFrame } = dc;
   const size = Math.round(26 * dc.markerScale);
   const shown = new Set<string>();

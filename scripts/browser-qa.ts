@@ -299,6 +299,23 @@ async function main(): Promise<void> {
     await sleep(2000);
     check('refresh restores the moment from the URL', (await probe(page)).frame === fc + 44);
 
+    /* -- first-run tour ---------------------------------------------- */
+    await go('?tour=1', 2200);
+    const tourOpen = () => page.evaluate(() => Boolean(document.querySelector('[aria-labelledby="tour-title"]')));
+    const tourTitle = () => page.evaluate(() => document.getElementById('tour-title')?.textContent ?? '');
+    const title0 = await tourTitle();
+    await page.keyboard.press('ArrowRight');
+    await sleep(700);
+    const title1 = await tourTitle();
+    check('the first-run tour opens and steps with the arrow keys', (await tourOpen()) && title0 !== title1 && title1.length > 0, `${title0} -> ${title1}`);
+    const frameBefore = (await probe(page)).frame;
+    await page.keyboard.press('Escape');
+    await sleep(500);
+    const stored = await page.evaluate(() => JSON.parse(localStorage.getItem('tempest-atlas.preferences.v3') || '{}').state?.tourDone === true);
+    check('Esc closes the tour, remembers it and leaves the clock alone', !(await tourOpen()) && stored && (await probe(page)).frame === frameBefore);
+    await go('', 2200);
+    check('the tour does not come back once seen', !(await tourOpen()));
+
     /* -- responsive -------------------------------------------------- */
     for (const [w, h] of [[320, 640], [375, 812], [390, 844], [768, 1024], [1024, 768], [1280, 800], [1440, 900], [1920, 1080]] as const) {
       await page.setViewport({ width: w, height: h });

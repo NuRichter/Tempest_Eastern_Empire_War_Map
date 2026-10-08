@@ -77,13 +77,13 @@ export const REFERENCES: { group: string; items: Reference[] }[] = [
   {
     group: msg('Primary sources'),
     items: [
-      { apa: 'Fuse. (2021). *That time I got reincarnated as a slime* (Vol. 12; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2018)' },
-      { apa: 'Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 13; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2018)' },
-      { apa: 'Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 14; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2019)' },
-      { apa: 'Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 15; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2019)' },
-      { apa: 'Fuse. (2023). *That time I got reincarnated as a slime* (Vol. 16; M. Vah, Illus.; K. Gifford, Trans.). Yen On. (Original work published 2020)' },
+      { apa: 'Fuse. (2021). *That time I got reincarnated as a slime* (Vol. 12, M. Vah, Illus., K. Gifford, Trans.). Yen On. (Original work published 2018)' },
+      { apa: 'Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 13, M. Vah, Illus., K. Gifford, Trans.). Yen On. (Original work published 2018)' },
+      { apa: 'Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 14, M. Vah, Illus., K. Gifford, Trans.). Yen On. (Original work published 2019)' },
+      { apa: 'Fuse. (2022). *That time I got reincarnated as a slime* (Vol. 15, M. Vah, Illus., K. Gifford, Trans.). Yen On. (Original work published 2019)' },
+      { apa: 'Fuse. (2023). *That time I got reincarnated as a slime* (Vol. 16, M. Vah, Illus., K. Gifford, Trans.). Yen On. (Original work published 2020)' },
       { apa: 'Fuse. (2013–2016). *Tensei shitara suraimu datta ken* [That time I got reincarnated as a slime]. Shōsetsuka ni Narō.', url: 'https://ncode.syosetu.com/n6316bn/' },
-      { apa: 'Kondō, B. (Executive Producer). (2018–present). *Tensei shitara suraimu datta ken* [That time I got reincarnated as a slime] [TV series]. Eight Bit; Tensura Production Committee.' },
+      { apa: 'Kondō, B. (Executive Producer). (2018–present). *Tensei shitara suraimu datta ken* [That time I got reincarnated as a slime] [TV series]. Eight Bit. Tensura Production Committee.' },
     ],
   },
   {
@@ -111,4 +111,25 @@ export const REFERENCES: { group: string; items: Reference[] }[] = [
       { apa: 'Vercel. (n.d.). *Deployment protection*. Vercel Documentation. Retrieved October 8, 2026, from', url: 'https://vercel.com/docs/deployment-protection' },
     ],
   },
+];
+
+export interface Wallpaper {
+  title: string;
+  thumb: string;
+  desktop: string;
+  phone: string | null;
+  credit: string;
+}
+
+/** Wallpapers: the arc's five light-novel covers (scripts/theme/build_theme_assets.py) and two captured from the atlas. */
+export const WALLPAPERS: Wallpaper[] = [
+  ...[12, 13, 14, 15, 16].map((v) => ({
+    title: `Vol. ${v}`,
+    thumb: `/assets/theme/wallpapers/thumb/vol-${v}.webp`,
+    desktop: `/assets/theme/wallpapers/vol-${v}-desktop.jpg`,
+    phone: `/assets/theme/wallpapers/vol-${v}-phone.jpg`,
+    credit: 'Cover art © Fuse, Mitz Vah / Micro Magazine',
+  })),
+  { title: 'D−1', thumb: '/assets/theme/wallpapers/atlas-advance-desktop.png', desktop: '/assets/theme/wallpapers/atlas-advance-desktop.png', phone: '/assets/theme/wallpapers/atlas-advance-phone.png', credit: 'Captured from the atlas' },
+  { title: 'D+10', thumb: '/assets/theme/wallpapers/atlas-collapse-desktop.png', desktop: '/assets/theme/wallpapers/atlas-collapse-desktop.png', phone: null, credit: 'Captured from the atlas' },
 ];

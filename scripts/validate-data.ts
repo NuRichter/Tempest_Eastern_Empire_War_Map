@@ -453,6 +453,16 @@ function main(): void {
     }
   }
 
+  /* -- house style: no em dash, no semicolon in published text ------- */
+
+  for (const name of ['events.json', 'forces.json', 'battles.json', 'characters.json', 'commanders.json', 'combatants.json', 'casualties.json', 'movement.json', 'places.json', 'stages.json', 'gaps.json', 'reference.json', 'terms.json', 'territories.json', 'theatres.json', 'nations.json', 'manifest.json']) {
+    const path = join(DATA, name);
+    if (!existsSync(path)) continue;
+    const text = readFileSync(path, 'utf8');
+    const k = (text.match(/[—;]/g) ?? []).length;
+    if (k) fail(`${name}: ${k} em dash(es) or semicolon(s) in published text (house style, see houseStyle() in compile-data)`);
+  }
+
   /* -- report -------------------------------------------------------- */
 
   const t = casualtyFile.campaignTotals;

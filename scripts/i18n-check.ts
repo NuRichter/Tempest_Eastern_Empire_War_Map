@@ -7,7 +7,8 @@
  *   - glossary: canonical names in the English string (characters, nations,
  *     places, factions, units from terminology.source.json) appear unchanged
  *     (CJK locales may use the official Japanese form instead);
- *   - no stale keys.
+ *   - no stale keys
+ *   - house style: no em dash and no semicolon (any script) in a key or a translation.
  *
  *     npm run i18n:extract && npm run i18n:check
  */
@@ -29,6 +30,8 @@ const glossary = terms.terms
 
 let errors = 0;
 const report: string[] = [];
+const BANNED = /[—―;；؛]/;
+for (const k of keys) if (BANNED.test(k)) { report.push(`catalog: em dash or semicolon in ${JSON.stringify(k)}`); errors += 1; }
 if (LOCALES.length !== 30) {
   report.push(`expected 30 locales, found ${LOCALES.length}`);
   errors += 1;
@@ -56,6 +59,7 @@ for (const loc of LOCALES) {
       if (!v.includes(g.name) && !(cjk && g.japanese && v.includes(g.japanese))) names.push(`${JSON.stringify(k)}: "${g.name}" changed`);
     }
   }
+  for (const [k, v] of Object.entries(messages)) if (BANNED.test(v)) { report.push(`${loc.code}: em dash or semicolon in the translation of ${JSON.stringify(k)}`); errors += 1; }
   const coverage = (keys.length - missing.length) / Math.max(1, keys.length);
   report.push(`${loc.code.padEnd(8)} ${(coverage * 100).toFixed(1).padStart(5)} %  missing ${missing.length}  placeholders ${placeholders.length}  glossary ${names.length}  stale ${stale.length}`);
   for (const p of [...placeholders, ...names].slice(0, 5)) report.push(`           ${p}`);

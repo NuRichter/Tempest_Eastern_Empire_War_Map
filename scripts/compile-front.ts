@@ -12,6 +12,24 @@
  *   collapse   captured ground no longer connected to any formation of its
  *              side (destroyed, withdrawn, underground) returns to the owner
  *   settlement ground in a territory that leaves the war returns to the owner
+ *   battle     ground a side holds in a territory does not change hands while
+ *              a battle there is undecided (from BATTLE_LEAD frames before it
+ *              starts until it ends); it is released when the battle ends —
+ *              the moment its map icon is crossed out
+ *   anchored   in a territory marked "anchored" (front-rules.json) a side
+ *              does not hold a blob around its army: it holds a band of
+ *              ground reaching in from its own border, coast to coast, as
+ *              deep as its formations stand (deepest at the army, thinning
+ *              toward the ends) — a siege front tied to its homeland
+ *   ragged     every cell decides from the field at a noise-displaced point
+ *              (domain warp, up to WARP cells); reach, thresholds and band
+ *              depths also carry a fixed noise
+ *              (smooth swells plus ridged creases), so fronts bulge and dent like real lines of
+ *              control instead of tracing arcs and straight edges
+ *   retreat    ground the loser gives back recedes toward its own home
+ *              territory: the cells farthest from home go first, the line
+ *              nearest the old border last (status quo restored), at
+ *              RETREAT_SPEED cells per frame
  *
  * Every cell that changes in a step gets a flip time from a breadth-first
  * distance through the changed cells, starting at the gaining side's existing
@@ -46,8 +64,20 @@ const LEAD = 3; // frames
 const CLAMP = 24; // frames
 const SEED_RADIUS = 3; // cells around a formation that anchor its held ground
 const MIN_EPISODE_CELLS = 4;
+const BATTLE_LEAD = 36; // frames (6 h): an army massing for a battle already holds its ground
+const BATTLE_MAX = 144; // frames: operations longer than a day (the labyrinth) do not freeze the surface
+const RETREAT_SPEED = 2; // cells per frame
+const RAGGED = 0.4; // ± share of the capture threshold varied by the noise
+const REACH_RAGGED = 0.3; // ± share of a formation's reach varied by the noise (bulges and dents)
+const WARP = 9; // cells: each cell decides from the field at a noise-displaced point (domain warp)
+const BAND_MIN = 0.5; // an anchored band keeps at least this share of its deepest reach along the whole border
+const BAND_TAPER = 0.3; // depth lost per cell of distance from the formation
+const BAND_RAGGED = 0.45; // ± share of the band depth varied by the noise
 
-interface FrontRules { gates: { territoryId: string; side: 'empire' | 'allied'; fromEvent: string; basis: string }[] }
+interface FrontRules {
+  gates: { territoryId: string; side: 'empire' | 'allied'; fromEvent: string; basis: string }[];
+  anchored?: { territoryId: string; side: 'empire' | 'allied'; basis: string }[];
+}
 const rules = JSON.parse(readFileSync(join(HERE, '..', 'data-source', 'campaign', 'front-rules.json'), 'utf8')) as FrontRules;
 
 const t0 = Date.now();
@@ -107,6 +137,138 @@ for (const g of rules.gates) {
 }
 const gateOpen = (ti: number, side: number, frame: number) => frame >= (gateFrame[ti][side] ?? -Infinity);
 
+/* -- ragged fronts: fixed value noise in [-1, 1] ------------------------ */
+
+const hash = (x: number, y: number, seed: number) => {
+  let h = (x * 374761393 + y * 668265263 + seed * 2147483647) | 0;
+  h = Math.imul(h ^ (h >>> 13), 1274126177);
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967295;
+};
+const smooth = (t: number) => t * t * (3 - 2 * t);
+function valueNoise(x: number, y: number, cell: number, seed: number): number {
+  const gx = x / cell;
+  const gy = y / cell;
+  const x0 = Math.floor(gx);
+  const y0 = Math.floor(gy);
+  const tx = smooth(gx - x0);
+  const ty = smooth(gy - y0);
+  const a = hash(x0, y0, seed) + (hash(x0 + 1, y0, seed) - hash(x0, y0, seed)) * tx;
+  const b = hash(x0, y0 + 1, seed) + (hash(x0 + 1, y0 + 1, seed) - hash(x0, y0 + 1, seed)) * tx;
+  return (a + (b - a) * ty) * 2 - 1;
+}
+const noise = new Float32Array(n);
+let noiseAmp = 0;
+for (let i = 0; i < n; i += 1) {
+  const x = i % W;
+  const y = Math.floor(i / W);
+  // Smooth swells plus ridged creases (1 − 2|n|): the creases give the line
+  // angular corners, like a front drawn from positions rather than a curve.
+  const ridged = 1 - 2 * Math.abs(valueNoise(x, y, 14, 17));
+  noise[i] = 0.4 * valueNoise(x, y, 20, 7) + 0.35 * ridged + 0.15 * valueNoise(x, y, 7, 11) + 0.1 * valueNoise(x, y, 3, 13);
+  noiseAmp = Math.max(noiseAmp, Math.abs(noise[i]));
+}
+// Octaves average out toward 0: rescale so the noise uses its full ±1 range.
+for (let i = 0; i < n; i += 1) noise[i] /= noiseAmp || 1;
+
+/** warp[i]: the cell whose field cell i reads (displaced up to WARP cells, kept in the same territory). */
+const warp = new Int32Array(n);
+for (let i = 0; i < n; i += 1) {
+  const x = i % W;
+  const y = Math.floor(i / W);
+  const wx = Math.round(x + WARP * valueNoise(x, y, 16, 23));
+  const wy = Math.round(y + WARP * valueNoise(x, y, 16, 29));
+  const j = wx >= 0 && wy >= 0 && wx < W && wy < H ? wy * W + wx : i;
+  warp[i] = owner[j] === owner[i] ? j : i;
+}
+
+/* -- anchored territories: distance from the anchoring side's border ---- */
+
+/** anchorSide[territory]: the side whose held ground there is a band from its own border, or 0. */
+const anchorSide = new Uint8Array(data.territories.length);
+for (const a of rules.anchored ?? []) {
+  const ti = data.territories.findIndex((t) => t.id === a.territoryId);
+  if (ti < 0) throw new Error(`front-rules: unknown anchored territory ${a.territoryId}.`);
+  anchorSide[ti] = a.side === 'empire' ? HOLDER_EMPIRE : HOLDER_ALLIED;
+}
+/**
+ * Distance (cells) from the anchoring side's home ground, inside each anchored
+ * territory; -1 elsewhere. Straight-line distance to the nearest home cell
+ * within reach (the shared border, or across a narrow strait), so a band always
+ * starts at the border it is anchored to.
+ */
+const homeDist = new Float32Array(n).fill(-1);
+function computeHomeDist(os: (number | null)[]): void {
+  homeDist.fill(-1);
+  for (let t = 0; t < data.territories.length; t += 1) {
+    if (!anchorSide[t]) continue;
+    const cells: number[] = [];
+    let x0 = W, x1 = 0, y0 = H, y1 = 0;
+    for (let i = 0; i < n; i += 1) {
+      if (owner[i] !== t) continue;
+      cells.push(i);
+      x0 = Math.min(x0, i % W); x1 = Math.max(x1, i % W);
+      y0 = Math.min(y0, Math.floor(i / W)); y1 = Math.max(y1, Math.floor(i / W));
+    }
+    // Home cells near this territory: its own home ground on the border side.
+    const pad = 12;
+    const home: [number, number][] = [];
+    for (let y = Math.max(0, y0 - pad); y <= Math.min(H - 1, y1 + pad); y += 1) {
+      for (let x = Math.max(0, x0 - pad); x <= Math.min(W - 1, x1 + pad); x += 1) {
+        const j = y * W + x;
+        if (owner[j] >= 0 && owner[j] !== t && os[owner[j]] === anchorSide[t]) home.push([x + 0.5, y + 0.5]);
+      }
+    }
+    if (!home.length) continue;
+    for (const i of cells) {
+      const cx = (i % W) + 0.5;
+      const cy = Math.floor(i / W) + 0.5;
+      let best = Infinity;
+      for (const [hx, hy] of home) { const d = (cx - hx) * (cx - hx) + (cy - hy) * (cy - hy); if (d < best) best = d; }
+      homeDist[i] = Math.sqrt(best);
+    }
+  }
+}
+let homeKey = '';
+/** bandDepth[cell]: how deep the anchoring side's band reaches at that cell now (cells), 0 if no formation stands in the territory. */
+const bandDepth = new Float32Array(n);
+const bandForce = new Int16Array(n).fill(-1);
+function computeBands(src: Source[]): void {
+  bandDepth.fill(0);
+  bandForce.fill(-1);
+  for (let ti = 0; ti < data.territories.length; ti += 1) {
+    const side = anchorSide[ti];
+    if (!side) continue;
+    const forces = src.filter((s) => (s.side === 'empire' ? HOLDER_EMPIRE : HOLDER_ALLIED) === side && territoryAt(s.x, s.y) === ti);
+    if (!forces.length) continue;
+    const reach = forces.map((s) => {
+      const c = Math.floor(s.y * H) * W + Math.floor(s.x * W);
+      return { s, d: (homeDist[c] > 0 ? homeDist[c] : 1) + s.r * W };
+    });
+    const deepest = Math.max(...reach.map((q) => q.d));
+    for (let i = 0; i < n; i += 1) {
+      if (owner[i] !== ti || homeDist[i] < 0) continue;
+      const cx = (i % W) + 0.5;
+      const cy = Math.floor(i / W) + 0.5;
+      let depth = BAND_MIN * deepest;
+      let who = -1;
+      for (const q of reach) {
+        const dd = q.d - BAND_TAPER * Math.hypot(cx - q.s.x * W, cy - q.s.y * H);
+        if (dd > depth) { depth = dd; who = forceIndex.get(q.s.forceId) ?? -1; }
+      }
+      if (who < 0) {
+        // Nearest formation answers for the thin ends of the band.
+        let bd = Infinity;
+        for (const q of reach) {
+          const dd = Math.hypot(cx - q.s.x * W, cy - q.s.y * H);
+          if (dd < bd) { bd = dd; who = forceIndex.get(q.s.forceId) ?? -1; }
+        }
+      }
+      bandDepth[i] = depth * (1 + BAND_RAGGED * noise[i]);
+      bandForce[i] = who;
+    }
+  }
+}
+
 /* -- simulation ------------------------------------------------------- */
 
 const hold = new Uint8Array(n);
@@ -146,6 +308,36 @@ function territoryAt(x: number, y: number): number {
 }
 
 /**
+ * Field battles: [start − lead, end) during which the ground held by their
+ * formations is frozen. A formation counts with its whole chain of command
+ * (its subordinates and direct parent), since held ground is credited to whichever
+ * tier stood nearest.
+ */
+const kin = (id: string): string[] => {
+  const out = new Set<string>([id]);
+  const down = [id];
+  while (down.length) for (const c of data.forceById.get(down.pop()!)?.childIds ?? []) if (!out.has(c)) { out.add(c); down.push(c); }
+  // The direct parent too (ground may be credited to it), but not the whole
+  // chain: every imperial unit shares one top command.
+  const parent = data.forceById.get(id)?.parentId;
+  if (parent) out.add(parent);
+  return [...out];
+};
+const battleSpans: { ti: number; from: number; to: number; forces: Set<number> }[] = data.battles
+  .filter((b) => b.placeId && b.endFrame - b.startFrame <= BATTLE_MAX)
+  .flatMap((b) => {
+    const pl = data.placeById.get(b.placeId!);
+    const ti = pl && pl.x != null && pl.y != null ? territoryAt(pl.x, pl.y) : -1;
+    const forces = new Set(b.participants.flatMap((pt) => pt.forces.flatMap(kin)).map((id) => forceIndex.get(id) ?? -1));
+    return ti >= 0 ? [{ ti, from: b.startFrame - BATTLE_LEAD, to: b.endFrame, forces }] : [];
+  });
+/** Whether the ground of cell i waits for a battle: one still undecided in its territory, fought by the formation that took it (any, if unknown). */
+const battleUndecided = (i: number, frame: number) =>
+  battleSpans.some((b) => frame >= b.from && frame < b.to && b.ti === owner[i] && (capturer[i] < 0 || b.forces.has(capturer[i])));
+/** The latest end in (from, to] of a battle in territory ti: ground it released starts moving no earlier. */
+const releasedAt = (ti: number, from: number, to: number) => battleSpans.reduce((m, b) => (b.ti === ti && b.to > from && b.to <= to ? Math.max(m, b.to) : m), -Infinity);
+
+/**
  * v: all formations (used to hold and retake ground). vCap: a formation counts
  * only inside the territory it stands in — an army takes the ground it is on,
  * not the far side of a border it has not crossed.
@@ -169,7 +361,8 @@ function influence(src: Source[]): void {
       const dy = (y + 0.5 - cy) / rr;
       for (let x = x0; x <= x1; x += 1) {
         const dx = (x + 0.5 - cx) / rr;
-        const t = dx * dx + dy * dy;
+        const rf = 1 + REACH_RAGGED * noise[y * W + x];
+        const t = (dx * dx + dy * dy) / (rf * rf);
         if (t >= 1) continue;
         const k = sign * s.w * (1 - t) * (1 - t);
         const c = y * W + x;
@@ -214,7 +407,7 @@ function connectivity(side: number, src: Source[]): void {
     }
   }
   for (let i = 0; i < n; i += 1) {
-    if (next[i] === side && !keep[i]) {
+    if (next[i] === side && !keep[i] && !battleUndecided(i, currentFrame)) {
       next[i] = HOLDER_OWNER;
       cause[i] = 3;
     }
@@ -223,6 +416,7 @@ function connectivity(side: number, src: Source[]): void {
 
 /** Whether the formation that took a cell has since been destroyed (not merely gone underground or airborne). */
 let deadNow = new Set<number>();
+let currentFrame = 0;
 const capturerDead = (i: number) => capturer[i] >= 0 && deadNow.has(capturer[i]);
 
 /** Binary min-heap of (cell, distance), ties broken by cell index for determinism. */
@@ -282,11 +476,15 @@ for (let f = 0; f < N; f += STEP) {
     // Destroyed, or reduced to nothing (a strength of 0 whatever the status wording).
     if (snap && (DEAD.test(snap.status) || snap.strength === 0)) deadNow.add(fi);
   });
-  const sig = src.map((s) => `${s.forceId}:${s.x.toFixed(5)},${s.y.toFixed(5)},${s.w.toFixed(3)}`).join('|') + '#' + os.join(',') + '#' + [...deadNow].join(',') + '#' + data.territories.map((_, ti) => [HOLDER_EMPIRE, HOLDER_ALLIED].map((sd) => (gateOpen(ti, sd, f) ? 1 : 0)).join('')).join('');
+  currentFrame = f;
+  const sig = battleSpans.map((b) => (f >= b.from && f < b.to ? 1 : 0)).join('') + '#' + src.map((s) => `${s.forceId}:${s.x.toFixed(5)},${s.y.toFixed(5)},${s.w.toFixed(3)}`).join('|') + '#' + os.join(',') + '#' + [...deadNow].join(',') + '#' + data.territories.map((_, ti) => [HOLDER_EMPIRE, HOLDER_ALLIED].map((sd) => (gateOpen(ti, sd, f) ? 1 : 0)).join('')).join('');
   if (sig === lastSig) continue;
   lastSig = sig;
   simulated += 1;
   influence(src);
+  const key = os.join(',');
+  if (key !== homeKey) { homeKey = key; computeHomeDist(os); }
+  computeBands(src);
 
   cause.fill(0);
   for (let i = 0; i < n; i += 1) {
@@ -294,18 +492,26 @@ for (let f = 0; f < N; f += STEP) {
     let h = hold[i];
     if (t < 0) { next[i] = HOLDER_OWNER; continue; }
     const o = os[t];
-    if (o === null) {
+    if (h !== HOLDER_OWNER && battleUndecided(i, f)) {
+      // Its army is in a battle not yet decided: nobody gives ground until it ends.
+    } else if (o === null) {
       if (h !== HOLDER_OWNER) { h = HOLDER_OWNER; cause[i] = 4; }
     } else if (h === HOLDER_OWNER) {
-      if (o === HOLDER_ALLIED && vCap[i] > BASE && gateOpen(t, HOLDER_EMPIRE, f)) { h = HOLDER_EMPIRE; cause[i] = 1; }
-      else if (o === HOLDER_EMPIRE && -vCap[i] > BASE && gateOpen(t, HOLDER_ALLIED, f)) { h = HOLDER_ALLIED; cause[i] = 1; }
+      const base = BASE * (1 + RAGGED * noise[i]);
+      const k = warp[i];
+      const anchor = anchorSide[t];
+      if (anchor && anchor !== o) {
+        // Anchored front: a band from the attacker's border, as deep as its army stands.
+        if (bandDepth[k] > 0 && homeDist[k] >= 0 && homeDist[k] <= bandDepth[k] && gateOpen(t, anchor, f)) { h = anchor; cause[i] = 1; bestForce[i] = bandForce[k]; }
+      } else if (o === HOLDER_ALLIED && vCap[k] > base && gateOpen(t, HOLDER_EMPIRE, f)) { h = HOLDER_EMPIRE; cause[i] = 1; bestForce[i] = bestForce[k]; }
+      else if (o === HOLDER_EMPIRE && -vCap[k] > base && gateOpen(t, HOLDER_ALLIED, f)) { h = HOLDER_ALLIED; cause[i] = 1; bestForce[i] = bestForce[k]; }
     } else if (h === HOLDER_EMPIRE) {
       if (o !== HOLDER_ALLIED) { h = HOLDER_OWNER; cause[i] = 4; }
-      else if (-v[i] > HOLD) { h = HOLDER_OWNER; cause[i] = 2; }
+      else if (-v[warp[i]] > HOLD) { h = HOLDER_OWNER; cause[i] = 2; }
       else if (capturerDead(i) && v[i] < HOLD) { h = HOLDER_OWNER; cause[i] = 3; }
     } else if (h === HOLDER_ALLIED) {
       if (o !== HOLDER_EMPIRE) { h = HOLDER_OWNER; cause[i] = 4; }
-      else if (v[i] > HOLD) { h = HOLDER_OWNER; cause[i] = 2; }
+      else if (v[warp[i]] > HOLD) { h = HOLDER_OWNER; cause[i] = 2; }
       else if (capturerDead(i) && -v[i] < HOLD) { h = HOLDER_OWNER; cause[i] = 3; }
     }
     if (h !== hold[i] && h !== HOLDER_OWNER) capturer[i] = bestForce[i];
@@ -398,6 +604,44 @@ for (let f = 0; f < N; f += STEP) {
       heap.push(best, 1);
       bfs();
     }
+    // Retreat: ground given back to its owner recedes toward the loser's own
+    // territory. Distance from the loser's home through the released cells;
+    // the farthest cells go first, the line along the old border last.
+    if (to === HOLDER_OWNER) {
+      const dHome = new Float32Array(n).fill(-1);
+      const rh = new MinHeap();
+      for (let i = 0; i < n; i += 1) {
+        if (next[i] !== HOLDER_OWNER || hold[i] === HOLDER_OWNER) continue;
+        const x = i % W;
+        for (let dy = -1; dy <= 1 && dHome[i] < 0; dy += 1) {
+          for (let dx = -1; dx <= 1; dx += 1) {
+            if ((x === 0 && dx < 0) || (x === W - 1 && dx > 0)) continue;
+            const j = i + dy * W + dx;
+            if (j >= 0 && j < n && owner[j] >= 0 && owner[j] !== owner[i] && os[owner[j]] === hold[i]) { dHome[i] = 1; rh.push(i, 1); break; }
+          }
+        }
+      }
+      const done = new Set<number>();
+      while (rh.size) {
+        const [i, d] = rh.pop();
+        if (done.has(i) || d > dHome[i] + 1e-6) continue;
+        done.add(i);
+        const x = i % W;
+        for (let dy = -1; dy <= 1; dy += 1) {
+          for (let dx = -1; dx <= 1; dx += 1) {
+            if (!dx && !dy) continue;
+            if ((x === 0 && dx < 0) || (x === W - 1 && dx > 0)) continue;
+            const j = i + dy * W + dx;
+            if (j < 0 || j >= n || next[j] !== HOLDER_OWNER || hold[j] !== hold[i]) continue;
+            const nd = d + (dx && dy ? Math.SQRT2 : 1);
+            if (dHome[j] < 0 || nd < dHome[j] - 1e-6) { dHome[j] = nd; rh.push(j, nd); }
+          }
+        }
+      }
+      let far = 0;
+      for (const i of done) far = Math.max(far, dHome[i]);
+      for (const i of done) dist[i] = 1 + ((far - dHome[i]) * SPEED) / RETREAT_SPEED;
+    }
     // Group this step's changes into connected components for the episode record.
     const seen = new Uint8Array(n);
     for (let i = 0; i < n; i += 1) {
@@ -411,7 +655,8 @@ for (let f = 0; f < N; f += STEP) {
         const d = dist[c] > 0 ? dist[c] : 1;
         const list = flips[c];
         const prevT = list.length ? list[list.length - 1].t : -Infinity;
-        const tf = Math.max(tStart + (d - 0.5) / SPEED, prevT + 0.25);
+        const base = to === HOLDER_OWNER ? Math.max(tStart, releasedAt(owner[c], f - STEP, f)) : tStart;
+        const tf = Math.max(base + (d - 0.5) / SPEED, prevT + 0.25);
         list.push({ t: Math.round(tf * 100) / 100, h: to });
         comp.cells.push(c);
         comp.times.push(tf);

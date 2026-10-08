@@ -126,7 +126,7 @@ export function CinematicOverlay() {
       {/* Opening disclaimer, then the closing card. */}
       {intro && !ended ? (
         <div className="absolute left-5 top-[11rem] max-w-xs rounded-[4px] border border-white/10 bg-ink-950/75 px-3 py-2 text-2xs leading-relaxed text-white/75">
-          {t('A fan-made reconstruction from the Tensura light novels, vols. 12–16. Not official material. Times are simulation placements; reconstructed elements are labelled.')}
+          {t('A fan-made reconstruction from the Tensura light novels, vols. 12–16. Not official material. Times are simulation placements. Reconstructed elements are labelled.')}
         </div>
       ) : null}
       {ended ? (
@@ -143,7 +143,7 @@ export function CinematicOverlay() {
             <span className="text-left text-white/70">{t('Tempest killed')}</span>
             <span className="text-right"><Figure value={totals.tempestKilled} /></span>
           </div>
-          <p className="mt-3 text-2xs text-white/55">{t('Every figure is summed from event-level records; see the dossiers for sources.')}</p>
+          <p className="mt-3 text-2xs text-white/55">{t('Every figure is summed from event-level records. See the dossiers for sources.')}</p>
         </div>
       ) : null}
 

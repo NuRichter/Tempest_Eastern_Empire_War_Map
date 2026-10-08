@@ -252,11 +252,12 @@ const episodeCells = (e: (typeof front.episodes)[number]) => {
       if (t >= e.startFrame - 0.01 && t <= e.endFrame + 0.01 && front.holders[k] === to) { cells.push(i); break; }
     }
   }
-  // Only cells whose sole change in the window is this episode's own flip, so an
-  // overlapping episode on the same ground (rapid ebb and flow) does not blur it.
+  // Only cells whose sole change around the window is this episode's own flip,
+  // so an overlapping episode on the same ground (rapid ebb and flow, e.g. a
+  // retreat followed within hours by a new advance) does not blur it.
   return cells.filter((i) => {
     let n = 0;
-    for (let k = front.offsets[i]; k < front.offsets[i + 1]; k += 1) if (front.times[k] >= e.startFrame - front.lead - 1 && front.times[k] <= e.endFrame + 1) n += 1;
+    for (let k = front.offsets[i]; k < front.offsets[i + 1]; k += 1) if (front.times[k] >= e.startFrame - front.lead - 1 && front.times[k] <= e.endFrame + 24) n += 1;
     return n === 1;
   });
 };
@@ -273,7 +274,11 @@ test('every major front transition shows a real intermediate state at 25 / 50 / 
     if (cells.length < 20) continue; // the episode re-takes ground still changing hands (rapid ebb and flow)
     checked += 1;
     const losing = e.loser === 'empire';
-    const at = (pct: number) => empireOn(cells, e.startFrame + ((e.endFrame - e.startFrame) * pct) / 100);
+    // The span over which these cells actually change (their own flips in the window).
+    let t0 = Infinity;
+    let t1 = -Infinity;
+    for (const i of cells) for (let k = front.offsets[i]; k < front.offsets[i + 1]; k += 1) if (front.times[k] >= e.startFrame - 0.01 && front.times[k] <= e.endFrame + 0.01) { t0 = Math.min(t0, front.times[k]); t1 = Math.max(t1, front.times[k]); }
+    const at = (pct: number) => empireOn(cells, t0 + ((t1 - t0) * pct) / 100);
     const before = empireOn(cells, e.startFrame - front.lead - 0.5);
     const after = empireOn(cells, e.endFrame + 0.5);
     const [q1, q2, q3] = [at(25), at(50), at(75)];

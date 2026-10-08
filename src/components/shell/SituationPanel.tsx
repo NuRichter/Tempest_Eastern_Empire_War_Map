@@ -72,7 +72,7 @@ export function SituationPanel() {
             <RecordLink onClick={() => jumpToEvent(upcoming.id)}>{upcoming.title}</RecordLink>
           </p>
           <p className="figure mt-0.5 text-2xs text-fg-3">{upcoming.warDay} {upcoming.simulationTime}</p>
-          <p className="mt-1 text-2xs leading-relaxed text-fg-3">{t('Day and hour are simulation placements on a 10-minute grid; the novels give no clock times.')}</p>
+          <p className="mt-1 text-2xs leading-relaxed text-fg-3">{t('Day and hour are simulation placements on a 10-minute grid. The novels give no clock times.')}</p>
         </div>
       ) : null}
 
@@ -123,7 +123,7 @@ export function SituationPanel() {
           <Empty>{t('No ground is held across a border at this moment.')}</Empty>
         )}
         <p className="mt-1.5 text-2xs leading-relaxed text-fg-3">
-          <span className="font-semibold uppercase tracking-label text-prov-recon">{t('Reconstructed')}</span> — {t('fronts and held ground are synthesised from force positions and strengths; the novels draw no front line. Shares are of the territory’s area and only indicative.')}
+          <span className="font-semibold uppercase tracking-label text-prov-recon">{t('Reconstructed')}</span>: {t('fronts and held ground are synthesised from force positions and strengths. The novels draw no front line. Shares are of the territory’s area and only indicative.')}
         </p>
       </Section>
 
@@ -210,7 +210,7 @@ export function SituationPanel() {
           </tbody>
         </table>
         <p className="mt-1.5 text-2xs leading-relaxed text-fg-3">
-          {t('Summed from event-level records only, so nothing is counted twice. Revived soldiers stay counted as killed; the two figures sit side by side.')}
+          {t('Summed from event-level records only, so nothing is counted twice. Revived soldiers stay counted as killed. The two figures sit side by side.')}
         </p>
       </Section>
 

@@ -108,7 +108,7 @@ export function ForceDossier({ id }: { id: string }) {
           <Field label={t('Effective')}><Figure value={snap?.effective ?? 'UNKNOWN'} /></Field>
           <Field label={t('Status')}>{snap ? snap.status.replace(/_/g, ' ').toLowerCase() : <span className="italic text-fg-3">{t('not yet on the record')}</span>}</Field>
           <Field label={t('Movement')}>
-            {snap?.movement ? snap.movement.replace(/_/g, ' ').toLowerCase() : '—'}
+            {snap?.movement ? snap.movement.replace(/_/g, ' ').toLowerCase() : '-'}
             {pos?.moving ? <span className="text-fg-3"> · {t('{pct}% of the leg, route {route}', { pct: Math.round(pos.progress * 100), route: pos.route.toLowerCase() })}</span> : null}
           </Field>
           <Field label={t('Location')}>
@@ -129,10 +129,10 @@ export function ForceDossier({ id }: { id: string }) {
                 ))}
               </span>
             ) : (
-              force.commander || '—'
+              force.commander || '-'
             )}
           </Field>
-          <Field label={t('Role')}>{force.role || '—'}</Field>
+          <Field label={t('Role')}>{force.role || '-'}</Field>
           {force.unitType ? <Field label={t('Type')}>{force.unitType}</Field> : null}
         </Fields>
         {ancestors.length || force.childIds.length ? (
@@ -151,7 +151,7 @@ export function ForceDossier({ id }: { id: string }) {
                 </li>
               ))}
             </ul>
-            <p className="mt-1 text-2xs text-fg-3">{t("A subordinate's strength is inside its parent's; tiers are never added together.")}</p>
+            <p className="mt-1 text-2xs text-fg-3">{t("A subordinate's strength is inside its parent's. Tiers are never added together.")}</p>
           </div>
         ) : null}
       </Section>
@@ -248,11 +248,11 @@ export function EventDossier({ id }: { id: string }) {
         {e.turningPointSummary ? <p className="mb-2 border-l-2 border-accent pl-2 text-sm leading-relaxed text-fg">{e.turningPointSummary}</p> : null}
         <Fields>
           <Field label={t('Actor')}><span className="inline-flex items-center gap-1.5"><FactionDot faction={e.actorFaction} />{e.actor}</span></Field>
-          <Field label={t('Opponent')}><span className="inline-flex items-center gap-1.5"><FactionDot faction={e.opponentFaction} />{e.opponent || '—'}</span></Field>
-          <Field label={t('Location')}>{e.location || '—'}</Field>
+          <Field label={t('Opponent')}><span className="inline-flex items-center gap-1.5"><FactionDot faction={e.opponentFaction} />{e.opponent || '-'}</span></Field>
+          <Field label={t('Location')}>{e.location || '-'}</Field>
           <Field label={t('Type')}>{t(phaseLabel(e.type))}</Field>
           {e.battleId ? <Field label={t('Battle')}><RecordLink onClick={() => jumpToBattle(e.battleId!)}>{e.battle}</RecordLink></Field> : null}
-          <Field label={t('Result')}>{e.immediateResult || '—'}</Field>
+          <Field label={t('Result')}>{e.immediateResult || '-'}</Field>
         </Fields>
       </Section>
 
@@ -277,7 +277,7 @@ export function EventDossier({ id }: { id: string }) {
               <li key={c.id} className="text-fg-2">
                 <span className="figure text-fg-3">{c.id}</span> {c.cause} · {t('killed')} <Figure value={c.kia} />
                 {c.revived !== 'UNKNOWN' ? <> · {t('revived')} <Figure value={c.revived} /></> : null}
-                {!c.countsTowardCampaignTotal ? <span className="text-fg-3"> {t('(restates other rows; not summed)')}</span> : null}
+                {!c.countsTowardCampaignTotal ? <span className="text-fg-3"> {t('(restates other rows, not summed)')}</span> : null}
               </li>
             ))}
           </ul>
@@ -286,8 +286,8 @@ export function EventDossier({ id }: { id: string }) {
 
       <Section title={t('Consequences')} defaultOpen={false}>
         <Fields>
-          <Field label={t('Operational')}>{e.operationalResult || '—'}</Field>
-          <Field label={t('Strategic')}>{e.strategicResult || '—'}</Field>
+          <Field label={t('Operational')}>{e.operationalResult || '-'}</Field>
+          <Field label={t('Strategic')}>{e.strategicResult || '-'}</Field>
         </Fields>
       </Section>
 
@@ -368,14 +368,14 @@ export function BattleDossier({ id }: { id: string }) {
       </Masthead>
       <Section title={t('Summary')}>
         <Fields>
-          <Field label={t('Theatre')}>{theatre ? <RecordLink onClick={() => jumpToTheatre(theatre.id)}>{theatre.name}</RecordLink> : '—'}</Field>
-          <Field label={t('Place')}>{place?.name ?? '—'}{place && place.placement !== 'MEASURED' ? <span className="block text-2xs text-fg-3">{t('position {placement}', { placement: place.placement.toLowerCase() })}</span> : null}</Field>
+          <Field label={t('Theatre')}>{theatre ? <RecordLink onClick={() => jumpToTheatre(theatre.id)}>{theatre.name}</RecordLink> : '-'}</Field>
+          <Field label={t('Place')}>{place?.name ?? '-'}{place && place.placement !== 'MEASURED' ? <span className="block text-2xs text-fg-3">{t('position {placement}', { placement: place.placement.toLowerCase() })}</span> : null}</Field>
           <Field label={t('Imperial force')}><Figure value={b.empireCommitted} /></Field>
           <Field label={t('Imperial killed')}><Figure value={b.empireLost} /></Field>
           <Field label={t('Tempest killed')}><Figure value={b.tempestLost} /></Field>
-          <Field label={t('Result')}>{b.result || '—'}</Field>
+          <Field label={t('Result')}>{b.result || '-'}</Field>
         </Fields>
-        <p className="mt-1.5 text-2xs leading-relaxed text-fg-3">{t('The span is derived from the events assigned to the battle; the source gives no start or end time.')}</p>
+        <p className="mt-1.5 text-2xs leading-relaxed text-fg-3">{t('The span is derived from the events assigned to the battle. The source gives no start or end time.')}</p>
       </Section>
       <Section title={t('Participants')}>
         {b.participants.length ? (
@@ -559,8 +559,8 @@ function HeldGround({ territoryId }: { territoryId: string }) {
   return (
     <Section title={t('Held ground')}>
       <Fields>
-        <Field label={t('Held by the other side')}>{share === null ? '—' : share > 0 ? `≈${Math.round(share * 100)}%` : t('none now')}</Field>
-        <Field label={t('Confidence')}>{t('Reconstructed from formation positions and strengths; the novels draw no line of control.')}</Field>
+        <Field label={t('Held by the other side')}>{share === null ? '-' : share > 0 ? `≈${Math.round(share * 100)}%` : t('none now')}</Field>
+        <Field label={t('Confidence')}>{t('Reconstructed from formation positions and strengths. The novels draw no line of control.')}</Field>
       </Fields>
       {latest ? (
         <div className="mt-2">
@@ -598,8 +598,8 @@ export function TerritoryDossier({ id }: { id: string }) {
       </Masthead>
       <Section title={t('Now')}>
         <Fields>
-          <Field label={t('Controller')}>{now.status === 'UNKNOWN' ? <span className="italic text-fg-3">{t('unknown')}</span> : now.controller ?? '—'}</Field>
-          <Field label={t('Previous controller')}>{control.previous ? control.previous.controller ?? t('unknown') : '—'}</Field>
+          <Field label={t('Controller')}>{now.status === 'UNKNOWN' ? <span className="italic text-fg-3">{t('unknown')}</span> : now.controller ?? '-'}</Field>
+          <Field label={t('Previous controller')}>{control.previous ? control.previous.controller ?? t('unknown') : '-'}</Field>
           <Field label={t('Status')}>{now.status.toLowerCase()}</Field>
           <Field label={t('Role in the war')}>{ROLE_LABEL[now.role] ? t(ROLE_LABEL[now.role]) : null}</Field>
           <Field label={t('Basis')}>{now.basis}</Field>
@@ -635,7 +635,7 @@ export function TerritoryDossier({ id }: { id: string }) {
       ) : null}
       <Section title={t('Geometry')} defaultOpen={false}>
         <Prose>{territory.notes}</Prose>
-        <p className="mt-1.5 text-2xs leading-relaxed text-fg-3">{t('Traced from {source}. A fan-made map, not an official survey; positions are simulation coordinates, not latitude and longitude.', { source: territory.boundarySource })}</p>
+        <p className="mt-1.5 text-2xs leading-relaxed text-fg-3">{t('Traced from {source}. A fan-made map, not an official survey. Positions are simulation coordinates, not latitude and longitude.', { source: territory.boundarySource })}</p>
       </Section>
     </div>
   );
@@ -677,8 +677,8 @@ export function TheatreDossier({ id }: { id: string }) {
         <Fields>
           <Field label={t('Status')}>{(live?.status ?? 'INACTIVE').toLowerCase().replace(/_/g, ' ')}</Field>
           <Field label={t('Control')}>{live?.control ? live.control.toLowerCase().replace(/_/g, ' ') : <span className="italic text-fg-3">{t('not recorded')}</span>}</Field>
-          <Field label={t('Battle')}>{live?.battleStatus ? live.battleStatus.toLowerCase() : '—'}</Field>
-          <Field label={t('Frontline')}>{live?.frontline || '—'}</Field>
+          <Field label={t('Battle')}>{live?.battleStatus ? live.battleStatus.toLowerCase() : '-'}</Field>
+          <Field label={t('Frontline')}>{live?.frontline || '-'}</Field>
           <Field label={t('Active')}>{when(t, data, theatre.firstFrame)} → {when(t, data, theatre.lastFrame)}</Field>
         </Fields>
       </Section>
@@ -724,14 +724,14 @@ export function MovementDossier({ id }: { id: string }) {
           <Field label={t('From')}>{m.from}</Field>
           <Field label={t('To')}>{m.destinationUnknown ? <span className="italic text-fg-3">{t('not stated by the source')}</span> : m.to}</Field>
           <Field label={t('When')}>
-            {m.startEvent ? <RecordLink onClick={() => jumpToEvent(m.startEvent!)}>{when(t, data, m.startFrame)}</RecordLink> : '—'} → {m.endEvent ? <RecordLink onClick={() => jumpToEvent(m.endEvent!)}>{when(t, data, m.endFrame)}</RecordLink> : '—'}
+            {m.startEvent ? <RecordLink onClick={() => jumpToEvent(m.startEvent!)}>{when(t, data, m.startFrame)}</RecordLink> : '-'} → {m.endEvent ? <RecordLink onClick={() => jumpToEvent(m.endEvent!)}>{when(t, data, m.endFrame)}</RecordLink> : '-'}
           </Field>
           <Field label={t('At departure')}><Figure value={m.strengthAtStart} status={force?.sizeStatus} /></Field>
           <Field label={t('At arrival')}>{m.strengthAtEnd === 'UNKNOWN' ? <span className="text-2xs italic text-fg-3">{t('no separate count recorded at arrival')}</span> : <Figure value={m.strengthAtEnd} status={force?.sizeStatus} />}</Field>
           <Field label={t('Route')}>{t(ROUTE_LABEL[m.route].note)}</Field>
           <Field label={t('Why known')}>{m.basis.replace(/_/g, ' ').toLowerCase()} · {t('confidence')} <ConfidenceText value={m.confidence} /></Field>
         </Fields>
-        <p className="mt-1.5 text-2xs leading-relaxed text-fg-3">{t('The strength at departure is not assumed to hold during the march; intermediate strength is unknown unless recorded.')}</p>
+        <p className="mt-1.5 text-2xs leading-relaxed text-fg-3">{t('The strength at departure is not assumed to hold during the march. Intermediate strength is unknown unless recorded.')}</p>
         {m.notes ? <p className="mt-2 text-xs leading-relaxed text-fg-2">{m.notes}</p> : null}
       </Section>
     </div>

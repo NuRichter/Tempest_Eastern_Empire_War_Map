@@ -17,6 +17,7 @@ import { Legend } from '@/components/overlays/Legend';
 import { HelpDialog } from '@/components/overlays/HelpDialog';
 import { CinematicOverlay } from '@/components/overlays/CinematicOverlay';
 import { FilterChip } from '@/components/overlays/FilterChip';
+import { Tour } from '@/components/overlays/Tour';
 
 // MapLibre needs a DOM and WebGL, so the map is client-only.
 const MapView = dynamic(() => import('@/map/MapView').then((m) => m.MapView), {
@@ -34,7 +35,7 @@ export function AppShell() {
   const viewMode = useSimulation((s) => s.viewMode);
   const density = usePreferences((s) => s.density);
   const uiTheme = usePreferences((s) => s.uiTheme);
-  const pixelCursor = usePreferences((s) => s.pixelCursor);
+  const themeCursor = usePreferences((s) => s.themeCursor);
   const t = useT();
   const [hydrated, setHydrated] = useState(false);
   const started = useRef(false);
@@ -49,8 +50,8 @@ export function AppShell() {
     const root = document.documentElement;
     root.dataset.uiTheme = uiTheme;
     root.style.colorScheme = uiTheme;
-    root.classList.toggle('pixel-cursor', pixelCursor);
-  }, [uiTheme, pixelCursor]);
+    root.classList.toggle('theme-cursor', themeCursor);
+  }, [uiTheme, themeCursor]);
 
   /* -- load ---------------------------------------------------------- */
 
@@ -263,6 +264,7 @@ export function AppShell() {
     return (
       <main className="grid min-h-dvh place-items-center bg-ink-900 p-6" aria-busy="true">
         <div className="text-center">
+          <img src="/assets/theme/chibi/slime-calm.webp" alt="" width={96} height={70} className="mx-auto mb-4 h-[70px] w-auto animate-[slime-bounce_1.1s_ease-in-out_infinite]" />
           <p className="eyebrow">{t('Campaign Atlas')}</p>
           <p className="mt-2 font-display text-2xl text-fg">Tempest–Eastern Empire War</p>
           <p className="mt-2 text-sm text-fg-3">{t('Loading the campaign record…')}</p>
@@ -297,6 +299,7 @@ export function AppShell() {
       <CommandPalette />
       <Legend />
       <HelpDialog />
+      {cinematic ? null : <Tour />}
     </main>
   );
 }

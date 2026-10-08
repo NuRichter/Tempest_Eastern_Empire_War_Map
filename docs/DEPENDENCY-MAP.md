@@ -77,7 +77,8 @@ the atlas
 | `i18n/catalog.json` | generated | translators, `i18n:check` | Every `t()` / `msg()` string with the files using it (`npm run i18n:extract`). |
 | `i18n/glossary.json` | source | translators | Names that stay unchanged in every language. |
 | `src/content/about.ts` | source | the About panel | Verified links and APA references; evidence in `docs/research/LINKS_VERIFIED.json`. |
-| `public/assets/cursor/slime.svg` | source (original drawing) | the optional pixel cursor | Drawn for this project. |
+| `Sources of Truth/Tensura Theme/raw/*`, `manifest.json` | canonical, third-party art | `scripts/theme/build_theme_assets.py` | Light-novel covers (vols 12–16) and slime-Rimuru art from the Tensura wiki, with source URL per file. © the rights holders; licence for this project: Open (owner's decision, as for the photocards). |
+| `public/assets/theme/**` | derivative | About panel (wallpapers), loading screen, Situation bar, 404, cursor | Wallpapers 1920 × 1080 and 1170 × 2532, chibi stickers (WebP), Rimuru cursor (32 px PNG). |
 | `public/assets/nation-flags/**` | derivative | `Flag` component | Validated by `validate-assets`. |
 | `docs/audit/baseline/*.jpg`, `docs/qa/checkpoints/*.jpg` | generated | humans, `qa:visual` | Small JPEGs: the pre-upgrade baseline and the visual-regression references. |
 | `qa-artifacts/`, `.playwright-cli/`, `.next/` | temporary | — | Git-ignored. |

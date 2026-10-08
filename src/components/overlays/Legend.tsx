@@ -100,13 +100,13 @@ export function Legend() {
         <section>
           <p className="eyebrow">{t('Territory')}</p>
           <ul className="mt-1">
-            <Row swatch={<Fill color={FACTION_COLOR.empire} opacity={0.55} />} label={t(ROLE_LABEL.BELLIGERENT)} note={t('A principal party at this moment; borders traced from the Base Map.')} />
+            <Row swatch={<Fill color={FACTION_COLOR.empire} opacity={0.55} />} label={t(ROLE_LABEL.BELLIGERENT)} note={t('A principal party at this moment. Borders traced from the Base Map.')} />
             <Row swatch={<Fill color={FACTION_COLOR.dwargon} opacity={0.4} />} label={t(ROLE_LABEL.CO_BELLIGERENT)} note={t('Fights beside a party, or is attacked by one.')} />
             <Row swatch={<Fill color={FACTION_COLOR.neutral} opacity={0.25} />} label={t(ROLE_LABEL.CONTRIBUTOR)} note={t('Contributes individuals or a small element.')} />
             <Row swatch={<Fill color="#6b757a" opacity={0.12} />} label={t(ROLE_LABEL.UNINVOLVED)} note={t('Inactive territory.')} />
             <Row swatch={<Fill color={FACTION_COLOR.unknown} opacity={0.25} hatch />} label={t('Unknown control')} note={t("Never drawn as any faction's colour.")} />
             <Row swatch={<Fill color={FACTION_COLOR.empire} opacity={0.86} />} label={t('Held by the other side (reconstructed)')} note={t('Ground taken around the armies. It stays taken after they move on, until it is retaken, cut off or returned at the end of hostilities.')} />
-            <Row swatch={<svg width="30" height="16" aria-hidden><rect x="1" y="1" width="13" height="14" fill="#f2c9c4" /><rect x="14" y="1" width="15" height="14" fill={FACTION_COLOR.tempest} fillOpacity={0.6} /></svg>} label={t('Changing hands')} note={t("The pale strip is ground about to change hands; the winner's colour follows it in from the front.")} />
+            <Row swatch={<svg width="30" height="16" aria-hidden><rect x="1" y="1" width="13" height="14" fill="#f2c9c4" /><rect x="14" y="1" width="15" height="14" fill={FACTION_COLOR.tempest} fillOpacity={0.6} /></svg>} label={t('Changing hands')} note={t("The pale strip is ground about to change hands. The winner's colour follows it in from the front.")} />
             <Row swatch={<svg width="30" height="12" aria-hidden><rect x="0" y="0" width="30" height="12" fill={FACTION_COLOR.empire} fillOpacity={0.7} /><line x1="2" y1="9" x2="28" y2="3" stroke="#ffffff" strokeWidth="2" /></svg>} label={t('Front')} note={t('The edge of held ground. It moves with the clock, forwards and backwards.')} />
             <Row swatch={<Fill color={INK.accent} opacity={0.35} hatch />} label={t('Contested operational area')} note={t('A schematic theatre area the record marks as contested (Layers → Operational areas).')} />
             <Row swatch={<svg width="30" height="12" aria-hidden><line x1="2" y1="6" x2="28" y2="6" stroke={INK.accent} strokeWidth="2" strokeDasharray="2 2" /></svg>} label={t('Reconstructed control change')} note={t('A change of control the source does not state exactly.')} />
@@ -131,7 +131,7 @@ export function Legend() {
             <Row swatch={<Line />} label={t(ROUTE_LABEL.SOLID.label)} note={t(ROUTE_LABEL.SOLID.note)} />
             <Row swatch={<Line dash="5 3" opacity={0.85} />} label={t(ROUTE_LABEL.RECONSTRUCTED.label)} note={t(ROUTE_LABEL.RECONSTRUCTED.note)} />
             <Row swatch={<Line dash="1 3" opacity={0.6} />} label={t(ROUTE_LABEL.SCHEMATIC.label)} note={t(ROUTE_LABEL.SCHEMATIC.note)} />
-            <Row swatch={<span className="text-xs text-fg-3">—</span>} label={t(ROUTE_LABEL.UNKNOWN.label)} note={t(ROUTE_LABEL.UNKNOWN.note)} />
+            <Row swatch={<span className="text-xs text-fg-3">-</span>} label={t(ROUTE_LABEL.UNKNOWN.label)} note={t(ROUTE_LABEL.UNKNOWN.note)} />
           </ul>
         </section>
         <section>
@@ -154,8 +154,8 @@ export function Legend() {
         <section>
           <p className="eyebrow">{t('Events')}</p>
           <ul className="mt-1">
-            <Row swatch={<EventRing stroke="#ffffff" />} label={t('Event')} note={t('Pops in when reached; its label shows for about two seconds, then the ring fades over a simulated day.')} />
-            <Row swatch={<EventRing stroke="#f3d58d" />} label={t('Turning point')} note={t('Gold ring; stays on the map, numbered by rank.')} />
+            <Row swatch={<EventRing stroke="#ffffff" />} label={t('Event')} note={t('Pops in when reached. Its label shows for about two seconds, then the ring fades over a simulated day.')} />
+            <Row swatch={<EventRing stroke="#f3d58d" />} label={t('Turning point')} note={t('Gold ring. Stays on the map, numbered by rank.')} />
             <Row swatch={<EventRing stroke="#ffffff" broken />} label={t('Reconstructed or inferred event')} note={t('Broken ring.')} />
           </ul>
         </section>

@@ -52,9 +52,9 @@ export type WarLayer =
 export const WAR_LAYERS: { id: WarLayer; name: string; note: string }[] = [
   { id: 'territories', name: msg('Territories'), note: msg('National regions traced from the drawn borders of the base map, coloured by their part in the war.') },
   { id: 'operationalAreas', name: msg('Operational areas'), note: msg('Schematic theatre areas, clipped to the drawn borders. Not borders themselves.') },
-  { id: 'occupation', name: msg('Fronts & occupation'), note: msg('Ground taken and lost as the armies move: it stays held until retaken, cut off or returned, and the front moves with the clock. RECONSTRUCTED from recorded positions and strengths (the novels draw no front line); campaign-wide, so force filters do not change it.') },
+  { id: 'occupation', name: msg('Fronts & occupation'), note: msg('Ground taken and lost as the armies move: it stays held until retaken, cut off or returned, and the front moves with the clock. RECONSTRUCTED from recorded positions and strengths (the novels draw no front line). Campaign-wide, so force filters do not change it.') },
   { id: 'frontlines', name: msg('Contact marks'), note: msg('Schematic contact between opposed forces in a live theatre.') },
-  { id: 'movement', name: msg('Army movement'), note: msg('Recorded movements. Solid, reconstructed and schematic routes are drawn differently; unknown routes are not drawn.') },
+  { id: 'movement', name: msg('Army movement'), note: msg('Recorded movements. Solid, reconstructed and schematic routes are drawn differently. Unknown routes are not drawn.') },
   { id: 'trails', name: msg('Movement trails'), note: msg('Where a formation has been.') },
   { id: 'forces', name: msg('Forces'), note: msg('Formations at their recorded positions.') },
   { id: 'armySizes', name: msg('Army sizes'), note: msg('Strength labels. Explicit, derived, reconstructed and unknown sizes are marked.') },
@@ -105,8 +105,10 @@ export interface Preferences {
   showMinimap: boolean;
   uiTheme: UiTheme;
   transitionBelt: TransitionBelt;
-  /** The small pixel-slime pointer (an original drawing). Off by default. */
-  pixelCursor: boolean;
+  /** The slime-Rimuru pointer (Tensura theme). On by default; the system cursor is the fallback. */
+  themeCursor: boolean;
+  /** The first-run tour has been seen (or skipped). */
+  tourDone: boolean;
   bookmarks: Bookmark[];
 }
 
@@ -141,7 +143,8 @@ export const DEFAULT_PREFERENCES: Preferences = {
   showMinimap: true,
   uiTheme: 'dark',
   transitionBelt: 'gradient',
-  pixelCursor: false,
+  themeCursor: true,
+  tourDone: false,
   bookmarks: [],
 };
 
@@ -177,7 +180,7 @@ export const usePreferences = create<Preferences & PreferenceActions>()(
       set: (key, value) => set({ [key]: value } as Partial<Preferences>),
       toggleLayer: (id) => set((s) => ({ layers: { ...s.layers, [id]: !s.layers[id] } })),
       setLayer: (id, on) => set((s) => ({ layers: { ...s.layers, [id]: on } })),
-      reset: () => set((s) => ({ ...DEFAULT_PREFERENCES, bookmarks: s.bookmarks })),
+      reset: () => set((s) => ({ ...DEFAULT_PREFERENCES, bookmarks: s.bookmarks, tourDone: s.tourDone })),
       // Each theme has its own sensible fill strength; switching restores it.
       setTheme: (theme) => set({ theme, territoryOpacity: theme === 'documentary' ? 0.7 : 0.35 }),
       addBookmark: (b) => set((s) => ({ bookmarks: [...s.bookmarks, { ...b, id: `bm-${b.frame}-${s.bookmarks.length}` }].sort((x, y) => x.frame - y.frame) })),

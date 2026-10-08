@@ -17,7 +17,8 @@ const nextConfig = {
     return [
       { source: '/maps/:path*', headers: [{ key: 'Cache-Control', value: longLived }] },
       { source: '/assets/:path*', headers: [{ key: 'Cache-Control', value: longLived }] },
-      { source: '/data/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=300, stale-while-revalidate=86400' }] },
+      // The dataset must always match the deployed assets: revalidate on every load (ETag, 304).
+      { source: '/data/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' }] },
       { source: '/locales/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=3600, stale-while-revalidate=86400' }] },
     ];
   },

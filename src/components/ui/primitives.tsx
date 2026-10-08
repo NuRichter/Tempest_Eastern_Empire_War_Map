@@ -183,7 +183,9 @@ export function Flag({ nationId, size = 16 }: { nationId: string | null | undefi
 export function Portrait({ src, name, source, size = 56, faction }: { src: string | null; name: string; source?: string; size?: number; faction?: string }) {
   const t = useT();
   const border = faction ? FACTION_COLOR[factionKey(faction)] : '#3a4a54';
-  if (!src) {
+  // A card that fails to load (e.g. a moved asset) falls back to the initial, never a broken image.
+  const [broken, setBroken] = useState<string | null>(null);
+  if (!src || broken === src) {
     return (
       <span className="grid shrink-0 place-items-center rounded-[3px] border bg-ink-700 font-display text-fg-3" style={{ width: size, height: (size * 17) / 11, borderColor: border, fontSize: size * 0.4 }} title={t('No photocard in the repository for {name}', { name })}>
         {name.slice(0, 1)}
@@ -191,7 +193,7 @@ export function Portrait({ src, name, source, size = 56, faction }: { src: strin
     );
   }
   return (
-    <img src={src} alt={t('Photocard of {name}', { name })} title={source ? t('Photocard source: {source}', { source }) : undefined} loading="lazy" className="shrink-0 rounded-[3px] border bg-white object-cover" style={{ width: size, height: (size * 17) / 11, borderColor: border }} />
+    <img src={src} alt={t('Photocard of {name}', { name })} title={source ? t('Photocard source: {source}', { source }) : undefined} loading="lazy" onError={() => setBroken(src)} className="shrink-0 rounded-[3px] border bg-white object-cover" style={{ width: size, height: (size * 17) / 11, borderColor: border }} />
   );
 }
 

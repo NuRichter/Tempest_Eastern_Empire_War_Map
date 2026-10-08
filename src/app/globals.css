@@ -160,15 +160,60 @@ body {
   }
 }
 
-/* Optional pixel-slime pointer (Preferences → Appearance). The hotspot is the
-   slime's top; the system cursor is the fallback if the image fails. */
-html.pixel-cursor,
-html.pixel-cursor body,
-html.pixel-cursor .maplibregl-canvas {
-  cursor: url('/assets/cursor/slime.svg') 15 2, auto;
+/* Tensura theme pointer: slime Rimuru (Preferences → Readability). The
+   system cursor is the fallback if the image cannot load. */
+html.theme-cursor,
+html.theme-cursor body,
+html.theme-cursor .maplibregl-canvas {
+  cursor: url('/assets/theme/cursor/rimuru-32.png') 6 4, auto;
 }
-html.pixel-cursor button,
-html.pixel-cursor a,
-html.pixel-cursor [role='button'] {
-  cursor: url('/assets/cursor/slime.svg') 15 2, pointer;
+html.theme-cursor button,
+html.theme-cursor a,
+html.theme-cursor select,
+html.theme-cursor [role='button'],
+html.theme-cursor [role='tab'] {
+  cursor: url('/assets/theme/cursor/rimuru-pointer-32.png') 6 4, pointer;
+}
+html.theme-cursor .maplibregl-canvas:active {
+  cursor: url('/assets/theme/cursor/rimuru-pointer-32.png') 6 4, grabbing;
+}
+
+@keyframes slime-bounce {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  40% { transform: translateY(-14px) scale(0.94, 1.06); }
+  80% { transform: translateY(0) scale(1.08, 0.92); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [class*='slime-bounce'] { animation: none !important; }
+}
+
+/* First-run tour: a spotlight that glides between targets, a notice card
+   that slides in, and a slime that bounces. Motion respects reduced motion. */
+.tour-spot {
+  box-shadow: 0 0 0 9999px rgba(4, 8, 12, 0.66), 0 0 0 2px rgba(95, 184, 240, 0.9), 0 0 24px 4px rgba(95, 184, 240, 0.35);
+  transition: left 520ms cubic-bezier(0.22, 1, 0.36, 1), top 520ms cubic-bezier(0.22, 1, 0.36, 1), width 520ms cubic-bezier(0.22, 1, 0.36, 1), height 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tour-card {
+  transition: left 520ms cubic-bezier(0.22, 1, 0.36, 1), top 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tour-step {
+  animation: tour-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.tour-slime {
+  animation: tour-slime 1.6s ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+@keyframes tour-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes tour-slime {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  30% { transform: translateY(-8px) scale(0.95, 1.05); }
+  55% { transform: translateY(0) scale(1.07, 0.93); }
+  70% { transform: translateY(0) scale(1, 1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-spot, .tour-card { transition: none; }
+  .tour-step, .tour-slime { animation: none; }
 }

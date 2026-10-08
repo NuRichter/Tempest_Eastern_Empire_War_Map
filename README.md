@@ -44,6 +44,10 @@ Novelnya tidak pernah menggambar garis depan. Jadi aku membaca ulang semuanya de
 - **Apa yang terjadi, di mana, kapan.** Waktunya relatif terhadap hari pertempuran (`D−05`, `D+10`), bukan kalender karangan.
 - **Seberapa besar pasukannya**, dan seberapa yakin angka itu: eksplisit, `≈` turunan, `~` rekonstruksi, `?` tidak diketahui.
 - **Tanah yang direbut dan hilang.** Garis depan bergerak lewat ruang, dengan sabuk transisi gradien dari warna pucat pihak yang kalah ke warna pemenang.
+  - Tanah baru mundur **setelah pertempurannya kalah**, yaitu saat ikon pertempuran disilang.
+  - Mundurnya ke arah wilayah asal (status quo).
+  - Front Dwargon menempel ke tanah air Kekaisaran, dari garis pantai sampai perbatasan Tempest.
+  - Garis depannya bergerigi seperti peta perang sungguhan.
 - **Dari mana kita tahu.** Volume, lokator baris, dan kelas provenans di setiap klaim.
 
 <table>
@@ -121,6 +125,10 @@ Semua lapisan ini **RECONSTRUCTED**: disintesis dari posisi, kekuatan, dan nasib
 
 ## Fitur
 
+- **Tur pertama kali.**
+  - Saat pertama membuka atlas, muncul tur singkat bergaya pesan *《Notice》* Great Sage, dipandu slime Rimuru.
+  - Spotlight-nya meluncur mulus ke tiap bagian layar, dalam 30 bahasa.
+  - Bisa diputar ulang dari Layers → *Replay the tour*, atau lewat tautan `?tour=1`.
 - **Timeline.**
   - Pita tahap, lajur teater, rentang pertempuran, dan celah waktu berarsir.
   - Bookmark, serta lompat per event, hari, atau frame.
@@ -135,7 +143,7 @@ Semua lapisan ini **RECONSTRUCTED**: disintesis dari posisi, kekuatan, dan nasib
   - Sabuk transisi Gradient atau Pale band.
 - **Tampilan.**
   - **Dark / light** dan **30 bahasa** (lihat di bawah).
-  - Kursor *pixel slime* opsional, digambar sendiri; mati secara default.
+  - Tema *Tensura*: kursor slime Rimuru (bisa dimatikan di Layers), slime yang memantul di layar loading, dan stiker chibi di panel About dan Situasi.
 - **Mode sinematik.** Tanggal besar, satu caption, buku korban, dan kartu penutup.
 - **Deep link.** Contoh: `?frame=7697&event=EVT-0214`. Address bar selalu menyimpan momen yang sedang tampil.
 
@@ -162,7 +170,9 @@ Nama tokoh, negara, dan tempat tidak pernah diterjemahkan (glosarium di [`i18n/g
 
 ## Wallpaper
 
-Direkam langsung dari atlas, tanpa antarmuka. Bebas dipakai untuk layarmu sendiri.
+**Di dalam atlas** (About → Wallpapers) ada lima wallpaper dari sampul light novel volume 12–16, yaitu volume-volume perang ini. Masing-masing tersedia untuk desktop (1920 × 1080) dan ponsel (1170 × 2532). Seni sampul © Fuse, Mitz Vah / Micro Magazine; hanya untuk layarmu sendiri.
+
+Tiga wallpaper di bawah ini direkam langsung dari atlas, tanpa antarmuka:
 
 <table>
 <tr>
@@ -199,13 +209,14 @@ Alat offline (opsional; Python 3 + numpy, opencv-python, Pillow):
 python scripts/cartography/extract_territories.py   # geometri wilayah dari Base Map
 python scripts/characters/build_photocards.py       # photocard WebP + thumbnail
 python scripts/flags/build_flag_thumbs.py           # thumbnail bendera WebP
+python scripts/theme/build_theme_assets.py          # wallpaper, stiker chibi, kursor Rimuru
 ```
 
 ## Validasi & QA
 
 ```bash
 npm run verify        # compile → validate-data → validate-assets → lint → typecheck → i18n → test → build
-npm run qa            # 40 cek di Chromium sungguhan, 8 lebar layar (320–1920 px)
+npm run qa            # 43 cek di Chromium sungguhan, 8 lebar layar (320–1920 px)
 npm run qa:visual     # regresi visual, 10 checkpoint
 npm run qa:front      # tangkapan 0/25/50/75/100 % tiap transisi wilayah besar
 npm run qa:playback   # front bergerak saat diputar, beku saat dijeda, sama setelah scrub
@@ -215,7 +226,7 @@ npm run qa:perf       # waktu siap, transfer, heap, dan seek di 6 perangkat
 Hasil terakhir:
 
 - `verify`: lulus, termasuk 25/25 tes engine dan 30 bahasa dengan cakupan 100 %.
-- `qa`: lulus, 40/40.
+- `qa`: lulus, 43/43 (termasuk tur pertama kali).
 - `qa:visual`: lulus, 10/10.
 - `qa:playback`: lulus, 3/3.
 - `qa:perf`: muatan pertama sekitar 2,0 MB dalam 51–69 request (sebelumnya 124).
@@ -286,7 +297,7 @@ Proyek ini milik **NuRichter** (NuRichter Workspace), dengan lisensi tiga lapis 
 - dataset dan tulisan analitis: atribusi, non-komersial, berbagi serupa, dan wajib menjaga label integritas;
 - materi pihak ketiga: tidak dilisensikan oleh proyek ini.
 
-*Tensei Shitara Slime Datta Ken* beserta dunia, tokoh, teks, dan ilustrasinya adalah milik Fuse, Mitz Vah, Micro Magazine, Kodansha, dan komite produksi anime. Photocard karakter berasal dari situs resmi TenSura dan wiki Tensura sebagaimana tercatat di manifest; lisensinya **Open** (keputusan pemilik proyek), dengan sumber tetap dicantumkan di setiap kartu.
+*Tensei Shitara Slime Datta Ken* beserta dunia, tokoh, teks, dan ilustrasinya adalah milik Fuse, Mitz Vah, Micro Magazine, Kodansha, dan komite produksi anime. Photocard karakter, sampul untuk wallpaper, dan gambar slime Rimuru (stiker dan kursor) berasal dari situs resmi TenSura dan wiki Tensura, sebagaimana tercatat di manifest masing-masing (`Sources of Truth/Character Photocard`, `Sources of Truth/Tensura Theme`). Lisensinya **Open** (keputusan pemilik proyek), dengan sumber tetap dicantumkan.
 
 Teks novel (PDF) tidak disertakan di repositori ini. Audit kanon memakai salinan lokal; rujukannya hanya berupa volume, bab, dan lokator baris. Belilah dan bacalah edisi resminya.
 

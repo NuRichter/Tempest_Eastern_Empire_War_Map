@@ -29,7 +29,7 @@ export function RightPanel() {
 
   if (!open && !hasSelection) {
     return (
-      <button type="button" onClick={() => setPref('panelOpen', true)} className="ctl absolute right-3 top-3 z-20 h-auto min-h-8 py-1" aria-label={t('Open the intelligence panel')}>
+      <button type="button" data-tour="situation" onClick={() => setPref('panelOpen', true)} className="ctl absolute right-3 top-3 z-20 h-auto min-h-8 py-1" aria-label={t('Open the intelligence panel')}>
         <SituationChip />
         <PanelRightOpen size={15} strokeWidth={1.7} />
       </button>
@@ -43,6 +43,7 @@ export function RightPanel() {
 
   return (
     <aside
+      data-tour="situation"
       aria-label={hasSelection ? t('Dossier') : t('Campaign intelligence')}
       className="absolute inset-x-0 bottom-0 z-20 flex max-h-[62%] flex-col rounded-t-[6px] border-t border-ink-500 bg-ink-850 shadow-panel sm:max-h-[58%] lg:inset-x-auto lg:bottom-0 lg:right-0 lg:top-0 lg:max-h-none lg:w-[24rem] lg:rounded-none lg:border-l lg:border-t-0"
     >

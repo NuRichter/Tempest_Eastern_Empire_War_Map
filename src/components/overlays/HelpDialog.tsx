@@ -74,7 +74,7 @@ export function HelpDialog() {
               {t('This is a fan-made research and visualisation project. It is not official Tensura material and is not affiliated with the rights holders.')}
             </p>
             <p>
-              {fill(t('Every event carries a provenance: {canonical}, {visual}, {inferred}, {reconstructed} or {unresolved}. Movement between known points may be interpolated, and is labelled; nothing is invented as canon.'), {
+              {fill(t('Every event carries a provenance: {canonical}, {visual}, {inferred}, {reconstructed} or {unresolved}. Movement between known points may be interpolated, and is labelled. Nothing is invented as canon.'), {
                 canonical: <em>{t('canonical')}</em>,
                 visual: <em>{t('canonical with visual reconstruction')}</em>,
                 inferred: <em>{t('inferred')}</em>,
@@ -83,10 +83,10 @@ export function HelpDialog() {
               })}
             </p>
             <p>
-              {t('The novels give no clock times or calendar dates. Battle days (D−, D+) count from first contact; every HH:MM is a simulation placement on a 10-minute grid, and the “year 9001” calendar is an artificial marker.')}
+              {t('The novels give no clock times or calendar dates. Battle days (D−, D+) count from first contact. Every HH:MM is a simulation placement on a 10-minute grid, and the “year 9001” calendar is an artificial marker.')}
             </p>
             <p>
-              {t('The map is a fictional world. Borders are traced from the supplied Base Map; positions are simulation coordinates, never latitude and longitude. Unknown numbers stay unknown and are never shown as zero.')}
+              {t('The map is a fictional world. Borders are traced from the supplied Base Map. Positions are simulation coordinates, never latitude and longitude. Unknown numbers stay unknown and are never shown as zero.')}
             </p>
             {data ? <p className="text-2xs text-fg-3">{t('Dataset revision: {revision}', { revision: data.manifest.revision })}</p> : null}
           </div>

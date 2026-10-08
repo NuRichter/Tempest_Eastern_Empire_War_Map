@@ -32,7 +32,7 @@ export const viewport: Viewport = {
 
 // Applies the saved interface theme before the first paint, so a light-theme
 // reader never sees a dark flash. Reads the same key the preferences store writes.
-const THEME_BOOT = `try{var p=JSON.parse(localStorage.getItem('tempest-atlas.preferences.v3')||'{}').state||{};var d=document.documentElement;d.dataset.uiTheme=p.uiTheme==='light'?'light':'dark';d.style.colorScheme=d.dataset.uiTheme;if(p.pixelCursor)d.classList.add('pixel-cursor');}catch(e){}`;
+const THEME_BOOT = `try{var p=JSON.parse(localStorage.getItem('tempest-atlas.preferences.v3')||'{}').state||{};var d=document.documentElement;d.dataset.uiTheme=p.uiTheme==='light'?'light':'dark';d.style.colorScheme=d.dataset.uiTheme;if(p.themeCursor!==false)d.classList.add('theme-cursor');}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
