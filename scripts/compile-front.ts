@@ -26,6 +26,9 @@
  *              depths also carry a fixed noise
  *              (smooth swells plus ridged creases), so fronts bulge and dent like real lines of
  *              control instead of tracing arcs and straight edges
+ *   lost       ground a side loses (retreat, collapse or recapture) is lost
+ *              to it for the rest of the war: no army in this campaign retakes
+ *              ground it was driven from, so the map never re-advances over it
  *   cities     no capital, city or the Labyrinth falls in this war: ground
  *              inside a settlement outline (settlements.source.json) is never
  *              captured, so held ground flows around it
@@ -186,6 +189,8 @@ for (let i = 0; i < n; i += 1) {
 
 /* -- cities hold: settlement outlines are never captured ---------------- */
 
+/** lostBy[i]: bit 1 = the Empire lost this cell, bit 2 = the allies lost it. */
+const lostBy = new Uint8Array(n);
 const cityCell = new Uint8Array(n);
 for (const st of data.settlements ?? []) {
   const xs = st.ring.map((q) => q[0] * W);
@@ -524,6 +529,8 @@ for (let f = 0; f < N; f += STEP) {
       if (h !== HOLDER_OWNER) { h = HOLDER_OWNER; cause[i] = 4; }
     } else if (h === HOLDER_OWNER && cityCell[i]) {
       // A city holds out: nobody takes it in this war.
+    } else if (h === HOLDER_OWNER && lostBy[i] & (o === HOLDER_ALLIED ? 1 : o === HOLDER_EMPIRE ? 2 : 0)) {
+      // The side that would take it was already driven from it.
     } else if (h === HOLDER_OWNER) {
       const base = BASE * (1 + RAGGED * noise[i]);
       const k = warp[i];
@@ -542,6 +549,7 @@ for (let f = 0; f < N; f += STEP) {
       else if (v[warp[i]] > HOLD) { h = HOLDER_OWNER; cause[i] = 2; }
       else if (capturerDead(i) && -v[i] < HOLD) { h = HOLDER_OWNER; cause[i] = 3; }
     }
+    if (h === HOLDER_OWNER && hold[i] !== HOLDER_OWNER && (cause[i] === 2 || cause[i] === 3)) lostBy[i] |= hold[i] === HOLDER_EMPIRE ? 1 : 2;
     if (h !== hold[i] && h !== HOLDER_OWNER) capturer[i] = bestForce[i];
     else if (h === HOLDER_OWNER) capturer[i] = -1;
     next[i] = h;
@@ -683,7 +691,10 @@ for (let f = 0; f < N; f += STEP) {
         const d = dist[c] > 0 ? dist[c] : 1;
         const list = flips[c];
         const prevT = list.length ? list[list.length - 1].t : -Infinity;
-        const base = to === HOLDER_OWNER ? Math.max(tStart, releasedAt(owner[c], f - STEP, f)) : tStart;
+        // Losses released by a battle start when it ends: the lead (the loser
+        // receding first) is added after the release, never before it.
+        const rel = to === HOLDER_OWNER ? releasedAt(owner[c], f - STEP, f) : -Infinity;
+        const base = to === HOLDER_OWNER ? Math.max(tStart, rel + LEAD) : tStart;
         const tf = Math.max(base + (d - 0.5) / SPEED, prevT + 0.25);
         list.push({ t: Math.round(tf * 100) / 100, h: to });
         comp.cells.push(c);

@@ -4,24 +4,24 @@ The novels never draw a line of control. They say where armies are, how big they
 
 ## The ground that changes hands
 
-Compiled from the R6 dataset (`public/data/front.json`): 53 transitions, 4,473 cell changes, grouped by phase. Times are simulation placements on the 10-minute grid. Four rules shape them:
+Compiled from the R6 dataset (`public/data/front.json`): 48 transitions, 3,953 cell changes, grouped by phase. Times are simulation placements on the 10-minute grid. The rules behind them:
 - **Battle gate:** losses wait for the battle to end.
 - **Retreat:** lost ground falls back toward the loser's home.
+- **Lost ground stays lost:** a side never retakes ground it was driven from.
+- **Cities hold:** no settlement falls.
 - **Anchored Dwargon front:** the Empire's ground in Dwargon is a band from its own border.
 - **Ragged lines:** fronts follow a fixed, warped noise (see `docs/TERRITORIAL-ANIMATION.md` 6a–6d).
 
 | When | Phase | Transitions | Cells | Span | Why the text supports it |
 |---|---|---|---|---|---|
-| D−5 → D+0 | Empire advance into Jura | 41 | 1,280 | D-5 07:30 → D+0 07:30 | The border crossing (EVT-0015) opens the front; the columns spread along the forest roads and up to 700,000 infantry enter the forest (EVT-0020). Many small steps and four large ones |
-| D+0 | Siege band at Dwargon | 1 | 495 | D+0 08:00 → D+0 14:30 | The Magitank Force and Composite Division reach the Dwargon front; the held ground is a band from the imperial border (anchored rule) |
-| D+0 13:20 | Magitank loss | 3 | 72 | D+0 13:20 → D+1 07:40 | Released when the Battle of the Dwargon Gate ends; recedes toward the Empire |
-| D+1 | Armour push on the capital | 1 | 91 | D+1 07:30 → D+1 08:10 | The restructured Armor Corps advances (EVT-0127) |
-| D+10 11:30 | Retreat from Jura | 1 | 1,590 | D+10 11:30 → D+10 16:00 | Released when the Annihilation of the Imperial Camp ends; the whole imperial ground in Jura falls back east to the border |
-| D+15 21:00 | Dwargon siege lifted | 1 | 495 | D+15 21:00 → D+16 00:20 | Released when the Destruction of the Composite Division ends |
-| D+15 22:50 → D+16 00:40 | Legion foothold | 3 | 225 | D+15 22:50 → D+16 00:40 | The ritual ground and the Legion landing (EVT-0343, EVT-0373), anchored to the imperial side |
-| D+16 02:10 | Settlement | 2 | 225 | D+16 02:10 → D+16 03:20 | Released when the Battle of the Dwargon Eastern Front ends; Dwargon leaves the war and the rest returns |
+| D−5 → D+0 | Empire advance into Jura | 41 | 1,262 | D-5 07:30 → D+0 07:30 | The border crossing (EVT-0015) opens the front. The columns spread along the forest roads and up to 700,000 infantry enter the forest (EVT-0020) |
+| D+0 | Siege band at Dwargon | 1 | 482 | D+0 08:00 → D+0 14:30 | The Isthmus blockade and Composite Division press on Dwargon from the imperial border (anchored rule). The eastern metropolis never falls |
+| D+0 13:50 | Magitank loss | 3 | 72 | D+0 13:50 → D+1 07:40 | Released when the Battle of the Dwargon Gate ends. Recedes toward the Empire and is never retaken |
+| D+1 | Armour push on the capital | 1 | 91 | D+1 07:30 → D+1 08:10 | The restructured Armor Corps advances (EVT-0127), on new ground only |
+| D+10 11:30 | Retreat from Jura | 1 | 1,564 | D+10 12:00 → D+10 16:30 | Released when the Annihilation of the Imperial Camp ends. The whole imperial ground in Jura falls back east to the border |
+| D+15 21:00 | Dwargon siege lifted | 1 | 482 | D+15 21:30 → D+16 00:50 | Released when the Destruction of the Composite Division ends. The band falls back to the imperial border by about D+16 00:50. The Legion's landing afterwards takes no ground: none can be retaken once lost |
 
-Many small steps between the large ones are deliberate: the reference videos show mostly small changes (refs 1 and 2: 129–130 small changes in 10-second windows against 3–10 medium ones).
+Many small steps between the large ones are deliberate. The reference videos show mostly small changes: refs 1 and 2 have 129–130 small changes in 10-second windows against 3–10 medium ones.
 
 ## Where the map holds still on purpose
 

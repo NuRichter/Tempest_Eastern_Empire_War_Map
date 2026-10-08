@@ -46,6 +46,7 @@ Novelnya tidak pernah menggambar garis depan. Jadi aku membaca ulang semuanya de
 - **Tanah yang direbut dan hilang.** Garis depan bergerak lewat ruang, dengan sabuk transisi gradien dari warna pucat pihak yang kalah ke warna pemenang.
   - Tanah baru mundur **setelah pertempurannya kalah**, yaitu saat ikon pertempuran disilang.
   - Mundurnya ke arah wilayah asal (status quo).
+  - Tanah yang sudah hilang tidak pernah direbut lagi. Front tidak maju-mundur bolak-balik, persis seperti jalannya perang di novel.
   - Front Dwargon menempel ke tanah air Kekaisaran, dari garis pantai sampai perbatasan Tempest.
   - Garis depannya bergerigi seperti peta perang sungguhan.
 - **Dari mana kita tahu.** Volume, lokator baris, dan kelas provenans di setiap klaim.
