@@ -137,6 +137,12 @@ Semua lapisan ini **RECONSTRUCTED**: disintesis dari posisi, kekuatan, dan nasib
 - **Dossier saling tertaut.** Untuk pasukan, event, pertempuran, karakter, wilayah, teater, dan pergerakan.
 - **Pencarian dan palet perintah.** Buka dengan `/` atau `Ctrl+K`; fuzzy, mengenali alias, dan nama Jepang.
 - **Filter.** Faksi, negara, pasukan, pertempuran, wilayah, teater, jenis event, status kanon, dan keyakinan.
+- **Ibu kota, kota besar, dan Labirin.**
+  - Poligon tiap ibu kota negara, kota-kota besar, dan Labirin Ramiris.
+  - Ikonnya: mahkota untuk ibu kota, labirin untuk Labirin, menara untuk kota.
+  - Bisa dinyalakan atau dimatikan di Layers.
+  - Posisinya diukur dari peta ibu kota, bentuknya direkonstruksi dari deskripsi novel.
+  - Kota tidak pernah jatuh di perang ini, jadi wilayah yang direbut selalu mengalir di sekelilingnya.
 - **Peta.**
   - Base Map / Myth Map, Flat / Globe.
   - Look Documentary atau War room.

@@ -113,6 +113,14 @@ export function Legend() {
           </ul>
         </section>
         <section>
+          <p className="eyebrow">{t('Capitals, cities and the Labyrinth')}</p>
+          <ul className="mt-1">
+            <Row swatch={<svg width="22" height="22" aria-hidden><circle cx="11" cy="11" r="9" fill="#d4ab57" stroke="#5a3f0e" strokeWidth="1.5" /><path d="M6 14 V8 L8.5 11 L11 7 L13.5 11 L16 8 V14 Z" fill="#2a1d05" /></svg>} label={t('Capital')} note={t('The capital of a nation, inside its outline.')} />
+            <Row swatch={<svg width="22" height="22" aria-hidden><polygon points="15,3 19,7 19,15 15,19 7,19 3,15 3,7 7,3" fill="#8f72e0" stroke="#2f1d6b" strokeWidth="1.5" /><path d="M8 7 H14 V15 H8 V9 H12 V13" fill="none" stroke="#f4efff" strokeWidth="1.4" /></svg>} label={t('Labyrinth')} note={t('Ramiris Labyrinth, entered from the capital Rimuru. Dashed outline: it lies underground.')} />
+            <Row swatch={<svg width="22" height="22" aria-hidden><circle cx="11" cy="11" r="8" fill="#c9c3b8" stroke="#4a443b" strokeWidth="1.5" /><rect x="8.5" y="9" width="5" height="6" fill="#2a2620" /><rect x="8.5" y="7" width="1.2" height="2.5" fill="#2a2620" /><rect x="12.3" y="7" width="1.2" height="2.5" fill="#2a2620" /></svg>} label={t('City')} note={t('A major city. Outlines are reconstructed, the novels give no city plans.')} />
+          </ul>
+        </section>
+        <section>
           <p className="eyebrow">{t('Forces')}</p>
           <ul className="mt-1">
             <Row swatch={<Shape d={SHAPES.square} color={FACTION_COLOR.empire} deep={FACTION_DEEP.empire} />} label="Eastern Empire" note={t('Square marker.')} />

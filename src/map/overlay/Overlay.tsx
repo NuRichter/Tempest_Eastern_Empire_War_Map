@@ -10,6 +10,7 @@ import { useSimulation } from '@/simulation/store';
 import { prefersReducedMotion, SCALE_FACTOR, usePreferences } from '@/state/preferences';
 import { LabelLayout, type DrawContext, type Hit } from '@/map/overlay/context';
 import { drawGeographyLabels } from '@/map/overlay/layers/geography';
+import { drawSettlements } from '@/map/overlay/layers/settlements';
 import { drawForces, drawFrontStrength, drawTrails, placeForces } from '@/map/overlay/layers/forces';
 import { drawMovements } from '@/map/overlay/layers/movements';
 import { drawBattles, drawCharacters, drawCommanders, drawEvents, drawFrontlines, eventsAnimating, setPortraitListener } from '@/map/overlay/layers/incidents';
@@ -117,6 +118,7 @@ export function Overlay({ map }: Props) {
     // then incidents, then formations and their strength on top.
     const placed = prefs.layers.forces ? placeForces(dc) : [];
     drawFronts(dc, makeProjector(map, globe, project));
+    drawSettlements(dc);
     drawTrails(dc, placed);
     drawMovements(dc);
     drawFrontlines(dc, placed);

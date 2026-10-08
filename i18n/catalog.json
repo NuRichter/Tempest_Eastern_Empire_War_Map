@@ -107,6 +107,9 @@
   "A fan-made reconstruction from the Tensura light novels, vols. 12–16. Not official material. Times are simulation placements. Reconstructed elements are labelled.": [
    "src/components/overlays/CinematicOverlay.tsx"
   ],
+  "A major city. Outlines are reconstructed, the novels give no city plans.": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "A plausible bridging sequence made by this project between known points.": [
    "src/lib/taxonomy.ts"
   ],
@@ -337,6 +340,14 @@
   "Canonical, visually reconstructed": [
    "src/lib/taxonomy.ts"
   ],
+  "Capital": [
+   "src/components/overlays/Legend.tsx",
+   "src/map/overlay/layers/settlements.ts"
+  ],
+  "Capitals, cities and the Labyrinth": [
+   "src/components/overlays/Legend.tsx",
+   "src/state/preferences.ts"
+  ],
   "Captured": [
    "src/components/overlays/CinematicOverlay.tsx",
    "src/components/shell/SituationPanel.tsx"
@@ -375,6 +386,10 @@
   ],
   "Circle marker.": [
    "src/components/overlays/Legend.tsx"
+  ],
+  "City": [
+   "src/components/overlays/Legend.tsx",
+   "src/map/overlay/layers/settlements.ts"
   ],
   "Close": [
    "src/components/overlays/HelpDialog.tsx"
@@ -887,6 +902,10 @@
    "src/components/overlays/CommandPalette.tsx",
    "src/state/preferences.ts"
   ],
+  "Labyrinth": [
+   "src/components/overlays/Legend.tsx",
+   "src/map/overlay/layers/settlements.ts"
+  ],
   "Language": [
    "src/components/shell/TopBar.tsx"
   ],
@@ -1259,6 +1278,12 @@
   "Other contributors": [
    "src/components/overlays/Legend.tsx"
   ],
+  "outline reconstructed": [
+   "src/map/overlay/layers/settlements.ts"
+  ],
+  "Outlines of the capitals, major cities and Ramiris Labyrinth, with their icons. Positions measured, outlines reconstructed.": [
+   "src/state/preferences.ts"
+  ],
   "overall": [
    "src/components/dossier/records.tsx"
   ],
@@ -1387,6 +1412,9 @@
   "Projection": [
    "src/components/rail/LayersPanel.tsx",
    "src/map/MapControls.tsx"
+  ],
+  "Ramiris Labyrinth, entered from the capital Rimuru. Dashed outline: it lies underground.": [
+   "src/components/overlays/Legend.tsx"
   ],
   "Read chapter 1 free (Magazine Pocket)": [
    "src/content/about.ts"
@@ -1755,6 +1783,9 @@
   ],
   "The campaign in stages. Pick one to move there. Play to watch it unfold on the map.": [
    "src/components/rail/StoryPanel.tsx"
+  ],
+  "The capital of a nation, inside its outline.": [
+   "src/components/overlays/Legend.tsx"
   ],
   "The drawn area is schematic: the supplied maps show no theatre boundaries. It is clipped to the traced national borders so it never crosses into the sea or a neighbouring state.": [
    "src/components/dossier/records.tsx"

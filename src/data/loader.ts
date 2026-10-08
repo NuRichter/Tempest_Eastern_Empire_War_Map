@@ -18,6 +18,7 @@ import type {
   Nation,
   NationFlagManifest,
   Place,
+  Settlement,
   TermEntry,
   Territory,
   TerritoryChange,
@@ -67,6 +68,7 @@ export interface Dataset {
   terms: TermEntry[];
   gaps: TimelineGap[];
   flags: NationFlagManifest;
+  settlements: Settlement[];
   /* derived indexes, built once */
   eventById: Map<string, WarEvent>;
   eventsByFrame: Map<number, WarEvent[]>;
@@ -147,6 +149,7 @@ export interface DatasetParts {
   terms: TermEntry[];
   gaps: TimelineGap[];
   flags: NationFlagManifest;
+  settlements: Settlement[];
 }
 
 /** Builds the dataset and its derived indexes. Pure: the browser and the tests share it. */
@@ -178,6 +181,7 @@ export function assembleDataset(p: DatasetParts): Dataset {
     terms: p.terms,
     gaps: p.gaps,
     flags: p.flags,
+    settlements: p.settlements ?? [],
     eventById: new Map(p.events.map((e) => [e.id, e])),
     eventsByFrame: groupBy(p.events, (e) => e.frame),
     forceById: new Map(p.forces.map((f) => [f.id, f])),
@@ -222,6 +226,7 @@ export const PART_FILES: Record<Exclude<keyof DatasetParts, 'checkpoints'>, stri
   terms: 'terms.json',
   gaps: 'gaps.json',
   flags: 'nation-flags.json',
+  settlements: 'settlements.json',
 };
 
 /**

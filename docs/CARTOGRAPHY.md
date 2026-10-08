@@ -59,3 +59,18 @@ Full method, transition modes, tests and limits: `docs/TERRITORIAL-ANIMATION.md`
 | `ABSTRACT` | Deliberately no position (a sealed space, a negotiation, a worldwide posture) — not drawn |
 
 `validate-data` warns when a ground position falls in the sea and records which traced territory each place lies in.
+
+## Capitals, cities and the Labyrinth
+
+**Layer.** The *Capitals, cities and the Labyrinth* layer can be switched in Layers. It draws 23 settlements as polygons, each with an icon at its centre: a gold crown for a capital, a violet maze for the Labyrinth and a grey tower for a city.
+
+**Positions.** Every capital and the marked cities are measured from *Central World All Territories Nation and Capital.png*. That map is registered to the Base Map by aligning the two land masks with an ECC homography (correlation 0.992, land overlap 96 %). The Labyrinth and the Dwargon eastern metropolis come from the campaign gazetteer.
+
+**Shapes.** The novels give no city plans, so every outline is labelled RECONSTRUCTED. Shapes follow what the text describes:
+- **Rimuru** is a planned city on straight streets, drawn as a rounded grid square.
+- **Dwargon** is carved into a cavern of the Kanaat Mountains, drawn as a long lens along the range.
+- **Nasca** is the walled, largest capital, drawn as an octagon with bastions.
+- **The Labyrinth** sits just south of Rimuru, as a dashed octagon because it lies underground.
+- **The other capitals and cities** get organic outlines at indicative sizes.
+
+**Cities hold.** No settlement falls in this war, so held ground never covers a city outline (`docs/TERRITORIAL-ANIMATION.md`).

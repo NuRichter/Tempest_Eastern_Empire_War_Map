@@ -1095,6 +1095,39 @@ put('territories.json', territoryChanges);
 put('territories.geo.json', { territories, about: { sourceImage: geo.about.sourceImage } });
 put('theatres.json', theatres);
 put('places.json', places);
+
+/* -- settlements: capitals, cities, the Labyrinth --------------------- */
+
+interface SettlementSource { id: string; name: string; kind: 'capital' | 'city' | 'labyrinth'; nationId: string; x: number; y: number; placement: string; shape: 'grid' | 'walled' | 'lens' | 'octagon' | 'organic'; radius: number; aspect: number; rotation: number; basis: string; source: string }
+const settlementSource = readOptional<{ settlements: SettlementSource[] }>(join(SRC, 'settlements.source.json'), { settlements: [] });
+/** Deterministic outline in simulation units; shapes are drawn in map pixels so they are not squashed. */
+function settlementRing(s: SettlementSource): [number, number][] {
+  const ASPECT = 2035 / 2641; // map height / width
+  let seed = 0;
+  for (const ch of s.id) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
+  const rand = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+  const rot = (s.rotation * Math.PI) / 180;
+  const pts: [number, number][] = [];
+  const n = s.shape === 'octagon' ? 8 : s.shape === 'walled' ? 32 : 48;
+  const wobble = Array.from({ length: n }, () => rand());
+  for (let k = 0; k < n; k += 1) {
+    const a = (k / n) * Math.PI * 2;
+    let r = 1;
+    if (s.shape === 'grid') r = 1 / Math.pow(Math.pow(Math.abs(Math.cos(a)), 4) + Math.pow(Math.abs(Math.sin(a)), 4), 1 / 4); // rounded square
+    else if (s.shape === 'walled') r = k % 4 === 0 ? 1.08 : 1 / Math.cos(((a + Math.PI / 8) % (Math.PI / 4)) - Math.PI / 8) * 0.94; // octagon with bastions
+    else if (s.shape === 'organic') r = 0.86 + 0.28 * (0.6 * wobble[k] + 0.4 * wobble[(k + 1) % n]);
+    else if (s.shape === 'lens') r = 0.92 + 0.12 * wobble[k];
+    const ex = Math.cos(a) * r * s.aspect;
+    const ey = Math.sin(a) * r;
+    const px = ex * Math.cos(rot) - ey * Math.sin(rot);
+    const py = ex * Math.sin(rot) + ey * Math.cos(rot);
+    pts.push([+(s.x + px * s.radius).toFixed(6), +(s.y + (py * s.radius) / ASPECT).toFixed(6)]);
+  }
+  pts.push(pts[0]);
+  return pts;
+}
+const settlements = settlementSource.settlements.map((s) => ({ id: s.id, name: s.name, kind: s.kind, nationId: s.nationId, x: s.x, y: s.y, placement: s.placement, ring: settlementRing(s), basis: s.basis, source: s.source }));
+put('settlements.json', settlements);
 put('nations.json', nations);
 put('nation-flags.json', flagManifest);
 put('factions.json', factions);

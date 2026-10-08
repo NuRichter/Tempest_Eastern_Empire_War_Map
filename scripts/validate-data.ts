@@ -455,7 +455,7 @@ function main(): void {
 
   /* -- house style: no em dash, no semicolon in published text ------- */
 
-  for (const name of ['events.json', 'forces.json', 'battles.json', 'characters.json', 'commanders.json', 'combatants.json', 'casualties.json', 'movement.json', 'places.json', 'stages.json', 'gaps.json', 'reference.json', 'terms.json', 'territories.json', 'theatres.json', 'nations.json', 'manifest.json']) {
+  for (const name of ['events.json', 'forces.json', 'battles.json', 'characters.json', 'commanders.json', 'combatants.json', 'casualties.json', 'movement.json', 'places.json', 'stages.json', 'gaps.json', 'reference.json', 'terms.json', 'territories.json', 'theatres.json', 'nations.json', 'manifest.json', 'settlements.json']) {
     const path = join(DATA, name);
     if (!existsSync(path)) continue;
     const text = readFileSync(path, 'utf8');

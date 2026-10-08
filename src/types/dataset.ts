@@ -208,6 +208,21 @@ export interface Theatre {
   colorKey: string;
 }
 
+/** A capital, major city or the Labyrinth, with a RECONSTRUCTED outline. */
+export interface Settlement {
+  id: string;
+  name: string;
+  kind: 'capital' | 'city' | 'labyrinth';
+  nationId: string;
+  x: number;
+  y: number;
+  placement: string;
+  /** Outline in simulation coordinates, closed ring. */
+  ring: [number, number][];
+  basis: string;
+  source: string;
+}
+
 export interface Place {
   id: PlaceId;
   name: string;

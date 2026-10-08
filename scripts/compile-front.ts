@@ -26,6 +26,9 @@
  *              depths also carry a fixed noise
  *              (smooth swells plus ridged creases), so fronts bulge and dent like real lines of
  *              control instead of tracing arcs and straight edges
+ *   cities     no capital, city or the Labyrinth falls in this war: ground
+ *              inside a settlement outline (settlements.source.json) is never
+ *              captured, so held ground flows around it
  *   retreat    ground the loser gives back recedes toward its own home
  *              territory: the cells farthest from home go first, the line
  *              nearest the old border last (status quo restored), at
@@ -179,6 +182,29 @@ for (let i = 0; i < n; i += 1) {
   const wy = Math.round(y + WARP * valueNoise(x, y, 16, 29));
   const j = wx >= 0 && wy >= 0 && wx < W && wy < H ? wy * W + wx : i;
   warp[i] = owner[j] === owner[i] ? j : i;
+}
+
+/* -- cities hold: settlement outlines are never captured ---------------- */
+
+const cityCell = new Uint8Array(n);
+for (const st of data.settlements ?? []) {
+  const xs = st.ring.map((q) => q[0] * W);
+  const ys = st.ring.map((q) => q[1] * H);
+  const x0 = Math.max(0, Math.floor(Math.min(...xs)));
+  const x1 = Math.min(W - 1, Math.ceil(Math.max(...xs)));
+  const y0 = Math.max(0, Math.floor(Math.min(...ys)));
+  const y1 = Math.min(H - 1, Math.ceil(Math.max(...ys)));
+  for (let gy = y0; gy <= y1; gy += 1) {
+    for (let gx = x0; gx <= x1; gx += 1) {
+      const px = gx + 0.5;
+      const py = gy + 0.5;
+      let inside = false;
+      for (let a = 0, b = xs.length - 1; a < xs.length; b = a, a += 1) {
+        if ((ys[a] > py) !== (ys[b] > py) && px < ((xs[b] - xs[a]) * (py - ys[a])) / (ys[b] - ys[a]) + xs[a]) inside = !inside;
+      }
+      if (inside) cityCell[gy * W + gx] = 1;
+    }
+  }
 }
 
 /* -- anchored territories: distance from the anchoring side's border ---- */
@@ -496,6 +522,8 @@ for (let f = 0; f < N; f += STEP) {
       // Its army is in a battle not yet decided: nobody gives ground until it ends.
     } else if (o === null) {
       if (h !== HOLDER_OWNER) { h = HOLDER_OWNER; cause[i] = 4; }
+    } else if (h === HOLDER_OWNER && cityCell[i]) {
+      // A city holds out: nobody takes it in this war.
     } else if (h === HOLDER_OWNER) {
       const base = BASE * (1 + RAGGED * noise[i]);
       const k = warp[i];

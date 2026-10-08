@@ -39,6 +39,7 @@ function baseStyle(): StyleSpecification {
       territories: empty,
       areas: empty,
       grid: empty,
+      settlements: empty,
     },
     layers: [
       { id: 'void', type: 'background', paint: { 'background-color': SEA } },
@@ -120,6 +121,29 @@ function baseStyle(): StyleSpecification {
         },
       },
       {
+        id: 'settlement-fill',
+        type: 'fill',
+        source: 'settlements',
+        paint: { 'fill-color': ['get', 'fill'], 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 2, 0.55, 6, 0.7], 'fill-antialias': true },
+      },
+      {
+        id: 'settlement-line',
+        type: 'line',
+        source: 'settlements',
+        filter: ['!=', ['get', 'kind'], 'labyrinth'],
+        layout: { 'line-join': 'round' },
+        paint: { 'line-color': ['get', 'line'], 'line-width': ['interpolate', ['linear'], ['zoom'], 2, 0.8, 5, 1.6, 8, 2.6], 'line-opacity': 0.95 },
+      },
+      {
+        // The Labyrinth is underground: its surface footprint is dashed.
+        id: 'settlement-line-labyrinth',
+        type: 'line',
+        source: 'settlements',
+        filter: ['==', ['get', 'kind'], 'labyrinth'],
+        layout: { 'line-join': 'round' },
+        paint: { 'line-color': ['get', 'line'], 'line-width': ['interpolate', ['linear'], ['zoom'], 2, 1, 5, 1.8, 8, 2.8], 'line-opacity': 0.95, 'line-dasharray': [2, 1.2] },
+      },
+      {
         id: 'grid-line',
         type: 'line',
         source: 'grid',
@@ -127,6 +151,23 @@ function baseStyle(): StyleSpecification {
         paint: { 'line-color': INK.text3, 'line-width': 0.5, 'line-opacity': 0.35 },
       },
     ],
+  };
+}
+
+/** Capitals, cities and the Labyrinth as polygons (outlines RECONSTRUCTED). */
+function settlementFeatures(data: Dataset): GeoJSON.FeatureCollection {
+  const style = {
+    capital: { fill: '#f3e3b0', line: '#8a6420' },
+    city: { fill: '#ece7dc', line: '#6b6458' },
+    labyrinth: { fill: '#c9b6f2', line: '#5b3fa8' },
+  } as const;
+  return {
+    type: 'FeatureCollection',
+    features: data.settlements.map((s) => ({
+      type: 'Feature',
+      properties: { id: s.id, kind: s.kind, ...style[s.kind] },
+      geometry: { type: 'Polygon', coordinates: [s.ring.map(([x, y]) => simToLngLatTuple(x, y))] },
+    })),
   };
 }
 
@@ -396,6 +437,13 @@ export function MapView() {
     src?.setData(areaFeatures(data, useSimulation.getState().state));
   }, [data, areaKey, ready, territoryOpacity]);
 
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !data) return;
+    const src = map.getSource('settlements') as maplibregl.GeoJSONSource | undefined;
+    src?.setData(settlementFeatures(data));
+  }, [data, ready]);
+
   /* -- synthesised occupation (RECONSTRUCTED) ----------------------- */
 
   const fieldCanvas = useRef<HTMLCanvasElement | null>(null);
@@ -508,6 +556,9 @@ export function MapView() {
     vis('area-hatch', layers.operationalAreas);
     vis('area-line', layers.operationalAreas);
     vis('grid-line', layers.grid);
+    vis('settlement-fill', layers.settlements);
+    vis('settlement-line', layers.settlements);
+    vis('settlement-line-labyrinth', layers.settlements);
     map.setPaintProperty('territory-line', 'line-opacity', borderOpacity);
   }, [layers, borderOpacity, ready]);
 
