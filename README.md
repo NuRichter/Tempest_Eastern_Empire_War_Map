@@ -127,8 +127,11 @@ Semua lapisan ini **RECONSTRUCTED**: disintesis dari posisi, kekuatan, dan nasib
 ## Fitur
 
 - **Tur pertama kali.**
-  - Saat pertama membuka atlas, muncul tur singkat bergaya pesan *《Notice》* Great Sage, dipandu slime Rimuru.
-  - Spotlight-nya meluncur mulus ke tiap bagian layar, dalam 30 bahasa.
+  - Saat pertama membuka atlas, muncul tur 18 langkah bergaya pesan *《Notice》* Great Sage.
+  - Pemandunya bergantian: Rimuru, Gobta, Ranga, Shuna, Hakurou, Treyni, Geld, Shion, Gazel, Gabiru, Benimaru, Milim, Souei, dan Veldora.
+  - Spotlight-nya meluncur mulus ke tiap tombol.
+  - Tur juga membawa waktu ke momen yang pas untuk menunjukkan pasukan, ikon pertempuran, serta ibu kota dan Labirin langsung di peta.
+  - Tersedia dalam 30 bahasa.
   - Bisa diputar ulang dari Layers → *Replay the tour*, atau lewat tautan `?tour=1`.
 - **Timeline.**
   - Pita tahap, lajur teater, rentang pertempuran, dan celah waktu berarsir.
@@ -304,7 +307,7 @@ Proyek ini milik **NuRichter** (NuRichter Workspace), dengan lisensi tiga lapis 
 - dataset dan tulisan analitis: atribusi, non-komersial, berbagi serupa, dan wajib menjaga label integritas;
 - materi pihak ketiga: tidak dilisensikan oleh proyek ini.
 
-*Tensei Shitara Slime Datta Ken* beserta dunia, tokoh, teks, dan ilustrasinya adalah milik Fuse, Mitz Vah, Micro Magazine, Kodansha, dan komite produksi anime. Photocard karakter, sampul untuk wallpaper, dan gambar slime Rimuru (stiker dan kursor) berasal dari situs resmi TenSura dan wiki Tensura, sebagaimana tercatat di manifest masing-masing (`Sources of Truth/Character Photocard`, `Sources of Truth/Tensura Theme`). Lisensinya **Open** (keputusan pemilik proyek), dengan sumber tetap dicantumkan.
+*Tensei Shitara Slime Datta Ken* beserta dunia, tokoh, teks, dan ilustrasinya adalah milik Fuse, Mitz Vah, Micro Magazine, Kodansha, dan komite produksi anime. Photocard karakter, sampul untuk wallpaper, gambar slime Rimuru (stiker dan kursor), dan gambar karakter *Slime Diaries* untuk pemandu tur berasal dari situs resmi TenSura dan wiki Tensura, sebagaimana tercatat di manifest masing-masing (`Sources of Truth/Character Photocard`, `Sources of Truth/Tensura Theme`). Lisensinya **Open** (keputusan pemilik proyek), dengan sumber tetap dicantumkan.
 
 Teks novel (PDF) tidak disertakan di repositori ini. Audit kanon memakai salinan lokal; rujukannya hanya berupa volume, bab, dan lokator baris. Belilah dan bacalah edisi resminya.
 

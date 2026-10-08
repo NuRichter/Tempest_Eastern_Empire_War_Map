@@ -80,7 +80,7 @@ the atlas
 | `Sources of Truth/Tensura Theme/raw/*`, `manifest.json` | canonical, third-party art | `scripts/theme/build_theme_assets.py` | Light-novel covers (vols 12–16) and slime-Rimuru art from the Tensura wiki, with source URL per file. © the rights holders; licence for this project: Open (owner's decision, as for the photocards). |
 | `data-source/settlements.source.json` | source | `compile-data.ts`, `compile-front.ts` | Capitals, major cities and the Labyrinth. Positions measured from *Central World All Territories Nation and Capital.png*, registered to the Base Map by a land-mask ECC homography (correlation 0.992, land IoU 0.96), or taken from the gazetteer. Outline shapes are RECONSTRUCTED from canon descriptions. |
 | `public/data/settlements.json` | generated | the browser (polygons, icons), `compile-front.ts` (cities are never captured) | Outline rings in simulation coordinates. |
-| `public/assets/theme/**` | derivative | About panel (wallpapers), loading screen, Situation bar, 404, cursor | Wallpapers 1920 × 1080 and 1170 × 2532, chibi stickers (WebP), Rimuru cursor (32 px PNG). |
+| `public/assets/theme/**` | derivative | About panel (wallpapers), loading screen, Situation bar, 404, cursor, tour guides | Wallpapers 1920 × 1080 and 1170 × 2532, slime stickers (WebP), tour guide stickers from the official *Slime Diaries* art (head and shoulders, WebP), Rimuru cursor (32 px PNG). |
 | `public/assets/nation-flags/**` | derivative | `Flag` component | Validated by `validate-assets`. |
 | `docs/audit/baseline/*.jpg`, `docs/qa/checkpoints/*.jpg` | generated | humans, `qa:visual` | Small JPEGs: the pre-upgrade baseline and the visual-regression references. |
 | `qa-artifacts/`, `.playwright-cli/`, `.next/` | temporary | — | Git-ignored. |

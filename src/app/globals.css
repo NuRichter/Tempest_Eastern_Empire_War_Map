@@ -199,7 +199,7 @@ html.theme-cursor .maplibregl-canvas:active {
 .tour-step {
   animation: tour-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-.tour-slime {
+.tour-guide {
   animation: tour-slime 1.6s ease-in-out infinite;
   transform-origin: 50% 100%;
 }
@@ -215,5 +215,21 @@ html.theme-cursor .maplibregl-canvas:active {
 }
 @media (prefers-reduced-motion: reduce) {
   .tour-spot, .tour-card { transition: none; }
-  .tour-step, .tour-slime { animation: none; }
+  .tour-step, .tour-guide { animation: none; }
+}
+/* Tour guides who are people bob gently and lean in when they arrive. */
+.tour-bob {
+  animation: tour-arrive 480ms cubic-bezier(0.22, 1, 0.36, 1) both, tour-bob 2.4s ease-in-out 480ms infinite;
+  transform-origin: 50% 100%;
+}
+@keyframes tour-arrive {
+  from { opacity: 0; transform: translateY(14px) rotate(4deg); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes tour-bob {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-4px) rotate(-1.5deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-bob { animation: none; }
 }

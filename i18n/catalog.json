@@ -101,6 +101,9 @@
   "A change of control the source does not state exactly.": [
    "src/components/overlays/Legend.tsx"
   ],
+  "A crown marks a capital, the maze is Ramiris Labyrinth right next to Rimuru. Cities never fall in this war. You can hide them in Layers.": [
+   "src/components/overlays/Tour.tsx"
+  ],
   "A fan project": [
    "src/components/shell/AboutPanel.tsx"
   ],
@@ -109,6 +112,9 @@
   ],
   "A major city. Outlines are reconstructed, the novels give no city plans.": [
    "src/components/overlays/Legend.tsx"
+  ],
+  "A note from the person who made this, wallpapers from the war’s volumes, the official Tensura links and every reference.": [
+   "src/components/overlays/Tour.tsx"
   ],
   "A plausible bridging sequence made by this project between known points.": [
    "src/lib/taxonomy.ts"
@@ -139,6 +145,9 @@
   ],
   "About this atlas": [
    "src/components/overlays/HelpDialog.tsx"
+  ],
+  "About, wallpapers and links": [
+   "src/components/overlays/Tour.tsx"
   ],
   "Active": [
    "src/components/dossier/records.tsx"
@@ -252,6 +261,7 @@
    "src/components/dossier/records.tsx",
    "src/components/overlays/CommandPalette.tsx",
    "src/components/overlays/Legend.tsx",
+   "src/components/overlays/Tour.tsx",
    "src/components/rail/FiltersPanel.tsx",
    "src/lib/search.ts",
    "src/state/preferences.ts"
@@ -344,6 +354,9 @@
    "src/components/overlays/Legend.tsx",
    "src/map/overlay/layers/settlements.ts"
   ],
+  "Capitals and the Labyrinth": [
+   "src/components/overlays/Tour.tsx"
+  ],
   "Capitals, cities and the Labyrinth": [
    "src/components/overlays/Legend.tsx",
    "src/state/preferences.ts"
@@ -379,6 +392,7 @@
   ],
   "Cinematic mode": [
    "src/components/overlays/HelpDialog.tsx",
+   "src/components/overlays/Tour.tsx",
    "src/components/shell/TopBar.tsx"
   ],
   "Cinematic mode (C)": [
@@ -490,6 +504,9 @@
   "Cover art © Fuse, Mitz Vah and Micro Magazine. For your own screens only.": [
    "src/components/shell/AboutPanel.tsx"
   ],
+  "Crossed swords mark a battle. Once the cross appears the battle is decided, and only then does the losing side start to fall back.": [
+   "src/components/overlays/Tour.tsx"
+  ],
   "Dark": [
    "src/components/rail/LayersPanel.tsx"
   ],
@@ -543,6 +560,9 @@
   ],
   "Dwargon eastern front": [
    "src/map/MapControls.tsx"
+  ],
+  "Each marker is a formation, the big number is its strength. Squares are the Empire, circles are Tempest, diamonds are Dwargon. Click one to open its file.": [
+   "src/components/overlays/Tour.tsx"
   ],
   "Eastern Empire": [
    "src/map/MapControls.tsx"
@@ -606,7 +626,7 @@
   "Every figure is summed from event-level records. See the dossiers for sources.": [
    "src/components/overlays/CinematicOverlay.tsx"
   ],
-  "Every tick is an event. Click anywhere to jump there, or drag to scrub back and forth. Nothing gets lost, rewinding shows exactly what happened.": [
+  "Every tick is an event, the coloured bands are the stages of the war. Click anywhere to jump there, or drag to scrub. Rewinding shows exactly what happened, nothing is lost.": [
    "src/components/overlays/Tour.tsx"
   ],
   "Everything on the map comes with its source, and anything reconstructed says so. Have fun exploring.": [
@@ -703,6 +723,9 @@
   ],
   "From": [
    "src/components/dossier/records.tsx"
+  ],
+  "From a slow 1× up to 48×, about a whole day per second. Playback slows down by itself at the big turning points so you never miss them.": [
+   "src/components/overlays/Tour.tsx"
   ],
   "from the start": [
    "src/components/dossier/records.tsx"
@@ -801,7 +824,7 @@
   "History on the record": [
    "src/components/dossier/records.tsx"
   ],
-  "Hit this (or Space) and the war starts moving. Armies march, fronts shift, numbers roll. The speed menu next to it goes up to 48×.": [
+  "Hit this (or Space) and the war starts moving. Armies march, fronts shift, numbers roll. Press it again to pause anywhere.": [
    "src/components/overlays/Tour.tsx"
   ],
   "Hostilities ended": [
@@ -925,7 +948,7 @@
   "Layers and settings": [
    "src/components/overlays/Tour.tsx"
   ],
-  "Layers, filters, the event feed and the story are on this side. You can replay this tour from Layers any time.": [
+  "Layers, filters, the event feed and the story are on this side. Turn things on and off, change the look, and replay this tour any time.": [
    "src/components/overlays/Tour.tsx"
   ],
   "Leave cinematic mode (Esc)": [
@@ -1036,6 +1059,9 @@
   ],
   "Motion": [
    "src/components/rail/LayersPanel.tsx"
+  ],
+  "Move around the map": [
+   "src/components/overlays/Tour.tsx"
   ],
   "Movement": [
    "src/components/dossier/records.tsx",
@@ -1227,6 +1253,9 @@
   "On the timeline, hatched stretches are gaps the record does not fill (gold: low confidence). Times are simulation placements on a 10-minute grid. Coordinates are simulation coordinates on a fictional map, not latitude and longitude.": [
    "src/components/overlays/Legend.tsx"
   ],
+  "One event at a time": [
+   "src/components/overlays/Tour.tsx"
+  ],
   "Only the direction of the movement is known.": [
    "src/lib/taxonomy.ts"
   ],
@@ -1334,6 +1363,9 @@
   ],
   "Photocards of characters active in the current event.": [
    "src/state/preferences.ts"
+  ],
+  "Pick your speed": [
+   "src/components/overlays/Tour.tsx"
   ],
   "Place": [
    "src/components/dossier/records.tsx"
@@ -1453,7 +1485,7 @@
   "Recorded movements. Solid, reconstructed and schematic routes are drawn differently. Unknown routes are not drawn.": [
    "src/state/preferences.ts"
   ],
-  "Red is ground the Empire holds, green is Tempest. Watch the front line creep forward, then fall back once a battle is lost. Scroll to zoom, drag to look around.": [
+  "Red is ground the Empire holds, green is Tempest, blue is Dwargon. The white line is the front. Watch it creep forward, then fall back once a battle is lost.": [
    "src/components/overlays/Tour.tsx"
   ],
   "Reduce": [
@@ -1772,6 +1804,9 @@
   "That’s it, enjoy the war!": [
    "src/components/overlays/Tour.tsx"
   ],
+  "The armies": [
+   "src/components/overlays/Tour.tsx"
+  ],
   "The atlas renders with WebGL. Enable hardware acceleration, or open it in a browser that supports WebGL 2.": [
    "src/map/MapView.tsx"
   ],
@@ -1787,6 +1822,9 @@
   "The capital of a nation, inside its outline.": [
    "src/components/overlays/Legend.tsx"
   ],
+  "The clean Base Map for following the war, or the painted Myth Map for the world itself. Switching keeps your place in time.": [
+   "src/components/overlays/Tour.tsx"
+  ],
   "The drawn area is schematic: the supplied maps show no theatre boundaries. It is clipped to the traced national borders so it never crosses into the sea or a neighbouring state.": [
    "src/components/dossier/records.tsx"
   ],
@@ -1801,9 +1839,6 @@
   ],
   "The five covers of this war’s volumes, made into wallpapers, plus two moments from the map. Tap to save.": [
    "src/components/shell/AboutPanel.tsx"
-  ],
-  "The map": [
-   "src/components/overlays/Tour.tsx"
   ],
   "The map could not start": [
    "src/map/MapView.tsx"
@@ -1854,6 +1889,9 @@
   "Theatres & battles": [
    "src/components/dossier/records.tsx"
   ],
+  "These buttons hop to the previous or next event ([ and ] on the keyboard). Perfect for reading the war step by step.": [
+   "src/components/overlays/Tour.tsx"
+  ],
   "This dialog": [
    "src/components/overlays/HelpDialog.tsx"
   ],
@@ -1863,7 +1901,7 @@
   "This is not official Tensura material. It is made for fun, for other fans, and as a thank-you to the people who made the story.": [
    "src/components/shell/AboutPanel.tsx"
   ],
-  "This map plays the whole Tempest vs Eastern Empire war like a documentary, built from the light novels. Want a quick look around? It takes about a minute.": [
+  "This map plays the whole Tempest vs Eastern Empire war like a documentary, built from the light novels. The gang will show you around. It takes about two minutes.": [
    "src/components/overlays/Tour.tsx"
   ],
   "This moment": [
@@ -1914,6 +1952,9 @@
   "TV anime page": [
    "src/content/about.ts"
   ],
+  "Two maps": [
+   "src/components/overlays/Tour.tsx"
+  ],
   "Type": [
    "src/components/dossier/records.tsx"
   ],
@@ -1951,6 +1992,9 @@
   "Wallpapers": [
    "src/components/shell/AboutPanel.tsx"
   ],
+  "Want it like a movie? This hides the panels and plays the war full screen, with big dates and captions. Press C to go in or out.": [
+   "src/components/overlays/Tour.tsx"
+  ],
   "War layers": [
    "src/components/rail/LayersPanel.tsx"
   ],
@@ -1971,6 +2015,9 @@
   ],
   "Who": [
    "src/components/dossier/records.tsx"
+  ],
+  "Who holds the ground": [
+   "src/components/overlays/Tour.tsx"
   ],
   "Who is fighting right now": [
    "src/components/overlays/Tour.tsx"
@@ -2005,6 +2052,9 @@
   ],
   "Zoom out (−)": [
    "src/map/MapControls.tsx"
+  ],
+  "Zoom, reset the view, jump to a theatre, switch between a flat map and a globe, or go full screen. Scrolling and dragging on the map work too.": [
+   "src/components/overlays/Tour.tsx"
   ]
  }
 }

@@ -20,12 +20,35 @@ The atlas opens on the whole campaign in the **Documentary** look: light ground,
 
 ## First-run tour
 
-On a first visit (never for automated browsers or deep links), a nine-step tour opens after the map is ready (`src/components/overlays/Tour.tsx`):
-- **Look:** a 《Notice》 card in the style of the Great Sage's announcements, with a bouncing slime as the guide.
-- **Motion:** a spotlight (one element with a large box-shadow) glides between the play button, timeline, map, Situation panel, search, language and theme, and the tool rail (520 ms ease-out). The card slides in beside its target, or above or below it on phones.
-- **Controls:** Next / Back / Skip, → ← Enter Esc, and progress dots. Reduced motion turns the movement off.
-- **Remembering it:** finishing or skipping stores `tourDone`. Layers → *Replay the tour* and the link `?tour=1` open it again.
-- **Language:** all copy is in the catalog, in 30 languages, casual in tone.
+**When it opens.** An 18-step tour opens after the map is ready on a first visit, never for automated browsers or deep links (`src/components/overlays/Tour.tsx`).
+
+**Look and guides.** Each step is a 《Notice》 card in the style of the Great Sage's announcements, spoken by a guide who stands on top of the card:
+- **Slime Rimuru:** the welcome, the language and theme, the settings and the farewell.
+- **Gobta:** play.
+- **Ranga:** speed.
+- **Shuna:** the timeline.
+- **Hakurou:** stepping through events.
+- **Treyni:** held ground and the front.
+- **Geld:** the armies.
+- **Shion:** battles.
+- **Gazel:** capitals and the Labyrinth.
+- **Gabiru:** map controls and the two map styles.
+- **Benimaru:** the Situation panel.
+- **Milim:** About and wallpapers.
+- **Souei:** search.
+- **Veldora:** cinematic mode.
+
+**What it shows.**
+- A spotlight glides to each control.
+- For the map steps it moves the clock to a moment that shows the thing (D+4 for the armies, D+10 just after the camp battle for the crossed battle icon). It then spotlights that point on the map, following the map's projection.
+- It opens the panel tab it talks about.
+- When it ends, the reader's moment and panel state come back.
+
+**Controls.** Next / Back / Skip, → ← Enter Esc, and progress dots. The slimes squash and stretch, the people bob, and reduced motion turns movement off.
+
+**Remembering it.** Finishing or skipping stores `tourDone`. Layers → *Replay the tour* and the link `?tour=1` open it again.
+
+**Language.** All copy is in the catalog, in 30 languages, casual in tone.
 
 ## Reading flows
 

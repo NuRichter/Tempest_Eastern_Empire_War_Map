@@ -6,6 +6,7 @@ Tensura-themed interface assets.
         ->  public/assets/theme/wallpapers/vol-NN-phone.jpg     1170 x 2532
         ->  public/assets/theme/wallpapers/thumb/vol-NN.webp    previews for the About panel
         ->  public/assets/theme/chibi/<name>.webp               transparent stickers
+        ->  public/assets/theme/guides/<name>.webp              tour guides (Slime Diaries art, head and shoulders)
         ->  public/assets/theme/cursor/rimuru-32.png (+ -pointer) cursor images
 
 Artwork © Fuse, Mitz Vah, Taiki Kawakami, Kodansha, Micro Magazine and the
@@ -152,6 +153,37 @@ def chibi() -> None:
         canvas.save(out / f'{name}.webp', 'WEBP', quality=88, method=6)
 
 
+# Tour guides: official Slime Diaries character art, cropped to head and
+# shoulders (the full figure for the dragon and the wolf) with a sticker outline.
+GUIDES = {
+    'benimaru': ('Benimaru', 'bust'), 'gabiru': ('Gabiru', 'bust'), 'gazel': ('Gazel', 'bust'),
+    'geld': ('Geld', 'bust'), 'gobta': ('Gobta', 'bust'), 'hakurou': ('Hakurou', 'bust'),
+    'milim': ('Milim', 'bust'), 'ranga': ('Ranga', 'full'), 'shion': ('Shion', 'bust'),
+    'shuna': ('Shuna', 'bust'), 'souei': ('Souei', 'bust'), 'treyni': ('Treyni', 'bust'),
+    'veldora': ('Veldora', 'full'),
+}
+
+
+def guides() -> None:
+    out = OUT / 'guides'
+    out.mkdir(parents=True, exist_ok=True)
+    for name, (who, mode) in GUIDES.items():
+        im = Image.open(RAW / f'{who}_Slime_Diaries_Anime.png').convert('RGBA')
+        im = im.crop(im.getchannel('A').point(lambda v: 255 if v > 12 else 0).getbbox())
+        if mode == 'bust':
+            # Head and shoulders: the top of the figure, a little wider than tall.
+            h = int(im.width * 0.95) if im.width * 0.95 < im.height * 0.5 else int(im.height * 0.42)
+            im = im.crop((0, 0, im.width, max(h, int(im.height * 0.3))))
+            bb = im.getchannel('A').point(lambda v: 255 if v > 12 else 0).getbbox()
+            im = im.crop(bb)
+        pad = 12
+        canvas = Image.new('RGBA', (im.width + pad * 2, im.height + pad * 2), (0, 0, 0, 0))
+        canvas.paste(im, (pad, pad), im)
+        canvas = sticker(canvas, 7)
+        canvas.thumbnail((260, 260), Image.LANCZOS)
+        canvas.save(out / f'{name}.webp', 'WEBP', quality=88, method=6)
+
+
 def cursor() -> None:
     out = OUT / 'cursor'
     out.mkdir(parents=True, exist_ok=True)
@@ -175,6 +207,7 @@ def cursor() -> None:
 if __name__ == '__main__':
     wallpapers()
     chibi()
+    guides()
     cursor()
     total = sum(p.stat().st_size for p in OUT.rglob('*') if p.is_file())
     print(f'theme assets -> {OUT.relative_to(ROOT)} ({total / 1024:.0f} KB)')

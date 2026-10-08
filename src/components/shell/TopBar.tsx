@@ -102,7 +102,7 @@ export function TopBar() {
         <button type="button" onClick={() => setLegendOpen(!legendOpen)} aria-pressed={legendOpen} className="ctl hidden w-8 px-0 sm:inline-flex" aria-label={t('Map legend')} title={t('Legend (L)')}>
           <BookOpen size={15} strokeWidth={1.7} />
         </button>
-        <button type="button" onClick={() => setViewMode('cinematic')} className="ctl w-8 px-0" aria-label={t('Cinematic mode')} title={t('Cinematic mode (C)')}>
+        <button type="button" data-tour="cinematic" onClick={() => setViewMode('cinematic')} className="ctl w-8 px-0" aria-label={t('Cinematic mode')} title={t('Cinematic mode (C)')}>
           <Film size={15} strokeWidth={1.7} />
         </button>
         <button type="button" onClick={() => setHelpOpen(true)} className="ctl hidden w-8 px-0 sm:inline-flex" aria-label={t('About and keyboard shortcuts')} title={t('About and shortcuts (?)')}>

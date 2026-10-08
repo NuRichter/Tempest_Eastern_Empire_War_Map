@@ -334,7 +334,7 @@ export function Timeline() {
           <button type="button" className="ctl w-8 px-0" onClick={() => seek(0)} aria-label={t('Campaign start')} title={t('Campaign start')}>
             <SkipBack size={14} strokeWidth={1.7} />
           </button>
-          <button type="button" className="ctl w-8 px-0" onClick={() => stepEvent(-1)} aria-label={t('Previous event')} title={t('Previous event ([)')}>
+          <button type="button" data-tour="step-event" className="ctl w-8 px-0" onClick={() => stepEvent(-1)} aria-label={t('Previous event')} title={t('Previous event ([)')}>
             <ChevronsLeft size={15} strokeWidth={1.7} />
           </button>
           <button type="button" className="ctl w-8 px-0" onClick={() => seek(frame - fpd)} aria-label={t('Back one day')} title={t('Back one day (Shift+←)')}>
@@ -356,7 +356,7 @@ export function Timeline() {
 
         <label className="flex items-center gap-1.5 text-xs text-fg-3">
           <span className="sr-only sm:not-sr-only">{t('Speed')}</span>
-          <select value={speedIndex} onChange={(e) => setSpeedIndex(Number(e.target.value))} className="h-8 rounded-[3px] border border-ink-500 bg-ink-800 px-1.5 text-xs text-fg" aria-label={t('Playback speed')}>
+          <select data-tour="speed" value={speedIndex} onChange={(e) => setSpeedIndex(Number(e.target.value))} className="h-8 rounded-[3px] border border-ink-500 bg-ink-800 px-1.5 text-xs text-fg" aria-label={t('Playback speed')}>
             {SPEEDS.map((s, i) => (
               <option key={s} value={i}>
                 {s}× · {rateLabel(s, t)}

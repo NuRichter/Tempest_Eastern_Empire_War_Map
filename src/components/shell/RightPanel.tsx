@@ -60,6 +60,7 @@ export function RightPanel() {
                 key={x.id}
                 type="button"
                 role="tab"
+                data-tour={`tab-${x.id}`}
                 aria-selected={tab === x.id}
                 onClick={() => setTab(x.id)}
                 className={`border-b-2 px-2.5 text-sm font-semibold tracking-wide ${tab === x.id ? 'border-accent text-fg' : 'border-transparent text-fg-3 hover:text-fg'}`}

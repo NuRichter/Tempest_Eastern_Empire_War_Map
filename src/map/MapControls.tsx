@@ -75,7 +75,7 @@ export function MapControls({ map, ready }: Props) {
   return (
     <>
       {/* Navigation: bottom right, above the timeline. */}
-      <div className="absolute bottom-3 right-3 z-20 flex flex-col items-end gap-1.5" role="group" aria-label={t('Map navigation')}>
+      <div data-tour="map-controls" className="absolute bottom-3 right-3 z-20 flex flex-col items-end gap-1.5" role="group" aria-label={t('Map navigation')}>
         <div className="flex flex-col overflow-hidden rounded-[3px] border border-ink-500 bg-ink-800/90">
           <button type="button" className="grid h-8 w-8 place-items-center text-fg-2 hover:bg-ink-600 hover:text-fg" onClick={() => zoomBy(0.75)} aria-label={t('Zoom in')} title={t('Zoom in (+)')}>
             <Plus size={15} strokeWidth={1.7} />
@@ -127,7 +127,7 @@ export function MapControls({ map, ready }: Props) {
       </div>
 
       {/* Map style switcher: bottom left, Google-Maps style. */}
-      <div className={`absolute bottom-3 left-[3.75rem] flex items-end gap-2 ${stylesOpen ? 'z-30' : 'z-20'}`}>
+      <div data-tour="map-style" className={`absolute bottom-3 left-[3.75rem] flex items-end gap-2 ${stylesOpen ? 'z-30' : 'z-20'}`}>
         <div className="relative">
           <button
             type="button"
