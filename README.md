@@ -39,6 +39,7 @@
 
 [**Kenapa ada**](#-kenapa-peta-ini-ada) ·
 [**Lihat bergerak**](#-lihat-perangnya-bergerak) ·
+[**Sinematik**](#-mode-sinematik) ·
 [**Aturan perang**](#%EF%B8%8F-aturan-perang-di-peta-ini) ·
 [**Linimasa**](#%EF%B8%8F-linimasa-perang) ·
 [**Tur**](#-tur-pemandu) ·
@@ -108,6 +109,29 @@ Atlas ini meniru *cara* empat video perang dokumenter menggerakkan wilayah. Vide
 <td width="50%"><img src="./assets/readme/screenshots/capitals-labyrinth.webp" alt="Ibu kota Rimuru dan Labirin Ramiris di tengah wilayah yang dikuasai Kekaisaran"><br><b>Kota tidak pernah jatuh</b><br><sub>Rimuru dengan mahkotanya dan Labirin Ramiris bergaris putus-putus. Wilayah Kekaisaran mengalir di sekelilingnya, persis seperti di novel.</sub></td>
 </tr>
 </table>
+
+<br>
+
+## 🎥 Mode sinematik
+
+Tekan `C` dan peta berubah jadi film perang. Bar letterbox 2.39:1 menutup layar, vinyet dan butiran film turun di atas peta, lalu kamera diserahkan ke **sutradara**.
+
+<div align="center">
+<img src="./assets/readme/gifs/cinematic-mode.gif" width="100%" alt="Mode sinematik: kamera bergerak sendiri dari pawai ke pertempuran dan malam panjang">
+</div>
+
+Sutradaranya membaca perang setiap seperempat detik: event terbaru, pertempuran yang sedang berlangsung, front yang sedang bergeser, dan pasukan yang sedang berbaris. Semua itu dikelompokkan di peta, lalu sutradara memilih **shot**:
+
+| Shot | Kapan | Kamera |
+|---|---|---|
+| 🎯 **Close** | Satu titik aksi | Mendekat, miring, mengorbit pelan |
+| ⚔️ **Battle** | Pertempuran sedang berlangsung | Lebih dekat, lebih curam, berayun di sekitarnya |
+| 🌐 **Wide** | Beberapa front sekaligus, misalnya malam panjang | Mundur sampai semua front terbingkai, tenang dan stabil |
+| 🐎 **Tracking** | Pasukan sedang berbaris | Mengikuti barisan dengan sedikit mendahului |
+| 🌫️ **Aftermath** | Pertempuran baru selesai | Menarik diri perlahan |
+| 🏞️ **Establishing** | Tidak ada yang terjadi | Lebar, tinggi, melayang |
+
+Kamera tidak pernah melompat. Pusat, zoom, kemiringan, dan arah pandang masing-masing mengikuti pegas teredam kritis yang dihitung persis, jadi gerakannya sama mulusnya di komputer kencang maupun ponsel lambat. Di atasnya ada kartu judul pembuka, **kartu bab** di setiap tahap perang, **kartu VS** saat pertempuran dimulai (bendera dan photocard kedua pihak), caption yang diketik di sepertiga bawah, buku korban, dan pita film yang menandai setiap bab. Sentuh peta kapan saja untuk mengambil alih kamera, sutradara kembali beberapa detik kemudian.
 
 <br>
 
@@ -225,7 +249,7 @@ Spotlight-nya meluncur mulus ke setiap tombol. Di langkah peta, tur memindahkan 
 - 30 bahasa, termasuk RTL, nama tokoh tidak pernah diterjemahkan
 - Tema gelap dan terang, keduanya kelas satu
 - Tema *Tensura*: kursor Rimuru, stiker slime, wallpaper sampul LN
-- Mode sinematik untuk presentasi
+- Mode sinematik dengan kamera sutradara, kartu bab, dan kartu VS
 - Ramah ponsel dengan bottom sheet dan chip situasi
 
 </td>

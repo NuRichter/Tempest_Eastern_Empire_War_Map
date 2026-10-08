@@ -57,7 +57,11 @@ The atlas opens on the whole campaign in the **Documentary** look: light ground,
 3. **Find something.** `/` or `Ctrl+K`: characters, forces, battles, events, territories, theatres, places, movements, and commands, with aliases and Japanese names. Enter moves the timeline and the camera.
 4. **Narrow it down.** Filters by faction, nation, force (with its subordinates), battle, territory, theatre, event type, canon status and confidence. The chip says what is hidden.
 5. **Follow the story.** The Story tab lists the campaign's stages with their anchor events and a play button for each.
-6. **Present it.** `C` for cinematic: large date, speed chip, one caption at a time, the leader's photocard, a rolling casualty ledger, an opening disclaimer and a closing card.
+6. **Present it.** `C` for cinematic, a war film. It has four parts:
+   - **Frame:** letterbox bars (2.39:1), a vignette and film grain, an opening title with *Play the film*, and a closing card with *Watch again*.
+   - **The director** (`src/map/cinematic/director.ts`) drives the camera. Every quarter second it weighs the action: recent events by significance, live battles, moving fronts and marching armies. It clusters that action and picks a shot: CLOSE, BATTLE (closer, 50° pitch, a slow swing), MULTI_FRONT (pulled out to frame every strong cluster, steady), TRACKING, AFTERMATH (pull-out after a battle) or ESTABLISHING.
+   - **Motion:** centre, zoom, pitch and bearing follow exactly integrated critically damped springs, so the camera arrives at the same moment at any frame rate. Big reframes travel faster than small drifts. Touching the map hands the camera to the reader for six seconds. Reduced motion keeps it flat, unrotated and slower.
+   - **Story beats:** a slate showing the current shot, chapter cards at each stage of the war, a VS card when a battle opens (flags, photocards, imperial strength), a typed lower-third caption with the actor's colour, the loss ledger, the leader card, and a film-strip progress bar with chapter ticks.
 7. **Keep your place.** `B` bookmarks the moment; the address bar always holds the current moment and selection.
 
 ## Reference mapping

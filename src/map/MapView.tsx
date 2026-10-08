@@ -14,6 +14,8 @@ import { prefersReducedMotion, usePreferences } from '@/state/preferences';
 import { Overlay } from '@/map/overlay/Overlay';
 import { MapControls } from '@/map/MapControls';
 import { Minimap } from '@/map/Minimap';
+import { startDirector } from '@/map/cinematic/director';
+import type { FrontEpisode } from '@/map/field/front';
 import { translate, useT } from '@/i18n';
 import type { Dataset } from '@/data/loader';
 import type { FrameState } from '@/types/dataset';
@@ -561,6 +563,33 @@ export function MapView() {
     vis('settlement-line-labyrinth', layers.settlements);
     map.setPaintProperty('territory-line', 'line-opacity', borderOpacity);
   }, [layers, borderOpacity, ready]);
+
+  /* -- cinematic director -------------------------------------------- */
+
+  const viewMode = useSimulation((s) => s.viewMode);
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !data || viewMode !== 'cinematic') return;
+    let episodes: FrontEpisode[] = [];
+    void loadFront().then((f) => { episodes = f?.episodes ?? []; });
+    const stop = startDirector(map, {
+      data,
+      episodes: () => episodes,
+      frame: () => useSimulation.getState().clock?.frame ?? useSimulation.getState().frame,
+      reducedMotion: () => prefersReducedMotion(),
+      padding: () => {
+        const h = window.innerHeight;
+        const w = window.innerWidth;
+        const bar = Math.min(h * 0.09, Math.max(0, (h - w / 2.39) / 2));
+        return { top: bar + 70, bottom: bar + 120, left: Math.min(240, w * 0.12), right: Math.min(320, w * 0.2) };
+      },
+    });
+    return () => {
+      stop();
+      // Back to the reader's map: flat and facing north.
+      map.easeTo({ pitch: 0, bearing: 0, duration: prefersReducedMotion() ? 0 : 900 });
+    };
+  }, [viewMode, ready, data]);
 
   /* -- camera requests ---------------------------------------------- */
 

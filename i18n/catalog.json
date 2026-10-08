@@ -110,6 +110,9 @@
   "A fan-made reconstruction from the Tensura light novels, vols. 12–16. Not official material. Times are simulation placements. Reconstructed elements are labelled.": [
    "src/components/overlays/CinematicOverlay.tsx"
   ],
+  "A fan-made war film": [
+   "src/components/overlays/CinematicOverlay.tsx"
+  ],
   "A major city. Outlines are reconstructed, the novels give no city plans.": [
    "src/components/overlays/Legend.tsx"
   ],
@@ -163,6 +166,9 @@
   ],
   "Advance": [
    "src/components/dossier/records.tsx"
+  ],
+  "Aftermath": [
+   "src/map/cinematic/director.ts"
   ],
   "All commanders": [
    "src/components/rail/FiltersPanel.tsx"
@@ -255,7 +261,9 @@
    "src/components/dossier/records.tsx"
   ],
   "Battle": [
-   "src/components/dossier/records.tsx"
+   "src/components/dossier/records.tsx",
+   "src/components/overlays/CinematicOverlay.tsx",
+   "src/map/cinematic/director.ts"
   ],
   "Battles": [
    "src/components/dossier/records.tsx",
@@ -377,6 +385,9 @@
   "Changing hands": [
    "src/components/overlays/Legend.tsx"
   ],
+  "Chapter {n}": [
+   "src/components/overlays/CinematicOverlay.tsx"
+  ],
   "chapter not recorded": [
    "src/components/ui/primitives.tsx"
   ],
@@ -406,7 +417,8 @@
    "src/map/overlay/layers/settlements.ts"
   ],
   "Close": [
-   "src/components/overlays/HelpDialog.tsx"
+   "src/components/overlays/HelpDialog.tsx",
+   "src/map/cinematic/director.ts"
   ],
   "Close dossier (Esc)": [
    "src/components/shell/RightPanel.tsx"
@@ -596,6 +608,9 @@
   ],
   "Enter cinematic mode": [
    "src/components/overlays/CommandPalette.tsx"
+  ],
+  "Establishing": [
+   "src/map/cinematic/director.ts"
   ],
   "Event": [
    "src/components/overlays/Legend.tsx"
@@ -847,6 +862,9 @@
   ],
   "Imperial force": [
    "src/components/dossier/records.tsx"
+  ],
+  "Imperial forces committed: {n}": [
+   "src/components/overlays/CinematicOverlay.tsx"
   ],
   "Imperial forces inside {name}": [
    "src/components/shell/SituationPanel.tsx"
@@ -1343,6 +1361,9 @@
   "paused": [
    "src/components/overlays/CinematicOverlay.tsx"
   ],
+  "Paused": [
+   "src/components/overlays/CinematicOverlay.tsx"
+  ],
   "People in this event": [
    "src/components/shell/SituationBar.tsx"
   ],
@@ -1388,6 +1409,9 @@
   ],
   "Play from the start of this stage": [
    "src/components/rail/StoryPanel.tsx"
+  ],
+  "Play the film": [
+   "src/components/overlays/CinematicOverlay.tsx"
   ],
   "Playback": [
    "src/components/timeline/Timeline.tsx"
@@ -1542,6 +1566,9 @@
   "Role in the war": [
    "src/components/dossier/records.tsx"
   ],
+  "Rolling": [
+   "src/components/overlays/CinematicOverlay.tsx"
+  ],
   "Route": [
    "src/components/dossier/records.tsx"
   ],
@@ -1673,6 +1700,9 @@
   ],
   "Sources & reconstruction": [
    "src/components/dossier/records.tsx"
+  ],
+  "Space to play or pause · Esc to leave": [
+   "src/components/overlays/CinematicOverlay.tsx"
   ],
   "Special combat": [
    "src/lib/taxonomy.ts"
@@ -1876,6 +1906,9 @@
   "The timeline": [
    "src/components/overlays/Tour.tsx"
   ],
+  "The war of volumes 12 to 16": [
+   "src/components/overlays/CinematicOverlay.tsx"
+  ],
   "Theatre": [
    "src/components/dossier/records.tsx"
   ],
@@ -1933,6 +1966,9 @@
   ],
   "Traced from {source}. A fan-made map, not an official survey. Positions are simulation coordinates, not latitude and longitude.": [
    "src/components/dossier/records.tsx"
+  ],
+  "Tracking the march": [
+   "src/map/cinematic/director.ts"
   ],
   "Trail width": [
    "src/components/rail/LayersPanel.tsx"
@@ -2001,6 +2037,9 @@
   "War room": [
    "src/components/rail/LayersPanel.tsx"
   ],
+  "Watch again": [
+   "src/components/overlays/CinematicOverlay.tsx"
+  ],
   "Welcome to Tempest!": [
    "src/components/overlays/Tour.tsx"
   ],
@@ -2028,6 +2067,12 @@
   ],
   "Why known": [
    "src/components/dossier/records.tsx"
+  ],
+  "Wide · {n} fronts": [
+   "src/components/overlays/CinematicOverlay.tsx"
+  ],
+  "Wide · several fronts": [
+   "src/map/cinematic/director.ts"
   ],
   "World & lore context": [
    "src/components/rail/LayersPanel.tsx"

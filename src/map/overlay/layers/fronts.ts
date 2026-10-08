@@ -62,8 +62,9 @@ export function drawControlChangeLabels(dc: DrawContext): void {
 }
 
 /** A projector for simulation points: affine in the flat atlas, exact on the globe. */
-export function makeProjector(map: { project: (ll: [number, number]) => { x: number; y: number } }, globe: boolean, fallback: DrawContext['project']) {
-  if (globe) return fallback;
+export function makeProjector(map: { project: (ll: [number, number]) => { x: number; y: number }; getPitch?: () => number }, globe: boolean, fallback: DrawContext['project']) {
+  // A tilted camera is a perspective view, not an affine one: project each point.
+  if (globe || (map.getPitch?.() ?? 0) > 0.3) return fallback;
   // In the flat projection simulation space maps to the screen affinely
   // (x is linear in longitude, y linear in Mercator y), so three points define it.
   const o = map.project(toLL(0, 0));
