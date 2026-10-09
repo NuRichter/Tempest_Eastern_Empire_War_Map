@@ -30,7 +30,7 @@ import {
 } from '@/components/ui/primitives';
 import type { Dataset } from '@/data/loader';
 import { loadFront } from '@/map/field/occupation';
-import { getField, onField } from '@/map/field/fieldStore';
+import { getField, onShare } from '@/map/field/fieldStore';
 import type { FrontEpisode } from '@/map/field/front';
 import type { WarEvent } from '@/types/dataset';
 import { hostOf, safeExternalHref } from '@/security/input';
@@ -529,7 +529,7 @@ function HeldGround({ territoryId }: { territoryId: string }) {
   useEffect(() => {
     const read = () => setShare(getField()?.occupiedShare[territoryId] ?? 0);
     read();
-    return onField(read);
+    return onShare(read);
   }, [territoryId]);
   if (!data || !episodes || episodes.length === 0) return null;
   const past = episodes.filter((e) => e.startFrame <= frame);

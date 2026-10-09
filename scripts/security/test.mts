@@ -15,7 +15,7 @@ import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, write
 import { tmpdir } from 'node:os';
 import { join, parse } from 'node:path';
 
-import { enumParam, hostOf, idParam, intParam, safeExternalHref, sanitizeLike } from '../../src/security/input';
+import { clampedIntParam, enumParam, hostOf, idParam, intParam, safeExternalHref, sanitizeLike } from '../../src/security/input';
 import { assertSameOriginPath, safeJsonParse } from '../../src/security/fetch';
 import { search, MAX_QUERY_LENGTH, type SearchItem } from '../../src/lib/search';
 
@@ -49,6 +49,12 @@ test('frame: only plain integers inside the timeline are accepted', () => {
   eq(intParam('120', 0, 10223), 120);
   for (const bad of ['-1', '10224', '1e3', '0x10', '12.5', ' 12', '12abc', '', 'NaN', 'Infinity', '9'.repeat(400), '<script>', '１２']) eq(intParam(bad, 0, 10223), null, bad);
   eq(intParam(null, 0, 10), null);
+});
+test('frame links: plain integers clamped into the timeline (old links past the end land on the end), anything else refused', () => {
+  eq(clampedIntParam('10799', 0, 10223), 10223);
+  eq(clampedIntParam('-5', 0, 10223), 0);
+  eq(clampedIntParam('500', 0, 10223), 500);
+  for (const bad of ['1e3', '0x10', '12.5', ' 12', 'NaN', 'Infinity', '9'.repeat(400), '<script>', '']) eq(clampedIntParam(bad, 0, 10223), null, bad);
 });
 test('view: only the listed values are accepted', () => {
   eq(enumParam('cinematic', ['cinematic'] as const), 'cinematic');

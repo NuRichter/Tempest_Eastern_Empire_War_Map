@@ -17,6 +17,7 @@ import { drawBattles, drawCharacters, drawCommanders, drawEvents, drawFrontlines
 import { drawControlChangeLabels, drawFronts, makeProjector } from '@/map/overlay/layers/fronts';
 import { onField } from '@/map/field/fieldStore';
 import { useI18n, useT } from '@/i18n';
+import { is3DActive } from '@/state/view3d';
 
 interface Props {
   map: MapLibreMap | null;
@@ -154,6 +155,12 @@ export function Overlay({ map }: Props) {
 
     let raf = 0;
     const tick = () => {
+      raf = requestAnimationFrame(tick);
+      // Hidden under the 3D view: nothing to draw until it closes.
+      if (is3DActive()) {
+        dirtyRef.current = true;
+        return;
+      }
       const sim = useSimulation.getState();
       const clock = sim.clock;
       const frame = clock ? Math.floor(clock.frame) : 0;
@@ -163,7 +170,6 @@ export function Overlay({ map }: Props) {
         dirtyRef.current = false;
         draw();
       }
-      raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => {

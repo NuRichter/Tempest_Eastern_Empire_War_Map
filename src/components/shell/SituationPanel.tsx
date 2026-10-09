@@ -10,7 +10,7 @@ import { useSimulation } from '@/simulation/store';
 import { Empty, Field, Fields, Figure, RecordLink, RouteBadge, Section, Sources } from '@/components/ui/primitives';
 import { RollingNumber } from '@/components/ui/RollingNumber';
 import { BATTLE_TYPE_LABEL } from '@/lib/taxonomy';
-import { getField, onField } from '@/map/field/fieldStore';
+import { getField, onShare } from '@/map/field/fieldStore';
 import type { Quantity } from '@/types/dataset';
 import { SituationBar } from '@/components/shell/SituationBar';
 
@@ -33,7 +33,7 @@ export function SituationPanel() {
   useEffect(() => {
     const read = () => setOccupied({ ...(getField()?.occupiedShare ?? {}) });
     read();
-    return onField(read);
+    return onShare(read);
   }, []);
 
   const onMap = useMemo(() => {
