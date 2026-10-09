@@ -34,7 +34,8 @@ if (!secret) {
 let passed = 0;
 let failed = 0;
 const check = (name: string, ok: boolean, detail = '') => {
-  ok ? (passed += 1) : (failed += 1);
+  if (ok) passed += 1;
+  else failed += 1;
   console.log(`  ${ok ? 'pass' : 'FAIL'}  ${name}${!ok && detail ? ` (${detail})` : ''}`);
 };
 
