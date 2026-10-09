@@ -16,6 +16,8 @@ export class FieldWorker {
   private latest: FieldResult | null = null;
   private previous: FieldResult | null = null;
   private fallback: { fields: FrontFields; tmp: Float32Array } | null = null;
+  /** True once the worker has answered: the field is evaluated off the main thread. */
+  workerAnswered = false;
 
   constructor(private front: Front, private onResult: (r: FieldResult) => void) {
     try {
@@ -58,6 +60,7 @@ export class FieldWorker {
 
   private receive(m: { type: 'result'; T: number; fields: FrontFields; seams: Float32Array; occupiedShare: Record<string, number>; packed: { fields: Float32Array; pale: Uint8Array } }) {
     this.busy = false;
+    this.workerAnswered = true;
     // Two results stay alive (the shown one, and the one a GPU upload may still be reading);
     // the one before them goes back to the worker.
     if (this.previous) this.recycle = this.previous;
