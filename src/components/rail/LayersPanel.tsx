@@ -65,6 +65,8 @@ export function LayersPanel() {
             <Toggle checked={p.showMinimap} onChange={(v) => p.set('showMinimap', v)} label={t('Overview minimap')} />
             <Toggle checked={p.themeCursor} onChange={(v) => p.set('themeCursor', v)} label={t('Rimuru cursor')} note={t('A slime Rimuru pointer. The normal cursor returns if it cannot load.')} />
           </div>
+          <Toggle checked={p.music} onChange={(v) => p.set('music', v)} label={t('Music')} note={t('A calm score while you explore, a film score in cinematic mode. Free-licensed fantasy music, not the official soundtrack.')} />
+          {p.music ? <Slider label={t('Music volume')} value={p.musicVolume} min={0} max={1} step={0.05} onChange={(v) => p.set('musicVolume', v)} format={pct} /> : null}
           <Segmented label={t('Motion')} value={p.reducedMotion} onChange={(v) => p.set('reducedMotion', v)} options={[{ id: 'system', label: t('System') }, { id: 'reduce', label: t('Reduce') }, { id: 'full', label: t('Full') }]} />
         </div>
         <button type="button" onClick={() => useTour.getState().start()} className="ctl mt-2 w-full">

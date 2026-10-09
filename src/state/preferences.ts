@@ -116,6 +116,9 @@ export interface Preferences {
   cinema3d: boolean;
   /** Cinematic mode sets the playback speed by what is happening (Auto Timing). */
   autoTiming: boolean;
+  /** Background music: the atlas score, and a film score in cinematic mode. */
+  music: boolean;
+  musicVolume: number;
   /** The first-run tour has been seen (or skipped). */
   tourDone: boolean;
   bookmarks: Bookmark[];
@@ -157,6 +160,8 @@ export const DEFAULT_PREFERENCES: Preferences = {
   view3d: false,
   cinema3d: true,
   autoTiming: true,
+  music: true,
+  musicVolume: 0.45,
   bookmarks: [],
 };
 

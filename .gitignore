@@ -23,3 +23,6 @@ qa-artifacts/
 
 # Novel PDFs: kept locally for the canon audit, never published
 Sources of Truth/Sources/
+
+# Music masters: re-downloadable from the URLs in Sources of Truth/Music/manifest.json
+Sources of Truth/Music/raw/

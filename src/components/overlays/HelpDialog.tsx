@@ -16,6 +16,8 @@ const KEYS: [string, string][] = [
   ['/ or Ctrl+K', msg('Search and commands')],
   ['G', msg('Flat atlas / globe')],
   ['M', msg('Base Map / Myth Map')],
+  ['V', msg('3D view')],
+  ['N', msg('Music on / off')],
   ['L', msg('Legend')],
   ['C', msg('Cinematic mode')],
   ['0', msg('Frame the whole campaign')],

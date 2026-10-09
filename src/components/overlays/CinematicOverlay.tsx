@@ -1,22 +1,22 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Box, Map as MapIcon, Play, Timer, X } from 'lucide-react';
+import { Box, Map as MapIcon, Music2, Play, Timer, VolumeX, X } from 'lucide-react';
+
+import { BigMoment, CineIntro, EventStack, MOMENT_MS, Viewfinder } from './CinematicParts';
 
 import { useT } from '@/i18n';
 import { battleDayLabel, phaseLabel } from '@/lib/format';
 import { FACTION_COLOR, factionKey } from '@/lib/palette';
-import { PROVENANCE_LABEL } from '@/lib/taxonomy';
 import { currentEvent } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
-import { Figure, Flag, Portrait, ProvenanceBadge } from '@/components/ui/primitives';
+import { Figure, Flag, Portrait } from '@/components/ui/primitives';
 import { RollingNumber } from '@/components/ui/RollingNumber';
 import { FRAMES_PER_SECOND_AT_1X, SPEEDS } from '@/simulation/clock';
 import { usePreferences } from '@/state/preferences';
-import { SHOT_LABEL, useDirector } from '@/map/cinematic/director';
+import { focusOn, SHOT_LABEL, useDirector } from '@/map/cinematic/director';
 import type { Battle, Character, WarEvent } from '@/types/dataset';
 
-const CAPTION_FRAMES = 30; // a caption belongs to its event for five simulated hours
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV'];
 const FILM_SPEED_INDEX = 4; // 4×: a simulated day in a few seconds, battles still readable
 
@@ -62,10 +62,12 @@ function autoPace(data: NonNullable<ReturnType<typeof useSimulation.getState>['d
  * the map, and the camera is handed to the director (src/map/cinematic),
  * which reads the action and frames it: close on one front, wide and steady
  * when several fight at once, a tilted push-in when a battle opens, a slow
- * pull-out after. On top: the date, the loss ledger, chapter cards at each
- * stage of the war, a versus card when a battle begins, one caption at a
- * time typed in the lower third, and a film-strip progress bar. Narration is
- * the dataset's own wording.
+ * pull-out after. It opens with titles (series logo, arc title, credit),
+ * then the film runs by itself. On top: the date, the loss ledger, chapter
+ * cards at each stage of the war, a versus card when a battle begins, event
+ * cards that stack and linger, a full-screen impact at each turning point
+ * (with the camera pushed in on the place), and a film-strip progress bar.
+ * Narration is the dataset's own wording.
  */
 export function CinematicOverlay() {
   const viewMode = useSimulation((s) => s.viewMode);
@@ -80,10 +82,15 @@ export function CinematicOverlay() {
   const t = useT();
   const cinematic = viewMode === 'cinematic';
 
-  const [title, setTitle] = useState(true);
+  const [intro, setIntro] = useState(true);
+  const [moment, setMoment] = useState<{ e: WarEvent; key: number } | null>(null);
+  const momentQueue = useRef<WarEvent[]>([]);
+  const momentTimer = useRef(0);
+  const momentFrame = useRef<number | null>(null);
   const [cold, setCold] = useState<number | null>(null);
   const autoTiming = usePreferences((s) => s.autoTiming);
   const cinema3d = usePreferences((s) => s.cinema3d);
+  const musicOn = usePreferences((s) => s.music);
   const setPref = usePreferences((s) => s.set);
   const [chapter, setChapter] = useState<{ n: number; name: string; key: number } | null>(null);
   const hooks = useMemo(() => {
@@ -108,27 +115,49 @@ export function CinematicOverlay() {
   // Entering: the opening title. Leaving: reset the story beats.
   useEffect(() => {
     if (cinematic) {
-      setTitle(true);
+      setIntro(true);
       lastStage.current = null;
       liveBattles.current = new Set();
+      const s = useSimulation.getState();
+      if (s.playing) s.toggle();
     } else {
       setChapter(null);
       setSplash(null);
+      setMoment(null);
+      setCold(null);
+      momentQueue.current = [];
+      window.clearTimeout(momentTimer.current);
+      useDirector.setState({ focus: null });
     }
   }, [cinematic]);
-  // Moving through time (a seek or the timeline) also lifts the title.
-  const titleFrame = useRef<number | null>(null);
+
+  // Turning points: a full-screen impact, one after another, the camera sent to the place.
+  useEffect(() => () => window.clearTimeout(momentTimer.current), []);
+  const showMoment = (e: WarEvent) => {
+    if (!data) return;
+    setMoment({ e, key: e.frame * 1000 + Math.random() });
+    focusOn(data, e.placeId, MOMENT_MS + 1300);
+    window.clearTimeout(momentTimer.current);
+    momentTimer.current = window.setTimeout(() => {
+      const next = momentQueue.current.shift();
+      if (next) showMoment(next);
+      else setMoment(null);
+    }, MOMENT_MS);
+  };
   useEffect(() => {
-    if (!cinematic || !title) { titleFrame.current = null; return; }
-    if (titleFrame.current === null) titleFrame.current = frame;
-    else if (Math.abs(frame - titleFrame.current) > 3) setTitle(false);
-  }, [cinematic, title, frame]);
-  useEffect(() => {
-    if (cinematic && playing && title) {
-      const id = window.setTimeout(() => setTitle(false), 2600);
-      return () => window.clearTimeout(id);
+    if (!cinematic || !data || intro) { momentFrame.current = null; return; }
+    const prev = momentFrame.current;
+    momentFrame.current = frame;
+    if (prev === null || frame <= prev || frame - prev > 240) return;
+    for (const e of data.events) {
+      if (e.frame <= prev) continue;
+      if (e.frame > frame) break;
+      if (!e.turningPoint) continue;
+      if (moment) momentQueue.current = [...momentQueue.current, e].slice(-3);
+      else showMoment(e);
     }
-  }, [cinematic, playing, title]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cinematic, data, frame, intro]);
 
   // Chapter cards at each stage of the war.
   useEffect(() => {
@@ -150,20 +179,20 @@ export function CinematicOverlay() {
     const now = new Set(data.battles.filter((b) => frame >= b.startFrame && frame <= b.endFrame).map((b) => b.id));
     const opened = [...now].find((id) => !liveBattles.current.has(id));
     liveBattles.current = now;
-    if (!opened || title) return;
+    if (!opened || intro) return;
     const battle = data.battles.find((b) => b.id === opened)!;
     setSplash({ battle, key: frame });
     window.clearTimeout(splashTimer.current);
     splashTimer.current = window.setTimeout(() => setSplash(null), 4000);
-  }, [cinematic, data, frame, title]);
+  }, [cinematic, data, frame, intro]);
 
   // Auto Timing: follow the pace of the war while the film plays.
   useEffect(() => {
     if (!cinematic || !data || !state || !playing || !autoTiming || cold !== null) return;
-    const want = autoPace(data, state.stage, frame);
+    const want = moment ? 1 : autoPace(data, state.stage, frame); // 0.5× through a turning point
     const s = useSimulation.getState();
     if (s.clock && Math.abs(s.clock.currentSpeed - SPEEDS[want]) > 1e-6) s.setSpeedIndex(want);
-  }, [cinematic, data, state, frame, playing, autoTiming, cold]);
+  }, [cinematic, data, state, frame, playing, autoTiming, cold, moment]);
 
   // The cold open: three hook lines from the record before the film runs.
   const coldTimer = useRef(0);
@@ -183,7 +212,6 @@ export function CinematicOverlay() {
   if (!cinematic || !data || !state) return null;
 
   const latest: WarEvent | null = currentEvent(data, frame);
-  const fresh = latest && frame - latest.frame <= CAPTION_FRAMES ? latest : null;
   const N = data.manifest.clock.frameCount;
   const ended = frame >= N - 1;
   const day = data.timeline.battleDay[frame];
@@ -191,6 +219,7 @@ export function CinematicOverlay() {
   const hhmm = `${String(Math.floor(((frame % fpd) * 10) / 60)).padStart(2, '0')}:${String(((frame % fpd) * 10) % 60).padStart(2, '0')}`;
   const simPerSec = speed * FRAMES_PER_SECOND_AT_1X * 10;
   const rate = simPerSec < 60 ? t('{n} min / s', { n: Math.round(simPerSec) }) : simPerSec < 1440 ? t('{n} h / s', { n: +(simPerSec / 60).toFixed(1) }) : t('{n} days / s', { n: +(simPerSec / 1440).toFixed(1) });
+  const fresh = latest && frame - latest.frame <= 30 ? latest : null;
   const leader = fresh?.characterIds.map((c) => data.characterById.get(c)).find((c) => c?.photocard) ?? null;
   const totals = data.campaignTotals;
   const shotText = shot === 'MULTI_FRONT' ? t('Wide · {n} fronts', { n: fronts }) : t(SHOT_LABEL[shot]);
@@ -200,7 +229,7 @@ export function CinematicOverlay() {
     if (s.frame >= N - 2) s.seek(0);
     s.setSpeedIndex(autoTiming ? autoPace(data, state.stage, s.frame) : FILM_SPEED_INDEX);
     if (!s.playing) s.toggle();
-    setTitle(false);
+    setIntro(false);
     if (!usePreferences.getState().reducedMotion || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) setCold(0);
   };
   const council = data.events.find((e) => /council adopts the invasion/i.test(e.title));
@@ -265,24 +294,14 @@ export function CinematicOverlay() {
         </div>
       ) : null}
 
-      {/* Lower third: one caption, typed in. */}
-      {fresh && !ended && !title ? (
-        <div key={fresh.id} className="cine-rise absolute bottom-[calc(var(--cine-bar)+34px)] left-1/2 w-[min(48rem,calc(100vw-2rem))] -translate-x-1/2" role="status" aria-live="polite">
-          <div className="border-l-[3px] bg-gradient-to-r from-black/85 via-black/70 to-black/0 px-4 py-2.5" style={{ borderColor: FACTION_COLOR[factionKey(fresh.actorFaction)] }}>
-            <p className="cine-type text-[clamp(16px,2.4vh,22px)] font-semibold leading-snug text-white">{fresh.title}</p>
-            <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-white/70">
-              <span>{fresh.location}</span>
-              <span aria-hidden>·</span>
-              <span>{fresh.theatre}</span>
-              <ProvenanceBadge value={fresh.provenance} compact />
-              <span className="sr-only">{t(PROVENANCE_LABEL[fresh.provenance].note)}</span>
-            </p>
-          </div>
-        </div>
-      ) : null}
+      {/* Event cards: stacked, each lingering 2 to 5 seconds. */}
+      {!intro && !ended ? <EventStack hidden={cold !== null || moment !== null} /> : null}
+
+      {/* The frame of the camera. */}
+      <Viewfinder />
 
       {/* Chapter card. */}
-      {chapter && !title ? (
+      {chapter && !intro && !moment ? (
         <div key={chapter.key} className="cine-chapter absolute inset-0 grid place-items-center">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.5em] text-[#d4ab57]">{t('Chapter {n}', { n: ROMAN[chapter.n - 1] ?? chapter.n })}</p>
@@ -295,7 +314,9 @@ export function CinematicOverlay() {
       ) : null}
 
       {/* Battle splash: who meets whom. */}
-      {splash && !title ? <BattleSplash key={splash.key} battle={splash.battle} /> : null}
+      {moment && !intro ? <BigMoment key={moment.key} e={moment.e} /> : null}
+
+      {splash && !intro && !moment ? <BattleSplash key={splash.key} battle={splash.battle} /> : null}
 
       {/* Cold open: hook lines from the record, one at a time. */}
       {coldLine ? (
@@ -317,26 +338,13 @@ export function CinematicOverlay() {
             <Box size={12} strokeWidth={2} /> 3D
           </button>
         </div>
+        <button type="button" onClick={() => setPref('music', !musicOn)} aria-pressed={musicOn} aria-label={musicOn ? t('Turn the music off') : t('Turn the music on')} title={t('Music (N)')} className={`grid h-[22px] w-[30px] place-items-center rounded-full border backdrop-blur-sm ${musicOn ? 'border-[#d4ab57]/80 bg-[#d4ab57]/20 text-white' : 'border-white/20 bg-black/50 text-white/60 hover:text-white'}`}>
+          {musicOn ? <Music2 size={12} strokeWidth={2} /> : <VolumeX size={12} strokeWidth={2} />}
+        </button>
       </div>
 
-      {/* Opening title. */}
-      {title && !ended ? (
-        <div className="cine-title pointer-events-auto absolute inset-0 grid place-items-center bg-gradient-to-b from-black/70 via-black/40 to-black/70">
-          <div className="px-6 text-center">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.6em] text-[#5fb8f0]">{t('A fan-made war film')}</p>
-            <h2 className="mt-4 font-display text-[clamp(30px,7vh,76px)] leading-[1.05] text-white [text-shadow:0_6px_30px_rgba(0,0,0,0.9)]">Tempest × Eastern Empire</h2>
-            <p className="mt-2 font-display text-[clamp(16px,2.8vh,28px)] italic text-white/80">{t('The war of volumes 12 to 16')}</p>
-            <div className="cine-rule mx-auto mt-5 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-            <p className="mx-auto mt-4 max-w-md text-xs leading-relaxed text-white/60">{t('A fan-made reconstruction from the Tensura light novels, vols. 12–16. Not official material. Times are simulation placements. Reconstructed elements are labelled.')}</p>
-            {!playing ? (
-              <button type="button" onClick={playFilm} className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#5fb8f0]/70 bg-[#5fb8f0]/20 px-6 py-2.5 text-sm font-semibold uppercase tracking-[0.2em] text-white backdrop-blur hover:bg-[#5fb8f0]/35">
-                <Play size={16} fill="currentColor" /> {t('Play the film')}
-              </button>
-            ) : null}
-            <p className="mt-3 text-2xs text-white/45">{t('Space to play or pause · Esc to leave')}</p>
-          </div>
-        </div>
-      ) : null}
+      {/* Opening titles, then the film starts by itself. */}
+      {intro && !ended ? <CineIntro onDone={playFilm} /> : null}
 
       {/* Closing card. */}
       {ended ? (

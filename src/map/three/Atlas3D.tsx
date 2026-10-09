@@ -12,7 +12,7 @@ import type { Dataset } from '@/data/loader';
 import { FACTION_COLOR, factionKey } from '@/lib/palette';
 import { CANVAS_H, CANVAS_W, computeField, loadFront, paintField } from '@/map/field/occupation';
 import { fieldSources } from '@/map/field/sources';
-import { cluster, gatherAction, Spring, useDirector, type Shot } from '@/map/cinematic/director';
+import { activeFocus, cluster, gatherAction, Spring, useDirector, type Shot } from '@/map/cinematic/director';
 import type { Front } from '@/map/field/front';
 import { forceSnapshotAt, territoryControlAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
@@ -482,6 +482,13 @@ export function Atlas3D({ auto }: { auto: boolean }) {
     let plan = { x: cx0, z: cz0, d: 70, el: 0.95, shot: 'ESTABLISHING' as Shot, fronts: 0 };
     let lastPlan = 0;
     function planShot(T: number): void {
+      // A turning point: a low, close push-in on the place.
+      const f = activeFocus();
+      if (f) {
+        const [fx, fz] = toWorld(f.x, f.y);
+        plan = { x: fx, z: fz, d: 15, el: reduce ? 0.9 : 0.42, shot: 'IMPACT', fronts: 0 };
+        return;
+      }
       const { pts, battleLive, battleEnded } = gatherAction(data!, front?.episodes ?? [], Math.round(T));
       const cl = cluster(pts);
       const main = cl[0];
@@ -546,7 +553,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
           if (d.shot !== plan.shot || d.fronts !== plan.fronts) useDirector.setState({ shot: plan.shot, fronts: plan.fronts });
         }
         const orbit = reduce ? 0 : ((now - t0) / 1000) * (plan.shot === 'MULTI_FRONT' ? 0.02 : 0.05);
-        const tau = plan.shot === 'BATTLE' ? 1.4 : 2.0;
+        const tau = plan.shot === 'IMPACT' ? 0.8 : plan.shot === 'BATTLE' ? 1.4 : 2.0;
         const x = s.x.step(plan.x, tau, dt), z = s.z.step(plan.z, tau, dt);
         const d = s.d.step(plan.d, tau * 1.1, dt), el = s.el.step(plan.el, tau * 1.3, dt), az = s.az.step(orbit, 3, dt);
         const ty = relief ? sampleHeight(relief, x / WX + 0.5, z / WZ + 0.5) : 2;

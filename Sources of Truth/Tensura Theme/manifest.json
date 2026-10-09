@@ -176,6 +176,16 @@
    "width": 930,
    "height": 920,
    "retrieved": "2026-10-08"
+  },
+  {
+   "file": "logo/Tensura-logo.png",
+   "use": "public/assets/theme/logo/tensura-logo.webp (2x, white outline and glow) for the cinematic intro",
+   "sourceUrl": "https://tensura.fandom.com/wiki/File:Tensura-logo.png",
+   "imageUrl": "https://static.wikia.nocookie.net/tensei-shitara-slime-datta-ken/images/3/36/Tensura-logo.png",
+   "width": 318,
+   "height": 282,
+   "retrieved": "2026-10-09",
+   "rights": "Series logo, trademark of its rights holders (Fuse, Micro Magazine, Kodansha, the anime production committee). Used in a fan work, not official."
   }
  ]
 }

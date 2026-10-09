@@ -104,11 +104,17 @@
   "3D terrain (V)": [
    "src/map/MapControls.tsx"
   ],
+  "3D view": [
+   "src/components/overlays/HelpDialog.tsx"
+  ],
   "A 10% grid in simulation space. Not a geographic graticule.": [
    "src/state/preferences.ts"
   ],
   "A belligerent or co-belligerent in the dataset.": [
    "src/components/dossier/records.tsx"
+  ],
+  "A calm score while you explore, a film score in cinematic mode. Free-licensed fantasy music, not the official soundtrack.": [
+   "src/components/rail/LayersPanel.tsx"
   ],
   "A change of control the source does not state exactly.": [
    "src/components/overlays/Legend.tsx"
@@ -119,11 +125,8 @@
   "A fan project": [
    "src/components/shell/AboutPanel.tsx"
   ],
-  "A fan-made reconstruction from the Tensura light novels, vols. 12–16. Not official material. Times are simulation placements. Reconstructed elements are labelled.": [
-   "src/components/overlays/CinematicOverlay.tsx"
-  ],
   "A fan-made war film": [
-   "src/components/overlays/CinematicOverlay.tsx"
+   "src/components/overlays/CinematicParts.tsx"
   ],
   "A major city. Outlines are reconstructed, the novels give no city plans.": [
    "src/components/overlays/Legend.tsx"
@@ -757,6 +760,9 @@
   "Frame the whole campaign (0)": [
    "src/map/MapControls.tsx"
   ],
+  "Free-licensed fantasy music from OpenGameArt. Not the official Tensura soundtrack.": [
+   "src/components/shell/AboutPanel.tsx"
+  ],
   "From": [
    "src/components/dossier/records.tsx"
   ],
@@ -1127,6 +1133,20 @@
   "Movements · {n}": [
    "src/components/dossier/records.tsx"
   ],
+  "Music": [
+   "src/components/rail/LayersPanel.tsx",
+   "src/components/shell/AboutPanel.tsx"
+  ],
+  "Music (N)": [
+   "src/components/overlays/CinematicOverlay.tsx",
+   "src/components/shell/TopBar.tsx"
+  ],
+  "Music on / off": [
+   "src/components/overlays/HelpDialog.tsx"
+  ],
+  "Music volume": [
+   "src/components/rail/LayersPanel.tsx"
+  ],
   "Myth Map": [
    "src/components/rail/LayersPanel.tsx",
    "src/map/MapControls.tsx"
@@ -1431,9 +1451,6 @@
   "Play from the start of this stage": [
    "src/components/rail/StoryPanel.tsx"
   ],
-  "Play the film": [
-   "src/components/overlays/CinematicOverlay.tsx"
-  ],
   "Playback": [
    "src/components/timeline/Timeline.tsx"
   ],
@@ -1697,6 +1714,9 @@
   "Skip": [
    "src/components/overlays/Tour.tsx"
   ],
+  "Skip intro": [
+   "src/components/overlays/CinematicParts.tsx"
+  ],
   "Skip to the campaign timeline": [
    "src/components/AppShell.tsx"
   ],
@@ -1721,9 +1741,6 @@
   ],
   "Sources & reconstruction": [
    "src/components/dossier/records.tsx"
-  ],
-  "Space to play or pause · Esc to leave": [
-   "src/components/overlays/CinematicOverlay.tsx"
   ],
   "Special combat": [
    "src/lib/taxonomy.ts"
@@ -1930,9 +1947,6 @@
   "The timeline": [
    "src/components/overlays/Tour.tsx"
   ],
-  "The war of volumes 12 to 16": [
-   "src/components/overlays/CinematicOverlay.tsx"
-  ],
   "Theatre": [
    "src/components/dossier/records.tsx"
   ],
@@ -2000,8 +2014,18 @@
   "Triangle marker.": [
    "src/components/overlays/Legend.tsx"
   ],
+  "Turn the music off": [
+   "src/components/overlays/CinematicOverlay.tsx",
+   "src/components/shell/TopBar.tsx"
+  ],
+  "Turn the music on": [
+   "src/components/overlays/CinematicOverlay.tsx",
+   "src/components/shell/TopBar.tsx"
+  ],
   "Turning point": [
-   "src/components/overlays/Legend.tsx"
+   "src/components/overlays/CinematicParts.tsx",
+   "src/components/overlays/Legend.tsx",
+   "src/map/cinematic/director.ts"
   ],
   "Turning point {rank}": [
    "src/components/dossier/records.tsx"

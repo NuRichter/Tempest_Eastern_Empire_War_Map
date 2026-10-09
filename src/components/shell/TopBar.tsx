@@ -1,6 +1,6 @@
 'use client';
 
-import { BookOpen, Film, HelpCircle, Languages, Moon, Search, Sun } from 'lucide-react';
+import { BookOpen, Film, HelpCircle, Languages, Moon, Music2, Search, Sun, VolumeX } from 'lucide-react';
 
 import { columnAt } from '@/data/loader';
 import { syncLocale, useI18n, useT } from '@/i18n';
@@ -26,6 +26,7 @@ export function TopBar() {
   const legendOpen = useSimulation((s) => s.legendOpen);
   const setHelpOpen = useSimulation((s) => s.setHelpOpen);
   const uiTheme = usePreferences((s) => s.uiTheme);
+  const musicOn = usePreferences((s) => s.music);
   const setPref = usePreferences((s) => s.set);
   const locale = useI18n((s) => s.loaded);
   const setLocale = useI18n((s) => s.setLocale);
@@ -98,6 +99,9 @@ export function TopBar() {
           title={uiTheme === 'dark' ? t('Light theme') : t('Dark theme')}
         >
           {uiTheme === 'dark' ? <Sun size={15} strokeWidth={1.7} /> : <Moon size={15} strokeWidth={1.7} />}
+        </button>
+        <button type="button" onClick={() => setPref('music', !musicOn)} aria-pressed={musicOn} className="ctl w-8 px-0" aria-label={musicOn ? t('Turn the music off') : t('Turn the music on')} title={t('Music (N)')}>
+          {musicOn ? <Music2 size={15} strokeWidth={1.7} /> : <VolumeX size={15} strokeWidth={1.7} />}
         </button>
         <button type="button" onClick={() => setLegendOpen(!legendOpen)} aria-pressed={legendOpen} className="ctl hidden w-8 px-0 sm:inline-flex" aria-label={t('Map legend')} title={t('Legend (L)')}>
           <BookOpen size={15} strokeWidth={1.7} />

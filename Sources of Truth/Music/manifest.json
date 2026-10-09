@@ -1,0 +1,11 @@
+{
+  "about": "Background music for the atlas. All tracks are free-licensed fantasy music from OpenGameArt.org. They are NOT official Tensura music. Masters live in raw/ (git-ignored), published copies are loudness-normalised MP3 (112 kbps) in public/assets/music.",
+  "retrieved": "2026-10-09",
+  "tracks": [
+    { "file": "atlas-tower-inn.mp3", "mode": "atlas", "title": "Medieval: The Old Tower Inn", "author": "RandomMind", "license": "CC0 1.0", "source": "https://opengameart.org/content/medieval-the-old-tower-inn", "download": "https://opengameart.org/sites/default/files/The_Old_Tower_Inn.mp3" },
+    { "file": "atlas-great-labyrinth.mp3", "mode": "atlas", "title": "Great Labyrinth", "author": "Mintodog and Jonathan Shaw, mix by glitchart", "license": "CC-BY 3.0 (attribution required)", "source": "https://opengameart.org/content/great-labyrinth-mintodog-jonathan-shaw", "download": "https://opengameart.org/sites/default/files/greatlabyrinthmix_0.ogg" },
+    { "file": "cine-fantasy-theme.mp3", "mode": "cinematic", "title": "Fantasy Orchestral Theme", "author": "Joth", "license": "CC0 1.0 (credit requested, optional)", "source": "https://opengameart.org/content/fantasy-orchestral-theme", "download": "https://opengameart.org/sites/default/files/FantasyOrchestralTheme_1.mp3" },
+    { "file": "cine-determined-pursuit.mp3", "mode": "cinematic-battle", "title": "Determined Pursuit (epic orchestra loop)", "author": "Emma_MA", "license": "CC0 1.0", "source": "https://opengameart.org/content/determined-pursuit-epic-orchestra-loop", "download": "https://opengameart.org/sites/default/files/determined_pursuit_loop.wav" },
+    { "file": "cine-battle.mp3", "mode": "cinematic-battle", "title": "Battle Theme", "author": "Wolfgang_", "license": "CC0 1.0", "source": "https://opengameart.org/content/battle-theme-0", "download": "https://opengameart.org/sites/default/files/Battle.mp3" }
+  ]
+}

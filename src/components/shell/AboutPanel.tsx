@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 
 import { CREATOR_LINKS, CREATOR_MESSAGE, CREATOR_MESSAGE_EN, OFFICIAL_LINKS, PROJECT_LINKS, REFERENCES, WALLPAPERS, type AboutLink } from '@/content/about';
 import { useI18n, useT } from '@/i18n';
+import { MUSIC_CREDITS } from '@/audio/music';
 import { Section } from '@/components/ui/primitives';
 
 /**
@@ -56,6 +57,18 @@ export function AboutPanel() {
           ))}
         </ul>
         <p className="mt-2 text-2xs leading-relaxed text-fg-3">{t('Cover art © Fuse, Mitz Vah and Micro Magazine. For your own screens only.')}</p>
+      </Section>
+
+      <Section title={t('Music')} defaultOpen={false}>
+        <p className="mb-2 text-xs leading-relaxed text-fg-3">{t('Free-licensed fantasy music from OpenGameArt. Not the official Tensura soundtrack.')}</p>
+        <ul className="space-y-1.5">
+          {MUSIC_CREDITS.map((m) => (
+            <li key={m.file} className="text-xs leading-relaxed text-fg-2">
+              <a href={m.source} target="_blank" rel="noreferrer noopener" className="text-accent hover:underline">{m.title}</a>
+              <span className="text-fg-3"> · {m.author} · {m.license}</span>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section title={t('Find me')}>

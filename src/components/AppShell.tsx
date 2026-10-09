@@ -18,6 +18,8 @@ import { HelpDialog } from '@/components/overlays/HelpDialog';
 import { CinematicOverlay } from '@/components/overlays/CinematicOverlay';
 import { FilterChip } from '@/components/overlays/FilterChip';
 import { Tour } from '@/components/overlays/Tour';
+import { MusicDirector } from '@/audio/MusicDirector';
+import { AssetGuard } from '@/components/AssetGuard';
 
 // The three.js view loads only when someone opens it.
 const Atlas3D = dynamic(() => import('@/map/three/Atlas3D'), { ssr: false });
@@ -223,6 +225,9 @@ export function AppShell() {
           if (s.viewMode === 'cinematic') p.set('cinema3d', !p.cinema3d);
           else p.set('view3d', !p.view3d);
           return;
+        case 'n':
+          p.set('music', !p.music);
+          return;
         case 'm':
           p.set('mapStyle', p.mapStyle === 'base' ? 'myth' : 'base');
           return;
@@ -313,6 +318,8 @@ export function AppShell() {
       <Legend />
       <HelpDialog />
       {cinematic ? null : <Tour />}
+      <MusicDirector />
+      <AssetGuard />
     </main>
   );
 }

@@ -115,7 +115,7 @@ Atlas ini meniru *cara* empat video perang dokumenter menggerakkan wilayah. Vide
 
 ## 🎥 Mode sinematik
 
-Tekan `C` dan peta berubah jadi film perang. Bar letterbox 2.39:1 menutup layar, vinyet dan butiran film turun di atas peta, lalu kamera diserahkan ke **sutradara**.
+Tekan `C` dan kamu pindah dunia. Kilatan cahaya magicule menyapu layar, bar letterbox 2.39:1 menutup, musiknya berganti, lalu **titel pembuka** berjalan: logo *転生したらスライムだった件*, nama serinya, judul ***Eastern Empire Invasion Arc*** yang jatuh huruf demi huruf, dan kredit *Projected by NuRichter in working with NuRichter Workspace*. Setelah itu filmnya jalan sendiri dan kamera diserahkan ke **sutradara**. Intro bisa dilewati dengan tombol atau `Enter`.
 
 <div align="center">
 <img src="./assets/readme/gifs/cinematic-mode.gif" width="100%" alt="Mode sinematik: kamera bergerak sendiri dari pawai ke pertempuran dan malam panjang">
@@ -131,12 +131,17 @@ Sutradaranya membaca perang setiap seperempat detik: event terbaru, pertempuran 
 | 🐎 **Tracking** | Pasukan sedang berbaris | Mengikuti barisan dengan sedikit mendahului |
 | 🌫️ **Aftermath** | Pertempuran baru selesai | Menarik diri perlahan |
 | 🏞️ **Establishing** | Tidak ada yang terjadi | Lebar, tinggi, melayang |
+| 💥 **Turning point** | Salah satu dari 15 titik balik perang | Menukik cepat dan curam ke lokasinya, di 2D maupun 3D |
+
+**Titik balik.** Saat salah satu dari 15 titik balik tiba (perbatasan dilintasi, ultimatum Testarossa ditolak, Nuclear Flame Ultima, Gravity Collapse Velgrynd, dan seterusnya), layar berkilat, cincin kejut menyebar, bar letterbox merapat seperti potongan film, judul event menghantam layar dengan efek pecah merah dan biru, dan kamera menukik ke tempat kejadiannya. Auto Timing memperlambat film ke 0,5× selama momen itu.
+
+**Kartu event bertumpuk.** Linimasa berjalan cepat, jadi kartu event tidak saling mengganti. Kartu baru masuk dari bawah dan mendorong yang lama ke atas, maksimal empat sekaligus. Setiap kartu bertahan 2 sampai 5 detik sesuai bobotnya (kritis paling lama), dan antrean dilepas satu per satu supaya tetap terbaca.
 
 **Auto Timing.** Filmnya mengatur kecepatannya sendiri: 16× saat persiapan, 8× saat serbuan pertama, melambat ke 2× menjelang pertempuran, dan 1× tepat saat pertempuran berlangsung. Tombolnya ada di atas layar dan bisa dimatikan kapan saja.
 
 **Cold open.** Sebelum film berjalan, empat kalimat pembuka muncul satu per satu, semuanya dari catatan perang: *"D−40. The Empire decides on war."*, *"1,010,002 imperial soldiers will fall."*, *"700,000 of them will rise again."*, *"Tempest will not lose a single soldier."* Setiap kartu bab juga membawa kalimat pemikat dari event terpenting di bab itu.
 
-Kamera tidak pernah melompat. Pusat, zoom, kemiringan, dan arah pandang masing-masing mengikuti pegas teredam kritis yang dihitung persis, jadi gerakannya sama mulusnya di komputer kencang maupun ponsel lambat. Di atasnya ada kartu judul pembuka, **kartu bab** di setiap tahap perang, **kartu VS** saat pertempuran dimulai (bendera dan photocard kedua pihak), caption yang diketik di sepertiga bawah, buku korban, dan pita film yang menandai setiap bab. Sentuh peta kapan saja untuk mengambil alih kamera, sutradara kembali beberapa detik kemudian.
+Kamera tidak pernah melompat. Pusat, zoom, kemiringan, dan arah pandang masing-masing mengikuti pegas teredam kritis yang dihitung persis, jadi gerakannya sama mulusnya di komputer kencang maupun ponsel lambat. Di atasnya ada **kartu bab** di setiap tahap perang, **kartu VS** saat pertempuran dimulai (bendera dan photocard kedua pihak), kartu event yang bertumpuk, buku korban, bingkai viewfinder, dan pita film yang menandai setiap bab. Sentuh peta kapan saja untuk mengambil alih kamera, sutradara kembali beberapa detik kemudian.
 
 <br>
 
@@ -160,6 +165,18 @@ Tekan `V` (atau pilih **3D** di sebelah Datar dan Bola dunia) dan seluruh atlas 
 | 🎥 | **Kamera sutradara** yang sama, diterjemahkan ke orbit 3D |
 
 **Peta lebih HD saat di-zoom.** Base Map berubah jadi vektor (garis pantai dan perbatasan tetap tajam di zoom berapa pun), dan Myth Map dilukis ulang dengan super-resolusi ×4 (FSRCNN) lalu dipotong jadi 609 tile, jadi detailnya bertahan saat didekati.
+
+<br>
+
+## 🎵 Musik, keamanan, dan pencarian
+
+**Dua dunia musik.** Saat menjelajah peta, musik fantasi yang tenang mengalun (*The Old Tower Inn* dan *Great Labyrinth*). Begitu masuk mode sinematik, musiknya berganti jadi skor orkestra (*Fantasy Orchestral Theme*), dan setiap pertempuran memakai musik perang (*Determined Pursuit*, *Battle Theme*) dengan crossfade halus. Semua lagunya berlisensi bebas dari OpenGameArt, **bukan soundtrack resmi Tensura**. Tombol musik ada di bilah atas dan di mode sinematik, shortcut `N`, volumenya di panel Layers. File musik baru diunduh saat diputar dan berhenti saat tab disembunyikan.
+
+**Keamanan.** Content Security Policy ketat (semua dari origin sendiri, tanpa skrip pihak ketiga, tanpa `eval` di produksi, tanpa iframe), HSTS, `X-Frame-Options: DENY`, `nosniff`, Permissions-Policy yang mematikan kamera, mikrofon, dan lokasi, serta `Cross-Origin-Resource-Policy: same-origin` untuk peta, tile, art, dan musik supaya tidak bisa di-hotlink situs lain. Klik kanan dan seret gambar dimatikan di gambar, peta, dan tampilan 3D (wallpaper tetap bisa diunduh karena memang disediakan). Ini penghalang, bukan DRM: apa pun yang tampil di browser tetap bisa direkam layar.
+
+**Ringan di Vercel.** Semua halaman dirender statis saat build dan dilayani dari CDN, jadi tidak ada server function yang berjalan per kunjungan. Aset memakai cache panjang, gaya peta yang tidak terlihat tidak mengunduh apa pun, dan font judul sinematik tidak dimuat sampai dibutuhkan.
+
+**Pencarian.** Judul dan deskripsi baru untuk hasil pencarian, gambar pratinjau 1200×630 untuk media sosial, `sitemap.xml`, `robots.txt`, web manifest, dan data terstruktur schema.org. Verifikasi Google Search Console cukup dengan variabel `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` di Vercel.
 
 <br>
 
@@ -499,7 +516,9 @@ Proyek ini milik **NuRichter** (NuRichter Workspace), dengan lisensi tiga lapis 
 - **Dataset dan tulisan analitis:** atribusi, non-komersial, berbagi serupa, dan wajib menjaga label integritas.
 - **Materi pihak ketiga:** tidak dilisensikan oleh proyek ini.
 
-*Tensei Shitara Slime Datta Ken* beserta dunia, tokoh, teks, dan ilustrasinya adalah milik Fuse, Mitz Vah, Micro Magazine, Kodansha, dan komite produksi anime. Photocard karakter, sampul untuk wallpaper, gambar slime Rimuru (stiker dan kursor), dan gambar karakter *Slime Diaries* untuk pemandu tur berasal dari situs resmi TenSura dan wiki Tensura, sebagaimana tercatat di manifest masing-masing (`Sources of Truth/Character Photocard`, `Sources of Truth/Tensura Theme`). Lisensinya **Open** (keputusan pemilik proyek), dengan sumber tetap dicantumkan.
+*Tensei Shitara Slime Datta Ken* beserta dunia, tokoh, teks, dan ilustrasinya adalah milik Fuse, Mitz Vah, Micro Magazine, Kodansha, dan komite produksi anime. Photocard karakter, sampul untuk wallpaper, gambar slime Rimuru (stiker dan kursor), dan gambar karakter *Slime Diaries* untuk pemandu tur berasal dari situs resmi TenSura dan wiki Tensura, sebagaimana tercatat di manifest masing-masing (`Sources of Truth/Character Photocard`, `Sources of Truth/Tensura Theme`). Logo seri di intro sinematik juga berasal dari wiki Tensura. Lisensinya **Open** (keputusan pemilik proyek), dengan sumber tetap dicantumkan.
+
+Musik latar berasal dari OpenGameArt: *Medieval: The Old Tower Inn* oleh RandomMind (CC0), *Great Labyrinth* oleh Mintodog dan Jonathan Shaw, mix oleh glitchart (CC-BY 3.0), *Fantasy Orchestral Theme* oleh Joth (CC0), *Determined Pursuit* oleh Emma_MA (CC0), dan *Battle Theme* oleh Wolfgang_ (CC0). Sumber lengkapnya ada di `Sources of Truth/Music/manifest.json` dan di panel About.
 
 Teks novel (PDF) tidak disertakan di repositori ini. Audit kanon memakai salinan lokal, dan rujukannya hanya berupa volume, bab, dan lokator baris. Belilah dan bacalah edisi resminya.
 

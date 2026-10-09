@@ -46,6 +46,7 @@ const config: Config = {
         ui: ['var(--font-ui)', 'system-ui', 'Segoe UI', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'Consolas', 'monospace'],
         display: ['var(--font-display)', 'Georgia', 'serif'],
+        cine: ['var(--font-cine)', 'var(--font-display)', 'Georgia', 'serif'],
       },
       fontSize: {
         '2xs': ['10.5px', { lineHeight: '14px', letterSpacing: '0.02em' }],

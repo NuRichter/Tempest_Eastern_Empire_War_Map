@@ -22,13 +22,14 @@ import type { FrontEpisode } from '@/map/field/front';
  *   TRACKING     armies on the march: follows them with a little lead
  *   AFTERMATH    a battle just ended: a slow pull-out
  *   ESTABLISHING nothing happening: wide, high, drifting
+ *   IMPACT       a turning point: a fast, steep push-in on where it happens
  * The camera never jumps. Centre, zoom, pitch and bearing each follow a
  * critically damped spring toward the shot, so moves start and stop softly.
  * Reduced motion keeps it flat, unrotated and slower. Touching the map hands
  * control to the reader for a few seconds.
  */
 
-export type Shot = 'CLOSE' | 'BATTLE' | 'MULTI_FRONT' | 'TRACKING' | 'AFTERMATH' | 'ESTABLISHING';
+export type Shot = 'CLOSE' | 'BATTLE' | 'MULTI_FRONT' | 'TRACKING' | 'AFTERMATH' | 'ESTABLISHING' | 'IMPACT';
 
 export const SHOT_LABEL: Record<Shot, string> = {
   CLOSE: msg('Close'),
@@ -37,9 +38,27 @@ export const SHOT_LABEL: Record<Shot, string> = {
   TRACKING: msg('Tracking the march'),
   AFTERMATH: msg('Aftermath'),
   ESTABLISHING: msg('Establishing'),
+  IMPACT: msg('Turning point'),
 };
 
-export const useDirector = create<{ shot: Shot; fronts: number }>(() => ({ shot: 'ESTABLISHING', fronts: 0 }));
+/** A place the camera must go to now (a turning point), in simulation units, until a time (performance.now ms). */
+export interface Focus { x: number; y: number; until: number }
+
+export const useDirector = create<{ shot: Shot; fronts: number; focus: Focus | null }>(() => ({ shot: 'ESTABLISHING', fronts: 0, focus: null }));
+
+/** Sends both cameras (map and 3D) to a place for a few seconds. */
+export function focusOn(data: Dataset, placeId: string | null, ms: number): boolean {
+  const xy = placeXY(data, placeId);
+  if (!xy) return false;
+  useDirector.setState({ focus: { ...xy, until: performance.now() + ms } });
+  return true;
+}
+
+/** The focus in force right now, if any. */
+export function activeFocus(): Focus | null {
+  const f = useDirector.getState().focus;
+  return f && performance.now() < f.until ? f : null;
+}
 
 export interface Pt { x: number; y: number; w: number; kind: 'event' | 'battle' | 'front' | 'march' }
 export interface Cluster { x0: number; y0: number; x1: number; y1: number; w: number; cx: number; cy: number; kinds: Set<Pt['kind']> }
@@ -162,6 +181,13 @@ export function startDirector(map: MapLibreMap, o: DirectorOptions): () => void 
     const { pts, battleLive, battleEnded } = gatherAction(o.data, o.episodes(), T);
     const reduce = o.reducedMotion();
     const pad = o.padding();
+    // A turning point: drop everything and push in, steep and fast.
+    const f = activeFocus();
+    if (f) {
+      const ll = simToLngLat(f.x, f.y);
+      const spin = (performance.now() - t0) / 1000;
+      return { cx: ll.lng, cy: ll.lat, zoom: 5.3, pitch: reduce ? 0 : 56, bearing: reduce ? 0 : Math.sin(spin / 5) * 22, tau: reduce ? 2 : 0.85, shot: 'IMPACT', fronts: 0 };
+    }
     const clusters = cluster(pts);
     const main = clusters[0];
     // Calm: hold the last place, pulled out and high.
