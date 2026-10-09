@@ -314,6 +314,7 @@ async function main(): Promise<void> {
       const f = await fieldAt();
       check('the held ground follows the clock after leaving 3D', f !== null && f.T !== null && Math.abs(f.T - 6300) < 1, `field ${JSON.stringify(f)}`);
       check('the held ground is drawn by the GPU layer', Boolean(f?.gpu), `field ${JSON.stringify(f)}`);
+      check('the held ground is evaluated in its worker', Boolean((f as { worker?: boolean } | null)?.worker), `field ${JSON.stringify(f)}`);
     }
 
     await page.keyboard.press('c');

@@ -375,7 +375,7 @@ export function MapView() {
     // Exposed for browser QA, which inspects the camera and style directly.
     (window as unknown as { __atlasMap?: MapLibreMap }).__atlasMap = map;
     // QA handle: the time the held ground was last evaluated for, and whether the GPU draws it.
-    (window as unknown as { __atlasField?: () => { T: number | null; gpu: boolean } }).__atlasField = () => ({ T: getField()?.T ?? null, gpu: Boolean(gpuField.current) });
+    (window as unknown as { __atlasField?: () => { T: number | null; gpu: boolean; worker: boolean } }).__atlasField = () => ({ T: getField()?.T ?? null, gpu: Boolean(gpuField.current), worker: fieldWorkerRef.current?.workerAnswered ?? false });
 
     map.on('load', () => {
       map.addImage('hatch-light', hatchImage('rgba(200,206,209,0.55)', null));
@@ -512,6 +512,7 @@ export function MapView() {
   // Held ground drawn by the GPU (src/map/field/gpuField.ts) when WebGL2 is there; the canvas path is the fallback.
   const gpuField = useRef<GpuFieldLayer | null>(null);
   const gpuMaskFor = useRef<unknown>(null);
+  const fieldWorkerRef = useRef<FieldWorker | null>(null);
   const occupationOn = layers.occupation;
 
   useEffect(() => {
@@ -598,7 +599,7 @@ export function MapView() {
         // (352 x 272); the shader paints every screen pixel. Full frame rate, no window.
         gpu.visible = true;
         // The evaluation runs in a worker; this thread only uploads the result.
-        worker = new FieldWorker(front, (field) => {
+        worker = fieldWorkerRef.current = new FieldWorker(front, (field) => {
           if (cancelled) return;
           gpu.setField(front, field.fields, field.packed);
           setField(field);
