@@ -2,6 +2,10 @@
 
 How to keep the site hardened while it grows.
 
+## Enabling CI
+
+The workflow files `.github/workflows/ci.yml` and `codeql.yml` are prepared but were not pushed, because the token used for this change lacked GitHub's `workflow` permission. To add them, either upload both files through the GitHub web interface (Add file, into `.github/workflows/`), or sign in again with a token that has the `workflow` scope and push them. Also enable **Private vulnerability reporting** (Settings, Security) so the link in `SECURITY.md` works.
+
 ## Where things live
 
 | What | File |

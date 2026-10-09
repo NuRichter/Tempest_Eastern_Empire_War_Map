@@ -26,7 +26,8 @@
 | Error handling | FIXED AND VERIFIED | `security:browser`: error screen shows no path, stack or command |
 | Clickjacking | PASS | `security:browser`: the page does not render inside a frame |
 | Headers and CSP (local build) | FIXED AND VERIFIED | `security:scan` (local): all header checks pass |
-| Headers and CSP (production) | see the deployment section of the final report | Passive `security:scan` after deployment |
+| Headers and CSP (Vercel preview build of this change) | PASS | Vercel's own build served the hashed CSP (no placeholder left), 11 of 11 inline scripts covered by hashes, 9 of 9 script tags with integrity, Trusted Types on, document headers on the page only, CORP and nosniff on data |
+| Headers and CSP (production) | NOT VERIFIED | Pending the merge to `main`. Run the passive `security:scan` against production afterwards |
 | Resource cleanup (WebGL, memory) | FIXED AND VERIFIED | `security:browser`: 6 open and close cycles of the 3D view, handle released, heap growth under 25 MB, no context warnings |
 | Search cost | FIXED AND VERIFIED | `security:test`: 1 MB, 100k-word and markup queries each under 250 ms |
 | Oversized requests | PASS | `security:browser`: a 60 KB URL is refused by the server, which keeps serving |

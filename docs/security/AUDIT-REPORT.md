@@ -37,8 +37,8 @@ Severity follows exploitability and impact in this architecture, not the advisor
 | SEC-13 | Low | Search | Query length unbounded (main-thread cost) | 120 characters, 8 words | `security:test` "search cost stays bounded", browser "search input is capped" | FIXED AND VERIFIED |
 | SEC-14 | Low | 3D view | WebGL context released only at garbage collection | `forceContextLoss()` on close | Browser "the 3D view releases its WebGL context and memory" | FIXED AND VERIFIED |
 | SEC-15 | Low | Error screen | Raw error text and build commands shown to visitors | Production shows a heading and a Reload button, details go to the console | Browser "the error screen leaks no paths ..." | FIXED AND VERIFIED |
-| SEC-16 | Low | Headers | No COEP, Origin-Agent-Cluster, site-wide CORP. Platform default `Access-Control-Allow-Origin: *` | Added from `src/security/policy.mjs` | `security:scan` | FIXED AND VERIFIED (local). Production: see verification matrix |
-| SEC-17 | Info | Repository | No CI, no security policy, no automated dependency updates | CI (`npm ci`, audit, verify), CodeQL, dependency review, Dependabot, `SECURITY.md`, `security.txt` | Workflow files | FIXED (runs on the next push) |
+| SEC-16 | Low | Headers | No COEP, Origin-Agent-Cluster, site-wide CORP. Platform default `Access-Control-Allow-Origin: *` | Added from `src/security/policy.mjs` | `security:scan` | FIXED AND VERIFIED (local build and Vercel preview). Production pending merge |
+| SEC-17 | Info | Repository | No CI, no security policy, no automated dependency updates | CI (`npm ci`, audit, verify), CodeQL, dependency review, Dependabot, `SECURITY.md`, `security.txt` | Workflow files | Dependabot and policy files committed. `ci.yml` and `codeql.yml` need a push with the `workflow` permission (see MAINTENANCE.md) |
 
 ## Process notes, stated plainly
 
