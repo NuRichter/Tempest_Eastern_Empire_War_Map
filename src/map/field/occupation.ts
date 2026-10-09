@@ -29,6 +29,7 @@ import {
   type FrontFields,
   type FrontFile,
 } from '@/map/field/front';
+import { fetchVerified, safeJsonParse } from '@/security/fetch';
 
 /** Paint canvas: a fixed pixel budget spread over the visible window of the map. */
 export const CANVAS_W = 1280;
@@ -56,8 +57,8 @@ let frontPromise: Promise<Front | null> | null = null;
 /** Loads the held-ground history once. A missing or invalid file hides the layer. */
 export function loadFront(): Promise<Front | null> {
   if (!frontPromise) {
-    frontPromise = fetch('/data/front.json')
-      .then((r) => (r.ok ? (r.json() as Promise<FrontFile>) : null))
+    frontPromise = fetchVerified('/data/front.json')
+      .then(async (r) => (r.ok ? safeJsonParse<FrontFile>(await r.text()) : null))
       .then((f) => (f ? decodeFront(f) : null))
       .catch(() => null);
   }

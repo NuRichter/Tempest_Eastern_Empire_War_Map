@@ -1559,6 +1559,9 @@
   "Relative time stated by the source": [
    "src/lib/taxonomy.ts"
   ],
+  "Reload": [
+   "src/components/AppShell.tsx"
+  ],
   "Remove bookmark {name}": [
    "src/components/rail/FeedPanel.tsx"
   ],

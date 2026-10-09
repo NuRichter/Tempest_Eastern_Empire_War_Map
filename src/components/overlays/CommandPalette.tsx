@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { CornerDownLeft, Search } from 'lucide-react';
 
 import { msg, useT } from '@/i18n';
-import { buildIndex, search, type SearchItem } from '@/lib/search';
+import { buildIndex, MAX_QUERY_LENGTH, search, type SearchItem } from '@/lib/search';
 import { useSimulation } from '@/simulation/store';
 import { usePreferences, type WarLayer } from '@/state/preferences';
 import { Flag } from '@/components/ui/primitives';
@@ -87,7 +87,7 @@ export function CommandPalette() {
 
   type Row = { group: string; key: string; title: string; detail?: string; hint?: string; item?: SearchItem; command?: Command };
   const rows = useMemo<Row[]>(() => {
-    const q = query.trim().toLowerCase();
+    const q = query.slice(0, MAX_QUERY_LENGTH).trim().toLowerCase();
     const cmd = (q ? commands.filter((c) => c.title.toLowerCase().includes(q) || c.keys.some((k) => k.includes(q))) : commands.slice(0, 8)).map<Row>((c) => ({ group: COMMANDS, key: c.id, title: c.title, hint: c.hint, command: c }));
     const found = q ? search(index, q, 40).map<Row>((item) => ({ group: item.group, key: `${item.group}-${'id' in item.selection ? item.selection.id : ''}`, title: item.title, detail: item.detail, item })) : [];
     const all = [...cmd, ...found];
@@ -134,6 +134,7 @@ export function CommandPalette() {
           <input
             ref={inputRef}
             value={query}
+            maxLength={MAX_QUERY_LENGTH}
             onChange={(e) => {
               setQuery(e.target.value);
               setCursor(0);

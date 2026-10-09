@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Cinzel, IBM_Plex_Mono, IBM_Plex_Sans_Condensed, Source_Serif_4 } from 'next/font/google';
 import './globals.css';
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME, SITE_TITLE, SITE_URL } from './site';
+import { TRUSTED_TYPES_BOOT } from '@/security/trusted-types';
 
 // Self-hosted at build time by next/font: no request leaves the page at runtime.
 const ui = IBM_Plex_Sans_Condensed({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-ui', display: 'swap' });
@@ -81,6 +82,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" data-ui-theme="dark" suppressHydrationWarning className={`${ui.variable} ${mono.variable} ${display.variable} ${cine.variable}`}>
       <head>
+        {/* First: the Trusted Types default policy, before any library can reach a sink. */}
+        <script dangerouslySetInnerHTML={{ __html: TRUSTED_TYPES_BOOT }} />
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON_LD_HTML }} />
       </head>

@@ -18,6 +18,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
 import { LOCALES, matchLocale } from '@/i18n/locales';
+import { fetchVerified, safeJsonParse } from '@/security/fetch';
 
 export { msg } from '@/i18n/msg';
 export type MessageKey = string;
@@ -74,8 +75,8 @@ export async function syncLocale(): Promise<void> {
   let messages = cache.get(info.code);
   if (!messages) {
     try {
-      const res = await fetch(`/locales/${info.code}.json`);
-      messages = res.ok ? ((await res.json()) as Messages) : {};
+      const res = await fetchVerified(`/locales/${info.code}.json`);
+      messages = res.ok ? safeJsonParse<Messages>(await res.text()) : {};
     } catch {
       messages = {};
     }

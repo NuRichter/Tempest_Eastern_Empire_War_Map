@@ -8,14 +8,14 @@
     "compile-data": "tsx scripts/compile-data.ts && tsx scripts/compile-front.ts",
     "validate-data": "tsx scripts/validate-data.ts",
     "validate-assets": "tsx scripts/validate-assets.ts",
-    "prebuild": "npm run compile-data && npm run validate-data && npm run validate-assets",
+    "prebuild": "npm run compile-data && npm run validate-data && npm run validate-assets && tsx scripts/security/integrity.mts",
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && tsx scripts/security/harden-build.mts",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "tsx scripts/test-runtime.ts",
-    "verify": "npm run compile-data && npm run validate-data && npm run validate-assets && npm run lint && npm run typecheck && npm run i18n:extract && npm run i18n:check && npm run test && npm run build",
+    "verify": "npm run compile-data && npm run validate-data && npm run validate-assets && npm run lint && npm run security:lint && npm run typecheck && npm run i18n:extract && npm run i18n:check && npm run test && npm run security:test && npm run build",
     "qa": "tsx scripts/browser-qa.ts",
     "qa:visual": "tsx scripts/visual-regression.ts",
     "qa:playwright": "node scripts/qa-playwright.mjs",
@@ -23,12 +23,17 @@
     "qa:playback": "tsx scripts/capture-playback.ts",
     "qa:perf": "tsx scripts/perf-baseline.ts",
     "i18n:extract": "tsx scripts/i18n-extract.ts",
-    "i18n:check": "tsx scripts/i18n-check.ts"
+    "i18n:check": "tsx scripts/i18n-check.ts",
+    "security:lint": "tsx scripts/security/lint.mts",
+    "security:scan": "tsx scripts/security/scan.mts",
+    "security:audit": "npm audit --omit=dev --audit-level=low",
+    "security:test": "tsx scripts/security/test.mts",
+    "security:browser": "tsx scripts/security/browser.mts"
   },
   "dependencies": {
     "lucide-react": "^0.469.0",
-    "maplibre-gl": "^5.6.0",
-    "next": "15.5.25",
+    "maplibre-gl": "~5.24.0",
+    "next": "^15.5.27",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "three": "^0.186.1",
@@ -50,6 +55,11 @@
     "typescript": "^5.7.3"
   },
   "engines": {
-    "node": ">=20.11"
+    "node": ">=20.9"
+  },
+  "overrides": {
+    "next": {
+      "postcss": "^8.5.29"
+    }
   }
 }

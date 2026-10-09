@@ -20,6 +20,7 @@ import { FilterChip } from '@/components/overlays/FilterChip';
 import { Tour } from '@/components/overlays/Tour';
 import { MusicDirector } from '@/audio/MusicDirector';
 import { AssetGuard } from '@/components/AssetGuard';
+import { enumParam, idParam, intParam } from '@/security/input';
 
 // The three.js view loads only when someone opens it.
 const Atlas3D = dynamic(() => import('@/map/three/Atlas3D'), { ssr: false });
@@ -70,7 +71,9 @@ export function AppShell() {
     loadDataset(controller.signal)
       .then((data) => init(data))
       .catch((e: unknown) => {
-        if (!controller.signal.aborted) failed(e instanceof Error ? e.message : 'The campaign dataset could not be loaded.');
+        if (controller.signal.aborted) return;
+        console.error('Dataset load failed:', e);
+        failed(e instanceof Error ? e.message : 'The campaign dataset could not be loaded.');
       });
     return () => controller.abort();
   }, [init, failed]);
@@ -89,10 +92,12 @@ export function AppShell() {
     if (status !== 'ready') return;
     const params = new URLSearchParams(window.location.search);
     const store = useSimulation.getState();
-    const frame = params.get('frame');
-    const day = params.get('day');
+    const N = store.data?.manifest.clock.frameCount ?? 0;
+    const clock = store.data?.manifest.clock;
+    const frame = intParam(params.get('frame'), 0, Math.max(0, N - 1));
+    const day = clock ? intParam(params.get('day'), clock.firstDay, clock.firstDay + Math.ceil(N / clock.framesPerDay)) : null;
     for (const kind of SELECTION_KINDS) {
-      const id = params.get(kind);
+      const id = idParam(params.get(kind));
       if (!id) continue;
       if (kind === 'event') store.jumpToEvent(id);
       else if (kind === 'battle') store.jumpToBattle(id);
@@ -104,9 +109,9 @@ export function AppShell() {
       else if (kind === 'movement') store.jumpToMovement(id);
       break;
     }
-    if (frame !== null && Number.isFinite(Number(frame))) store.seek(Number(frame));
-    else if (day !== null && store.data) store.seek((Number(day) - store.data.manifest.clock.firstDay) * store.data.manifest.clock.framesPerDay);
-    if (params.get('view') === 'cinematic') store.setViewMode('cinematic');
+    if (frame !== null) store.seek(frame);
+    else if (day !== null && clock) store.seek(Math.min(N - 1, (day - clock.firstDay) * clock.framesPerDay));
+    if (enumParam(params.get('view'), ['cinematic'] as const)) store.setViewMode('cinematic');
   }, [status]);
 
   useEffect(() => {
@@ -267,11 +272,19 @@ export function AppShell() {
       <main className="grid min-h-dvh place-items-center bg-ink-900 p-6">
         <div className="surface max-w-lg rounded-[4px] p-6">
           <h1 className="font-display text-xl text-fg">{t('The campaign dataset did not load')}</h1>
-          <p className="mt-3 text-sm leading-relaxed text-fg-2">{error}</p>
-          <p className="mt-3 text-sm leading-relaxed text-fg-3">
-            {t('The runtime dataset is generated at build time. Run the compile and validate steps, then reload.')}{' '}
-            <code className="figure text-accent">npm run compile-data</code> · <code className="figure text-accent">npm run validate-data</code>
-          </p>
+          {/* Details and build hints are for developers: production shows none of them (they go to the console). */}
+          {process.env.NODE_ENV !== 'production' ? (
+            <>
+              <p className="mt-3 text-sm leading-relaxed text-fg-2">{error}</p>
+              <p className="mt-3 text-sm leading-relaxed text-fg-3">
+                {t('The runtime dataset is generated at build time. Run the compile and validate steps, then reload.')}{' '}
+                <code className="figure text-accent">npm run compile-data</code> · <code className="figure text-accent">npm run validate-data</code>
+              </p>
+            </>
+          ) : null}
+          <button type="button" onClick={() => window.location.reload()} className="ctl mt-4">
+            {t('Reload')}
+          </button>
         </div>
       </main>
     );

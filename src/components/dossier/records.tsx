@@ -33,6 +33,7 @@ import { loadFront } from '@/map/field/occupation';
 import { getField, onField } from '@/map/field/fieldStore';
 import type { FrontEpisode } from '@/map/field/front';
 import type { WarEvent } from '@/types/dataset';
+import { hostOf, safeExternalHref } from '@/security/input';
 
 type T = ReturnType<typeof useT>;
 
@@ -487,7 +488,7 @@ export function CharacterDossier({ id }: { id: string }) {
         {c.photocard ? (
           <p className="text-xs leading-relaxed text-fg-2">
             {t("Local photocard from the project's character repository. Source: {source}", { source: c.photocard.source })}
-            {c.photocard.sourceUrl ? <> (<a className="underline decoration-ink-400 hover:text-accent" href={c.photocard.sourceUrl} target="_blank" rel="noreferrer">{new URL(c.photocard.sourceUrl).hostname}</a>)</> : null}. {t('Licence: {licence}.', { licence: c.photocard.licence ?? t('not recorded') })}
+            {safeExternalHref(c.photocard.sourceUrl) ? <> (<a className="underline decoration-ink-400 hover:text-accent" href={safeExternalHref(c.photocard.sourceUrl)!} target="_blank" rel="noopener noreferrer">{hostOf(safeExternalHref(c.photocard.sourceUrl)!)}</a>)</> : null}. {t('Licence: {licence}.', { licence: c.photocard.licence ?? t('not recorded') })}
           </p>
         ) : (
           <Empty>{t('No photocard exists for this character in the repository.')}</Empty>

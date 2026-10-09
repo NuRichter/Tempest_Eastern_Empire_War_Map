@@ -27,6 +27,7 @@ import type {
   TimelineIndex,
   WarEvent,
 } from '@/types/dataset';
+import { fetchVerified, safeJsonParse } from '@/security/fetch';
 
 export interface KeyframeIndex {
   interval: number;
@@ -98,11 +99,11 @@ const BASE = '/data';
 async function json<T>(path: string, signal?: AbortSignal): Promise<T> {
   // Revalidate every time (a cheap 304 when unchanged): a cached copy from an
   // earlier deploy could point at assets that no longer exist.
-  const response = await fetch(`${BASE}/${path}`, { signal, cache: 'no-cache' });
+  const response = await fetchVerified(`${BASE}/${path}`, { signal, cache: 'no-cache' });
   if (!response.ok) {
     throw new Error(`Could not load ${path} (${response.status}). Run "npm run compile-data" and rebuild.`);
   }
-  return (await response.json()) as T;
+  return safeJsonParse<T>(await response.text());
 }
 
 function groupBy<T, K>(items: T[], key: (item: T) => K | null): Map<K, T[]> {

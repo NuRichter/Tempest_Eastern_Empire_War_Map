@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import maplibregl, { type Map as MapLibreMap, type StyleSpecification } from 'maplibre-gl';
+
+import { fetchVerified, safeJsonParse } from '@/security/fetch';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 import { atlasBounds, atlasCorners, campaignBounds, lngLatToSim, ringToLngLat, simBoundsToLngLat, simToLngLatTuple } from '@/lib/coords';
@@ -483,8 +485,8 @@ export function MapView() {
     const map = mapRef.current;
     if (!map || !ready) return;
     let alive = true;
-    void fetch('/maps/coast.json')
-      .then((r) => (r.ok ? r.json() : null))
+    void fetchVerified('/maps/coast.json')
+      .then(async (r) => (r.ok ? safeJsonParse<{ polygons: [number, number][][][] }>(await r.text()) : null))
       .then((c) => {
         if (alive && c) (map.getSource('coast') as maplibregl.GeoJSONSource | undefined)?.setData(coastFeatures(c));
       })

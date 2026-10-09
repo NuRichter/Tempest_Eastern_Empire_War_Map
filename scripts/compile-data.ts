@@ -20,7 +20,7 @@
 
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { dirname, isAbsolute, join, parse, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import type {
@@ -80,12 +80,35 @@ import { encodeColumn, sameValue, UNKNOWN } from './lib/normalise';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
-const SRC = join(ROOT, 'data-source');
+// COMPILE_SRC lets the security tests compile a deliberately broken copy of the sources.
+const SRC = resolve(process.env.COMPILE_SRC ?? join(ROOT, 'data-source'));
 const CAMPAIGN = join(SRC, 'campaign');
 // COMPILE_OUT lets a reviewer compile into a scratch directory without touching public/data.
-const OUT_DIR = process.env.COMPILE_OUT ?? join(ROOT, 'public', 'data');
+const OUT_DIR = resolve(process.env.COMPILE_OUT ?? join(ROOT, 'public', 'data'));
 
-const read = <T>(path: string): T => JSON.parse(readFileSync(path, 'utf8')) as T;
+/**
+ * The output directory is wiped before writing, so it must be a compile
+ * output and nothing else: never the filesystem root, the repository or a
+ * folder that contains it, and, if it already exists with files in it, it
+ * must hold an earlier compile (a manifest.json). Fails closed otherwise.
+ */
+function assertSafeOutDir(dir: string): void {
+  const rel = relative(dir, ROOT);
+  const containsRepo = rel === '' || (!rel.startsWith('..') && !isAbsolute(rel));
+  if (dir === parse(dir).root || containsRepo) throw new Error(`compile-data: refusing to write to ${dir} (it would wipe the repository or a drive).`);
+  if (existsSync(dir) && readdirSync(dir).length > 0 && !existsSync(join(dir, 'manifest.json'))) {
+    throw new Error(`compile-data: refusing to wipe ${dir}: it is not empty and holds no earlier compile output.`);
+  }
+}
+assertSafeOutDir(OUT_DIR);
+
+// Sources come from contributors: keys that could reach Object.prototype fail the build instead of being trusted.
+const FORBIDDEN_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
+const read = <T>(path: string): T =>
+  JSON.parse(readFileSync(path, 'utf8'), (key, value: unknown) => {
+    if (FORBIDDEN_KEYS.has(key)) throw new Error(`compile-data: forbidden key "${key}" in ${relative(ROOT, path)}`);
+    return value;
+  }) as T;
 const readOptional = <T>(path: string, fallback: T): T => (existsSync(path) ? read<T>(path) : fallback);
 const sha256 = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
 

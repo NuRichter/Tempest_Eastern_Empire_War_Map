@@ -593,7 +593,11 @@ export function Atlas3D({ auto }: { auto: boolean }) {
       });
       composer.dispose();
       renderer.dispose();
+      // Hand the GPU context back now instead of at garbage collection:
+      // browsers allow only a few live WebGL contexts per page.
+      renderer.forceContextLoss();
       renderer.domElement.remove();
+      delete (window as unknown as { __atlas3d?: unknown }).__atlas3d;
     };
   }, []);
 

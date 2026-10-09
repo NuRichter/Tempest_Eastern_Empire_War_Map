@@ -4,6 +4,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist, type StateStorage } from 'zustand/middleware';
 
 import { msg } from '@/i18n/msg';
+import { sanitizeLike } from '@/security/input';
 
 /**
  * Reader preferences: how the map is drawn, never what it shows.
@@ -207,9 +208,15 @@ export const usePreferences = create<Preferences & PreferenceActions>()(
       name: 'tempest-atlas.preferences.v3',
       storage: createJSONStorage(() => safeStorage),
       version: 3,
+      // localStorage is outside the app's control: every stored value is
+      // checked against the defaults' types, and bookmarks one by one.
       merge: (persisted, current) => {
-        const p = (persisted ?? {}) as Partial<Preferences>;
-        return { ...current, ...p, layers: { ...DEFAULT_LAYERS, ...(p.layers ?? {}) } };
+        const p = sanitizeLike<Preferences>(persisted, DEFAULT_PREFERENCES);
+        const bookmarks = (Array.isArray((persisted as Partial<Preferences> | null)?.bookmarks) ? (persisted as Preferences).bookmarks : [])
+          .filter((b): b is Bookmark => Boolean(b) && typeof b.id === 'string' && b.id.length <= 64 && Number.isSafeInteger(b.frame) && b.frame >= 0 && typeof b.label === 'string' && (b.eventId === null || typeof b.eventId === 'string'))
+          .slice(0, 200)
+          .map((b) => ({ id: b.id, frame: b.frame, eventId: b.eventId, label: b.label.slice(0, 200) }));
+        return { ...current, ...p, bookmarks, layers: { ...DEFAULT_LAYERS, ...p.layers } };
       },
     },
   ),

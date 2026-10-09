@@ -117,10 +117,15 @@ export function scoreKey(q: string, key: string): number {
   return score > 8 ? score : 0;
 }
 
+/** Longest query and most words scored: the cost of a search stays bounded whatever is pasted in. */
+export const MAX_QUERY_LENGTH = 120;
+const MAX_TERMS = 8;
+
 export function search(index: SearchItem[], query: string, limit = 40): SearchItem[] {
-  const q = fold(query);
+  const q = fold(query.slice(0, MAX_QUERY_LENGTH));
   if (q.length < 1) return [];
-  const terms = q.split(' ');
+  const terms = q.split(' ').filter(Boolean).slice(0, MAX_TERMS);
+  if (!terms.length) return [];
   const scored: { item: SearchItem; score: number }[] = [];
   for (const item of index) {
     // Every word of the query must match some key.
