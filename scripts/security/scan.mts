@@ -90,8 +90,21 @@ CHECKS.push(async () => {
   const missing = inline.filter((m) => !script.includes(`'sha256-${createHash('sha256').update(m[2], 'utf8').digest('base64')}'`));
   (missing.length === 0 ? pass : fail)('every inline script is allowed by hash', `${inline.length} inline, ${missing.length} not covered`);
   const external = [...html.matchAll(/<script[^>]*\bsrc="([^"]+)"[^>]*>/g)];
-  const noSri = external.filter((m) => !/\bintegrity="sha(256|384|512)-/.test(m[0]));
-  (noSri.length === 0 ? pass : fail)('every script file carries Subresource Integrity', `${external.length} scripts, ${noSri.length} without integrity`);
+  // The webpack runtime is the documented exception: the host rewrites it while serving.
+  const noSri = external.filter((m) => !/\bintegrity="sha(256|384|512)-/.test(m[0]) && !/\/_next\/static\/chunks\/webpack-[a-z0-9]+\.js/.test(m[1]));
+  (noSri.length === 0 ? pass : fail)('every script file (except the host-rewritten webpack runtime) carries Subresource Integrity', `${external.length} scripts, ${noSri.length} without integrity`);
+  // An integrity hash that does not match what the host serves blocks the file and breaks the site:
+  // fetch each one and compare (one GET per script, passive).
+  const pinned = [...html.matchAll(/<(?:script|link)[^>]*\b(?:src|href)="(\/[^"]+)"[^>]*\bintegrity="sha256-([^"]+)"[^>]*>/g)];
+  let mismatched = 0;
+  for (const [, path, want] of pinned) {
+    const body = Buffer.from(await (await get(path)).arrayBuffer());
+    if (createHash('sha256').update(body).digest('base64') !== want) {
+      mismatched += 1;
+      fail(`served bytes match integrity: ${path}`);
+    }
+  }
+  (mismatched === 0 ? pass : fail)('every integrity hash matches the bytes the host serves', `${pinned.length} files checked, ${mismatched} mismatched`);
   const thirdParty = [...html.matchAll(/(?:src|href)="(https?:\/\/[^"]+)"/g)].map((m) => m[1]).filter((u) => !u.startsWith(BASE));
   // The canonical site URL (in metadata) and plain outbound links are not resources the page loads.
   const loads = thirdParty.filter((u) => !/^https:\/\/(tempestwar\.vercel\.app|github\.com|www\.ten-sura\.com)(\/|$)/.test(u));

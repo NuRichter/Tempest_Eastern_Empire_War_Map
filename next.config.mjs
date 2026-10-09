@@ -13,9 +13,9 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   experimental: {
     optimizePackageImports: ['lucide-react'],
-    // Every script file the page loads carries a SHA-256 integrity hash: a
-    // file altered anywhere between the build and the browser is refused.
-    sri: { algorithm: 'sha256' },
+    // Script integrity is added after the build by scripts/security/harden-build.mts,
+    // not by Next's experimental `sri`: Vercel appends its toolbar loader to the
+    // webpack runtime when serving, so that one file cannot carry a build-time hash.
   },
   // Browser caching for the static files in public/ (Next's own /_next/static
   // assets are content-hashed and cached for a year already). Maps, art and
