@@ -39,7 +39,8 @@ const check = (name: string, ok: boolean, detail = '') => {
   console.log(`  ${ok ? 'pass' : 'FAIL'}  ${name}${!ok && detail ? ` (${detail})` : ''}`);
 };
 
-const headers = { 'x-vercel-protection-bypass': secret };
+// The bypass cookie lets requests the page cannot intercept (the worker script) through as well.
+const headers = { 'x-vercel-protection-bypass': secret, 'x-vercel-set-bypass-cookie': 'true' };
 const html = await (await fetch(origin + '/', { headers })).text();
 const pinned = [...html.matchAll(/<(?:script|link)[^>]*\b(?:src|href)="(\/[^"]+)"[^>]*\bintegrity="sha256-([^"]+)"[^>]*>/g)];
 let bad = 0;
