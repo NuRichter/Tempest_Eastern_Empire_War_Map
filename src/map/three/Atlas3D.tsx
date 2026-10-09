@@ -9,12 +9,14 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 
 import type { Dataset } from '@/data/loader';
-import { FACTION_COLOR, factionKey } from '@/lib/palette';
-import { CANVAS_H, CANVAS_W, computeField, loadFront, paintField } from '@/map/field/occupation';
+import { FACTION_COLOR } from '@/lib/palette';
+import { landMask, loadFront } from '@/map/field/occupation';
+import { getField, onField } from '@/map/field/fieldStore';
+import { createWarSkin, type WarSkin } from '@/map/three/warSkin';
 import { fieldSources } from '@/map/field/sources';
 import { activeFocus, cluster, gatherAction, Spring, useDirector, type Shot } from '@/map/cinematic/director';
 import type { Front } from '@/map/field/front';
-import { forceSnapshotAt, territoryControlAt } from '@/simulation/resolver';
+import { forceSnapshotAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
 import { prefersReducedMotion } from '@/state/preferences';
 
@@ -232,17 +234,9 @@ export function Atlas3D({ auto }: { auto: boolean }) {
     let relief: Relief | null = null;
     let lastPaint = -1;
     let front: Front | null = null;
-    const overlay = document.createElement('canvas');
-    overlay.width = 2048;
-    overlay.height = Math.round(2048 * (2035 / 2641));
-    const ovTex = new THREE.CanvasTexture(overlay);
-    ovTex.colorSpace = THREE.SRGBColorSpace;
-    ovTex.anisotropy = 8;
-    const fieldCanvas = document.createElement('canvas');
-    fieldCanvas.width = CANVAS_W;
-    fieldCanvas.height = CANVAS_H;
     let terrain: THREE.Mesh | null = null;
-    let warSkin: THREE.Mesh | null = null;
+    let warSkin: WarSkin | null = null;
+    let unsubField: (() => void) | null = null;
 
     const forces = new Map<string, ForceObj>();
     const battleFx: { group: THREE.Group; ring: THREE.Mesh; sparks: THREE.Points; light: THREE.PointLight; id: string }[] = [];
@@ -269,51 +263,21 @@ export function Atlas3D({ auto }: { auto: boolean }) {
       terrain.receiveShadow = true;
       terrain.castShadow = true;
       scene.add(terrain);
-      warSkin = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ map: ovTex, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2, fog: true, toneMapped: false }));
-      warSkin.renderOrder = 2;
-      scene.add(warSkin);
+      // The war layer is a shader fed by the field worker (see warSkin.ts): nothing is painted per frame.
+      warSkin = createWarSkin(geo, data!, landMask(data!), 0.82);
+      scene.add(warSkin.mesh);
+      const feed = () => {
+        const field = getField();
+        if (warSkin && front) warSkin.setField(front, field ? field.fields : null, field?.packed);
+      };
+      unsubField = onField(feed);
+      feed();
       buildCities();
       lastPaint = -1; // the held ground has arrived: repaint even if the clock stands still
     });
 
     function paintOverlay(T: number): void {
-      const g = overlay.getContext('2d')!;
-      const W = overlay.width, H = overlay.height;
-      g.clearRect(0, 0, W, H);
-      // Territories by their role at this moment.
-      for (const t of data!.territories) {
-        const seg = territoryControlAt(t, T).segment;
-        if (seg.role === 'UNINVOLVED') continue;
-        g.fillStyle = FACTION_COLOR[factionKey(seg.controller)];
-        g.globalAlpha = seg.role === 'BELLIGERENT' ? 0.34 : 0.2;
-        g.beginPath();
-        for (const poly of t.geometry.coordinates) for (const ring of poly) ring.forEach(([x, y], k) => (k ? g.lineTo(x * W, y * H) : g.moveTo(x * W, y * H)));
-        g.fill('evenodd');
-        g.globalAlpha = 0.7;
-        g.strokeStyle = 'rgba(30,20,10,0.55)';
-        g.lineWidth = 2;
-        g.stroke();
-      }
-      g.globalAlpha = 1;
-      if (front) {
-        const field = computeField(front, T);
-        paintField(fieldCanvas, data!, field, { empire: FACTION_COLOR.empire, allied: FACTION_COLOR.tempest }, 0.82);
-        g.drawImage(fieldCanvas, 0, 0, W, H);
-        // Fronts: a hot white core with a glow, which the bloom pass lifts.
-        const s = field.seams;
-        g.lineCap = 'round';
-        for (const [width, color, blur] of [[9, 'rgba(255,214,150,0.35)', 18], [3.2, 'rgba(255,255,255,0.95)', 6]] as const) {
-          g.strokeStyle = color;
-          g.lineWidth = width;
-          g.shadowColor = 'rgba(255,200,120,0.9)';
-          g.shadowBlur = blur;
-          g.beginPath();
-          for (let k = 0; k < s.length; k += 4) { g.moveTo(s[k] * W, s[k + 1] * H); g.lineTo(s[k + 2] * W, s[k + 3] * H); }
-          g.stroke();
-        }
-        g.shadowBlur = 0;
-      }
-      ovTex.needsUpdate = true;
+      warSkin?.updateTerritories(T);
     }
 
     function buildCities(): void {
@@ -583,6 +547,8 @@ export function Atlas3D({ auto }: { auto: boolean }) {
     return () => {
       disposed = true;
       cancelAnimationFrame(raf);
+      unsubField?.();
+      warSkin?.dispose();
       ro.disconnect();
       controls.dispose();
       scene.traverse((o) => {

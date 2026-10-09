@@ -69,6 +69,9 @@ export function resourceHeaders() {
     // No other site may embed or read any file of this one (pages, art, data, music).
     { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
     { key: 'Access-Control-Allow-Origin', value: 'https://tempestwar.vercel.app' },
+    // A worker script (the held-ground worker) needs its own COEP to start
+    // under a cross-origin-isolated page. Harmless on other files.
+    { key: 'Cross-Origin-Embedder-Policy', value: 'require-corp' },
   ];
 }
 

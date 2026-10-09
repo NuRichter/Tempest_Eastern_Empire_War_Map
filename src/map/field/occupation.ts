@@ -16,12 +16,10 @@
  */
 
 import type { Dataset } from '@/data/loader';
+import { computeFieldInto, type FieldResult } from '@/map/field/compute';
 import {
   createFields,
   decodeFront,
-  evaluateFront,
-  frontSeams,
-  heldShare,
   HOLDER_ALLIED,
   HOLDER_OWNER,
   HOLDER_EMPIRE,
@@ -42,15 +40,7 @@ const MASK_H = 2035;
 export interface FieldWindow { x0: number; y0: number; x1: number; y1: number }
 export const FULL_WINDOW: FieldWindow = { x0: 0, y0: 0, x1: 1, y1: 1 };
 
-export interface FieldResult {
-  front: Front;
-  fields: FrontFields;
-  T: number;
-  /** Front segments in simulation coordinates: x0,y0,x1,y1 repeated. */
-  seams: Float32Array;
-  /** Share of each territory held by the other side, 0..1, for the Situation panel. */
-  occupiedShare: Record<string, number>;
-}
+export type { FieldResult } from './compute';
 
 let frontPromise: Promise<Front | null> | null = null;
 
@@ -119,37 +109,22 @@ function ensureOwnerGrid(data: Dataset): Int8Array {
   return ownerGrid;
 }
 
+/** Land of the traced territories at the Base Map resolution (255 land, 0 sea), for the GPU layer. */
+export function landMask(data: Dataset): { data: Uint8Array; w: number; h: number } {
+  const owner = ensureOwnerGrid(data);
+  const out = new Uint8Array(owner.length);
+  for (let i = 0; i < owner.length; i += 1) out[i] = owner[i] >= 0 ? 255 : 0;
+  return { data: out, w: MASK_W, h: MASK_H };
+}
+
 let fieldsCache: FrontFields | null = null;
 let tmp: Float32Array | null = null;
 
-/**
- * A 3×3 box filter over a time field (rendering only; the data and the tests
- * use exact values). It rounds the cell-sized steps out of the contour so the
- * front reads as a smooth line, as in the reference maps.
- */
-function smooth(front: Front, f: Float32Array): void {
-  const { w, h } = front;
-  if (!tmp || tmp.length !== f.length) tmp = new Float32Array(f.length);
-  tmp.set(f);
-  for (let y = 1; y < h - 1; y += 1) {
-    for (let x = 1; x < w - 1; x += 1) {
-      const i = y * w + x;
-      f[i] = (tmp[i - w - 1] + tmp[i - w] + tmp[i - w + 1] + tmp[i - 1] + tmp[i] + tmp[i + 1] + tmp[i + w - 1] + tmp[i + w] + tmp[i + w + 1]) / 9;
-    }
-  }
-}
-
+/** Synchronous evaluation on the calling thread (the 3D view and the fallback). */
 export function computeField(front: Front, T: number): FieldResult {
   if (!fieldsCache || fieldsCache.E.length !== front.w * front.h) fieldsCache = createFields(front);
-  const fields = evaluateFront(front, T, fieldsCache);
-  smooth(front, fields.E);
-  smooth(front, fields.A);
-  smooth(front, fields.P);
-  smooth(front, fields.Q);
-  const share = heldShare(front, fields);
-  const occupiedShare: Record<string, number> = {};
-  for (const [id, s] of Object.entries(share)) occupiedShare[id] = Math.max(s.empire, s.allied);
-  return { front, fields, T, seams: frontSeams(front, fields), occupiedShare };
+  if (!tmp || tmp.length !== front.w * front.h) tmp = new Float32Array(front.w * front.h);
+  return computeFieldInto(front, T, fieldsCache, tmp);
 }
 
 /** Bounding box of the cells that ever change hands, in simulation coordinates. */

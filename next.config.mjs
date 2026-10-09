@@ -23,6 +23,15 @@ const nextConfig = {
   // data changes with each deploy: revalidated on every load.
   // Security headers come from src/security/policy.mjs; inline scripts are
   // pinned by hash after the build (scripts/security/harden-build.mts).
+  // PROFILE_BUILD=1 keeps function names for CPU profiling (scripts/profile-cinematic.mts). Never deployed.
+  ...(process.env.PROFILE_BUILD === '1'
+    ? {
+        webpack: (config) => {
+          config.optimization.minimize = false;
+          return config;
+        },
+      }
+    : {}),
   async headers() {
     const longLived = 'public, max-age=604800, stale-while-revalidate=86400';
     return [

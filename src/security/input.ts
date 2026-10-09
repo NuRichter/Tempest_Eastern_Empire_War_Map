@@ -11,6 +11,16 @@ export function intParam(raw: string | null, min: number, max: number): number |
   return Number.isSafeInteger(n) && n >= min && n <= max ? n : null;
 }
 
+/**
+ * A plain integer clamped into [min, max] (an old link past the end lands on
+ * the end), or null when the text is not a plain integer at all.
+ */
+export function clampedIntParam(raw: string | null, min: number, max: number): number | null {
+  if (raw === null || !/^-?\d{1,9}$/.test(raw)) return null;
+  const n = Number(raw);
+  return Number.isSafeInteger(n) ? Math.min(max, Math.max(min, n)) : null;
+}
+
 /** One of the allowed values, or null. */
 export function enumParam<T extends string>(raw: string | null, allowed: readonly T[]): T | null {
   return raw !== null && (allowed as readonly string[]).includes(raw) ? (raw as T) : null;

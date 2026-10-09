@@ -20,7 +20,7 @@ import { FilterChip } from '@/components/overlays/FilterChip';
 import { Tour } from '@/components/overlays/Tour';
 import { MusicDirector } from '@/audio/MusicDirector';
 import { AssetGuard } from '@/components/AssetGuard';
-import { enumParam, idParam, intParam } from '@/security/input';
+import { clampedIntParam, enumParam, idParam } from '@/security/input';
 
 // The three.js view loads only when someone opens it.
 const Atlas3D = dynamic(() => import('@/map/three/Atlas3D'), { ssr: false });
@@ -94,8 +94,8 @@ export function AppShell() {
     const store = useSimulation.getState();
     const N = store.data?.manifest.clock.frameCount ?? 0;
     const clock = store.data?.manifest.clock;
-    const frame = intParam(params.get('frame'), 0, Math.max(0, N - 1));
-    const day = clock ? intParam(params.get('day'), clock.firstDay, clock.firstDay + Math.ceil(N / clock.framesPerDay)) : null;
+    const frame = clampedIntParam(params.get('frame'), 0, Math.max(0, N - 1));
+    const day = clock ? clampedIntParam(params.get('day'), clock.firstDay, clock.firstDay + Math.ceil(N / clock.framesPerDay)) : null;
     for (const kind of SELECTION_KINDS) {
       const id = idParam(params.get(kind));
       if (!id) continue;

@@ -8,8 +8,11 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 
 import { atlasBounds, atlasCorners, campaignBounds, lngLatToSim, ringToLngLat, simBoundsToLngLat, simToLngLatTuple } from '@/lib/coords';
 import { controlKey, FACTION_COLOR, factionKey, INK, MAP_THEME, mix, ROLE_FILL_WEIGHT } from '@/lib/palette';
-import { CANVAS_H, CANVAS_W, computeField, FULL_WINDOW, loadFront, paintField, type FieldWindow } from '@/map/field/occupation';
-import { setField } from '@/map/field/fieldStore';
+import { CANVAS_H, CANVAS_W, computeField, FULL_WINDOW, landMask, loadFront, paintField, type FieldWindow } from '@/map/field/occupation';
+import { GpuFieldLayer, isGpuFieldSupported } from '@/map/field/gpuField';
+import { FieldWorker } from '@/map/field/fieldWorker';
+import { use3DActive } from '@/state/view3d';
+import { getField, setField } from '@/map/field/fieldStore';
 import { territoryControlAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
 import { prefersReducedMotion, usePreferences } from '@/state/preferences';
@@ -371,6 +374,8 @@ export function MapView() {
     mapRef.current = map;
     // Exposed for browser QA, which inspects the camera and style directly.
     (window as unknown as { __atlasMap?: MapLibreMap }).__atlasMap = map;
+    // QA handle: the time the held ground was last evaluated for, and whether the GPU draws it.
+    (window as unknown as { __atlasField?: () => { T: number | null; gpu: boolean } }).__atlasField = () => ({ T: getField()?.T ?? null, gpu: Boolean(gpuField.current) });
 
     map.on('load', () => {
       map.addImage('hatch-light', hatchImage('rgba(200,206,209,0.55)', null));
@@ -504,6 +509,9 @@ export function MapView() {
   /* -- synthesised occupation (RECONSTRUCTED) ----------------------- */
 
   const fieldCanvas = useRef<HTMLCanvasElement | null>(null);
+  // Held ground drawn by the GPU (src/map/field/gpuField.ts) when WebGL2 is there; the canvas path is the fallback.
+  const gpuField = useRef<GpuFieldLayer | null>(null);
+  const gpuMaskFor = useRef<unknown>(null);
   const occupationOn = layers.occupation;
 
   useEffect(() => {
@@ -521,6 +529,17 @@ export function MapView() {
         'area-fill',
       );
     }
+    if (!gpuField.current && isGpuFieldSupported(map)) {
+      try {
+        const layer = new GpuFieldLayer('occupation-gpu');
+        map.addLayer(layer, 'area-fill');
+        gpuField.current = layer;
+        map.setLayoutProperty('occupation', 'visibility', 'none');
+      } catch (e) {
+        console.warn('Held ground: GPU layer unavailable, using the canvas.', e);
+        gpuField.current = null;
+      }
+    }
   }, [ready]);
 
   // Held ground follows the continuous clock: re-evaluated on animation frames
@@ -530,13 +549,23 @@ export function MapView() {
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready || !data) return;
+    const gpu = gpuField.current;
     if (!occupationOn) {
       setField(null);
-      if (map.getLayer('occupation')) map.setLayoutProperty('occupation', 'visibility', 'none');
+      if (gpu) {
+        gpu.visible = false;
+        map.triggerRepaint();
+      } else if (map.getLayer('occupation')) map.setLayoutProperty('occupation', 'visibility', 'none');
       return;
+    }
+    if (gpu && gpuMaskFor.current !== data) {
+      const mask = landMask(data);
+      gpu.setMask(mask.data, mask.w, mask.h);
+      gpuMaskFor.current = data;
     }
     let raf = 0;
     let cancelled = false;
+    let worker: FieldWorker | null = null;
     let lastT = -1;
     let lastPaint = 0;
     let lastTheme = '';
@@ -560,7 +589,38 @@ export function MapView() {
     void loadFront().then((front) => {
       if (cancelled) return;
       if (!front) {
-        if (map.getLayer('occupation')) map.setLayoutProperty('occupation', 'visibility', 'none');
+        if (gpu) gpu.visible = false;
+        else if (map.getLayer('occupation')) map.setLayoutProperty('occupation', 'visibility', 'none');
+        return;
+      }
+      if (gpu) {
+        // GPU path: per frame only the coarse time fields are evaluated and uploaded
+        // (352 x 272); the shader paints every screen pixel. Full frame rate, no window.
+        gpu.visible = true;
+        // The evaluation runs in a worker; this thread only uploads the result.
+        worker = new FieldWorker(front, (field) => {
+          if (cancelled) return;
+          gpu.setField(front, field.fields, field.packed);
+          setField(field);
+        });
+        const gpuTick = () => {
+          raf = requestAnimationFrame(gpuTick);
+          const clock = useSimulation.getState().clock;
+          const T = clock ? clock.frame : 0;
+          const { theme, transitionBelt: belt } = usePreferences.getState();
+          if (theme + belt !== lastTheme) {
+            lastTheme = theme + belt;
+            gpu.setStyle({ empire: FACTION_COLOR.empire, allied: FACTION_COLOR.tempest, alpha: MAP_THEME[theme].occupiedAlpha, belt });
+          }
+          if (gpu.wantsRefresh) {
+            gpu.wantsRefresh = false;
+            lastT = -1;
+          }
+          if (Math.abs(T - lastT) < 0.02 && lastT >= 0) return;
+          lastT = T;
+          worker!.request(T);
+        };
+        raf = requestAnimationFrame(gpuTick);
         return;
       }
       if (map.getLayer('occupation')) map.setLayoutProperty('occupation', 'visibility', 'visible');
@@ -596,6 +656,7 @@ export function MapView() {
       cancelled = true;
       cancelAnimationFrame(raf);
       window.clearTimeout(pauseTimer);
+      worker?.dispose();
     };
   }, [data, ready, occupationOn, theme]);
 
@@ -622,9 +683,16 @@ export function MapView() {
   /* -- cinematic director -------------------------------------------- */
 
   const viewMode = useSimulation((s) => s.viewMode);
+  const active3d = use3DActive();
+  // While the 3D view covers the map, the held-ground layer stops asking the hidden map to redraw.
+  useEffect(() => {
+    if (gpuField.current) gpuField.current.suspended = active3d;
+    if (!active3d) mapRef.current?.triggerRepaint();
+  }, [active3d, ready]);
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !ready || !data || viewMode !== 'cinematic') return;
+    // The 2D director only films the 2D map: in 3D the three.js camera has its own.
+    if (!map || !ready || !data || viewMode !== 'cinematic' || active3d) return;
     let episodes: FrontEpisode[] = [];
     void loadFront().then((f) => { episodes = f?.episodes ?? []; });
     const stop = startDirector(map, {
@@ -644,7 +712,7 @@ export function MapView() {
       // Back to the reader's map: flat and facing north.
       map.easeTo({ pitch: 0, bearing: 0, duration: prefersReducedMotion() ? 0 : 900 });
     };
-  }, [viewMode, ready, data]);
+  }, [viewMode, ready, data, active3d]);
 
   /* -- camera requests ---------------------------------------------- */
 

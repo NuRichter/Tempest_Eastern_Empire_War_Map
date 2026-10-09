@@ -29,7 +29,8 @@
     "security:audit": "npm audit --omit=dev --audit-level=low",
     "security:test": "tsx scripts/security/test.mts",
     "security:browser": "tsx scripts/security/browser.mts",
-    "security:preview": "tsx scripts/security/preview.mts"
+    "security:preview": "tsx scripts/security/preview.mts",
+    "qa:profile": "tsx scripts/profile-cinematic.mts"
   },
   "dependencies": {
     "lucide-react": "^0.469.0",
