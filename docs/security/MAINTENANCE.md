@@ -39,7 +39,15 @@ npm run security:browser  # browser security tests (local build)
 npm run security:scan -- http://127.0.0.1:<port>   # with `npm start -- -p <port>` running
 ```
 
-After deploying, a passive check only (a handful of GET and HEAD requests):
+Deploy through a preview first: push a branch, wait for Vercel's preview, then
+
+```bash
+npm run security:preview -- https://<preview-deployment>.vercel.app
+```
+
+It loads the preview in a real browser (map, 3D, cinematic, console) and compares every integrity hash with the bytes Vercel serves. Merge to `main` only when it passes. If production ever breaks, roll back first (`vercel rollback <last good deployment URL>`), then investigate.
+
+After deploying, a passive check only (a handful of GET and HEAD requests, plus one GET per integrity-pinned script):
 
 ```bash
 npm run security:scan -- https://tempestwar.vercel.app

@@ -20,7 +20,7 @@
 | Request smuggling | NOT VERIFIED | Hosting infrastructure, deliberately not tested |
 | JSON validation and prototype pollution | FIXED AND VERIFIED | `security:test`: forbidden keys refused at runtime and in the build, stored settings restored by type, `Object.prototype` untouched. `security:browser`: hostile localStorage |
 | Data integrity in transit | FIXED AND VERIFIED | `security:browser`: altered dataset and locale files refused by SRI |
-| Script integrity | FIXED AND VERIFIED | `security:scan` (local): every inline script covered by a CSP hash, every script tag carries `integrity` |
+| Script integrity | FIXED AND VERIFIED | `security:scan`: every inline script covered by a CSP hash, every script tag except the host-rewritten webpack runtime carries `integrity`, and every hash matches the served bytes. `security:preview` on the Vercel preview: 6/6 |
 | Build pipeline: malformed and hostile sources | FIXED AND VERIFIED | `security:test`: malformed JSON and `__proto__` fail the compile, `public/data` untouched |
 | Build pipeline: file paths | FIXED AND VERIFIED | `security:test`: output guard refuses the repository, its parent, a drive root and an unrelated folder |
 | Error handling | FIXED AND VERIFIED | `security:browser`: error screen shows no path, stack or command |

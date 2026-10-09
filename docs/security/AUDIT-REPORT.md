@@ -42,6 +42,8 @@ Severity follows exploitability and impact in this architecture, not the advisor
 
 ## Process notes, stated plainly
 
+- **Production outage during the rollout (about 10 minutes).** The first production deployment of this hardening broke the map: Vercel appends its toolbar loader to the webpack runtime chunk while serving, so the build-time integrity hash on that file no longer matched and the browser blocked it. The preview had been checked for the presence of integrity attributes, not for matching bytes. Production was rolled back to the previous deployment, the webpack runtime was exempted from integrity (it stays under the CSP), `security:scan` now compares every published hash with the bytes served, and `security:preview` tests a preview in a real browser before promotion.
+
 - Before the audit mandate restricted production testing to passive checks, one run of the active scanner (about 100 requests with injection probes) went to production. Vercel's firewall answered with a challenge, no disruption was observed. The scanner now refuses active probes against any non-local host.
 - One local active scan went to an unrelated application that happened to listen on port 3000 on the owner's machine. No data was changed. The scanner no longer has a default target.
 
