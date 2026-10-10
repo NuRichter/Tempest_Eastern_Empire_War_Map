@@ -439,7 +439,7 @@ export function Timeline() {
             <div className="absolute -left-[5px] top-0 h-0 w-0 border-x-[5px] border-t-[6px] border-x-transparent" style={{ borderTopColor: INK.accent }} />
           </div>
           {hover ? (
-            <div className="pointer-events-none absolute bottom-full mb-1 max-w-[20rem] -translate-x-1/2 rounded-[3px] border border-ink-500 bg-ink-900/95 px-2 py-1 shadow-panel" style={{ left: Math.min(Math.max(hover.x, 120), (trackRef.current?.clientWidth ?? 600) - 120) }}>
+            <div className="pointer-events-none absolute bottom-full mb-1 max-w-[20rem] -translate-x-1/2 rounded-[3px] border border-ink-500 bg-ink-900/95 px-2 py-1 shadow-panel" style={{ left: Math.min(Math.max(hover.x, 120), (trackWidth || 600) - 120) }}>
               <p className="figure text-2xs text-fg-3">
                 {battleDayLabel(data.timeline.battleDay[hover.frame])} · {String(Math.floor(((hover.frame % fpd) * 10) / 60)).padStart(2, '0')}:{String(((hover.frame % fpd) * 10) % 60).padStart(2, '0')}
               </p>

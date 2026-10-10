@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 import { useT } from '@/i18n';
 import { battleDayLabel } from '@/lib/format';
@@ -25,7 +25,9 @@ export function CineIntro({ onDone }: { onDone: () => void }) {
   const t = useT();
   const [step, setStep] = useState(0);
   const done = useRef(onDone);
-  done.current = onDone;
+  useLayoutEffect(() => {
+    done.current = onDone;
+  });
   const reduce = useMemo(() => prefersReducedMotion(), []);
   // Drifting motes of light behind the titles (fixed per mount, no re-render cost).
   const motes = useMemo(
@@ -124,7 +126,9 @@ export function EventStack({ hidden }: { hidden: boolean }) {
   const prevFrame = useRef<number | null>(null);
   const seq = useRef(0);
   const playingRef = useRef(playing);
-  playingRef.current = playing;
+  useLayoutEffect(() => {
+    playingRef.current = playing;
+  });
 
   // New events crossed by the playhead join the queue. Jumps reset it.
   useEffect(() => {

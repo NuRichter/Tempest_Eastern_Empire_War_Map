@@ -76,11 +76,18 @@ export function CommandPalette() {
 
   const index = useMemo(() => (data ? buildIndex(data) : []), [data]);
 
+  // Opening starts a fresh search (adjusted during render, not in an effect).
+  const [wasOpen, setWasOpen] = useState(open);
+  if (open !== wasOpen) {
+    setWasOpen(open);
+    if (open) {
+      setQuery('');
+      setCursor(0);
+    }
+  }
   useEffect(() => {
     if (open) {
       restoreFocus.current = document.activeElement as HTMLElement | null;
-      setQuery('');
-      setCursor(0);
       window.setTimeout(() => inputRef.current?.focus(), 0);
     } else restoreFocus.current?.focus?.();
   }, [open]);
@@ -125,7 +132,6 @@ export function CommandPalette() {
     }
   };
 
-  let lastGroup = '';
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center bg-ink-950/70 px-3 pt-[10vh]" onMouseDown={() => setOpen(false)} role="presentation">
       <div className="surface w-full max-w-[40rem] overflow-hidden rounded-[5px]" onMouseDown={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label={t('Search and commands')}>
@@ -159,8 +165,7 @@ export function CommandPalette() {
         ) : (
           <ul ref={listRef} id="palette-results" role="listbox" className="max-h-[56vh] overflow-y-auto py-1">
             {rows.map((row, i) => {
-              const header = row.group !== lastGroup;
-              lastGroup = row.group;
+              const header = i === 0 || row.group !== rows[i - 1].group;
               return (
                 <li key={row.key + i} role="presentation">
                   {header ? <p className="eyebrow px-3 pb-1 pt-2">{t(row.group)}</p> : null}

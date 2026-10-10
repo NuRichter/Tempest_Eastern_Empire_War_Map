@@ -23,7 +23,8 @@ const nextConfig = {
   // data changes with each deploy: revalidated on every load.
   // Security headers come from src/security/policy.mjs; inline scripts are
   // pinned by hash after the build (scripts/security/harden-build.mts).
-  // PROFILE_BUILD=1 keeps function names for CPU profiling (scripts/profile-cinematic.mts). Never deployed.
+  // PROFILE_BUILD=1 keeps function names for CPU profiling (scripts/profile-cinematic.mts), with
+  // `next build --webpack` (a webpack hook; Next 16 builds with Turbopack otherwise). Never deployed.
   ...(process.env.PROFILE_BUILD === '1'
     ? {
         webpack: (config) => {

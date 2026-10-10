@@ -5,7 +5,7 @@ How the atlas stays smooth in the film, in 2D and in 3D. Measured, not assumed:
 and records a V8 CPU profile plus frame timings.
 
 ```bash
-PROFILE_BUILD=1 npx next build && npx tsx scripts/security/harden-build.mts   # keeps function names
+PROFILE_BUILD=1 npx next build --webpack && npx tsx scripts/security/harden-build.mts   # keeps function names
 PROFILE_GPU=1 npx tsx scripts/profile-cinematic.mts 2d 12                     # or 3d, on the real GPU
 ```
 
@@ -127,3 +127,14 @@ architecture (shapes and text drawn on the CPU every frame while the camera
 moves) and MapLibre's fixed per-frame work. Moving the overlay to the GPU is
 the next large step.
 
+## Next 16 and how to measure fairly
+
+The upgrade to Next 16 (Turbopack builds, about 21 s instead of about 2 min)
+was first judged a regression and then measured again: the first browser run
+after a build is slow (cold JIT, shader and disk caches), and a busy machine
+(other browser windows) shifts absolute numbers a lot. Compare builds back to
+back in one session and judge warm runs only. Under equal conditions, with the
+CPU 2x slower: 2D 118 to 119 fps on Next 15 and 121 to 127 fps on Next 16, 3D
+170 and 219 to 220 fps. QA, visual, security and governor results are the same.
+Profiling builds now need `next build --webpack` (the function-name hook is a
+webpack setting).

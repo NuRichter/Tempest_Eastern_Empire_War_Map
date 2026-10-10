@@ -69,6 +69,7 @@ function autoPace(data: NonNullable<ReturnType<typeof useSimulation.getState>['d
  * (with the camera pushed in on the place), and a film-strip progress bar.
  * Narration is the dataset's own wording.
  */
+
 export function CinematicOverlay() {
   const viewMode = useSimulation((s) => s.viewMode);
   const data = useSimulation((s) => s.data);
@@ -85,6 +86,8 @@ export function CinematicOverlay() {
   const [intro, setIntro] = useState(true);
   const [moment, setMoment] = useState<{ e: WarEvent; key: number } | null>(null);
   const momentQueue = useRef<WarEvent[]>([]);
+  // Keys for the turning-point card, so each moment replays its animation.
+  const momentSeq = useRef(0);
   const momentTimer = useRef(0);
   const momentFrame = useRef<number | null>(null);
   const [cold, setCold] = useState<number | null>(null);
@@ -112,30 +115,27 @@ export function CinematicOverlay() {
   const splashTimer = useRef(0);
   useEffect(() => () => { window.clearTimeout(chapterTimer.current); window.clearTimeout(splashTimer.current); }, []);
 
-  // Entering: the opening title. Leaving: reset the story beats.
+  // Entering: the clock pauses for the opening titles. Leaving: the camera focus is
+  // released. (Story state starts fresh because AppShell remounts this per mode.)
   useEffect(() => {
-    if (cinematic) {
-      setIntro(true);
-      lastStage.current = null;
-      liveBattles.current = new Set();
-      const s = useSimulation.getState();
-      if (s.playing) s.toggle();
-    } else {
-      setChapter(null);
-      setSplash(null);
-      setMoment(null);
-      setCold(null);
-      momentQueue.current = [];
-      window.clearTimeout(momentTimer.current);
+    if (!cinematic) return;
+    const s = useSimulation.getState();
+    if (s.playing) s.toggle();
+    const queue = momentQueue;
+    const timer = momentTimer;
+    return () => {
+      queue.current = [];
+      window.clearTimeout(timer.current);
       useDirector.setState({ focus: null });
-    }
+    };
   }, [cinematic]);
 
   // Turning points: a full-screen impact, one after another, the camera sent to the place.
   useEffect(() => () => window.clearTimeout(momentTimer.current), []);
   const showMoment = (e: WarEvent) => {
     if (!data) return;
-    setMoment({ e, key: e.frame * 1000 + Math.random() });
+    momentSeq.current += 1;
+    setMoment({ e, key: momentSeq.current });
     focusOn(data, e.placeId, MOMENT_MS + 1300);
     window.clearTimeout(momentTimer.current);
     momentTimer.current = window.setTimeout(() => {
@@ -199,8 +199,8 @@ export function CinematicOverlay() {
   useEffect(() => () => window.clearTimeout(coldTimer.current), []);
   useEffect(() => {
     if (cold === null) return;
-    if (cold >= 4) { setCold(null); return; }
-    coldTimer.current = window.setTimeout(() => setCold((c) => (c === null ? null : c + 1)), 2600);
+    // Four lines, then the film: the last step clears the cold open.
+    coldTimer.current = window.setTimeout(() => setCold((c) => (c === null || c + 1 >= 4 ? null : c + 1)), 2600);
   }, [cold]);
 
   const stageTicks = useMemo(() => {
