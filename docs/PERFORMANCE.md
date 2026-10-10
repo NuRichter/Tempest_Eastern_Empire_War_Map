@@ -74,3 +74,38 @@ emulated drawing that says nothing about the app.
 `npm run qa:visual` compares ten checkpoint frames with the images made by the
 CPU painter: all within tolerance. The 2D seams are still drawn by the overlay
 from the worker's contour. The 3D front glow is now traced in the shader.
+
+## Phase 2: weaker machines
+
+Measured with the CPU slowed down (`PROFILE_CPU_SLOWDOWN=2` is close to a
+mid-range laptop, `4` to an old low-end one) and a Chrome trace of the
+renderer main thread (`npm run qa:trace -- 2d 6 4`).
+
+- **Timeline:** the canvas (stages, lanes, battles, event ticks, marks) was
+  redrawn on every frame, with `getComputedStyle` and `clientWidth` forcing
+  style and layout each time. It is now drawn only when what it shows changes;
+  the width comes from a `ResizeObserver`; the playhead is its own element,
+  moved by a transform (compositor only).
+- **Overlay:** fonts and size are read once (refreshed on font load and
+  resize) instead of per frame, and text widths are cached (`textWidth` in
+  `src/map/overlay/context.ts`).
+- **Adaptive graphics quality** (`src/perf/quality.ts`): the frame times the
+  browser achieves pick the level. High: device pixel ratio up to 2, 4-sample
+  edges, 3D bloom. Medium: pixel ratio up to 1.5. Low: pixel ratio 1, 1 sample,
+  no bloom. Down after 2 s of slow frames, up after 8 s of fast ones, a failed
+  level is not retried for a minute, the first 6 s of loading are not judged.
+  The reader can pin a level (Layers, Graphics quality). `npm run qa:governor`
+  checks that it steps down under load, that a pinned level is kept, and that
+  the low level is measurably faster (67% in its software-GL test).
+
+| Cinematic, real GPU, CPU slowed | Before phase 2 | After |
+|---|---|---|
+| 2D, CPU 4x slower | 9.5 fps | 10.5 to 11 fps |
+| 2D, CPU 2x slower | | 38.4 fps |
+| 3D, CPU 2x slower | | 57.5 fps |
+| 3D, CPU 4x slower | | 18.5 fps |
+
+What remains in 2D on slow CPUs is MapLibre's own per-frame work while the
+camera moves (draw calls per layer and tile) and the overlay canvas. The next
+step there would be fewer, merged map layers in cinematic mode and the overlay
+on the GPU.
