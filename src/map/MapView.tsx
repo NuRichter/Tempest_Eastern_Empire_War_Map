@@ -322,11 +322,18 @@ function areaFeatures(data: Dataset, state: FrameState | null): GeoJSON.FeatureC
 
 /* ------------------------------------------------------------------ */
 
+/** Held ground drawn by the GPU (src/map/field/gpuField.ts), one layer per map, when WebGL2 is there; the canvas path is the fallback. */
+const gpuLayers = new WeakMap<MapLibreMap, GpuFieldLayer>();
+
 export function MapView() {
+  // An imperative bridge to MapLibre (refs, mutable layers, events): kept out of the React Compiler.
+  'use no memo';
   const t = useT();
   const container = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const [ready, setReady] = useState(false);
+  // The map handed to children: state, so render never reads the ref.
+  const [mapInstance, setMapInstance] = useState<MapLibreMap | null>(null);
   const [failure, setFailure] = useState<string | null>(null);
 
   const data = useSimulation((s) => s.data);
@@ -363,6 +370,8 @@ export function MapView() {
         cooperativeGestures: false,
       });
     } catch (error) {
+      // MapLibre (an external system) failed to start: report it.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFailure(error instanceof Error ? error.message : translate('The map could not start.'));
       return;
     }
@@ -374,7 +383,7 @@ export function MapView() {
     // Exposed for browser QA, which inspects the camera and style directly.
     (window as unknown as { __atlasMap?: MapLibreMap }).__atlasMap = map;
     // QA handle: the time the held ground was last evaluated for, and whether the GPU draws it.
-    (window as unknown as { __atlasField?: () => { T: number | null; gpu: boolean; worker: boolean } }).__atlasField = () => ({ T: getField()?.T ?? null, gpu: Boolean(gpuField.current), worker: fieldWorkerRef.current?.workerAnswered ?? false });
+    (window as unknown as { __atlasField?: () => { T: number | null; gpu: boolean; worker: boolean } }).__atlasField = () => ({ T: getField()?.T ?? null, gpu: Boolean(gpuLayers.get(map)), worker: fieldWorkerRef.current?.workerAnswered ?? false });
 
     map.on('load', () => {
       map.addImage('hatch-light', hatchImage('rgba(200,206,209,0.55)', null));
@@ -388,6 +397,7 @@ export function MapView() {
       });
       const grid = map.getSource('grid');
       if (grid && 'setData' in grid) (grid as maplibregl.GeoJSONSource).setData(gridFeatures());
+      setMapInstance(map);
       setReady(true);
     });
     map.on('error', (event) => {
@@ -442,6 +452,7 @@ export function MapView() {
       map.setProjection({ type: globe ? 'globe' : 'mercator' });
       map.setMaxBounds(globe ? null : (padBounds(atlasBounds(), 0.15) as maplibregl.LngLatBoundsLike));
     } catch {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- MapLibre refused the projection
       setFailure(null);
     }
   }, [globe, ready]);
@@ -512,8 +523,6 @@ export function MapView() {
   /* -- synthesised occupation (RECONSTRUCTED) ----------------------- */
 
   const fieldCanvas = useRef<HTMLCanvasElement | null>(null);
-  // Held ground drawn by the GPU (src/map/field/gpuField.ts) when WebGL2 is there; the canvas path is the fallback.
-  const gpuField = useRef<GpuFieldLayer | null>(null);
   const gpuMaskFor = useRef<unknown>(null);
   const fieldWorkerRef = useRef<FieldWorker | null>(null);
   const occupationOn = layers.occupation;
@@ -533,15 +542,14 @@ export function MapView() {
         'area-fill',
       );
     }
-    if (!gpuField.current && isGpuFieldSupported(map)) {
+    if (!gpuLayers.has(map) && isGpuFieldSupported(map)) {
       try {
         const layer = new GpuFieldLayer('occupation-gpu');
         map.addLayer(layer, 'area-fill');
-        gpuField.current = layer;
+        gpuLayers.set(map, layer);
         map.setLayoutProperty('occupation', 'visibility', 'none');
       } catch (e) {
         console.warn('Held ground: GPU layer unavailable, using the canvas.', e);
-        gpuField.current = null;
       }
     }
   }, [ready]);
@@ -553,7 +561,7 @@ export function MapView() {
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready || !data) return;
-    const gpu = gpuField.current;
+    const gpu = gpuLayers.get(map) ?? null;
     if (!occupationOn) {
       setField(null);
       if (gpu) {
@@ -695,12 +703,15 @@ export function MapView() {
     if (!map || !ready) return;
     const pr = pixelRatioFor(quality);
     if (Math.abs(map.getPixelRatio() - pr) > 0.01) map.setPixelRatio(pr);
-    gpuField.current?.setSamples(samplesFor(quality));
+    gpuLayers.get(map)?.setSamples(samplesFor(quality));
   }, [quality, ready]);
   // While the 3D view covers the map, the held-ground layer stops asking the hidden map to redraw.
   useEffect(() => {
-    if (gpuField.current) gpuField.current.suspended = active3d;
-    if (!active3d) mapRef.current?.triggerRepaint();
+    const map = mapRef.current;
+    if (!map) return;
+    const gpu = gpuLayers.get(map);
+    if (gpu) gpu.suspended = active3d;
+    if (!active3d) map.triggerRepaint();
   }, [active3d, ready]);
   useEffect(() => {
     const map = mapRef.current;
@@ -800,9 +811,9 @@ export function MapView() {
     <div className="absolute inset-0" dir="ltr" data-tour="map" role="region" aria-label={t('Campaign map')}>
       {/* MapLibre's stylesheet sets position:relative on the container; the inline style is the only declaration it cannot outrank. */}
       <div ref={container} style={{ position: 'absolute', inset: 0 }} />
-      {ready ? <Overlay map={mapRef.current} /> : null}
-      <MapControls map={mapRef.current} ready={ready} />
-      {ready ? <Minimap map={mapRef.current} /> : null}
+      {ready ? <Overlay map={mapInstance} /> : null}
+      <MapControls map={mapInstance} ready={ready} />
+      {ready ? <Minimap map={mapInstance} /> : null}
     </div>
   );
 }

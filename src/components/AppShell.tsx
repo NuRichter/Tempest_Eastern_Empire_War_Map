@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useSyncExternalStore } from 'react';
 
 import { loadDataset } from '@/data/loader';
 import { syncLocale, useT } from '@/i18n';
@@ -34,6 +34,8 @@ const MapView = dynamic(() => import('@/map/MapView').then((m) => m.MapView), {
 
 const SELECTION_KINDS = ['event', 'battle', 'force', 'character', 'territory', 'theatre', 'nation', 'movement'] as const;
 
+const noopSubscribe = () => () => {};
+
 export function AppShell() {
   const status = useSimulation((s) => s.status);
   const error = useSimulation((s) => s.error);
@@ -46,7 +48,8 @@ export function AppShell() {
   const view3d = usePreferences((s) => s.view3d);
   const cinema3d = usePreferences((s) => s.cinema3d);
   const t = useT();
-  const [hydrated, setHydrated] = useState(false);
+  // True after hydration, false on the server render: no state set in an effect.
+  const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false);
   const started = useRef(false);
 
   /* -- language and appearance -------------------------------------- */
@@ -69,7 +72,6 @@ export function AppShell() {
   /* -- load ---------------------------------------------------------- */
 
   useEffect(() => {
-    setHydrated(true);
     if (started.current) return;
     started.current = true;
     const controller = new AbortController();
@@ -329,7 +331,8 @@ export function AppShell() {
             <FilterChip />
           </>
         )}
-        <CinematicOverlay />
+        {/* A fresh film each time cinematic mode opens: its state starts from scratch. */}
+        <CinematicOverlay key={cinematic ? 'film' : 'atlas'} />
       </div>
       <Timeline />
       <CommandPalette />

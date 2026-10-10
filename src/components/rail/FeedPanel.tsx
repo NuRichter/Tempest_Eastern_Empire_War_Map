@@ -38,7 +38,6 @@ export function FeedPanel() {
   }, [currentId]);
 
   if (!data) return null;
-  let lastDay: number | null = null;
 
   return (
     <div className="flex h-full flex-col">
@@ -79,9 +78,8 @@ export function FeedPanel() {
         {t('{shown} of {total} events · click to move the map and timeline there', { shown: visible.length, total: data.events.length })}
       </p>
       <ol ref={listRef} className="min-h-0 flex-1 overflow-y-auto pb-3" aria-label={t('Campaign events')}>
-        {visible.map((e) => {
-          const header = e.battleDay !== lastDay;
-          lastDay = e.battleDay;
+        {visible.map((e, i) => {
+          const header = i === 0 || e.battleDay !== visible[i - 1].battleDay;
           const past = e.frame <= frame;
           const current = e.id === currentId;
           const selected = selection.kind === 'event' && selection.id === e.id;

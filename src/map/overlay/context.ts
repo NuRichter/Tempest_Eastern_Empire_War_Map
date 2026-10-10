@@ -136,27 +136,29 @@ export function trimTo(ctx: CanvasRenderingContext2D, text: string, maxWidth: nu
  * same labels every frame, and measuring text is not free.
  */
 const widthCache = new Map<string, Map<string, number>>();
-let cachedTexts = 0;
+/** Per font. Past it, the oldest quarter goes (Map keeps insertion order): no full flush when labels churn. */
+const PER_FONT = 1500;
 export function textWidth(ctx: CanvasRenderingContext2D, text: string): number {
   // Keyed by font (letter spacing included, the geography labels set it), then text.
   const spacing = (ctx as CanvasRenderingContext2D & { letterSpacing?: string }).letterSpacing;
   const font = spacing && spacing !== '0px' ? `${ctx.font}|${spacing}` : ctx.font;
   let byText = widthCache.get(font);
   if (!byText) {
+    if (widthCache.size > 64) widthCache.clear();
     byText = new Map();
     widthCache.set(font, byText);
   }
   let w = byText.get(text);
   if (w === undefined) {
-    if (cachedTexts > 4000) {
-      widthCache.clear();
-      cachedTexts = 0;
-      byText = new Map();
-      widthCache.set(font, byText);
+    if (byText.size >= PER_FONT) {
+      let drop = PER_FONT >> 2;
+      for (const k of byText.keys()) {
+        byText.delete(k);
+        if (--drop === 0) break;
+      }
     }
     w = ctx.measureText(text).width;
     byText.set(text, w);
-    cachedTexts += 1;
   }
   return w;
 }

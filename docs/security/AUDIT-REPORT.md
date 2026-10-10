@@ -23,7 +23,7 @@ Severity follows exploitability and impact in this architecture, not the advisor
 | ID | Severity | Component | Finding | Remediation | Regression test | Status |
 |---|---|---|---|---|---|---|
 | SEC-01 | Medium (advisory: Critical) | `maplibre-gl` 5.24.0 | GHSA-jrc7-96c5-q579, sanitizer bypass in `DOM.sanitize()`. No 5.x fix. Reached only through `Popup.setHTML` and attribution HTML, neither used (`attributionControl: false`) | Upgrade to 6.13 tried and rolled back (its module worker does not load under the Next build). Kept 5.24 with compensating controls: lint rule bans `setHTML`, `customAttribution` and `Popup`, Trusted Types refuse any HTML string at the DOM sink | `security:lint` rule `maplibre-html`, browser test "Trusted Types refuse an innerHTML string" | ACCEPTED RISK |
-| SEC-02 | Medium | `next` 15.5.25 | Advisories for SSG/ISR cache poisoning (self-hosted) | Patch release 15.5.27 | `security:audit` | FIXED AND VERIFIED |
+| SEC-02 | Medium | `next` 15.5.25 | Advisories for SSG/ISR cache poisoning (self-hosted) | Patch release 15.5.27, later Next 16.4.0 | `security:audit` | FIXED AND VERIFIED |
 | SEC-03 | Medium | `postcss` bundled in `next` | Advisories (stringify XSS, file read), build-time | `overrides` to 8.5.29 | `security:audit` | FIXED AND VERIFIED |
 | SEC-04 | Medium | `sharp`, `source-map-js` | Advisories (librsvg CVE, DoS), build-time | `npm audit fix` (compatible versions) | `security:audit` | FIXED AND VERIFIED |
 | SEC-05 | Low | `braces`, `postcss-selector-parser` (Tailwind 3, dev only) | Advisories, no fixed `braces` release | None possible without replacing Tailwind 3. Only processes the project's own config at build time | `npm audit` (full) lists them | ACCEPTED RISK |

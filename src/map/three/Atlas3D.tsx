@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
@@ -151,7 +151,9 @@ interface ForceObj { group: THREE.Group; pillar: THREE.Mesh; label: THREE.Sprite
 export function Atlas3D({ auto }: { auto: boolean }) {
   const host = useRef<HTMLDivElement>(null);
   const autoRef = useRef(auto);
-  autoRef.current = auto;
+  useLayoutEffect(() => {
+    autoRef.current = auto;
+  });
 
   useEffect(() => {
     const el = host.current;

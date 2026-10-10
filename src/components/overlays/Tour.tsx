@@ -160,6 +160,8 @@ export function Tour() {
 
   useLayoutEffect(() => {
     if (!open) return;
+    // Measuring the layout before paint is what useLayoutEffect is for.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     measure();
     window.addEventListener('resize', measure);
     const id = window.setInterval(measure, 400); // panels, the map and the clock move under the spotlight
