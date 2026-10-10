@@ -82,9 +82,9 @@ try {
   check('cinematic mode opens with its intro', Boolean(await page.evaluate("Boolean(document.querySelector('.cine-intro'))")));
   // On preview deployments Vercel appends its toolbar loader (a script from vercel.live) for every
   // visitor. The Trusted Types policy refusing it is the protection working, not a fault.
-  const toolbarBlocked = errors.filter((e) => /Trusted Types: script URL from another origin refused/.test(e));
+  const toolbarBlocked = errors.filter((e) => /Trusted Types: script URL from another origin refused|vercel\.live/.test(e));
   const other = errors.filter((e) => !toolbarBlocked.includes(e));
-  if (toolbarBlocked.length) console.log(`        note: ${toolbarBlocked.length} foreign script URL refused by Trusted Types (Vercel preview toolbar)`);
+  if (toolbarBlocked.length) console.log(`        note: ${toolbarBlocked.length} refusal(s) of the Vercel preview toolbar (CSP)`);
   check('no console errors (other than the refused preview toolbar)', other.length === 0, other.slice(0, 2).join(' | ').slice(0, 300));
 } finally {
   await browser.close();

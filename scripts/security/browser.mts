@@ -185,6 +185,17 @@ try {
     check('Trusted Types refuse an innerHTML string', !r.innerHTML);
     check('Trusted Types refuse an injected inline script', !r.inline);
     check('Trusted Types refuse a script from another origin', !r.foreignSrc);
+    // The hosting toolbar's URL passes Trusted Types (so its module cannot crash the app),
+    // and the CSP must still refuse to fetch it: not one request may leave for vercel.live.
+    const toolbarRequests: string[] = [];
+    // A request the CSP blocks is reported, then fails without a response: only responses mean it went out.
+    page.on('response', (q) => { if (q.url().startsWith('https://vercel.live')) toolbarRequests.push(q.url()); });
+    const toolbar = (await page.evaluate(`(async () => {
+      try { const s = document.createElement('script'); s.src = 'https://vercel.live/_next-live/feedback/feedback.js'; document.head.append(s); } catch (e) { return 'threw'; }
+      await new Promise((res) => setTimeout(res, 800));
+      return typeof window.__vercelToolbar;
+    })()`)) as string;
+    check('the hosting toolbar loader neither crashes the app nor loads (CSP)', toolbar !== 'threw' && toolbarRequests.length === 0, `result=${toolbar} responses=${toolbarRequests.length}`);
     check('Trusted Types refuse insertAdjacentHTML', !r.insertHTML);
     check('no injected code ran', !r.ran);
     await page.close();
