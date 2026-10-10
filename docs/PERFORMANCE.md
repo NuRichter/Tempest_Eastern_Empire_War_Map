@@ -109,3 +109,21 @@ What remains in 2D on slow CPUs is MapLibre's own per-frame work while the
 camera moves (draw calls per layer and tile) and the overlay canvas. The next
 step there would be fewer, merged map layers in cinematic mode and the overlay
 on the GPU.
+
+## Phase 3: fewer React renders, cheaper overlay
+
+- The map view computed two keys (territory control, theatre state) from the
+  clock in its render, so the whole map subtree (overlay, controls, minimap)
+  re-rendered on every frame. The keys are now computed inside the store
+  selectors: it re-renders only when one of them changes.
+- Settlement badges are pre-rendered once per kind, size and pixel ratio and
+  stamped with `drawImage`; their order and anchors are worked out once per
+  dataset (no per-frame sort or array spread).
+- Text widths: a two-level cache (font, then text), no string building per call.
+
+2D cinematic with the CPU 2x slower: 38.4 to 40.6 to 42.7 fps (p50 29 to
+21 to 25 ms). The remaining cost in 2D on slow CPUs is the canvas overlay as an
+architecture (shapes and text drawn on the CPU every frame while the camera
+moves) and MapLibre's fixed per-frame work. Moving the overlay to the GPU is
+the next large step.
+

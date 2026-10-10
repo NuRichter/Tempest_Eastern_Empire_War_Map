@@ -330,8 +330,6 @@ export function MapView() {
   const [failure, setFailure] = useState<string | null>(null);
 
   const data = useSimulation((s) => s.data);
-  const frame = useSimulation((s) => s.frame);
-  const state = useSimulation((s) => s.state);
   const camera = useSimulation((s) => s.camera);
   const selection = useSimulation((s) => s.selection);
 
@@ -462,16 +460,20 @@ export function MapView() {
   // Re-tiling GeoJSON is the most expensive thing the map does, so the sources
   // are only updated when what they draw actually changes: a control segment,
   // a step of a transition, the selection, or the opacity.
-  const territoryKey = data
-    ? data.territories
-        .map((t) => {
-          const c = territoryControlAt(t, frame);
-          return `${t.control.indexOf(c.segment)}:${Math.round(c.transition * 12)}`;
-        })
-        .join('|')
-    : '';
+  // The keys are computed inside the store selectors: the map view re-renders
+  // only when one of them changes, not on every frame of the clock.
+  const territoryKey = useSimulation((s) =>
+    s.data
+      ? s.data.territories
+          .map((t) => {
+            const c = territoryControlAt(t, s.frame);
+            return `${t.control.indexOf(c.segment)}:${Math.round(c.transition * 12)}`;
+          })
+          .join('|')
+      : '',
+  );
   const territoryFilterKey = useSimulation((s) => `${s.filters.hiddenNations.join(',')}|${s.filters.hiddenTerritories.join(',')}`);
-  const areaKey = state ? data?.theatres.map((t) => `${state.theatres[t.id]?.status}:${state.theatres[t.id]?.control}`).join('|') ?? '' : '';
+  const areaKey = useSimulation((s) => (s.state && s.data ? s.data.theatres.map((t) => `${s.state!.theatres[t.id]?.status}:${s.state!.theatres[t.id]?.control}`).join('|') : ''));
 
   useEffect(() => {
     const map = mapRef.current;

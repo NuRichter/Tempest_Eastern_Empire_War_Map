@@ -61,44 +61,87 @@ function tower(ctx: CanvasRenderingContext2D, x: number, y: number, s: number): 
   for (const dx of [-w / 2, -w / 12, w / 3]) ctx.fillRect(x + dx, y - s * 0.7, w / 6, s * 0.4);
 }
 
+/** The badge (shape, ring, glyph) drawn at the origin, radius r. */
+function badge(ctx: CanvasRenderingContext2D, kind: Settlement['kind'], r: number): void {
+  const c = BADGE[kind];
+  ctx.beginPath();
+  if (kind === 'labyrinth') {
+    for (let k = 0; k < 8; k += 1) {
+      const a = Math.PI / 8 + (k * Math.PI) / 4;
+      const px = Math.cos(a) * r * 1.08;
+      const py = Math.sin(a) * r * 1.08;
+      if (k) ctx.lineTo(px, py);
+      else ctx.moveTo(px, py);
+    }
+    ctx.closePath();
+  } else ctx.arc(0, 0, r, 0, Math.PI * 2);
+  ctx.fillStyle = c.fill;
+  ctx.fill();
+  ctx.lineWidth = 1.5;
+  ctx.strokeStyle = c.ring;
+  ctx.stroke();
+  ctx.fillStyle = c.glyph;
+  ctx.strokeStyle = c.glyph;
+  if (kind === 'capital') crown(ctx, 0, r * 0.05, r * 0.55);
+  else if (kind === 'labyrinth') maze(ctx, 0, 0, r * 0.55);
+  else tower(ctx, 0, r * 0.1, r * 0.6);
+}
+
+/**
+ * Badges are pre-rendered once per kind, radius and pixel ratio, then stamped
+ * with drawImage: the overlay redraws every frame of the film, the badges never
+ * change.
+ */
+const sprites = new Map<string, HTMLCanvasElement>();
+function badgeSprite(kind: Settlement['kind'], r: number, dpr: number): HTMLCanvasElement {
+  const key = `${kind}:${r}:${dpr}`;
+  let c = sprites.get(key);
+  if (!c) {
+    const half = Math.ceil(r * 1.08 + 2);
+    c = document.createElement('canvas');
+    c.width = c.height = Math.ceil(half * 2 * dpr);
+    const g = c.getContext('2d')!;
+    g.setTransform(dpr, 0, 0, dpr, half * dpr, half * dpr);
+    badge(g, kind, r);
+    if (sprites.size > 64) sprites.clear();
+    sprites.set(key, c);
+  }
+  return c;
+}
+
+const ORDER: Settlement['kind'][] = ['labyrinth', 'capital', 'city'];
+/** Draw order and badge anchor per settlement, worked out once per dataset. */
+const prepared = new WeakMap<Settlement[], { s: Settlement; ax: number; ay: number }[]>();
+function prepare(list: Settlement[]) {
+  let out = prepared.get(list);
+  if (!out) {
+    out = [...list]
+      .sort((a, b) => ORDER.indexOf(a.kind) - ORDER.indexOf(b.kind))
+      .map((s) => {
+        // The Labyrinth's door is where the D+10 battle is fought: its badge sits
+        // at the top of the outline so the battle marker does not cover it.
+        let top = Infinity;
+        for (const q of s.ring) if (q[1] < top) top = q[1];
+        return { s, ax: s.x, ay: s.kind === 'labyrinth' ? s.y - (s.y - top) * 0.62 : s.y };
+      });
+    prepared.set(list, out);
+  }
+  return out;
+}
+
 export function drawSettlements(dc: DrawContext): void {
   if (!dc.prefs.layers.settlements) return;
   const { ctx, zoom, labels, labelScale, markerScale } = dc;
-  const order: Settlement['kind'][] = ['labyrinth', 'capital', 'city'];
-  const items = [...dc.data.settlements].sort((a, b) => order.indexOf(a.kind) - order.indexOf(b.kind));
-  for (const s of items) {
+  const dpr = ctx.getTransform().a || 1;
+  for (const { s, ax, ay } of prepare(dc.data.settlements)) {
     if (s.kind === 'city' && zoom < 3) continue;
-    // The Labyrinth's door is where the D+10 battle is fought: its badge sits
-    // at the top of the outline so the battle marker does not cover it.
-    const top = Math.min(...s.ring.map((q) => q[1]));
-    const p = dc.project(s.x, s.kind === 'labyrinth' ? s.y - (s.y - top) * 0.62 : s.y);
+    const p = dc.project(ax, ay);
     if (!dc.onScreen(p, 20)) continue;
     const r = Math.round((s.kind === 'city' ? 7 : 9) * markerScale * Math.min(1.25, 0.8 + zoom * 0.08));
     if (!labels.place(p.sx - r, p.sy - r, r * 2, r * 2)) continue;
-    const c = BADGE[s.kind];
-    ctx.save();
-    ctx.beginPath();
-    if (s.kind === 'labyrinth') {
-      for (let k = 0; k < 8; k += 1) {
-        const a = Math.PI / 8 + (k * Math.PI) / 4;
-        const px = p.sx + Math.cos(a) * r * 1.08;
-        const py = p.sy + Math.sin(a) * r * 1.08;
-        if (k) ctx.lineTo(px, py);
-        else ctx.moveTo(px, py);
-      }
-      ctx.closePath();
-    } else ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
-    ctx.fillStyle = c.fill;
-    ctx.fill();
-    ctx.lineWidth = 1.5;
-    ctx.strokeStyle = c.ring;
-    ctx.stroke();
-    ctx.fillStyle = c.glyph;
-    ctx.strokeStyle = c.glyph;
-    if (s.kind === 'capital') crown(ctx, p.sx, p.sy + r * 0.05, r * 0.55);
-    else if (s.kind === 'labyrinth') maze(ctx, p.sx, p.sy, r * 0.55);
-    else tower(ctx, p.sx, p.sy + r * 0.1, r * 0.6);
-    ctx.restore();
+    const sprite = badgeSprite(s.kind, r, dpr);
+    const half = sprite.width / dpr / 2;
+    ctx.drawImage(sprite, p.sx - half, p.sy - half, half * 2, half * 2);
 
     // Names: capitals and the Labyrinth from mid zoom, cities when close.
     if (dc.prefs.layers.labels && (zoom >= (s.kind === 'city' ? 4 : 3.1))) {
