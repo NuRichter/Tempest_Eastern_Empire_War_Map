@@ -64,7 +64,13 @@ for (const file of htmlFiles) {
     hashes.add(`'sha256-${createHash('sha256').update(m[2], 'utf8').digest('base64')}'`);
   }
 }
-if (!pages) throw new Error('harden-build: no prerendered pages found in .next/server/app');
+if (!pages) {
+  // Say where the build did put its pages and manifests, so a change of layout is quick to follow.
+  const found = [...walk(NEXT)].filter((f) => /\.html$|routes-manifest\.json$|prerender-manifest\.json$/.test(f)).slice(0, 40);
+  console.error(`harden-build: no prerendered pages in .next/server/app. Found:\n${found.join('\n') || '(nothing)'}`);
+  console.error(`env: VERCEL=${process.env.VERCEL ?? ''} NEXT_RUNTIME=${process.env.NEXT_RUNTIME ?? ''}`);
+  throw new Error('harden-build: no prerendered pages found in .next/server/app');
+}
 
 let patched = 0;
 for (const manifest of [join(NEXT, 'routes-manifest.json'), join(NEXT, 'standalone', '.next', 'routes-manifest.json')]) {
