@@ -131,7 +131,7 @@ export function MapControls({ map, ready }: Props) {
       </div>
 
       {/* Map style switcher: bottom left, Google-Maps style. */}
-      <div data-tour="map-style" className={`absolute bottom-3 left-[3.75rem] flex items-end gap-2 ${stylesOpen ? 'z-30' : 'z-20'}`}>
+      <div data-tour="map-style" className={`absolute bottom-3 left-15 flex items-end gap-2 ${stylesOpen ? 'z-30' : 'z-20'}`}>
         <div className="relative">
           <button
             type="button"

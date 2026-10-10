@@ -40,7 +40,7 @@ export function Minimap({ map }: { map: MapLibreMap | null }) {
     <button
       type="button"
       aria-label={t('Overview map: click to move the view there')}
-      className="absolute bottom-[4.75rem] left-[3.75rem] z-20 hidden overflow-hidden rounded-[3px] border border-ink-400 bg-ink-900 shadow-panel md:block [@media(max-height:560px)]:hidden"
+      className="absolute bottom-19 left-15 z-20 hidden overflow-hidden rounded-[3px] border border-ink-400 bg-ink-900 shadow-panel md:block [@media(max-height:560px)]:hidden"
       style={{ width: W, height: H }}
       onClick={(e) => {
         const r = e.currentTarget.getBoundingClientRect();

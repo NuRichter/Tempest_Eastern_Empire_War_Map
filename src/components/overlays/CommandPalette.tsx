@@ -134,7 +134,7 @@ export function CommandPalette() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center bg-ink-950/70 px-3 pt-[10vh]" onMouseDown={() => setOpen(false)} role="presentation">
-      <div className="surface w-full max-w-[40rem] overflow-hidden rounded-[5px]" onMouseDown={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label={t('Search and commands')}>
+      <div className="surface w-full max-w-160 overflow-hidden rounded-[5px]" onMouseDown={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label={t('Search and commands')}>
         <div className="flex items-center gap-2 border-b border-ink-500 px-3">
           <Search size={16} strokeWidth={1.8} className="shrink-0 text-fg-3" />
           <input
@@ -156,7 +156,7 @@ export function CommandPalette() {
             aria-label={t('Search the campaign')}
             aria-controls="palette-results"
             aria-activedescendant={rows[cursor] ? `palette-row-${cursor}` : undefined}
-            className="h-12 flex-1 bg-transparent text-base text-fg placeholder:text-fg-3 focus:outline-none"
+            className="h-12 flex-1 bg-transparent text-base text-fg placeholder:text-fg-3 focus:outline-hidden"
           />
           <kbd className="rounded-[2px] border border-ink-400 px-1 font-mono text-2xs text-fg-3">esc</kbd>
         </div>

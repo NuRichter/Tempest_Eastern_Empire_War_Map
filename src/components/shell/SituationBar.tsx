@@ -147,7 +147,7 @@ function Cards({ people, onPick }: { people: Character[]; onPick: (id: string) =
       {people.map((c) => {
         const color = FACTION_COLOR[factionKey(c.faction)];
         return (
-          <button key={c.id} type="button" onClick={() => onPick(c.id)} className="group flex w-[4.5rem] flex-col items-center gap-0.5" title={c.name}>
+          <button key={c.id} type="button" onClick={() => onPick(c.id)} className="group flex w-18 flex-col items-center gap-0.5" title={c.name}>
             {c.photocard ? (
               <img
                 src={c.photocard.thumb ?? c.photocard.src}
@@ -161,9 +161,9 @@ function Cards({ people, onPick }: { people: Character[]; onPick: (id: string) =
                   if (c.photocard && img.src.includes('/thumb/')) img.src = c.photocard.src;
                   else img.style.visibility = 'hidden';
                 }}
-                className="h-[111px] w-[4.5rem] rounded-[3px] border-2 bg-white object-cover transition-transform group-hover:-translate-y-0.5" style={{ borderColor: color }} />
+                className="h-[111px] w-18 rounded-[3px] border-2 bg-white object-cover transition-transform group-hover:-translate-y-0.5" style={{ borderColor: color }} />
             ) : (
-              <span className="grid h-[111px] w-[4.5rem] place-items-center rounded-[3px] border-2 bg-ink-700 font-display text-lg text-fg-3" style={{ borderColor: color }}>
+              <span className="grid h-[111px] w-18 place-items-center rounded-[3px] border-2 bg-ink-700 font-display text-lg text-fg-3" style={{ borderColor: color }}>
                 {c.name.slice(0, 1)}
               </span>
             )}

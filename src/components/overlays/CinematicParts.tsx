@@ -80,7 +80,7 @@ export function CineIntro({ onDone }: { onDone: () => void }) {
             ))}
           </h2>
         ) : null}
-        {step >= 3 ? <div className="cine-rule mx-auto mt-4 h-px bg-gradient-to-r from-transparent via-[#d4ab57] to-transparent" /> : null}
+        {step >= 3 ? <div className="cine-rule mx-auto mt-4 h-px bg-linear-to-r from-transparent via-[#d4ab57] to-transparent" /> : null}
         {step >= 4 ? (
           <div className="cine-credit mt-5">
             <p className="text-[clamp(11px,1.7vh,15px)] uppercase tracking-[0.32em] text-white/75">Projected by NuRichter in working with NuRichter Workspace</p>
@@ -197,7 +197,7 @@ export function EventStack({ hidden }: { hidden: boolean }) {
   const live = cards.filter((c) => !c.leaving);
   const fpd = data.manifest.clock.framesPerDay;
   return (
-    <div className={`absolute bottom-[calc(var(--cine-bar)+30px)] left-6 h-[calc(78px*4)] w-[min(30rem,calc(100vw-3rem))] transition-opacity duration-500 ${hidden ? 'opacity-0' : 'opacity-100'}`} role="log" aria-live="polite">
+    <div className={`absolute bottom-[calc(var(--cine-bar)+30px)] left-6 h-[312px] w-[min(30rem,calc(100vw-3rem))] transition-opacity duration-500 ${hidden ? 'opacity-0' : 'opacity-100'}`} role="log" aria-live="polite">
       {cards.map((c) => {
         const idx = c.leaving ? live.length : live.length - 1 - live.indexOf(c);
         const hh = String(Math.floor(((c.e.frame % fpd) * 10) / 60)).padStart(2, '0');

@@ -435,8 +435,8 @@ export function Timeline() {
         >
           <canvas ref={canvasRef} className="block h-[58px] w-full" />
           <div ref={playheadRef} className="pointer-events-none absolute left-0 top-0 h-full will-change-transform" aria-hidden>
-            <div className="absolute -left-[0.75px] top-0 h-full w-[1.5px] bg-fg" />
-            <div className="absolute -left-[5px] top-0 h-0 w-0 border-x-[5px] border-t-[6px] border-x-transparent" style={{ borderTopColor: INK.accent }} />
+            <div className="absolute left-[-0.75px] top-0 h-full w-[1.5px] bg-fg" />
+            <div className="absolute left-[-5px] top-0 h-0 w-0 border-x-[5px] border-t-[6px] border-x-transparent" style={{ borderTopColor: INK.accent }} />
           </div>
           {hover ? (
             <div className="pointer-events-none absolute bottom-full mb-1 max-w-[20rem] -translate-x-1/2 rounded-[3px] border border-ink-500 bg-ink-900/95 px-2 py-1 shadow-panel" style={{ left: Math.min(Math.max(hover.x, 120), (trackWidth || 600) - 120) }}>

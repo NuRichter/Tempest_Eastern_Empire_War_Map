@@ -58,7 +58,7 @@ export function LeftRail() {
       {open ? (
         <aside
           aria-label={t(TABS.find((x) => x.id === tab)?.label ?? '')}
-          className="pointer-events-auto flex w-[min(19.5rem,calc(100vw-3rem))] flex-col border-r border-ink-500 bg-ink-850/[0.97] shadow-panel"
+          className="pointer-events-auto flex w-[min(19.5rem,calc(100vw-3rem))] flex-col border-r border-ink-500 bg-ink-850/97 shadow-panel"
         >
           <div className="flex h-10 shrink-0 items-center justify-between border-b border-ink-500 px-3">
             <h2 className="text-sm font-semibold tracking-wide text-fg">{t(TABS.find((x) => x.id === tab)?.label ?? '')}</h2>
