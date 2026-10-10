@@ -49,6 +49,8 @@ Severity follows exploitability and impact in this architecture, not the advisor
 
 ## Remaining risks
 
+- Trusted Types let one foreign script URL through: `https://vercel.live`, the hosting toolbar loader that Next 16 compiles into the bundle on Vercel. Refusing it in the policy threw inside that module and stopped the app from starting. The CSP (`script-src 'self'`) still refuses to fetch it, which a browser test checks (no response from vercel.live).
+
 - `style-src 'unsafe-inline'`: React style attributes and `next/font` need it. Styles cannot run script. ACCEPTED RISK.
 - Chunks loaded later by the webpack runtime (the 3D view) are not integrity-pinned. They are same-origin, content-hashed and covered by the CSP. ACCEPTED RISK.
 - HSTS preload cannot be submitted for a `vercel.app` subdomain (a custom domain would allow it).
