@@ -52,7 +52,7 @@ export function TopBar() {
         {latest ? (
           <>
             <span className="h-3 w-px bg-ink-400" aria-hidden />
-            <span className="hidden max-w-[22rem] truncate text-sm text-fg-2 xl:inline">{latest.title}</span>
+            <span className="hidden max-w-88 truncate text-sm text-fg-2 xl:inline">{latest.title}</span>
             <span className="hidden xl:inline">
               <ProvenanceBadge value={latest.provenance} compact />
             </span>
@@ -64,7 +64,7 @@ export function TopBar() {
       </div>
 
       <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-1.5 md:ml-0">
-        <button type="button" data-tour="search" onClick={() => setPaletteOpen(true)} className="ctl w-8 gap-2 px-0 sm:w-auto sm:min-w-[13rem] sm:justify-between sm:px-2.5 sm:pr-1.5" aria-label={t('Search and commands')} aria-keyshortcuts="/ Control+K">
+        <button type="button" data-tour="search" onClick={() => setPaletteOpen(true)} className="ctl w-8 gap-2 px-0 sm:w-auto sm:min-w-52 sm:justify-between sm:px-2.5 sm:pr-1.5" aria-label={t('Search and commands')} aria-keyshortcuts="/ Control+K">
           <span className="flex items-center gap-1.5">
             <Search size={14} strokeWidth={1.8} />
             <span className="hidden sm:inline">{t('Search the campaign')}</span>
@@ -73,7 +73,7 @@ export function TopBar() {
         </button>
         <label data-tour="language" className="ctl relative w-8 px-0 sm:w-auto sm:px-2" title={t('Language')}>
           <Languages size={15} strokeWidth={1.7} aria-hidden />
-          <span className="hidden max-w-[6.5rem] truncate text-xs lg:inline">{LOCALES.find((l) => l.code === locale)?.native ?? 'English'}</span>
+          <span className="hidden max-w-26 truncate text-xs lg:inline">{LOCALES.find((l) => l.code === locale)?.native ?? 'English'}</span>
           <select
             aria-label={t('Language')}
             value={locale}

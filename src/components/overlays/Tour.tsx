@@ -213,7 +213,7 @@ export function Tour() {
   const character = step.guide.startsWith('guides/');
 
   return (
-    <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-labelledby="tour-title" aria-describedby="tour-body">
+    <div className="fixed inset-0 z-60" role="dialog" aria-modal="true" aria-labelledby="tour-title" aria-describedby="tour-body">
       {/* Click-catcher. The spotlight's giant shadow dims everything else. */}
       <div className="absolute inset-0" onClick={finish} aria-hidden />
       <div className="tour-spot pointer-events-none absolute" style={{ left: spot.x, top: spot.y, width: spot.w, height: spot.h, borderRadius: step.point ? '9999px' : '8px' }} aria-hidden />
@@ -223,7 +223,7 @@ export function Tour() {
             src={`/assets/theme/${step.guide}.webp`}
             alt={step.who}
             title={step.who}
-            className={`${character ? 'tour-bob' : 'tour-guide'} pointer-events-none absolute right-3 w-auto drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)] ${character ? '-top-[4.75rem] h-[5.5rem]' : '-top-12 h-14'}`}
+            className={`${character ? 'tour-bob' : 'tour-guide'} pointer-events-none absolute right-3 w-auto drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)] ${character ? '-top-19 h-22' : '-top-12 h-14'}`}
           />
           <p className="font-display text-[11px] font-semibold tracking-[0.2em] text-[#5fb8f0]">
             《{t('Notice')}》 <span className="font-ui text-[10px] font-normal tracking-normal text-fg-3">· {step.who}</span>

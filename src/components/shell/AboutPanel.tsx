@@ -44,7 +44,7 @@ export function AboutPanel() {
           {WALLPAPERS.map((w) => (
             <li key={w.desktop} className="flex flex-col gap-1">
               <a href={w.desktop} download className="block overflow-hidden rounded-[3px] border border-ink-500 hover:border-accent" title={w.credit}>
-                <img src={w.thumb} alt={w.title} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+                <img src={w.thumb} alt={w.title} loading="lazy" className="aspect-3/4 w-full object-cover" />
               </a>
               <span className="text-center text-2xs text-fg-2">{w.title}</span>
               <span className="flex justify-center gap-1.5 text-2xs">

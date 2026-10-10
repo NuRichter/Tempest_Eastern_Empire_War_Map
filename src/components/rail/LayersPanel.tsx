@@ -60,7 +60,7 @@ export function LayersPanel() {
           <Segmented label={t('Force markers')} value={p.markerScale} onChange={(v) => p.set('markerScale', v)} options={SCALES} />
           <Segmented label={t('Event markers')} value={p.eventMarkerScale} onChange={(v) => p.set('eventMarkerScale', v)} options={SCALES} />
           <Segmented label={t('Panel density')} value={p.density} onChange={(v) => p.set('density', v)} options={[{ id: 'compact', label: t('Compact') }, { id: 'comfortable', label: t('Comfort') }]} />
-          <div className="-mx-0">
+          <div className="mx-0">
             <Toggle checked={p.autoSlow} onChange={(v) => p.set('autoSlow', v)} label={t('Slow down at turning points')} note={t('Playback drops to 1× for a moment when it reaches a turning point, as documentaries do.')} />
             <Toggle checked={p.showMinimap} onChange={(v) => p.set('showMinimap', v)} label={t('Overview minimap')} />
             <Toggle checked={p.themeCursor} onChange={(v) => p.set('themeCursor', v)} label={t('Rimuru cursor')} note={t('A slime Rimuru pointer. The normal cursor returns if it cannot load.')} />

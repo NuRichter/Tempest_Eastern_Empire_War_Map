@@ -89,7 +89,7 @@ export function Legend() {
   const setOpen = useSimulation((s) => s.setLegendOpen);
   if (!open) return null;
   return (
-    <aside className="surface absolute right-3 top-14 z-40 max-h-[calc(100dvh-14rem)] w-[min(22rem,calc(100vw-1.5rem))] overflow-y-auto rounded-[4px] lg:right-[25rem]" aria-label={t('Map legend')}>
+    <aside className="surface absolute right-3 top-14 z-40 max-h-[calc(100dvh-14rem)] w-[min(22rem,calc(100vw-1.5rem))] overflow-y-auto rounded-[4px] lg:right-100" aria-label={t('Map legend')}>
       <div className="sticky top-0 flex items-center justify-between border-b border-ink-500 bg-ink-800 px-3 py-2">
         <h2 className="text-sm font-semibold text-fg">{t('Legend')}</h2>
         <button type="button" onClick={() => setOpen(false)} className="grid h-7 w-7 place-items-center text-fg-3 hover:text-fg" aria-label={t('Close legend')}>

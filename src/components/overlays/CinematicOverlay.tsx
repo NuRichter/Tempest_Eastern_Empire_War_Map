@@ -252,7 +252,7 @@ export function CinematicOverlay() {
       <div className="cine-bar cine-bar-bottom absolute inset-x-0 bottom-0 bg-black" aria-hidden />
 
       {/* The director's slate: what the camera is doing. */}
-      <div className="cine-slate absolute left-1/2 top-[calc(var(--cine-bar)+10px)] flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/15 bg-black/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 backdrop-blur-sm">
+      <div className="cine-slate absolute left-1/2 top-[calc(var(--cine-bar)+10px)] flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/15 bg-black/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 backdrop-blur-xs">
         <span className="cine-rec h-2 w-2 rounded-full bg-[#e0614f]" aria-hidden />
         <span>{playing ? t('Rolling') : t('Paused')}</span>
         <span className="text-white/35">·</span>
@@ -270,7 +270,7 @@ export function CinematicOverlay() {
       </div>
 
       {/* Ledger. */}
-      <div className="absolute right-6 top-[calc(var(--cine-bar)+14px)] w-[min(16rem,38vw)] rounded-[4px] border border-white/10 bg-black/60 p-3 backdrop-blur-sm">
+      <div className="absolute right-6 top-[calc(var(--cine-bar)+14px)] w-[min(16rem,38vw)] rounded-[4px] border border-white/10 bg-black/60 p-3 backdrop-blur-xs">
         <p className="eyebrow text-white/60">{t('Imperial losses to date')}</p>
         <div className="mt-1.5 grid grid-cols-2 gap-x-3 gap-y-1 text-sm">
           <span className="text-white/70">{t('Killed')}</span>
@@ -285,7 +285,7 @@ export function CinematicOverlay() {
 
       {/* Who leads the moment. */}
       {leader && !ended && !splash ? (
-        <div key={leader.id} className="cine-rise absolute right-6 top-[calc(var(--cine-bar)+11.5rem)] flex w-[min(16rem,38vw)] items-center gap-3 rounded-[4px] border border-white/10 bg-black/50 p-2 backdrop-blur-sm">
+        <div key={leader.id} className="cine-rise absolute right-6 top-[calc(var(--cine-bar)+11.5rem)] flex w-[min(16rem,38vw)] items-center gap-3 rounded-[4px] border border-white/10 bg-black/50 p-2 backdrop-blur-xs">
           <Portrait src={leader.photocard!.src} name={leader.name} size={50} faction={leader.faction} />
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold text-white">{leader.name}</p>
@@ -306,7 +306,7 @@ export function CinematicOverlay() {
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.5em] text-[#d4ab57]">{t('Chapter {n}', { n: ROMAN[chapter.n - 1] ?? chapter.n })}</p>
             <p className="mt-3 font-display text-[clamp(28px,5.5vh,58px)] leading-tight text-white [text-shadow:0_4px_24px_rgba(0,0,0,0.9)]">{t(phaseLabel(chapter.name))}</p>
-            <div className="cine-rule mx-auto mt-4 h-px bg-gradient-to-r from-transparent via-[#d4ab57] to-transparent" />
+            <div className="cine-rule mx-auto mt-4 h-px bg-linear-to-r from-transparent via-[#d4ab57] to-transparent" />
             {hooks.get(chapter.name) ? <p className="cine-hook mx-auto mt-4 max-w-2xl px-6 font-display text-[clamp(15px,2.4vh,22px)] italic leading-snug text-white/90 [text-shadow:0_2px_12px_rgba(0,0,0,0.9)]">{hooks.get(chapter.name)}</p> : null}
             <p className="figure mt-3 text-sm uppercase tracking-[0.3em] text-white/70">{battleDayLabel(day)} · {hhmm}</p>
           </div>
@@ -327,10 +327,10 @@ export function CinematicOverlay() {
 
       {/* Film controls: Auto Timing and the 2D / 3D stage. */}
       <div className="pointer-events-auto absolute left-1/2 top-[calc(var(--cine-bar)+44px)] flex -translate-x-1/2 items-center gap-2">
-        <button type="button" onClick={() => setPref('autoTiming', !autoTiming)} aria-pressed={autoTiming} title={t('Auto Timing for Cinematic Mode: the film sets its own speed, fast through preparation, slow in battle')} className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] backdrop-blur-sm ${autoTiming ? 'border-[#d4ab57]/80 bg-[#d4ab57]/20 text-white' : 'border-white/20 bg-black/50 text-white/60 hover:text-white'}`}>
+        <button type="button" onClick={() => setPref('autoTiming', !autoTiming)} aria-pressed={autoTiming} title={t('Auto Timing for Cinematic Mode: the film sets its own speed, fast through preparation, slow in battle')} className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] backdrop-blur-xs ${autoTiming ? 'border-[#d4ab57]/80 bg-[#d4ab57]/20 text-white' : 'border-white/20 bg-black/50 text-white/60 hover:text-white'}`}>
           <Timer size={12} strokeWidth={2} /> {t('Auto timing')}{autoTiming && playing ? <span className="figure text-[#d4ab57]">· {speed}×</span> : null}
         </button>
-        <div className="flex overflow-hidden rounded-full border border-white/20 bg-black/50 text-[10px] font-semibold uppercase tracking-[0.16em] backdrop-blur-sm" role="radiogroup" aria-label={t('Film stage')}>
+        <div className="flex overflow-hidden rounded-full border border-white/20 bg-black/50 text-[10px] font-semibold uppercase tracking-[0.16em] backdrop-blur-xs" role="radiogroup" aria-label={t('Film stage')}>
           <button type="button" role="radio" aria-checked={!cinema3d} onClick={() => setPref('cinema3d', false)} className={`flex items-center gap-1 px-3 py-1 ${!cinema3d ? 'bg-white/20 text-white' : 'text-white/55 hover:text-white'}`}>
             <MapIcon size={12} strokeWidth={2} /> 2D
           </button>
@@ -338,7 +338,7 @@ export function CinematicOverlay() {
             <Box size={12} strokeWidth={2} /> 3D
           </button>
         </div>
-        <button type="button" onClick={() => setPref('music', !musicOn)} aria-pressed={musicOn} aria-label={musicOn ? t('Turn the music off') : t('Turn the music on')} title={t('Music (N)')} className={`grid h-[22px] w-[30px] place-items-center rounded-full border backdrop-blur-sm ${musicOn ? 'border-[#d4ab57]/80 bg-[#d4ab57]/20 text-white' : 'border-white/20 bg-black/50 text-white/60 hover:text-white'}`}>
+        <button type="button" onClick={() => setPref('music', !musicOn)} aria-pressed={musicOn} aria-label={musicOn ? t('Turn the music off') : t('Turn the music on')} title={t('Music (N)')} className={`grid h-[22px] w-[30px] place-items-center rounded-full border backdrop-blur-xs ${musicOn ? 'border-[#d4ab57]/80 bg-[#d4ab57]/20 text-white' : 'border-white/20 bg-black/50 text-white/60 hover:text-white'}`}>
           {musicOn ? <Music2 size={12} strokeWidth={2} /> : <VolumeX size={12} strokeWidth={2} />}
         </button>
       </div>
@@ -373,7 +373,7 @@ export function CinematicOverlay() {
       {/* Film strip: progress through the war, chapters marked. */}
       <div className="absolute inset-x-6 bottom-[calc(var(--cine-bar)/2-3px)] h-[6px]" aria-hidden>
         <div className="absolute inset-0 rounded-full bg-white/12" />
-        <div className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#5fb8f0] to-[#d4ab57]" style={{ width: `${(frame / (N - 1)) * 100}%` }} />
+        <div className="absolute inset-y-0 left-0 rounded-full bg-linear-to-r from-[#5fb8f0] to-[#d4ab57]" style={{ width: `${(frame / (N - 1)) * 100}%` }} />
         {stageTicks.map((s) => (
           <span key={s.id} className="absolute top-[-3px] h-3 w-px bg-white/45" style={{ left: `${s.at * 100}%` }} title={phaseLabel(s.name)} />
         ))}
@@ -442,7 +442,7 @@ function Card({ c }: { c: Character }) {
   const color = FACTION_COLOR[factionKey(c.faction)];
   return (
     <div className="flex w-[clamp(64px,9vh,104px)] flex-col items-center gap-1">
-      <img src={c.photocard!.src} alt={c.name} className="aspect-[11/17] w-full rounded-[4px] border-2 bg-white object-cover shadow-[0_8px_30px_rgba(0,0,0,0.6)]" style={{ borderColor: color }} />
+      <img src={c.photocard!.src} alt={c.name} className="aspect-11/17 w-full rounded-[4px] border-2 bg-white object-cover shadow-[0_8px_30px_rgba(0,0,0,0.6)]" style={{ borderColor: color }} />
       <span className="w-full truncate text-center text-2xs font-semibold text-white [text-shadow:0_1px_6px_rgba(0,0,0,0.9)]">{c.name}</span>
     </div>
   );

@@ -582,7 +582,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
     };
   }, []);
 
-  return <div ref={host} className="absolute inset-0 z-[15] bg-[#0b1419]" aria-label="3D atlas" role="img" />;
+  return <div ref={host} className="absolute inset-0 z-15 bg-[#0b1419]" aria-label="3D atlas" role="img" />;
 }
 
 /** Default export for next/dynamic. */

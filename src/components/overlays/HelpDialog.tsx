@@ -57,7 +57,7 @@ export function HelpDialog() {
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-ink-950/75 p-3" onMouseDown={() => setOpen(false)} role="presentation">
-      <div ref={ref} tabIndex={-1} className="surface max-h-[88dvh] w-full max-w-2xl overflow-y-auto rounded-[5px] focus:outline-none" onMouseDown={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="help-title">
+      <div ref={ref} tabIndex={-1} className="surface max-h-[88dvh] w-full max-w-2xl overflow-y-auto rounded-[5px] focus:outline-hidden" onMouseDown={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="help-title">
         <div className="sticky top-0 flex items-center justify-between border-b border-ink-500 bg-ink-800 px-4 py-2.5">
           <h2 id="help-title" className="font-display text-lg font-semibold text-fg">{t('About this atlas')}</h2>
           <button type="button" onClick={() => setOpen(false)} className="grid h-8 w-8 place-items-center text-fg-3 hover:text-fg" aria-label={t('Close')}>

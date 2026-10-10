@@ -57,7 +57,7 @@ function EventList({ ids, max = 12 }: { ids: string[]; max?: number }) {
       {events.slice(0, max).map((e) => (
         <li key={e.id}>
           <button type="button" onClick={() => jumpToEvent(e.id)} className={`flex w-full gap-2 rounded-[3px] px-1.5 py-1 text-left hover:bg-ink-700/60 ${e.frame > frame ? 'opacity-60' : ''}`}>
-            <span className="figure w-[4.5rem] shrink-0 text-2xs text-fg-3">{e.warDay} {e.simulationTime}</span>
+            <span className="figure w-18 shrink-0 text-2xs text-fg-3">{e.warDay} {e.simulationTime}</span>
             <span className="text-xs leading-snug text-fg">{e.title}</span>
           </button>
         </li>
@@ -162,7 +162,7 @@ export function ForceDossier({ id }: { id: string }) {
           <ol className="space-y-1">
             {history.map((h, i) => (
               <li key={i} className="flex items-center gap-2 text-xs">
-                <button type="button" className="figure w-[4.5rem] shrink-0 text-left text-2xs text-fg-3 hover:text-accent" onClick={() => seek(h.f)}>
+                <button type="button" className="figure w-18 shrink-0 text-left text-2xs text-fg-3 hover:text-accent" onClick={() => seek(h.f)}>
                   {when(t, data, h.f)}
                 </button>
                 <span className="relative h-2 flex-1 overflow-hidden rounded-[1px] bg-ink-600" aria-hidden>
