@@ -1,0 +1,49 @@
+# Verify every push and pull request: data, lint, security lint and tests,
+# types, translations, runtime tests and the hardened production build.
+# Read-only token, no secrets, actions pinned to full commit SHAs.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      # The browser QA is run locally; CI does not need the Chrome download.
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install exactly what the lockfile pins
+        run: npm ci
+      - name: Dependency audit (runtime dependencies)
+        run: npm run security:audit
+      - name: Verify (data, lint, security lint, types, i18n, tests, security tests, build)
+        run: npm run verify
+
+  dependency-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          fail-on-severity: moderate
