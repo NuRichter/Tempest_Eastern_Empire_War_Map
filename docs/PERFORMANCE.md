@@ -138,3 +138,12 @@ CPU 2x slower: 2D 118 to 119 fps on Next 15 and 121 to 127 fps on Next 16, 3D
 170 and 219 to 220 fps. QA, visual, security and governor results are the same.
 Profiling builds now need `next build --webpack` (the function-name hook is a
 webpack setting).
+
+## React Compiler
+
+On since Next 16 (`reactCompiler` in next.config.mjs, `REACT_COMPILER=0` builds
+without it for comparisons). Measured back to back, 2D film at 48x with the CPU
+4x slower: 13.4 to 13.8 fps without, 13.8 to 14.0 fps with, and the worst
+frames (p99) 266 to 275 ms without, 204 to 217 ms with. A small gain in frame
+rate, about a fifth less stutter. The MapLibre bridge (MapView) opts out with
+'use no memo'.

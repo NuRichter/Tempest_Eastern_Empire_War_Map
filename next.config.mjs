@@ -6,6 +6,9 @@ const dev = process.env.NODE_ENV !== 'production';
 
 const nextConfig = {
   reactStrictMode: true,
+  // React Compiler: memoizes components automatically (components that break its
+  // rules, or opt out with 'use no memo' like the MapLibre bridge, are left as they are).
+  reactCompiler: process.env.REACT_COMPILER !== '0', // REACT_COMPILER=0 builds without it (A/B measurements)
   poweredByHeader: false,
   // The application ships as a static frontend: no server API, no database,
   // no authentication, no external map key.
