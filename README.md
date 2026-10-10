@@ -168,11 +168,9 @@ Tekan `V` (atau pilih **3D** di sebelah Datar dan Bola dunia) dan seluruh atlas 
 
 <br>
 
-## 🎵 Musik, keamanan, dan pencarian
+## 🎵 Musik dan pencarian
 
 **Dua dunia musik.** Saat menjelajah peta, musik fantasi yang tenang mengalun (*The Old Tower Inn* dan *Great Labyrinth*). Begitu masuk mode sinematik, musiknya berganti jadi skor orkestra (*Fantasy Orchestral Theme*), dan setiap pertempuran memakai musik perang (*Determined Pursuit*, *Battle Theme*) dengan crossfade halus. Semua lagunya berlisensi bebas dari OpenGameArt, **bukan soundtrack resmi Tensura**. Tombol musik ada di bilah atas dan di mode sinematik, shortcut `N`, volumenya di panel Layers. File musik baru diunduh saat diputar dan berhenti saat tab disembunyikan.
-
-**Keamanan.** Content Security Policy ketat (semua dari origin sendiri, tanpa skrip pihak ketiga, tanpa `eval` di produksi, tanpa iframe), HSTS, `X-Frame-Options: DENY`, `nosniff`, Permissions-Policy yang mematikan kamera, mikrofon, dan lokasi, serta `Cross-Origin-Resource-Policy: same-origin` untuk peta, tile, art, dan musik supaya tidak bisa di-hotlink situs lain. Klik kanan dan seret gambar dimatikan di gambar, peta, dan tampilan 3D (wallpaper tetap bisa diunduh karena memang disediakan). Ini penghalang, bukan DRM: apa pun yang tampil di browser tetap bisa direkam layar.
 
 **Ringan di Vercel.** Semua halaman dirender statis saat build dan dilayani dari CDN, jadi tidak ada server function yang berjalan per kunjungan. Aset memakai cache panjang, gaya peta yang tidak terlihat tidak mengunduh apa pun, dan font judul sinematik tidak dimuat sampai dibutuhkan.
 
