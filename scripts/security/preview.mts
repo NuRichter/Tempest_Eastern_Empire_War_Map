@@ -70,8 +70,9 @@ try {
   // The held ground: drawn by the GPU layer, evaluated in a worker that the host lets start (COEP).
   const field = (await page.evaluate('window.__atlasField ? window.__atlasField() : null')) as { gpu: boolean } | null;
   check('the held ground is drawn by the GPU layer', Boolean(field?.gpu));
-  const f2 = (await page.evaluate('window.__atlasField ? window.__atlasField() : null')) as { worker: boolean } | null;
-  check('the held ground is evaluated in its worker (not the main-thread fallback)', Boolean(f2?.worker));
+  // The worker answers its first request a moment after the map is ready: wait for it.
+  const workerOn = await page.waitForFunction('window.__atlasField && window.__atlasField().worker', { timeout: 8000 }).then(() => true, () => false);
+  check('the held ground is evaluated in its worker (not the main-thread fallback)', workerOn);
   await page.keyboard.press('v');
   await new Promise((r) => setTimeout(r, 8000));
   check('the 3D view starts', Boolean(await page.evaluate('Boolean(window.__atlas3d)')));
