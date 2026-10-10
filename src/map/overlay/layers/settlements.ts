@@ -1,5 +1,5 @@
 import { translate } from '@/i18n';
-import { haloText, type DrawContext } from '@/map/overlay/context';
+import { type DrawContext, haloText, textWidth } from '@/map/overlay/context';
 import type { Settlement } from '@/types/dataset';
 
 /**
@@ -104,7 +104,7 @@ export function drawSettlements(dc: DrawContext): void {
     if (dc.prefs.layers.labels && (zoom >= (s.kind === 'city' ? 4 : 3.1))) {
       const size = Math.round((s.kind === 'city' ? 10 : 11) * labelScale);
       ctx.font = `${s.kind === 'city' ? 500 : 600} ${size}px ${dc.fonts.ui}`;
-      const w = ctx.measureText(s.name).width;
+      const w = textWidth(ctx, s.name);
       const x = p.sx - w / 2;
       const y = p.sy + r + size + 2;
       if (labels.place(x - 3, y - size, w + 6, size + 4)) haloText(ctx, s.name, x, y, s.kind === 'city' ? dc.theme.labelDim : dc.theme.label, dc.theme.halo, 3);

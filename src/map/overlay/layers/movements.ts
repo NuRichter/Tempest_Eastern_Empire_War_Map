@@ -1,5 +1,5 @@
 import { FACTION_COLOR, FACTION_DEEP, FACTION_PALE, factionKey, INK, ROUTE_STYLE } from '@/lib/palette';
-import { factionVisible, forceHidden, haloText, isSelected, type DrawContext } from '@/map/overlay/context';
+import { type DrawContext, factionVisible, forceHidden, haloText, isSelected, textWidth } from '@/map/overlay/context';
 import { drawArrowHead } from '@/map/overlay/glyphs';
 import { formatStrength } from '@/map/overlay/layers/forces';
 import { msg, translate } from '@/i18n';
@@ -114,9 +114,9 @@ export function drawMovements(dc: DrawContext): void {
       const atEnd = m.strengthAtEnd !== 'UNKNOWN' && m.strengthAtEnd !== m.strengthAtStart ? ` → ${formatStrength(m.strengthAtEnd, force.sizeStatus)}` : '';
       const line2 = `${atStart}${atEnd} · ${m.route === 'SOLID' ? translate('route stated') : m.route === 'RECONSTRUCTED' ? translate('route reconstructed') : translate('schematic')}${m.arrivesAfterClock ? ` · ${translate('arrives after the clock')}` : ''}`;
       ctx.font = `500 ${size}px ${dc.fonts.mono}`;
-      const w2 = ctx.measureText(line2).width;
+      const w2 = textWidth(ctx, line2);
       ctx.font = `600 ${size}px ${dc.fonts.ui}`;
-      const w = Math.max(ctx.measureText(line1).width, w2);
+      const w = Math.max(textWidth(ctx, line1), w2);
       if (dc.labels.place(mid.x + 8, mid.y - size - 2, w + 4, size * 2 + 6, selected)) {
         ctx.globalAlpha = fade;
         haloText(ctx, line1, mid.x + 8, mid.y - 2, dc.theme.label, dc.theme.halo, 3);

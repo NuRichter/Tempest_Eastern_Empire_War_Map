@@ -24,6 +24,7 @@ import type { FrontEpisode } from '@/map/field/front';
 import { translate, useT } from '@/i18n';
 import type { Dataset } from '@/data/loader';
 import type { FrameState } from '@/types/dataset';
+import { pixelRatioFor, samplesFor, useQuality } from '@/perf/quality';
 
 const BASE_MAP_URL = '/maps/base-map.png';
 
@@ -685,6 +686,15 @@ export function MapView() {
 
   const viewMode = useSimulation((s) => s.viewMode);
   const active3d = use3DActive();
+  // Graphics quality (src/perf/quality.ts): resolution and edge samples.
+  const quality = useQuality((s) => s.level);
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    const pr = pixelRatioFor(quality);
+    if (Math.abs(map.getPixelRatio() - pr) > 0.01) map.setPixelRatio(pr);
+    gpuField.current?.setSamples(samplesFor(quality));
+  }, [quality, ready]);
   // While the 3D view covers the map, the held-ground layer stops asking the hidden map to redraw.
   useEffect(() => {
     if (gpuField.current) gpuField.current.suspended = active3d;

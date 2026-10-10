@@ -49,8 +49,12 @@ try {
   await new Promise((r) => setTimeout(r, 800));
   await page.keyboard.press('Enter'); // skip the intro
   await new Promise((r) => setTimeout(r, 11000)); // past the cold open
-  await page.keyboard.press('6');
+  // PROFILE_SPEED_KEY: '6' = 8x (default), '8' = 48x.
+  await page.keyboard.press(process.env.PROFILE_SPEED_KEY ?? '6');
   const cdp = await page.createCDPSession();
+  // PROFILE_CPU_SLOWDOWN=4 emulates a mid-range laptop's CPU.
+  const slowdown = Number(process.env.PROFILE_CPU_SLOWDOWN ?? 1);
+  if (slowdown > 1) await cdp.send('Emulation.setCPUThrottlingRate', { rate: slowdown });
   await cdp.send('Profiler.enable');
   await cdp.send('Profiler.setSamplingInterval', { interval: 200 });
   await page.evaluate(`window.__frames = []; (function loop(t){ window.__frames.push(t); if (window.__frames.length < 100000) requestAnimationFrame(loop); })(performance.now());`);
@@ -78,7 +82,7 @@ try {
   const top = (m: Map<string, number>, k: number) => [...m.entries()].sort((a, b) => b[1] - a[1]).slice(0, k).map(([name, us]) => `  ${(us / 1000).toFixed(0).padStart(6)} ms  ${((us / total) * 100).toFixed(1).padStart(5)}%  ${name.slice(0, 120)}`);
   const out = [
     `GPU: ${renderer}`,
-    `cinematic ${mode}, ${seconds}s at 8x: ${frames.length} frames (${(frames.length / seconds).toFixed(1)} fps), frame gap p50 ${pct(0.5)} ms, p90 ${pct(0.9)} ms, p99 ${pct(0.99)} ms`,
+    `cinematic ${mode}${Number(process.env.PROFILE_CPU_SLOWDOWN ?? 1) > 1 ? ` (CPU ${process.env.PROFILE_CPU_SLOWDOWN}x slower)` : ''}, ${seconds}s at 8x: ${frames.length} frames (${(frames.length / seconds).toFixed(1)} fps), frame gap p50 ${pct(0.5)} ms, p90 ${pct(0.9)} ms, p99 ${pct(0.99)} ms`,
     `sampled main-thread time ${(total / 1000).toFixed(0)} ms`,
     '', 'by file:', ...top(byFile, 12), '', 'by function:', ...top(byFn, 25),
   ].join('\n');

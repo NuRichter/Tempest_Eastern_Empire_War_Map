@@ -183,6 +183,7 @@ export class GpuFieldLayer implements CustomLayerInterface {
   private paleBytes: Uint8Array | null = null;
   private box: [number, number, number, number] = [0, 0, 1, 1];
   private samples = 4;
+  private softwareGl = false;
   private style = { empire: [0, 0, 0] as [number, number, number], allied: [0, 0, 0] as [number, number, number], alpha: 0.86, gradient: 1 };
   visible = true;
   private isSuspended = false;
@@ -226,7 +227,18 @@ export class GpuFieldLayer implements CustomLayerInterface {
     // A software renderer runs the shader on the CPU: one sample per pixel there.
     const info = gl.getExtension('WEBGL_debug_renderer_info');
     const renderer = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : '';
-    if (/swiftshader|llvmpipe|software|basic render/i.test(renderer)) this.samples = 1;
+    if (/swiftshader|llvmpipe|software|basic render/i.test(renderer)) {
+      this.softwareGl = true;
+      this.samples = 1;
+    }
+  }
+
+  /** Edge samples per pixel from the quality level (never above 1 on a software renderer). */
+  setSamples(n: number): void {
+    const next = this.softwareGl ? 1 : n;
+    if (next === this.samples) return;
+    this.samples = next;
+    if (!this.suspended) this.map?.triggerRepaint();
   }
 
   setStyle(s: FieldStyle): void {

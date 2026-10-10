@@ -2,7 +2,7 @@ import { FACTION_COLOR, FACTION_DEEP, FACTION_PALE, FACTION_SHAPE, factionKey, I
 import { SIZE_STATUS_LABEL } from '@/lib/taxonomy';
 import { displayStrengthAt, forcePositionAt, forceSnapshotAt, forceTrail } from '@/simulation/resolver';
 import { getField } from '@/map/field/fieldStore';
-import { factionVisible, forceHidden, haloText, isSelected, meetsConfidence, trimTo, type DrawContext } from '@/map/overlay/context';
+import { type DrawContext, factionVisible, forceHidden, haloText, isSelected, meetsConfidence, textWidth, trimTo } from '@/map/overlay/context';
 import { tracePath } from '@/map/overlay/glyphs';
 import type { Force, ForceSnapshot, Quantity, SizeStatus } from '@/types/dataset';
 import { translate } from '@/i18n';
@@ -199,10 +199,10 @@ export function drawForces(dc: DrawContext, placed: PlacedForce[]): void {
     const name = trimTo(ctx, p.force.displayName, 200);
     const number = single ? '' : formatStrength(displayStrengthAt(dc.data, p.force.id, dc.frame), p.snapshot.sizeStatus);
     ctx.font = `700 ${numSize}px ${dc.fonts.ui}`;
-    const nw = number ? ctx.measureText(number).width : 0;
+    const nw = number ? textWidth(ctx, number) : 0;
     ctx.font = `500 ${nameSize}px ${dc.fonts.ui}`;
     const showName = showLabels && (selected || zoom >= 4.8 || single);
-    const tw = showName ? ctx.measureText(name).width : 0;
+    const tw = showName ? textWidth(ctx, name) : 0;
     const x = p.sx + p.r + 6;
     const h = (number && showSizes ? numSize : 0) + (showName ? nameSize + 2 : 0);
     if (h === 0) continue;
@@ -327,7 +327,7 @@ export function drawFrontStrength(dc: DrawContext, placed: PlacedForce[]): void 
       // The side of the seam this group stands on.
       const sgn = (c.x - ax) * nx + (c.y - ay) * ny >= 0 ? 1 : -1;
       ctx.font = `700 ${size}px ${dc.fonts.ui}`;
-      const w = ctx.measureText(text).width;
+      const w = textWidth(ctx, text);
       let ox = 0;
       let oy = 0;
       let ok = false;
@@ -348,7 +348,7 @@ export function drawFrontStrength(dc: DrawContext, placed: PlacedForce[]): void 
       haloText(ctx, text, -w / 2, size * 0.35, '#ffffff', FACTION_DEEP[key], Math.max(4, size * 0.2));
       ctx.font = `600 ${Math.round(9.5 * dc.labelScale)}px ${dc.fonts.mono}`;
       const cap = sideKey === 'empire' ? translate('{code} FRONT · EMPIRE', { code: th.code }) : translate('{code} FRONT · ALLIED', { code: th.code });
-      const cw = ctx.measureText(cap).width;
+      const cw = textWidth(ctx, cap);
       haloText(ctx, cap, -cw / 2, size * 0.35 + 13, dc.theme.labelDim, dc.theme.halo, 3);
       ctx.restore();
       dc.labels.reserve(ox - w / 2, oy - size, w, size * 1.7);

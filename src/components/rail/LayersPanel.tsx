@@ -67,6 +67,7 @@ export function LayersPanel() {
           </div>
           <Toggle checked={p.music} onChange={(v) => p.set('music', v)} label={t('Music')} note={t('A calm score while you explore, a film score in cinematic mode. Free-licensed fantasy music, not the official soundtrack.')} />
           {p.music ? <Slider label={t('Music volume')} value={p.musicVolume} min={0} max={1} step={0.05} onChange={(v) => p.set('musicVolume', v)} format={pct} /> : null}
+          <Segmented label={t('Graphics quality')} value={p.graphics} onChange={(v) => p.set('graphics', v)} options={[{ id: 'auto', label: t('Automatic') }, { id: 'high', label: t('High') }, { id: 'medium', label: t('Medium') }, { id: 'low', label: t('Low') }]} />
           <Segmented label={t('Motion')} value={p.reducedMotion} onChange={(v) => p.set('reducedMotion', v)} options={[{ id: 'system', label: t('System') }, { id: 'reduce', label: t('Reduce') }, { id: 'full', label: t('Full') }]} />
         </div>
         <button type="button" onClick={() => useTour.getState().start()} className="ctl mt-2 w-full">

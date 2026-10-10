@@ -1,6 +1,6 @@
 import { FACTION_DEEP, FACTION_PALE, factionKey, INK } from '@/lib/palette';
 import { territoryControlAt } from '@/simulation/resolver';
-import { haloText, isSelected, type DrawContext } from '@/map/overlay/context';
+import { type DrawContext, haloText, isSelected, textWidth } from '@/map/overlay/context';
 import { ROLE_LABEL } from '@/lib/taxonomy';
 import { translate } from '@/i18n';
 
@@ -28,7 +28,7 @@ export function drawGeographyLabels(dc: DrawContext): void {
       const text = t.display.toUpperCase();
       ctx.font = `600 ${size}px ${dc.fonts.ui}`;
       ctx.letterSpacing = `${Math.round(size * 0.14)}px`;
-      const w = ctx.measureText(text).width;
+      const w = textWidth(ctx, text);
       const x = p.sx - w / 2;
       const y = p.sy;
       if (!labels.place(x - 4, y - size, w + 8, size + 6)) {
@@ -65,7 +65,7 @@ export function drawGeographyLabels(dc: DrawContext): void {
       const size = Math.round(10 * labelScale);
       ctx.font = `600 ${size}px ${dc.fonts.mono}`;
       const text = `${th.code} · ${live.status.replace(/_/g, ' ')}`;
-      const w = ctx.measureText(text).width;
+      const w = textWidth(ctx, text);
       if (!labels.place(p.sx - w / 2 - 4, p.sy - size - 8, w + 8, size + 6)) continue;
       haloText(ctx, text, p.sx - w / 2, p.sy - 6, dc.theme.accent, dc.theme.halo, 3);
       dc.hits.push({ selection: { kind: 'theatre', id: th.id }, x: p.sx, y: p.sy - 10, r: Math.max(14, w / 2), title: th.name, detail: live.status.toLowerCase(), priority: 8 });
@@ -83,7 +83,7 @@ export function drawGeographyLabels(dc: DrawContext): void {
       const p = dc.project(place.x, place.y);
       if (!dc.onScreen(p, 0)) continue;
       ctx.font = `${place.placement === 'MEASURED' ? 600 : 500} ${size}px ${dc.fonts.ui}`;
-      const w = ctx.measureText(place.name).width;
+      const w = textWidth(ctx, place.name);
       const x = p.sx + 6;
       const y = p.sy + 14;
       if (!labels.place(x - 2, y - size, w + 4, size + 4)) continue;

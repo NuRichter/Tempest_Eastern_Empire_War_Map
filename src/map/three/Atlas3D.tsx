@@ -19,6 +19,7 @@ import type { Front } from '@/map/field/front';
 import { forceSnapshotAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
 import { prefersReducedMotion } from '@/state/preferences';
+import { pixelRatioFor, samplesFor, useQuality, type QualityLevel } from '@/perf/quality';
 
 /**
  * The atlas in three dimensions (three.js).
@@ -161,7 +162,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
 
     /* -- renderer, scene, camera ------------------------------------ */
     const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+    renderer.setPixelRatio(pixelRatioFor(useQuality.getState().level));
     renderer.setSize(el.clientWidth, el.clientHeight);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.05;
@@ -533,6 +534,17 @@ export function Atlas3D({ auto }: { auto: boolean }) {
     };
     raf = requestAnimationFrame(loop);
 
+    // Graphics quality: resolution, bloom and edge samples follow the level.
+    const applyQuality = (level: QualityLevel) => {
+      const pr = pixelRatioFor(level);
+      renderer.setPixelRatio(pr);
+      composer.setPixelRatio(pr);
+      bloom.enabled = level > 0;
+      warSkin?.setSamples(samplesFor(level));
+    };
+    applyQuality(useQuality.getState().level);
+    const unsubQuality = useQuality.subscribe((q) => applyQuality(q.level));
+
     const onResize = () => {
       const w = el.clientWidth, h = el.clientHeight;
       renderer.setSize(w, h);
@@ -548,6 +560,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
       disposed = true;
       cancelAnimationFrame(raf);
       unsubField?.();
+      unsubQuality();
       warSkin?.dispose();
       ro.disconnect();
       controls.dispose();

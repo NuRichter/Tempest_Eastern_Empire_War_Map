@@ -1,7 +1,7 @@
 import { simToLngLat } from '@/lib/coords';
 import { territoryControlAt } from '@/simulation/resolver';
 import { getField } from '@/map/field/fieldStore';
-import { haloText, type DrawContext } from '@/map/overlay/context';
+import { type DrawContext, haloText, textWidth } from '@/map/overlay/context';
 import { translate } from '@/i18n';
 
 /**
@@ -53,7 +53,7 @@ export function drawControlChangeLabels(dc: DrawContext): void {
     const size = Math.round(10 * dc.labelScale);
     ctx.font = `700 ${size}px ${dc.fonts.mono}`;
     const text = translate('RECONSTRUCTED CONTROL CHANGE');
-    const w = ctx.measureText(text).width;
+    const w = textWidth(ctx, text);
     ctx.globalAlpha = 0.4 + 0.6 * Math.sin(Math.PI * c.transition);
     haloText(ctx, text, p.sx - w / 2, p.sy, dc.theme.accent, dc.theme.halo, 3);
     ctx.globalAlpha = 1;

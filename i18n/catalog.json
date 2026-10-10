@@ -250,6 +250,9 @@
   "Auto Timing for Cinematic Mode: the film sets its own speed, fast through preparation, slow in battle": [
    "src/components/overlays/CinematicOverlay.tsx"
   ],
+  "Automatic": [
+   "src/components/rail/LayersPanel.tsx"
+  ],
   "Back": [
    "src/components/overlays/Tour.tsx"
   ],
@@ -821,6 +824,9 @@
   "Gradient": [
    "src/components/rail/LayersPanel.tsx"
   ],
+  "Graphics quality": [
+   "src/components/rail/LayersPanel.tsx"
+  ],
   "Ground taken and lost as the armies move: it stays held until retaken, cut off or returned, and the front moves with the clock. RECONSTRUCTED from recorded positions and strengths (the novels draw no front line). Campaign-wide, so force filters do not change it.": [
    "src/state/preferences.ts"
   ],
@@ -855,7 +861,8 @@
    "src/components/ui/primitives.tsx"
   ],
   "High": [
-   "src/components/rail/FiltersPanel.tsx"
+   "src/components/rail/FiltersPanel.tsx",
+   "src/components/rail/LayersPanel.tsx"
   ],
   "High confidence": [
    "src/lib/format.ts"
@@ -1051,6 +1058,9 @@
   "low": [
    "src/components/ui/primitives.tsx"
   ],
+  "Low": [
+   "src/components/rail/LayersPanel.tsx"
+  ],
   "Low confidence": [
    "src/lib/format.ts"
   ],
@@ -1086,6 +1096,9 @@
   ],
   "medium": [
    "src/components/ui/primitives.tsx"
+  ],
+  "Medium": [
+   "src/components/rail/LayersPanel.tsx"
   ],
   "Medium confidence": [
    "src/lib/format.ts"

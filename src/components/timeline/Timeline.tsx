@@ -73,6 +73,9 @@ export function Timeline() {
 
   const trackRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const playheadRef = useRef<HTMLDivElement | null>(null);
+  // Track width from a ResizeObserver: reading clientWidth every frame forced a layout.
+  const [trackWidth, setTrackWidth] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [hover, setHover] = useState<{ frame: number; x: number } | null>(null);
   const [windowMode, setWindowMode] = useState<'all' | 'combat'>('all');
@@ -101,11 +104,21 @@ export function Timeline() {
 
   /* -- draw ----------------------------------------------------------- */
 
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const ro = new ResizeObserver(() => setTrackWidth(track.clientWidth));
+    ro.observe(track);
+    setTrackWidth(track.clientWidth);
+    return () => ro.disconnect();
+  }, [data]);
+
+  // The static picture (stages, lanes, gaps, battles, events, marks): redrawn only
+  // when what it shows changes, never per frame. The playhead is a separate element.
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
-    const track = trackRef.current;
-    if (!canvas || !track || !data || !clock) return;
-    const width = track.clientWidth;
+    if (!canvas || !data || !trackWidth) return;
+    const width = trackWidth;
     const height = 58;
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     if (canvas.width !== Math.round(width * dpr)) {
@@ -239,40 +252,35 @@ export function Timeline() {
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // Playhead (continuous, so it glides between keyframes while playing).
-    const hx = Math.round(px(clock.frame)) + 0.5;
-    ctx.strokeStyle = token('--fg');
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.moveTo(hx, 0);
-    ctx.lineTo(hx, height);
-    ctx.stroke();
-    ctx.fillStyle = INK.accent;
-    ctx.beginPath();
-    ctx.moveTo(hx - 5, 0);
-    ctx.lineTo(hx + 5, 0);
-    ctx.lineTo(hx, 6);
-    ctx.closePath();
-    ctx.fill();
-  }, [data, clock, range, lanes, filters, volumeMarks, fpd, bookmarks, uiTheme]);
+  }, [data, range, lanes, filters, volumeMarks, fpd, bookmarks, uiTheme, trackWidth]);
 
   useEffect(() => {
     draw();
-    const onResize = () => draw();
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, [draw, frame]);
+  }, [draw]);
+
+  // Playhead: a transform on its own element (compositor only), continuous while playing.
+  const placePlayhead = useCallback(() => {
+    const el = playheadRef.current;
+    if (!el || !clock || !trackWidth) return;
+    const [r0, r1] = range;
+    const x = Math.round(((clock.frame - r0) / Math.max(1, r1 - r0)) * trackWidth);
+    el.style.transform = `translateX(${x}px)`;
+  }, [clock, range, trackWidth]);
+
+  useEffect(() => {
+    placePlayhead();
+  }, [placePlayhead, frame]);
 
   useEffect(() => {
     if (!playing) return;
     let raf = 0;
     const tick = () => {
-      draw();
+      placePlayhead();
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [playing, draw]);
+  }, [playing, placePlayhead]);
 
   /* -- scrubbing ------------------------------------------------------ */
 
@@ -426,6 +434,10 @@ export function Timeline() {
           }}
         >
           <canvas ref={canvasRef} className="block h-[58px] w-full" />
+          <div ref={playheadRef} className="pointer-events-none absolute left-0 top-0 h-full will-change-transform" aria-hidden>
+            <div className="absolute -left-[0.75px] top-0 h-full w-[1.5px] bg-fg" />
+            <div className="absolute -left-[5px] top-0 h-0 w-0 border-x-[5px] border-t-[6px] border-x-transparent" style={{ borderTopColor: INK.accent }} />
+          </div>
           {hover ? (
             <div className="pointer-events-none absolute bottom-full mb-1 max-w-[20rem] -translate-x-1/2 rounded-[3px] border border-ink-500 bg-ink-900/95 px-2 py-1 shadow-panel" style={{ left: Math.min(Math.max(hover.x, 120), (trackRef.current?.clientWidth ?? 600) - 120) }}>
               <p className="figure text-2xs text-fg-3">

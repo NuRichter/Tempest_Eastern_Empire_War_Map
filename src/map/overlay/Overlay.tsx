@@ -18,6 +18,7 @@ import { drawControlChangeLabels, drawFronts, makeProjector } from '@/map/overla
 import { onField } from '@/map/field/fieldStore';
 import { useI18n, useT } from '@/i18n';
 import { is3DActive } from '@/state/view3d';
+import { pixelRatioFor, useQuality } from '@/perf/quality';
 
 interface Props {
   map: MapLibreMap | null;
@@ -40,6 +41,9 @@ export function Overlay({ map }: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const hitsRef = useRef<Hit[]>([]);
   const dirtyRef = useRef(true);
+  // Read once, not per frame: getComputedStyle and clientWidth force style and layout.
+  const sizeRef = useRef({ w: 0, h: 0 });
+  const fontsRef = useRef<{ ui: string; mono: string } | null>(null);
   const [tip, setTip] = useState<{ hit: Hit; x: number; y: number } | null>(null);
 
   const select = useSimulation((s) => s.select);
@@ -55,9 +59,10 @@ export function Overlay({ map }: Props) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
-    const width = map.getContainer().clientWidth;
-    const height = map.getContainer().clientHeight;
+    const dpr = pixelRatioFor(useQuality.getState().level);
+    if (!sizeRef.current.w) sizeRef.current = { w: map.getContainer().clientWidth, h: map.getContainer().clientHeight };
+    const { w: width, h: height } = sizeRef.current;
+    fontsRef.current ??= { ui: cssFont('--font-ui', 'system-ui, sans-serif'), mono: cssFont('--font-mono', 'ui-monospace, monospace') };
     if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) {
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
@@ -98,7 +103,7 @@ export function Overlay({ map }: Props) {
       globe,
       playing: clock.isPlaying,
       now: performance.now(),
-      fonts: { ui: cssFont('--font-ui', 'system-ui, sans-serif'), mono: cssFont('--font-mono', 'ui-monospace, monospace') },
+      fonts: fontsRef.current,
       labelScale: SCALE_FACTOR[prefs.labelScale],
       markerScale: SCALE_FACTOR[prefs.markerScale],
       eventScale: SCALE_FACTOR[prefs.eventMarkerScale],
@@ -146,12 +151,21 @@ export function Overlay({ map }: Props) {
     for (const e of events) map.on(e, mark);
     const unsubSim = useSimulation.subscribe(mark);
     const unsubPrefs = usePreferences.subscribe(mark);
+    const unsubQuality = useQuality.subscribe(mark);
     setPortraitListener(mark);
     const unsubField = onField(mark);
     // Canvas labels are translated at draw time: repaint when the language loads.
     const unsubI18n = useI18n.subscribe(mark);
-    const fontsReady = document.fonts?.ready.then(mark);
+    const fontsReady = document.fonts?.ready.then(() => {
+      fontsRef.current = null;
+      mark();
+    });
     void fontsReady;
+    const ro = new ResizeObserver(() => {
+      sizeRef.current = { w: map.getContainer().clientWidth, h: map.getContainer().clientHeight };
+      mark();
+    });
+    ro.observe(map.getContainer());
 
     let raf = 0;
     const tick = () => {
@@ -177,8 +191,10 @@ export function Overlay({ map }: Props) {
       for (const e of events) map.off(e, mark);
       unsubSim();
       unsubPrefs();
+      unsubQuality();
       unsubField();
       unsubI18n();
+      ro.disconnect();
       setPortraitListener(null);
     };
   }, [map, draw]);

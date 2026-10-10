@@ -1,7 +1,7 @@
 import { FACTION_COLOR, factionKey, INK } from '@/lib/palette';
 import { BATTLE_TYPE_LABEL, PROVENANCE_LABEL } from '@/lib/taxonomy';
 import { forcePositionAt } from '@/simulation/resolver';
-import { eventVisible, haloText, isSelected, trimTo, type DrawContext } from '@/map/overlay/context';
+import { type DrawContext, eventVisible, haloText, isSelected, textWidth, trimTo } from '@/map/overlay/context';
 import { drawBattleIcon } from '@/map/overlay/glyphs';
 import type { PlacedForce } from '@/map/overlay/layers/forces';
 import { translate } from '@/i18n';
@@ -51,7 +51,7 @@ export function drawBattles(dc: DrawContext): void {
       const fs = Math.round(11.5 * dc.labelScale);
       ctx.font = `600 ${fs}px ${dc.fonts.ui}`;
       const text = trimTo(ctx, b.name, 220);
-      const w = ctx.measureText(text).width;
+      const w = textWidth(ctx, text);
       const x = p.sx - w / 2;
       const y = p.sy + size + fs + 2;
       if (dc.labels.place(x - 3, y - fs, w + 6, fs + 4, selected)) haloText(ctx, text, x, y, live ? dc.theme.battle : dc.theme.labelDim, dc.theme.halo, 3);
@@ -148,7 +148,7 @@ export function drawEvents(dc: DrawContext): void {
     const size = Math.round(12 * dc.labelScale);
     ctx.font = `600 ${size}px ${dc.fonts.ui}`;
     const text = trimTo(ctx, l.e.title, 260);
-    const w = ctx.measureText(text).width;
+    const w = textWidth(ctx, text);
     if (!dc.labels.place(l.sx - 2, l.sy - size, w + 4, size + 5)) continue;
     ctx.globalAlpha = l.alpha;
     haloText(ctx, text, l.sx, l.sy, dc.theme.label, dc.theme.halo, 3.5);

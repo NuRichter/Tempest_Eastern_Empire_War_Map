@@ -87,6 +87,7 @@ export interface WarSkin {
   /** Repaints the territory canvas only when some territory's role changed at T. */
   updateTerritories(T: number): void;
   setField(front: Front, fields: FrontFields | null, packed?: { fields: Float32Array; pale: Uint8Array }): void;
+  setSamples(n: number): void;
   dispose(): void;
 }
 
@@ -210,6 +211,9 @@ export function createWarSkin(geo: THREE.BufferGeometry, data: Dataset, mask: { 
       fieldsTex!.needsUpdate = true;
       paleTex!.needsUpdate = true;
       uniforms.u_hasField.value = 1;
+    },
+    setSamples(n: number) {
+      uniforms.u_samples.value = n;
     },
     dispose() {
       material.dispose();

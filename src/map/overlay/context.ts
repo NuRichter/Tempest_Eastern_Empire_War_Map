@@ -125,8 +125,24 @@ export function haloText(ctx: CanvasRenderingContext2D, text: string, x: number,
 }
 
 export function trimTo(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string {
-  if (ctx.measureText(text).width <= maxWidth) return text;
+  if (textWidth(ctx, text) <= maxWidth) return text;
   let t = text;
-  while (t.length > 1 && ctx.measureText(`${t}…`).width > maxWidth) t = t.slice(0, -1);
+  while (t.length > 1 && textWidth(ctx, `${t}…`) > maxWidth) t = t.slice(0, -1);
   return `${t.trimEnd()}…`;
+}
+
+/**
+ * Width of a text in the context's current font, cached: the overlay draws the
+ * same labels every frame, and measuring text is not free.
+ */
+const widthCache = new Map<string, number>();
+export function textWidth(ctx: CanvasRenderingContext2D, text: string): number {
+  const key = `${ctx.font}\u0000${(ctx as CanvasRenderingContext2D & { letterSpacing?: string }).letterSpacing ?? ''}\u0000${text}`;
+  let w = widthCache.get(key);
+  if (w === undefined) {
+    if (widthCache.size > 4000) widthCache.clear();
+    w = ctx.measureText(text).width;
+    widthCache.set(key, w);
+  }
+  return w;
 }

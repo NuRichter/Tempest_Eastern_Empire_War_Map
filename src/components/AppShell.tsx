@@ -21,6 +21,7 @@ import { Tour } from '@/components/overlays/Tour';
 import { MusicDirector } from '@/audio/MusicDirector';
 import { AssetGuard } from '@/components/AssetGuard';
 import { clampedIntParam, enumParam, idParam } from '@/security/input';
+import { startQualityGovernor } from '@/perf/quality';
 
 // The three.js view loads only when someone opens it.
 const Atlas3D = dynamic(() => import('@/map/three/Atlas3D'), { ssr: false });
@@ -49,6 +50,10 @@ export function AppShell() {
   const started = useRef(false);
 
   /* -- language and appearance -------------------------------------- */
+
+  useEffect(() => {
+    startQualityGovernor();
+  }, []);
 
   useEffect(() => {
     void syncLocale();

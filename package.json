@@ -30,7 +30,9 @@
     "security:test": "tsx scripts/security/test.mts",
     "security:browser": "tsx scripts/security/browser.mts",
     "security:preview": "tsx scripts/security/preview.mts",
-    "qa:profile": "tsx scripts/profile-cinematic.mts"
+    "qa:profile": "tsx scripts/profile-cinematic.mts",
+    "qa:governor": "tsx scripts/qa-governor.mts",
+    "qa:trace": "tsx scripts/trace-cinematic.mts"
   },
   "dependencies": {
     "lucide-react": "^0.469.0",
