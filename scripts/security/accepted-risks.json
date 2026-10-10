@@ -1,0 +1,13 @@
+{
+  "$comment": "Advisories accepted after review (see docs/security/AUDIT-REPORT.md). Each entry holds only for the listed version line and until its review date. After that date, npm run security:audit fails again until the entry is reviewed.",
+  "accepted": [
+    {
+      "id": "SEC-01",
+      "advisory": "GHSA-jrc7-96c5-q579",
+      "package": "maplibre-gl",
+      "versionPrefix": "5.24.",
+      "reviewBy": "2027-01-10",
+      "reason": "Reached only through Popup.setHTML and attribution HTML, both unused and banned by security:lint. Trusted Types refuse HTML strings. The fixed 6.x line breaks the map worker under Next."
+    }
+  ]
+}

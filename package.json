@@ -26,7 +26,7 @@
     "i18n:check": "tsx scripts/i18n-check.ts",
     "security:lint": "tsx scripts/security/lint.mts",
     "security:scan": "tsx scripts/security/scan.mts",
-    "security:audit": "npm audit --omit=dev --audit-level=low",
+    "security:audit": "tsx scripts/security/audit.mts",
     "security:test": "tsx scripts/security/test.mts",
     "security:browser": "tsx scripts/security/browser.mts",
     "security:preview": "tsx scripts/security/preview.mts",

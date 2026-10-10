@@ -60,7 +60,7 @@ Never point active tests or load tests at production or at shared hosting.
 - Weekly: run `npm outdated` and `npm audit`. Apply minor and patch updates together, majors one at a time, each on its own branch with the full test run (Dependabot is not used in this repository).
 - A major upgrade needs its changelog read, `npm run verify`, `npm run qa` and `npm run security:browser` green before merging. (MapLibre 6 is the example: it was tried and rolled back because its worker does not load under the Next build.)
 - Never `npm audit fix --force`.
-- `npm run security:audit` must stay clean for runtime dependencies. Dev-only findings are listed in the audit report with their reason.
+- `npm run security:audit` must stay clean for runtime dependencies. It fails on every advisory except the reviewed ones in `scripts/security/accepted-risks.json`, and each of those holds only for its version line and until its `reviewBy` date. When a date passes, review the risk again (or upgrade) and set a new date. Dev-only findings are listed in the audit report with their reason.
 
 ## When a new advisory or finding appears
 

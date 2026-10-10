@@ -31,7 +31,7 @@
 | Resource cleanup (WebGL, memory) | FIXED AND VERIFIED | `security:browser`: 6 open and close cycles of the 3D view, handle released, heap growth under 25 MB, no context warnings |
 | Search cost | FIXED AND VERIFIED | `security:test`: 1 MB, 100k-word and markup queries each under 250 ms |
 | Oversized requests | PASS | `security:browser`: a 60 KB URL is refused by the server, which keeps serving |
-| Runtime dependency advisories | FIXED AND VERIFIED, one ACCEPTED RISK | `npm audit --omit=dev`: only GHSA-jrc7-96c5-q579 (MapLibre, unreachable path, see SEC-01) |
+| Runtime dependency advisories | FIXED AND VERIFIED, one ACCEPTED RISK | `npm run security:audit`: only GHSA-jrc7-96c5-q579 (MapLibre, unreachable path, see SEC-01), accepted for 5.24.x until 2027-01-10 in `scripts/security/accepted-risks.json` |
 | Dev dependency advisories | ACCEPTED RISK | `braces`, `postcss-selector-parser` (Tailwind 3, build-time only) |
 | Lifecycle install scripts | PASS | 4 packages: `esbuild`, `fsevents`, `puppeteer`, `unrs-resolver` (known tooling) |
 | Secrets in the repository | PASS (limited) | `.env*` and `.vercel` are git-ignored. The only environment variable is the public Search Console token, kept in Vercel. No history-wide secret scanner was run |
