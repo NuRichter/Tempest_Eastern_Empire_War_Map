@@ -135,14 +135,28 @@ export function trimTo(ctx: CanvasRenderingContext2D, text: string, maxWidth: nu
  * Width of a text in the context's current font, cached: the overlay draws the
  * same labels every frame, and measuring text is not free.
  */
-const widthCache = new Map<string, number>();
+const widthCache = new Map<string, Map<string, number>>();
+let cachedTexts = 0;
 export function textWidth(ctx: CanvasRenderingContext2D, text: string): number {
-  const key = `${ctx.font}\u0000${(ctx as CanvasRenderingContext2D & { letterSpacing?: string }).letterSpacing ?? ''}\u0000${text}`;
-  let w = widthCache.get(key);
+  // Keyed by font (letter spacing included, the geography labels set it), then text.
+  const spacing = (ctx as CanvasRenderingContext2D & { letterSpacing?: string }).letterSpacing;
+  const font = spacing && spacing !== '0px' ? `${ctx.font}|${spacing}` : ctx.font;
+  let byText = widthCache.get(font);
+  if (!byText) {
+    byText = new Map();
+    widthCache.set(font, byText);
+  }
+  let w = byText.get(text);
   if (w === undefined) {
-    if (widthCache.size > 4000) widthCache.clear();
+    if (cachedTexts > 4000) {
+      widthCache.clear();
+      cachedTexts = 0;
+      byText = new Map();
+      widthCache.set(font, byText);
+    }
     w = ctx.measureText(text).width;
-    widthCache.set(key, w);
+    byText.set(text, w);
+    cachedTexts += 1;
   }
   return w;
 }
