@@ -57,7 +57,7 @@ Never point active tests or load tests at production or at shared hosting.
 
 ## Dependencies
 
-- Weekly: review Dependabot pull requests. Minor and patch updates come grouped, majors one at a time.
+- Weekly: run `npm outdated` and `npm audit`. Apply minor and patch updates together, majors one at a time, each on its own branch with the full test run (Dependabot is not used in this repository).
 - A major upgrade needs its changelog read, `npm run verify`, `npm run qa` and `npm run security:browser` green before merging. (MapLibre 6 is the example: it was tried and rolled back because its worker does not load under the Next build.)
 - Never `npm audit fix --force`.
 - `npm run security:audit` must stay clean for runtime dependencies. Dev-only findings are listed in the audit report with their reason.

@@ -27,7 +27,7 @@ All behaviour runs in the visitor's browser: React UI, MapLibre map, a three.js 
 | 3 | React and the DOM | Reach an HTML or script sink with a string | No HTML sinks in app code (`security:lint`), Trusted Types default policy refuses HTML and script strings |
 | 4 | Runtime JSON in `public/` | Alter a file between build and browser (CDN, proxy, extension) | SHA-256 Subresource Integrity on every JSON fetch, fail-closed JSON parse |
 | 5 | Sources in `data-source/` | Submit a pull request with hostile or malformed data | Build fails on malformed JSON or prototype keys, `validate-data`, review, CI |
-| 6 | Dependencies | Ship a vulnerable or malicious version | Lockfile + `npm ci`, `npm audit`, dependency review on PRs, Dependabot, CodeQL |
+| 6 | Dependencies | Ship a vulnerable or malicious version | Lockfile + `npm ci`, `npm audit`, dependency review on PRs, weekly manual update check, CodeQL |
 | 7 | Build machine and CI | Abuse CI permissions or a third-party action | Read-only `GITHUB_TOKEN`, no secrets in CI, actions pinned to commit SHAs, `persist-credentials: false` |
 | 8 | Hosting configuration | Weaken headers or caching | Headers generated from one policy module, checked by `security:scan` (passive on production) |
 | 9 | Browser APIs, WebGL, Canvas | Exhaust GPU or memory | Bounded inputs, context released on close, rendering paused in hidden tabs |
@@ -36,7 +36,7 @@ All behaviour runs in the visitor's browser: React UI, MapLibre map, a three.js 
 ## Scenarios, ranked
 
 1. **Script injection in the browser** (XSS through a deep link, search, data or a library). High impact, now low likelihood: no app HTML sinks, CSP without `unsafe-inline` or `unsafe-eval` for scripts, Trusted Types.
-2. **Supply chain** (a vulnerable or malicious dependency or CI action). High impact. Controls: audit gates, pinned actions, least privilege, Dependabot, CodeQL. Residual: a zero-day in a dependency is not preventable, only containable (CSP and Trusted Types limit what injected code can do).
+2. **Supply chain** (a vulnerable or malicious dependency or CI action). High impact. Controls: audit gates, pinned actions, least privilege, weekly manual update check, CodeQL. Residual: a zero-day in a dependency is not preventable, only containable (CSP and Trusted Types limit what injected code can do).
 3. **Tampered data** in transit or through a pull request. Medium impact (misinformation). Controls: SRI on fetch, build validation, review.
 4. **Clickjacking and cross-site embedding.** Low impact. Controls: `frame-ancestors 'none'`, `X-Frame-Options`, CORP.
 5. **Resource exhaustion in the visitor's own tab** (huge input, repeated 3D toggles). Low impact. Controls: input caps, WebGL context release.
