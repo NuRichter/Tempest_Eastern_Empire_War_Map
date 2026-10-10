@@ -35,6 +35,7 @@
     "qa:trace": "tsx scripts/trace-cinematic.mts"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "lucide-react": "^1.55.0",
     "maplibre-gl": "~5.24.0",
     "next": "^16.4.0",

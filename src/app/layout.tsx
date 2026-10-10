@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata, Viewport } from 'next';
 import { Cinzel, IBM_Plex_Mono, IBM_Plex_Sans_Condensed, Source_Serif_4 } from 'next/font/google';
 import './globals.css';
@@ -87,7 +88,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON_LD_HTML }} />
       </head>
-      <body className="bg-ink-900 font-ui text-fg antialiased">{children}</body>
+      <body className="bg-ink-900 font-ui text-fg antialiased">
+        {children}
+        {/* Vercel Web Analytics: cookieless page views, served from this origin (/_vercel/insights),
+            so the CSP and Trusted Types need no exception. Only on Vercel, where that route exists. */}
+        {process.env.VERCEL === '1' && <Analytics />}
+      </body>
     </html>
   );
 }

@@ -26,7 +26,8 @@ import type { Dataset } from '@/data/loader';
 import type { FrameState } from '@/types/dataset';
 import { pixelRatioFor, samplesFor, useQuality } from '@/perf/quality';
 
-const BASE_MAP_URL = '/maps/base-map.png';
+// Lossless WebP of public/maps/base-map.png: the same pixels at about a third of the bytes.
+const BASE_MAP_URL = '/maps/base-map.webp';
 
 const SEA = '#0b1419';
 

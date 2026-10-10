@@ -49,7 +49,7 @@ export function Minimap({ map }: { map: MapLibreMap | null }) {
         map.easeTo({ center: simToLngLatTuple(x, y), duration: 700 });
       }}
     >
-      <img src={style === 'myth' ? '/maps/myth-map.jpg' : '/maps/base-map.png'} alt="" className="h-full w-full object-cover opacity-80" />
+      <img src={style === 'myth' ? '/maps/thumb/myth-320.webp' : '/maps/thumb/base-320.webp'} alt="" className="h-full w-full object-cover opacity-80" />
       {rect && rect.x1 > rect.x0 ? (
         <span
           aria-hidden

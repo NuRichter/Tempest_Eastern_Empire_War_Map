@@ -15,8 +15,8 @@ interface Props {
 }
 
 const STYLES: { id: MapStyle; name: string; note: string; thumb: string }[] = [
-  { id: 'base', name: msg('Base Map'), note: msg('Operational map with clear borders. Default.'), thumb: '/maps/base-map.png' },
-  { id: 'myth', name: msg('Myth Map'), note: msg('The painted world map, for geographic and lore context.'), thumb: '/maps/myth-map.jpg' },
+  { id: 'base', name: msg('Base Map'), note: msg('Operational map with clear borders. Default.'), thumb: '/maps/thumb/base-320.webp' },
+  { id: 'myth', name: msg('Myth Map'), note: msg('The painted world map, for geographic and lore context.'), thumb: '/maps/thumb/myth-320.webp' },
 ];
 
 /** Navigation and map-style controls, bottom corners. Small, square, quiet. */
