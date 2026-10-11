@@ -337,7 +337,7 @@
       "x": 0.6524,
       "y": 0.4189,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
     {
       "id": "imperial-chariot-line",
@@ -346,7 +346,7 @@
       "x": 0.6531,
       "y": 0.418,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
     {
       "id": "linked-fortress-position",
@@ -355,7 +355,7 @@
       "x": 0.6533,
       "y": 0.4176,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
     {
       "id": "encircled-position",
@@ -364,7 +364,7 @@
       "x": 0.653,
       "y": 0.4183,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
     {
       "id": "feigned-withdrawal-line",
@@ -373,7 +373,7 @@
       "x": 0.6522,
       "y": 0.4195,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
     {
       "id": "attempted-rally-point",
@@ -382,7 +382,7 @@
       "x": 0.654,
       "y": 0.4168,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
     {
       "id": "dwargon-defensive-line",
@@ -391,7 +391,7 @@
       "x": 0.7335,
       "y": 0.4199,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Placed relative to the Dwargon Gate, on the isthmus plain east of it."
     },
     {
       "id": "ritual-caster-position",
@@ -400,7 +400,7 @@
       "x": 0.74,
       "y": 0.4149,
       "placement": "RECONSTRUCTED",
-      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
+      "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Placed relative to the Dwargon Gate, on the isthmus plain east of it."
     },
     {
       "id": "imperial-infantry-camp",
@@ -419,7 +419,7 @@
       "x": 0.64,
       "y": 0.5602,
       "placement": "RECONSTRUCTED",
-      "basis": "Where the 170,000 who did not enter the labyrinth stayed, with Caligulio's headquarters tents, until they were annihilated on D+11 (V13 Ch3-4, v13.txt:9489-9493, 9520, 17745-17760). No location is stated beyond 'outside' the labyrinth entrance at the capital. Placed just east of the Tempest marker on the line toward jura-forest-edge.",
+      "basis": "Where the 170,000 who did not enter the labyrinth stayed, with Caligulio's headquarters tents, until they were annihilated on D+11 (V13 Ch3-4, v13.txt:9489-9493, 9520, 17745-17760). No location is stated beyond 'outside' the labyrinth entrance at the capital. Placed about 12 km east of the Tempest marker, between the capital and the infantry camp.",
       "symbol": "camp"
     },
     {
@@ -474,7 +474,7 @@
       "x": 0.7447,
       "y": 0.4137,
       "placement": "RECONSTRUCTED",
-      "basis": "The Legion descends from the airships onto the field in front of the allied line (v15.txt:3404-3420, 7981-7986, 9198-9204). Placed east of the Dwargon defensive line, on the Empire side."
+      "basis": "The Legion descends from the airships onto the field in front of the allied line (v15.txt:3404-3420, 7981-7986, 9198-9204). Placed east of the Dwargon defensive line on the isthmus, on the Empire side."
     },
     {
       "id": "magitank-rear",

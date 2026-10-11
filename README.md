@@ -25,15 +25,15 @@
 ![Languages](https://img.shields.io/badge/bahasa-30-8fc9b6?style=flat-square)
 ![Theme](https://img.shields.io/badge/tema-dark_·_light-a7b1b5?style=flat-square)
 ![Tests](https://img.shields.io/badge/tes-25%2F25_·_skenario_27%2F27-2f9e7e?style=flat-square)
-![Next.js](https://img.shields.io/badge/Next.js-15-000?style=flat-square&logo=nextdotjs)
+![Next.js](https://img.shields.io/badge/Next.js-16-000?style=flat-square&logo=nextdotjs)
 ![MapLibre](https://img.shields.io/badge/MapLibre_GL-5-396CB2?style=flat-square&logo=maplibre&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
 <br>
 
-<img src="./assets/readme/gifs/war-timelapse.gif" width="100%" alt="Timelapse seluruh perang dari D−5 sampai D+16 dalam mode sinematik">
+<img src="./assets/readme/gifs/war-timelapse.gif" width="100%" alt="Timelapse seluruh perang dari D−39 sampai D+17">
 
-<sub>Seluruh perang dalam satu tarikan napas. Dari pawai ke hutan Jura sampai malam panjang di Dwargon, direkam langsung dari atlas.</sub>
+<sub>Seluruh perang dalam satu tarikan napas. Satu kolom berangkat dari Kekaisaran, pecah di titik henti, menyerbu hutan Jura dan Dwargon, lalu runtuh. Direkam langsung dari atlas.</sub>
 
 <br><br>
 
@@ -82,7 +82,7 @@ Kalau bukunya diam, atlasnya juga bilang begitu. Asal lo tau ya, angka yang tida
 <td align="center"><h3>24</h3><sub>transisi wilayah, 2.466 sel</sub></td>
 <td align="center"><h3>53</h3><sub>karakter, 41 photocard</sub></td>
 <td align="center"><h3>23</h3><sub>ibu kota, kota, dan Labirin</sub></td>
-<td align="center"><h3>30</h3><sub>bahasa, 823 teks antarmuka</sub></td>
+<td align="center"><h3>30</h3><sub>bahasa, 827 teks antarmuka</sub></td>
 <td align="center"><h3>18</h3><sub>langkah tur bersama warga Tempest</sub></td>
 </tr>
 </table>
@@ -90,8 +90,8 @@ Kalau bukunya diam, atlasnya juga bilang begitu. Asal lo tau ya, angka yang tida
 <br>
 
 <div align="center">
-<img src="./assets/readme/screenshots/hero-dark.webp" width="100%" alt="Atlas pada D+10: kantong Kekaisaran di Jura runtuh, panel Situasi menampilkan siapa melawan siapa">
-<sub>D+10, 10:50. Kamp Kekaisaran di luar Labirin dimusnahkan. Panel kanan langsung menjawab: siapa melawan siapa, berapa yang gugur, apa yang baru terjadi.</sub>
+<img src="./assets/readme/screenshots/hero-dark.webp" width="100%" alt="Atlas pada D−2: Formation B mengancam jalan Tempest–Dwargon, panel Situasi menampilkan buku besar operasi">
+<sub>D−2, 10:30. Formation B (200.000) berdiri di jalan Tempest–Dwargon dan mengancam jalur pasokannya, pasukan lain menyebar dari titik henti. Panel kanan langsung menjawab: siapa melawan siapa, berapa yang gugur, apa yang baru terjadi, dan buku besar pasukan detik itu.</sub>
 </div>
 
 <br>
@@ -102,11 +102,11 @@ Atlas ini meniru *cara* empat video perang dokumenter menggerakkan wilayah. Vide
 
 <table>
 <tr>
-<td width="50%"><img src="./assets/readme/gifs/front-advance-into-jura.gif" alt="Garis depan Kekaisaran maju ke barat menembus hutan Jura"><br><b>D−2 → D−1 · Serbuan ke hutan Jura</b><br><sub>700.000 infanteri masuk. Garis depan merayap ke barat mengikuti barisan pasukan, dengan sabuk transisi gradien di tepinya.</sub></td>
+<td width="50%"><img src="./assets/readme/gifs/front-advance-into-jura.gif" alt="Kolom Kekaisaran pecah di titik henti dan menyerbu hutan Jura"><br><b>D−3 → D+0 · Pecah di titik henti</b><br><sub>Kolom 1.005.000 berhenti dan pecah jadi lima. 700.000 infanteri menyerbu hutan menuju Rimuru, yang lain berangkat ke utara dan ke Dwargon. Garis depan merayap mengikuti barisan.</sub></td>
 <td width="50%"><img src="./assets/readme/gifs/pocket-collapse-d10.gif" alt="Kantong Kekaisaran di Jura runtuh setelah kamp dimusnahkan"><br><b>D+10 · Kantong Jura runtuh</b><br><sub>Baru bergerak setelah ikon pertempuran disilang, lalu mundur ke arah perbatasan Kekaisaran. Wilayah yang paling jauh dari rumah lepas lebih dulu.</sub></td>
 </tr>
 <tr>
-<td width="50%"><img src="./assets/readme/gifs/dwargon-retreat.gif" alt="Sabuk pengepungan Dwargon mundur ke perbatasan Kekaisaran pada malam panjang"><br><b>D+15 → D+16 · Pengepungan Dwargon pecah</b><br><sub>Sabuk pengepungan yang menempel ke tanah air Kekaisaran mundur sampai habis. Legion mendarat dan bertempur, tapi tidak bisa merebut lagi tanah yang sudah hilang.</sub></td>
+<td width="50%"><img src="./assets/readme/gifs/dwargon-sw-offensive.gif" alt="Formation B mengancam jalan Tempest–Dwargon, menembus perbatasan barat daya Dwargon, lalu hancur"><br><b>D−2 → D+0 · Serangan barat daya gagal</b><br><sub>Formation B mengancam jalan Tempest–Dwargon, menembus perbatasan barat daya lewat lembah, dan berbaris 30 km dari kota Dwargon. Lalu hancur. Rutenya berakhir dengan tanda silang, Dwargon tidak pernah jatuh.</sub></td>
 <td width="50%"><img src="./assets/readme/screenshots/capitals-labyrinth.webp" alt="Ibu kota Rimuru dan Labirin Ramiris di tengah wilayah yang dikuasai Kekaisaran"><br><b>Kota tidak pernah jatuh</b><br><sub>Rimuru dengan mahkotanya dan Labirin Ramiris bergaris putus-putus. Wilayah Kekaisaran mengalir di sekelilingnya, persis seperti di novel.</sub></td>
 </tr>
 </table>
@@ -139,7 +139,7 @@ Sutradaranya membaca perang setiap seperempat detik: event terbaru, pertempuran 
 
 **Auto Timing.** Filmnya mengatur kecepatannya sendiri: 16× saat persiapan, 8× saat serbuan pertama, melambat ke 2× menjelang pertempuran, dan 1× tepat saat pertempuran berlangsung. Tombolnya ada di atas layar dan bisa dimatikan kapan saja.
 
-**Cold open.** Sebelum film berjalan, empat kalimat pembuka muncul satu per satu, semuanya dari catatan perang: *"D−40. The Empire decides on war."*, *"1,010,002 imperial soldiers will fall."*, *"700,000 of them will rise again."*, *"Tempest will not lose a single soldier."* Setiap kartu bab juga membawa kalimat pemikat dari event terpenting di bab itu.
+**Cold open.** Sebelum film berjalan, empat kalimat pembuka muncul satu per satu, semuanya dari catatan perang: *"D−40. The Empire decides on war."*, *"1,020,002 imperial soldiers will fall."*, *"700,000 of them will rise again."*, *"Tempest will not lose a single soldier."* Angka gugurnya untuk seluruh Kekaisaran: 1.010.000 dari operasi invasi, ditambah 10.000 Magic Beast Division yang bertempur di luar operasi dan dua tokoh bernama. Setiap kartu bab juga membawa kalimat pemikat dari event terpenting di bab itu.
 
 Kamera tidak pernah melompat. Pusat, zoom, kemiringan, dan arah pandang masing-masing mengikuti pegas teredam kritis yang dihitung persis, jadi gerakannya sama mulusnya di komputer kencang maupun ponsel lambat. Di atasnya ada **kartu bab** di setiap tahap perang, **kartu VS** saat pertempuran dimulai (bendera dan photocard kedua pihak), kartu event yang bertumpuk, buku korban, bingkai viewfinder, dan pita film yang menandai setiap bab. Sentuh peta kapan saja untuk mengambil alih kamera, sutradara kembali beberapa detik kemudian.
 
@@ -150,7 +150,7 @@ Kamera tidak pernah melompat. Pusat, zoom, kemiringan, dan arah pandang masing-m
 Tekan `V` (atau pilih **3D** di sebelah Datar dan Bola dunia) dan seluruh atlas berdiri jadi dunia tiga dimensi, dibangun dengan **three.js**. Mode sinematik memakai panggung yang sama secara default, dengan tombol **2D | 3D** di bagian atas.
 
 <div align="center">
-<img src="./assets/readme/gifs/cinematic-3d.gif" width="100%" alt="Mode sinematik 3D: pertempuran gerbang Dwargon, portal Labirin, dan malam panjang">
+<img src="./assets/readme/gifs/cinematic-3d.gif" width="100%" alt="Mode sinematik 3D: token pasukan di titik henti, serangan barat daya, Gerbang Dwargon, dan standee karakter">
 </div>
 
 | | Yang ada di layar |
@@ -158,11 +158,15 @@ Tekan `V` (atau pilih **3D** di sebelah Datar dan Bola dunia) dan seluruh atlas 
 | 🏔️ | **Relief** dengan Myth Map yang di-*super-resolve* sebagai kulitnya. Pegunungan Kanaat berdiri tinggi di sekitar Dwargon. Reliefnya rekonstruksi bergaya, novel tidak memberi ketinggian. |
 | 🌊 | **Laut beranimasi** dengan ombak, pantulan langit, dan kilau matahari |
 | 🟥 | **Wilayah dan front** dari data yang sama dengan peta 2D, dilukis di atas medan, garis depannya menyala |
-| 🗼 | **Pasukan** sebagai pilar bercahaya warna faksi, tingginya mengikuti kekuatan, angkanya melayang di atas |
+| ♟️ | **Pasukan sebagai token 3D**, kembaran ikon 2D: alas berbentuk faksi (kotak Kekaisaran, bulat Tempest, belah ketupat Dwargon, segitiga lainnya), simbol jenis unit timbul di atasnya (✕ infanteri, oval lapis baja, baling-baling udara yang berputar, bintang elite), angka kekuatan melayang di atas. Pasukan udara melayang bertali, yang bergerak menunjukkan arah, yang hancur rebah kelabu |
+| 🎴 | **Karakter 2.5D.** Tokoh di event yang sedang berlangsung berdiri sebagai standee photocard di atas dudukan berwarna faksi, selalu menghadap kamera, lengkap dengan bayangan |
+| 🚩 | **Titik strategis** sebagai model kecil: bendera titik henti, menara gerbang, chevron perbatasan, target sasaran, tenda kamp |
+| 🛣️ | **Rute terukur** yang sedang ditempuh menempel di relief, sama dengan garis di peta 2D |
 | 💥 | **Pertempuran** dengan cincin berdenyut, percikan api, dan cahaya kobaran selama berlangsung |
 | 👑 | **Ibu kota** sebagai kota 3D bermahkota, **Labirin** sebagai portal ungu dengan pilar cahaya |
 | 🌗 | **Siang dan malam mengikuti jam simulasi.** Matahari bergerak sesuai jam, malam panjang D+15 benar-benar terjadi di bawah cahaya bulan |
 | 🎥 | **Kamera sutradara** yang sama, diterjemahkan ke orbit 3D |
+| 👆 | **Klik** token, titik strategis, atau standee untuk membuka dossier-nya |
 
 **Peta lebih HD saat di-zoom.** Base Map berubah jadi vektor (garis pantai dan perbatasan tetap tajam di zoom berapa pun), dan Myth Map dilukis ulang dengan super-resolusi ×4 (FSRCNN) lalu dipotong jadi 609 tile, jadi detailnya bertahan saat didekati.
 
@@ -180,7 +184,7 @@ Tekan `V` (atau pilih **3D** di sebelah Datar dan Bola dunia) dan seluruh atlas 
 
 ## ⚖️ Aturan perang di peta ini
 
-Novel tidak menggambar garis kendali, jadi wilayah yang dikuasai **direkonstruksi** dari posisi, kekuatan, dan nasib setiap formasi. Supaya hasilnya logis seperti perang sungguhan, enam aturan ini dijaga oleh kompiler dan diuji otomatis:
+Novel tidak menggambar garis kendali, jadi wilayah yang dikuasai **direkonstruksi** dari posisi, kekuatan, dan nasib setiap formasi. Supaya hasilnya logis seperti perang sungguhan, tujuh aturan ini dijaga oleh kompiler dan diuji otomatis:
 
 | | Aturan | Artinya di layar |
 |:---:|---|---|
@@ -196,9 +200,9 @@ Detail teknis ada di [`docs/TERRITORIAL-ANIMATION.md`](./docs/TERRITORIAL-ANIMAT
 
 <br>
 
-## 🌍 Skenario R6: model geografis dan buku besar pasukan
+## 🌍 Buku besar pasukan dan peta berskala
 
-Sejak revisi **R6** (11 Oktober 2026), atlas mengikuti **skenario pasukan** milik pemilik proyek, bukan hitungan kanon 940.000. Setiap perbedaan dengan novel tetap dicatat (DISC-R6-01 sampai 09 di panel About), tidak disembunyikan.
+Susunan pasukan Kekaisaran di atlas ini mengikuti **brief skenario** pembuatnya. Novel menyebut 940.000 untuk tentara invasi, skenarionya 1.040.000. Setiap perbedaan dengan novel dicatat dan bisa dibaca di panel About → *Scenario and novels*, tidak disembunyikan.
 
 | | Angka | Dari mana |
 |---|---:|---|
@@ -209,9 +213,9 @@ Sejak revisi **R6** (11 Oktober 2026), atlas mengikuti **skenario pasukan** mili
 | Personel unik dalam operasi | 1.040.000 | 1.010.000 + 30.000 |
 | Gugur / dibangkitkan | 1.010.000 / 700.000 | 310.000 tidak dibangkitkan, 30.000 tidak pernah gugur, 730.000 aktif di akhir |
 
-Semua angka itu **dihitung kompiler** dari data pasukan, event, dan catatan korban, lalu dicek otomatis oleh 27 tes skenario. Panel Situasi menampilkan *Operation ledger* untuk detik yang sedang diputar.
+Semua angka itu **dihitung kompiler** dari data pasukan, event, dan catatan korban, lalu dicek otomatis oleh 27 tes skenario. Panel Situasi menampilkan *Operation ledger* untuk detik yang sedang diputar, lengkap dengan hitungannya.
 
-Petanya sekarang punya **skala**: 1 piksel atlas ≈ 2 km (kalibrasi sintetis dari jarak yang disebut novel). Sungai, danau, pegunungan Kanaat beserta celahnya, hutan, dan jalan dilacak dari peta lukis. Setiap pasukan berjalan di **rute terukur**: lewat jalan, celah gunung, dan arungan, bukan garis lurus. Kecepatannya juga dicek terhadap laju yang disebut novel.
+Petanya punya **skala**: 1 piksel atlas ≈ 2 km, kalibrasi sintetis dari jarak yang disebut novel. Sungai, danau, pegunungan Kanaat beserta celahnya, hutan, dan jalan dilacak dari peta lukis. Setiap pasukan berjalan di **rute terukur**, lewat jalan, celah gunung, dan arungan, bukan garis lurus, dan kecepatannya dicek terhadap laju yang disebut novel. Status jalur pasokan (terbuka, terancam, terputus, aman) tampil di jalan Tempest–Dwargon.
 
 Rinciannya: [`docs/GEOGRAPHIC_MODEL.md`](./docs/GEOGRAPHIC_MODEL.md) · [`docs/CAMPAIGN_FORCE_LEDGER.md`](./docs/CAMPAIGN_FORCE_LEDGER.md) · [`docs/CAMPAIGN_TIMELINE.md`](./docs/CAMPAIGN_TIMELINE.md)
 
@@ -254,7 +258,7 @@ timeline
 | Jam simulasi | `11:30` | ❌ Grid 10 menit, diberi tag *SIMULATION* |
 | Kalender | `…/9001` | ❌ Penanda buatan |
 
-Ringkasan audit sintesis R6 (5 volume, 2.101 halaman, 305 adegan, 13 event baru, hitungan hari yang dikoreksi) ada di [`docs/research/SYNTHESIS_AUDIT.md`](./docs/research/SYNTHESIS_AUDIT.md).
+Ringkasan audit sintesis (5 volume, 2.101 halaman, 305 adegan, 13 event baru, hitungan hari yang dikoreksi) ada di [`docs/research/SYNTHESIS_AUDIT.md`](./docs/research/SYNTHESIS_AUDIT.md). Linimasa lengkap skenarionya ada di [`docs/CAMPAIGN_TIMELINE.md`](./docs/CAMPAIGN_TIMELINE.md).
 
 <br>
 
@@ -292,12 +296,14 @@ Spotlight-nya meluncur mulus ke setiap tombol. Di langkah peta, tur memindahkan 
 
 **🗺️ Peta**
 - Base Map yang bersih atau Myth Map yang dilukis, keduanya HD saat di-zoom
-- Mode 3D three.js dengan relief, laut, siang dan malam
+- Mode 3D three.js dengan relief, laut, siang dan malam, token pasukan 3D, dan standee karakter 2.5D
+- Skala ≈ 2 km per piksel, sungai, danau, pegunungan dan celahnya, jalan dengan status pasokan
+- Pasukan berjalan di rute terukur yang mengikuti medan
 - Datar atau bola dunia, waktu tetap tidak bergeser
 - Look *Documentary* atau *War room*
 - Sabuk transisi *Gradient* atau *Pale band*
 - Poligon ibu kota, kota, dan Labirin dengan ikonnya
-- 14 lapisan perang yang bisa dinyalakan satu per satu
+- 19 lapisan perang yang bisa dinyalakan satu per satu
 
 **⏱️ Waktu**
 - Kecepatan 0,25× sampai 48×, melambat sendiri di titik balik
@@ -309,8 +315,8 @@ Spotlight-nya meluncur mulus ke setiap tombol. Di langkah peta, tur memindahkan 
 <td width="50%" valign="top">
 
 **🧠 Intelijen**
-- Panel Situasi: siapa melawan siapa, korban, event, photocard A vs B
-- Dossier untuk pasukan, event, pertempuran, karakter, wilayah, teater
+- Panel Situasi: siapa melawan siapa, korban, event, photocard A vs B, buku besar operasi
+- Dossier untuk pasukan, event, pertempuran, karakter, wilayah, teater, tempat, dan fitur geografi, dengan jarak tempuh dalam km
 - Pencarian fuzzy dengan alias dan nama Jepang (`/` atau `Ctrl+K`)
 - Filter faksi, negara, pasukan, pertempuran, jenis event, status kanon
 - Setiap klaim membawa kelas provenans dan lokator sumber
@@ -350,7 +356,8 @@ Spotlight-nya meluncur mulus ke setiap tombol. Di langkah peta, tur memindahkan 
 | `,` `.` | ±1 frame (10 menit) | `C` | Mode sinematik |
 | `1` sampai `8` | Kecepatan | `0` | Bingkai seluruh kampanye |
 | `Esc` | Tutup / batal pilih | `?` | Bantuan |
-| `B` | Bookmark momen ini | | |
+| `B` | Bookmark momen ini | `V` | Mode 3D |
+| `N` | Musik nyala / mati | | |
 
 </details>
 
@@ -363,12 +370,13 @@ Spotlight-nya meluncur mulus ke setiap tombol. Di langkah peta, tur memindahkan 
 | `CANONICAL` | Didukung eksplisit oleh novel |
 | `CANONICAL_WITH_VISUAL_RECONSTRUCTION` | Kejadiannya kanon, posisi, rute, atau jam di peta direkonstruksi |
 | `INFERRED` | Mengikuti dari beberapa petunjuk, tidak dinyatakan |
+| `SCENARIO` | Ditetapkan brief skenario atlas ini, tidak dinyatakan novel |
 | `RECONSTRUCTED` | Jembatan antara titik-titik yang diketahui, dibuat proyek ini |
 | `UNRESOLVED` | Bukti tidak cukup, tetap ditampilkan supaya celahnya kelihatan |
 
 **Boleh:** interpolasi gerakan di antara dua posisi kanonik, jam simulasi untuk event yang di novel hanya bertanggal hari, dan posisi peta untuk tempat yang tidak ditandai (dengan alasan tertulis).
 
-**Tidak boleh:** mengarang pertempuran, korban, jumlah pasukan, keputusan komandan, atau presisi palsu.
+**Tidak boleh:** mengarang pertempuran, korban, keputusan komandan, atau presisi palsu. Angka pasukan yang berbeda dari novel hanya datang dari brief skenario, berkelas `SCENARIO`, dan bedanya dicatat.
 
 </details>
 
@@ -405,11 +413,12 @@ Dan tiga yang direkam langsung dari atlas, tanpa antarmuka:
 ```mermaid
 flowchart LR
     A["📚 Sources of Truth<br/>novel lokal, peta,<br/>photocard, bendera"] --> B["🗂️ data-source/campaign<br/>event dan efek, pasukan,<br/>pergerakan, aturan front"]
-    B --> C["⚙️ compile-data<br/>deterministik, gaya rumah,<br/>poligon kota"]
-    C --> D["🧭 compile-front<br/>sejarah wilayah dikuasai,<br/>6 aturan perang"]
+    B --> C["⚙️ compile-data<br/>deterministik, buku besar,<br/>rute dan kecepatan"]
+    W["🌍 world model<br/>skala km, medan,<br/>rute A*"] --> C
+    C --> D["🧭 compile-front<br/>sejarah wilayah dikuasai,<br/>7 aturan perang"]
     C --> E[("📦 public/data<br/>checkpoint dan delta")]
     D --> E
-    E --> F["🗺️ Atlas<br/>MapLibre, kanvas overlay,<br/>30 bahasa"]
+    E --> F["🗺️ Atlas<br/>MapLibre, kanvas overlay,<br/>three.js, 30 bahasa"]
     G["✅ validate · test · i18n · QA browser"] -.-> E
     G -.-> F
 ```
@@ -418,7 +427,7 @@ flowchart LR
 <summary><b>🚀 Menjalankan sendiri</b></summary>
 <br>
 
-Butuh **Node 20.11+**. Tidak perlu API key, database, atau penyedia peta eksternal.
+Butuh **Node 20.9+**. Tidak perlu API key, database, atau penyedia peta eksternal.
 
 ```bash
 git clone https://github.com/NuRichter/Tempest_Eastern_Empire_War_Map.git
@@ -435,6 +444,7 @@ python scripts/characters/build_photocards.py       # photocard WebP dan thumbna
 python scripts/flags/build_flag_thumbs.py           # thumbnail bendera WebP
 python scripts/theme/build_theme_assets.py          # wallpaper, stiker, pemandu tur, kursor
 python scripts/cartography/build_hd_maps.py --model FSRCNN_x4.pb   # tile HD, garis pantai vektor, relief 3D
+python scripts/cartography/build_relief_grid.py     # grid relief untuk pencarian rute
 ```
 
 </details>
@@ -445,14 +455,14 @@ python scripts/cartography/build_hd_maps.py --model FSRCNN_x4.pb   # tile HD, ga
 
 ```bash
 npm run verify        # compile, validate-data, validate-assets, lint, typecheck, i18n, test, build
-npm run qa            # 43 cek di Chromium sungguhan, 8 lebar layar (320 sampai 1920 px)
+npm run qa            # 46 cek di Chromium sungguhan, 8 lebar layar (320 sampai 1920 px)
 npm run qa:visual     # regresi visual, 10 checkpoint
 npm run qa:front      # tangkapan 0/25/50/75/100 % tiap transisi wilayah besar
 npm run qa:playback   # front bergerak saat diputar, beku saat dijeda, sama setelah scrub
 npm run qa:perf       # waktu siap, transfer, heap, dan seek di 6 perangkat
 ```
 
-Hasil terakhir: `verify` lulus (25/25 tes engine, 30 bahasa 100 %), `qa` 43/43 termasuk tur, `qa:visual` 10/10, `qa:playback` 3/3. Muatan pertama sekitar 2,0 MB dalam 51 sampai 69 request. `validate-data` dan `i18n:check` juga menolak em dash dan titik koma di semua teks yang tampil di situs. Detail di [`docs/QA.md`](./docs/QA.md).
+Hasil terakhir: `verify` lulus (25/25 tes engine, 27/27 tes skenario, 30 bahasa 100 %), `qa` 46/46 termasuk tur dan mode 3D, `qa:visual` 10/10, `qa:playback` 3/3. Muatan pertama sekitar 2,7 sampai 3,1 MB dalam 74 sampai 129 request, siap dalam kurang dari 2,1 detik. `validate-data` dan `i18n:check` juga menolak em dash dan titik koma di semua teks yang tampil di situs. Detail di [`docs/QA.md`](./docs/QA.md).
 
 </details>
 
@@ -464,6 +474,9 @@ Hasil terakhir: `verify` lulus (25/25 tes engine, 30 bahasa 100 %), `qa` 43/43 t
 |---|---|
 | [`ARCHITECTURE.md`](./docs/ARCHITECTURE.md) | Modul runtime, loop render, model frame dan delta |
 | [`DATA-MODEL.md`](./docs/DATA-MODEL.md) | Bentuk setiap file data |
+| [`GEOGRAPHIC_MODEL.md`](./docs/GEOGRAPHIC_MODEL.md) | Koordinat, skala km, medan, rute, dan kalibrasinya |
+| [`CAMPAIGN_FORCE_LEDGER.md`](./docs/CAMPAIGN_FORCE_LEDGER.md) | Buku besar pasukan, persamaan, dan perbedaan dengan novel |
+| [`CAMPAIGN_TIMELINE.md`](./docs/CAMPAIGN_TIMELINE.md) | Linimasa skenario per fase |
 | [`TERRITORIAL-ANIMATION.md`](./docs/TERRITORIAL-ANIMATION.md) | Mesin wilayah dan aturan perangnya |
 | [`CARTOGRAPHY.md`](./docs/CARTOGRAPHY.md) | Wilayah, ibu kota, kota, Labirin |
 | [`UI-DESIGN.md`](./docs/UI-DESIGN.md) | Anatomi layar dan tur |
@@ -515,11 +528,11 @@ Kalau peta ini bikin kamu ingin baca atau nonton lagi, ini rumah resminya:
 **Perangkat lunak**
 
 - MapLibre contributors. (2026). *MapLibre GL JS* (Version 5.24.0) [Computer software]. MapLibre. https://maplibre.org/maplibre-gl-js/docs/
-- Vercel. (2026). *Next.js* (Version 15.5.25) [Computer software]. https://nextjs.org/docs
-- Meta Platforms. (2024). *React* (Version 19.0.0) [Computer software]. https://react.dev/
+- Vercel. (2026). *Next.js* (Version 16.4.0) [Computer software]. https://nextjs.org/docs
+- Meta Platforms. (2026). *React* (Version 19.3.0) [Computer software]. https://react.dev/
 - Poimandres. (2026). *Zustand* (Version 5.0.15) [Computer software]. https://zustand.docs.pmnd.rs/
-- Tailwind Labs. (2025). *Tailwind CSS* (Version 3.4.19) [Computer software]. https://tailwindcss.com/docs
-- Google. (2026). *Puppeteer* (Version 25.10.0) [Computer software]. https://pptr.dev/
+- Tailwind Labs. (2026). *Tailwind CSS* (Version 4.3.3) [Computer software]. https://tailwindcss.com/docs
+- Google. (2026). *Puppeteer* (Version 25.12.0) [Computer software]. https://pptr.dev/
 - Microsoft. (n.d.). *Playwright* [Computer software]. https://playwright.dev/
 - OpenCV team. (2026). *OpenCV* (Version 4.14.0) [Computer software]. https://opencv.org/
 - FFmpeg developers. (2026). *FFmpeg* [Computer software]. https://ffmpeg.org/

@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 import puppeteer, { type Page } from 'puppeteer';
 
 import { simToLngLatTuple } from '../src/lib/coords';
-import type { FrontFile } from '../src/map/field/front';
+import { decodeFront, type FrontFile } from '../src/map/field/front';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'qa-artifacts', 'front');
@@ -81,11 +81,19 @@ async function main(): Promise<void> {
     await page.evaluateOnNewDocument('try { localStorage.clear() } catch {}');
     const ep = front.episodes.find((e) => e.kind === 'COLLAPSE' && e.cells >= 500)!;
     const [lng, lat] = simToLngLatTuple(ep.centroid[0], ep.centroid[1]);
-    const start = Math.floor(ep.startFrame - 1);
+    // The bulk of the transition: the 5th to 90th percentile of its flips. An
+    // episode can carry a tail of stragglers far from its centroid, off the
+    // captured view, which would make an on-screen capture look frozen.
+    const decoded = decodeFront(front);
+    const flips: number[] = [];
+    for (let i = 0; i < decoded.times.length; i += 1) if (decoded.times[i] >= ep.startFrame && decoded.times[i] <= ep.endFrame) flips.push(decoded.times[i]);
+    flips.sort((a, b) => a - b);
+    const bulk = { from: flips[Math.floor(flips.length * 0.05)], to: flips[Math.floor(flips.length * 0.9)] };
+    const start = Math.floor(bulk.from - 1);
     await page.goto(`${origin}/?frame=${start}`, { waitUntil: 'networkidle0', timeout: 90000 });
     await page.waitForFunction(() => Boolean((window as unknown as { __atlasMap?: { loaded: () => boolean } }).__atlasMap?.loaded()), { timeout: 60000 });
     await page.evaluate(`window.__atlasMap.jumpTo({ center: [${lng}, ${lat}], zoom: 4.6 })`);
-    await page.keyboard.press('3'); // 1x
+    await page.keyboard.press('2'); // 0.5x, so the captures fall inside the bulk
     await sleep(2500);
     const clip = { x: 48, y: 44, width: 848, height: 610 };
     const shot = async () => Buffer.from(await page.screenshot({ clip, type: 'png' }));
@@ -104,11 +112,11 @@ async function main(): Promise<void> {
     let inside = 0;
     let moving = 0;
     for (let k = 1; k < frames.length; k += 1) {
-      if (times[k - 1] < ep.startFrame - 3 || times[k] > ep.endFrame) continue;
+      if (times[k - 1] < bulk.from - 3 || times[k] > bulk.to) continue;
       inside += 1;
       if ((await diff(blank, frames[k - 1], frames[k])) > 0.002) moving += 1;
     }
-    results.push(['the front moves while playing', inside >= 3 && moving === inside, `${moving}/${inside} captures inside the transition differ; frames ${times.map((t) => t.toFixed(1)).join(', ')} (transition ${ep.startFrame}–${ep.endFrame})`]);
+    results.push(['the front moves while playing', inside >= 3 && moving === inside, `${moving}/${inside} captures inside the transition differ; frames ${times.map((t) => t.toFixed(1)).join(', ')} (bulk of the transition ${bulk.from.toFixed(1)}–${bulk.to.toFixed(1)}, episode ${ep.startFrame}–${ep.endFrame})`]);
 
     // 2. Paused: frozen.
     await page.keyboard.press('Space');
