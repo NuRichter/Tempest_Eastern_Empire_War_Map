@@ -35,7 +35,10 @@ An event is placed by **battle day** (`day`, relative to first contact D+0) and 
 | `CANONICAL_WITH_VISUAL_RECONSTRUCTION` | Canonical event; exact position, path or timing reconstructed for the map |
 | `INFERRED` | Follows from several clues but is not stated |
 | `RECONSTRUCTED` | A bridging sequence made by the project between known points |
+| `SCENARIO` | Set by the owner's scenario brief (R6), authoritative for this atlas but not stated by the novels |
 | `UNRESOLVED` | Evidence insufficient; kept visible |
+
+The brief's evidence taxonomy maps onto these classes: canonical = `CANONICAL` (and the canonical part of `CANONICAL_WITH_VISUAL_RECONSTRUCTION`), source_inferred = `INFERRED`, synthetic = `RECONSTRUCTED` and `SCENARIO`, unverified = `UNRESOLVED`. Size statuses add `SCENARIO` beside `EXPLICIT`, `DERIVED`, `RECONSTRUCTED` and `UNKNOWN`.
 
 ### Time semantics
 
@@ -62,6 +65,15 @@ A force with no recorded movement that changes location is drawn travelling at a
 ### Casualties
 
 Killed, wounded, missing, captured and **revived** are separate fields. Scopes: `EVENT_CASUALTY` and `RESTORATION` rows are summed; `AGGREGATE_CASUALTY`, `COMPONENT_CASUALTY` and `CAMPAIGN_TOTAL` restate other rows and are excluded. A field is `UNKNOWN` until some record states a number for it. Permanent dead = killed − revived. `validate-data` recomputes every total independently.
+
+## R6: ledger, merges, routes
+
+- **Forces** may carry `ledgerRole` (`MAIN`, `ALLOCATION`, `DETACHMENT`, `RESERVE`, `TRANSFER`, `GATE_FORCE`, `REVIVED_COHORT`, `OUTSIDE_OPERATION`), `origin` (`SPLIT` from or `TRANSFER` out of another force, with the event) and `mergedInto` (the force and event). A force with `aggregateFromEvent` has its strength computed from that event on as the sum of its allocations. The compiler derives `issuedIds`.
+- **Events** may set `logistics` (state of a LOGISTICS road: `OPEN`, `THREATENED`, `CUT`, `SECURE`). `FrameState.logistics` carries it per frame.
+- **Casualty rows** with no single force may name `operationForceIds`, so the ledger can count them.
+- **`ledger.json`**: the operation ledger by event (committed unique personnel, reserve, Gate force, killed, revived, dead not revived, never killed, active) and the identities the compiler checked. See `docs/CAMPAIGN_FORCE_LEDGER.md`.
+- **`routes.json`**: every measured route (points, cumulative km, terrain km, passes, crossings, roads, profile) and which forces use it when. **`geography.json`**: the traced terrain. Position keys carry `path` (route and fractions), so every renderer follows the same ground. Movements carry `routeId`, `lengthKm`, `kmPerDay`, `speedClass`, `overSpeed`. See `docs/GEOGRAPHIC_MODEL.md`.
+- **Places** may carry a strategic `symbol` (halt, gate, crossing, objective, staging, camp).
 
 ## Derived on the client (not in the data)
 

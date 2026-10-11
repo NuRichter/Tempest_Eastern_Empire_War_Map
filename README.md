@@ -8,7 +8,7 @@
 
 ### Campaign Atlas
 
-**Satu perang. 940.000 prajurit. 71 hari. Sekarang bisa kamu putar seperti film dokumenter.**
+**Satu perang. 1.040.000 prajurit Kekaisaran. 71 hari. Sekarang bisa kamu putar seperti film dokumenter.**
 
 <sub>Atlas kampanye interaktif untuk Perang Tempest melawan Kekaisaran Timur dari light novel <i>Tensei Shitara Slime Datta Ken</i> (volume 12 sampai 16)</sub>
 
@@ -19,12 +19,12 @@
 
 <br>
 
-![Events](https://img.shields.io/badge/events-179-2f9e7e?style=flat-square)
-![Canon](https://img.shields.io/badge/kanon-143_·_rekonstruksi_visual_36-cfe5dc?style=flat-square)
+![Events](https://img.shields.io/badge/events-206-2f9e7e?style=flat-square)
+![Canon](https://img.shields.io/badge/kanon-143_·_rekonstruksi_visual_37_·_skenario_26-cfe5dc?style=flat-square)
 ![Clock](https://img.shields.io/badge/jam-D−43_→_D+27_·_10_menit-5b8fd8?style=flat-square)
 ![Languages](https://img.shields.io/badge/bahasa-30-8fc9b6?style=flat-square)
 ![Theme](https://img.shields.io/badge/tema-dark_·_light-a7b1b5?style=flat-square)
-![Tests](https://img.shields.io/badge/QA-43%2F43_·_25%2F25-2f9e7e?style=flat-square)
+![Tests](https://img.shields.io/badge/tes-25%2F25_·_skenario_27%2F27-2f9e7e?style=flat-square)
 ![Next.js](https://img.shields.io/badge/Next.js-15-000?style=flat-square&logo=nextdotjs)
 ![MapLibre](https://img.shields.io/badge/MapLibre_GL-5-396CB2?style=flat-square&logo=maplibre&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white)
@@ -72,17 +72,17 @@ Kalau bukunya diam, atlasnya juga bilang begitu. Asal lo tau ya, angka yang tida
 
 <table>
 <tr>
-<td align="center"><h3>179</h3><sub>event dengan lokator teks</sub></td>
+<td align="center"><h3>206</h3><sub>event, 26 di antaranya skenario</sub></td>
 <td align="center"><h3>71 hari</h3><sub>10.224 frame, 10 menit per frame</sub></td>
-<td align="center"><h3>57</h3><sub>formasi pasukan</sub></td>
-<td align="center"><h3>41</h3><sub>pergerakan berutekan</sub></td>
+<td align="center"><h3>63</h3><sub>formasi pasukan</sub></td>
+<td align="center"><h3>56</h3><sub>rute terukur di medan</sub></td>
 <td align="center"><h3>9</h3><sub>pertempuran</sub></td>
 </tr>
 <tr>
-<td align="center"><h3>48</h3><sub>transisi wilayah, 3.953 sel</sub></td>
+<td align="center"><h3>24</h3><sub>transisi wilayah, 2.466 sel</sub></td>
 <td align="center"><h3>53</h3><sub>karakter, 41 photocard</sub></td>
 <td align="center"><h3>23</h3><sub>ibu kota, kota, dan Labirin</sub></td>
-<td align="center"><h3>30</h3><sub>bahasa, 660 teks antarmuka</sub></td>
+<td align="center"><h3>30</h3><sub>bahasa, 823 teks antarmuka</sub></td>
 <td align="center"><h3>18</h3><sub>langkah tur bersama warga Tempest</sub></td>
 </tr>
 </table>
@@ -188,10 +188,32 @@ Novel tidak menggambar garis kendali, jadi wilayah yang dikuasai **direkonstruks
 | 🏳️ | **Mundur ke status quo** | Tanah yang lepas surut ke arah wilayah asal pihak yang kalah. Yang paling jauh dari rumah hilang duluan, garis di perbatasan lama paling akhir. |
 | 🔒 | **Yang hilang tetap hilang** | Pasukan tidak pernah merebut lagi tanah yang sudah ditinggalkannya. Front tidak maju mundur bolak-balik. |
 | 🏰 | **Kota bertahan** | Tidak ada ibu kota, kota, atau Labirin yang jatuh di perang ini. Wilayah yang direbut selalu mengalir di sekelilingnya. |
-| 🧱 | **Front Dwargon menempel ke tanah air** | Pengepungan Dwargon digambar sebagai sabuk dari perbatasan Kekaisaran, dari garis pantai sampai perbatasan Tempest, bukan lingkaran di sekitar pasukan. |
+| 🛡️ | **Dwargon tidak pernah jatuh** | Formation B menembus perbatasan barat daya dan pasukan Gerbang mengepung Isthmus, tapi Kekaisaran tidak pernah menguasai tanah Dwargon. Pertempurannya tampil sebagai area operasi yang *contested*. |
+| 🚶 | **Yang mundur tidak merebut** | Formasi yang sedang mundur, sudah bergabung ke pasukan lain, atau sudah pulang tidak lagi menahan wilayah. |
 | 〰️ | **Garis bergerigi** | Setiap front punya tonjolan, lekukan, dan salient seperti peta perang sungguhan, bukan busur halus atau garis lurus. |
 
 Detail teknis ada di [`docs/TERRITORIAL-ANIMATION.md`](./docs/TERRITORIAL-ANIMATION.md), setiap transisi beserta alasannya di [`docs/research/TERRITORIAL_RECONSTRUCTION.md`](./docs/research/TERRITORIAL_RECONSTRUCTION.md), dan nilai kemiripan yang jujur (skala 1 sampai 10) terhadap video referensi di [`docs/research/REFERENCE_MATCH_AUDIT.md`](./docs/research/REFERENCE_MATCH_AUDIT.md).
+
+<br>
+
+## 🌍 Skenario R6: model geografis dan buku besar pasukan
+
+Sejak revisi **R6** (11 Oktober 2026), atlas mengikuti **skenario pasukan** milik pemilik proyek, bukan hitungan kanon 940.000. Setiap perbedaan dengan novel tetap dicatat (DISC-R6-01 sampai 09 di panel About), tidak disembunyikan.
+
+| | Angka | Dari mana |
+|---|---:|---|
+| Formasi utama, maju sebagai satu kolom | 1.005.000 | pecah di titik henti: 700.000 + 200.000 + 40.000 + 30.000 + 35.000 |
+| Detasemen terpisah ke Dwargon | 5.000 | penempatan awal 1.010.000 |
+| Cadangan ibu kota | 100.000 → 70.000 | 30.000 dipindah ke Gerbang Dwargon (fase 2) |
+| Pasukan Gerbang Dwargon | 30.000 → 60.000 | fase 1 dari titik henti, fase 2 dari cadangan |
+| Personel unik dalam operasi | 1.040.000 | 1.010.000 + 30.000 |
+| Gugur / dibangkitkan | 1.010.000 / 700.000 | 310.000 tidak dibangkitkan, 30.000 tidak pernah gugur, 730.000 aktif di akhir |
+
+Semua angka itu **dihitung kompiler** dari data pasukan, event, dan catatan korban, lalu dicek otomatis oleh 27 tes skenario. Panel Situasi menampilkan *Operation ledger* untuk detik yang sedang diputar.
+
+Petanya sekarang punya **skala**: 1 piksel atlas ≈ 2 km (kalibrasi sintetis dari jarak yang disebut novel). Sungai, danau, pegunungan Kanaat beserta celahnya, hutan, dan jalan dilacak dari peta lukis. Setiap pasukan berjalan di **rute terukur**: lewat jalan, celah gunung, dan arungan, bukan garis lurus. Kecepatannya juga dicek terhadap laju yang disebut novel.
+
+Rinciannya: [`docs/GEOGRAPHIC_MODEL.md`](./docs/GEOGRAPHIC_MODEL.md) · [`docs/CAMPAIGN_FORCE_LEDGER.md`](./docs/CAMPAIGN_FORCE_LEDGER.md) · [`docs/CAMPAIGN_TIMELINE.md`](./docs/CAMPAIGN_TIMELINE.md)
 
 <br>
 
@@ -203,18 +225,22 @@ Novel tidak pernah memberi jam atau tanggal kalender. Kerangka waktunya dibangun
 timeline
     title Perang Tempest melawan Kekaisaran Timur
     section Persiapan
-        D−40 : Rapat perang Kekaisaran, Great March diputuskan
-        D−39 : Pasukan berangkat dari ibu kota ke pangkalan perbatasan
-        D−5 : 940.000 pasukan menyeberangi perbatasan Tempest
+        D−40 : Rapat perang Kekaisaran, cadangan 100.000 ditahan di ibu kota
+        D−39 : Satu kolom 1.005.000 berangkat, detasemen 5.000 menuju Dwargon
+        D−24 : Kolom menyeberangi perbatasan Tempest
+        D−3 : Berhenti di titik henti, pecah jadi 700.000 · 200.000 · 40.000 · 30.000 · 35.000
+        D−2 : Formation B mengancam jalan Tempest–Dwargon
     section Pertempuran permukaan
-        D+0 : Ultimatum dan pertempuran gerbang Dwargon
-            : Magitank Force dihancurkan Testarossa
+        D+0 : Ultimatum dan serangan barat daya ke Dwargon
+            : Formation B dan Flying Combat Corps dihancurkan, Dwargon tidak jatuh
+        D+1 : 30.000 dari cadangan ibu kota berangkat ke Gerbang Dwargon
     section Labirin
         D+1 sampai D+9 : Operasi Labyrinth Raider, 350.000 masuk di hari pertama
+        D+5 dan D+8 : Pasukan Gerbang Dwargon jadi 30.000, lalu 60.000
         D+10 : Kamp di luar Labirin dimusnahkan
         D+11 : Rimuru membangkitkan sekitar 700.000 prajurit
     section Malam panjang
-        D+15 : Kudeta, Composite Division hancur di Dwargon
+        D+15 : Kudeta, 60.000 pasukan Gerbang dibunuh Velgrynd di Dwargon
         D+16 : Black Numbers, kapal bendera jatuh, Velgrynd pergi
     section Perdamaian
         D+19 : Pertemuan puncak
