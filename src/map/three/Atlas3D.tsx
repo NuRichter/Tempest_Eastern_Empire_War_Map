@@ -13,12 +13,17 @@ import { FACTION_COLOR, factionKey } from '@/lib/palette';
 import { landMask, loadFront } from '@/map/field/occupation';
 import { getField, onField } from '@/map/field/fieldStore';
 import { createWarSkin, type WarSkin } from '@/map/three/warSkin';
-import { fieldSources } from '@/map/field/sources';
 import { activeFocus, cluster, gatherAction, Spring, useDirector, type Shot } from '@/map/cinematic/director';
 import type { Front } from '@/map/field/front';
-import { forceSnapshotAt } from '@/simulation/resolver';
+import { displayStrengthAt, forcePositionAt, forceSnapshotAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
-import { prefersReducedMotion } from '@/state/preferences';
+import { prefersReducedMotion, usePreferences } from '@/state/preferences';
+import { replacesParent } from '@/lib/hierarchy';
+import { unitClass } from '@/lib/units';
+import { eventVisible, factionVisible, forceHidden } from '@/map/overlay/context';
+import { formatStrength } from '@/map/overlay/layers/forces';
+import { createForceToken, createStandee, createStrategicModel, disposeTokenCaches, setDestroyed, tokenRadius, type ForceToken, type Standee } from '@/map/three/tokens';
+import type { Force, ForceSnapshot } from '@/types/dataset';
 import { pixelRatioFor, samplesFor, useQuality, type QualityLevel } from '@/perf/quality';
 
 /**
@@ -28,7 +33,11 @@ import { pixelRatioFor, samplesFor, useQuality, type QualityLevel } from '@/perf
  *               no elevations) wearing the super-resolved painted map
  *   war         territory colours, held ground and glowing fronts painted onto the
  *               terrain from the same data as the 2D map, every frame of the clock
- *   armies      lit pillars in faction colours, height by strength, numbers above
+ *   armies      3D tokens matching the 2D markers (faction shape, unit symbol, strength above);
+ *               air formations hover; moving ones show their heading
+ *   points      the 2D strategic points as small models (halt flag, gatehouse, …)
+ *   characters  2.5D standees: the photocards of the people in the current events,
+ *               upright cards on stands that always face the camera
  *   battles     pulsing rings, sparks and firelight while a battle is live
  *   cities      extruded capitals with crowns, the Labyrinth as a violet portal
  *   sky         sun and moon follow the simulation clock: the long night is night
@@ -146,7 +155,28 @@ const SKY_FRAG = `
   }`;
 const SKY_VERT = `varying vec3 vDir; void main() { vDir = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`;
 
-interface ForceObj { group: THREE.Group; pillar: THREE.Mesh; label: THREE.Sprite | null; labelText: string; x: number; z: number }
+interface ForceObj { token: ForceToken; key: string; label: THREE.Sprite | null; labelText: string; x: number; z: number; r: number; air: boolean; tether: THREE.Line | null; moving: boolean; heading: { dx: number; dy: number } | null }
+
+/** Forces as the 2D map draws them: visible, recorded, positioned, the most specific tier only. */
+function placeForces3D(data: Dataset, T: number): { force: Force; snap: ForceSnapshot; x: number; y: number; moving: boolean; heading: { dx: number; dy: number } | null; air: boolean }[] {
+  const { filters, commanderFocus } = useSimulation.getState();
+  const iT = Math.floor(T);
+  const focus = commanderFocus ? new Set(data.commanderById.get(commanderFocus)?.forceIds ?? []) : null;
+  const placed: ReturnType<typeof placeForces3D> = [];
+  for (const force of data.forces) {
+    if (!factionVisible(filters, force.faction) || forceHidden(data, filters, force.id)) continue;
+    if (focus && !focus.has(force.id)) continue;
+    const snap = forceSnapshotAt(data, force.id, iT);
+    if (!snap) continue;
+    if (/DESTROYED|ANNIHILATED/i.test(snap.status) && iT - snap.f > 432) continue;
+    const pos = forcePositionAt(data, force.id, T);
+    if (!pos) continue;
+    const place = pos.placeId ? data.placeById.get(pos.placeId) : null;
+    placed.push({ force, snap, x: pos.x, y: pos.y, moving: pos.moving, heading: pos.heading, air: unitClass(force) === 'air' || place?.altitude === 'AIR' });
+  }
+  const drawn = new Set(placed.map((p) => p.force.id));
+  return placed.filter((p) => !p.force.childIds.some((c) => drawn.has(c) && replacesParent(data.forceById.get(c)!, p.force, data.forces)));
+}
 
 export function Atlas3D({ auto }: { auto: boolean }) {
   const host = useRef<HTMLDivElement>(null);
@@ -276,6 +306,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
       unsubField = onField(feed);
       feed();
       buildCities();
+      buildStrategic();
       lastPaint = -1; // the held ground has arrived: repaint even if the clock stands still
     });
 
@@ -327,51 +358,182 @@ export function Atlas3D({ auto }: { auto: boolean }) {
       }
     }
 
-    /* -- armies -------------------------------------------------------- */
-    const pillarGeo = new THREE.CylinderGeometry(0.13, 0.2, 1, 14);
-    pillarGeo.translate(0, 0.5, 0);
-    const baseGeo = new THREE.RingGeometry(0.25, 0.42, 32);
-    baseGeo.rotateX(-Math.PI / 2);
+    /* -- armies: 3D tokens matching the 2D markers ------------------------ */
+    const tetherMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.35 });
+    function dropForce(id: string, o: ForceObj): void {
+      scene.remove(o.token.group);
+      if (o.tether) { scene.remove(o.tether); o.tether.geometry.dispose(); }
+      if (o.label) { o.label.material.map?.dispose(); o.label.material.dispose(); }
+      forces.delete(id);
+    }
     function syncForces(T: number): void {
       const seen = new Set<string>();
-      for (const s of fieldSources(data!, T)) {
-        seen.add(s.forceId);
-        const snap = forceSnapshotAt(data!, s.forceId, T);
-        const strength = typeof snap?.strength === 'number' ? snap.strength : 2000;
-        const color = new THREE.Color(s.side === 'empire' ? FACTION_COLOR.empire : FACTION_COLOR.tempest);
-        let o = forces.get(s.forceId);
-        if (!o) {
-          const group = new THREE.Group();
-          const pillar = new THREE.Mesh(pillarGeo, new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.55, roughness: 0.35, metalness: 0.4 }));
-          pillar.castShadow = true;
-          const base = new THREE.Mesh(baseGeo, new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending, depthWrite: false }));
-          group.add(pillar, base);
-          scene.add(group);
-          const [x, z] = toWorld(s.x, s.y);
-          o = { group, pillar, label: null, labelText: '', x, z };
-          forces.set(s.forceId, o);
-        }
-        const [x, z] = toWorld(s.x, s.y);
-        o.x = x;
-        o.z = z;
-        const tall = 0.45 + Math.log10(Math.max(10, strength)) * 0.38;
-        o.pillar.scale.set(1, tall, 1);
-        const text = strength >= 3000 ? strength.toLocaleString('en-GB') : '';
-        if (text !== o.labelText) {
-          if (o.label) { o.group.remove(o.label); o.label.material.map?.dispose(); o.label.material.dispose(); }
-          o.label = text ? textSprite(text, '#ffffff', 56, 700) : null;
-          o.label?.scale.multiplyScalar(0.7);
-          if (o.label) o.group.add(o.label);
-          o.labelText = text;
-        }
-        if (o.label) o.label.position.set(0, tall + 0.45, 0);
+      const prefs = usePreferences.getState();
+      const list = prefs.layers.forces ? placeForces3D(data!, T) : [];
+      // Formations sharing one anchor fan out around it, in a fixed order, as in 2D.
+      const groups = new Map<string, typeof list>();
+      for (const p of list) {
+        const k = `${p.x.toFixed(4)},${p.y.toFixed(4)}`;
+        groups.set(k, [...(groups.get(k) ?? []), p]);
       }
-      for (const [id, o] of forces) {
-        if (seen.has(id)) continue;
-        scene.remove(o.group);
-        forces.delete(id);
+      const sel = useSimulation.getState().selection;
+      for (const g of groups.values()) {
+        g.sort((p, q) => p.force.id.localeCompare(q.force.id));
+        g.forEach((p, i) => {
+          const strength = typeof p.snap.strength === 'number' ? p.snap.strength : null;
+          const r = tokenRadius(strength);
+          const key = `${factionKey(p.force.faction)}|${unitClass(p.force)}`;
+          let o = forces.get(p.force.id);
+          if (o && o.key !== key) { dropForce(p.force.id, o); o = undefined; }
+          if (!o) {
+            const token = createForceToken(factionKey(p.force.faction), unitClass(p.force));
+            token.group.userData = { kind: 'force', id: p.force.id };
+            scene.add(token.group);
+            const [x, z] = toWorld(p.x, p.y);
+            token.group.position.set(x, sampleHeight(relief, p.x, p.y), z);
+            o = { token, key, label: null, labelText: '', x, z, r, air: false, tether: null, moving: false, heading: null };
+            forces.set(p.force.id, o);
+          }
+          seen.add(p.force.id);
+          let [x, z] = toWorld(p.x, p.y);
+          if (g.length > 1) {
+            const a = -Math.PI / 2 + (i * Math.PI * 2) / g.length;
+            const spread = Math.max(...g.map((q) => tokenRadius(typeof q.snap.strength === 'number' ? q.snap.strength : null))) * 2.4;
+            x += Math.cos(a) * spread;
+            z += Math.sin(a) * spread;
+          }
+          o.x = x;
+          o.z = z;
+          o.r = r;
+          o.air = p.air;
+          o.moving = p.moving;
+          o.heading = p.heading;
+          o.token.group.scale.setScalar(r);
+          const destroyed = /DESTROYED|ANNIHILATED/i.test(p.snap.status);
+          setDestroyed(o.token, destroyed);
+          o.token.halo.visible = sel.kind === 'force' && sel.id === p.force.id;
+          if (p.air && !o.tether) {
+            o.tether = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3(0, 1, 0)]), tetherMat);
+            scene.add(o.tether);
+          } else if (!p.air && o.tether) { scene.remove(o.tether); o.tether.geometry.dispose(); o.tether = null; }
+          const single = p.snap.strength === 1 || /single|special combatant|construct|entity/i.test(`${p.force.unitType} ${p.force.initialStrengthRaw}`);
+          const text = prefs.layers.armySizes && !single ? formatStrength(displayStrengthAt(data!, p.force.id, T), p.snap.sizeStatus) : '';
+          if (text !== o.labelText) {
+            if (o.label) { o.token.group.remove(o.label); o.label.material.map?.dispose(); o.label.material.dispose(); }
+            o.label = text ? textSprite(text, destroyed ? '#9aa2a6' : p.snap.sizeStatus === 'EXPLICIT' ? '#ffffff' : '#e8e2d2', 56, 700) : null;
+            if (o.label) {
+              o.label.scale.multiplyScalar(0.36 / r);
+              o.label.position.set(0, 1.55, 0);
+              o.token.group.add(o.label);
+            }
+            o.labelText = text;
+          }
+        });
+      }
+      for (const [id, o] of forces) if (!seen.has(id)) dropForce(id, o);
+    }
+
+    /* -- strategic points as models -------------------------------------- */
+    const strategic: { group: THREE.Group; flag: THREE.Object3D | null }[] = [];
+    function buildStrategic(): void {
+      for (const pl of data!.places) {
+        if (!pl.symbol || pl.x === null || pl.y === null) continue;
+        const m = createStrategicModel(pl.symbol);
+        const [x, z] = toWorld(pl.x, pl.y);
+        m.group.position.set(x, sampleHeight(relief, pl.x, pl.y), z);
+        m.group.scale.setScalar(0.55);
+        m.group.userData = { kind: 'place', id: pl.id };
+        if (pl.symbol === 'halt' || pl.symbol === 'gate') {
+          const name = textSprite(pl.name, '#fff6dc', 40, 600);
+          name.scale.multiplyScalar(0.42);
+          name.position.set(0, 2.4, 0);
+          m.group.add(name);
+        }
+        scene.add(m.group);
+        strategic.push(m);
       }
     }
+
+    /* -- 2.5D standees: the people of the current events ----------------- */
+    const standees = new Map<string, Standee & { ax: number; ay: number; slot: number; of: number }>();
+    let standeeFrame = -1;
+    function syncStandees(T: number): void {
+      const iT = Math.floor(T);
+      if (iT === standeeFrame) return;
+      standeeFrame = iT;
+      const want = new Map<string, { ax: number; ay: number; slot: number; of: number; name: string; src: string; key: ReturnType<typeof factionKey> }>();
+      if (usePreferences.getState().layers.characters) {
+        const { filters } = useSimulation.getState();
+        const recent = data!.events.filter((e) => e.frame <= iT && iT - e.frame <= 36 && eventVisible(filters, e)).reverse();
+        for (const e of recent) {
+          const anchor = e.placeId ? data!.placeById.get(e.placeId) ?? data!.nationById.get(e.placeId) : null;
+          if (!anchor || anchor.x == null || anchor.y == null) continue;
+          const people = e.characterIds.filter((c) => !want.has(c) && data!.characterById.get(c)?.photocard).slice(0, 3);
+          people.forEach((cid, i) => {
+            const c = data!.characterById.get(cid)!;
+            want.set(cid, { ax: anchor.x!, ay: anchor.y!, slot: i, of: people.length, name: c.name, src: c.photocard!.src, key: factionKey(c.faction) });
+          });
+          if (want.size >= 9) break;
+        }
+      }
+      for (const [id, s] of standees) {
+        if (want.has(id)) continue;
+        scene.remove(s.group);
+        standees.delete(id);
+      }
+      for (const [id, w] of want) {
+        let s = standees.get(id);
+        if (!s) {
+          s = { ...createStandee(w.src, w.name, w.key), ax: w.ax, ay: w.ay, slot: w.slot, of: w.of };
+          s.group.userData = { kind: 'character', id };
+          s.group.scale.setScalar(0.001);
+          scene.add(s.group);
+          standees.set(id, s);
+        }
+        Object.assign(s, { ax: w.ax, ay: w.ay, slot: w.slot, of: w.of });
+      }
+    }
+    const camRight = new THREE.Vector3();
+    function animateStandees(now: number): void {
+      camRight.setFromMatrixColumn(camera.matrixWorld, 0).setY(0).normalize();
+      for (const s of standees.values()) {
+        const [ax, az] = toWorld(s.ax, s.ay);
+        const off = (s.slot - (s.of - 1) / 2) * 1.05;
+        const x = ax + camRight.x * off;
+        const z = az + camRight.z * off - 0.6;
+        const age = (now - s.born) / 1000;
+        const pop = reduce ? 1 : Math.min(1, age / 0.45);
+        const ease = 1 - Math.pow(1 - pop, 3);
+        s.group.scale.setScalar(0.001 + ease);
+        const bob = reduce ? 0 : Math.sin(now / 900 + s.slot) * 0.04;
+        s.group.position.set(x, sampleHeight(relief, (x / WX) + 0.5, (z / WZ) + 0.5) + 0.05 + bob, z);
+        // Paper theatre: the card turns about its upright axis to face the camera.
+        s.group.rotation.y = Math.atan2(camera.position.x - x, camera.position.z - z);
+      }
+    }
+
+    /* -- picking: a click on a token, a point or a standee opens its file -- */
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    let downAt: { x: number; y: number } | null = null;
+    const onDown = (e: PointerEvent) => { downAt = { x: e.clientX, y: e.clientY }; };
+    const onUp = (e: PointerEvent) => {
+      if (!downAt || Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) > 5) return;
+      const rect = renderer.domElement.getBoundingClientRect();
+      pointer.set(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1);
+      raycaster.setFromCamera(pointer, camera);
+      const targets = [...[...forces.values()].map((o) => o.token.group), ...strategic.map((m) => m.group), ...[...standees.values()].map((s) => s.group)];
+      for (const hit of raycaster.intersectObjects(targets, true)) {
+        let o: THREE.Object3D | null = hit.object;
+        while (o && !o.userData.kind) o = o.parent;
+        if (!o) continue;
+        const { kind, id } = o.userData as { kind: 'force' | 'place' | 'character'; id: string };
+        useSimulation.getState().select({ kind, id });
+        break;
+      }
+    };
+    renderer.domElement.addEventListener('pointerdown', onDown);
+    renderer.domElement.addEventListener('pointerup', onUp);
 
     /* -- routes: the measured ground routes of movements under way -------- */
     // The same geometry the 2D overlay draws and the markers follow, draped on the relief.
@@ -536,11 +698,35 @@ export function Atlas3D({ auto }: { auto: boolean }) {
         lightFor(T);
       }
       if (Math.abs(T - lastSync) > 0.05) { lastSync = T; syncForces(T); if (relief) syncRoutes(T); }
+      const showPoints = usePreferences.getState().layers.strategic;
+      for (const m of strategic) {
+        m.group.visible = showPoints;
+        if (m.flag && !reduce) m.flag.rotation.y = Math.sin(now / 420 + m.group.position.x) * 0.25;
+      }
+      syncStandees(T);
+      animateStandees(now);
       for (const o of forces.values()) {
-        const nx = THREE.MathUtils.damp(o.group.position.x, o.x, 6, dt);
-        const nz = THREE.MathUtils.damp(o.group.position.z, o.z, 6, dt);
+        const g = o.token.group;
+        const nx = THREE.MathUtils.damp(g.position.x, o.x, 6, dt);
+        const nz = THREE.MathUtils.damp(g.position.z, o.z, 6, dt);
         const sx = nx / WX + 0.5, sy = nz / WZ + 0.5;
-        o.group.position.set(nx, sampleHeight(relief, sx, sy), nz);
+        const ground = sampleHeight(relief, sx, sy);
+        const lift = o.air ? 2.4 + (reduce ? 0 : Math.sin(now / 700 + nx) * 0.12) : 0;
+        g.position.set(nx, ground + lift, nz);
+        if (o.tether) {
+          o.tether.position.set(nx, ground, nz);
+          o.tether.scale.set(1, lift, 1);
+        }
+        if (o.token.spin && !reduce) o.token.spin.rotation.y += dt * 9;
+        // Heading chevron in front of a moving token, pointing along its route.
+        const h = o.heading;
+        o.token.heading.visible = o.moving && Boolean(h);
+        if (o.moving && h) {
+          const ux = h.dx * WX, uz = h.dy * WZ, len = Math.hypot(ux, uz) || 1;
+          o.token.heading.position.set((ux / len) * 1.35, 0.2, (uz / len) * 1.35);
+          o.token.heading.rotation.y = Math.atan2(ux / len, uz / len);
+        }
+        if (o.token.halo.visible) o.token.halo.scale.setScalar(1 + Math.sin(now / 260) * 0.06);
       }
       syncBattles(T, now);
       if (portal.ring) {
@@ -605,6 +791,8 @@ export function Atlas3D({ auto }: { auto: boolean }) {
       cancelAnimationFrame(raf);
       unsubField?.();
       unsubQuality();
+      renderer.domElement.removeEventListener('pointerdown', onDown);
+      renderer.domElement.removeEventListener('pointerup', onUp);
       warSkin?.dispose();
       ro.disconnect();
       controls.dispose();
@@ -614,6 +802,8 @@ export function Atlas3D({ auto }: { auto: boolean }) {
         const mat = m.material as THREE.Material | THREE.Material[] | undefined;
         (Array.isArray(mat) ? mat : mat ? [mat] : []).forEach((x) => { (x as THREE.MeshBasicMaterial).map?.dispose(); x.dispose(); });
       });
+      disposeTokenCaches();
+      tetherMat.dispose();
       composer.dispose();
       renderer.dispose();
       // Hand the GPU context back now instead of at garbage collection:
