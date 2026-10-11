@@ -19,6 +19,12 @@
   "{day}. The Empire decides on war.": [
    "src/components/overlays/CinematicOverlay.tsx"
   ],
+  "{done} travelled, {left} to go": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "{e} km east, {s} km south of the atlas corner": [
+   "src/components/dossier/geo.tsx"
+  ],
   "{gainer} gains from {loser}": [
    "src/components/dossier/records.tsx"
   ],
@@ -85,6 +91,9 @@
   ],
   "{strength} at departure": [
    "src/map/overlay/layers/movements.ts"
+  ],
+  "{v} km a day": [
+   "src/components/dossier/geo.tsx"
   ],
   "← Previous event": [
    "src/components/dossier/records.tsx"
@@ -155,6 +164,9 @@
   "About": [
    "src/components/shell/RightPanel.tsx"
   ],
+  "about {m} m": [
+   "src/components/dossier/geo.tsx"
+  ],
   "About and keyboard shortcuts": [
    "src/components/shell/TopBar.tsx"
   ],
@@ -169,6 +181,9 @@
   ],
   "Active": [
    "src/components/dossier/records.tsx"
+  ],
+  "Active or revived": [
+   "src/components/dossier/geo.tsx"
   ],
   "Active theatres · {n}": [
    "src/components/shell/SituationPanel.tsx"
@@ -185,11 +200,17 @@
   "Aftermath": [
    "src/map/cinematic/director.ts"
   ],
+  "air": [
+   "src/components/dossier/geo.tsx"
+  ],
   "All commanders": [
    "src/components/rail/FiltersPanel.tsx"
   ],
   "Allied side": [
    "src/components/dossier/records.tsx"
+  ],
+  "Allocation of the main formation": [
+   "src/components/dossier/geo.tsx"
   ],
   "Also: {names}": [
    "src/components/dossier/records.tsx"
@@ -282,6 +303,7 @@
    "src/components/overlays/HelpDialog.tsx"
   ],
   "Basis": [
+   "src/components/dossier/geo.tsx",
    "src/components/dossier/records.tsx"
   ],
   "Battle": [
@@ -319,11 +341,17 @@
   "Bookmarks": [
    "src/components/rail/FeedPanel.tsx"
   ],
+  "Border crossing": [
+   "src/map/overlay/layers/terrain.ts"
+  ],
   "Border lines": [
    "src/components/rail/LayersPanel.tsx"
   ],
   "border measured": [
    "src/components/dossier/records.tsx"
+  ],
+  "Bridge": [
+   "src/map/overlay/layers/terrain.ts"
   ],
   "Broken outline. Shown as “?”, never as zero.": [
    "src/components/overlays/Legend.tsx"
@@ -331,8 +359,17 @@
   "Broken ring.": [
    "src/components/overlays/Legend.tsx"
   ],
+  "Broken, with a cross.": [
+   "src/components/overlays/Legend.tsx"
+  ],
+  "by air": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Camera presets": [
    "src/map/MapControls.tsx"
+  ],
+  "Camp": [
+   "src/map/overlay/layers/terrain.ts"
   ],
   "Campaign Atlas": [
    "src/components/AppShell.tsx"
@@ -386,6 +423,12 @@
    "src/components/overlays/Legend.tsx",
    "src/map/overlay/layers/settlements.ts"
   ],
+  "Capital reserve": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Capital reserve (outside the operation)": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Capitals and the Labyrinth": [
    "src/components/overlays/Tour.tsx"
   ],
@@ -424,6 +467,9 @@
   ],
   "Characters": [
    "src/lib/search.ts"
+  ],
+  "checked against the {cls} rate": [
+   "src/components/dossier/geo.tsx"
   ],
   "Cinematic mode": [
    "src/components/overlays/HelpDialog.tsx",
@@ -491,6 +537,9 @@
   "Commands": [
    "src/components/overlays/CommandPalette.tsx"
   ],
+  "Committed": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Compact": [
    "src/components/rail/LayersPanel.tsx"
   ],
@@ -537,17 +586,38 @@
   "corrected in audit": [
    "src/components/dossier/records.tsx"
   ],
+  "Could not load the register.": [
+   "src/components/shell/AboutPanel.tsx"
+  ],
   "Cover art © Fuse, Mitz Vah and Micro Magazine. For your own screens only.": [
    "src/components/shell/AboutPanel.tsx"
   ],
+  "Crossed only at a ford or bridge.": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "Crossed swords mark a battle. Once the cross appears the battle is decided, and only then does the losing side start to fall back.": [
    "src/components/overlays/Tour.tsx"
+  ],
+  "Crossing": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Crossings": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Current leg": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Cut": [
+   "src/map/overlay/layers/terrain.ts"
   ],
   "Dark": [
    "src/components/rail/LayersPanel.tsx"
   ],
   "Dark theme": [
    "src/components/shell/TopBar.tsx"
+  ],
+  "Dashed, with a warning triangle.": [
+   "src/components/overlays/Legend.tsx"
   ],
   "Dataset name: {name}": [
    "src/components/dossier/records.tsx"
@@ -567,6 +637,12 @@
   "Day stated. Hour reconstructed": [
    "src/lib/taxonomy.ts"
   ],
+  "Dead, not revived": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "deep forest": [
+   "src/components/dossier/geo.tsx"
+  ],
   "default": [
    "src/map/MapControls.tsx"
   ],
@@ -585,6 +661,9 @@
   "Diamond marker.": [
    "src/components/overlays/Legend.tsx"
   ],
+  "Distance": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Documentary": [
    "src/components/rail/LayersPanel.tsx"
   ],
@@ -594,8 +673,14 @@
   "double-click to open": [
    "src/components/timeline/Timeline.tsx"
   ],
+  "Drawn on the terrain model: roads, passes and fords, around lakes and the massif. Formations move along the same line.": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "Dwargon eastern front": [
    "src/map/MapControls.tsx"
+  ],
+  "Dwargon Gate force": [
+   "src/components/dossier/geo.tsx"
   ],
   "Each marker is a formation, the big number is its strength. Squares are the Empire, circles are Tempest, diamonds are Dwargon. Click one to open its file.": [
    "src/components/overlays/Tour.tsx"
@@ -686,6 +771,15 @@
   "Factions": [
    "src/components/rail/FiltersPanel.tsx"
   ],
+  "Failed offensive": [
+   "src/components/overlays/Legend.tsx"
+  ],
+  "Faster than the stated maximum for this kind of unit.": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Feature": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Fighting": [
    "src/components/timeline/Timeline.tsx"
   ],
@@ -710,6 +804,9 @@
   "Flag of {name}": [
    "src/components/ui/primitives.tsx"
   ],
+  "Flag: halt point. Towers: gate. Chevron: border crossing. Target: objective. Square: staging area. Tent: camp.": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "Flat": [
    "src/components/rail/LayersPanel.tsx",
    "src/map/MapControls.tsx"
@@ -729,6 +826,9 @@
   "Force · {faction}": [
    "src/components/dossier/records.tsx"
   ],
+  "Force ledger": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Force markers": [
    "src/components/rail/LayersPanel.tsx"
   ],
@@ -740,6 +840,15 @@
   ],
   "Forces & numbers": [
    "src/components/dossier/records.tsx"
+  ],
+  "ford": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Ford": [
+   "src/map/overlay/layers/terrain.ts"
+  ],
+  "forest": [
+   "src/components/dossier/geo.tsx"
   ],
   "Formations at their recorded positions.": [
    "src/state/preferences.ts"
@@ -756,6 +865,9 @@
   "Forward one day (Shift+→)": [
    "src/components/timeline/Timeline.tsx"
   ],
+  "Found on the terrain model: water is impassable, the Kanaat massif is crossed only by a pass, rivers only at a ford or bridge. Distances use the synthetic scale of 2 km per atlas pixel and are rounded to 10 km. Elevations are a stylised relief, not a survey.": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Frame the whole campaign": [
    "src/components/overlays/HelpDialog.tsx",
    "src/map/MapControls.tsx"
@@ -771,6 +883,12 @@
   ],
   "From a slow 1× up to 48×, about a whole day per second. Playback slows down by itself at the big turning points so you never miss them.": [
    "src/components/overlays/Tour.tsx"
+  ],
+  "From Dwargon": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "From Rimuru": [
+   "src/components/dossier/geo.tsx"
   ],
   "from the start": [
    "src/components/dossier/records.tsx"
@@ -802,6 +920,12 @@
   "Fullscreen": [
    "src/map/MapControls.tsx"
   ],
+  "Gate": [
+   "src/map/overlay/layers/terrain.ts"
+  ],
+  "Geography": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "Geometry": [
    "src/components/dossier/records.tsx"
   ],
@@ -821,17 +945,29 @@
   "Gold ring. Stays on the map, numbered by rank.": [
    "src/components/overlays/Legend.tsx"
   ],
+  "Grade": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Gradient": [
    "src/components/rail/LayersPanel.tsx"
   ],
   "Graphics quality": [
    "src/components/rail/LayersPanel.tsx"
   ],
+  "ground": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "Ground taken and lost as the armies move: it stays held until retaken, cut off or returned, and the front moves with the clock. RECONSTRUCTED from recorded positions and strengths (the novels draw no front line). Campaign-wide, so force filters do not change it.": [
    "src/state/preferences.ts"
   ],
   "Ground taken around the armies. It stays taken after they move on, until it is retaken, cut off or returned at the end of hostilities.": [
    "src/components/overlays/Legend.tsx"
+  ],
+  "Halt point": [
+   "src/map/overlay/layers/terrain.ts"
+  ],
+  "Halt point, gates, border crossings, staging areas and objectives, with the fords on the rivers.": [
+   "src/state/preferences.ts"
   ],
   "Held by the other side": [
    "src/components/dossier/records.tsx"
@@ -841,6 +977,9 @@
   ],
   "Held ground": [
    "src/components/dossier/records.tsx"
+  ],
+  "Here now · {n}": [
+   "src/components/dossier/geo.tsx"
   ],
   "Hi, I’m NuRichter.": [
    "src/components/shell/AboutPanel.tsx"
@@ -866,6 +1005,9 @@
   ],
   "High confidence": [
    "src/lib/format.ts"
+  ],
+  "Highest ground": [
+   "src/components/dossier/geo.tsx"
   ],
   "History": [
    "src/components/dossier/records.tsx"
@@ -910,6 +1052,9 @@
   "Imperial losses to date": [
    "src/components/overlays/CinematicOverlay.tsx"
   ],
+  "Implied pace": [
+   "src/components/dossier/geo.tsx"
+  ],
   "In combat": [
    "src/components/dossier/records.tsx"
   ],
@@ -923,6 +1068,12 @@
   "In the novel": [
    "src/components/dossier/records.tsx"
   ],
+  "In the novels, line drawn by the project": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "In the operation ledger": [
+   "src/components/dossier/geo.tsx"
+  ],
   "In this campaign": [
    "src/components/dossier/records.tsx"
   ],
@@ -935,6 +1086,15 @@
   "Inferred": [
    "src/lib/taxonomy.ts"
   ],
+  "Initial forward": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Initial strength": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Inside the marker: infantry ✕, armour oval, air propeller, cavalry slash, elite star, reserve double ring. A plain dot when the composition is not recorded.": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "Intelligence": [
    "src/lib/taxonomy.ts"
   ],
@@ -946,6 +1106,9 @@
   ],
   "Isolate this command on the map": [
    "src/components/dossier/records.tsx"
+  ],
+  "Issued": [
+   "src/components/dossier/geo.tsx"
   ],
   "Jura & Dwargon front": [
    "src/map/MapControls.tsx"
@@ -960,6 +1123,7 @@
    "src/components/dossier/records.tsx"
   ],
   "Killed": [
+   "src/components/dossier/geo.tsx",
    "src/components/overlays/CinematicOverlay.tsx",
    "src/components/shell/SituationBar.tsx",
    "src/components/shell/SituationPanel.tsx"
@@ -980,6 +1144,10 @@
   "Labyrinth": [
    "src/components/overlays/Legend.tsx",
    "src/map/overlay/layers/settlements.ts"
+  ],
+  "Lake": [
+   "src/components/dossier/geo.tsx",
+   "src/map/overlay/layers/terrain.ts"
   ],
   "Language": [
    "src/components/shell/TopBar.tsx"
@@ -1015,6 +1183,9 @@
   ],
   "Legend (L)": [
    "src/components/shell/TopBar.tsx"
+  ],
+  "Length": [
+   "src/components/dossier/geo.tsx"
   ],
   "Let’s go": [
    "src/components/overlays/Tour.tsx"
@@ -1064,6 +1235,9 @@
   "Low confidence": [
    "src/lib/format.ts"
   ],
+  "Main invasion formation": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Major battle": [
    "src/lib/taxonomy.ts"
   ],
@@ -1106,6 +1280,12 @@
   "Medium+": [
    "src/components/rail/FiltersPanel.tsx"
   ],
+  "Merged into": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Military road": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Minimum confidence": [
    "src/components/rail/FiltersPanel.tsx"
   ],
@@ -1117,6 +1297,26 @@
   ],
   "Motion": [
    "src/components/rail/LayersPanel.tsx"
+  ],
+  "mountain": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "mountain pass": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Mountain pass": [
+   "src/components/dossier/geo.tsx",
+   "src/components/overlays/Legend.tsx",
+   "src/map/overlay/layers/terrain.ts"
+  ],
+  "Mountains": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Mountains and passes": [
+   "src/state/preferences.ts"
+  ],
+  "Mountains, impassable outside a pass": [
+   "src/map/overlay/layers/terrain.ts"
   ],
   "Move around the map": [
    "src/components/overlays/Tour.tsx"
@@ -1179,6 +1379,9 @@
   "Never drawn as any faction's colour.": [
    "src/components/overlays/Legend.tsx"
   ],
+  "Never killed": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Next": [
    "src/components/overlays/Tour.tsx",
    "src/components/timeline/Timeline.tsx"
@@ -1196,6 +1399,9 @@
   ],
   "Next transition": [
    "src/components/dossier/records.tsx"
+  ],
+  "no": [
+   "src/components/dossier/geo.tsx"
   ],
   "No battle in progress or in the last day.": [
    "src/components/shell/SituationPanel.tsx"
@@ -1217,6 +1423,9 @@
   ],
   "No formation is tied to this battle's events.": [
    "src/components/dossier/records.tsx"
+  ],
+  "No formation stands here at this moment.": [
+   "src/components/dossier/geo.tsx"
   ],
   "No ground is held across a border at this moment.": [
    "src/components/shell/SituationPanel.tsx"
@@ -1308,6 +1517,9 @@
   "Novel page (Micro Magazine)": [
    "src/content/about.ts"
   ],
+  "Novels": [
+   "src/components/shell/AboutPanel.tsx"
+  ],
   "Now": [
    "src/components/dossier/records.tsx",
    "src/components/shell/SituationBar.tsx",
@@ -1315,6 +1527,12 @@
   ],
   "numbers": [
    "src/components/dossier/records.tsx"
+  ],
+  "Objective": [
+   "src/map/overlay/layers/terrain.ts"
+  ],
+  "offensive failed": [
+   "src/map/overlay/layers/movements.ts"
   ],
   "Official portal (Japanese)": [
    "src/content/about.ts"
@@ -1331,11 +1549,17 @@
   "Only the direction of the movement is known.": [
    "src/lib/taxonomy.ts"
   ],
+  "Open": [
+   "src/map/overlay/layers/terrain.ts"
+  ],
   "Open {name}": [
    "src/components/dossier/records.tsx"
   ],
   "Open filters": [
    "src/components/overlays/CommandPalette.tsx"
+  ],
+  "open ground": [
+   "src/components/dossier/geo.tsx"
   ],
   "Open the campaign atlas": [
    "src/app/not-found.tsx"
@@ -1348,6 +1572,9 @@
   ],
   "Open the legend": [
    "src/components/overlays/CommandPalette.tsx"
+  ],
+  "Operation ledger": [
+   "src/components/dossier/geo.tsx"
   ],
   "Operational": [
    "src/components/dossier/records.tsx"
@@ -1385,6 +1612,9 @@
   "Outlines of the capitals, major cities and Ramiris Labyrinth, with their icons. Positions measured, outlines reconstructed.": [
    "src/state/preferences.ts"
   ],
+  "Outside the invasion operation": [
+   "src/components/dossier/geo.tsx"
+  ],
   "overall": [
    "src/components/dossier/records.tsx"
   ],
@@ -1405,6 +1635,9 @@
   ],
   "Participants": [
    "src/components/dossier/records.tsx"
+  ],
+  "Passes": [
+   "src/components/dossier/geo.tsx"
   ],
   "Pause": [
    "src/components/timeline/Timeline.tsx"
@@ -1443,6 +1676,7 @@
    "src/components/overlays/Tour.tsx"
   ],
   "Place": [
+   "src/components/dossier/geo.tsx",
    "src/components/dossier/records.tsx"
   ],
   "Places": [
@@ -1479,6 +1713,9 @@
   "Playback speed (0.25× to 48×)": [
    "src/components/overlays/HelpDialog.tsx"
   ],
+  "Plus marks along the route.": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "Political & aftermath": [
    "src/lib/taxonomy.ts"
   ],
@@ -1487,6 +1724,9 @@
   ],
   "Pops in when reached. Its label shows for about two seconds, then the ring fades over a simulated day.": [
    "src/components/overlays/Legend.tsx"
+  ],
+  "Position": [
+   "src/components/dossier/geo.tsx"
   ],
   "position {placement}": [
    "src/components/dossier/records.tsx"
@@ -1569,6 +1809,12 @@
   "References": [
    "src/components/shell/AboutPanel.tsx"
   ],
+  "Reinforced by": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Reinforcement": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "Relative time stated by the source": [
    "src/lib/taxonomy.ts"
   ],
@@ -1604,17 +1850,49 @@
   "Returned at the end of hostilities": [
    "src/components/dossier/records.tsx"
   ],
+  "Reversed marks along the route.": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "revived": [
    "src/components/dossier/records.tsx"
   ],
   "Revived": [
+   "src/components/dossier/geo.tsx",
    "src/components/overlays/CinematicOverlay.tsx",
    "src/components/shell/SituationPanel.tsx"
+  ],
+  "Revived personnel (not new recruits)": [
+   "src/components/dossier/geo.tsx"
   ],
   "Rimuru cursor": [
    "src/components/rail/LayersPanel.tsx"
   ],
+  "River": [
+   "src/components/dossier/geo.tsx",
+   "src/components/overlays/Legend.tsx",
+   "src/map/overlay/layers/terrain.ts"
+  ],
+  "river crossing": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Rivers and lakes": [
+   "src/state/preferences.ts"
+  ],
+  "road": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Road": [
+   "src/components/dossier/geo.tsx",
+   "src/map/overlay/layers/terrain.ts"
+  ],
+  "Roads and supply routes": [
+   "src/state/preferences.ts"
+  ],
+  "Roads used": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Role": [
+   "src/components/dossier/geo.tsx",
    "src/components/dossier/records.tsx"
   ],
   "Role in the war": [
@@ -1625,6 +1903,9 @@
   ],
   "Route": [
    "src/components/dossier/records.tsx"
+  ],
+  "Route on the ground": [
+   "src/components/dossier/geo.tsx"
   ],
   "route reconstructed": [
    "src/map/overlay/layers/movements.ts"
@@ -1641,8 +1922,21 @@
   "route unknown": [
    "src/map/overlay/layers/movements.ts"
   ],
+  "Routes follow the ground": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "Saved on this device. Press B anywhere to bookmark the current moment.": [
    "src/components/rail/FeedPanel.tsx"
+  ],
+  "Scenario": [
+   "src/components/shell/AboutPanel.tsx",
+   "src/lib/taxonomy.ts"
+  ],
+  "Scenario and novels": [
+   "src/components/shell/AboutPanel.tsx"
+  ],
+  "Scenario ledger of the invasion operation. A revival changes the state of soldiers already counted and never adds to the committed total. Transferred soldiers are counted once, where they are. The Magic Beast Division is a separate operation and is not in this ledger.": [
+   "src/components/dossier/geo.tsx"
   ],
   "schematic": [
    "src/map/overlay/layers/movements.ts"
@@ -1671,8 +1965,17 @@
    "src/components/overlays/CommandPalette.tsx",
    "src/components/shell/TopBar.tsx"
   ],
+  "Secure": [
+   "src/map/overlay/layers/terrain.ts"
+  ],
+  "Separate detachment": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Sequence · {n} events": [
    "src/components/dossier/records.tsx"
+  ],
+  "Set by the scenario brief this atlas follows. Not stated by the light novel.": [
+   "src/lib/taxonomy.ts"
   ],
   "Show me": [
    "src/components/overlays/Tour.tsx"
@@ -1724,6 +2027,9 @@
   "Size reconstructed": [
    "src/components/overlays/Legend.tsx"
   ],
+  "Size set by the scenario": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "Size unknown": [
    "src/components/overlays/Legend.tsx"
   ],
@@ -1764,8 +2070,14 @@
   "Speed": [
    "src/components/timeline/Timeline.tsx"
   ],
+  "Split from": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Square marker.": [
    "src/components/overlays/Legend.tsx"
+  ],
+  "Staging area": [
+   "src/map/overlay/layers/terrain.ts"
   ],
   "Status": [
    "src/components/dossier/records.tsx"
@@ -1776,8 +2088,18 @@
   "Story": [
    "src/components/rail/LeftRail.tsx"
   ],
+  "straight line {km}": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Strategic": [
    "src/components/dossier/records.tsx"
+  ],
+  "Strategic points": [
+   "src/components/overlays/Legend.tsx",
+   "src/state/preferences.ts"
+  ],
+  "Strategic supply route": [
+   "src/components/dossier/geo.tsx"
   ],
   "Strength": [
    "src/components/dossier/records.tsx",
@@ -1792,11 +2114,32 @@
   "Strength unknown": [
    "src/components/overlays/Legend.tsx"
   ],
+  "Subordinate of an operation formation": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Summary": [
    "src/components/dossier/records.tsx"
   ],
   "Summed from event-level records only, so nothing is counted twice. Revived soldiers stay counted as killed. The two figures sit side by side.": [
    "src/components/shell/SituationPanel.tsx"
+  ],
+  "supply": [
+   "src/map/overlay/layers/terrain.ts"
+  ],
+  "Supply route, cut": [
+   "src/components/overlays/Legend.tsx"
+  ],
+  "Supply route, open": [
+   "src/components/overlays/Legend.tsx"
+  ],
+  "Supply route, secure": [
+   "src/components/overlays/Legend.tsx"
+  ],
+  "Supply route, threatened": [
+   "src/components/overlays/Legend.tsx"
+  ],
+  "Supply state": [
+   "src/components/dossier/geo.tsx"
   ],
   "Support the official series": [
    "src/components/shell/AboutPanel.tsx"
@@ -1825,6 +2168,9 @@
   "Switching style keeps the campaign moment, selection and filters.": [
    "src/map/MapControls.tsx"
   ],
+  "Synthetic: added by the project": [
+   "src/components/dossier/geo.tsx"
+  ],
   "System": [
    "src/components/rail/LayersPanel.tsx"
   ],
@@ -1850,6 +2196,9 @@
   "Tempest, total": [
    "src/components/shell/SituationPanel.tsx"
   ],
+  "Terrain": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Territories": [
    "src/components/overlays/CommandPalette.tsx",
    "src/components/rail/FiltersPanel.tsx",
@@ -1873,6 +2222,9 @@
   "That event is not on the record.": [
    "src/components/dossier/records.tsx"
   ],
+  "That feature is not in the geography.": [
+   "src/components/dossier/geo.tsx"
+  ],
   "That formation is not in the register.": [
    "src/components/dossier/records.tsx"
   ],
@@ -1881,6 +2233,9 @@
   ],
   "That nation is not in the gazetteer.": [
    "src/components/dossier/records.tsx"
+  ],
+  "That place is not in the gazetteer.": [
+   "src/components/dossier/geo.tsx"
   ],
   "That territory is not in the atlas.": [
    "src/components/dossier/records.tsx"
@@ -1927,6 +2282,12 @@
   "The five covers of this war’s volumes, made into wallpapers, plus two moments from the map. Tap to save.": [
    "src/components/shell/AboutPanel.tsx"
   ],
+  "The imperial order of battle follows a scenario brief: 1,040,000 soldiers in the operation instead of the novels’ 940,000. Each difference from the novels is listed below under Scenario and novels.": [
+   "src/components/shell/AboutPanel.tsx"
+  ],
+  "The Kanaat massif around Dwargon and the passes through it. Ground routes cross the massif only by a pass.": [
+   "src/state/preferences.ts"
+  ],
   "The map could not start": [
    "src/map/MapView.tsx"
   ],
@@ -1939,13 +2300,22 @@
   "The novels give no clock times or calendar dates. Battle days (D−, D+) count from first contact. Every HH:MM is a simulation placement on a 10-minute grid, and the “year 9001” calendar is an artificial marker.": [
    "src/components/overlays/HelpDialog.tsx"
   ],
+  "The number is set by the scenario brief, not by the light novel.": [
+   "src/lib/taxonomy.ts"
+  ],
   "The number is stated by the source.": [
    "src/lib/taxonomy.ts"
+  ],
+  "The only way across the Kanaat massif.": [
+   "src/components/overlays/Legend.tsx"
   ],
   "The painted world map, for geographic and lore context.": [
    "src/map/MapControls.tsx"
   ],
   "The pale strip is ground about to change hands. The winner's colour follows it in from the front.": [
+   "src/components/overlays/Legend.tsx"
+  ],
+  "The route ends in a cross at an objective that was not taken.": [
    "src/components/overlays/Legend.tsx"
   ],
   "The runtime dataset is generated at build time. Run the compile and validate steps, then reload.": [
@@ -1959,6 +2329,9 @@
   ],
   "The strength at departure is not assumed to hold during the march. Intermediate strength is unknown unless recorded.": [
    "src/components/dossier/records.tsx"
+  ],
+  "The Tempest-Dwargon road and the other roads, with the state of each supply route: open, threatened, cut or secure. Lines drawn by the project.": [
+   "src/state/preferences.ts"
   ],
   "The timeline": [
    "src/components/overlays/Tour.tsx"
@@ -1994,6 +2367,12 @@
   "This moment": [
    "src/components/rail/FeedPanel.tsx"
   ],
+  "Threat ended, with a check mark.": [
+   "src/components/overlays/Legend.tsx"
+  ],
+  "Threatened": [
+   "src/map/overlay/layers/terrain.ts"
+  ],
   "time": [
    "src/components/dossier/records.tsx"
   ],
@@ -2021,11 +2400,26 @@
   "Traced from {source}. A fan-made map, not an official survey. Positions are simulation coordinates, not latitude and longitude.": [
    "src/components/dossier/records.tsx"
   ],
+  "Traced from the painted map": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Traced from the painted map. Armies cross rivers only at fords and bridges.": [
+   "src/state/preferences.ts"
+  ],
+  "Traced from the painted map. Roads, passes and fords are drawn by the project. Distances use a synthetic scale of 2 km per atlas pixel.": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "Tracking the march": [
    "src/map/cinematic/director.ts"
   ],
   "Trail width": [
    "src/components/rail/LayersPanel.tsx"
+  ],
+  "Transferred from": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Transferred from the capital reserve": [
+   "src/components/dossier/geo.tsx"
   ],
   "Triangle marker.": [
    "src/components/overlays/Legend.tsx"
@@ -2058,6 +2452,12 @@
   "Type": [
    "src/components/dossier/records.tsx"
   ],
+  "unique personnel": [
+   "src/components/dossier/geo.tsx"
+  ],
+  "Unit symbols": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "unknown": [
    "src/components/dossier/records.tsx",
    "src/components/shell/SituationPanel.tsx",
@@ -2083,6 +2483,9 @@
   "Unresolved": [
    "src/lib/taxonomy.ts"
   ],
+  "Used by": [
+   "src/components/dossier/geo.tsx"
+  ],
   "Vol. {volume}": [
    "src/components/ui/primitives.tsx"
   ],
@@ -2103,6 +2506,9 @@
   ],
   "Watch again": [
    "src/components/overlays/CinematicOverlay.tsx"
+  ],
+  "water": [
+   "src/components/dossier/geo.tsx"
   ],
   "Welcome to Tempest!": [
    "src/components/overlays/Tour.tsx"
@@ -2138,14 +2544,23 @@
   "Wide · several fronts": [
    "src/map/cinematic/director.ts"
   ],
+  "Withdrawal": [
+   "src/components/overlays/Legend.tsx"
+  ],
   "World & lore context": [
    "src/components/rail/LayersPanel.tsx"
+  ],
+  "World position": [
+   "src/components/dossier/geo.tsx"
   ],
   "Wounded": [
    "src/components/shell/SituationPanel.tsx"
   ],
   "Yen Press (English edition)": [
    "src/content/about.ts"
+  ],
+  "yes, counted once as unique personnel": [
+   "src/components/dossier/geo.tsx"
   ],
   "Your language, your theme": [
    "src/components/overlays/Tour.tsx"

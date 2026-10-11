@@ -9,7 +9,7 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 
 import type { Dataset } from '@/data/loader';
-import { FACTION_COLOR } from '@/lib/palette';
+import { FACTION_COLOR, factionKey } from '@/lib/palette';
 import { landMask, loadFront } from '@/map/field/occupation';
 import { getField, onField } from '@/map/field/fieldStore';
 import { createWarSkin, type WarSkin } from '@/map/three/warSkin';
@@ -373,6 +373,48 @@ export function Atlas3D({ auto }: { auto: boolean }) {
       }
     }
 
+    /* -- routes: the measured ground routes of movements under way -------- */
+    // The same geometry the 2D overlay draws and the markers follow, draped on the relief.
+    const routeLines = new Map<string, THREE.Line>();
+    function syncRoutes(T: number): void {
+      const live = new Set<string>();
+      for (const m of data!.movements) {
+        if (!m.routeId || m.startFrame === null || m.route === 'UNKNOWN') continue;
+        const end = m.endFrame ?? m.startFrame;
+        if (T < m.startFrame || T > end + 144) continue;
+        const r = data!.routeById.get(m.routeId);
+        if (!r) continue;
+        const key = `${m.id}`;
+        live.add(key);
+        let line = routeLines.get(key);
+        if (!line) {
+          const pts: THREE.Vector3[] = [];
+          for (let i = 0; i < r.points.length; i += 1) {
+            const [px, py] = r.points[i];
+            const steps = i === 0 ? 1 : 6;
+            for (let k = steps === 1 ? 0 : 1; k <= steps - (steps === 1 ? 1 : 0); k += 1) {
+              const [qx, qy] = i === 0 ? [px, py] : [r.points[i - 1][0] + ((px - r.points[i - 1][0]) * k) / steps, r.points[i - 1][1] + ((py - r.points[i - 1][1]) * k) / steps];
+              const [x, z] = toWorld(qx, qy);
+              pts.push(new THREE.Vector3(x, sampleHeight(relief, qx, qy) + (r.mode === 'AIR' ? 3 : 0.12), z));
+            }
+          }
+          const force = data!.forceById.get(m.forceId);
+          const color = new THREE.Color(FACTION_COLOR[factionKey(force?.faction ?? null)]);
+          line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.85 }));
+          routeLines.set(key, line);
+          scene.add(line);
+        }
+        (line.material as THREE.LineBasicMaterial).opacity = T > end ? Math.max(0.15, 0.85 * (1 - (T - end) / 144)) : 0.85;
+      }
+      for (const [k, line] of routeLines) {
+        if (live.has(k)) continue;
+        scene.remove(line);
+        line.geometry.dispose();
+        (line.material as THREE.Material).dispose();
+        routeLines.delete(k);
+      }
+    }
+
     /* -- battles -------------------------------------------------------- */
     const sparkGeo = new THREE.BufferGeometry();
     const SPARKS = 160;
@@ -493,7 +535,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
         paintOverlay(T);
         lightFor(T);
       }
-      if (Math.abs(T - lastSync) > 0.05) { lastSync = T; syncForces(T); }
+      if (Math.abs(T - lastSync) > 0.05) { lastSync = T; syncForces(T); if (relief) syncRoutes(T); }
       for (const o of forces.values()) {
         const nx = THREE.MathUtils.damp(o.group.position.x, o.x, 6, dt);
         const nz = THREE.MathUtils.damp(o.group.position.z, o.z, 6, dt);

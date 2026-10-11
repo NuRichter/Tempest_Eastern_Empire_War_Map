@@ -81,7 +81,8 @@ const BAND_TAPER = 0.3; // depth lost per cell of distance from the formation
 const BAND_RAGGED = 0.45; // ± share of the band depth varied by the noise
 
 interface FrontRules {
-  gates: { territoryId: string; side: 'empire' | 'allied'; fromEvent: string; basis: string }[];
+  /** fromEvent null: that side never takes ground there (a territory the record says was never taken). */
+  gates: { territoryId: string; side: 'empire' | 'allied'; fromEvent: string | null; basis: string }[];
   anchored?: { territoryId: string; side: 'empire' | 'allied'; basis: string }[];
 }
 const rules = JSON.parse(readFileSync(join(HERE, '..', 'data-source', 'campaign', 'front-rules.json'), 'utf8')) as FrontRules;
@@ -137,9 +138,9 @@ data.territories.forEach((t, ti) => {
 const gateFrame: Record<number, number>[] = data.territories.map(() => ({}));
 for (const g of rules.gates) {
   const ti = data.territories.findIndex((t) => t.id === g.territoryId);
-  const ev = data.eventById.get(g.fromEvent);
-  if (ti < 0 || !ev) throw new Error(`front-rules: unknown territory ${g.territoryId} or event ${g.fromEvent}.`);
-  gateFrame[ti][g.side === 'empire' ? HOLDER_EMPIRE : HOLDER_ALLIED] = ev.frame;
+  const ev = g.fromEvent === null ? null : data.eventById.get(g.fromEvent);
+  if (ti < 0 || ev === undefined) throw new Error(`front-rules: unknown territory ${g.territoryId} or event ${g.fromEvent}.`);
+  gateFrame[ti][g.side === 'empire' ? HOLDER_EMPIRE : HOLDER_ALLIED] = ev ? ev.frame : Infinity;
 }
 const gateOpen = (ti: number, side: number, frame: number) => frame >= (gateFrame[ti][side] ?? -Infinity);
 

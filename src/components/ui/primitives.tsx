@@ -69,6 +69,7 @@ const PROVENANCE_VAR: Record<Provenance, string> = {
   CANONICAL: '--prov-canon',
   CANONICAL_WITH_VISUAL_RECONSTRUCTION: '--prov-visual',
   INFERRED: '--prov-inferred',
+  SCENARIO: '--prov-scenario',
   RECONSTRUCTED: '--prov-recon',
   UNRESOLVED: '--prov-unresolved',
 };
@@ -77,7 +78,7 @@ export function ProvenanceBadge({ value, compact = false }: { value: Provenance;
   const t = useT();
   const label = PROVENANCE_LABEL[value];
   const color = PROVENANCE_VAR[value];
-  const glyph = value === 'CANONICAL' ? '■' : value === 'CANONICAL_WITH_VISUAL_RECONSTRUCTION' ? '◧' : value === 'INFERRED' ? '◇' : value === 'RECONSTRUCTED' ? '◌' : '?';
+  const glyph = value === 'CANONICAL' ? '■' : value === 'CANONICAL_WITH_VISUAL_RECONSTRUCTION' ? '◧' : value === 'INFERRED' ? '◇' : value === 'SCENARIO' ? '◆' : value === 'RECONSTRUCTED' ? '◌' : '?';
   return (
     <span
       className="inline-flex shrink-0 items-center gap-1 rounded-[2px] border px-1.5 py-px text-2xs font-semibold uppercase tracking-label"

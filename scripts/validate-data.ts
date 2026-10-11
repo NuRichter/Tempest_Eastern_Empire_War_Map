@@ -236,11 +236,20 @@ function main(): void {
     for (const x of snapshotAt.get(id)?.snapshots ?? []) if (x.f <= f) s = x;
     return s;
   };
+  const discrepancyIds = new Set(load<{ contradictions: { id: string }[] }>('reference.json').contradictions.map((c) => c.id));
   for (const f of forces) {
     if (!f.parentId) continue;
+    // A documented discrepancy (named in the force's notes and present in the register) is reported once.
+    const accepted = (f.notes.match(/DISC-[A-Z0-9-]+\d/g) ?? []).find((id) => discrepancyIds.has(id));
+    let reported = false;
     for (const s of snapshotAt.get(f.id)?.snapshots ?? []) {
       const p = at(f.parentId, s.f);
       if (p && typeof p.strength === 'number' && typeof s.strength === 'number' && s.strength > p.strength) {
+        if (accepted) {
+          if (!reported) console.log(`  note  force ${f.id}: ${s.strength} exceeds parent ${f.parentId} (${p.strength}), accepted as ${accepted}.`);
+          reported = true;
+          continue;
+        }
         warn(`force ${f.id}@${s.f}: ${s.strength} exceeds parent ${f.parentId} (${p.strength}).`);
       }
     }

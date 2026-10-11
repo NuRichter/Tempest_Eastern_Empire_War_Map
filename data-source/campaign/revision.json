@@ -1,5 +1,5 @@
 {
- "revision": "R5-CANON-AUDIT (2026-10-07)",
+ "revision": "R6-SCENARIO-LEDGER (2026-10-11)",
  "migratedFrom": {
   "workbook": "Tempest_Eastern_Empire_War_Timeline.xlsx",
   "workbookSha256": "e80ad9c2024c6cb3c512167a855a4187540177756d249a73ef1c4047d21915e8",
@@ -14,7 +14,7 @@
   "lastDay": 27,
   "calendarStart": "01/01/9001"
  },
- "note": "R5 canon-audit skeleton. Battle day 0 is first contact (the day of Testarossa's ultimatum and the surface battle). Day placements are canonical only where AUDIT-PLAN.md marks them CANONICAL_RELATIVE; every clock time is a simulation placement on a 10-minute grid. calendarStart 01/01/9001 is the artificial date of D-43.",
+ "note": "R6: the owner's scenario force ledger on the R5 canon-audit skeleton (docs/CAMPAIGN_FORCE_LEDGER.md), with calibrated geography (docs/GEOGRAPHIC_MODEL.md). R5 canon-audit skeleton. Battle day 0 is first contact (the day of Testarossa's ultimatum and the surface battle). Day placements are canonical only where AUDIT-PLAN.md marks them CANONICAL_RELATIVE; every clock time is a simulation placement on a 10-minute grid. calendarStart 01/01/9001 is the artificial date of D-43.",
  "initial": {
   "theatres": {
    "TH-DWG": {
@@ -84,8 +84,8 @@
    "stage": "APPROACH_MARCH"
   },
   {
-   "day": -2,
-   "time": "00:00",
+   "day": -3,
+   "time": "14:00",
    "phase": "DEPLOYMENT",
    "stage": "HALT_AND_DEPLOYMENT"
   },

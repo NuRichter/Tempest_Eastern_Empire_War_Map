@@ -1,5 +1,6 @@
 import type { Dataset } from '@/data/loader';
-import type { ForceSnapshot, FrameState, PlacementGrade, RouteConfidence, Territory, TerritoryControlSegment } from '@/types/dataset';
+import { alongPolyline } from '@/lib/world';
+import type { ForceSnapshot, FrameState, LedgerPoint, PlacementGrade, RouteConfidence, Territory, TerritoryControlSegment } from '@/types/dataset';
 
 /**
  * Resolves battlefield state at any frame without replaying the campaign.
@@ -166,13 +167,27 @@ export function forcePositionAt(data: Dataset, forceId: string, frame: number): 
 
   const span = next.f - current.f;
   const raw = span <= 0 ? 1 : (frame - current.f) / span;
-  const t = ease(raw);
+  // A whole movement eases out of its start and into its halt. A stretch of a
+  // longer march (the approach column's daily progress) keeps its pace.
+  const partial = next.path && (next.path.from !== 0 || next.path.to !== 1);
+  const t = partial ? Math.min(1, Math.max(0, raw)) : ease(raw);
 
-  const x = current.x + (next.x - current.x) * t;
-  const y = current.y + (next.y - current.y) * t;
-  const dx = next.x - current.x;
-  const dy = next.y - current.y;
-  const stationary = Math.abs(dx) < 1e-9 && Math.abs(dy) < 1e-9;
+  let x = current.x + (next.x - current.x) * t;
+  let y = current.y + (next.y - current.y) * t;
+  let dx = next.x - current.x;
+  let dy = next.y - current.y;
+  // On a measured route the force follows the ground: roads, passes, fords.
+  const route = next.path ? data.routeById?.get(next.path.routeId) : undefined;
+  if (route && next.path) {
+    const at = alongPolyline(route.points, route.cumKm, next.path.from + (next.path.to - next.path.from) * t);
+    x = at.x;
+    y = at.y;
+    if (Math.abs(at.dx) > 1e-12 || Math.abs(at.dy) > 1e-12) {
+      dx = at.dx * Math.sign(next.path.to - next.path.from || 1);
+      dy = at.dy * Math.sign(next.path.to - next.path.from || 1);
+    }
+  }
+  const stationary = Math.abs(next.x - current.x) < 1e-9 && Math.abs(next.y - current.y) < 1e-9;
 
   return {
     x,
@@ -285,6 +300,33 @@ export function displayStrengthAt(data: Dataset, forceId: string, frame: number)
   const t = (frame - changedAt) / STRENGTH_TWEEN_FRAMES;
   if (typeof prev !== 'number' || t >= 1) return cur;
   return Math.round(prev + (cur - prev) * Math.max(0, t));
+}
+
+/** The operation's force ledger at a frame: the latest point at or before it. */
+export function ledgerAt(data: Dataset, frame: number): LedgerPoint | null {
+  let found: LedgerPoint | null = null;
+  for (const p of data.ledger.points) {
+    if (p.frame > frame) break;
+    found = p;
+  }
+  return found;
+}
+
+/** Ground distance a force has covered on its current leg and what remains, in km (null when not on a measured route). */
+export function legDistances(data: Dataset, forceId: string, frame: number): { travelledKm: number; remainingKm: number; routeId: string } | null {
+  const keys = data.positionByForce.get(forceId)?.keys;
+  if (!keys?.length) return null;
+  let i = 0;
+  for (let k = 0; k < keys.length; k += 1) if (keys[k].f <= frame) i = k;
+  const next = keys[i + 1];
+  if (!next?.path) return null;
+  const route = data.routeById.get(next.path.routeId);
+  if (!route) return null;
+  const pos = forcePositionAt(data, forceId, frame);
+  if (!pos) return null;
+  const legKm = route.lengthKm * Math.abs(next.path.to - next.path.from);
+  const done = pos.progress <= 0 ? 0 : pos.progress >= 1 ? 1 : (next.path.from !== 0 || next.path.to !== 1 ? pos.progress : ease(pos.progress));
+  return { travelledKm: legKm * done, remainingKm: legKm * (1 - done), routeId: route.id };
 }
 
 /** A force's strength history: the frames at which its recorded strength changed. */

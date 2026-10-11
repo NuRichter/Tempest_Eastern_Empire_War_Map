@@ -49,6 +49,10 @@ export type WarLayer =
   | 'characters'
   | 'labels'
   | 'settlements'
+  | 'rivers'
+  | 'relief'
+  | 'roads'
+  | 'strategic'
   | 'grid';
 
 export const WAR_LAYERS: { id: WarLayer; name: string; note: string }[] = [
@@ -66,6 +70,10 @@ export const WAR_LAYERS: { id: WarLayer; name: string; note: string }[] = [
   { id: 'characters', name: msg('Character markers'), note: msg('Photocards of characters active in the current event.') },
   { id: 'labels', name: msg('Labels'), note: msg('Nation, place and formation names, by zoom.') },
   { id: 'settlements', name: msg('Capitals, cities and the Labyrinth'), note: msg('Outlines of the capitals, major cities and Ramiris Labyrinth, with their icons. Positions measured, outlines reconstructed.') },
+  { id: 'rivers', name: msg('Rivers and lakes'), note: msg('Traced from the painted map. Armies cross rivers only at fords and bridges.') },
+  { id: 'relief', name: msg('Mountains and passes'), note: msg('The Kanaat massif around Dwargon and the passes through it. Ground routes cross the massif only by a pass.') },
+  { id: 'roads', name: msg('Roads and supply routes'), note: msg('The Tempest-Dwargon road and the other roads, with the state of each supply route: open, threatened, cut or secure. Lines drawn by the project.') },
+  { id: 'strategic', name: msg('Strategic points'), note: msg('Halt point, gates, border crossings, staging areas and objectives, with the fords on the rivers.') },
   { id: 'grid', name: msg('Simulation grid'), note: msg('A 10% grid in simulation space. Not a geographic graticule.') },
 ];
 
@@ -84,6 +92,10 @@ export const DEFAULT_LAYERS: Record<WarLayer, boolean> = {
   characters: true,
   labels: true,
   settlements: true,
+  rivers: true,
+  relief: true,
+  roads: true,
+  strategic: true,
   grid: false,
 };
 

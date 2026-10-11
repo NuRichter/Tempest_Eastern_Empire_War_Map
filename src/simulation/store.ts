@@ -18,7 +18,9 @@ export type Selection =
   | { kind: 'territory'; id: string }
   | { kind: 'theatre'; id: string }
   | { kind: 'nation'; id: string }
-  | { kind: 'movement'; id: string };
+  | { kind: 'movement'; id: string }
+  | { kind: 'place'; id: string }
+  | { kind: 'feature'; id: string };
 
 export type ViewMode = 'standard' | 'cinematic';
 export type RailTab = 'layers' | 'filters' | 'feed' | 'story';

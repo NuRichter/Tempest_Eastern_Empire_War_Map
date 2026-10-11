@@ -29,7 +29,6 @@
   "id": "S03",
   "name": "APPROACH_MARCH",
   "startWarDay": "D-39",
-  "endWarDay": "D-3",
   "definition": "The army leaves the capital 'the next day' (V12 Epilogue), masses at the border base (D-34), and advances slowly while Tempest holds its war council (the 'gathering', R0 = D-33); the border is crossed on D-5.",
   "anchorEvents": [
    "EVT-0009",
@@ -46,27 +45,29 @@
    "EVT-0013",
    "EVT-0014"
   ],
-  "source": "V12 Epilogue; V13 Ch1"
+  "source": "V12 Epilogue; V13 Ch1",
+  "endEvent": "EVT-0019"
  },
  {
   "id": "S04",
   "name": "HALT_AND_DEPLOYMENT",
-  "startWarDay": "D-2",
   "endWarDay": "D-1",
-  "definition": "'Soon after' the month mark the column halts; 700,000 infantry march into the forest and camp ~30 km from the capital.",
+  "definition": "'Soon after' the month mark the single 1,005,000-strong column halts at the halt point and splits into five allocations (R6 scenario). 700,000 infantry march into the forest and camp ~30 km from the capital; Formation B threatens the Tempest-Dwargon road and crosses Dwargon's south-western border; the Phase 1 Gate reinforcement and the southern formation set out.",
   "anchorEvents": [
    "EVT-0019",
    "EVT-0020",
-   "EVT-0029"
+   "EVT-0029",
+   "EVT-0503"
   ],
-  "source": "V13 Ch1"
+  "source": "V13 Ch1",
+  "startEvent": "EVT-0019"
  },
  {
   "id": "S05",
   "name": "FIRST_CONTACT_AND_SURFACE_BATTLE",
   "startWarDay": "D+0",
   "endWarDay": "D+0",
-  "definition": "The Gazel call, Testarossa's ultimatum and its rejection, then the surface battle at the Dwargon gate front: Magitank Force and Flying Combat Corps destroyed in under two hours (~240,000 killed).",
+  "definition": "The Gazel call, Testarossa's ultimatum and its rejection, then the surface battle at the south-western Dwargon front: Magitank Force and Flying Combat Corps destroyed in under two hours (~240,000 killed).",
   "anchorEvents": [
    "EVT-0016",
    "EVT-0018",

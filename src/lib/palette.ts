@@ -62,6 +62,7 @@ export const PROVENANCE_COLOR: Record<Provenance, string> = {
   CANONICAL: '#cfe5dc',
   CANONICAL_WITH_VISUAL_RECONSTRUCTION: '#8fc9b6',
   INFERRED: '#d9b56a',
+  SCENARIO: '#b9a3e3',
   RECONSTRUCTED: '#c79a4e',
   UNRESOLVED: '#e0614f',
 };

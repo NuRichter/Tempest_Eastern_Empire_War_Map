@@ -34,6 +34,7 @@ import { getField, onShare } from '@/map/field/fieldStore';
 import type { FrontEpisode } from '@/map/field/front';
 import type { WarEvent } from '@/types/dataset';
 import { hostOf, safeExternalHref } from '@/security/input';
+import { ForceLedger, MovementRoute, routeLine } from '@/components/dossier/geo';
 
 type T = ReturnType<typeof useT>;
 
@@ -120,6 +121,8 @@ export function ForceDossier({ id }: { id: string }) {
         </Fields>
       </Section>
 
+      <ForceLedger force={force} />
+
       <Section title={t('Command')}>
         <Fields>
           <Field label={t('Commander')}>
@@ -189,6 +192,7 @@ export function ForceDossier({ id }: { id: string }) {
                 <span className="mt-0.5 flex items-center gap-1.5 text-2xs text-fg-3">
                   {m.type.toLowerCase()} · {when(t, data, m.startFrame)} <RouteBadge value={m.route} />
                 </span>
+                {routeLine(t, data, m) ? <span className="block text-2xs text-fg-3">{routeLine(t, data, m)}</span> : null}
               </li>
             ))}
           </ul>
@@ -735,6 +739,7 @@ export function MovementDossier({ id }: { id: string }) {
         <p className="mt-1.5 text-2xs leading-relaxed text-fg-3">{t('The strength at departure is not assumed to hold during the march. Intermediate strength is unknown unless recorded.')}</p>
         {m.notes ? <p className="mt-2 text-xs leading-relaxed text-fg-2">{m.notes}</p> : null}
       </Section>
+      <MovementRoute m={m} />
     </div>
   );
 }

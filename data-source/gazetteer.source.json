@@ -9,7 +9,8 @@
       "RECONSTRUCTED": "Not marked on any supplied map. Positioned by relation to MEASURED anchors as described in each entry's basis field. A plausible position, not a canonical one.",
       "ABSTRACT": "Has no place on the map at all (a worldwide posture, a sealed space, an inter-state negotiation). Deliberately carries no coordinate; the interface renders these off-map."
     },
-    "warning": "Every RECONSTRUCTED position is a rendering convenience. It is surfaced in the interface as RECONSTRUCTED and must not be read as canon."
+    "warning": "Every RECONSTRUCTED position is a rendering convenience. It is surfaced in the interface as RECONSTRUCTED and must not be read as canon.",
+    "symbols": "Optional strategic symbol of a place, drawn by the strategic-points layer: halt, gate, crossing, objective, staging, camp."
   },
   "measurementProvenance": {
     "sourceImage": "Central_World_Tensura_Map_with_Tick.png",
@@ -183,7 +184,8 @@
       "x": 0.7955,
       "y": 0.3925,
       "placement": "RECONSTRUCTED",
-      "basis": "The assembly area of the invasion column before it marched. Placed just inside the Empire on the bearing from the capital towards the Great Jura Forest, so that the approach march reads as leaving the Empire westward. The corpus states only 'Eastern Empire'. The text shows \"a large number of troops gathered around the security base\" at the military border (v12.txt:11829-11831): this is that base."
+      "basis": "The assembly area of the invasion column before it marched. Placed just inside the Empire on the bearing from the capital towards the Great Jura Forest, so that the approach march reads as leaving the Empire westward. The corpus states only 'Eastern Empire'. The text shows \"a large number of troops gathered around the security base\" at the military border (v12.txt:11829-11831): this is that base.",
+      "symbol": "staging"
     },
     {
       "id": "great-jura-forest",
@@ -196,12 +198,13 @@
     },
     {
       "id": "jura-forest-edge",
-      "name": "Edge of the Great Jura Forest",
+      "name": "Imperial halt point (forest edge)",
       "theatre": "TH-DWG",
-      "x": 0.6985,
-      "y": 0.5138,
+      "x": 0.672,
+      "y": 0.52,
       "placement": "RECONSTRUCTED",
-      "basis": "Eastern margin of the forest, the point at which the imperial column stops being 'in transit'. Placed on the straight line from imperial-interior to great-jura-forest at the point where it meets the forest body. Endpoint of the Approach_Progress_Pct interpolation."
+      "basis": "Where the single 1,005,000-strong main formation halts and splits (scenario). The novels say only that the army halted inside Tempest territory \"soon after\" the month mark (v13.txt:341-346). Placed by the travel-time constraints the halt must satisfy under the calibrated scale: the infantry must reach a camp about 30 km from Rimuru (v13.txt:386-389) and the magitanks a position about 30 km from Dwargon (v13.txt:513-515) by D+0 morning at the novels' stated march rates (docs/GEOGRAPHIC_MODEL.md). West of the upper ford of the eastern river, on the forest side.",
+      "symbol": "halt"
     },
     {
       "id": "tempest-border",
@@ -210,35 +213,38 @@
       "x": 0.7671,
       "y": 0.428,
       "placement": "RECONSTRUCTED",
-      "basis": "The point where the imperial line of march (imperial-interior -> jura-forest-edge) crosses the Empire-Jura border drawn on the Base Map, found by tracing the march axis across the traced territory polygons (R5 cartographic check). The border line is MEASURED; the crossing point on it is RECONSTRUCTED, since the novels name no crossing place."
+      "basis": "The point where the imperial line of march (imperial-interior -> jura-forest-edge) crosses the Empire-Jura border drawn on the Base Map, found by tracing the march axis across the traced territory polygons (R5 cartographic check). The border line is MEASURED; the crossing point on it is RECONSTRUCTED, since the novels name no crossing place.",
+      "symbol": "crossing"
     },
     {
-      "id": "dwargon-gate-front",
-      "name": "Dwargon Gate Front",
+      "id": "sw-dwargon-front",
+      "name": "Southwestern Dwargon front",
       "theatre": "TH-DWG",
-      "x": 0.6608,
-      "y": 0.5012,
+      "x": 0.6535,
+      "y": 0.4175,
       "placement": "RECONSTRUCTED",
-      "basis": "The decisive surface battlefield, fought at Dwargon's gate on the forest side. Placed between the MEASURED Dwargon marker and the forest, on the Dwargon-Tempest axis. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
+      "basis": "Scenario: Formation B (the Magitank Force) attacks Dwargon through its south-western border. The novels array the 2,000 magitanks about thirty kilometres from the centre of Dwargon, facing the front gate (v13.txt:513-517). Placed 30 km south-south-west of Dwargon under the calibrated scale, at the head of the south-western valley.",
+      "symbol": "objective"
     },
     {
       "id": "dwargon-outer-gate",
-      "name": "Dwargon outer gate",
+      "name": "Dwargon southern gate (front door)",
       "theatre": "TH-DWG",
-      "x": 0.6588,
-      "y": 0.4498,
+      "x": 0.6566,
+      "y": 0.416,
       "placement": "RECONSTRUCTED",
-      "basis": "The fortified gate itself, between the Dwargon marker and the gate front."
+      "basis": "The gate the magitanks' muzzles face, which Rimuru had visited several times (v13.txt:516-517); Tempest's troops camp there and the Dwarven Knights raise earth walls before it. On the southern road about 18 km from the city.",
+      "symbol": "gate"
     },
     {
-      "id": "dwargon-gate-airspace",
-      "name": "Airspace over the Dwargon Gate Front",
+      "id": "sw-dwargon-airspace",
+      "name": "Airspace over the southwestern Dwargon front",
       "theatre": "TH-DWG",
-      "x": 0.6608,
-      "y": 0.5012,
+      "x": 0.6535,
+      "y": 0.4175,
       "placement": "RECONSTRUCTED",
       "altitude": "AIR",
-      "basis": "Directly above dwargon-gate-front. Rendered as an air layer at the same ground position, since the map has no vertical dimension. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
+      "basis": "Directly above sw-dwargon-front: the Flying Combat Corps arrives over the magitank battle (v13.txt:3065)."
     },
     {
       "id": "ramiris-labyrinth",
@@ -252,21 +258,22 @@
     },
     {
       "id": "dwargon-eastern-metropolis",
-      "name": "Dwargon eastern metropolis (Isthmus gate)",
+      "name": "Dwargon Gate (eastern metropolis, Isthmus)",
       "theatre": "TH-DWE",
-      "x": 0.7005,
-      "y": 0.4271,
+      "x": 0.722,
+      "y": 0.424,
       "placement": "RECONSTRUCTED",
-      "basis": "East of the MEASURED Dwargon marker, on the isthmus facing the Empire. The corpus names an eastern gate and metropolis but locates neither."
+      "basis": "Dwargon's gate east of the city, at the Isthmus, facing the Empire (v13.txt:697-699), five hundred kilometres south-west of the imperial capital (v14.txt:10863-10866; 575 km under the calibrated scale). The single Dwargon Gate location of the scenario: the 5,000 detachment blockades it and the Gate force (30,000 + 30,000) masses before it.",
+      "symbol": "gate"
     },
     {
       "id": "dwargon-eastern-front",
       "name": "Dwargon eastern front",
       "theatre": "TH-DWE",
-      "x": 0.7148,
-      "y": 0.4207,
+      "x": 0.7363,
+      "y": 0.4176,
       "placement": "RECONSTRUCTED",
-      "basis": "The battle line outside the eastern metropolis, one step further east than the metropolis itself."
+      "basis": "The battle line outside the Dwargon Gate on the isthmus plain, one step east of the gate."
     },
     {
       "id": "jura-airspace",
@@ -327,8 +334,8 @@
       "id": "green-legion-start-line",
       "name": "Green Legion start line",
       "theatre": "TH-DWG",
-      "x": 0.656,
-      "y": 0.505,
+      "x": 0.6524,
+      "y": 0.4189,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
@@ -336,8 +343,8 @@
       "id": "imperial-chariot-line",
       "name": "Imperial chariot line",
       "theatre": "TH-DWG",
-      "x": 0.6656,
-      "y": 0.4978,
+      "x": 0.6531,
+      "y": 0.418,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
@@ -345,8 +352,8 @@
       "id": "linked-fortress-position",
       "name": "Linked fortress position",
       "theatre": "TH-DWG",
-      "x": 0.6672,
-      "y": 0.4994,
+      "x": 0.6533,
+      "y": 0.4176,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
@@ -354,8 +361,8 @@
       "id": "encircled-position",
       "name": "Encircled position",
       "theatre": "TH-DWG",
-      "x": 0.6624,
-      "y": 0.5022,
+      "x": 0.653,
+      "y": 0.4183,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
@@ -363,8 +370,8 @@
       "id": "feigned-withdrawal-line",
       "name": "Feigned withdrawal line",
       "theatre": "TH-DWG",
-      "x": 0.6576,
-      "y": 0.5066,
+      "x": 0.6522,
+      "y": 0.4195,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
@@ -372,8 +379,8 @@
       "id": "attempted-rally-point",
       "name": "Attempted rally point",
       "theatre": "TH-DWG",
-      "x": 0.6704,
-      "y": 0.495,
+      "x": 0.654,
+      "y": 0.4168,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
     },
@@ -381,8 +388,8 @@
       "id": "dwargon-defensive-line",
       "name": "Dwargon defensive line",
       "theatre": "TH-DWE",
-      "x": 0.712,
-      "y": 0.423,
+      "x": 0.7335,
+      "y": 0.4199,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
     },
@@ -390,8 +397,8 @@
       "id": "ritual-caster-position",
       "name": "Ritual caster position",
       "theatre": "TH-DWE",
-      "x": 0.7185,
-      "y": 0.418,
+      "x": 0.74,
+      "y": 0.4149,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point."
     },
@@ -399,28 +406,31 @@
       "id": "imperial-infantry-camp",
       "name": "Imperial main-body camp (~30 km from capital Rimuru)",
       "theatre": "TH-LAB",
-      "x": 0.65337,
-      "y": 0.5503,
+      "x": 0.6423,
+      "y": 0.5573,
       "placement": "RECONSTRUCTED",
-      "basis": "Soei reports the imperial infantry gathered about thirty kilometres from the capital Rimuru, camped and set up command posts (V13 Ch1, v13.txt:383-389). No bearing is stated. Placed 25% of the way from the MEASURED Tempest marker toward jura-forest-edge, on the imperial line of approach. The map scale is not established, so the 30 km is not measured."
+      "basis": "Soei reports the imperial infantry camped about thirty kilometres from the capital Rimuru with command posts (V13 Ch1, v13.txt:386-389). Placed 30 km from Rimuru under the calibrated scale, on the bearing from the halt point.",
+      "symbol": "camp"
     },
     {
       "id": "imperial-siege-camp",
       "name": "Imperial camp outside the labyrinth",
       "theatre": "TH-LAB",
-      "x": 0.64435,
-      "y": 0.5576,
+      "x": 0.64,
+      "y": 0.5602,
       "placement": "RECONSTRUCTED",
-      "basis": "Where the 170,000 who did not enter the labyrinth stayed, with Caligulio's headquarters tents, until they were annihilated on D+11 (V13 Ch3-4, v13.txt:9489-9493, 9520, 17745-17760). No location is stated beyond 'outside' the labyrinth entrance at the capital. Placed just east of the Tempest marker on the line toward jura-forest-edge."
+      "basis": "Where the 170,000 who did not enter the labyrinth stayed, with Caligulio's headquarters tents, until they were annihilated on D+11 (V13 Ch3-4, v13.txt:9489-9493, 9520, 17745-17760). No location is stated beyond 'outside' the labyrinth entrance at the capital. Placed just east of the Tempest marker on the line toward jura-forest-edge.",
+      "symbol": "camp"
     },
     {
       "id": "magitank-hq",
       "name": "Magitank Force main camp (Gaster's headquarters)",
       "theatre": "TH-DWG",
-      "x": 0.676,
-      "y": 0.4915,
+      "x": 0.6514,
+      "y": 0.423,
       "placement": "RECONSTRUCTED",
-      "basis": "Gaster's main camp lay far behind the battle line (V13 Ch2, v13.txt:5620); Testarossa kills him there (v13.txt:5763-6200). Placed east of attempted-rally-point, on the imperial side of the Dwargon gate front. The distance is not stated. Shifted south by 0.025 in the R5 cartographic check so that the battlefield lies on the forest (Jura) side of the Dwargon-Jura border traced from the Base Map, as its basis states."
+      "basis": "Gaster's main camp lay far behind the battle line (V13 Ch2, v13.txt:5620); Testarossa kills him there. Placed about 25 km back down the south-western valley from the array.",
+      "symbol": "camp"
     },
     {
       "id": "dream-fortress",
@@ -443,8 +453,8 @@
       "id": "camp-left-flank",
       "name": "Imperial camp, left flank",
       "theatre": "TH-LAB",
-      "x": 0.6528,
-      "y": 0.5516,
+      "x": 0.6408,
+      "y": 0.5592,
       "placement": "RECONSTRUCTED",
       "basis": "Shion breaks the imperial left (v13.txt:17193-17421). The text gives no orientation; the left is placed on the camp's north-east side, facing the labyrinth to the south-west."
     },
@@ -452,8 +462,8 @@
       "id": "camp-right-flank",
       "name": "Imperial camp, right flank",
       "theatre": "TH-LAB",
-      "x": 0.6423,
-      "y": 0.5671,
+      "x": 0.6394,
+      "y": 0.5614,
       "placement": "RECONSTRUCTED",
       "basis": "Albis strikes the imperial right (v13.txt:17193-17421). Placed on the camp's south side, facing the labyrinth."
     },
@@ -461,8 +471,8 @@
       "id": "legion-landing-ground",
       "name": "Magic Beast Division landing ground",
       "theatre": "TH-DWE",
-      "x": 0.7232,
-      "y": 0.4168,
+      "x": 0.7447,
+      "y": 0.4137,
       "placement": "RECONSTRUCTED",
       "basis": "The Legion descends from the airships onto the field in front of the allied line (v15.txt:3404-3420, 7981-7986, 9198-9204). Placed east of the Dwargon defensive line, on the Empire side."
     },
@@ -470,44 +480,97 @@
       "id": "magitank-rear",
       "name": "Magitank Force rear",
       "theatre": "TH-DWG",
-      "x": 0.6835,
-      "y": 0.4945,
+      "x": 0.6504,
+      "y": 0.4256,
       "placement": "RECONSTRUCTED",
-      "basis": "Hakuro takes 12,000 on a detour of more than 40 km to the magitank rear (v13.txt:4084-4088). Placed behind (east of) the magitank main camp."
+      "basis": "Hakuro takes 12,000 on a detour of more than 40 km to the magitank rear (v13.txt:4084-4088). Placed behind the main camp, down the valley."
+    },
+    {
+      "id": "northern-tempest-front",
+      "name": "Northern Tempest front (Tempest-Dwargon road)",
+      "theatre": "TH-DWG",
+      "x": 0.6515,
+      "y": 0.49,
+      "placement": "RECONSTRUCTED",
+      "basis": "Scenario: Formation B threatens the logistics link between Tempest and Dwargon in northern Tempest, and the 40,000 northern reinforcement joins this front. Placed on the reconstructed Tempest-Dwargon road (v12.txt:3279-3281) at the massif's southern foot.",
+      "symbol": "objective"
+    },
+    {
+      "id": "dwargon-sw-border",
+      "name": "Dwargon south-western border crossing",
+      "theatre": "TH-DWG",
+      "x": 0.632,
+      "y": 0.472,
+      "placement": "RECONSTRUCTED",
+      "basis": "Scenario: where Formation B crosses Dwargon's south-western border into the south-western valley. On the traced Dwargon-Jura border of the Base Map.",
+      "symbol": "crossing"
+    },
+    {
+      "id": "dwargon-south-approach",
+      "name": "Southern approach to Dwargon",
+      "theatre": "TH-DWG",
+      "x": 0.672,
+      "y": 0.484,
+      "placement": "RECONSTRUCTED",
+      "basis": "Scenario: the 35,000-strong southern formation approaches Dwargon from the south, east of the Tempest-Dwargon road and south of the Dwargon Gate. Placed in the massif's southern foothills, just outside the Base Map border.",
+      "symbol": "objective"
+    },
+    {
+      "id": "isthmus-approach",
+      "name": "Isthmus road (Empire side)",
+      "theatre": "TH-DWE",
+      "x": 0.752,
+      "y": 0.412,
+      "placement": "RECONSTRUCTED",
+      "basis": "Scenario: the 5,000 detachment's holding position on the Empire side of the Dwargon Gate, on the reconstructed isthmus road.",
+      "symbol": "staging"
+    },
+    {
+      "id": "eastern-jura-forest",
+      "name": "Eastern Great Jura Forest",
+      "theatre": "TH-DWG",
+      "x": 0.748,
+      "y": 0.452,
+      "placement": "RECONSTRUCTED",
+      "basis": "Moss's clones track imperial squads in the eastern forest while the chariots have not yet moved (v12.txt:12329-12331, 12504-12506). Placed just inside the Jura border on the measured approach route."
     }
   ],
   "theatreZones": {
-    "note": "Schematic areas of operations, not borders. Hand-authored convex rings around the theatre anchor so that territorial control has something to shade. Marked SCHEMATIC everywhere they are drawn. The supplied maps contain no theatre boundaries.",
+    "note": "Schematic areas of operations, not borders. Hand-authored convex rings around the theatre anchor so that territorial control has something to shade. Marked SCHEMATIC everywhere they are drawn. The supplied maps contain no theatre boundaries. R6: TH-DWG now covers the northern Tempest corridor and the south-western Dwargon approach, TH-DWE the Dwargon Gate on the isthmus.",
     "placement": "SCHEMATIC",
     "zones": {
       "TH-DWG": [
         [
-          0.612,
-          0.512
+          0.624,
+          0.468
         ],
         [
-          0.641,
-          0.454
+          0.638,
+          0.415
         ],
         [
-          0.688,
-          0.443
+          0.652,
+          0.405
         ],
         [
-          0.717,
-          0.481
+          0.668,
+          0.412
         ],
         [
-          0.706,
-          0.541
+          0.68,
+          0.47
         ],
         [
-          0.656,
-          0.561
+          0.672,
+          0.498
         ],
         [
-          0.622,
-          0.545
+          0.65,
+          0.505
+        ],
+        [
+          0.632,
+          0.49
         ]
       ],
       "TH-LAB": [
@@ -564,28 +627,32 @@
       ],
       "TH-DWE": [
         [
-          0.682,
-          0.398
+          0.714,
+          0.408
         ],
         [
-          0.722,
-          0.391
+          0.735,
+          0.4
         ],
         [
-          0.744,
+          0.758,
+          0.404
+        ],
+        [
+          0.762,
           0.418
         ],
         [
-          0.733,
-          0.452
+          0.745,
+          0.43
         ],
         [
-          0.697,
-          0.459
+          0.722,
+          0.434
         ],
         [
-          0.677,
-          0.433
+          0.712,
+          0.425
         ]
       ],
       "TH-DRG": [
@@ -645,10 +712,10 @@
     "Dwargon Gate": "dwargon-outer-gate",
     "Dwargon gate": "dwargon-outer-gate",
     "Dwargon outer gate": "dwargon-outer-gate",
-    "Dwargon Gate Front": "dwargon-gate-front",
-    "Airspace over Dwargon Gate Front": "dwargon-gate-airspace",
-    "Airspace over the front": "dwargon-gate-airspace",
-    "Above the imperial column": "dwargon-gate-airspace",
+    "Dwargon Gate Front": "sw-dwargon-front",
+    "Airspace over Dwargon Gate Front": "sw-dwargon-airspace",
+    "Airspace over the front": "sw-dwargon-airspace",
+    "Above the imperial column": "sw-dwargon-airspace",
     "Great Jura Forest": "great-jura-forest",
     "Great Jura Forest interior": "great-jura-forest",
     "Great Jura Forest, eastern reaches": "jura-forest-edge",
@@ -658,7 +725,7 @@
     "Tempest border": "tempest-border",
     "Inn town on the imperial line of march": "tempest-border",
     "Ten kilometres from the imperial line": "jura-forest-edge",
-    "Imperial line of retreat": "dwargon-gate-front",
+    "Imperial line of retreat": "sw-dwargon-front",
     "Imperial supply echelon": "jura-forest-edge",
     "Tempest": "jura-tempest-federation",
     "Jura-Tempest Federation": "jura-tempest-federation",
@@ -680,10 +747,10 @@
     "UNKNOWN": "position-unknown",
     "Tempest / command post": "jura-tempest-federation",
     "Tempest / command post; advance element to Dwargon east": "jura-tempest-federation",
-    "Dwargon Gate Front airspace": "dwargon-gate-airspace",
-    "Dwargon Gate Front airspace; later Jura airspace": "dwargon-gate-airspace",
-    "Dwargon Gate Front; later Dwargon eastern relief": "dwargon-gate-front",
-    "Dwargon Gate Front; later imperial theatre and embassy": "dwargon-gate-front",
+    "Dwargon Gate Front airspace": "sw-dwargon-airspace",
+    "Dwargon Gate Front airspace; later Jura airspace": "sw-dwargon-airspace",
+    "Dwargon Gate Front; later Dwargon eastern relief": "sw-dwargon-front",
+    "Dwargon Gate Front; later imperial theatre and embassy": "sw-dwargon-front",
     "Ramiris Labyrinth interior": "ramiris-labyrinth",
     "Green Legion start line": "green-legion-start-line",
     "Imperial chariot line": "imperial-chariot-line",

@@ -142,6 +142,105 @@
    "resolution": "Misreadings.",
    "treatment": "AUDIT-PLAN.md: EVT-0115/EVT-0321/EVT-0397 corrected; EVT-0384 deleted.",
    "confidence": "HIGH"
+  },
+  {
+   "id": "DISC-R6-01",
+   "description": "Size and make-up of the invasion army",
+   "claimA": "The invasion army is 940,000: Restructured Armor Corps 700,000, Magitank Force 200,000, Flying Combat Corps 40,000",
+   "claimB": "One main formation of 1,005,000 splits at the halt point into 700,000 + 200,000 + 40,000 + 30,000 (Dwargon Gate, Phase 1) + 35,000 (southern approach); a separate 5,000 detachment advances towards Dwargon",
+   "sourceA": "V13 Ch1, Ch3 (v13.txt:347-349, 16208)",
+   "sourceB": "Scenario brief (docs/CAMPAIGN_FORCE_LEDGER.md)",
+   "resolution": "The scenario is authoritative for this atlas (owner decision, 2026-10-11).",
+   "treatment": "F-EMP-010 carries 1,005,000 (SCENARIO). The three canonical allocations keep their canonical sizes; the 30,000 and 35,000 allocations and the 5,000 detachment are SCENARIO formations. The canonical figure stays in F-EMP-010.sizeEvidence.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "DISC-R6-02",
+   "description": "The 60,000 before Dwargon's eastern gate (Isthmus)",
+   "claimA": "The 60,000 are the Composite Division's Isthmus blockade (60 percent of the division), Yuuki's legion, camped near the Empire-Dwargon border",
+   "claimB": "The Dwargon Gate force is 30,000 from the main formation (Phase 1, from the halt point) plus 30,000 from the 100,000 capital reserve (Phase 2)",
+   "sourceA": "V13 Ch3; V14 Ch1 (v13.txt:7710-7714; v14.txt:640-641, 12352-12355)",
+   "sourceB": "Scenario brief (docs/CAMPAIGN_FORCE_LEDGER.md)",
+   "resolution": "The scenario composition is adopted; the canonical events about the 60,000 (Zero, the coup night, Velgrynd's Gravity Collapse) keep their wording.",
+   "treatment": "F-EMP-031 is the Gate force (GATE_FORCE): 0, then 30,000 at the Phase 1 merge (EVT-0525), then 60,000 at the Phase 2 merge (EVT-0526). Canonical event titles still say \"Composite Division\" where the novel does.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "DISC-R6-03",
+   "description": "Deployable ceiling of the Armored Division",
+   "claimA": "Caligulio's legion can field \"at most one million\" at once",
+   "claimB": "The single main formation is 1,005,000",
+   "sourceA": "V12 Ch4 (v12.txt:10133-10135)",
+   "sourceB": "Scenario brief (docs/CAMPAIGN_FORCE_LEDGER.md)",
+   "resolution": "Accepted: the scenario exceeds the stated ceiling by 5,000 (0.5 percent).",
+   "treatment": "F-EMP-010 stays under F-EMP-001 in the order of battle; validate-data reports the excess once as this accepted discrepancy.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "DISC-R6-04",
+   "description": "Formation B's axis and who defeated it",
+   "claimA": "The magitanks array about 30 km from Dwargon's centre facing its front gate; Ultima destroys the Flying Combat Corps, Testarossa kills Gaster, Gobta, Ranga, Gabiru and Hakuro break the tank force",
+   "claimB": "Formation B advances to northern Tempest, threatens the Tempest-Dwargon link, crosses Dwargon's south-western border and fails to capture Dwargon, the defence attributed to Ultima's group",
+   "sourceA": "V13 Ch2 (v13.txt:513-517, 3065-6679)",
+   "sourceB": "Scenario brief (docs/CAMPAIGN_FORCE_LEDGER.md)",
+   "resolution": "The axis (northern Tempest, south-western border) is adopted. The attribution to Ultima's group is only partly supported (the air battle) and is marked UNVERIFIED for the ground battle.",
+   "treatment": "The D+0 battle is placed at the south-western Dwargon front, 30 km from the city as the novel says. EVT-0505 (interdiction) and EVT-0513 (border crossing) are SCENARIO events; EVT-0515 records the failure and the attribution.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "DISC-R6-05",
+   "description": "The Magic Beast Division and the operation ledger",
+   "claimA": "The Magic Beast Division (30,000) was kept for a strike on the West and diverted to Dwargon by the Marshal on D+15; 10,000 die of the fusion drug",
+   "claimB": "The operation's unique personnel are 1,040,000 and its dead 1,010,000, with no Magic Beast Division",
+   "sourceA": "V12 Ch4; V15 Ch3 (v12.txt:10863-10871; v15.txt:9276-9306)",
+   "sourceB": "Scenario brief (docs/CAMPAIGN_FORCE_LEDGER.md)",
+   "resolution": "Treated as a separate imperial operation: on the map and in the Empire-wide totals, outside the invasion operation's ledger.",
+   "treatment": "F-EMP-020 has ledgerRole OUTSIDE_OPERATION. Empire-wide dead are therefore 1,020,002 (1,010,000 + 10,000 + two named individuals); the operation's are 1,010,000.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "DISC-R6-06",
+   "description": "Order of the deaths and the revival",
+   "claimA": "Rimuru revives about 700,000 on D+11, after the Jura dead (940,000) but before the 60,000 before the Isthmus die (D+15)",
+   "claimB": "The brief lists 1,010,000 cumulative dead, then 700,000 revived, and derives 730,000 active \"after that event\"",
+   "sourceA": "V13 Ch3; V14; V15 Ch2",
+   "sourceB": "Scenario brief (docs/CAMPAIGN_FORCE_LEDGER.md)",
+   "resolution": "The canonical order is kept. The aggregates are unchanged (1,010,000 dead, 700,000 revived, 310,000 not revived, 30,000 never killed); only the intermediate state differs: 800,000 active between D+11 and D+15.",
+   "treatment": "ledger.json follows the canonical order; the end state is 730,000 active.",
+   "confidence": "HIGH"
+  },
+  {
+   "id": "DISC-R6-07",
+   "description": "The last 10,000 dead",
+   "claimA": "Not in the novels",
+   "claimB": "1,010,000 dead in all, of whom the novels account for 1,000,000 (700,000 + 200,000 + 40,000 + 60,000)",
+   "sourceA": "-",
+   "sourceB": "Scenario brief (docs/CAMPAIGN_FORCE_LEDGER.md)",
+   "resolution": "Derived: 10,000 dead among the 40,000 of the detachment and the southern formation, place, time and split not established.",
+   "treatment": "One ledger-closure record (CAS-S01, EVT-0519, D+16 06:00) covering both formations; their individual strengths become UNKNOWN from then on.",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "DISC-R6-08",
+   "description": "Opening timetable under the calibrated map",
+   "claimA": "R5 placed the border crossing on D-5, the halt on D-2 08:00 and the infantry camp on D-1 18:00 (all reconstructed placements)",
+   "claimB": "Measured routes: about 860 km from the border base to the halt point, about 280 km from the halt to the infantry camp, about 555 km from the halt to the south-western Dwargon front",
+   "sourceA": "v12.txt:12443-12457; v13.txt:313-349, 386-389, 513-515",
+   "sourceB": "data-source/world.source.json",
+   "resolution": "Placements moved so that no movement exceeds the novels' stated march rates: border crossing D-24, halt D-3 14:00, infantry camp D+0 04:00.",
+   "treatment": "Recorded in the events' reconstructionNote and audit fields; checked by compile-data (no over-speed movement).",
+   "confidence": "MEDIUM"
+  },
+  {
+   "id": "DISC-R6-09",
+   "description": "The atlas is not drawn to the novels' distances",
+   "claimA": "Tempest-Dwargon rail about 1,000 km, border to battlefield about 1,500 km, imperial capital to the Isthmus camp 500 km, Tempest-Ingracia about 300 km",
+   "claimB": "At 2.0 km per atlas pixel: 622 km, 1,080 km, 575 km and about 1,300 km straight-line",
+   "sourceA": "v12.txt:3279-3283, 12443-12450; v14.txt:10863-10866",
+   "sourceB": "docs/GEOGRAPHIC_MODEL.md",
+   "resolution": "No single scale fits all four. 2.0 km per pixel keeps the war-theatre distances within about 40 percent and the opening marches possible; Ingracia is reported as a map discrepancy.",
+   "treatment": "All distances in the atlas are quoted as approximate (nearest 10 km) and labelled synthetic.",
+   "confidence": "MEDIUM"
   }
  ],
  "ambiguities": [

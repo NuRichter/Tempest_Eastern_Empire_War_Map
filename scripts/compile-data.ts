@@ -42,6 +42,10 @@ import type {
   ForceTrack,
   FrameState,
   GeoMultiPolygon,
+  Geography,
+  Ledger,
+  LedgerPoint,
+  LedgerRole,
   Manifest,
   Movement,
   Nation,
@@ -51,6 +55,7 @@ import type {
   PositionKey,
   Provenance,
   Quantity,
+  Route,
   RouteConfidence,
   SideCasualties,
   SizeStatus,
@@ -63,8 +68,12 @@ import type {
   TimelineIndex,
   TimePrecision,
   TimelineGap,
+  SupplyState,
   WarEvent,
 } from '../src/types/dataset';
+import { alongPolyline, cumulativeKm, distanceKm, KM_PER_ATLAS_PX, WORLD_H_KM, WORLD_W_KM } from '../src/lib/world';
+import { speedClass, unitClass } from '../src/lib/units';
+import { TerrainGrid, type CompiledRoute, type RouteMode } from './lib/routing';
 import type {
   BattleSrc,
   CasualtySrc,
@@ -117,7 +126,7 @@ const sha256 = (path: string) => createHash('sha256').update(readFileSync(path))
 /* ------------------------------------------------------------------ */
 
 interface GazetteerNation { id: string; name: string; category: string; x: number; y: number; placement: PlacementGrade; hasFlag?: boolean }
-interface GazetteerPlace { id: string; name: string; theatre: string | null; x?: number; y?: number; placement: PlacementGrade; altitude?: 'AIR' | 'SUBSURFACE'; basis: string }
+interface GazetteerPlace { id: string; name: string; theatre: string | null; x?: number; y?: number; placement: PlacementGrade; altitude?: 'AIR' | 'SUBSURFACE'; basis: string; symbol?: Place['symbol'] }
 interface GazetteerSource {
   about: { definition: string; warning: string };
   nations: GazetteerNation[];
@@ -163,6 +172,10 @@ const geo = read<GeoSource>(join(SRC, 'territories.geo.source.json'));
 const controlSrc = read<ControlSource>(join(SRC, 'territory-control.source.json'));
 const characterSrc = read<{ characters: CharacterSrc[] }>(join(SRC, 'characters.source.json')).characters;
 const terminologySrc = read<{ terms: (TermEntry & { conflicts?: string | null })[] }>(join(SRC, 'terminology.source.json')).terms;
+const worldSrc = read<{ coordinateSystem: { kmPerAtlasPixel: number; provenance: string; confidence: string }; speeds: { units: Record<string, { kmPerDay: number; maxKmPerDay: number }> } }>(join(SRC, 'world.source.json'));
+if (worldSrc.coordinateSystem.kmPerAtlasPixel !== KM_PER_ATLAS_PX) throw new Error('world.source.json and src/lib/world.ts disagree on the scale.');
+/** The terrain-cost grid every ground route is found on (scripts/lib/routing.ts). */
+const terrain = new TerrainGrid(ROOT, SRC);
 
 /* ------------------------------------------------------------------ */
 /* Clock                                                               */
@@ -252,10 +265,10 @@ const FACTION_ALIAS: Record<string, string> = {
 const faction = (name: string) => FACTION_ALIAS[name] ?? name;
 
 const THEATRE_DEFS = [
-  { id: 'TH-DWG', code: 'DWG', name: 'Dwargon Gate Front', region: 'Great Jura Forest', anchorPlace: 'dwargon-gate-front', colorKey: 'tempest' },
+  { id: 'TH-DWG', code: 'DWG', name: 'Southwestern Dwargon Front', region: 'Northern Tempest and south-western Dwargon', anchorPlace: 'sw-dwargon-front', colorKey: 'tempest' },
   { id: 'TH-LAB', code: 'LAB', name: "Ramiris's Labyrinth Front", region: "Ramiris's Labyrinth", anchorPlace: 'ramiris-labyrinth', colorKey: 'tempest' },
   { id: 'TH-CAP', code: 'CAP', name: 'Imperial Capital', region: 'Eastern Empire', anchorPlace: 'imperial-capital', colorKey: 'empire' },
-  { id: 'TH-DWE', code: 'DWE', name: 'Dwargon Eastern Metropolis', region: 'Armed Nation of Dwargon', anchorPlace: 'dwargon-eastern-metropolis', colorKey: 'dwargon' },
+  { id: 'TH-DWE', code: 'DWE', name: 'Dwargon Gate (Isthmus)', region: 'Armed Nation of Dwargon', anchorPlace: 'dwargon-eastern-metropolis', colorKey: 'dwargon' },
   { id: 'TH-DRG', code: 'DRG', name: 'Dragon Theatre', region: 'Great Jura Forest (airspace)', anchorPlace: 'jura-airspace', colorKey: 'neutral' },
   { id: 'TH-DIP', code: 'DIP', name: 'Settlement', region: 'Inter-state', anchorPlace: 'settlement-table', colorKey: 'neutral' },
 ];
@@ -398,6 +411,10 @@ const forces: Force[] = forceSrc.map((f) => ({
   hierarchyProvenance: f.hierarchyProvenance ?? 'UNRESOLVED',
   notes: f.notes,
   countedInParent: false,
+  ledgerRole: (f.ledgerRole ?? null) as LedgerRole | null,
+  origin: f.origin ? { ...f.origin, frame: -1 } : null,
+  mergedInto: f.mergedInto ? { ...f.mergedInto, frame: -1 } : null,
+  issuedIds: [],
   firstFrame: -1,
   lastFrame: -1,
 }));
@@ -408,6 +425,18 @@ for (const f of forces) {
   if (!parent) throw new Error(`Force ${f.id} names parent ${f.parentId}, which is not in the register.`);
   parent.childIds.push(f.id);
   f.countedInParent = true;
+}
+for (const f of forces) {
+  if (f.origin) {
+    const from = forceById.get(f.origin.fromForceId);
+    if (!from) throw new Error(`Force ${f.id} names origin ${f.origin.fromForceId}, which is not in the register.`);
+    from.issuedIds.push(f.id);
+    f.origin.frame = frameOfEvent(f.origin.eventId) ?? (() => { throw new Error(`Force ${f.id}: origin event ${f.origin!.eventId} unknown.`); })();
+  }
+  if (f.mergedInto) {
+    if (!forceById.has(f.mergedInto.forceId)) throw new Error(`Force ${f.id} merges into unknown force ${f.mergedInto.forceId}.`);
+    f.mergedInto.frame = frameOfEvent(f.mergedInto.eventId) ?? (() => { throw new Error(`Force ${f.id}: merge event ${f.mergedInto!.eventId} unknown.`); })();
+  }
 }
 for (const f of forces) {
   let depth = 0;
@@ -476,6 +505,11 @@ const movements: Movement[] = movementSrc.map((m) => {
     destinationUnknown: m.destinationUnknown,
     reach: Math.round(reach * 1e4) / 1e4,
     arrivesAfterClock: afterClock,
+    routeId: null,
+    lengthKm: null,
+    kmPerDay: null,
+    speedClass: speedClass(unitClass(forceById.get(m.forceId)!), forceById.get(m.forceId)!, m.type),
+    overSpeed: false,
   };
 });
 
@@ -603,7 +637,11 @@ const campaign = {
   ...revision.initial.campaign,
 };
 
-const DELTA_FIELDS = ['phase', 'stage', 'strength', 'casualties', 'theatres', 'activeCommanders', 'majorCombatants', 'eventIds'] as const satisfies readonly (keyof FrameState)[];
+const DELTA_FIELDS = ['phase', 'stage', 'strength', 'casualties', 'theatres', 'activeCommanders', 'majorCombatants', 'eventIds', 'logistics'] as const satisfies readonly (keyof FrameState)[];
+
+/** Strategic supply routes: the geography's LOGISTICS roads, open until an event says otherwise. */
+const logisticsRoads = terrain.features().roads.filter((r) => r.role === 'LOGISTICS').map((r) => r.id);
+const logistics: Record<string, SupplyState> = Object.fromEntries(logisticsRoads.map((id) => [id, 'OPEN' as SupplyState]));
 
 const checkpoints: Record<string, FrameState> = {};
 const checkpointFrames: number[] = [];
@@ -633,6 +671,10 @@ for (let f = 0; f < FRAME_COUNT; f += 1) {
       theatreState[tid] = { ...theatreState[tid], ...eff };
     }
     Object.assign(campaign, e.effects.campaign);
+    for (const [road, st] of Object.entries(e.logistics ?? {})) {
+      if (!(road in logistics)) throw new Error(`Event ${e.id} sets the state of ${road}, which is not a LOGISTICS road in geography.source.json.`);
+      logistics[road] = st;
+    }
     eventById.get(e.id)!.phase = campaign.phase;
   }
   if (here.length) eventFrames.push(f);
@@ -650,6 +692,7 @@ for (let f = 0; f < FRAME_COUNT; f += 1) {
     activeCommanders: campaign.activeCommanders,
     majorCombatants: campaign.majorCombatants,
     eventIds: here.map((e) => e.id),
+    logistics: { ...logistics },
   };
   if (firstContactFrame === -1 && state.phase === 'FIRST_CONTACT') firstContactFrame = f;
 
@@ -675,12 +718,74 @@ for (let f = 0; f < FRAME_COUNT; f += 1) {
 }
 if (firstContactFrame === -1) throw new Error('No event sets the FIRST_CONTACT phase.');
 
-/* -- position keys --------------------------------------------------- */
+/* -- split formations: strength = sum of the allocations still under them -- */
 
-/** Pace of a relocation with no recorded duration: about a fifth of the atlas per simulated day. */
-const SCHEMATIC_SPEED = 0.0015;
+for (const parent of forces) {
+  const fromEvent = forceSrc.find((f) => f.id === parent.id)?.aggregateFromEvent;
+  if (!fromEvent) continue;
+  const from = frameOfEvent(fromEvent);
+  if (from === null) throw new Error(`Force ${parent.id}: aggregateFromEvent ${fromEvent} unknown.`);
+  const kids = parent.childIds.filter((c) => forceById.get(c)?.ledgerRole === 'ALLOCATION');
+  if (!kids.length) throw new Error(`Force ${parent.id} aggregates its allocations but has none.`);
+  const own = tracks.get(parent.id) ?? [];
+  const at = <T,>(list: T[] & { f: number }[], f: number) => {
+    let s: (typeof list)[number] | undefined;
+    for (const x of list) if (x.f <= f) s = x;
+    return s;
+  };
+  const frames = new Set<number>([from]);
+  for (const k of kids) for (const s of tracks.get(k) ?? []) if (s.f >= from) frames.add(s.f);
+  for (const s of own) if (s.f >= from) frames.add(s.f);
+  const rebuilt = own.filter((s) => s.f < from);
+  for (const f of [...frames].sort((a, b) => a - b)) {
+    const base = at(own, f)!;
+    let total: Quantity = 0;
+    let kia: Quantity = 0;
+    for (const k of kids) {
+      const s = at(tracks.get(k) ?? [], f);
+      const v = s ? s.strength : forceById.get(k)!.initialBest;
+      total = typeof total === 'number' && typeof v === 'number' ? total + v : UNKNOWN;
+      const d = s ? s.kia : 0;
+      kia = typeof kia === 'number' && typeof d === 'number' ? kia + d : UNKNOWN;
+    }
+    rebuilt.push({ ...base, f, strength: total, kia, sizeStatus: total === UNKNOWN ? 'UNKNOWN' : 'DERIVED', eventId: base.eventId });
+  }
+  tracks.set(parent.id, rebuilt.filter((s, i, a) => !a[i + 1] || a[i + 1].f !== s.f));
+}
 
-const transitAxis = { from: coordsOf(gazetteer.transitAxis.from)!, to: coordsOf(gazetteer.transitAxis.to)! };
+/* -- position keys, on measured routes -------------------------------- */
+
+const SPEEDS = worldSrc.speeds.units;
+const perFrame = (kmPerDay: number) => kmPerDay / FPD;
+/** Below this length a move is inside one battlefield and drawn straight. */
+const TACTICAL_KM = 15;
+
+const routes = new Map<string, CompiledRoute & { uses: Route['uses'] }>();
+const routeByKey = new Map<string, string>();
+function routeFor(mode: RouteMode, stops: [number, number][], hint: string): CompiledRoute & { uses: Route['uses'] } {
+  const key = `${mode}|${stops.map(([x, y]) => `${round(x)},${round(y)}`).join('|')}`;
+  const known = routeByKey.get(key);
+  if (known) return routes.get(known)!;
+  const id = `RT-${String(routes.size + 1).padStart(3, '0')}-${hint}`;
+  const r = { ...terrain.route(id, mode, stops), uses: [] as Route['uses'] };
+  routes.set(id, r);
+  routeByKey.set(key, id);
+  return r;
+}
+function modeFor(force: Force, km: number, toPlace: string | null): RouteMode {
+  const air = unitClass(force) === 'air' || (toPlace ? placeById.get(toPlace)?.altitude === 'AIR' : false);
+  if (km < TACTICAL_KM) return 'TACTICAL';
+  return air ? 'AIR' : 'GROUND';
+}
+const placeSlug = (id: string | null) => (id ?? 'pt').replace(/[^a-z0-9]+/gi, '-').slice(0, 28);
+
+const transitStops: [number, number][] = [gazetteer.transitAxis.from, 'tempest-border', gazetteer.transitAxis.to].map((id) => {
+  const c = coordsOf(id)!;
+  return [c.x, c.y];
+});
+const transitRoute = routeFor('GROUND', transitStops, 'imperial-approach');
+const transitCum = cumulativeKm(transitRoute.points);
+
 const positionTracks: ForcePositionTrack[] = [];
 for (const force of forces) {
   const changes = locationChanges.get(force.id) ?? [];
@@ -688,8 +793,10 @@ for (const force of forces) {
     .filter((t) => t.forceId === force.id)
     .map((t) => ({ f: frameOf(t.day, t.time, `Transit key ${force.id}`), pct: t.pct }));
   if (changes.length === 0) continue;
+  const cls = speedClass(unitClass(force), force);
+  const speed = SPEEDS[cls];
 
-  type Raw = { f: number; x: number; y: number; placeId: string | null; placement: PlacementGrade; route: RouteConfidence } | { f: number; off: true };
+  type Raw = { f: number; x: number; y: number; placeId: string | null; placement: PlacementGrade; route: RouteConfidence; transit?: number; path?: PositionKey['path'] } | { f: number; off: true };
   const raw: Raw[] = [];
   for (const c of changes) {
     const xy = coordsOf(c.place);
@@ -700,25 +807,24 @@ for (const force of forces) {
   }
   for (const t of transit) {
     const p = Math.min(100, Math.max(0, t.pct)) / 100;
-    raw.push({
-      f: t.f,
-      x: transitAxis.from.x + (transitAxis.to.x - transitAxis.from.x) * p,
-      y: transitAxis.from.y + (transitAxis.to.y - transitAxis.from.y) * p,
-      placeId: null, placement: 'RECONSTRUCTED', route: 'RECONSTRUCTED',
-    });
+    const at = alongPolyline(transitRoute.points, transitCum, p);
+    raw.push({ f: t.f, x: at.x, y: at.y, placeId: null, placement: 'RECONSTRUCTED', route: 'RECONSTRUCTED', transit: p });
   }
   // Open-ended marches: at the start place on departure, part of the way by the last frame.
   for (const m of movements.filter((x) => x.forceId === force.id && x.arrivesAfterClock && x.startFrame !== null)) {
     const a = coordsOf(m.fromPlaceId)!;
     const b = coordsOf(m.toPlaceId)!;
+    const r = routeFor(modeFor(force, distanceKm(a.x, a.y, b.x, b.y), m.toPlaceId), [[a.x, a.y], [b.x, b.y]], placeSlug(m.toPlaceId));
+    const end = alongPolyline(r.points, cumulativeKm(r.points), m.reach);
     raw.push({ f: m.startFrame!, x: a.x, y: a.y, placeId: m.fromPlaceId, placement: a.placement, route: m.route });
-    raw.push({ f: FRAME_COUNT - 1, x: a.x + (b.x - a.x) * m.reach, y: a.y + (b.y - a.y) * m.reach, placeId: null, placement: 'RECONSTRUCTED', route: m.route });
+    raw.push({ f: FRAME_COUNT - 1, x: end.x, y: end.y, placeId: null, placement: 'RECONSTRUCTED', route: m.route, path: { routeId: r.id, from: 0, to: m.reach } });
   }
   raw.sort((a, b) => a.f - b.f);
 
   const keys: PositionKey[] = [];
   const offMap: [number, number][] = [];
   let offStart: number | null = null;
+  let prevTransit: number | null = null;
   for (let i = 0; i < raw.length; i += 1) {
     const r = raw[i];
     if ('off' in r) {
@@ -731,34 +837,77 @@ for (const force of forces) {
     }
     const prev = keys[keys.length - 1];
     if (prev && prev.x === round(r.x) && prev.y === round(r.y)) continue;
+    let path = r.path;
     if (prev) {
-      // Hold at the previous position until the movement towards this one
-      // starts. A recorded movement supplies the departure; without one the
-      // relocation is drawn as a short schematic transition, never as a slow
-      // drift across the whole interval between two records.
       const mv = movements.find((m) => m.forceId === force.id && m.endFrame === r.f);
-      const isTransit = r.placeId === null && r.route === 'RECONSTRUCTED';
-      const gap = r.f - prev.f;
-      // Without a recorded duration, a relocation takes time in proportion to
-      // its length (SCHEMATIC_SPEED atlas units per keyframe), never less than
+      const isTransit = r.transit !== undefined;
+      // The ground the leg covers: the measured approach route between two
+      // transit keys, otherwise a route found for this leg on the terrain grid.
+      let km: number;
+      if (isTransit && prevTransit !== null) {
+        path = { routeId: transitRoute.id, from: prevTransit, to: r.transit! };
+        km = (r.transit! - prevTransit) * transitRoute.lengthKm;
+      } else if (!path) {
+        const straight = distanceKm(prev.x, prev.y, r.x, r.y);
+        const mode = modeFor(force, straight, r.placeId);
+        if (mode === 'TACTICAL') km = straight;
+        else {
+          const rt = routeFor(mode, [[prev.x, prev.y], [r.x, r.y]], placeSlug(r.placeId));
+          path = { routeId: rt.id, from: 0, to: 1 };
+          km = rt.lengthKm;
+        }
+      } else km = routes.get(path.routeId)!.lengthKm * (path.to - path.from);
+      // Without a recorded duration a relocation takes the time its unit
+      // needs at its usual rate (world.source.json speeds), never less than
       // one simulated hour, so a long move is never drawn as a jump.
-      const distance = Math.hypot(r.x - prev.x, r.y - prev.y);
-      const schematicSpan = Math.max(6, Math.ceil(distance / SCHEMATIC_SPEED));
+      const gap = r.f - prev.f;
+      const usual = Math.max(6, Math.ceil(km / perFrame(speed.kmPerDay)));
+      const fastest = Math.max(1, Math.ceil(km / perFrame(speed.maxKmPerDay)));
       const depart = mv?.startFrame != null && mv.startFrame < r.f && mv.startFrame >= prev.f
-        ? Math.min(mv.startFrame, r.f - Math.ceil(distance / 0.035))
+        ? Math.max(prev.f, Math.min(mv.startFrame, r.f - fastest))
         : isTransit
-          ? (gap > 2 * FPD ? r.f - FPD : prev.f)
-          : Math.max(prev.f, r.f - schematicSpan);
-      if (depart > prev.f) keys.push({ ...prev, f: depart });
+          ? prev.f
+          : Math.max(prev.f, r.f - usual);
+      if (depart > prev.f) keys.push({ ...prev, f: depart, path: undefined });
       // No recorded movement and too little time for any plausible journey: the
       // transfer is not traced by the source, so it is drawn as a discontinuity
       // (route UNKNOWN), never as an invented high-speed line.
-      if (!mv && !isTransit && r.f - prev.f < schematicSpan && distance > 0.02) r.route = 'UNKNOWN';
+      if (!mv && !isTransit && gap < fastest && km > TACTICAL_KM) {
+        r.route = 'UNKNOWN';
+        path = undefined;
+      }
+      if (mv?.route === 'UNKNOWN') path = undefined;
+      if (path) routes.get(path.routeId)!.uses.push({ forceId: force.id, startFrame: Math.max(prev.f, depart), endFrame: r.f, from: path.from, to: path.to, movementId: mv?.id ?? null });
     }
-    keys.push({ f: r.f, x: round(r.x), y: round(r.y), placeId: r.placeId, placement: r.placement, route: r.route });
+    prevTransit = r.transit ?? null;
+    keys.push({ f: r.f, x: round(r.x), y: round(r.y), placeId: r.placeId, placement: r.placement, route: r.route, ...(path ? { path } : {}) });
   }
   if (offStart !== null) offMap.push([offStart, FRAME_COUNT - 1]);
   positionTracks.push({ forceId: force.id, keys, offMap });
+}
+
+/* -- each recorded movement: its route, length and implied speed ------- */
+
+for (const m of movements) {
+  if (m.route === 'UNKNOWN' || !m.fromPlaceId || !m.toPlaceId) continue;
+  const a = coordsOf(m.fromPlaceId);
+  const b = coordsOf(m.toPlaceId);
+  if (!a || !b) continue;
+  const force = forceById.get(m.forceId)!;
+  const straight = distanceKm(a.x, a.y, b.x, b.y);
+  const mode = m.speedClass === 'air' && straight >= TACTICAL_KM ? 'AIR' : modeFor(force, straight, m.toPlaceId);
+  if (mode === 'TACTICAL') {
+    m.lengthKm = Math.round(straight * 10) / 10;
+  } else {
+    const rt = routeFor(mode, [[a.x, a.y], [b.x, b.y]], placeSlug(m.toPlaceId));
+    m.routeId = rt.id;
+    m.lengthKm = rt.lengthKm;
+  }
+  if (m.startFrame !== null && m.endFrame !== null && m.endFrame > m.startFrame && m.lengthKm !== null) {
+    const days = (m.endFrame - m.startFrame) / FPD;
+    m.kmPerDay = Math.round((m.lengthKm * m.reach) / days);
+    m.overSpeed = m.kmPerDay > SPEEDS[m.speedClass].maxKmPerDay;
+  }
 }
 
 for (const m of movements) {
@@ -780,6 +929,101 @@ const forceTracks: ForceTrack[] = [...tracks.entries()].map(([forceId, snapshots
     return !n || n.f !== s.f; // keep the last snapshot within one frame
   }),
 }));
+
+/* ------------------------------------------------------------------ */
+/* The operation's force ledger                                        */
+/* ------------------------------------------------------------------ */
+
+const OPERATION_ROLES: LedgerRole[] = ['MAIN', 'ALLOCATION', 'DETACHMENT', 'TRANSFER', 'GATE_FORCE', 'REVIVED_COHORT'];
+const operationIds = new Set(forces.filter((f) => f.ledgerRole && OPERATION_ROLES.includes(f.ledgerRole)).map((f) => f.id));
+// Subordinates of an operation formation belong to the operation too.
+for (let grew = true; grew; ) {
+  grew = false;
+  for (const f of forces) if (!operationIds.has(f.id) && f.parentId && operationIds.has(f.parentId) && f.ledgerRole !== 'OUTSIDE_OPERATION') { operationIds.add(f.id); grew = true; }
+}
+const snapAt = (forceId: string, f: number): ForceSnapshot | undefined => {
+  let s: ForceSnapshot | undefined;
+  for (const x of tracks.get(forceId) ?? []) if (x.f <= f) s = x;
+  return s;
+};
+const firstStrength = (forceId: string): { f: number; n: number } | null => {
+  const s = (tracks.get(forceId) ?? []).find((x) => typeof x.strength === 'number');
+  return s ? { f: s.f, n: s.strength as number } : null;
+};
+const byRole = (role: LedgerRole) => forces.filter((f) => f.ledgerRole === role);
+const operationRow = (c: CasualtySrc) => (c.forceId && operationIds.has(c.forceId)) || (c.operationForceIds?.length ? c.operationForceIds.every((id) => operationIds.has(id)) : false);
+const ledgerRows = casualtySrc.filter((c) => operationRow(c) && !NON_ADDITIVE.has(c.scope) && c.scope !== 'UNKNOWN' && c.eventId);
+for (const c of casualtySrc) for (const id of c.operationForceIds ?? []) if (!forceById.has(id)) throw new Error(`Casualty ${c.id} names unknown force ${id}.`);
+const initialForward = [...byRole('MAIN'), ...byRole('DETACHMENT')].reduce((n, f) => n + (firstStrength(f.id)?.n ?? 0), 0);
+function ledgerAt(f: number, eventId: string | null): LedgerPoint {
+  let committed = 0;
+  for (const force of [...byRole('MAIN'), ...byRole('DETACHMENT'), ...byRole('TRANSFER')]) {
+    const first = firstStrength(force.id);
+    if (first && first.f <= f) committed += first.n;
+  }
+  let killed = 0;
+  let revived = 0;
+  for (const c of ledgerRows) {
+    if ((frameOfEvent(c.eventId) ?? Infinity) > f) continue;
+    if (typeof c.kia === 'number') killed += c.kia;
+    if (typeof c.revived === 'number') revived += c.revived;
+  }
+  const one = (role: LedgerRole): Quantity => {
+    const force = byRole(role)[0];
+    if (!force) return UNKNOWN;
+    const s = snapAt(force.id, f);
+    return s ? s.strength : 0;
+  };
+  return {
+    frame: f, eventId, initialForward, committed,
+    capitalReserve: one('RESERVE'), gateForce: one('GATE_FORCE'),
+    killed, revived, deadNotRevived: killed - revived, neverKilled: committed - killed, active: committed - killed + revived,
+  };
+}
+const ledgerPoints: LedgerPoint[] = [];
+{
+  const frames = new Set<number>([0]);
+  for (const id of operationIds) for (const s of tracks.get(id) ?? []) frames.add(s.f);
+  for (const r of byRole('RESERVE')) for (const s of tracks.get(r.id) ?? []) frames.add(s.f);
+  for (const c of ledgerRows) frames.add(frameOfEvent(c.eventId)!);
+  let last = '';
+  for (const f of [...frames].sort((a, b) => a - b)) {
+    const p = ledgerAt(f, eventsByFrameId(f));
+    const sig = JSON.stringify({ ...p, frame: 0, eventId: null });
+    if (sig === last) continue;
+    last = sig;
+    ledgerPoints.push(p);
+  }
+}
+function eventsByFrameId(f: number): string | null {
+  const here = effectsByFrame.get(f);
+  return here?.length ? here[here.length - 1].id : null;
+}
+const finalLedger = ledgerPoints[ledgerPoints.length - 1];
+const mainForce = byRole('MAIN')[0];
+const allocations = forces.filter((f) => f.parentId === mainForce?.id && f.ledgerRole === 'ALLOCATION');
+const reserveForce = byRole('RESERVE')[0];
+const transfers = byRole('TRANSFER');
+const gate = byRole('GATE_FORCE')[0];
+const gatePeak = Math.max(0, ...(tracks.get(gate?.id ?? '') ?? []).map((s) => (typeof s.strength === 'number' ? s.strength : 0)));
+const mergedIntoGate = forces.filter((f) => f.mergedInto?.forceId === gate?.id).reduce((n, f) => n + (firstStrength(f.id)?.n ?? 0), 0);
+const ledgerChecks: Ledger['checks'] = [
+  { name: 'Split preserves the main formation', expression: `${allocations.map((a) => firstStrength(a.id)?.n ?? '?').join(' + ')} = ${firstStrength(mainForce?.id ?? '')?.n ?? '?'}`, ok: allocations.reduce((n, a) => n + (firstStrength(a.id)?.n ?? NaN), 0) === firstStrength(mainForce?.id ?? '')?.n },
+  { name: 'Committed = initial forward deployment + transfers', expression: `${initialForward} + ${transfers.map((t) => firstStrength(t.id)?.n ?? '?').join(' + ')} = ${finalLedger.committed}`, ok: initialForward + transfers.reduce((n, t) => n + (firstStrength(t.id)?.n ?? NaN), 0) === finalLedger.committed },
+  { name: 'Reserve after transfer = reserve before - transfers', expression: `${firstStrength(reserveForce?.id ?? '')?.n} - ${transfers.reduce((n, t) => n + (firstStrength(t.id)?.n ?? 0), 0)} = ${finalLedger.capitalReserve}`, ok: (firstStrength(reserveForce?.id ?? '')?.n ?? NaN) - transfers.reduce((n, t) => n + (firstStrength(t.id)?.n ?? 0), 0) === finalLedger.capitalReserve },
+  { name: 'Gate force at its peak = the reinforcements merged into it', expression: `${forces.filter((f) => f.mergedInto?.forceId === gate?.id).map((f) => firstStrength(f.id)?.n).join(' + ')} = ${gatePeak}`, ok: mergedIntoGate === gatePeak },
+  { name: 'Revived are a subset of the dead', expression: `${finalLedger.revived} <= ${finalLedger.killed}`, ok: finalLedger.revived <= finalLedger.killed },
+  { name: 'Active = committed - killed + revived', expression: `${finalLedger.committed} - ${finalLedger.killed} + ${finalLedger.revived} = ${finalLedger.active}`, ok: finalLedger.active === finalLedger.committed - finalLedger.killed + finalLedger.revived },
+  { name: 'Dead not revived + revived = killed', expression: `${finalLedger.deadNotRevived} + ${finalLedger.revived} = ${finalLedger.killed}`, ok: finalLedger.deadNotRevived + finalLedger.revived === finalLedger.killed },
+  { name: 'Never killed + killed = committed', expression: `${finalLedger.neverKilled} + ${finalLedger.killed} = ${finalLedger.committed}`, ok: finalLedger.neverKilled + finalLedger.killed === finalLedger.committed },
+];
+for (const c of ledgerChecks) if (!c.ok) throw new Error(`Ledger check failed: ${c.name}: ${c.expression}`);
+const ledger: Ledger = {
+  operationForceIds: [...operationIds].sort(),
+  points: ledgerPoints,
+  checks: ledgerChecks,
+  note: 'Unique personnel of the invasion operation, computed from force tracks and casualty records (docs/CAMPAIGN_FORCE_LEDGER.md). A revival changes the state of personnel already counted; it never adds to the committed total. Transferred personnel are counted once, where they are.',
+};
 
 /* ------------------------------------------------------------------ */
 /* Battles                                                             */
@@ -955,6 +1199,7 @@ const places: Place[] = gazetteer.places.map((p) => ({
   id: p.id, name: p.name, theatre: p.theatre, x: p.x ?? null, y: p.y ?? null, placement: p.placement,
   altitude: p.altitude ?? (p.placement === 'ABSTRACT' ? null : 'GROUND'), basis: p.basis,
   territoryId: territoryAt(p.x, p.y),
+  symbol: p.symbol ?? null,
 }));
 
 const territories: Territory[] = geo.territories.map((t) => {
@@ -1027,6 +1272,7 @@ for (let i = 1; i < events.length; i += 1) {
 
 const sourceFiles = [
   'campaign/revision.json', ...EVENT_FILES.map((f) => `campaign/events/${f}`), 'campaign/forces.json', 'campaign/movements.json', 'campaign/casualties.json',
+  'world.source.json', 'geography.source.json', 'relief.grid.source.json',
   'gazetteer.source.json', 'territories.geo.source.json', 'territory-control.source.json', 'characters.source.json', 'terminology.source.json',
 ];
 const manifest: Manifest = {
@@ -1045,6 +1291,10 @@ const manifest: Manifest = {
     id: 'SIM_NORMALISED', description: gazetteer.about.definition, atlasPixelWidth: 2641, atlasPixelHeight: 2035,
     lngSpanDeg: 260, latExtentDeg: 70.26, disclaimer: gazetteer.about.warning,
   },
+  world: {
+    id: 'WORLD_KM', kmPerAtlasPixel: KM_PER_ATLAS_PX, widthKm: WORLD_W_KM, heightKm: WORLD_H_KM,
+    provenance: worldSrc.coordinateSystem.provenance, confidence: worldSrc.coordinateSystem.confidence,
+  },
   counts: {
     frames: FRAME_COUNT, checkpoints: checkpointFrames.length, deltaFrames: deltaFrames.length, events: events.length,
     turningPoints: events.filter((e) => e.turningPoint).length, battles: battles.length, forces: forces.length,
@@ -1054,6 +1304,7 @@ const manifest: Manifest = {
     movements: movements.length, territories: territories.length, territoryChanges: territoryChanges.length,
     theatres: theatres.length, nations: nations.length, factions: factions.length, stages: campaignStages.length,
     contradictions: referenceSrc.contradictions.length, ambiguities: referenceSrc.ambiguities.length, terms: terms.length, gaps: timelineGaps.length,
+    routes: routes.size, ledgerPoints: ledgerPoints.length,
   },
 };
 
@@ -1118,6 +1369,15 @@ put('territories.json', territoryChanges);
 put('territories.geo.json', { territories, about: { sourceImage: geo.about.sourceImage } });
 put('theatres.json', theatres);
 put('places.json', places);
+const routeList: Route[] = [...routes.values()].map((r) => ({ ...r, cumKm: cumulativeKm(r.points).map((k) => Math.round(k * 10) / 10) }));
+put('routes.json', routeList);
+const geoFeatures = terrain.features();
+const geography: Geography = {
+  ...geoFeatures,
+  roads: geoFeatures.roads.map((r) => ({ id: r.id, name: r.name, grade: r.grade, basis: r.basis, role: r.role, line: r.line, lengthKm: Math.round(cumulativeKm(r.line).at(-1)! * 10) / 10 })),
+};
+put('geography.json', geography);
+put('ledger.json', ledger);
 
 /* -- settlements: capitals, cities, the Labyrinth --------------------- */
 
@@ -1168,6 +1428,10 @@ console.log(`  clock          D${FIRST_DAY}..D+${LAST_DAY}  ${FRAME_COUNT} frame
 console.log(`  events         ${events.length}  battles ${battles.length}  forces ${forces.length}  characters ${characters.length}`);
 console.log(`  snapshots      ${manifest.counts.forceSnapshots}  position keys ${manifest.counts.positionKeys}  movements ${movements.length}`);
 console.log(`  territories    ${territories.length}  casualty records ${casualties.length}`);
+console.log(`  routes         ${routes.size}  (${[...routes.values()].filter((r) => r.exception).length} with exceptions)  ledger points ${ledgerPoints.length}`);
+const fast = movements.filter((m) => m.overSpeed);
+for (const m of fast) console.log(`  ! ${m.id} ${m.forceId} ${m.lengthKm} km at ${m.kmPerDay} km/day exceeds the ${m.speedClass} maximum`);
+console.log(`  ledger         committed ${finalLedger.committed}, killed ${finalLedger.killed}, revived ${finalLedger.revived}, active ${finalLedger.active}, reserve ${finalLedger.capitalReserve}`);
 console.log(`  runtime data   ${(total / 1024).toFixed(0)} KB in ${Object.keys(written).length} files`);
 
 function round(n: number): number {

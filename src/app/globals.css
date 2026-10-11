@@ -43,6 +43,7 @@
   --color-prov-visual: rgb(var(--prov-visual));
   --color-prov-inferred: rgb(var(--prov-inferred));
   --color-prov-recon: rgb(var(--prov-recon));
+  --color-prov-scenario: rgb(var(--prov-scenario));
   --color-prov-unresolved: rgb(var(--prov-unresolved));
 
   --font-ui: var(--font-ui), system-ui, Segoe UI, sans-serif;
@@ -135,6 +136,7 @@
     --prov-visual: 143 201 182;
     --prov-inferred: 217 181 106;
     --prov-recon: 199 154 78;
+    --prov-scenario: 185 163 227;
     --prov-unresolved: 224 97 79;
     --shadow-panel:
       0 1px 0 rgba(255, 255, 255, 0.03) inset,
@@ -162,6 +164,7 @@
     --prov-visual: 34 112 92;
     --prov-inferred: 128 92 24;
     --prov-recon: 130 86 24;
+    --prov-scenario: 98 72 160;
     --prov-unresolved: 180 56 42;
     --shadow-panel:
       0 1px 0 rgba(255, 255, 255, 0.6) inset,

@@ -32,7 +32,7 @@ const MapView = dynamic(() => import('@/map/MapView').then((m) => m.MapView), {
   loading: () => <div className="absolute inset-0 bg-ink-900" />,
 });
 
-const SELECTION_KINDS = ['event', 'battle', 'force', 'character', 'territory', 'theatre', 'nation', 'movement'] as const;
+const SELECTION_KINDS = ['event', 'battle', 'force', 'character', 'territory', 'theatre', 'nation', 'movement', 'place', 'feature'] as const;
 
 const noopSubscribe = () => () => {};
 
@@ -114,6 +114,8 @@ export function AppShell() {
       else if (kind === 'theatre') store.jumpToTheatre(id);
       else if (kind === 'nation') store.jumpToNation(id);
       else if (kind === 'movement') store.jumpToMovement(id);
+      else if (kind === 'place' && store.data?.placeById.has(id)) store.select({ kind: 'place', id });
+      else if (kind === 'feature') store.select({ kind: 'feature', id });
       break;
     }
     if (frame !== null) store.seek(frame);

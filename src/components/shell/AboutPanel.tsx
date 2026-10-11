@@ -1,12 +1,13 @@
 'use client';
 
 import { ExternalLink } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 
 import { CREATOR_LINKS, CREATOR_MESSAGE, CREATOR_MESSAGE_EN, OFFICIAL_LINKS, PROJECT_LINKS, REFERENCES, WALLPAPERS, type AboutLink } from '@/content/about';
 import { useI18n, useT } from '@/i18n';
 import { MUSIC_CREDITS } from '@/audio/music';
 import { Section } from '@/components/ui/primitives';
+import { loadReference, type ReferenceRegister } from '@/data/loader';
 
 /**
  * Who made this and why, the official places to support the series, and the
@@ -29,6 +30,9 @@ export function AboutPanel() {
           {t('I love the Tempest–Eastern Empire war arc, so I read volumes 12 to 16 again with a notebook open and turned the war into a map you can play like a documentary. Every movement, battle and loss is placed from the novels. Where the books are silent, the map says so.')}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-fg-2">
+          {t('The imperial order of battle follows a scenario brief: 1,040,000 soldiers in the operation instead of the novels’ 940,000. Each difference from the novels is listed below under Scenario and novels.')}
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-fg-2">
           {t('This is not official Tensura material. It is made for fun, for other fans, and as a thank-you to the people who made the story.')}
         </p>
         <blockquote className="mt-3 rounded-[3px] border-l-2 border-accent bg-ink-700/60 px-3 py-2">
@@ -37,6 +41,8 @@ export function AboutPanel() {
           <p className="mt-1 text-2xs uppercase tracking-label text-fg-3">NuRichter</p>
         </blockquote>
       </section>
+
+      <ScenarioDifferences />
 
       <Section title={t('Wallpapers')}>
         <p className="mb-2 text-xs leading-relaxed text-fg-3">{t('The five covers of this war’s volumes, made into wallpapers, plus two moments from the map. Tap to save.')}</p>
@@ -131,4 +137,35 @@ function LinkList({ links }: { links: AboutLink[] }) {
 /** Renders *italic* spans of an APA entry. */
 function apa(text: string): ReactNode[] {
   return text.split(/(\*[^*]+\*)/g).map((part, i) => (part.startsWith('*') ? <i key={i}>{part.slice(1, -1)}</i> : part));
+}
+
+/** Where the scenario brief departs from the novels: the R6 entries of the reference register. */
+function ScenarioDifferences() {
+  const t = useT();
+  const [reg, setReg] = useState<ReferenceRegister | null>(null);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    const ctl = new AbortController();
+    loadReference(ctl.signal).then(setReg, () => setFailed(!ctl.signal.aborted));
+    return () => ctl.abort();
+  }, []);
+  const rows = reg?.contradictions.filter((c) => c.id.startsWith('DISC-R6')) ?? [];
+  return (
+    <Section title={t('Scenario and novels')} defaultOpen={false}>
+      {failed ? <p className="text-xs text-fg-3">{t('Could not load the register.')}</p> : null}
+      <ul className="space-y-2.5">
+        {rows.map((c) => (
+          <li key={c.id} className="text-xs leading-relaxed">
+            <p className="font-semibold text-fg">
+              <span className="figure mr-1.5 text-2xs text-fg-3">{c.id}</span>
+              {c.description}
+            </p>
+            <p className="mt-0.5 text-fg-3"><span className="uppercase tracking-label text-prov-canon">{t('Novels')}</span> {c.claimA}</p>
+            <p className="mt-0.5 text-fg-3"><span className="uppercase tracking-label text-prov-scenario">{t('Scenario')}</span> {c.claimB}</p>
+            <p className="mt-0.5 text-fg-2">{c.treatment}</p>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  );
 }

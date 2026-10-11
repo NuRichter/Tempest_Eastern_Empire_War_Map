@@ -7,14 +7,19 @@
  *   reach  = 0.0011 · weight, clamped to 0.012–0.055 of the atlas width
  *
  * Formations in the air or under ground (airships, the labyrinth), destroyed or
- * captured formations and single combatants hold no ground. A parent and its
+ * captured formations, formations withdrawing or merged into another, and
+ * single combatants hold no ground. A parent and its
  * subordinates are the same soldiers: only the most specific one counts, and
  * once a formation has been divided into subordinates with their own positions
  * it never holds ground as a whole again (an aggregate such as a division's
- * paper ceiling is not an army in the field).
+ * paper ceiling is not an army in the field). A formation with a recorded split
+ * (subordinates whose origin is a SPLIT from it) becomes an aggregate at the
+ * split; a small party sent ahead of it does not divide it.
  */
 
 import type { Dataset } from '@/data/loader';
+import { replacesParent } from '@/lib/hierarchy';
+import { unitClass } from '@/lib/units';
 import { factionKey } from '@/lib/palette';
 import { forcePositionAt, forceSnapshotAt } from '@/simulation/resolver';
 
@@ -61,7 +66,8 @@ function aggregateFrom(data: Dataset): Map<string, number> {
     return best;
   };
   for (const f of data.forces) {
-    const d = earliestDescendant(f.id);
+    const split = data.forces.filter((c) => c.origin?.kind === 'SPLIT' && c.origin.fromForceId === f.id);
+    const d = split.length ? Math.min(...split.map((c) => c.origin!.frame)) : earliestDescendant(f.id);
     if (d < Infinity) out.set(f.id, d);
   }
   aggregateCache.set(data, out);
@@ -75,12 +81,12 @@ export function fieldSources(data: Dataset, frame: number, hidden: ReadonlySet<s
     if (hidden.has(force.id)) continue;
     if (frame >= (aggregates.get(force.id) ?? Infinity)) continue;
     const snap = forceSnapshotAt(data, force.id, Math.floor(frame));
-    if (!snap || /DESTROY|ANNIHILAT|CAPTURED|PRISONER|RESURRECTED|REJOINED/i.test(snap.status)) continue;
+    if (!snap || /DESTROY|ANNIHILAT|CAPTURED|PRISONER|RESURRECTED|REJOINED|WITHDRAW|RETURNED|MERGED/i.test(snap.status)) continue;
     const pos = forcePositionAt(data, force.id, frame);
     if (!pos) continue;
     const place = pos.placeId ? data.placeById.get(pos.placeId) : null;
     if (place && (place.altitude === 'AIR' || place.altitude === 'SUBSURFACE')) continue;
-    if (/air|airship|flying|fleet/i.test(force.unitType)) continue;
+    if (unitClass(force) === 'air') continue;
     const side = sideOf(force.faction);
     if (!side) continue;
     const strength = typeof snap.strength === 'number' ? snap.strength : NOMINAL_UNKNOWN_STRENGTH;
@@ -90,7 +96,7 @@ export function fieldSources(data: Dataset, frame: number, hidden: ReadonlySet<s
     drawn.set(force.id, { forceId: force.id, side, x: pos.x, y: pos.y, w, r });
   }
   for (const force of data.forces) {
-    if (drawn.has(force.id) && force.childIds.some((c) => drawn.has(c))) drawn.delete(force.id);
+    if (drawn.has(force.id) && force.childIds.some((c) => drawn.has(c) && replacesParent(data.forceById.get(c)!, force, data.forces))) drawn.delete(force.id);
   }
   return [...drawn.values()].sort((a, b) => (a.forceId < b.forceId ? -1 : 1));
 }

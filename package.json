@@ -14,7 +14,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "tsx scripts/test-runtime.ts",
+    "test": "tsx scripts/test-runtime.ts && tsx scripts/test-scenario.ts",
     "verify": "npm run compile-data && npm run validate-data && npm run validate-assets && npm run lint && npm run security:lint && npm run typecheck && npm run i18n:extract && npm run i18n:check && npm run test && npm run security:test && npm run build",
     "qa": "tsx scripts/browser-qa.ts",
     "qa:visual": "tsx scripts/visual-regression.ts",

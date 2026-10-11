@@ -39,6 +39,7 @@ export const PROVENANCE_LABEL: Record<Provenance, { short: string; long: string;
     note: msg('The event is canonical. Its exact position, path or timing on this map is reconstructed.'),
   },
   INFERRED: { short: msg('Inferred'), long: msg('Inferred'), note: msg('Follows from several source clues but is not stated.') },
+  SCENARIO: { short: msg('Scenario'), long: msg('Scenario'), note: msg('Set by the scenario brief this atlas follows. Not stated by the light novel.') },
   RECONSTRUCTED: { short: msg('Reconstructed'), long: msg('Reconstructed'), note: msg('A plausible bridging sequence made by this project between known points.') },
   UNRESOLVED: { short: msg('Unresolved'), long: msg('Unresolved'), note: msg('The evidence is insufficient. Shown so the gap stays visible.') },
 };
@@ -46,6 +47,7 @@ export const PROVENANCE_LABEL: Record<Provenance, { short: string; long: string;
 export const SIZE_STATUS_LABEL: Record<SizeStatus, { mark: string; label: string; note: string }> = {
   EXPLICIT: { mark: '', label: msg('Explicit'), note: msg('The number is stated by the source.') },
   DERIVED: { mark: '≈', label: msg('Derived'), note: msg('Arithmetic from stated numbers.') },
+  SCENARIO: { mark: '', label: msg('Scenario'), note: msg('The number is set by the scenario brief, not by the light novel.') },
   RECONSTRUCTED: { mark: '~', label: msg('Reconstructed'), note: msg('A project estimate between stated numbers.') },
   UNKNOWN: { mark: '?', label: msg('Unknown'), note: msg('No number is established. Never shown as zero.') },
 };

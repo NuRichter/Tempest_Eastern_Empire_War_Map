@@ -4,6 +4,7 @@ import { drawArrowHead } from '@/map/overlay/glyphs';
 import { formatStrength } from '@/map/overlay/layers/forces';
 import { msg, translate } from '@/i18n';
 import type { RouteConfidence } from '@/types/dataset';
+import { alongPolyline, formatKm } from '@/lib/world';
 
 /** Tooltip wording for each route grade. */
 const ROUTE_DETAIL: Record<RouteConfidence, string> = {
@@ -19,8 +20,12 @@ const LINGER = 216;
 /**
  * Recorded movements as directional routes. Line treatment encodes how well
  * the route is known; an UNKNOWN route is not drawn at all, because a line on a
- * map is a claim. The label states strength at departure, not an assumed
- * constant, and says when the count at arrival differs.
+ * map is a claim. A movement with a measured route (routes.json) is drawn on
+ * that ground geometry, the same path the formation's marker follows; only a
+ * move inside one battlefield is drawn straight. Reinforcements, withdrawals
+ * and failed offensives are told apart by their marks, not by colour alone.
+ * The label states strength at departure, not an assumed constant, and says
+ * when the count at arrival differs.
  */
 export function drawMovements(dc: DrawContext): void {
   if (!dc.prefs.layers.movement) return;
@@ -52,18 +57,22 @@ export function drawMovements(dc: DrawContext): void {
     const style = ROUTE_STYLE[m.route];
     const fade = age > 0 ? Math.max(0.2, 1 - age / LINGER) : 1;
     const width = (2.2 + (selected ? 1.2 : 0)) * style.width * dc.markerScale;
+    const kind = /WITHDRAW|RETREAT|REPATRIAT/.test(m.type) ? 'withdrawal' : /REINFORCE/.test(m.type) ? 'reinforcement' : 'advance';
+    // An offensive recorded as failed at this movement's objective.
+    const failed = data.events.some((e) => e.type === 'OFFENSIVE_FAILED' && e.frame <= intFrame && e.placeId === m.toPlaceId);
 
-    // A slight bow keeps parallel movements apart and reads as a route, not a measurement.
-    const mx = (a.sx + b.sx) / 2;
-    const my = (a.sy + b.sy) / 2;
-    const nx = -(b.sy - a.sy) * 0.12;
-    const ny = (b.sx - a.sx) * 0.12;
-    const cx = mx + nx;
-    const cy = my + ny;
-    const point = (t: number) => ({
-      x: (1 - t) * (1 - t) * a.sx + 2 * (1 - t) * t * cx + t * t * b.sx,
-      y: (1 - t) * (1 - t) * a.sy + 2 * (1 - t) * t * cy + t * t * b.sy,
-    });
+    // Ground geometry: the measured route, else a straight tactical line.
+    const route = m.routeId ? data.routeById.get(m.routeId) : undefined;
+    const pointAt = (t: number) => {
+      if (route) {
+        const at = alongPolyline(route.points, route.cumKm, t);
+        const q = dc.project(at.x, at.y);
+        return { x: q.sx, y: q.sy };
+      }
+      return { x: a.sx + (b.sx - a.sx) * t, y: a.sy + (b.sy - a.sy) * t };
+    };
+    const samples = route ? Math.min(160, Math.max(24, route.points.length * 3)) : 2;
+    const point = pointAt;
 
     // Planned remainder, faint.
     ctx.globalAlpha = 0.22 * fade * opacity;
@@ -71,13 +80,16 @@ export function drawMovements(dc: DrawContext): void {
     ctx.lineWidth = Math.max(1, width * 0.6);
     ctx.setLineDash([2, 5]);
     ctx.beginPath();
-    ctx.moveTo(a.sx, a.sy);
-    ctx.quadraticCurveTo(cx, cy, b.sx, b.sy);
+    for (let i = 0; i <= samples; i += 1) {
+      const p = point(i / samples);
+      if (i) ctx.lineTo(p.x, p.y);
+      else ctx.moveTo(p.x, p.y);
+    }
     ctx.stroke();
 
     // Travelled part, with a dark casing for contrast on either base map.
-    const steps = 24;
-    const pts = Array.from({ length: Math.max(2, Math.round(steps * progress) + 1) }, (_, i) => point((i / Math.max(1, Math.round(steps * progress))) * progress));
+    const done = Math.max(1, Math.round(samples * progress));
+    const pts = Array.from({ length: done + 1 }, (_, i) => point((i / done) * progress));
     const path = () => {
       ctx.beginPath();
       pts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
@@ -97,12 +109,45 @@ export function drawMovements(dc: DrawContext): void {
     const head = pts[pts.length - 1];
     const prev = pts[Math.max(0, pts.length - 2)];
     if (progress > 0.03) drawArrowHead(ctx, prev.x, prev.y, head.x, head.y, 9 + width * 1.6, selected ? INK.accent : FACTION_COLOR[key]);
+    // Marks along the travelled line: + for a reinforcement, reversed ticks for a withdrawal.
+    if (kind !== 'advance' && pts.length > 4) {
+      ctx.save();
+      ctx.globalAlpha = style.alpha * fade * opacity;
+      ctx.strokeStyle = selected ? INK.accent : FACTION_PALE[key];
+      ctx.lineWidth = 1.6;
+      for (let i = 2; i < pts.length - 1; i += Math.max(3, Math.floor(pts.length / 5))) {
+        const p = pts[i];
+        const q = pts[i - 1];
+        const ang = Math.atan2(p.y - q.y, p.x - q.x);
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(ang);
+        ctx.beginPath();
+        if (kind === 'reinforcement') { ctx.moveTo(-4, 0); ctx.lineTo(4, 0); ctx.moveTo(0, -4); ctx.lineTo(0, 4); }
+        else { ctx.moveTo(4, -4); ctx.lineTo(-1, 0); ctx.lineTo(4, 4); }
+        ctx.stroke();
+        ctx.restore();
+      }
+      ctx.restore();
+    }
+    // A failed offensive ends in a cross at its objective.
+    if (failed && progress >= 0.999) {
+      const e = pts[pts.length - 1];
+      ctx.save();
+      ctx.strokeStyle = INK.alert;
+      ctx.lineWidth = 3;
+      ctx.globalAlpha = fade * opacity;
+      ctx.beginPath();
+      ctx.moveTo(e.x - 8, e.y - 8); ctx.lineTo(e.x + 8, e.y + 8); ctx.moveTo(e.x + 8, e.y - 8); ctx.lineTo(e.x - 8, e.y + 8);
+      ctx.stroke();
+      ctx.restore();
+    }
 
     dc.hits.push({
       selection: { kind: 'movement', id: m.id },
       x: point(0.5).x, y: point(0.5).y, r: 12,
       title: `${force.displayName}: ${m.from} → ${m.to}`,
-      detail: `${m.type.toLowerCase()} · ${translate(ROUTE_DETAIL[m.route])} · ${translate('{strength} at departure', { strength: formatStrength(m.strengthAtStart, force.sizeStatus) })}`,
+      detail: `${m.type.toLowerCase()} · ${translate(ROUTE_DETAIL[m.route])}${m.lengthKm !== null ? ` · ${formatKm(m.lengthKm)}` : ''} · ${translate('{strength} at departure', { strength: formatStrength(m.strengthAtStart, force.sizeStatus) })}${failed ? ` · ${translate('offensive failed')}` : ''}`,
       priority: 4,
     });
 

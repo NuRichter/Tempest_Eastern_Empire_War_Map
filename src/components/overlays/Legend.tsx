@@ -33,10 +33,16 @@ const Fill = ({ color, opacity = 0.6, hatch = false }: { color: string; opacity?
   </svg>
 );
 
-const Line = ({ dash, opacity = 1 }: { dash?: string; opacity?: number }) => (
+const Line = ({ dash, opacity = 1, color, width = 2.5 }: { dash?: string; opacity?: number; color?: string; width?: number }) => (
   <svg width="30" height="12" aria-hidden>
-    <line x1="2" y1="6" x2="22" y2="6" stroke={FACTION_COLOR.empire} strokeWidth="2.5" strokeDasharray={dash} opacity={opacity} />
-    <path d="M22 1.5 L29 6 L22 10.5 Z" fill={FACTION_COLOR.empire} opacity={opacity} />
+    {color ? (
+      <line x1="2" y1="6" x2="28" y2="6" stroke={color} strokeWidth={width} strokeDasharray={dash} opacity={opacity} strokeLinecap="round" />
+    ) : (
+      <>
+        <line x1="2" y1="6" x2="22" y2="6" stroke={FACTION_COLOR.empire} strokeWidth={width} strokeDasharray={dash} opacity={opacity} />
+        <path d="M22 1.5 L29 6 L22 10.5 Z" fill={FACTION_COLOR.empire} opacity={opacity} />
+      </>
+    )}
   </svg>
 );
 
@@ -78,6 +84,7 @@ const BATTLE_GLYPH: Partial<Record<BattleType, string>> = {
 const SIZE_ROW_LABEL = {
   EXPLICIT: msg('Size explicit'),
   DERIVED: msg('Size derived'),
+  SCENARIO: msg('Size set by the scenario'),
   RECONSTRUCTED: msg('Size reconstructed'),
   UNKNOWN: msg('Size unknown'),
 } as const;
@@ -128,9 +135,10 @@ export function Legend() {
             <Row swatch={<Shape d={SHAPES.diamond} color={FACTION_COLOR.dwargon} deep={FACTION_DEEP.dwargon} />} label="Armed Nation of Dwargon" note={t('Diamond marker.')} />
             <Row swatch={<Shape d={SHAPES.triangle} color={FACTION_COLOR.neutral} deep={FACTION_DEEP.neutral} />} label={t('Other contributors')} note={t('Triangle marker.')} />
             <Row swatch={<Shape d={SHAPES.circle} color={FACTION_COLOR.tempest} deep={FACTION_DEEP.tempest} dashed />} label={t('Strength unknown')} note={t('Broken outline. Shown as “?”, never as zero.')} />
-            {(['EXPLICIT', 'DERIVED', 'RECONSTRUCTED', 'UNKNOWN'] as const).map((s) => (
-              <Row key={s} swatch={<span className="figure text-xs text-fg">{SIZE_STATUS_LABEL[s].mark || '940k'}</span>} label={t(SIZE_ROW_LABEL[s])} note={t(SIZE_STATUS_LABEL[s].note)} />
+            {(['EXPLICIT', 'DERIVED', 'SCENARIO', 'RECONSTRUCTED', 'UNKNOWN'] as const).map((s) => (
+              <Row key={s} swatch={<span className="figure text-xs text-fg">{SIZE_STATUS_LABEL[s].mark || (s === 'SCENARIO' ? '1,005k' : '700k')}</span>} label={t(SIZE_ROW_LABEL[s])} note={t(SIZE_STATUS_LABEL[s].note)} />
             ))}
+            <Row swatch={<UnitIcons />} label={t('Unit symbols')} note={t('Inside the marker: infantry ✕, armour oval, air propeller, cavalry slash, elite star, reserve double ring. A plain dot when the composition is not recorded.')} />
           </ul>
         </section>
         <section>
@@ -140,7 +148,24 @@ export function Legend() {
             <Row swatch={<Line dash="5 3" opacity={0.85} />} label={t(ROUTE_LABEL.RECONSTRUCTED.label)} note={t(ROUTE_LABEL.RECONSTRUCTED.note)} />
             <Row swatch={<Line dash="1 3" opacity={0.6} />} label={t(ROUTE_LABEL.SCHEMATIC.label)} note={t(ROUTE_LABEL.SCHEMATIC.note)} />
             <Row swatch={<span className="text-xs text-fg-3">-</span>} label={t(ROUTE_LABEL.UNKNOWN.label)} note={t(ROUTE_LABEL.UNKNOWN.note)} />
+            <Row swatch={<svg width="30" height="12" aria-hidden><line x1="2" y1="6" x2="28" y2="6" stroke={FACTION_COLOR.empire} strokeWidth="2" /><path d="M11 6 H17 M14 3 V9" stroke="#f2ead6" strokeWidth="1.5" /></svg>} label={t('Reinforcement')} note={t('Plus marks along the route.')} />
+            <Row swatch={<svg width="30" height="12" aria-hidden><line x1="2" y1="6" x2="28" y2="6" stroke={FACTION_COLOR.empire} strokeWidth="2" /><path d="M17 2 L12 6 L17 10" fill="none" stroke="#f2ead6" strokeWidth="1.5" /></svg>} label={t('Withdrawal')} note={t('Reversed marks along the route.')} />
+            <Row swatch={<svg width="30" height="16" aria-hidden><line x1="2" y1="8" x2="20" y2="8" stroke={FACTION_COLOR.empire} strokeWidth="2" /><path d="M20 3 L28 13 M28 3 L20 13" stroke={INK.alert} strokeWidth="2.5" /></svg>} label={t('Failed offensive')} note={t('The route ends in a cross at an objective that was not taken.')} />
+            <Row swatch={<span className="text-2xs text-fg-3">{t('ground')}</span>} label={t('Routes follow the ground')} note={t('Drawn on the terrain model: roads, passes and fords, around lakes and the massif. Formations move along the same line.')} />
           </ul>
+        </section>
+        <section>
+          <p className="eyebrow">{t('Geography')}</p>
+          <ul className="mt-1">
+            <Row swatch={<Line color="#5e93b8" />} label={t('River')} note={t('Crossed only at a ford or bridge.')} />
+            <Row swatch={<Line color="#8b6a4b" dash="1 4" width={3} />} label={t('Mountain pass')} note={t('The only way across the Kanaat massif.')} />
+            <Row swatch={<Line color="#e2d3b0" width={2.6} />} label={t('Supply route, open')} />
+            <Row swatch={<Line color="#e0a53f" dash="7 4" width={2.6} />} label={t('Supply route, threatened')} note={t('Dashed, with a warning triangle.')} />
+            <Row swatch={<Line color="#e0614f" dash="3 6" width={2.6} />} label={t('Supply route, cut')} note={t('Broken, with a cross.')} />
+            <Row swatch={<Line color="#8fc9b6" width={2.6} />} label={t('Supply route, secure')} note={t('Threat ended, with a check mark.')} />
+            <Row swatch={<StrategicIcons />} label={t('Strategic points')} note={t('Flag: halt point. Towers: gate. Chevron: border crossing. Target: objective. Square: staging area. Tent: camp.')} />
+          </ul>
+          <p className="mt-1 text-2xs leading-relaxed text-fg-3">{t('Traced from the painted map. Roads, passes and fords are drawn by the project. Distances use a synthetic scale of 2 km per atlas pixel.')}</p>
         </section>
         <section>
           <p className="eyebrow">{t('Battles')}</p>
@@ -178,5 +203,29 @@ export function Legend() {
         </section>
       </div>
     </aside>
+  );
+}
+
+function UnitIcons() {
+  return (
+    <svg width="44" height="14" viewBox="0 0 44 14" aria-hidden fill="none" stroke="#f2ead6" strokeWidth="1.4" strokeLinecap="round">
+      <path d="M2 3 L10 11 M10 3 L2 11" />
+      <ellipse cx="20" cy="7" rx="5" ry="2.6" />
+      <path d="M28 5 Q32 11 36 5 M32 7.5 V11" />
+      <path d="M38 12 L43 2" />
+    </svg>
+  );
+}
+
+function StrategicIcons() {
+  return (
+    <svg width="48" height="16" viewBox="0 0 48 16" aria-hidden fill="rgba(18,14,10,0.82)" stroke="#f2ead6" strokeWidth="1.3">
+      <path d="M3 14 V2 L11 5 L3 8" />
+      <rect x="15" y="4" width="3.5" height="10" />
+      <rect x="22" y="4" width="3.5" height="10" />
+      <circle cx="35" cy="8" r="5.5" />
+      <circle cx="35" cy="8" r="2.4" />
+      <path d="M41 14 L45 3 L48 14 Z" />
+    </svg>
   );
 }

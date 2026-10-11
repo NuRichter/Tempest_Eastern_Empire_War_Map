@@ -1,5 +1,66 @@
 [
  {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "immediateResult": "The detachment leaves the approach to the Dwargon Gate.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-019": {
+     "status": "WITHDRAWING",
+     "movement": "WITHDRAWAL",
+     "direction": "East, towards the Empire"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0527",
+  "day": 17,
+  "time": "08:00",
+  "theatreId": "TH-DIP",
+  "location": "isthmus-approach",
+  "locationText": "Isthmus road (Empire side)",
+  "type": "FORMATION_RETREATED",
+  "title": "After the armistice the detachment withdraws from the isthmus road towards the Empire",
+  "evidence": "Scenario. The brief does not say what became of these formations; withdrawal after the armistice is the project's assumption."
+ },
+ {
   "id": "EVT-0450",
   "day": 16,
   "time": "18:00",
@@ -595,7 +656,7 @@
    "masayuki"
   ],
   "forces": [
-   "F-EMP-010"
+   "F-EMP-090"
   ],
   "type": "POLITICAL",
   "title": "Early release of the prisoners promised",
@@ -634,15 +695,12 @@
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "Moved D+9 19:40 -> D+23 11:50 (end of the morning session)",
-    "Retitled from 'repatriated' to a promise of early release (v16.txt:9012-9014)",
-    "Repatriation march split out as EVT-0455",
-    "R6 re-dated from D+23 11:50 to D+19 11:50: party -> day off -> interviews -> summit \"the next day\" (v16.txt:4880, 5202, 6053-6056, 6866, 7510)."
+    "R6 scenario ledger: The revived soldiers are their own cohort (F-EMP-090), not the dissolved main formation."
    ]
   },
   "effects": {
    "forces": {
-    "F-EMP-010": {
+    "F-EMP-090": {
      "status": "PRISONERS (release promised)"
     }
    },
@@ -1092,7 +1150,7 @@
    "testarossa"
   ],
   "forces": [
-   "F-EMP-010",
+   "F-EMP-090",
    "F-TEM-010A",
    "F-DEM-001"
   ],
@@ -1132,26 +1190,23 @@
   "reconstructionNote": "Day RECONSTRUCTED (AUDIT-PLAN skeleton row 27): 'done within a week, departure soon after' from the summit (v16.txt:9773); 08:00 is a placement. Testarossa's embassy posting is undated; it is placed here because she reports from the Empire by then (v16.txt:9775-9777).",
   "notes": "Prisoner count about 700,000 (v16.txt:7992; CAS-014); the number who actually marched is not stated. Arrival in the Empire is not dated.",
   "audit": {
-   "status": "ADDED",
+   "status": "CORRECTED",
    "changes": [
-    "New event: repatriation departure split from EVT-0395 (v16.txt:9767-9773)",
-    "Target of MOV-036",
-    "F-DEM-001 placed at the embassy here (reconstruction; posting undated)",
-    "R6 re-dated from D+31 08:00 to D+26 08:00: preparations \"within a week\" of the summit, departure soon after (v16.txt:9773); day RECONSTRUCTED."
+    "R6 scenario ledger: The revived soldiers are their own cohort (F-EMP-090), not the dissolved main formation."
    ]
   },
   "effects": {
    "forces": {
-    "F-EMP-010": {
-     "status": "REPATRIATING",
-     "movement": "REPATRIATION",
-     "direction": "East, home to the Empire"
-    },
     "F-DEM-001": {
      "status": "DEPLOYED",
      "movement": "DEPLOYMENT",
      "location": "embassy-in-the-empire",
      "locationText": "Embassy in the Empire"
+    },
+    "F-EMP-090": {
+     "status": "REPATRIATING",
+     "movement": "REPATRIATION",
+     "direction": "East, home to the Empire"
     }
    },
    "theatres": {
@@ -1161,5 +1216,129 @@
    },
    "campaign": {}
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "immediateResult": "",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-019": {
+     "status": "RETURNED",
+     "movement": "STATIONARY",
+     "location": "imperial-interior",
+     "locationText": "Imperial border base"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0523",
+  "day": 21,
+  "time": "18:00",
+  "theatreId": "TH-CAP",
+  "location": "imperial-interior",
+  "locationText": "Imperial border base",
+  "type": "FORMATION_HALTED",
+  "title": "The detachment's survivors are back at the imperial border base",
+  "evidence": "Scenario. About 250 km by the isthmus road."
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "immediateResult": "",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-018": {
+     "status": "RETURNED",
+     "movement": "STATIONARY",
+     "location": "imperial-interior",
+     "locationText": "Imperial border base"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0524",
+  "day": 19,
+  "time": "18:00",
+  "theatreId": "TH-CAP",
+  "location": "imperial-interior",
+  "locationText": "Imperial border base",
+  "type": "FORMATION_HALTED",
+  "title": "The southern formation's survivors are back at the imperial border base",
+  "evidence": "Scenario. By the route the main formation came in on."
  }
 ]

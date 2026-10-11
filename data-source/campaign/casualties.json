@@ -353,7 +353,7 @@
    }
   ],
   "evidence": "A formation of 60,000 hurled into the sky and killed (v14.txt:13851-13884); Laplace: 'about 60,000 in that Hybrid Legion' (v14.txt:14212).",
-  "notes": "R5: the death is narrated in V14 Ch4 (Velgrynd), not V15 Ch1; killer corrected from 'ritual casters' to Velgrynd. Separate from the 940,000 (AMB-011). Not revived."
+  "notes": "R5: the death is narrated in V14 Ch4 (Velgrynd), not V15 Ch1; killer corrected from 'ritual casters' to Velgrynd. Separate from the 940,000 (AMB-011). Not revived. R6: in the scenario these 60,000 are the Dwargon Gate force (30,000 from the main formation, 30,000 from the capital reserve)."
  },
  {
   "id": "CAS-014",
@@ -719,7 +719,7 @@
    }
   ],
   "evidence": "'10,000 died'; 5,500 fully transformed, 5,000 went berserk; of the 20,000 left about half kept their reason (v15.txt:9276-9306).",
-  "notes": "Added in R5 (MISSING-B). Self-inflicted."
+  "notes": "Added in R5 (MISSING-B). Self-inflicted. R6: the Magic Beast Division is outside the invasion operation's ledger."
  },
  {
   "id": "CAS-025",
@@ -828,5 +828,35 @@
   ],
   "evidence": "Carrera beats Kondo by the narrowest margin (v16.txt:7364-7376); 'Lieutenant Kondo ... was dead' (v16.txt:7986-7987).",
   "notes": "Added in R5. V15 wording is garbled ('avenging Kondo's death', v15.txt:15054); V16 confirms the death."
+ },
+ {
+  "id": "CAS-S01",
+  "eventId": "EVT-0519",
+  "faction": "Eastern Empire",
+  "forceId": null,
+  "formation": "Dwargon detachment and southern formation (combined, 40,000)",
+  "cause": "Not established",
+  "kia": 10000,
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "revived": 0,
+  "scope": "EVENT_CASUALTY",
+  "aggregateOf": "-",
+  "basis": "DERIVED",
+  "confidence": "MEDIUM",
+  "sourceRefs": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "evidence": "Scenario totals: 1,010,000 cumulative dead minus the 1,000,000 the novels attribute (700,000 Formation A, 200,000 Formation B, 40,000 northern reinforcement, 60,000 Gate force).",
+  "notes": "Counted in the operation ledger through operationForceIds. No share is assigned to either formation.",
+  "operationForceIds": [
+   "F-EMP-018",
+   "F-EMP-019"
+  ]
  }
 ]

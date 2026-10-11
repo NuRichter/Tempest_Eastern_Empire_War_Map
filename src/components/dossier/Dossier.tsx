@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react';
 
 import { useSimulation } from '@/simulation/store';
+import { FeatureDossier, PlaceDossier } from '@/components/dossier/geo';
 import { BattleDossier, CharacterDossier, EventDossier, ForceDossier, MovementDossier, NationDossier, TerritoryDossier, TheatreDossier } from '@/components/dossier/records';
 
 /** Routes the current selection to its dossier. */
@@ -25,6 +26,10 @@ export function Dossier() {
       return <TheatreDossier id={selection.id} />;
     case 'movement':
       return <MovementDossier id={selection.id} />;
+    case 'place':
+      return <PlaceDossier id={selection.id} />;
+    case 'feature':
+      return <FeatureDossier id={selection.id} />;
     default:
       return null;
   }

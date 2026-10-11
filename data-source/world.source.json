@@ -1,0 +1,111 @@
+{
+  "about": "World model: the one coordinate system every layer, route, formation and rendering mode uses. Positions are stored as SIM_NORMALISED x,y in [0,1] against the 2641 x 2035 atlas (gazetteer.source.json). This file turns them into a local Cartesian plane in kilometres. The scale is a SYNTHETIC calibration fitted to distances the novels state; the author never published a world scale. See docs/GEOGRAPHIC_MODEL.md.",
+  "coordinateSystem": {
+    "id": "WORLD_KM",
+    "origin": "North-west corner of the atlas image (SIM_NORMALISED 0,0)",
+    "axes": "+x east, +y south (the image's own axes), both in kilometres",
+    "atlasPixels": { "width": 2641, "height": 2035 },
+    "kmPerAtlasPixel": 2.0,
+    "precisionKm": 10,
+    "provenance": "SYNTHETIC",
+    "confidence": "LOW"
+  },
+  "calibration": {
+    "method": "One isotropic scale. Candidate scales were taken from every distance the novels state between two points the atlas can place. The two long war-theatre distances favour 2.6 to 3.2 km per pixel, the capital-to-blockade distance favours 1.5, and the opening marches (D-3 to D+0) are only possible at the novels' stated speeds below about 2.2. 2.0 km per pixel is the round scale that keeps every war-theatre statement within about 40 percent and every opening march within the stated speeds. The Tempest-Ingracia statement does not fit any scale and is reported as a map discrepancy.",
+    "evidence": [
+      {
+        "id": "CAL-01",
+        "statement": "The Tempest-Dwargon section of the magic train line is about 1,000 km overall.",
+        "locator": "v12.txt:3279-3281",
+        "from": "jura-tempest-federation",
+        "to": "dwargon",
+        "statedKm": 1000,
+        "kind": "PATH_LENGTH",
+        "use": "Calibration. A rail line through the Kanaat massif is longer than the straight line, so the straight-line distance should be below the stated length."
+      },
+      {
+        "id": "CAL-02",
+        "statement": "On the day of the war council the imperial army is near its national border, about 1,500 km from the intended battlefield, advancing about 80 km a day, about twenty days away.",
+        "locator": "v12.txt:12443-12450",
+        "from": "imperial-interior",
+        "to": "jura-tempest-federation",
+        "statedKm": 1500,
+        "kind": "STRAIGHT_OR_PATH",
+        "use": "Calibration."
+      },
+      {
+        "id": "CAL-03",
+        "statement": "The Composite Division's camp is near the Empire-Dwargon border, five hundred kilometres south-west of the imperial capital.",
+        "locator": "v14.txt:10863-10866",
+        "from": "imperial-capital",
+        "to": "dwargon-eastern-metropolis",
+        "statedKm": 500,
+        "kind": "STRAIGHT_OR_PATH",
+        "use": "Calibration."
+      },
+      {
+        "id": "CAL-04",
+        "statement": "The Tempest-Ingracia line is about 300 km.",
+        "locator": "v12.txt:3283",
+        "from": "jura-tempest-federation",
+        "to": "englassia",
+        "statedKm": 300,
+        "kind": "PATH_LENGTH",
+        "use": "Reported only. The fan map places Ingracia (Englassia) about four times further away than this; no single scale reconciles both."
+      },
+      {
+        "id": "CAL-05",
+        "statement": "The magitanks are arrayed about thirty kilometres from the centre of Dwargon (St. Doran).",
+        "locator": "v13.txt:513-515",
+        "from": "dwargon",
+        "to": "sw-dwargon-front",
+        "statedKm": 30,
+        "kind": "PLACEMENT",
+        "use": "Placement of the southwestern Dwargon battlefield under the chosen scale."
+      },
+      {
+        "id": "CAL-06",
+        "statement": "The imperial infantry camps about thirty kilometres from the capital Rimuru.",
+        "locator": "v13.txt:386-389",
+        "from": "jura-tempest-federation",
+        "to": "imperial-infantry-camp",
+        "statedKm": 30,
+        "kind": "PLACEMENT",
+        "use": "Placement of the infantry camp under the chosen scale."
+      }
+    ]
+  },
+  "speeds": {
+    "about": "Sustained march rates used to validate that a drawn movement is possible in the time the campaign gives it. km per day of travel, averaged over halts. Novel statements where they exist, otherwise conventional planning figures for a large army.",
+    "units": {
+      "infantry": { "kmPerDay": 80, "maxKmPerDay": 120, "basis": "Tempest's forecast of about 80 km a day for the reconstructed imperial soldiers (v12.txt:12443-12446); their maximum combat speed is said to be higher (v12.txt:12452-12454).", "provenance": "CANONICAL" },
+      "armor": { "kmPerDay": 160, "maxKmPerDay": 240, "basis": "Chariots average about 10 km an hour without supplies (v12.txt:12456-12457); 240 is that speed sustained around the clock.", "provenance": "CANONICAL" },
+      "air": { "kmPerDay": 2400, "maxKmPerDay": 9600, "basis": "Airships average about 400 km an hour (v14.txt:1138).", "provenance": "CANONICAL" },
+      "mixed": { "kmPerDay": 60, "maxKmPerDay": 100, "basis": "Planning figure for a column that keeps its baggage with it.", "provenance": "SYNTHETIC" },
+      "elite": { "kmPerDay": 120, "maxKmPerDay": 1200, "basis": "Small mounted or magically supported parties (wolf riders, monster riders, named monster-born). Planning figure: up to about 50 km an hour for an hour or two.", "provenance": "SYNTHETIC" },
+      "dragon": { "kmPerDay": 20000, "maxKmPerDay": 200000, "basis": "True Dragons and Primordials cross the theatre in minutes to hours; Velgrynd acts through several bodies at once (v14.txt:15488-15496).", "provenance": "INFERRED" }
+    }
+  },
+  "terrain": {
+    "about": "Route cost per kilometre for a ground army, by terrain class. Water is impassable. Mountain ground inside the Kanaat massif is impassable outside its named passes. Relief comes from public/maps/3d/height.png (a stylised relief traced from the painted map, not a survey).",
+    "relief": {
+      "source": "public/maps/3d/height.png",
+      "plainLevel": 27000,
+      "slopeCostPer1000": 0.28,
+      "seaLevel": 20000,
+      "peakMetres": 4500,
+      "metresNote": "Synthetic metres: a linear mapping of the stylised relief for read-outs only."
+    },
+    "classes": {
+      "road": { "cost": 0.55, "label": "Road" },
+      "open": { "cost": 1.0, "label": "Open ground" },
+      "forest": { "cost": 1.45, "label": "Forest" },
+      "deepForest": { "cost": 2.3, "label": "Deep forest" },
+      "pass": { "cost": 1.9, "label": "Mountain pass" },
+      "mountain": { "cost": null, "label": "Mountain (impassable outside a pass)" },
+      "riverCrossing": { "cost": 9.0, "label": "River crossing without a ford" },
+      "ford": { "cost": 1.6, "label": "Ford or bridge" },
+      "water": { "cost": null, "label": "Water" }
+    }
+  }
+}

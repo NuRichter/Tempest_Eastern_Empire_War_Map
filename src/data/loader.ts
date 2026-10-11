@@ -13,11 +13,14 @@ import type {
   ForcePositionTrack,
   ForceTrack,
   FrameState,
+  Geography,
+  Ledger,
   Manifest,
   Movement,
   Nation,
   NationFlagManifest,
   Place,
+  Route,
   Settlement,
   TermEntry,
   Territory,
@@ -70,6 +73,9 @@ export interface Dataset {
   gaps: TimelineGap[];
   flags: NationFlagManifest;
   settlements: Settlement[];
+  routes: Route[];
+  geography: Geography;
+  ledger: Ledger;
   /* derived indexes, built once */
   eventById: Map<string, WarEvent>;
   eventsByFrame: Map<number, WarEvent[]>;
@@ -87,6 +93,7 @@ export interface Dataset {
   movementsByForce: Map<string, Movement[]>;
   casualtiesByEvent: Map<string, CasualtyRecord[]>;
   turningPoints: WarEvent[];
+  routeById: Map<string, Route>;
 }
 
 export interface ReferenceRegister {
@@ -151,6 +158,9 @@ export interface DatasetParts {
   gaps: TimelineGap[];
   flags: NationFlagManifest;
   settlements: Settlement[];
+  routes: Route[];
+  geography: Geography;
+  ledger: Ledger;
 }
 
 /** Builds the dataset and its derived indexes. Pure: the browser and the tests share it. */
@@ -183,6 +193,9 @@ export function assembleDataset(p: DatasetParts): Dataset {
     gaps: p.gaps,
     flags: p.flags,
     settlements: p.settlements ?? [],
+    routes: p.routes ?? [],
+    geography: p.geography ?? { mountains: [], passes: [], lakes: [], rivers: [], crossings: [], forests: [], roads: [] },
+    ledger: p.ledger ?? { operationForceIds: [], points: [], checks: [], note: '' },
     eventById: new Map(p.events.map((e) => [e.id, e])),
     eventsByFrame: groupBy(p.events, (e) => e.frame),
     forceById: new Map(p.forces.map((f) => [f.id, f])),
@@ -199,6 +212,7 @@ export function assembleDataset(p: DatasetParts): Dataset {
     movementsByForce: groupBy(p.movementFile.movements, (m) => m.forceId),
     casualtiesByEvent: groupBy(p.casualtyFile.records, (c) => c.eventId),
     turningPoints: p.events.filter((e) => e.turningPoint).sort((a, b) => (a.turningPointRank ?? 0) - (b.turningPointRank ?? 0)),
+    routeById: new Map((p.routes ?? []).map((r) => [r.id, r])),
   };
 }
 
@@ -228,6 +242,9 @@ export const PART_FILES: Record<Exclude<keyof DatasetParts, 'checkpoints'>, stri
   gaps: 'gaps.json',
   flags: 'nation-flags.json',
   settlements: 'settlements.json',
+  routes: 'routes.json',
+  geography: 'geography.json',
+  ledger: 'ledger.json',
 };
 
 /**

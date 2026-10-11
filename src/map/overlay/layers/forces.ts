@@ -4,6 +4,8 @@ import { displayStrengthAt, forcePositionAt, forceSnapshotAt, forceTrail } from 
 import { getField } from '@/map/field/fieldStore';
 import { type DrawContext, factionVisible, forceHidden, haloText, isSelected, meetsConfidence, textWidth, trimTo } from '@/map/overlay/context';
 import { tracePath } from '@/map/overlay/glyphs';
+import { replacesParent } from '@/lib/hierarchy';
+import { unitClass, type UnitClass } from '@/lib/units';
 import type { Force, ForceSnapshot, Quantity, SizeStatus } from '@/types/dataset';
 import { translate } from '@/i18n';
 
@@ -72,7 +74,7 @@ export function placeForces(dc: DrawContext): PlacedForce[] {
 
   // A parent and its subordinates describe the same soldiers. At operational
   // zoom only the most specific drawn formations remain, so nobody is shown twice.
-  const keep = placed.filter((p) => !p.force.childIds.some((c) => drawn.has(c)) || zoom >= 6.5 || isSelected(dc.selection, 'force', p.force.id));
+  const keep = placed.filter((p) => !p.force.childIds.some((c) => drawn.has(c) && replacesParent(data.forceById.get(c)!, p.force, data.forces)) || zoom >= 6.5 || isSelected(dc.selection, 'force', p.force.id));
 
   // Formations sharing one anchor fan out around it in a fixed order. The fan
   // is a drawing device; the dossier reports the shared position.
@@ -152,10 +154,12 @@ export function drawForces(dc: DrawContext, placed: PlacedForce[]): void {
     if (p.snapshot.sizeStatus === 'UNKNOWN' || p.snapshot.strength === 'UNKNOWN') ctx.setLineDash([3, 2.5]);
     ctx.stroke();
     ctx.setLineDash([]);
-    // Inner pip in the faction colour.
-    tracePath(ctx, shape, p.sx, p.sy, p.r * 0.42);
-    ctx.fillStyle = color;
-    ctx.fill();
+    // Unit symbol in the faction colour (a neutral pip when the composition is not recorded).
+    drawUnitGlyph(ctx, unitClass(p.force), p.sx, p.sy, p.r, color, () => {
+      tracePath(ctx, shape, p.sx, p.sy, p.r * 0.42);
+      ctx.fillStyle = color;
+      ctx.fill();
+    });
     if (destroyed) {
       ctx.beginPath();
       ctx.moveTo(p.sx - p.r, p.sy - p.r);
@@ -354,4 +358,77 @@ export function drawFrontStrength(dc: DrawContext, placed: PlacedForce[]): void 
       dc.labels.reserve(ox - w / 2, oy - size, w, size * 1.7);
     }
   }
+}
+
+/**
+ * Unit symbols after the conventions of military map symbols, simplified so
+ * they read at marker size: infantry a cross, armour an oval track, air a
+ * propeller, cavalry a slash, elite a star, mages a spark, undead a cross
+ * pattée, constructs a square, reserves a double ring, command a pennant.
+ */
+export function drawUnitGlyph(ctx: CanvasRenderingContext2D, cls: UnitClass, x: number, y: number, r: number, color: string, pip: () => void): void {
+  if (r < 7.5 || cls === 'formation') {
+    pip();
+    return;
+  }
+  const g = r * 0.5;
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = Math.max(1.3, r * 0.14);
+  ctx.lineCap = 'round';
+  ctx.beginPath();
+  switch (cls) {
+    case 'infantry':
+      ctx.moveTo(-g, -g * 0.7); ctx.lineTo(g, g * 0.7); ctx.moveTo(g, -g * 0.7); ctx.lineTo(-g, g * 0.7);
+      ctx.stroke();
+      break;
+    case 'armor':
+      ctx.ellipse(0, 0, g, g * 0.5, 0, 0, Math.PI * 2);
+      ctx.stroke();
+      break;
+    case 'air':
+      ctx.moveTo(-g, -g * 0.45); ctx.quadraticCurveTo(0, g * 0.6, g, -g * 0.45);
+      ctx.moveTo(0, -g * 0.1); ctx.lineTo(0, g * 0.6);
+      ctx.stroke();
+      break;
+    case 'cavalry':
+      ctx.moveTo(-g, g * 0.7); ctx.lineTo(g, -g * 0.7);
+      ctx.stroke();
+      break;
+    case 'elite':
+      for (let k = 0; k < 5; k += 1) {
+        const a = -Math.PI / 2 + (k * 4 * Math.PI) / 5;
+        if (k) ctx.lineTo(Math.cos(a) * g, Math.sin(a) * g);
+        else ctx.moveTo(Math.cos(a) * g, Math.sin(a) * g);
+      }
+      ctx.closePath();
+      ctx.fill();
+      break;
+    case 'mage':
+      ctx.moveTo(0, -g); ctx.lineTo(g * 0.3, -g * 0.3); ctx.lineTo(g, 0); ctx.lineTo(g * 0.3, g * 0.3); ctx.lineTo(0, g); ctx.lineTo(-g * 0.3, g * 0.3); ctx.lineTo(-g, 0); ctx.lineTo(-g * 0.3, -g * 0.3);
+      ctx.closePath();
+      ctx.fill();
+      break;
+    case 'undead':
+      ctx.moveTo(0, -g); ctx.lineTo(0, g); ctx.moveTo(-g * 0.6, -g * 0.3); ctx.lineTo(g * 0.6, -g * 0.3);
+      ctx.stroke();
+      break;
+    case 'construct':
+      ctx.rect(-g * 0.65, -g * 0.65, g * 1.3, g * 1.3);
+      ctx.stroke();
+      break;
+    case 'reserve':
+      ctx.arc(0, 0, g * 0.85, 0, Math.PI * 2);
+      ctx.moveTo(g * 0.4, 0);
+      ctx.arc(0, 0, g * 0.4, 0, Math.PI * 2);
+      ctx.stroke();
+      break;
+    case 'command':
+      ctx.moveTo(-g * 0.6, g); ctx.lineTo(-g * 0.6, -g); ctx.lineTo(g, -g * 0.5); ctx.lineTo(-g * 0.6, 0);
+      ctx.stroke();
+      break;
+  }
+  ctx.restore();
 }

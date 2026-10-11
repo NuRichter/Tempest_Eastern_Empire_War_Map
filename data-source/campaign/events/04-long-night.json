@@ -341,7 +341,7 @@
    "calgurio"
   ],
   "forces": [
-   "F-EMP-010",
+   "F-EMP-090",
    "F-TEM-000"
   ],
   "type": "COMMAND",
@@ -390,16 +390,14 @@
   "reconstructionNote": "Day canonical relative to the revival; the hour is a placement.",
   "notes": "",
   "audit": {
-   "status": "ADDED",
+   "status": "CORRECTED",
    "changes": [
-    "New event (v14.txt:5010-5016, 5208, 5662, 5757-5795); AUDIT-PLAN section 5",
-    "R6 re-dated from D+15 10:00 to D+13 10:00: \"yesterday's ceremony\" (v14.txt:4841, 5533); the \"three days after the revival\" wording (5010) counts inclusively.",
-    "R6 location: the prisoners and their conference are on Floor 70 of the labyrinth (v14.txt:5037-5039, 5616)."
+    "R6 scenario ledger: The revived soldiers are their own cohort (F-EMP-090), not the dissolved main formation."
    ]
   },
   "effects": {
    "forces": {
-    "F-EMP-010": {
+    "F-EMP-090": {
      "status": "PRISONERS",
      "movement": "STATIONARY",
      "location": "ramiris-labyrinth",
@@ -6931,5 +6929,74 @@
    "theatres": {},
    "campaign": {}
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "immediateResult": "The operation's cumulative dead reach 1,010,000. Of the 40,000 in the detachment and the southern formation, 30,000 are not recorded as killed.",
+  "operationalResult": "Where and when these 10,000 fell is not established; neither formation's own share is invented.",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-018": {
+     "strength": "UNKNOWN",
+     "sizeStatus": "UNKNOWN",
+     "status": "REDUCED",
+     "movement": "STATIONARY"
+    },
+    "F-EMP-019": {
+     "strength": "UNKNOWN",
+     "sizeStatus": "UNKNOWN",
+     "status": "REDUCED",
+     "movement": "STATIONARY"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0519",
+  "day": 16,
+  "time": "06:00",
+  "theatreId": "TH-DWE",
+  "location": null,
+  "locationText": "Not established",
+  "type": "CASUALTIES_RECORDED",
+  "title": "Ledger closure: 10,000 dead among the detachment and the southern formation",
+  "evidence": "Derived from the scenario totals: 1,010,000 dead - (700,000 + 200,000 + 40,000 + 60,000 attributed by the novels) = 10,000.",
+  "reconstructionNote": "Placed at the end of the Long Night as a ledger closure, not as a battle."
  }
 ]

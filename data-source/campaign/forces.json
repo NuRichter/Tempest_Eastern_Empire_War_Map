@@ -138,27 +138,27 @@
   ],
   "confidence": "HIGH",
   "hierarchyProvenance": "CANONICAL",
-  "notes": "Subset of F-EMP-040; never sum the two. Warcraft/Magic Beast and Hybrid/Composite are separate legions and are no longer children of this row (R5)."
+  "notes": "Subset of F-EMP-040; never sum the two. Warcraft/Magic Beast and Hybrid/Composite are separate legions and are no longer children of this row (R5). R6: the scenario's single main formation (1,005,000) exceeds this stated ceiling of \"at most one million at once\" by 5,000; see reference DISC-R6-03."
  },
  {
   "id": "F-EMP-010",
   "faction": "Eastern Empire",
-  "army": "Imperial Army (Jura front)",
-  "formation": "Jura invasion army",
-  "displayName": "Imperial Army of the Jura invasion",
+  "army": "Imperial Army",
+  "formation": "Main invasion formation (single column until the halt point)",
+  "displayName": "Main invasion formation",
   "parentId": "F-EMP-001",
   "commander": "General Caligulio",
   "commanderIds": [
    "calgurio"
   ],
-  "role": "Invasion of the Great Jura Forest",
-  "unitType": "command",
-  "initialStrengthRaw": "940,000 ('he originally led an army of 940,000', V13 Ch4; '940,000 killed', V14)",
+  "role": "Advances as one formation across the Tempest border to the halt point, then splits into five allocations (700,000 + 200,000 + 40,000 + 30,000 + 35,000).",
+  "unitType": "combined arms (armour, modified infantry, air)",
+  "initialStrengthRaw": "1,005,000 (scenario)",
   "initialMin": 940000,
   "initialMax": 940000,
-  "initialBest": 940000,
-  "sizeStatus": "EXPLICIT",
-  "sizeEvidence": "Stated outright: Caligulio originally led 940,000 (v13.txt:16208); 940,000 imperial soldiers killed (v14.txt:1124, 4650; v14.txt:10133). Components 700,000 + 200,000 + 40,000 = 940,000 agree (DERIVED cross-check). 'Ninety-four thousand' at v13.txt:7057 and 18347 is a translation slip.",
+  "initialBest": 1005000,
+  "sizeStatus": "SCENARIO",
+  "sizeEvidence": "Scenario figure (owner brief, docs/CAMPAIGN_FORCE_LEDGER.md). The novels give 940,000 for Caligulio's invasion army (v13.txt:16208), made of 700,000 + 200,000 + 40,000; the scenario adds a 30,000 Dwargon Gate allocation and a 35,000 southern allocation inside the same main formation. See reference DISC-R6-01.",
   "finalStrength": 0,
   "kia": 940000,
   "wia": "UNKNOWN",
@@ -166,8 +166,8 @@
   "mia": "UNKNOWN",
   "finalLocation": "Annihilated in the Jura theatre; about 700,000 resurrected and held in Tempest, then marched home after the V16 summit",
   "finalMovementStatus": "REPATRIATING",
-  "finalStatus": "DESTROYED (V13 Ch2-Ch4): all killed except Miranda, Michel and Raymond; about 700,000 resurrected as prisoners (V13 Epilogue); about 240,000 could not be revived",
-  "strengthBasis": "CANONICAL",
+  "finalStatus": "Dissolved into its five allocations at the halt point (D-3); its strength after the split is the sum of the allocations still under its command.",
+  "strengthBasis": "SCENARIO",
   "source": "V12 Ch4; V13 Ch2-Epilogue; V14 Ch1-Ch2; V16 Ch3",
   "sourceRefs": [
    {
@@ -202,22 +202,24 @@
    }
   ],
   "confidence": "HIGH",
-  "hierarchyProvenance": "INFERRED",
-  "notes": "Caligulio hand-picked the force from his legion (v12.txt:10208-10215); placed under the <=1,000,000 ceiling. kia counts deaths; ~700,000 of them were revived (see CAS-021) and then held as prisoners (CAS-014). Permanent dead about 240,000."
+  "hierarchyProvenance": "SCENARIO",
+  "notes": "R6 scenario ledger. Before R6 this row was the 940,000-strong Jura invasion army (canon). The id is kept so that every event about the invasion army still resolves. Kept under the Armored Division's deployable ceiling (F-EMP-001) although the scenario figure exceeds it by 5,000 (DISC-R6-03).",
+  "ledgerRole": "MAIN",
+  "aggregateFromEvent": "EVT-0503"
  },
  {
   "id": "F-EMP-011",
   "faction": "Eastern Empire",
   "army": "Imperial Army (Jura front)",
   "formation": "Restructured Armor Corps",
-  "displayName": "Restructured Armor Corps",
+  "displayName": "Formation A (Restructured Armor Corps)",
   "parentId": "F-EMP-010",
   "commander": "General Caligulio (direct); Major General Minitz led the labyrinth assault",
   "commanderIds": [
    "calgurio",
    "minitz"
   ],
-  "role": "Main ground effort against the capital Rimuru",
+  "role": "Formation A: the Great Jura Labyrinth and the Tempest capital objectives",
   "unitType": "modified infantry",
   "initialStrengthRaw": "seven hundred thousand; about 70% of all imperial strength",
   "initialMin": 700000,
@@ -264,7 +266,13 @@
   ],
   "confidence": "HIGH",
   "hierarchyProvenance": "CANONICAL",
-  "notes": "Fan TL 'Mecha Modification Corps'. Minimum individual ability C+, some at A; Soei rates the average about B with ~35,000 A-rank equivalents (v13.txt:427-460)."
+  "notes": "Fan TL 'Mecha Modification Corps'. Minimum individual ability C+, some at A; Soei rates the average about B with ~35,000 A-rank equivalents (v13.txt:427-460). R6: one of the five allocations of the main formation, issued at the halt point (EVT-0503); never drawn as an independent formation before it.",
+  "ledgerRole": "ALLOCATION",
+  "origin": {
+   "kind": "SPLIT",
+   "fromForceId": "F-EMP-010",
+   "eventId": "EVT-0503"
+  }
  },
  {
   "id": "F-EMP-011A",
@@ -376,13 +384,13 @@
   "faction": "Eastern Empire",
   "army": "Imperial Army (Jura front)",
   "formation": "Magitank Force",
-  "displayName": "Magitank Force",
+  "displayName": "Formation B (Magitank Force)",
   "parentId": "F-EMP-010",
   "commander": "Lieutenant General Gaster",
   "commanderIds": [
    "gaster"
   ],
-  "role": "Armoured feint and pressure on Dwargon",
+  "role": "Formation B: northern Tempest, interdiction of the Tempest-Dwargon link, then the south-western offensive on Dwargon, which fails",
   "unitType": "armour",
   "initialStrengthRaw": "200,000 personnel including maintenance teams; 2,000 Magic Guided Chariots, five crew each",
   "initialMin": 200000,
@@ -395,9 +403,9 @@
   "wia": "UNKNOWN",
   "pow": 0,
   "mia": "UNKNOWN",
-  "finalLocation": "Dwargon Gate Front",
+  "finalLocation": "Southwestern Dwargon front",
   "finalMovementStatus": "STATIONARY",
-  "finalStatus": "DESTROYED on D+0 in under two hours; no prisoners; among the ~240,000 who could not be revived",
+  "finalStatus": "Annihilated at the south-western Dwargon front on D+0; the offensive into Dwargon failed",
   "strengthBasis": "CANONICAL",
   "source": "V12 Ch4 (formation); V13 Ch1-Ch3 (Gaster named, battle)",
   "sourceRefs": [
@@ -424,20 +432,26 @@
   ],
   "confidence": "HIGH",
   "hierarchyProvenance": "CANONICAL",
-  "notes": "Fan TL 'Magic Chariot Division'; commander 'Geist' in the fan TL (= Gaster). Gaster is not named in V12."
+  "notes": "Fan TL 'Magic Chariot Division'; commander 'Geist' in the fan TL (= Gaster). Gaster is not named in V12. R6: one of the five allocations of the main formation, issued at the halt point (EVT-0503); never drawn as an independent formation before it.",
+  "ledgerRole": "ALLOCATION",
+  "origin": {
+   "kind": "SPLIT",
+   "fromForceId": "F-EMP-010",
+   "eventId": "EVT-0503"
+  }
  },
  {
   "id": "F-EMP-013",
   "faction": "Eastern Empire",
   "army": "Imperial Army (Jura front)",
   "formation": "Flying Combat Corps - committed element (100 airships)",
-  "displayName": "Flying Combat Corps",
+  "displayName": "Northern reinforcement (Flying Combat Corps)",
   "parentId": "F-EMP-010",
   "commander": "Major General Farraga",
   "commanderIds": [
    "farraga"
   ],
-  "role": "Air power over the Dwargon gate front",
+  "role": "Northern reinforcement allocation: reinforces the northern Tempest front, then flies to the south-western Dwargon battle",
   "unitType": "air",
   "initialStrengthRaw": "40,000 personnel; one hundred airships committed",
   "initialMin": 40000,
@@ -484,7 +498,13 @@
   ],
   "confidence": "HIGH",
   "hierarchyProvenance": "CANONICAL",
-  "notes": "Fan TL 'Air Combat Flying Corps'; commander 'Faraga' (= Farraga). Carried the magicule-disturbing radiation weapon. '400 airships destroyed' was wrong: 100 were committed."
+  "notes": "Fan TL 'Air Combat Flying Corps'; commander 'Faraga' (= Farraga). Carried the magicule-disturbing radiation weapon. '400 airships destroyed' was wrong: 100 were committed. R6: one of the five allocations of the main formation, issued at the halt point (EVT-0503); never drawn as an independent formation before it.",
+  "ledgerRole": "ALLOCATION",
+  "origin": {
+   "kind": "SPLIT",
+   "fromForceId": "F-EMP-010",
+   "eventId": "EVT-0503"
+  }
  },
  {
   "id": "F-EMP-014",
@@ -582,7 +602,7 @@
   ],
   "confidence": "MEDIUM",
   "hierarchyProvenance": "INFERRED",
-  "notes": "R5 canon resolution of the departure question: the forest elements seen at the D-33 council are advance squads of the invasion army; the main body leaves the next day (V12 Epilogue). Inside the 940,000; never summed with its parent. Position and rejoining are RECONSTRUCTED."
+  "notes": "R5 canon resolution of the departure question: the forest elements seen at the D-33 council are advance squads of the invasion army; the main body leaves the next day (V12 Epilogue). Inside the 940,000; never summed with its parent. Position and rejoining are RECONSTRUCTED. R6: part of the main formation's 1,005,000; it rejoins at the halt point."
  },
  {
   "id": "F-EMP-015",
@@ -636,6 +656,263 @@
   "confidence": "MEDIUM",
   "hierarchyProvenance": "INFERRED",
   "notes": "Added in R5 (split from F-EMP-014). Fan TL 'Near Guard' / 'Order of the Near Guard'."
+ },
+ {
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "commander": "Not stated",
+  "commanderIds": [],
+  "unitType": "infantry",
+  "sizeStatus": "SCENARIO",
+  "finalStrength": "UNKNOWN",
+  "source": "Scenario (docs/CAMPAIGN_FORCE_LEDGER.md)",
+  "sourceRefs": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "SCENARIO",
+  "strengthBasis": "SCENARIO",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "initialMin": 30000,
+  "initialMax": 30000,
+  "finalMovementStatus": "STATIONARY",
+  "notes": "",
+  "id": "F-EMP-017",
+  "formation": "Dwargon Gate reinforcement, Phase 1",
+  "displayName": "Gate reinforcement, Phase 1",
+  "parentId": "F-EMP-010",
+  "role": "Advances from the halt point to the Dwargon Gate (Isthmus) and joins the Gate force",
+  "initialStrengthRaw": "30,000 (scenario)",
+  "initialBest": 30000,
+  "sizeEvidence": "Scenario allocation of the main formation. Not in the novels: there the 60,000 before the Isthmus are all Composite Division (v14.txt:640-641). See DISC-R6-02.",
+  "finalStatus": "Merged into the Dwargon Gate force on arrival (D+5)",
+  "finalLocation": "Dwargon Gate",
+  "ledgerRole": "ALLOCATION",
+  "origin": {
+   "kind": "SPLIT",
+   "fromForceId": "F-EMP-010",
+   "eventId": "EVT-0503"
+  },
+  "mergedInto": {
+   "forceId": "F-EMP-031",
+   "eventId": "EVT-0525"
+  }
+ },
+ {
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "commander": "Not stated",
+  "commanderIds": [],
+  "unitType": "infantry",
+  "sizeStatus": "SCENARIO",
+  "finalStrength": "UNKNOWN",
+  "source": "Scenario (docs/CAMPAIGN_FORCE_LEDGER.md)",
+  "sourceRefs": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "SCENARIO",
+  "strengthBasis": "SCENARIO",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "initialMin": 35000,
+  "initialMax": 35000,
+  "finalMovementStatus": "STATIONARY",
+  "notes": "",
+  "id": "F-EMP-018",
+  "formation": "Southern Dwargon formation",
+  "displayName": "Southern formation",
+  "parentId": "F-EMP-010",
+  "role": "Approaches Dwargon from the south along its own route, south of the Dwargon Gate",
+  "initialStrengthRaw": "35,000 (scenario)",
+  "initialBest": 35000,
+  "sizeEvidence": "Scenario allocation of the main formation. Not in the novels.",
+  "finalStatus": "Survivors withdraw towards the Empire after the war (D+17); its share of the 10,000 unattributed deaths is not established",
+  "finalLocation": "Withdrawing towards the Empire",
+  "ledgerRole": "ALLOCATION",
+  "origin": {
+   "kind": "SPLIT",
+   "fromForceId": "F-EMP-010",
+   "eventId": "EVT-0503"
+  }
+ },
+ {
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "commander": "Not stated",
+  "commanderIds": [],
+  "unitType": "infantry",
+  "sizeStatus": "SCENARIO",
+  "finalStrength": "UNKNOWN",
+  "source": "Scenario (docs/CAMPAIGN_FORCE_LEDGER.md)",
+  "sourceRefs": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "SCENARIO",
+  "strengthBasis": "SCENARIO",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "initialMin": 5000,
+  "initialMax": 5000,
+  "finalMovementStatus": "STATIONARY",
+  "notes": "",
+  "id": "F-EMP-019",
+  "formation": "Initial Dwargon detachment",
+  "displayName": "Dwargon detachment",
+  "parentId": "F-EMP-040",
+  "role": "Advances separately from the main formation towards Dwargon and blockades the Dwargon Gate until the Gate force arrives",
+  "initialStrengthRaw": "5,000 (scenario)",
+  "initialBest": 5000,
+  "sizeEvidence": "Scenario. Part of the initial forward deployment (1,005,000 + 5,000) but never of the main formation.",
+  "finalStatus": "Survivors withdraw to the Empire after the war; its share of the 10,000 unattributed deaths is not established",
+  "finalLocation": "Withdrawing to the Empire",
+  "ledgerRole": "DETACHMENT"
+ },
+ {
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "commander": "Not stated",
+  "commanderIds": [],
+  "unitType": "infantry (reserve)",
+  "sizeStatus": "SCENARIO",
+  "finalStrength": 70000,
+  "source": "Scenario (docs/CAMPAIGN_FORCE_LEDGER.md)",
+  "sourceRefs": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "SCENARIO",
+  "strengthBasis": "SCENARIO",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "initialMin": 100000,
+  "initialMax": 100000,
+  "finalMovementStatus": "STATIONARY",
+  "notes": "",
+  "id": "F-EMP-080",
+  "formation": "Imperial capital emergency reserve",
+  "displayName": "Capital reserve",
+  "parentId": "F-EMP-030",
+  "role": "Emergency reserve held at the imperial capital, outside the invasion operation; 30,000 of it are transferred to the Dwargon Gate in Phase 2",
+  "initialStrengthRaw": "100,000 (scenario)",
+  "initialBest": 100000,
+  "sizeEvidence": "Scenario. Corresponds to the Composite Division's about 100,000 fighting troops, the half that is not intelligence or general service (v12.txt:10184-10187), which also guards the capital.",
+  "finalStatus": "70,000 remain at the capital after the Phase 2 transfer",
+  "finalLocation": "Imperial Capital",
+  "ledgerRole": "RESERVE"
+ },
+ {
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "commander": "Not stated",
+  "commanderIds": [],
+  "unitType": "infantry",
+  "sizeStatus": "SCENARIO",
+  "finalStrength": "UNKNOWN",
+  "source": "Scenario (docs/CAMPAIGN_FORCE_LEDGER.md)",
+  "sourceRefs": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "SCENARIO",
+  "strengthBasis": "SCENARIO",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "initialMin": 30000,
+  "initialMax": 30000,
+  "finalMovementStatus": "STATIONARY",
+  "notes": "",
+  "id": "F-EMP-081",
+  "formation": "Dwargon Gate reinforcement, Phase 2",
+  "displayName": "Gate reinforcement, Phase 2",
+  "parentId": null,
+  "role": "Transferred from the capital reserve to the Dwargon Gate; the only movement that adds personnel to the operation after the initial deployment",
+  "initialStrengthRaw": "30,000 (scenario)",
+  "initialBest": 30000,
+  "sizeEvidence": "Scenario. The same personnel as 30,000 of the capital reserve, which falls from 100,000 to 70,000 at departure.",
+  "finalStatus": "Merged into the Dwargon Gate force on arrival (D+8)",
+  "finalLocation": "Dwargon Gate",
+  "ledgerRole": "TRANSFER",
+  "origin": {
+   "kind": "TRANSFER",
+   "fromForceId": "F-EMP-080",
+   "eventId": "EVT-0516"
+  },
+  "mergedInto": {
+   "forceId": "F-EMP-031",
+   "eventId": "EVT-0526"
+  }
+ },
+ {
+  "faction": "Eastern Empire",
+  "army": "Imperial Army",
+  "commander": "Not stated",
+  "commanderIds": [],
+  "unitType": "infantry (prisoners, revived)",
+  "sizeStatus": "EXPLICIT",
+  "finalStrength": 700000,
+  "source": "V14; scenario ledger",
+  "sourceRefs": [
+   {
+    "volume": "14",
+    "chapter": null,
+    "locator": "v14.txt:1124"
+   }
+  ],
+  "confidence": "MEDIUM",
+  "hierarchyProvenance": "CANONICAL",
+  "strengthBasis": "SCENARIO",
+  "kia": "UNKNOWN",
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "initialMin": 700000,
+  "initialMax": 700000,
+  "finalMovementStatus": "STATIONARY",
+  "notes": "",
+  "id": "F-EMP-090",
+  "formation": "Revived imperial soldiers (held in Tempest)",
+  "displayName": "Revived soldiers",
+  "parentId": null,
+  "role": "The 700,000 dead of the Jura fighting brought back by Rimuru; prisoners in Tempest, later marched home",
+  "initialStrengthRaw": "about 700,000",
+  "initialBest": 700000,
+  "sizeEvidence": "Rimuru resurrects about 700,000 (v14.txt). A state change of personnel already counted, not a new deployment: they are a subset of the recorded dead.",
+  "finalStatus": "Marched home by Caligulio after the summit",
+  "finalLocation": "Returning to the Empire",
+  "ledgerRole": "REVIVED_COHORT"
  },
  {
   "id": "F-EMP-020",
@@ -700,7 +977,8 @@
   ],
   "confidence": "HIGH",
   "hierarchyProvenance": "CANONICAL",
-  "notes": "Fan TL 'Warcraft Legion' / 'Demon Beast Legion'. Separate legion of the Three Great Generals, not a child of the Armored Division (R5). kia is at least 10,000 (explicit) plus an unstated remainder; see CAS-024/CAS-025."
+  "notes": "Fan TL 'Warcraft Legion' / 'Demon Beast Legion'. Separate legion of the Three Great Generals, not a child of the Armored Division (R5). kia is at least 10,000 (explicit) plus an unstated remainder; see CAS-024/CAS-025. R6: a separate airborne operation (the strike on the West, v12.txt:10863-10871), diverted to Dwargon on D+15; not part of the invasion operation's 1,040,000 and not counted in its ledger. See DISC-R6-05.",
+  "ledgerRole": "OUTSIDE_OPERATION"
  },
  {
   "id": "F-EMP-030",
@@ -756,22 +1034,22 @@
   "id": "F-EMP-031",
   "faction": "Eastern Empire",
   "army": "Composite Division",
-  "formation": "Composite Division blockade force before Isthmus",
-  "displayName": "Isthmus blockade force",
-  "parentId": "F-EMP-030",
+  "formation": "Dwargon Gate force (Phase 1 + Phase 2 reinforcements)",
+  "displayName": "Dwargon Gate force",
+  "parentId": null,
   "commander": "Deputy army commander Zero (senior officer on site); Yuuki nominal",
   "commanderIds": [
    "zero",
    "yuuki"
   ],
-  "role": "Blockade of the Dwargon eastern metropolis (camouflage for a secret understanding with Dwargon)",
+  "role": "The force massed before the Dwargon Gate: 30,000 from the main formation (Phase 1) and 30,000 from the capital reserve (Phase 2)",
   "unitType": "infantry",
-  "initialStrengthRaw": "sixty thousand troops (60% of the Composite Division) blockading Isthmus",
+  "initialStrengthRaw": "0, then 30,000 (Phase 1 arrival), then 60,000 (Phase 2 arrival)",
   "initialMin": 60000,
   "initialMax": 60000,
-  "initialBest": 60000,
-  "sizeStatus": "EXPLICIT",
-  "sizeEvidence": "60,000 (v13.txt:7710-7714; v14.txt:640-641, 12352-12355); Laplace: about 60,000 (v14.txt:14212).",
+  "initialBest": 30000,
+  "sizeStatus": "SCENARIO",
+  "sizeEvidence": "Scenario composition of the 60,000 the novels place before the Isthmus (v13.txt:7710-7714; v14.txt:640-641). In the novels all 60,000 are Composite Division under Yuuki; see DISC-R6-02.",
   "finalStrength": 0,
   "kia": 60000,
   "wia": "UNKNOWN",
@@ -810,8 +1088,9 @@
    }
   ],
   "confidence": "HIGH",
-  "hierarchyProvenance": "CANONICAL",
-  "notes": "The death is narrated in V14 Ch4; V15 Ch1 only refers back to the sacrifice. Zero restored order in the camp; the force never lost its command (EVT-0321 corrected)."
+  "hierarchyProvenance": "SCENARIO",
+  "notes": "R6: before R6 this row was the Composite Division's Isthmus blockade force. The id is kept because every V13-V15 event about the 60,000 before the Isthmus refers to it.",
+  "ledgerRole": "GATE_FORCE"
  },
  {
   "id": "F-EMP-032",

@@ -2,7 +2,7 @@
  * Shapes of the hand-maintained campaign source (data-source/campaign/*.json).
  * Only the compiler reads these; the browser sees src/types/dataset.ts.
  */
-import type { Confidence, Provenance, Quantity, RouteConfidence, SizeStatus, TimePrecision, BattleType } from '../../src/types/dataset';
+import type { Confidence, LedgerRole, Provenance, Quantity, RouteConfidence, SizeStatus, TimePrecision, BattleType } from '../../src/types/dataset';
 
 export interface SourceRefSrc {
   volume: string;
@@ -84,6 +84,8 @@ export interface EventSrc {
   notes: string;
   audit: { status: 'UNCHANGED' | 'CORRECTED' | 'ADDED' | 'PRE_AUDIT'; changes: string[] };
   effects: { forces: Record<string, ForceEffect>; theatres: Record<string, TheatreEffect>; campaign: CampaignEffect };
+  /** Supply-route states set by this event, by geography road id. */
+  logistics?: Record<string, 'OPEN' | 'THREATENED' | 'CUT' | 'SECURE'>;
 }
 
 export interface ForceSrc {
@@ -109,6 +111,11 @@ export interface ForceSrc {
   confidence: Confidence;
   hierarchyProvenance?: Provenance;
   notes: string;
+  ledgerRole?: LedgerRole;
+  origin?: { kind: 'SPLIT' | 'TRANSFER'; fromForceId: string; eventId: string };
+  mergedInto?: { forceId: string; eventId: string };
+  /** From this event on, its strength is the sum of its ALLOCATION children (the compiler computes it). */
+  aggregateFromEvent?: string;
 }
 
 export interface TransitKeySrc {
@@ -163,6 +170,8 @@ export interface CasualtySrc {
   source?: string;
   evidence: string;
   notes: string;
+  /** For a row with no single force: the operation formations it covers. */
+  operationForceIds?: string[];
 }
 
 export interface BattleSrc {

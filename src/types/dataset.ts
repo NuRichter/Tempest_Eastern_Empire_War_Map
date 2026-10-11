@@ -21,19 +21,26 @@ export type Confidence = 'HIGH' | 'MEDIUM' | 'LOW' | Unknown;
  * CANONICAL_WITH_VISUAL_RECONSTRUCTION canonical, but position/path/timing are reconstructed for the map
  * RECONSTRUCTED                        a plausible bridging sequence made by this project
  * INFERRED                             follows from several clues, not stated
+ * SCENARIO                             set by the project's scenario brief (authoritative here, not stated by the novels)
  * UNRESOLVED                           evidence insufficient
+ *
+ * Mapped onto the brief's evidence taxonomy: canonical = CANONICAL (and the
+ * canonical part of CANONICAL_WITH_VISUAL_RECONSTRUCTION), source_inferred =
+ * INFERRED, synthetic = RECONSTRUCTED and SCENARIO, unverified = UNRESOLVED.
  */
 export type Provenance =
   | 'CANONICAL'
   | 'CANONICAL_WITH_VISUAL_RECONSTRUCTION'
   | 'RECONSTRUCTED'
   | 'INFERRED'
+  | 'SCENARIO'
   | 'UNRESOLVED';
 
 export const PROVENANCE_ORDER: Provenance[] = [
   'CANONICAL',
   'CANONICAL_WITH_VISUAL_RECONSTRUCTION',
   'INFERRED',
+  'SCENARIO',
   'RECONSTRUCTED',
   'UNRESOLVED',
 ];
@@ -45,7 +52,7 @@ export type SourceGrade = 'CANONICAL' | 'RECONSTRUCTED' | 'SIMULATION' | Unknown
 export type PlacementGrade = 'MEASURED' | 'RECONSTRUCTED' | 'SCHEMATIC' | 'ABSTRACT';
 
 /** How a force strength is known. UNKNOWN is never rendered as zero. */
-export type SizeStatus = 'EXPLICIT' | 'DERIVED' | 'RECONSTRUCTED' | 'UNKNOWN';
+export type SizeStatus = 'EXPLICIT' | 'DERIVED' | 'SCENARIO' | 'RECONSTRUCTED' | 'UNKNOWN';
 
 /** How a movement route is known. UNKNOWN routes are never drawn. */
 export type RouteConfidence = 'SOLID' | 'RECONSTRUCTED' | 'SCHEMATIC' | 'UNKNOWN';
@@ -123,6 +130,8 @@ export interface Manifest {
     battleDayMax: number;
   };
   coordinateSystem: CoordinateSystem;
+  /** The calibrated world frame (data-source/world.source.json). */
+  world: { id: 'WORLD_KM'; kmPerAtlasPixel: number; widthKm: number; heightKm: number; provenance: string; confidence: string };
   counts: Record<string, number>;
 }
 
@@ -176,7 +185,11 @@ export interface FrameState {
   activeCommanders: string;
   majorCombatants: string;
   eventIds: EventId[];
+  /** State of each strategic supply route (geography roads with role LOGISTICS), by road id. */
+  logistics: Record<string, SupplyState>;
 }
+
+export type SupplyState = 'OPEN' | 'THREATENED' | 'CUT' | 'SECURE';
 
 export interface Nation {
   id: NationId;
@@ -233,6 +246,8 @@ export interface Place {
   altitude: 'GROUND' | 'AIR' | 'SUBSURFACE' | null;
   basis: string;
   territoryId: TerritoryId | null;
+  /** Strategic symbol for the strategic-points layer, when the place has a military role. */
+  symbol: 'halt' | 'gate' | 'crossing' | 'objective' | 'staging' | 'camp' | null;
 }
 
 export interface Force {
@@ -261,6 +276,14 @@ export interface Force {
   notes: string;
   /** True when this force's strength is already counted inside its parent. */
   countedInParent: boolean;
+  /** Its part in the invasion operation's ledger, or null when outside it (docs/CAMPAIGN_FORCE_LEDGER.md). */
+  ledgerRole: LedgerRole | null;
+  /** How it came into being: split from a parent, or transferred out of another force. */
+  origin: { kind: 'SPLIT' | 'TRANSFER'; fromForceId: ForceId; eventId: EventId; frame: number } | null;
+  /** The force it was merged into, and when. Its personnel are counted there from then on. */
+  mergedInto: { forceId: ForceId; eventId: EventId; frame: number } | null;
+  /** Forces split from it or transferred out of it (the inverse of origin). */
+  issuedIds: ForceId[];
   firstFrame: number;
   lastFrame: number;
 }
@@ -299,6 +322,12 @@ export interface PositionKey {
   placement: PlacementGrade;
   /** Confidence of the route that ARRIVES at this key. */
   route: RouteConfidence;
+  /**
+   * Geometry of the leg that arrives at this key (routes.json) and the
+   * fractions of that route the leg starts and ends at. Absent: a straight leg
+   * (a tactical move inside one battlefield).
+   */
+  path?: { routeId: string; from: number; to: number };
 }
 
 export interface ForcePositionTrack {
@@ -476,6 +505,77 @@ export interface Movement {
   reach: number;
   /** The arrival is not dated and falls after the end of the campaign clock. */
   arrivesAfterClock: boolean;
+  /** Its measured route (routes.json), when it has one. */
+  routeId: string | null;
+  /** Ground distance of the route and the average speed the timing implies. */
+  lengthKm: number | null;
+  kmPerDay: number | null;
+  /** The speed class it is checked against, and whether the timing exceeds its maximum. */
+  speedClass: string;
+  overSpeed: boolean;
+}
+
+export type LedgerRole = 'MAIN' | 'ALLOCATION' | 'DETACHMENT' | 'RESERVE' | 'TRANSFER' | 'GATE_FORCE' | 'REVIVED_COHORT' | 'OUTSIDE_OPERATION';
+
+export type TerrainClass = 'road' | 'open' | 'forest' | 'deepForest' | 'pass' | 'mountain' | 'water' | 'river' | 'ford' | 'air';
+
+/** A measured route on the world model. Points are SIM_NORMALISED. */
+export interface Route {
+  id: string;
+  mode: 'GROUND' | 'AIR' | 'TACTICAL';
+  points: [number, number][];
+  /** Cumulative km at each point. */
+  cumKm: number[];
+  lengthKm: number;
+  straightKm: number;
+  terrainKm: Partial<Record<TerrainClass, number>>;
+  crossings: string[];
+  passes: string[];
+  roads: string[];
+  maxElevationM: number;
+  profile: [number, number][];
+  exception: string | null;
+  /** Which forces travel it, and when. */
+  uses: { forceId: ForceId; startFrame: number; endFrame: number; from: number; to: number; movementId: string | null }[];
+}
+
+export interface GeoFeatureBase { id: string; name: string; grade: string; basis: string }
+export interface Geography {
+  mountains: (GeoFeatureBase & { ring: [number, number][] })[];
+  passes: (GeoFeatureBase & { line: [number, number][] })[];
+  lakes: (GeoFeatureBase & { ring: [number, number][] })[];
+  rivers: (GeoFeatureBase & { line: [number, number][] })[];
+  crossings: (GeoFeatureBase & { x: number; y: number; kind: 'FORD' | 'BRIDGE' })[];
+  forests: (GeoFeatureBase & { ring: [number, number][]; kind: 'forest' | 'deepForest' })[];
+  roads: (GeoFeatureBase & { line: [number, number][]; role: string; lengthKm: number })[];
+}
+
+/** The operation's force ledger at one point in time (docs/CAMPAIGN_FORCE_LEDGER.md). */
+export interface LedgerPoint {
+  frame: number;
+  eventId: EventId | null;
+  /** Main formation plus detachment as first deployed (1,010,000). */
+  initialForward: number;
+  /** Unique personnel ever committed to the operation (1,010,000, then 1,040,000). */
+  committed: number;
+  capitalReserve: Quantity;
+  gateForce: Quantity;
+  killed: number;
+  revived: number;
+  /** Killed and not reversed by the revival. */
+  deadNotRevived: number;
+  /** Committed and never recorded killed. */
+  neverKilled: number;
+  /** Committed minus killed plus revived. */
+  active: number;
+}
+
+export interface Ledger {
+  operationForceIds: ForceId[];
+  points: LedgerPoint[];
+  /** Arithmetic identities the compiler checked. */
+  checks: { name: string; expression: string; ok: boolean }[];
+  note: string;
 }
 
 export interface TerritoryChange {

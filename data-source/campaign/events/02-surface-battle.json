@@ -9,7 +9,7 @@
   "front": "Dwargon Gate Front",
   "battle": null,
   "battleType": null,
-  "location": "dwargon-gate-front",
+  "location": "sw-dwargon-front",
   "locationText": "Gaster's camp, about 30 km from Dwargon",
   "actor": "Lieutenant General Gaster (Magitank Force)",
   "actorFaction": "Eastern Empire",
@@ -93,7 +93,7 @@
      "status": "ACTIVE",
      "movement": "ADVANCE",
      "direction": "To Gaster's camp as envoy",
-     "location": "dwargon-gate-front",
+     "location": "sw-dwargon-front",
      "locationText": "Gaster's camp (as envoy)"
     }
    },
@@ -117,7 +117,7 @@
   "front": "Dwargon Gate Front",
   "battle": null,
   "battleType": null,
-  "location": "dwargon-gate-front",
+  "location": "sw-dwargon-front",
   "locationText": "Gaster's camp, at Testarossa's warning line",
   "actor": "Testarossa (envoy of Demon Lord Rimuru)",
   "actorFaction": "Jura-Tempest Federation",
@@ -289,7 +289,7 @@
   "front": "Dwargon Gate Front",
   "battle": null,
   "battleType": null,
-  "location": "dwargon-gate-front",
+  "location": "sw-dwargon-front",
   "locationText": "Dwargon Gate Front",
   "actor": "Magitank Force",
   "actorFaction": "Eastern Empire",
@@ -476,7 +476,7 @@
   "front": "Dwargon Gate Front",
   "battle": "Battle of the Dwargon Gate",
   "battleType": "ENGAGEMENT",
-  "location": "dwargon-gate-airspace",
+  "location": "sw-dwargon-airspace",
   "locationText": "Airspace over the magitank line",
   "actor": "Third Corps air element under Gabiru (Hiryuu and Blue Numbers dragon riders)",
   "actorFaction": "Jura-Tempest Federation",
@@ -545,7 +545,7 @@
      "status": "ENGAGED",
      "movement": "ADVANCE",
      "direction": "Air attack on the magitank line",
-     "location": "dwargon-gate-airspace",
+     "location": "sw-dwargon-airspace",
      "locationText": "Airspace over the magitank line"
     },
     "F-TEM-003C": {
@@ -554,7 +554,7 @@
      "status": "ENGAGED",
      "movement": "ADVANCE",
      "direction": "Air attack on the magitank line",
-     "location": "dwargon-gate-airspace",
+     "location": "sw-dwargon-airspace",
      "locationText": "Airspace over the magitank line"
     }
    },
@@ -572,7 +572,7 @@
   "front": "Dwargon Gate Front",
   "battle": "Battle of the Dwargon Gate",
   "battleType": "AMBUSH",
-  "location": "dwargon-gate-front",
+  "location": "sw-dwargon-front",
   "locationText": "Dwargon Gate Front",
   "actor": "Wolf Rider unit (about 100) under Gobta",
   "actorFaction": "Jura-Tempest Federation",
@@ -1035,7 +1035,7 @@
   "front": "Dwargon Gate Front",
   "battle": "Battle of the Dwargon Gate",
   "battleType": "ENGAGEMENT",
-  "location": "dwargon-gate-airspace",
+  "location": "sw-dwargon-airspace",
   "locationText": "Airspace over the front",
   "actor": "Flying Combat Corps (Major General Farraga)",
   "actorFaction": "Eastern Empire",
@@ -1112,7 +1112,7 @@
      "status": "ENGAGED",
      "movement": "ADVANCE",
      "direction": "Joining the battle over the front",
-     "location": "dwargon-gate-airspace",
+     "location": "sw-dwargon-airspace",
      "locationText": "Airspace over the front"
     },
     "F-TEM-001A": {
@@ -1311,7 +1311,7 @@
   "front": "Dwargon Gate Front",
   "battle": "Battle of the Dwargon Gate",
   "battleType": "DEFENSIVE_ACTION",
-  "location": "dwargon-gate-airspace",
+  "location": "sw-dwargon-airspace",
   "locationText": "Airspace over the front",
   "actor": "Gabiru and the Hiryuu",
   "actorFaction": "Jura-Tempest Federation",
@@ -1385,7 +1385,7 @@
      "status": "ACTIVE",
      "movement": "WITHDRAWAL",
      "direction": "Led out of the air battle by Ultima",
-     "location": "dwargon-gate-front",
+     "location": "sw-dwargon-front",
      "locationText": "Withdrawn from the air battle (position not stated)"
     },
     "F-DEM-002": {
@@ -1394,7 +1394,7 @@
      "status": "ACTIVE",
      "movement": "WITHDRAWAL",
      "direction": "Leading the Flying Dragons away",
-     "location": "dwargon-gate-airspace",
+     "location": "sw-dwargon-airspace",
      "locationText": "Airspace over the front"
     }
    },
@@ -1584,7 +1584,7 @@
   "front": "Dwargon Gate Front",
   "battle": "Battle of the Dwargon Gate",
   "battleType": "AMBUSH",
-  "location": "dwargon-gate-front",
+  "location": "sw-dwargon-front",
   "locationText": "Supply unit of the Magitank Force, in the imperial rear",
   "actor": "Hakuro with the Green Numbers (12,000)",
   "actorFaction": "Jura-Tempest Federation",
@@ -1646,7 +1646,7 @@
      "status": "ENGAGED",
      "movement": "ADVANCE",
      "direction": "Raid on the imperial supply unit",
-     "location": "dwargon-gate-front",
+     "location": "sw-dwargon-front",
      "locationText": "Imperial rear: Magitank Force supply unit"
     }
    },
@@ -1664,7 +1664,7 @@
   "front": "Dwargon Gate Front",
   "battle": "Battle of the Dwargon Gate",
   "battleType": "ENGAGEMENT",
-  "location": "dwargon-gate-airspace",
+  "location": "sw-dwargon-airspace",
   "locationText": "Airspace over the front",
   "actor": "Gabiru and the Hiryuu",
   "actorFaction": "Jura-Tempest Federation",
@@ -1744,7 +1744,7 @@
   "front": "Dwargon Gate Front",
   "battle": "Battle of the Dwargon Gate",
   "battleType": "SPECIAL_COMBAT",
-  "location": "dwargon-gate-airspace",
+  "location": "sw-dwargon-airspace",
   "locationText": "Farraga's command ship",
   "actor": "Ultima",
   "actorFaction": "Jura-Tempest Federation",
@@ -1814,7 +1814,7 @@
      "status": "ENGAGED",
      "movement": "ADVANCE",
      "direction": "Aboard the command ship",
-     "location": "dwargon-gate-airspace",
+     "location": "sw-dwargon-airspace",
      "locationText": "Farraga's command ship"
     }
    },
@@ -1834,7 +1834,7 @@
   "front": "Dwargon Gate Front",
   "battle": "Battle of the Dwargon Gate",
   "battleType": "SPECIAL_COMBAT",
-  "location": "dwargon-gate-airspace",
+  "location": "sw-dwargon-airspace",
   "locationText": "Airspace over the front",
   "actor": "Ultima",
   "actorFaction": "Jura-Tempest Federation",
@@ -1897,7 +1897,8 @@
     "Deleted the F-DRG-001 effect",
     "Added: Flying Dragon losses zero (v13.txt:5390-5392)",
     "KIA 40,000 = corps total via CAS-002 (v13.txt:7531-7538)",
-    "Time 10:40 -> D+0 13:00"
+    "Time 10:40 -> D+0 13:00",
+    "R6 scenario ledger: the main formation's strength after the split is the sum of its allocations, computed by the compiler."
    ]
   },
   "effects": {
@@ -1910,11 +1911,6 @@
      "status": "DESTROYED",
      "movement": "STATIONARY",
      "direction": "-"
-    },
-    "F-EMP-010": {
-     "strength": 900000,
-     "effective": 900000,
-     "kia": 40000
     },
     "F-DEM-002": {
      "status": "ACTIVE",
@@ -2299,7 +2295,7 @@
   "front": "Dwargon Gate Front",
   "battle": "Battle of the Dwargon Gate",
   "battleType": "MAJOR_BATTLE",
-  "location": "dwargon-gate-front",
+  "location": "sw-dwargon-front",
   "locationText": "Dwargon Gate Front",
   "actor": "Jura-Tempest Federation",
   "actorFaction": "Jura-Tempest Federation",
@@ -2385,7 +2381,8 @@
     "Tempest 15,000 -> UNKNOWN (not stated in V13 Ch2-3)",
     "Source Ch3 -> Ch2 end + Ch3 + Epilogue",
     "Added: the 240,000 were never revived (v13.txt:18364-18395)",
-    "Calgurio -> Caligulio; Geist/Faraga -> Gaster/Farraga"
+    "Calgurio -> Caligulio; Geist/Faraga -> Gaster/Farraga",
+    "R6 scenario ledger: the main formation's strength after the split is the sum of its allocations, computed by the compiler."
    ]
   },
   "effects": {
@@ -2398,12 +2395,6 @@
      "status": "DESTROYED",
      "movement": "STATIONARY",
      "direction": "-"
-    },
-    "F-EMP-010": {
-     "strength": 700000,
-     "effective": 700000,
-     "kia": 240000,
-     "pow": 0
     },
     "F-TEM-001A": {
      "status": "ACTIVE",
@@ -2593,6 +2584,78 @@
     }
    },
    "campaign": {}
+  }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "ultima",
+   "testarossa"
+  ],
+  "immediateResult": "No imperial soldier of Formation B or the northern reinforcement remains on the field. Dwargon is not taken.",
+  "operationalResult": "The interdiction of the Tempest-Dwargon link ends with the formation that attempted it.",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 0
+  },
+  "intensity": "LOW",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:6675-6679"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "Offensive failed; Dwargon not taken",
+     "control": "DWARGON_CONTROLLED",
+     "battleStatus": "OFFENSIVE_FAILED"
+    }
+   },
+   "campaign": {}
+  },
+  "id": "EVT-0515",
+  "day": 0,
+  "time": "13:30",
+  "theatreId": "TH-DWG",
+  "location": "sw-dwargon-front",
+  "locationText": "Southwestern Dwargon front",
+  "type": "OFFENSIVE_FAILED",
+  "title": "Formation B's offensive into Dwargon has failed; the Tempest-Dwargon road is secure",
+  "evidence": "The surface battle ends with the Magitank Force and the Flying Combat Corps annihilated (v13.txt:6675-6679). The scenario attributes the defence to Ultima's group; the novels credit Ultima with the air battle and Testarossa, Gobta, Ranga and Hakuro with the ground battle, so the attribution to Ultima's group for the whole defence is UNVERIFIED.",
+  "logistics": {
+   "tempest-dwargon-road": "SECURE"
   }
  }
 ]

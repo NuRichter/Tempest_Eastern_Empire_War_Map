@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from 'react';
 
+import { replacesParent } from '@/lib/hierarchy';
+
 import { msg, useT } from '@/i18n';
 import { controlKey, FACTION_COLOR, INK } from '@/lib/palette';
 import { ROLE_LABEL } from '@/lib/taxonomy';
@@ -13,6 +15,7 @@ import { BATTLE_TYPE_LABEL } from '@/lib/taxonomy';
 import { getField, onShare } from '@/map/field/fieldStore';
 import type { Quantity } from '@/types/dataset';
 import { SituationBar } from '@/components/shell/SituationBar';
+import { LedgerSection } from '@/components/dossier/geo';
 
 /**
  * Campaign intelligence summary at the current moment. Every number comes from
@@ -44,7 +47,7 @@ export function SituationPanel() {
     // Only the most specific formations: a parent listed beside its own
     // subordinates would present the same soldiers twice.
     const ids = new Set(live.map((x) => x.f.id));
-    return live.filter((x) => !x.f.childIds.some((c) => ids.has(c)));
+    return live.filter((x) => !x.f.childIds.some((c) => ids.has(c) && replacesParent(data.forceById.get(c)!, x.f, data.forces)));
   }, [data, frame]);
 
   if (!data || !state) return null;
@@ -75,6 +78,8 @@ export function SituationPanel() {
           <p className="mt-1 text-2xs leading-relaxed text-fg-3">{t('Day and hour are simulation placements on a 10-minute grid. The novels give no clock times.')}</p>
         </div>
       ) : null}
+
+      <LedgerSection />
 
       <Section title={t('Active theatres · {n}', { n: liveTheatres.length })} defaultOpen={false}>
         {liveTheatres.length === 0 ? (
