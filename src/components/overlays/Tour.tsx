@@ -41,7 +41,8 @@ interface Step {
   who: string;
 }
 
-const CAMP = { x: 0.644, y: 0.558 };
+/** The imperial camp outside the labyrinth (places.json: imperial-siege-camp). */
+const CAMP = { x: 0.64, y: 0.5602 };
 const STEPS: Step[] = [
   { target: null, guide: 'chibi/slime-calm', who: 'Rimuru', title: msg('Welcome to Tempest!'), body: msg('This map plays the whole Tempest vs Eastern Empire war like a documentary, built from the light novels. The gang will show you around. It takes about two minutes.') },
   { target: 'play', guide: 'guides/gobta', who: 'Gobta', title: msg('Press play'), body: msg('Hit this (or Space) and the war starts moving. Armies march, fronts shift, numbers roll. Press it again to pause anywhere.') },

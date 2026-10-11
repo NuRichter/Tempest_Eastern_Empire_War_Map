@@ -178,10 +178,13 @@ async function main(): Promise<void> {
     check('48x advances about a simulated day per second', fast.frame - calm.frame > 60, `${fast.frame - calm.frame} keyframes in 1 s`);
 
     // Auto-slow: crossing a turning point at speed drops playback to 1x for a moment.
-    await go('?frame=5490', 1500);
+    // The first turning point is read from the data, so re-timing an event does not break the check.
+    const events = (await (await fetch(`${origin}/data/events.json`)).json()) as { frame: number; turningPoint: boolean }[];
+    const turning = events.find((e) => e.turningPoint)!.frame;
+    await go(`?frame=${turning - 30}`, 1500);
     await page.keyboard.press('8');
     await page.keyboard.press('Space');
-    await page.waitForFunction(() => Number(document.querySelector('[role="slider"][aria-label="Campaign position"]')?.getAttribute('aria-valuenow')) > 5520, { timeout: 15000 }).catch(() => undefined);
+    await page.waitForFunction((t) => Number(document.querySelector('[role="slider"][aria-label="Campaign position"]')?.getAttribute('aria-valuenow')) > t, { timeout: 15000 }, turning).catch(() => undefined);
     const slowed = await page.evaluate(() => [...document.querySelectorAll('[role="status"]')].map((n) => n.textContent ?? '').find((t) => /turning point/i.test(t)) ?? '');
     await page.keyboard.press('Space');
     check('auto-slow drops to 1x at a turning point', /1×/.test(slowed), slowed || 'no auto-slow indicator');
