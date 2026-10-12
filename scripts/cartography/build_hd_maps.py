@@ -1,5 +1,5 @@
 """
-High-definition map layers and the 3D relief.
+High-definition map layers.
 
     public/maps/myth-map.jpg   (2641 x 2035, the painted map)
     public/maps/base-map.png   (2641 x 2035, the line map)
@@ -7,7 +7,6 @@ High-definition map layers and the 3D relief.
                                                 FSRCNN super-resolution of the painted map
         ->  public/maps/coast.json             land and lake polygons in simulation
                                                 coordinates (vector, sharp at any zoom)
-        ->  public/maps/3d/height.png          stylised relief for the 3D view (1024 wide)
         ->  public/maps/3d/myth-4k.jpg         4096-wide texture for the 3D view
         ->  public/maps/3d/base-4k.jpg         4096-wide texture for the 3D view
 
@@ -15,9 +14,7 @@ The atlas projection (src/lib/coords.ts) maps simulation x linearly onto
 Web-Mercator x and simulation y linearly onto Web-Mercator y, so a tile pixel
 maps to an image pixel by an affine transform.
 
-The relief is a STYLISED reconstruction for the 3D view: the novels give no
-elevations. Land rises away from the coast, and rugged ground in the painted
-map (mountains are drawn with strong shading) becomes ridges.
+The relief and the physical Terrain Map are built by build_terrain.py.
 
 Needs OpenCV with dnn_superres (opencv-contrib) and the FSRCNN_x4 model:
 
@@ -138,53 +135,6 @@ def coast(base: np.ndarray) -> dict:
     return {'about': 'Land (with lakes as holes) traced from public/maps/base-map.png by scripts/cartography/build_hd_maps.py. Simulation coordinates. Drawn as vector so coastlines stay sharp at any zoom.', 'polygons': polys}
 
 
-def relief(base: np.ndarray, myth: np.ndarray) -> np.ndarray:
-    RW = 1024
-    RH = round(RW * H / W)
-    land = 1 - sea_mask(cv2.resize(base, (RW, RH), interpolation=cv2.INTER_AREA))
-    land = cv2.morphologyEx(land, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
-    din = cv2.distanceTransform(land, cv2.DIST_L2, 5)
-    dout = cv2.distanceTransform(1 - land, cv2.DIST_L2, 5)
-    inland = np.clip(din / 40.0, 0, 1)
-    plateau = inland ** 0.6
-    # Rugged ground in the painted map: local contrast of its luminance.
-    g = cv2.cvtColor(cv2.resize(myth, (RW, RH), interpolation=cv2.INTER_AREA), cv2.COLOR_BGR2GRAY).astype(np.float32) / 255
-    mean = cv2.GaussianBlur(g, (0, 0), 4)
-    var = cv2.GaussianBlur((g - mean) ** 2, (0, 0), 6)
-    rug = np.clip((np.sqrt(var) - 0.04) / 0.10, 0, 1)
-    # Gather it into ranges: only broad, consistently rugged ground becomes mountains.
-    rug = cv2.GaussianBlur(rug, (0, 0), 12)
-    rug = np.clip((rug - 0.25) / 0.45, 0, 1)
-    # Ridged fractal noise shapes the mountains.
-    rng = np.random.default_rng(7)
-    ridge = np.zeros((RH, RW), np.float32)
-    amp = 1.0
-    for octave in range(5):
-        cell = 2 ** (octave + 3)
-        nz = rng.random((RH // cell + 2, RW // cell + 2)).astype(np.float32)
-        nz = cv2.resize(nz, (RW + cell * 2, RH + cell * 2), interpolation=cv2.INTER_CUBIC)[:RH, :RW]
-        ridge += amp * (1 - np.abs(nz * 2 - 1))
-        amp *= 0.5
-    ridge = np.clip(ridge / ridge.max(), 0, 1)
-    rug = np.clip(rug, 0, 1)
-    # Canon highlands: Dwargon's capital is carved into the Kanaat Mountains.
-    yy, xx = np.mgrid[0:RH, 0:RW].astype(np.float32)
-    def massif(cx: float, cy: float, sx: float, sy: float, ang: float) -> np.ndarray:
-        dx, dy = xx / RW - cx, (yy / RH - cy) * H / W
-        ca, sa = math.cos(ang), math.sin(ang)
-        u, v = dx * ca + dy * sa, -dx * sa + dy * ca
-        return np.exp(-(u * u) / (2 * sx * sx) - (v * v) / (2 * sy * sy)).astype(np.float32)
-    kanaat = massif(0.665, 0.405, 0.045, 0.018, -0.5)
-    rolling = cv2.GaussianBlur(rng.random((RH, RW)).astype(np.float32), (0, 0), 18)
-    rolling = (rolling - rolling.min()) / (rolling.max() - rolling.min() + 1e-6)
-    height = 0.10 + 0.18 * plateau + 0.10 * rolling * plateau + 0.75 * np.maximum(rug, kanaat * 0.9) * ridge ** 1.4 * plateau
-    height = np.where(land > 0, height, -np.clip(dout / 60.0, 0, 1) * 0.08)
-    height = cv2.GaussianBlur(height, (0, 0), 1.0)
-    # 0..1, sea level at 0.25 (encoded), saved as 16-bit for smooth terrain.
-    enc = np.clip((height + 0.08) / 1.0, 0, 1)
-    return (enc * 65535).astype(np.uint16)
-
-
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument('--model', required=True)
@@ -196,8 +146,6 @@ def main() -> None:
     print('coast written')
     out3d = MAPS / '3d'
     out3d.mkdir(parents=True, exist_ok=True)
-    cv2.imwrite(str(out3d / 'height.png'), relief(base, myth))
-    print('relief written')
     hd = super_resolve(myth, a.model)
     print('super-resolved', hd.shape)
     cv2.imwrite(str(out3d / 'myth-4k.jpg'), cv2.resize(hd, (4096, round(4096 * H / W)), interpolation=cv2.INTER_AREA), [cv2.IMWRITE_JPEG_QUALITY, 86])

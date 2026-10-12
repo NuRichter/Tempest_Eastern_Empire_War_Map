@@ -38,7 +38,7 @@ export interface GeographySource {
 }
 export interface WorldSource {
   terrain: {
-    relief: { plainLevel: number; slopeCostPer1000: number; seaLevel: number; peakMetres: number };
+    relief: { plainLevel: number; slopeCostPer1000: number; seaLevel: number; metresPerLevel: number };
     classes: Record<string, { cost: number | null; label: string }>;
   };
   speeds: { units: Record<string, { kmPerDay: number; maxKmPerDay: number; basis: string; provenance: string }> };
@@ -220,7 +220,7 @@ export class TerrainGrid {
     if (!this.inBounds(x, y)) return 0;
     const R = this.world.terrain.relief;
     const v = this.relief[this.index(x, y)];
-    return Math.max(0, Math.round(((v - R.seaLevel) / (62538 - R.seaLevel)) * R.peakMetres));
+    return Math.max(0, Math.round((v - R.seaLevel) * R.metresPerLevel));
   }
 
   private xy(i: number): [number, number] {

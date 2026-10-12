@@ -1,0 +1,23 @@
+{
+ "about": "Areas measured on the basemap by scripts/cartography/build_terrain.py. One atlas pixel is 2 x 2 km. STYLISED land cover, not a survey.",
+ "frameKm2": 21497740,
+ "landKm2": 7593388,
+ "lakeKm2": 58516,
+ "seaKm2": 13845836,
+ "namedForestKm2": 765472,
+ "highGroundOver1500mKm2": 688364,
+ "snowKm2": 732364,
+ "kanaat": {
+  "coreKm": [
+   44.0,
+   40.0
+  ],
+  "footKm": [
+   66.0,
+   60.0
+  ],
+  "coreKm2": 1400,
+  "summitMetres": 2617,
+  "cityMetres": 1899
+ }
+}

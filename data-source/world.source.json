@@ -38,7 +38,7 @@
         "statement": "The Composite Division's camp is near the Empire-Dwargon border, five hundred kilometres south-west of the imperial capital.",
         "locator": "v14.txt:10863-10866",
         "from": "imperial-capital",
-        "to": "dwargon-eastern-metropolis",
+        "to": "dwargon-eastern-gate",
         "statedKm": 500,
         "kind": "STRAIGHT_OR_PATH",
         "use": "Calibration."
@@ -90,11 +90,11 @@
     "about": "Route cost per kilometre for a ground army, by terrain class. Water is impassable. Mountain ground inside the Kanaat massif is impassable outside its named passes. Relief comes from public/maps/3d/height.png (a stylised relief traced from the painted map, not a survey).",
     "relief": {
       "source": "public/maps/3d/height.png",
-      "plainLevel": 27000,
+      "seaLevel": 5243,
+      "metresPerLevel": 0.1,
+      "plainLevel": 8243,
       "slopeCostPer1000": 0.28,
-      "seaLevel": 20000,
-      "peakMetres": 4500,
-      "metresNote": "Synthetic metres: a linear mapping of the stylised relief for read-outs only."
+      "metresNote": "Synthetic metres: encoded level minus seaLevel, times metresPerLevel. The relief is stylised (scripts/cartography/build_terrain.py), not a survey."
     },
     "classes": {
       "road": { "cost": 0.55, "label": "Road" },
