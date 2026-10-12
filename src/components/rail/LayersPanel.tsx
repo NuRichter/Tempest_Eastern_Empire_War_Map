@@ -19,8 +19,8 @@ export function LayersPanel() {
   return (
     <div>
       <Section title={t('Map')}>
-        <div role="radiogroup" aria-label={t('Map style')} className="grid grid-cols-2 gap-1.5">
-          {(['base', 'myth'] as const).map((id) => (
+        <div role="radiogroup" aria-label={t('Map style')} className="grid grid-cols-3 gap-1.5">
+          {(['terrain', 'base', 'myth'] as const).map((id) => (
             <button
               key={id}
               type="button"
@@ -29,8 +29,8 @@ export function LayersPanel() {
               onClick={() => p.set('mapStyle', id)}
               className={`rounded-[3px] border px-2 py-1.5 text-left ${p.mapStyle === id ? 'border-accent/80 bg-accent/10' : 'border-ink-500 hover:border-ink-400'}`}
             >
-              <span className="block text-sm text-fg">{id === 'base' ? t('Base Map') : t('Myth Map')}</span>
-              <span className="block text-2xs text-fg-3">{id === 'base' ? t('Operational · default') : t('World & lore context')}</span>
+              <span className="block text-sm text-fg">{id === 'terrain' ? t('Terrain Map') : id === 'base' ? t('Base Map') : t('Myth Map')}</span>
+              <span className="block text-2xs text-fg-3">{id === 'terrain' ? t('Physical · default') : id === 'base' ? t('Operational borders') : t('World & lore context')}</span>
             </button>
           ))}
         </div>

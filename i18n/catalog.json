@@ -22,6 +22,9 @@
   "{done} travelled, {left} to go": [
    "src/components/dossier/geo.tsx"
   ],
+  "{e} km E · {s} km S": [
+   "src/map/ScaleMeasure.tsx"
+  ],
   "{e} km east, {s} km south of the atlas corner": [
    "src/components/dossier/geo.tsx"
   ],
@@ -485,6 +488,12 @@
   "City": [
    "src/components/overlays/Legend.tsx",
    "src/map/overlay/layers/settlements.ts"
+  ],
+  "Clear": [
+   "src/map/ScaleMeasure.tsx"
+  ],
+  "Click the map to measure": [
+   "src/map/ScaleMeasure.tsx"
   ],
   "Close": [
    "src/components/overlays/HelpDialog.tsx",
@@ -1131,6 +1140,12 @@
   "Killed (event)": [
    "src/components/dossier/records.tsx"
   ],
+  "Kilometres east and south of the atlas corner": [
+   "src/map/ScaleMeasure.tsx"
+  ],
+  "km E · km S": [
+   "src/map/ScaleMeasure.tsx"
+  ],
   "Kodansha series page": [
    "src/content/about.ts"
   ],
@@ -1266,6 +1281,12 @@
    "src/map/MapControls.tsx"
   ],
   "Map style: {name}. Change map style": [
+   "src/map/MapControls.tsx"
+  ],
+  "Measure distance": [
+   "src/map/MapControls.tsx"
+  ],
+  "Measure distance in km": [
    "src/map/MapControls.tsx"
   ],
   "medium": [
@@ -1491,7 +1512,7 @@
    "src/map/overlay/layers/geography.ts"
   ],
   "not lat/long": [
-   "src/map/MapControls.tsx"
+   "src/map/ScaleMeasure.tsx"
   ],
   "not placed": [
    "src/components/dossier/records.tsx"
@@ -1579,13 +1600,13 @@
   "Operational": [
    "src/components/dossier/records.tsx"
   ],
-  "Operational · default": [
-   "src/components/rail/LayersPanel.tsx"
-  ],
   "Operational areas": [
    "src/state/preferences.ts"
   ],
-  "Operational map with clear borders. Default.": [
+  "Operational borders": [
+   "src/components/rail/LayersPanel.tsx"
+  ],
+  "Operational map with clear borders.": [
    "src/map/MapControls.tsx"
   ],
   "Opponent": [
@@ -1671,6 +1692,12 @@
   ],
   "Photocards of characters active in the current event.": [
    "src/state/preferences.ts"
+  ],
+  "Physical · default": [
+   "src/components/rail/LayersPanel.tsx"
+  ],
+  "Physical map of the continent: relief, forest, steppe, snow, lakes and sea. Default.": [
+   "src/map/MapControls.tsx"
   ],
   "Pick your speed": [
    "src/components/overlays/Tour.tsx"
@@ -1821,6 +1848,9 @@
   "Reload": [
    "src/components/AppShell.tsx"
   ],
+  "remote": [
+   "src/components/dossier/records.tsx"
+  ],
   "Remove bookmark {name}": [
    "src/components/rail/FeedPanel.tsx"
   ],
@@ -1928,6 +1958,12 @@
   "Saved on this device. Press B anywhere to bookmark the current moment.": [
    "src/components/rail/FeedPanel.tsx"
   ],
+  "Scale of the 1:1 atlas (2 km per atlas pixel, synthetic calibration)": [
+   "src/map/ScaleMeasure.tsx"
+  ],
+  "Scale: {km} km": [
+   "src/map/ScaleMeasure.tsx"
+  ],
   "Scenario": [
    "src/components/shell/AboutPanel.tsx",
    "src/lib/taxonomy.ts"
@@ -2000,9 +2036,6 @@
   ],
   "Simulation": [
    "src/components/dossier/records.tsx"
-  ],
-  "Simulation coordinates on a fictional map. Not latitude and longitude.": [
-   "src/map/MapControls.tsx"
   ],
   "Simulation grid": [
    "src/state/preferences.ts"
@@ -2085,11 +2118,21 @@
   "Step {n} of {total}": [
    "src/components/overlays/Tour.tsx"
   ],
+  "Stop measuring": [
+   "src/map/ScaleMeasure.tsx"
+  ],
+  "Stop measuring (Esc)": [
+   "src/map/ScaleMeasure.tsx"
+  ],
   "Story": [
    "src/components/rail/LeftRail.tsx"
   ],
+  "straight line · {n} legs": [
+   "src/map/ScaleMeasure.tsx"
+  ],
   "straight line {km}": [
-   "src/components/dossier/geo.tsx"
+   "src/components/dossier/geo.tsx",
+   "src/map/ScaleMeasure.tsx"
   ],
   "Strategic": [
    "src/components/dossier/records.tsx"
@@ -2159,6 +2202,9 @@
   "Switch to Myth Map": [
    "src/components/overlays/CommandPalette.tsx"
   ],
+  "Switch to Terrain Map": [
+   "src/components/overlays/CommandPalette.tsx"
+  ],
   "Switch to the dark theme": [
    "src/components/shell/TopBar.tsx"
   ],
@@ -2198,6 +2244,10 @@
   ],
   "Terrain": [
    "src/components/dossier/geo.tsx"
+  ],
+  "Terrain Map": [
+   "src/components/rail/LayersPanel.tsx",
+   "src/map/MapControls.tsx"
   ],
   "Territories": [
    "src/components/overlays/CommandPalette.tsx",
@@ -2282,7 +2332,7 @@
   "The five covers of this war’s volumes, made into wallpapers, plus two moments from the map. Tap to save.": [
    "src/components/shell/AboutPanel.tsx"
   ],
-  "The imperial order of battle follows a scenario brief: 1,040,000 soldiers in the operation instead of the novels’ 940,000. Each difference from the novels is listed below under Scenario and novels.": [
+  "The imperial order of battle follows a scenario: 1,010,100 soldiers in the operation instead of the novels’ 940,000, on two Dwargon fronts as well as in Tempest. Each difference from the novels is listed below under Scenario and novels.": [
    "src/components/shell/AboutPanel.tsx"
   ],
   "The Kanaat massif around Dwargon and the passes through it. Ground routes cross the massif only by a pass.": [
@@ -2451,6 +2501,12 @@
   ],
   "Type": [
    "src/components/dossier/records.tsx"
+  ],
+  "Undo last point": [
+   "src/map/ScaleMeasure.tsx"
+  ],
+  "Undo last point (Backspace)": [
+   "src/map/ScaleMeasure.tsx"
   ],
   "unique personnel": [
    "src/components/dossier/geo.tsx"

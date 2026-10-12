@@ -14,7 +14,7 @@ import { sanitizeLike } from '@/security/input';
  * the URL instead), so a shared link always shows the same thing to everyone.
  */
 
-export type MapStyle = 'base' | 'myth';
+export type MapStyle = 'terrain' | 'base' | 'myth';
 /**
  * Documentary: light ground, solid faction fills, white fronts — the register
  * of the reference war documentaries. War room: the dark analytic register.
@@ -150,7 +150,7 @@ interface PreferenceActions {
 }
 
 export const DEFAULT_PREFERENCES: Preferences = {
-  mapStyle: 'base',
+  mapStyle: 'terrain',
   theme: 'documentary',
   globe: false,
   layers: DEFAULT_LAYERS,

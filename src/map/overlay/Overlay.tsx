@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Map as MapLibreMap } from 'maplibre-gl';
 
-import { simToLngLat } from '@/lib/coords';
+import { lngLatToSim, simToLngLat } from '@/lib/coords';
+import { useMeasure } from '@/map/measure';
 import { PROVENANCE_LABEL } from '@/lib/taxonomy';
 import { MAP_THEME } from '@/lib/palette';
 import { useSimulation } from '@/simulation/store';
@@ -243,6 +244,15 @@ export function Overlay({ map }: Props) {
       lastKey = '';
     };
     const onClick = (event: MouseEvent) => {
+      const rect0 = container.getBoundingClientRect();
+      if (useMeasure.getState().active) {
+        // Measuring: a click adds a point; nothing is selected.
+        event.stopPropagation();
+        const ll = map.unproject([event.clientX - rect0.left, event.clientY - rect0.top]);
+        const s = lngLatToSim(ll.lng, ll.lat);
+        if (s.x >= 0 && s.x <= 1 && s.y >= 0 && s.y <= 1) useMeasure.getState().add([s.x, s.y]);
+        return;
+      }
       const hit = hitTest(event.clientX, event.clientY);
       if (hit) {
         event.stopPropagation();

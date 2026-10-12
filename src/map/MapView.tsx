@@ -46,6 +46,8 @@ function baseStyle(): StyleSpecification {
       // The painted map as super-resolved tiles (scripts/cartography/build_hd_maps.py):
       // only the part in view loads, and detail holds up when zoomed in.
       myth: { type: 'raster', tiles: [`${typeof window === 'undefined' ? '' : window.location.origin}/tiles/myth/{z}/{x}/{y}.jpg`], tileSize: 256, minzoom: 0, maxzoom: 5, bounds: atlasBoundsFlat() },
+      // The physical basemap (scripts/cartography/build_terrain.py): relief, land cover, water.
+      terrain: { type: 'raster', tiles: [`${typeof window === 'undefined' ? '' : window.location.origin}/tiles/terrain/{z}/{x}/{y}.webp`], tileSize: 256, minzoom: 0, maxzoom: 6, bounds: atlasBoundsFlat() },
       coast: empty,
       territories: empty,
       areas: empty,
@@ -65,6 +67,12 @@ function baseStyle(): StyleSpecification {
       { id: 'sea-hd', type: 'fill', source: 'coast', filter: ['==', ['get', 'kind'], 'sea'], paint: { 'fill-color': '#a3d3e0', 'fill-opacity': 0, 'fill-antialias': false } },
       { id: 'land-hd', type: 'fill', source: 'coast', filter: ['==', ['get', 'kind'], 'land'], paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-antialias': true } },
       { id: 'coast-hd', type: 'line', source: 'coast', filter: ['==', ['get', 'kind'], 'land'], layout: { 'line-join': 'round' }, paint: { 'line-color': '#000000', 'line-opacity': 0, 'line-width': ['interpolate', ['linear'], ['zoom'], 4, 0.8, 8, 2.2] } },
+      {
+        id: 'terrain-raster',
+        type: 'raster',
+        source: 'terrain',
+        paint: { 'raster-opacity': 0, 'raster-fade-duration': 0, 'raster-opacity-transition': { duration: 600 } },
+      },
       {
         id: 'myth-raster',
         type: 'raster',
@@ -429,6 +437,11 @@ export function MapView() {
     map.setPaintProperty('land-hd', 'fill-color', dark ? '#4c4e4f' : '#ffffff');
     map.setPaintProperty('coast-hd', 'line-color', dark ? '#0b0b0b' : '#000000');
     map.setPaintProperty('myth-raster', 'raster-opacity', mapStyle === 'myth' ? 1 : 0);
+    map.setPaintProperty('terrain-raster', 'raster-opacity', mapStyle === 'terrain' ? 1 : 0);
+    map.setLayoutProperty('terrain-raster', 'visibility', mapStyle === 'terrain' ? 'visible' : 'none');
+    map.setPaintProperty('terrain-raster', 'raster-brightness-max', dark ? 0.5 : 1);
+    map.setPaintProperty('terrain-raster', 'raster-saturation', dark ? -0.45 : 0);
+    map.setPaintProperty('terrain-raster', 'raster-contrast', dark ? 0.1 : 0);
     // A hidden style downloads nothing: switch its layer off, not only transparent.
     map.setLayoutProperty('myth-raster', 'visibility', mapStyle === 'myth' ? 'visible' : 'none');
     map.setLayoutProperty('base-raster', 'visibility', mapStyle === 'base' ? 'visible' : 'none');
@@ -440,7 +453,7 @@ export function MapView() {
     map.setPaintProperty('base-raster', 'raster-contrast', dark ? 0.15 : 0);
     map.setPaintProperty('myth-raster', 'raster-brightness-max', dark ? 0.78 : 1);
     map.setPaintProperty('myth-raster', 'raster-saturation', dark ? -0.15 : 0);
-    map.setPaintProperty('void', 'background-color', mapStyle === 'myth' ? '#100c08' : MAP_THEME[theme].void);
+    map.setPaintProperty('void', 'background-color', mapStyle === 'myth' ? '#100c08' : mapStyle === 'terrain' ? (dark ? '#1d2b33' : '#7fb3d6') : MAP_THEME[theme].void);
     map.setPaintProperty('territory-line', 'line-width', ['interpolate', ['linear'], ['zoom'], 1, dark ? 0.6 : 0.5, 4, dark ? 1.2 : 0.9, 7, dark ? 2.2 : 1.6]);
   }, [mapStyle, theme, ready]);
 

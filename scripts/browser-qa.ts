@@ -85,6 +85,7 @@ const mapState = (page: Page) =>
       // (the Base Map's opacity is a zoom expression: image, then vector).
       base: m.getLayoutProperty('base-raster', 'visibility') !== 'none' && m.getPaintProperty('base-raster', 'raster-opacity') !== 0 ? 1 : 0,
       myth: m.getLayoutProperty('myth-raster', 'visibility') !== 'none' && m.getPaintProperty('myth-raster', 'raster-opacity') !== 0 ? 1 : 0,
+      terrain: m.getLayoutProperty('terrain-raster', 'visibility') !== 'none' && m.getPaintProperty('terrain-raster', 'raster-opacity') !== 0 ? 1 : 0,
       territories: m.getLayoutProperty('territory-fill', 'visibility') ?? 'visible',
       zoom: m.getZoom(),
     };
@@ -141,7 +142,7 @@ async function main(): Promise<void> {
     const loadMs = Date.now() - t0;
     const ms = await mapState(page);
     check('application loads and the map initialises', Boolean(ms?.loaded), `${loadMs} ms to an idle map`);
-    check('Base Map is the default style', ms?.base === 1 && ms?.myth === 0);
+    check('Terrain Map is the default style', ms?.terrain === 1 && ms?.base === 0 && ms?.myth === 0);
     const occupation = await page.evaluate(() => Boolean((window as unknown as { __atlasMap?: { getLayer: (id: string) => unknown } }).__atlasMap?.getLayer('occupation')));
     check('the reconstructed occupation layer is present', occupation);
     check('the dataset is available', manifest.counts.events > 0 && manifest.counts.territories > 0, `${manifest.counts.events} events, ${manifest.counts.territories} territories`);
@@ -269,12 +270,31 @@ async function main(): Promise<void> {
     await go(`?frame=${fc + 30}`);
     await page.keyboard.press('m');
     await sleep(900);
+    const base = await mapState(page);
+    check('M switches to the Base Map', base?.base === 1 && base?.terrain === 0 && base?.myth === 0);
+    await page.keyboard.press('m');
+    await sleep(900);
     const myth = await mapState(page);
-    check('M switches to the Myth Map', myth?.myth === 1 && myth?.base === 0);
+    check('M again switches to the Myth Map', myth?.myth === 1 && myth?.base === 0 && myth?.terrain === 0);
     await shot('06-myth');
     const keptFrame = (await probe(page)).frame;
     check('switching style keeps the campaign moment', keptFrame === fc + 30);
     await page.keyboard.press('m');
+    await sleep(600);
+    check('M a third time returns to the Terrain Map', (await mapState(page))?.terrain === 1);
+    const scale = await page.evaluate(() => [...document.querySelectorAll('[aria-label^="Scale: "]')].map((n) => n.getAttribute('aria-label')).join('|'));
+    check('the scale bar shows kilometres', /^Scale: [\d,]+ km/.test(scale), scale);
+    await page.evaluate(() => (document.querySelector('button[aria-label="Measure distance"]') as HTMLElement | null)?.click());
+    await sleep(300);
+    const mbox = await page.evaluate(() => { const r = document.querySelector('[data-tour="map"]')!.getBoundingClientRect(); return [r.left + r.width * 0.3, r.top + r.height * 0.4, r.left + r.width * 0.45, r.top + r.height * 0.55]; });
+    await page.mouse.click(mbox[0], mbox[1]);
+    await sleep(200);
+    await page.mouse.click(mbox[2], mbox[3]);
+    await sleep(400);
+    const measured = await page.evaluate(() => document.querySelector('[role="status"]')?.textContent ?? '');
+    check('the measuring tool reports a distance in km', /[\d,.]+ km/.test(measured), measured.slice(0, 60));
+    await page.keyboard.press('Escape');
+    await sleep(200);
     await page.keyboard.press('g');
     await sleep(1500);
     check('G switches to the globe', (await mapState(page))?.projection === 'globe');

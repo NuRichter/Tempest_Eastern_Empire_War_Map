@@ -243,7 +243,7 @@ export function AppShell() {
           p.set('music', !p.music);
           return;
         case 'm':
-          p.set('mapStyle', p.mapStyle === 'base' ? 'myth' : 'base');
+          p.set('mapStyle', p.mapStyle === 'terrain' ? 'base' : p.mapStyle === 'base' ? 'myth' : 'terrain');
           return;
         case 'l':
           s.setLegendOpen(!s.legendOpen);
