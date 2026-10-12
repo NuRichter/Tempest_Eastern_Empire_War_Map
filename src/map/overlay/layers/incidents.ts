@@ -188,7 +188,7 @@ export function drawCharacters(dc: DrawContext): void {
     if (!xy) continue;
     const p = dc.project(xy.x, xy.y);
     if (!dc.onScreen(p)) continue;
-    const people = e.characterIds.filter((c) => !shown.has(c)).slice(0, 3);
+    const people = e.presentIds.filter((c) => !shown.has(c)).slice(0, 3);
     people.forEach((cid, i) => {
       const c = dc.data.characterById.get(cid);
       if (!c?.photocard) return;

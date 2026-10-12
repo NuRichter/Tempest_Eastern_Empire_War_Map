@@ -27,8 +27,8 @@
  *              (smooth swells plus ridged creases), so fronts bulge and dent like real lines of
  *              control instead of tracing arcs and straight edges
  *   lost       ground a side loses (retreat, collapse or recapture) is lost
- *              to it for the rest of the war: no army in this campaign retakes
- *              ground it was driven from, so the map never re-advances over it
+ *              to it until a front rule reopens it (the Third Strike): no other
+ *              army retakes ground it was driven from
  *   cities     no capital, city or the Labyrinth falls in this war: ground
  *              inside a settlement outline (settlements.source.json) is never
  *              captured, so held ground flows around it
@@ -84,6 +84,12 @@ interface FrontRules {
   /** fromEvent null: that side never takes ground there (a territory the record says was never taken). */
   gates: { territoryId: string; side: 'empire' | 'allied'; fromEvent: string | null; basis: string }[];
   anchored?: { territoryId: string; side: 'empire' | 'allied'; basis: string }[];
+  /** From this event a side may take again ground it lost earlier in the war. */
+  reopen?: { side: 'empire' | 'allied'; fromEvent: string; basis: string }[];
+  /** Scales the reach of a side's formations standing in a territory (mountain and narrow ground hold an army close). */
+  reachScale?: { territoryId: string; side: 'empire' | 'allied'; scale: number; maxReach?: number; basis: string }[];
+  /** A formation whose recorded task is to take ground counts with at least this influence weight (strength^(1/3)). */
+  minWeight?: { forceId: string; weight: number; basis: string }[];
 }
 const rules = JSON.parse(readFileSync(join(HERE, '..', 'data-source', 'campaign', 'front-rules.json'), 'utf8')) as FrontRules;
 
@@ -143,6 +149,23 @@ for (const g of rules.gates) {
   gateFrame[ti][g.side === 'empire' ? HOLDER_EMPIRE : HOLDER_ALLIED] = ev ? ev.frame : Infinity;
 }
 const gateOpen = (ti: number, side: number, frame: number) => frame >= (gateFrame[ti][side] ?? -Infinity);
+/** reachScaleOf[territory][side]: multiplier on the reach of that side's formations standing there. */
+const reachScaleOf: Record<number, Record<string, { scale: number; max: number }>> = {};
+for (const r of rules.reachScale ?? []) {
+  const ti = data.territories.findIndex((t) => t.id === r.territoryId);
+  if (ti < 0 || !(r.scale > 0 && r.scale <= 1)) throw new Error(`front-rules: bad reachScale ${r.territoryId} ${r.scale}.`);
+  (reachScaleOf[ti] ??= {})[r.side] = { scale: r.scale, max: r.maxReach ?? Infinity };
+}
+const minWeightOf = new Map((rules.minWeight ?? []).map((m) => {
+  if (!data.forceById.has(m.forceId)) throw new Error(`front-rules: minWeight names unknown force ${m.forceId}.`);
+  return [m.forceId, m.weight] as const;
+}));
+/** Frames at which a side's lost ground becomes takeable again. */
+const reopenAt = (rules.reopen ?? []).map((r) => {
+  const ev = data.eventById.get(r.fromEvent);
+  if (!ev) throw new Error(`front-rules: reopen names unknown event ${r.fromEvent}.`);
+  return { frame: ev.frame, bit: r.side === 'empire' ? 1 : 2, done: false };
+});
 
 /* -- ragged fronts: fixed value noise in [-1, 1] ------------------------ */
 
@@ -383,7 +406,8 @@ function influence(src: Source[]): void {
     const home = territoryAt(s.x, s.y);
     const cx = s.x * W;
     const cy = s.y * H;
-    const rr = s.r * W;
+    const rs = home >= 0 ? reachScaleOf[home]?.[s.side] : undefined;
+    const rr = rs ? Math.min(s.r * rs.scale, rs.max) * W : s.r * W;
     const x0 = Math.max(0, Math.floor(cx - rr));
     const x1 = Math.min(W - 1, Math.ceil(cx + rr));
     const y0 = Math.max(0, Math.floor(cy - rr));
@@ -500,7 +524,16 @@ let steps = 0;
 let simulated = 0;
 for (let f = 0; f < N; f += STEP) {
   steps += 1;
-  const src = fieldSources(data, f);
+  for (const r of reopenAt) {
+    if (r.done || f < r.frame) continue;
+    for (let i = 0; i < n; i += 1) lostBy[i] &= ~r.bit;
+    r.done = true;
+    lastSig = '';
+  }
+  const src = fieldSources(data, f).map((s) => {
+    const w = minWeightOf.get(s.forceId);
+    return w && w > s.w ? { ...s, w, r: Math.min(0.055, Math.max(0.012, 0.0011 * w)) } : s;
+  });
   const os = ownerSides(f);
   deadNow = new Set<number>();
   data.forces.forEach((force, fi) => {
@@ -642,8 +675,9 @@ for (let f = 0; f < N; f += STEP) {
       bfs();
     }
     // Retreat: ground given back to its owner recedes toward the loser's own
-    // territory. Distance from the loser's home through the released cells;
-    // the farthest cells go first, the line along the old border last.
+    // territory, or toward ground it still holds across the border (the way
+    // it came in). Distance from there through the released cells; the
+    // farthest cells go first, the line along the border last.
     if (to === HOLDER_OWNER) {
       const dHome = new Float32Array(n).fill(-1);
       const rh = new MinHeap();
@@ -654,7 +688,7 @@ for (let f = 0; f < N; f += STEP) {
           for (let dx = -1; dx <= 1; dx += 1) {
             if ((x === 0 && dx < 0) || (x === W - 1 && dx > 0)) continue;
             const j = i + dy * W + dx;
-            if (j >= 0 && j < n && owner[j] >= 0 && owner[j] !== owner[i] && os[owner[j]] === hold[i]) { dHome[i] = 1; rh.push(i, 1); break; }
+            if (j >= 0 && j < n && owner[j] >= 0 && owner[j] !== owner[i] && (os[owner[j]] === hold[i] || hold[j] === hold[i])) { dHome[i] = 1; rh.push(i, 1); break; }
           }
         }
       }

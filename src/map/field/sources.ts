@@ -6,7 +6,7 @@
  *   weight = strength^(1/3)       (unknown strength: a nominal 2,000)
  *   reach  = 0.0011 · weight, clamped to 0.012–0.055 of the atlas width
  *
- * Formations in the air or under ground (airships, the labyrinth), destroyed or
+ * Formations in the air or under ground (airships, an airlifted leg, the labyrinth), destroyed or
  * captured formations, formations withdrawing or merged into another, and
  * single combatants hold no ground. A parent and its
  * subordinates are the same soldiers: only the most specific one counts, and
@@ -21,7 +21,7 @@ import type { Dataset } from '@/data/loader';
 import { replacesParent } from '@/lib/hierarchy';
 import { unitClass } from '@/lib/units';
 import { factionKey } from '@/lib/palette';
-import { forcePositionAt, forceSnapshotAt } from '@/simulation/resolver';
+import { airborneAt, forcePositionAt, forceSnapshotAt } from '@/simulation/resolver';
 
 export type Side = 'empire' | 'allied';
 
@@ -87,6 +87,7 @@ export function fieldSources(data: Dataset, frame: number, hidden: ReadonlySet<s
     const place = pos.placeId ? data.placeById.get(pos.placeId) : null;
     if (place && (place.altitude === 'AIR' || place.altitude === 'SUBSURFACE')) continue;
     if (unitClass(force) === 'air') continue;
+    if (pos.moving && airborneAt(data, force.id, frame)) continue; // carried by air: no ground on the way
     const side = sideOf(force.faction);
     if (!side) continue;
     const strength = typeof snap.strength === 'number' ? snap.strength : NOMINAL_UNKNOWN_STRENGTH;

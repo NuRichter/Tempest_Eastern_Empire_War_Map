@@ -160,6 +160,26 @@ const forceSrc = read<ForceSrc[]>(join(CAMPAIGN, 'forces.json'));
 const transitSrc = read<TransitKeySrc[]>(join(CAMPAIGN, 'transit.json'));
 const movementSrc = read<MovementSrc[]>(join(CAMPAIGN, 'movements.json'));
 const casualtySrc = read<CasualtySrc[]>(join(CAMPAIGN, 'casualties.json'));
+/* Owner-adjustable scenario parameters (data-source/campaign/scenario-params.json). */
+const scenarioParams = readOptional<{ thirdStrike?: { total: number; transferEvent: string; splitEvent: string; groups: Record<string, number> } }>(join(CAMPAIGN, 'scenario-params.json'), {});
+if (scenarioParams.thirdStrike) {
+  const ts = scenarioParams.thirdStrike;
+  const sum = Object.values(ts.groups).reduce((n, v) => n + v, 0);
+  if (sum !== ts.total) throw new Error(`scenario-params: Third Strike groups sum to ${sum}, not ${ts.total}.`);
+  const split = eventSrc.find((e) => e.id === ts.splitEvent);
+  if (!split) throw new Error(`scenario-params: unknown split event ${ts.splitEvent}.`);
+  for (const [forceId, n] of Object.entries(ts.groups)) {
+    if (!split.effects.forces[forceId]) throw new Error(`scenario-params: ${forceId} is not split at ${ts.splitEvent}.`);
+    split.effects.forces[forceId].strength = n;
+    const f = forceSrc.find((x) => x.id === forceId);
+    if (f) Object.assign(f, { initialBest: n, initialMin: n, initialMax: n, initialStrengthRaw: `${n.toLocaleString('en-US')} (scenario parameter)` });
+    for (const c of casualtySrc) if (c.forceId === forceId && typeof c.kia === 'number') c.kia = n;
+    for (const e of eventSrc) {
+      const eff = e.effects.forces[forceId];
+      if (eff && typeof eff.kia === 'number') eff.kia = n;
+    }
+  }
+}
 const commanderSrc = read<Omit<Commander, 'characterId' | 'startFrame' | 'endFrame' | 'forceIds' | 'eventIds' | 'theatreIds'>[]>(join(CAMPAIGN, 'commanders.json'));
 const combatantSrc = read<Omit<Combatant, 'characterId' | 'firstFrame' | 'lastFrame'>[]>(join(CAMPAIGN, 'combatants.json'));
 const territoryChangeSrc = read<Omit<TerritoryChange, 'changeFrame'>[]>(join(CAMPAIGN, 'territory-changes.json'));
@@ -268,7 +288,7 @@ const THEATRE_DEFS = [
   { id: 'TH-DWG', code: 'DWG', name: 'Southwestern Dwargon Front', region: 'Northern Tempest and south-western Dwargon', anchorPlace: 'sw-dwargon-front', colorKey: 'tempest' },
   { id: 'TH-LAB', code: 'LAB', name: "Ramiris's Labyrinth Front", region: "Ramiris's Labyrinth", anchorPlace: 'ramiris-labyrinth', colorKey: 'tempest' },
   { id: 'TH-CAP', code: 'CAP', name: 'Imperial Capital', region: 'Eastern Empire', anchorPlace: 'imperial-capital', colorKey: 'empire' },
-  { id: 'TH-DWE', code: 'DWE', name: 'Dwargon Gate (Isthmus)', region: 'Armed Nation of Dwargon', anchorPlace: 'dwargon-eastern-metropolis', colorKey: 'dwargon' },
+  { id: 'TH-DWE', code: 'DWE', name: 'Dwargon Gate (Isthmus)', region: 'Armed Nation of Dwargon', anchorPlace: 'dwargon-eastern-gate', colorKey: 'dwargon' },
   { id: 'TH-DRG', code: 'DRG', name: 'Dragon Theatre', region: 'Great Jura Forest (airspace)', anchorPlace: 'jura-airspace', colorKey: 'neutral' },
   { id: 'TH-DIP', code: 'DIP', name: 'Settlement', region: 'Inter-state', anchorPlace: 'settlement-table', colorKey: 'neutral' },
 ];
@@ -347,8 +367,9 @@ const events: WarEvent[] = ordered.map(({ e, frame }, i) => {
     actorFaction: faction(e.actorFaction),
     opponent: e.opponent,
     opponentFaction: faction(e.opponentFaction),
-    // Explicit links from the source, plus any character the event's own text names.
-    characterIds: [...new Set([...(e.characters ?? []), ...charactersIn(e.actor, e.opponent, e.title, e.immediateResult)])],
+    // The audited cast when the event has one; otherwise explicit links plus names in the event's own text.
+    characterIds: e.cast ? [...new Set(e.cast.map((c) => c.id))] : [...new Set([...(e.characters ?? []), ...charactersIn(e.actor, e.opponent, e.title, e.immediateResult)])],
+    presentIds: e.cast ? [...new Set(e.cast.filter((c) => c.presence === 'present').map((c) => c.id))] : [...new Set([...(e.characters ?? []), ...charactersIn(e.actor, e.opponent, e.title, e.immediateResult)])],
     forceIds: e.forces ?? Object.keys(e.effects.forces),
     type: e.type,
     title: e.title,
@@ -414,6 +435,7 @@ const forces: Force[] = forceSrc.map((f) => ({
   ledgerRole: (f.ledgerRole ?? null) as LedgerRole | null,
   origin: f.origin ? { ...f.origin, frame: -1 } : null,
   mergedInto: f.mergedInto ? { ...f.mergedInto, frame: -1 } : null,
+  convoy: f.convoy ? { hostId: f.convoy.hostId, untilEvent: f.convoy.untilEvent, untilFrame: -1 } : null,
   issuedIds: [],
   firstFrame: -1,
   lastFrame: -1,
@@ -436,6 +458,10 @@ for (const f of forces) {
   if (f.mergedInto) {
     if (!forceById.has(f.mergedInto.forceId)) throw new Error(`Force ${f.id} merges into unknown force ${f.mergedInto.forceId}.`);
     f.mergedInto.frame = frameOfEvent(f.mergedInto.eventId) ?? (() => { throw new Error(`Force ${f.id}: merge event ${f.mergedInto!.eventId} unknown.`); })();
+  }
+  if (f.convoy) {
+    if (!forceById.has(f.convoy.hostId)) throw new Error(`Force ${f.id} travels with unknown force ${f.convoy.hostId}.`);
+    f.convoy.untilFrame = frameOfEvent(f.convoy.untilEvent) ?? (() => { throw new Error(`Force ${f.id}: convoy event ${f.convoy!.untilEvent} unknown.`); })();
   }
 }
 for (const f of forces) {
@@ -849,7 +875,7 @@ for (const force of forces) {
         km = (r.transit! - prevTransit) * transitRoute.lengthKm;
       } else if (!path) {
         const straight = distanceKm(prev.x, prev.y, r.x, r.y);
-        const mode = modeFor(force, straight, r.placeId);
+        const mode = mv?.speedClass === 'air' && straight >= TACTICAL_KM ? 'AIR' : modeFor(force, straight, r.placeId);
         if (mode === 'TACTICAL') km = straight;
         else {
           const rt = routeFor(mode, [[prev.x, prev.y], [r.x, r.y]], placeSlug(r.placeId));
@@ -1007,8 +1033,14 @@ const transfers = byRole('TRANSFER');
 const gate = byRole('GATE_FORCE')[0];
 const gatePeak = Math.max(0, ...(tracks.get(gate?.id ?? '') ?? []).map((s) => (typeof s.strength === 'number' ? s.strength : 0)));
 const mergedIntoGate = forces.filter((f) => f.mergedInto?.forceId === gate?.id).reduce((n, f) => n + (firstStrength(f.id)?.n ?? 0), 0);
+// Every formation that splits keeps its strength: the allocations issued from it sum to it.
+const splitParents = forces.filter((p) => forces.some((f) => f.origin?.kind === 'SPLIT' && f.origin.fromForceId === p.id));
 const ledgerChecks: Ledger['checks'] = [
   { name: 'Split preserves the main formation', expression: `${allocations.map((a) => firstStrength(a.id)?.n ?? '?').join(' + ')} = ${firstStrength(mainForce?.id ?? '')?.n ?? '?'}`, ok: allocations.reduce((n, a) => n + (firstStrength(a.id)?.n ?? NaN), 0) === firstStrength(mainForce?.id ?? '')?.n },
+  ...splitParents.filter((p) => p.id !== mainForce?.id).map((p) => {
+    const kids = forces.filter((f) => f.origin?.kind === 'SPLIT' && f.origin.fromForceId === p.id);
+    return { name: `Split preserves ${p.displayName}`, expression: `${kids.map((k) => firstStrength(k.id)?.n ?? '?').join(' + ')} = ${firstStrength(p.id)?.n ?? '?'}`, ok: kids.reduce((n, k) => n + (firstStrength(k.id)?.n ?? NaN), 0) === firstStrength(p.id)?.n };
+  }),
   { name: 'Committed = initial forward deployment + transfers', expression: `${initialForward} + ${transfers.map((t) => firstStrength(t.id)?.n ?? '?').join(' + ')} = ${finalLedger.committed}`, ok: initialForward + transfers.reduce((n, t) => n + (firstStrength(t.id)?.n ?? NaN), 0) === finalLedger.committed },
   { name: 'Reserve after transfer = reserve before - transfers', expression: `${firstStrength(reserveForce?.id ?? '')?.n} - ${transfers.reduce((n, t) => n + (firstStrength(t.id)?.n ?? 0), 0)} = ${finalLedger.capitalReserve}`, ok: (firstStrength(reserveForce?.id ?? '')?.n ?? NaN) - transfers.reduce((n, t) => n + (firstStrength(t.id)?.n ?? 0), 0) === finalLedger.capitalReserve },
   { name: 'Gate force at its peak = the reinforcements merged into it', expression: `${forces.filter((f) => f.mergedInto?.forceId === gate?.id).map((f) => firstStrength(f.id)?.n).join(' + ')} = ${gatePeak}`, ok: mergedIntoGate === gatePeak },

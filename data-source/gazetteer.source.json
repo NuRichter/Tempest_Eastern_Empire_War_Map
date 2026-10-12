@@ -105,8 +105,8 @@
       "id": "dwargon",
       "name": "Armed Nation of Dwargon",
       "category": "Miscellaneous",
-      "x": 0.65698,
-      "y": 0.41146,
+      "x": 0.6649,
+      "y": 0.40564,
       "placement": "MEASURED"
     },
     {
@@ -203,7 +203,7 @@
       "x": 0.672,
       "y": 0.52,
       "placement": "RECONSTRUCTED",
-      "basis": "Where the single 1,005,000-strong main formation halts and splits (scenario). The novels say only that the army halted inside Tempest territory \"soon after\" the month mark (v13.txt:341-346). Placed by the travel-time constraints the halt must satisfy under the calibrated scale: the infantry must reach a camp about 30 km from Rimuru (v13.txt:386-389) and the magitanks a position about 30 km from Dwargon (v13.txt:513-515) by D+0 morning at the novels' stated march rates (docs/GEOGRAPHIC_MODEL.md). West of the upper ford of the eastern river, on the forest side.",
+      "basis": "Where the 970,000 (the 900,000 main formation and the 70,000 cohort in its column) halt, the main formation splits and the cohort stays staged until the ultimatum is rejected (scenario). The novels say only that the army halted inside Tempest territory \"soon after\" the month mark (v13.txt:341-346). Placed by the travel-time constraints the halt must satisfy under the calibrated scale: the infantry must reach a camp about 30 km from Rimuru (v13.txt:386-389) and the magitanks a position about 30 km from Dwargon (v13.txt:513-515) by D+0 morning at the novels' stated march rates (docs/GEOGRAPHIC_MODEL.md). West of the upper ford of the eastern river, on the forest side.",
       "symbol": "halt"
     },
     {
@@ -218,30 +218,30 @@
     },
     {
       "id": "sw-dwargon-front",
-      "name": "Southwestern Dwargon front",
+      "name": "Main Gate front (magitank array)",
       "theatre": "TH-DWG",
-      "x": 0.6535,
-      "y": 0.4175,
+      "x": 0.66087,
+      "y": 0.41087,
       "placement": "RECONSTRUCTED",
-      "basis": "Scenario: Formation B (the Magitank Force) attacks Dwargon through its south-western border. The novels array the 2,000 magitanks about thirty kilometres from the centre of Dwargon, facing the front gate (v13.txt:513-517). Placed 30 km south-south-west of Dwargon under the calibrated scale, at the head of the south-western valley.",
+      "basis": "Where the 2,000 magitanks array, about thirty kilometres from the centre of Dwargon, facing the main gate (v13.txt:513-517). About 8 km south-west of the main gate, at the foot of the range.",
       "symbol": "objective"
     },
     {
-      "id": "dwargon-outer-gate",
-      "name": "Dwargon southern gate (front door)",
+      "id": "dwargon-main-gate",
+      "name": "Dwargon Main Gate (foot of the range)",
       "theatre": "TH-DWG",
-      "x": 0.6566,
-      "y": 0.416,
+      "x": 0.66195,
+      "y": 0.40947,
       "placement": "RECONSTRUCTED",
-      "basis": "The gate the magitanks' muzzles face, which Rimuru had visited several times (v13.txt:516-517); Tempest's troops camp there and the Dwarven Knights raise earth walls before it. On the southern road about 18 km from the city.",
+      "basis": "Dwargon's front gate, which the magitanks' muzzles face (v13.txt:516-517) and where Tempest's troops camp and the Dwarven Knights raise earth walls. At the south-western foot of the compact Kanaat range, about 22 km from the city centre (docs/GEOGRAPHIC_MODEL.md). The 200,000 reach it through the south-western border; the 40,000 airships reinforce it.",
       "symbol": "gate"
     },
     {
       "id": "sw-dwargon-airspace",
-      "name": "Airspace over the southwestern Dwargon front",
+      "name": "Airspace over the Main Gate front",
       "theatre": "TH-DWG",
-      "x": 0.6535,
-      "y": 0.4175,
+      "x": 0.66087,
+      "y": 0.41087,
       "placement": "RECONSTRUCTED",
       "altitude": "AIR",
       "basis": "Directly above sw-dwargon-front: the Flying Combat Corps arrives over the magitank battle (v13.txt:3065)."
@@ -257,13 +257,13 @@
       "basis": "The labyrinth lies beneath the Tempest capital, so it takes the MEASURED Tempest position. It is a subsurface theatre and is rendered as such; two theatres share this ground position by design, not by error."
     },
     {
-      "id": "dwargon-eastern-metropolis",
-      "name": "Dwargon Gate (eastern metropolis, Isthmus)",
+      "id": "dwargon-eastern-gate",
+      "name": "Dwargon Eastern Gate (Isthmus)",
       "theatre": "TH-DWE",
       "x": 0.722,
       "y": 0.424,
       "placement": "RECONSTRUCTED",
-      "basis": "Dwargon's gate east of the city, at the Isthmus, facing the Empire (v13.txt:697-699), five hundred kilometres south-west of the imperial capital (v14.txt:10863-10866; 575 km under the calibrated scale). The single Dwargon Gate location of the scenario: the 5,000 detachment blockades it and the Gate force (30,000 + 30,000) masses before it.",
+      "basis": "Dwargon's gate east of the city, at the Isthmus, facing the Empire (v13.txt:697-699), five hundred kilometres south-west of the imperial capital (v14.txt:10863-10866; 575 km under the calibrated scale). The eastern front of the scenario: 30,000 arrive from the Empire across the Empire-Dwargon border, reinforced to 60,000.",
       "symbol": "gate"
     },
     {
@@ -273,7 +273,7 @@
       "x": 0.7363,
       "y": 0.4176,
       "placement": "RECONSTRUCTED",
-      "basis": "The battle line outside the Dwargon Gate on the isthmus plain, one step east of the gate."
+      "basis": "The imperial camp and battle line outside the Eastern Gate on the isthmus plain, between the gate and the Empire-Dwargon border."
     },
     {
       "id": "jura-airspace",
@@ -334,8 +334,8 @@
       "id": "green-legion-start-line",
       "name": "Green Legion start line",
       "theatre": "TH-DWG",
-      "x": 0.6524,
-      "y": 0.4189,
+      "x": 0.65977,
+      "y": 0.41227,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
@@ -343,8 +343,8 @@
       "id": "imperial-chariot-line",
       "name": "Imperial chariot line",
       "theatre": "TH-DWG",
-      "x": 0.6531,
-      "y": 0.418,
+      "x": 0.66047,
+      "y": 0.41137,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
@@ -352,8 +352,8 @@
       "id": "linked-fortress-position",
       "name": "Linked fortress position",
       "theatre": "TH-DWG",
-      "x": 0.6533,
-      "y": 0.4176,
+      "x": 0.66067,
+      "y": 0.41097,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
@@ -361,8 +361,8 @@
       "id": "encircled-position",
       "name": "Encircled position",
       "theatre": "TH-DWG",
-      "x": 0.653,
-      "y": 0.4183,
+      "x": 0.66037,
+      "y": 0.41167,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
@@ -370,8 +370,8 @@
       "id": "feigned-withdrawal-line",
       "name": "Feigned withdrawal line",
       "theatre": "TH-DWG",
-      "x": 0.6522,
-      "y": 0.4195,
+      "x": 0.65957,
+      "y": 0.41287,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
@@ -379,8 +379,8 @@
       "id": "attempted-rally-point",
       "name": "Attempted rally point",
       "theatre": "TH-DWG",
-      "x": 0.654,
-      "y": 0.4168,
+      "x": 0.66137,
+      "y": 0.41017,
       "placement": "RECONSTRUCTED",
       "basis": "Tactical position inside a single battlefield. The corpus describes these only in relative terms (a start line, a chariot line, about 100 m), which is far below the scale of any supplied map. Offset from the battlefield anchor so the manoeuvre is legible. Not a located point. Clustered within about 10 km of the south-western Dwargon front, in the head of the south-western valley."
     },
@@ -426,10 +426,10 @@
       "id": "magitank-hq",
       "name": "Magitank Force main camp (Gaster's headquarters)",
       "theatre": "TH-DWG",
-      "x": 0.6514,
-      "y": 0.423,
+      "x": 0.65877,
+      "y": 0.41637,
       "placement": "RECONSTRUCTED",
-      "basis": "Gaster's main camp lay far behind the battle line (V13 Ch2, v13.txt:5620); Testarossa kills him there. Placed about 25 km back down the south-western valley from the array.",
+      "basis": "Gaster's main camp lay far behind the battle line (V13 Ch2, v13.txt:5620); Testarossa kills him there. Placed down the south-western approach behind the array.",
       "symbol": "camp"
     },
     {
@@ -480,40 +480,20 @@
       "id": "magitank-rear",
       "name": "Magitank Force rear",
       "theatre": "TH-DWG",
-      "x": 0.6504,
-      "y": 0.4256,
+      "x": 0.65777,
+      "y": 0.41897,
       "placement": "RECONSTRUCTED",
       "basis": "Hakuro takes 12,000 on a detour of more than 40 km to the magitank rear (v13.txt:4084-4088). Placed behind the main camp, down the valley."
-    },
-    {
-      "id": "northern-tempest-front",
-      "name": "Northern Tempest front (Tempest-Dwargon road)",
-      "theatre": "TH-DWG",
-      "x": 0.6515,
-      "y": 0.49,
-      "placement": "RECONSTRUCTED",
-      "basis": "Scenario: Formation B threatens the logistics link between Tempest and Dwargon in northern Tempest, and the 40,000 northern reinforcement joins this front. Placed on the reconstructed Tempest-Dwargon road (v12.txt:3279-3281) at the massif's southern foot.",
-      "symbol": "objective"
     },
     {
       "id": "dwargon-sw-border",
       "name": "Dwargon south-western border crossing",
       "theatre": "TH-DWG",
-      "x": 0.632,
-      "y": 0.472,
+      "x": 0.654,
+      "y": 0.4805,
       "placement": "RECONSTRUCTED",
-      "basis": "Scenario: where Formation B crosses Dwargon's south-western border into the south-western valley. On the traced Dwargon-Jura border of the Base Map.",
+      "basis": "Scenario: where the 200,000 cross from the Jura forest into Dwargon on their way to the main gate from the south-west. On the traced Dwargon-Jura border of the Base Map.",
       "symbol": "crossing"
-    },
-    {
-      "id": "dwargon-south-approach",
-      "name": "Southern approach to Dwargon",
-      "theatre": "TH-DWG",
-      "x": 0.672,
-      "y": 0.484,
-      "placement": "RECONSTRUCTED",
-      "basis": "Scenario: the 35,000-strong southern formation approaches Dwargon from the south, east of the Tempest-Dwargon road and south of the Dwargon Gate. Placed in the massif's southern foothills, just outside the Base Map border.",
-      "symbol": "objective"
     },
     {
       "id": "isthmus-approach",
@@ -522,7 +502,7 @@
       "x": 0.752,
       "y": 0.412,
       "placement": "RECONSTRUCTED",
-      "basis": "Scenario: the 5,000 detachment's holding position on the Empire side of the Dwargon Gate, on the reconstructed isthmus road.",
+      "basis": "Scenario: the isthmus road on the Empire side of the border, which the 30,000 eastern cohort takes from the imperial capital to the Eastern Gate.",
       "symbol": "staging"
     },
     {
@@ -533,44 +513,87 @@
       "y": 0.452,
       "placement": "RECONSTRUCTED",
       "basis": "Moss's clones track imperial squads in the eastern forest while the chariots have not yet moved (v12.txt:12329-12331, 12504-12506). Placed just inside the Jura border on the measured approach route."
+    },
+    {
+      "id": "empire-dwargon-border",
+      "name": "Empire-Dwargon border (isthmus road)",
+      "theatre": "TH-DWE",
+      "x": 0.7427,
+      "y": 0.41532,
+      "placement": "RECONSTRUCTED",
+      "basis": "Where the isthmus road crosses from the Empire into Dwargon: the traced Base Map border on the road from the imperial capital to the Eastern Gate. The scenario opens the eastern front here: Dwargon is at war from the moment the 30,000 cross."
+    },
+    {
+      "id": "third-strike-landing",
+      "name": "Third Strike landing ground (Jura)",
+      "theatre": "TH-LAB",
+      "x": 0.6655,
+      "y": 0.537,
+      "placement": "RECONSTRUCTED",
+      "basis": "Scenario: where the Third Strike's Tempest group lands in the Great Jura Forest, under the airspace where the Emperor's flagship appears (v15). About 150 km east of the capital Rimuru."
+    },
+    {
+      "id": "tempest-eastern-outskirts",
+      "name": "Eastern approaches of the capital Rimuru",
+      "theatre": "TH-LAB",
+      "x": 0.6545,
+      "y": 0.545,
+      "placement": "RECONSTRUCTED",
+      "basis": "Scenario: the furthest point of the Third Strike's advance on the capital, about 90 km east of the city, where Tempest's capital garrison stops and destroys it."
+    },
+    {
+      "id": "council-of-the-west",
+      "name": "Council of the West (Ingracia)",
+      "theatre": "TH-DIP",
+      "x": 0.4712,
+      "y": 0.5046,
+      "placement": "RECONSTRUCTED",
+      "basis": "The Council of the West sits in the Kingdom of Ingracia (Englassia on the atlas). Testarossa is Tempest's representative there (v16.txt:7195-7197)."
+    },
+    {
+      "id": "walpurgis-council",
+      "name": "Walpurgis Council (Octagram)",
+      "theatre": "TH-DIP",
+      "placement": "ABSTRACT",
+      "basis": "Guy Crimson's emergency Walpurgis Council, reached through a spatial rift (v16.txt:9928-9939). No map position."
     }
   ],
   "theatreZones": {
-    "note": "Schematic areas of operations, not borders. Hand-authored convex rings around the theatre anchor so that territorial control has something to shade. Marked SCHEMATIC everywhere they are drawn. The supplied maps contain no theatre boundaries. R6: TH-DWG now covers the northern Tempest corridor and the south-western Dwargon approach, TH-DWE the Dwargon Gate on the isthmus.",
+    "note": "Schematic areas of operations, not borders. Hand-authored convex rings around the theatre anchor so that territorial control has something to shade. Marked SCHEMATIC everywhere they are drawn. The supplied maps contain no theatre boundaries. TH-DWG covers the south-western approach to the Main Gate, TH-DWE the Eastern Gate on the isthmus.",
     "placement": "SCHEMATIC",
     "zones": {
       "TH-DWG": [
         [
-          0.624,
-          0.468
+          0.628,
+          0.49
         ],
         [
-          0.638,
-          0.415
+          0.64,
+          0.43
         ],
         [
           0.652,
-          0.405
+          0.398
         ],
         [
-          0.668,
-          0.412
+          0.672,
+          0.392
         ],
         [
-          0.68,
+          0.684,
+          0.41
+        ],
+        [
+          0.686,
           0.47
         ],
         [
           0.672,
-          0.498
-        ],
-        [
-          0.65,
           0.505
         ],
         [
-          0.632,
-          0.49
+          0.645,
+          0.512
         ]
       ],
       "TH-LAB": [
@@ -627,31 +650,31 @@
       ],
       "TH-DWE": [
         [
-          0.714,
-          0.408
+          0.712,
+          0.405
         ],
         [
           0.735,
-          0.4
+          0.398
         ],
         [
-          0.758,
-          0.404
+          0.76,
+          0.403
         ],
         [
-          0.762,
+          0.764,
           0.418
         ],
         [
-          0.745,
-          0.43
+          0.746,
+          0.432
         ],
         [
           0.722,
-          0.434
+          0.436
         ],
         [
-          0.712,
+          0.71,
           0.425
         ]
       ],
@@ -704,14 +727,14 @@
     "Dwargon eastern front": "dwargon-eastern-front",
     "Dwargon eastern battlefield": "dwargon-eastern-front",
     "Behind the Scorch Dragon's position": "dwargon-eastern-front",
-    "Blockade camp": "dwargon-eastern-metropolis",
-    "Dwargon eastern metropolis": "dwargon-eastern-metropolis",
-    "Eastern metropolis of Dwargon": "dwargon-eastern-metropolis",
-    "Dwargon eastern gate (Isthmus)": "dwargon-eastern-metropolis",
-    "Dwargon": "dwargon-outer-gate",
-    "Dwargon Gate": "dwargon-outer-gate",
-    "Dwargon gate": "dwargon-outer-gate",
-    "Dwargon outer gate": "dwargon-outer-gate",
+    "Blockade camp": "dwargon-eastern-gate",
+    "Dwargon eastern metropolis": "dwargon-eastern-gate",
+    "Eastern metropolis of Dwargon": "dwargon-eastern-gate",
+    "Dwargon eastern gate (Isthmus)": "dwargon-eastern-gate",
+    "Dwargon": "dwargon-main-gate",
+    "Dwargon Gate": "dwargon-main-gate",
+    "Dwargon gate": "dwargon-main-gate",
+    "Dwargon outer gate": "dwargon-main-gate",
     "Dwargon Gate Front": "sw-dwargon-front",
     "Airspace over Dwargon Gate Front": "sw-dwargon-airspace",
     "Airspace over the front": "sw-dwargon-airspace",

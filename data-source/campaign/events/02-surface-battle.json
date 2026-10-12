@@ -105,6 +105,24 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -202,6 +220,24 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -277,6 +313,24 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "ramiris",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "present"
+   },
+   {
+    "id": "rimuru",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -375,7 +429,126 @@
    "campaign": {
     "majorCombatants": "Gaster; Testarossa; Gobta; Gabiru; Benimaru"
    }
+  },
+  "cast": [
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "remote"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "farraga"
+  ],
+  "immediateResult": "40,000 airships for the Main Gate, 30,000 infantry for the Eastern Gate.",
+  "operationalResult": "40,000 + 30,000 = 70,000.",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 70000,
+   "note": "Parent strength preserved by the split (scenario)."
+  },
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-017": {
+     "status": "SPLIT",
+     "movement": "STATIONARY",
+     "locationText": "Split at the halt point",
+     "location": null
+    },
+    "F-EMP-013": {
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "location": "jura-forest-edge",
+     "locationText": "Imperial halt point",
+     "strength": 40000,
+     "sizeStatus": "EXPLICIT"
+    },
+    "F-EMP-018": {
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "location": "jura-forest-edge",
+     "locationText": "Imperial halt point",
+     "strength": 30000,
+     "sizeStatus": "SCENARIO"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0531",
+  "day": 0,
+  "time": "11:20",
+  "theatreId": "TH-DWG",
+  "location": "jura-forest-edge",
+  "locationText": "Imperial halt point",
+  "type": "FORMATION_SPLIT",
+  "title": "The ultimatum is rejected: the 70,000 cohort splits, 40,000 for the Main Gate and 30,000 for the Eastern Gate",
+  "evidence": "Word document, F (Second Strike). The document names the 30,000's destination \"Pintu Utama\"; its own totals (30,000 + 30,000 = 60,000 at the Eastern Gate) show it means the Eastern Gate (DISC-R7-02).",
+  "forces": [
+   "F-EMP-017",
+   "F-EMP-013",
+   "F-EMP-018"
+  ],
+  "cast": [
+   {
+    "id": "farraga",
+    "presence": "present"
+   }
+  ]
  },
  {
   "id": "EVT-0123",
@@ -395,8 +568,8 @@
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
    "gaster",
-   "benimaru",
    "gobta",
+   "benimaru",
    "rimuru"
   ],
   "forces": [
@@ -464,6 +637,296 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "remote"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
+  }
+ },
+ {
+  "id": "EVT-0102",
+  "day": 0,
+  "time": "11:40",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "once Gabiru's attack began, a few minutes after the briefing",
+  "theatreId": "TH-DWG",
+  "front": "Dwargon Gate Front",
+  "battle": "Battle of the Dwargon Gate",
+  "battleType": "AMBUSH",
+  "location": "sw-dwargon-front",
+  "locationText": "Dwargon Gate Front",
+  "actor": "Wolf Rider unit (about 100) under Gobta",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Magitank Force",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gobta",
+   "gabiru",
+   "benimaru"
+  ],
+  "forces": [
+   "F-TEM-001A",
+   "F-EMP-012"
+  ],
+  "type": "ENGAGEMENT",
+  "title": "Gobta's wolf riders charge after Gabiru's air attack",
+  "immediateResult": "Gobta takes command without hesitation and launches a surprise attack on the imperial group",
+  "operationalResult": "The wolf riders drive in among the 500 magitanks facing them",
+  "strategicResult": "Tempest gains the initiative for now; Gaster later regains composure and encircles the riders",
+  "strength": {
+   "tempest": 100,
+   "empire": 200000,
+   "note": "Engaged imperial element about 500 magitanks (v13.txt:2476); 200,000 is the division total (DERIVED)."
+  },
+  "commandStatus": "Gobta commanding the wolf riders",
+  "intensity": "MEDIUM",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1 Shake and Consciousness",
+    "locator": "v13.txt:2334-2340"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1 Shake and Consciousness",
+    "locator": "v13.txt:2470-2478"
+   }
+  ],
+  "evidence": "Benimaru told Gobta to rush in as soon as Gabiru's attack began. Gobta takes command calmly and strikes the imperial group; 500 magitanks face him while 1,500 face Dwargon.",
+  "reconstructionNote": "Clock time is a simulation placement: the novel gives no clock times. The surface battle is fitted into 11:30-13:20 because it was over in under two hours (v13.txt:7475-7476).",
+  "notes": "Same frame as EVT-0105, after it in the array.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Order: now after Gabiru's air attack EVT-0105 (v13.txt:2440-2474)",
+    "Tempest 12,000 -> ~100 wolf riders (v13.txt:1509-1510, 2492)",
+    "Deleted \"Empire never regains the initiative\": Gaster regains composure and encircles (v13.txt:2762-2764)",
+    "Turning point rank 3 moved to EVT-0121",
+    "Effect moved from F-TEM-001 to F-TEM-001A, with its MOV-003 start position",
+    "Time 06:20 -> D+0 11:40"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-001A": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "direction": "Charge toward the magitank line",
+     "location": "green-legion-start-line",
+     "locationText": "Charge start line"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "Wolf riders charging the magitank screen under Gabiru's air cover"
+    }
+   },
+   "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
+  }
+ },
+ {
+  "id": "EVT-0103",
+  "day": 0,
+  "time": "11:40",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "less than six seconds to cover about 100 m",
+  "theatreId": "TH-DWG",
+  "front": "Dwargon Gate Front",
+  "battle": "Battle of the Dwargon Gate",
+  "battleType": "ENGAGEMENT",
+  "location": "imperial-chariot-line",
+  "locationText": "Magitank line",
+  "actor": "Wolf Rider unit (about 100) under Gobta",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Magitank Force",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gobta"
+  ],
+  "forces": [
+   "F-TEM-001A",
+   "F-EMP-012"
+  ],
+  "type": "ATTACK",
+  "title": "Wolf riders close the last hundred metres",
+  "immediateResult": "From about 100 m out the riders cover the distance in under six seconds; several rounds go wide",
+  "operationalResult": "The magitank line is reached at close quarters",
+  "strategicResult": "The imperial stand-off advantage is nullified for the moment",
+  "strength": {
+   "tempest": 100,
+   "empire": 200000,
+   "note": "Engaged imperial element about 500 magitanks; 200,000 DERIVED division total."
+  },
+  "commandStatus": "Gobta commanding",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "HIGH",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1 Shake and Consciousness",
+    "locator": "v13.txt:2488-2497"
+   }
+  ],
+  "evidence": "Switching to wolf-rider mode about 100 m from the magitanks, the riders take under six seconds to cross; shots strike in unexpected directions, showing the Imperial Army is shaken.",
+  "reconstructionNote": "Clock time is a simulation placement: the novel gives no clock times. The surface battle is fitted into 11:30-13:20 because it was over in under two hours (v13.txt:7475-7476).",
+  "notes": "Imperial fire recorded as inaccurate and rattled.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Tempest 12,000 -> ~100 wolf riders (v13.txt:2492; 1509-1510)",
+    "Location -> imperial-chariot-line, end of MOV-003",
+    "Time 06:30 -> D+0 11:40"
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-001A": {
+     "movement": "BREAKTHROUGH",
+     "direction": "Into the magitank line",
+     "location": "imperial-chariot-line",
+     "locationText": "Inside the magitank line"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gobta",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
+  }
+ },
+ {
+  "id": "EVT-0104",
+  "day": 0,
+  "time": "11:40",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "the same moment as the charge",
+  "theatreId": "TH-DWG",
+  "front": "Dwargon Gate Front",
+  "battle": "Battle of the Dwargon Gate",
+  "battleType": "ENGAGEMENT",
+  "location": "imperial-chariot-line",
+  "locationText": "Magitank line",
+  "actor": "Imperial infantry screen (Magitank Force)",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Wolf Rider unit (about 100)",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "gobta"
+  ],
+  "forces": [
+   "F-EMP-012",
+   "F-TEM-001A"
+  ],
+  "type": "DEFENSE",
+  "title": "Infantry screen tries to block the wolf riders",
+  "immediateResult": "The infantry guarding the magitanks are bitten down by the wolves",
+  "operationalResult": "The riders reach their first target, the magitank unit",
+  "strategicResult": "The magitanks are left without their screen at the point of contact",
+  "strength": {
+   "tempest": 100,
+   "empire": "UNKNOWN",
+   "note": "Size of the infantry screen not stated."
+  },
+  "commandStatus": "Gaster commanding",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "HIGH",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1 Shake and Consciousness",
+    "locator": "v13.txt:2502-2507"
+   }
+  ],
+  "evidence": "The infantry protecting the magitanks try to bar the way but are bitten by the wolves; with no distance left, the riders reach the magitank unit, Ranga in the lead.",
+  "reconstructionNote": "Clock time is a simulation placement: the novel gives no clock times. The surface battle is fitted into 11:30-13:20 because it was over in under two hours (v13.txt:7475-7476). Same moment as EVT-0103 (continuous passage).",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Tempest 12,000 -> ~100 wolf riders (v13.txt:2502-2505)",
+    "Time 06:40 -> D+0 11:40, same moment as EVT-0103",
+    "Empire strength 200,000 -> UNKNOWN (only the screen is engaged)"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gobta",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -560,308 +1023,20 @@
    },
    "theatres": {},
    "campaign": {}
-  }
- },
- {
-  "id": "EVT-0102",
-  "day": 0,
-  "time": "11:40",
-  "timePrecision": "CANONICAL_RELATIVE",
-  "canonicalTime": "once Gabiru's attack began, a few minutes after the briefing",
-  "theatreId": "TH-DWG",
-  "front": "Dwargon Gate Front",
-  "battle": "Battle of the Dwargon Gate",
-  "battleType": "AMBUSH",
-  "location": "sw-dwargon-front",
-  "locationText": "Dwargon Gate Front",
-  "actor": "Wolf Rider unit (about 100) under Gobta",
-  "actorFaction": "Jura-Tempest Federation",
-  "opponent": "Magitank Force",
-  "opponentFaction": "Eastern Empire",
-  "characters": [
-   "gobta",
-   "gabiru",
-   "benimaru"
-  ],
-  "forces": [
-   "F-TEM-001A",
-   "F-EMP-012"
-  ],
-  "type": "ENGAGEMENT",
-  "title": "Gobta's wolf riders charge after Gabiru's air attack",
-  "immediateResult": "Gobta takes command without hesitation and launches a surprise attack on the imperial group",
-  "operationalResult": "The wolf riders drive in among the 500 magitanks facing them",
-  "strategicResult": "Tempest gains the initiative for now; Gaster later regains composure and encircles the riders",
-  "strength": {
-   "tempest": 100,
-   "empire": 200000,
-   "note": "Engaged imperial element about 500 magitanks (v13.txt:2476); 200,000 is the division total (DERIVED)."
   },
-  "commandStatus": "Gobta commanding the wolf riders",
-  "intensity": "MEDIUM",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "HIGH",
-   "overall": "HIGH"
-  },
-  "sources": [
+  "cast": [
    {
-    "volume": "V13",
-    "chapter": "Ch1 Shake and Consciousness",
-    "locator": "v13.txt:2334-2340"
+    "id": "gabiru",
+    "presence": "present"
    },
    {
-    "volume": "V13",
-    "chapter": "Ch1 Shake and Consciousness",
-    "locator": "v13.txt:2470-2478"
+    "id": "benimaru",
+    "presence": "remote"
    }
   ],
-  "evidence": "Benimaru told Gobta to rush in as soon as Gabiru's attack began. Gobta takes command calmly and strikes the imperial group; 500 magitanks face him while 1,500 face Dwargon.",
-  "reconstructionNote": "Clock time is a simulation placement: the novel gives no clock times. The surface battle is fitted into 11:30-13:20 because it was over in under two hours (v13.txt:7475-7476).",
-  "notes": "Same frame as EVT-0105, after it in the array.",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "Order: now after Gabiru's air attack EVT-0105 (v13.txt:2440-2474)",
-    "Tempest 12,000 -> ~100 wolf riders (v13.txt:1509-1510, 2492)",
-    "Deleted \"Empire never regains the initiative\": Gaster regains composure and encircles (v13.txt:2762-2764)",
-    "Turning point rank 3 moved to EVT-0121",
-    "Effect moved from F-TEM-001 to F-TEM-001A, with its MOV-003 start position",
-    "Time 06:20 -> D+0 11:40"
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-TEM-001A": {
-     "status": "ENGAGED",
-     "movement": "ADVANCE",
-     "direction": "Charge toward the magitank line",
-     "location": "green-legion-start-line",
-     "locationText": "Charge start line"
-    }
-   },
-   "theatres": {
-    "TH-DWG": {
-     "frontline": "Wolf riders charging the magitank screen under Gabiru's air cover"
-    }
-   },
-   "campaign": {}
-  }
- },
- {
-  "id": "EVT-0103",
-  "day": 0,
-  "time": "11:40",
-  "timePrecision": "CANONICAL_RELATIVE",
-  "canonicalTime": "less than six seconds to cover about 100 m",
-  "theatreId": "TH-DWG",
-  "front": "Dwargon Gate Front",
-  "battle": "Battle of the Dwargon Gate",
-  "battleType": "ENGAGEMENT",
-  "location": "imperial-chariot-line",
-  "locationText": "Magitank line",
-  "actor": "Wolf Rider unit (about 100) under Gobta",
-  "actorFaction": "Jura-Tempest Federation",
-  "opponent": "Magitank Force",
-  "opponentFaction": "Eastern Empire",
-  "characters": [
-   "gobta"
-  ],
-  "forces": [
-   "F-TEM-001A",
-   "F-EMP-012"
-  ],
-  "type": "ATTACK",
-  "title": "Wolf riders close the last hundred metres",
-  "immediateResult": "From about 100 m out the riders cover the distance in under six seconds; several rounds go wide",
-  "operationalResult": "The magitank line is reached at close quarters",
-  "strategicResult": "The imperial stand-off advantage is nullified for the moment",
-  "strength": {
-   "tempest": 100,
-   "empire": 200000,
-   "note": "Engaged imperial element about 500 magitanks; 200,000 DERIVED division total."
-  },
-  "commandStatus": "Gobta commanding",
-  "intensity": "HIGH",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "HIGH",
-   "numbers": "HIGH",
-   "overall": "HIGH"
-  },
-  "sources": [
-   {
-    "volume": "V13",
-    "chapter": "Ch1 Shake and Consciousness",
-    "locator": "v13.txt:2488-2497"
-   }
-  ],
-  "evidence": "Switching to wolf-rider mode about 100 m from the magitanks, the riders take under six seconds to cross; shots strike in unexpected directions, showing the Imperial Army is shaken.",
-  "reconstructionNote": "Clock time is a simulation placement: the novel gives no clock times. The surface battle is fitted into 11:30-13:20 because it was over in under two hours (v13.txt:7475-7476).",
-  "notes": "Imperial fire recorded as inaccurate and rattled.",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "Tempest 12,000 -> ~100 wolf riders (v13.txt:2492; 1509-1510)",
-    "Location -> imperial-chariot-line, end of MOV-003",
-    "Time 06:30 -> D+0 11:40"
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-TEM-001A": {
-     "movement": "BREAKTHROUGH",
-     "direction": "Into the magitank line",
-     "location": "imperial-chariot-line",
-     "locationText": "Inside the magitank line"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  }
- },
- {
-  "id": "EVT-0104",
-  "day": 0,
-  "time": "11:40",
-  "timePrecision": "CANONICAL_RELATIVE",
-  "canonicalTime": "the same moment as the charge",
-  "theatreId": "TH-DWG",
-  "front": "Dwargon Gate Front",
-  "battle": "Battle of the Dwargon Gate",
-  "battleType": "ENGAGEMENT",
-  "location": "imperial-chariot-line",
-  "locationText": "Magitank line",
-  "actor": "Imperial infantry screen (Magitank Force)",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Wolf Rider unit (about 100)",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [
-   "gobta"
-  ],
-  "forces": [
-   "F-EMP-012",
-   "F-TEM-001A"
-  ],
-  "type": "DEFENSE",
-  "title": "Infantry screen tries to block the wolf riders",
-  "immediateResult": "The infantry guarding the magitanks are bitten down by the wolves",
-  "operationalResult": "The riders reach their first target, the magitank unit",
-  "strategicResult": "The magitanks are left without their screen at the point of contact",
-  "strength": {
-   "tempest": 100,
-   "empire": "UNKNOWN",
-   "note": "Size of the infantry screen not stated."
-  },
-  "commandStatus": "Gaster commanding",
-  "intensity": "HIGH",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "HIGH",
-   "numbers": "LOW",
-   "overall": "HIGH"
-  },
-  "sources": [
-   {
-    "volume": "V13",
-    "chapter": "Ch1 Shake and Consciousness",
-    "locator": "v13.txt:2502-2507"
-   }
-  ],
-  "evidence": "The infantry protecting the magitanks try to bar the way but are bitten by the wolves; with no distance left, the riders reach the magitank unit, Ranga in the lead.",
-  "reconstructionNote": "Clock time is a simulation placement: the novel gives no clock times. The surface battle is fitted into 11:30-13:20 because it was over in under two hours (v13.txt:7475-7476). Same moment as EVT-0103 (continuous passage).",
-  "notes": "",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "Tempest 12,000 -> ~100 wolf riders (v13.txt:2502-2505)",
-    "Time 06:40 -> D+0 11:40, same moment as EVT-0103",
-    "Empire strength 200,000 -> UNKNOWN (only the screen is engaged)"
-   ]
-  },
-  "effects": {
-   "forces": {},
-   "theatres": {},
-   "campaign": {}
-  }
- },
- {
-  "id": "EVT-0124",
-  "day": 0,
-  "time": "11:50",
-  "timePrecision": "SEQUENTIAL",
-  "canonicalTime": "the next second after the riders reached the magitanks",
-  "theatreId": "TH-DWG",
-  "front": "Dwargon Gate Front",
-  "battle": "Battle of the Dwargon Gate",
-  "battleType": "ENGAGEMENT",
-  "location": "imperial-chariot-line",
-  "locationText": "Magitank line",
-  "actor": "Gobchi (Wolf Rider unit)",
-  "actorFaction": "Jura-Tempest Federation",
-  "opponent": "Magitank Force",
-  "opponentFaction": "Eastern Empire",
-  "characters": [
-   "gobta",
-   "gaster",
-   "rimuru"
-  ],
-  "forces": [
-   "F-TEM-001A",
-   "F-EMP-012"
-  ],
-  "type": "ATTACK",
-  "title": "Gobchi's Flaming Jade destroys a magitank from inside",
-  "immediateResult": "Gobchi throws a fire-sealed magic pearl into a turret and the magitank is destroyed from within",
-  "operationalResult": "Gaster misjudges the jades as a few special weapons; in fact 3,000 were issued, ten to each rider and flyer",
-  "strategicResult": "The magitanks prove vulnerable at close range",
-  "strength": {
-   "tempest": 100,
-   "empire": 200000,
-   "note": "Empire: DERIVED division total."
-  },
-  "commandStatus": "Gobta commanding; Gobchi second in the charge",
-  "intensity": "HIGH",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "HIGH",
-   "overall": "HIGH"
-  },
-  "sources": [
-   {
-    "volume": "V13",
-    "chapter": "Ch1 Shake and Consciousness",
-    "locator": "v13.txt:2508-2537"
-   },
-   {
-    "volume": "V13",
-    "chapter": "Ch1 Shake and Consciousness",
-    "locator": "v13.txt:2630-2640"
-   }
-  ],
-  "evidence": "On Gobta's signal Gobchi throws a red-glowing magic pearl, sealed with flame magic by Kurobee and Charys, into a turret. Rimuru prepared 3,000 of these, ten for each rider and flyer.",
-  "reconstructionNote": "Clock time is a simulation placement: the novel gives no clock times. The surface battle is fitted into 11:30-13:20 because it was over in under two hours (v13.txt:7475-7476).",
-  "notes": "Gobchi has no character record; named in the title only.",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "New event per AUDIT-PLAN file 02 (v13.txt:2508-2637)"
-   ]
-  },
-  "effects": {
-   "forces": {},
-   "theatres": {},
-   "campaign": {}
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -951,6 +1126,116 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
+  }
+ },
+ {
+  "id": "EVT-0124",
+  "day": 0,
+  "time": "11:50",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "the next second after the riders reached the magitanks",
+  "theatreId": "TH-DWG",
+  "front": "Dwargon Gate Front",
+  "battle": "Battle of the Dwargon Gate",
+  "battleType": "ENGAGEMENT",
+  "location": "imperial-chariot-line",
+  "locationText": "Magitank line",
+  "actor": "Gobchi (Wolf Rider unit)",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Magitank Force",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gobta",
+   "gaster",
+   "gobchi",
+   "rimuru"
+  ],
+  "forces": [
+   "F-TEM-001A",
+   "F-EMP-012"
+  ],
+  "type": "ATTACK",
+  "title": "Gobchi's Flaming Jade destroys a magitank from inside",
+  "immediateResult": "Gobchi throws a fire-sealed magic pearl into a turret and the magitank is destroyed from within",
+  "operationalResult": "Gaster misjudges the jades as a few special weapons; in fact 3,000 were issued, ten to each rider and flyer",
+  "strategicResult": "The magitanks prove vulnerable at close range",
+  "strength": {
+   "tempest": 100,
+   "empire": 200000,
+   "note": "Empire: DERIVED division total."
+  },
+  "commandStatus": "Gobta commanding; Gobchi second in the charge",
+  "intensity": "HIGH",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1 Shake and Consciousness",
+    "locator": "v13.txt:2508-2537"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1 Shake and Consciousness",
+    "locator": "v13.txt:2630-2640"
+   }
+  ],
+  "evidence": "On Gobta's signal Gobchi throws a red-glowing magic pearl, sealed with flame magic by Kurobee and Charys, into a turret. Rimuru prepared 3,000 of these, ten for each rider and flyer.",
+  "reconstructionNote": "Clock time is a simulation placement: the novel gives no clock times. The surface battle is fitted into 11:30-13:20 because it was over in under two hours (v13.txt:7475-7476).",
+  "notes": "Gobchi has no character record; named in the title only.",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event per AUDIT-PLAN file 02 (v13.txt:2508-2637)"
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "gobchi",
+    "presence": "present"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Added Gobchi to cast: the registry now has id 'gobchi', so the event's note 'Gobchi has no character record' is stale.",
+   "removed": []
   }
  },
  {
@@ -1023,111 +1308,16 @@
    },
    "theatres": {},
    "campaign": {}
-  }
- },
- {
-  "id": "EVT-0106",
-  "day": 0,
-  "time": "12:00",
-  "timePrecision": "SEQUENTIAL",
-  "canonicalTime": "after the fortress formed, as Gobta tried to withdraw",
-  "theatreId": "TH-DWG",
-  "front": "Dwargon Gate Front",
-  "battle": "Battle of the Dwargon Gate",
-  "battleType": "ENGAGEMENT",
-  "location": "sw-dwargon-airspace",
-  "locationText": "Airspace over the front",
-  "actor": "Flying Combat Corps (Major General Farraga)",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Wolf riders and Gabiru's air element",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [
-   "farraga",
-   "gaster",
-   "gabiru",
-   "gobta"
-  ],
-  "forces": [
-   "F-EMP-013",
-   "F-TEM-001A",
-   "F-TEM-003B",
-   "F-TEM-003C"
-  ],
-  "type": "SPECIAL_ABILITY",
-  "title": "Farraga's 100 airships arrive; Magic Disturbing Radiation blocks Shadow Motion",
-  "immediateResult": "The Flying Combat Corps joins with 100 airships; its radiation and a magic barrier stop the riders escaping by Shadow Motion and weigh down Gabiru's flyers near the ships",
-  "operationalResult": "Gobta's ordered withdrawal fails; the riders must run on foot",
-  "strategicResult": "The Empire commits its secret weapon",
-  "strength": {
-   "tempest": 500,
-   "empire": 40000,
-   "note": "Tempest: ~100 riders plus ~400 flyers affected. Empire: 40,000 (corps total, stated post-battle, v13.txt:7531-7533); 100 airships committed (v13.txt:2772)."
   },
-  "commandStatus": "Major General Farraga commanding the Flying Combat Corps",
-  "intensity": "HIGH",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "HIGH",
-   "overall": "HIGH"
-  },
-  "sources": [
+  "cast": [
    {
-    "volume": "V13",
-    "chapter": "Ch1 Shake and Consciousness",
-    "locator": "v13.txt:2764-2775"
-   },
-   {
-    "volume": "V13",
-    "chapter": "Ch1 Shake and Consciousness",
-    "locator": "v13.txt:2795-2825"
-   },
-   {
-    "volume": "V13",
-    "chapter": "Ch1 Shake and Consciousness",
-    "locator": "v13.txt:2905-2912"
+    "id": "hakuro",
+    "presence": "present"
    }
   ],
-  "evidence": "Farraga's corps arrives with 100 airships. When Gobta tries to withdraw by Shadow Motion, a magic barrier and the magicule-disturbing radiation prevent it; near the ships Gabiru's flyers feel their bodies grow heavy.",
-  "reconstructionNote": "Clock time is a simulation placement: the novel gives no clock times. The surface battle is fitted into 11:30-13:20 because it was over in under two hours (v13.txt:7475-7476).",
-  "notes": "Affected both Gobta's and Gabiru's formations.",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "Order: now after the fortress EVT-0107 (v13.txt:2703-2730, then 2766-2822)",
-    "Airship arrival and F-EMP-013 ENGAGED effect moved here from EVT-0105",
-    "Tempest 3,000 -> ~500 affected (~100 riders + ~400 flyers)",
-    "Empire 40,000 kept; 100 airships added (v13.txt:2772)",
-    "Air Combat Flying Corps -> Flying Combat Corps; Faraga -> Farraga",
-    "Time 07:20 -> D+0 12:00; source Ch1-2 -> Ch1"
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-013": {
-     "strength": 40000,
-     "effective": 40000,
-     "status": "ENGAGED",
-     "movement": "ADVANCE",
-     "direction": "Joining the battle over the front",
-     "location": "sw-dwargon-airspace",
-     "locationText": "Airspace over the front"
-    },
-    "F-TEM-001A": {
-     "movement": "RETREAT",
-     "direction": "Withdrawal attempt blocked; Shadow Motion jammed"
-    }
-   },
-   "theatres": {
-    "TH-DWG": {
-     "frontline": "100 airships over the front; Shadow Motion blocked inside the magitank ring"
-    }
-   },
-   "campaign": {
-    "majorCombatants": "Gaster; Farraga; Gobta; Gabiru; Benimaru"
-   }
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1147,8 +1337,8 @@
   "opponent": "Magitank Force",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "benimaru",
-   "gobta"
+   "gobta",
+   "benimaru"
   ],
   "forces": [
    "F-TEM-001A",
@@ -1218,6 +1408,20 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1299,6 +1503,20 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1400,6 +1618,24 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1476,6 +1712,20 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1495,7 +1745,9 @@
   "opponent": "Magitank Force",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "gobta"
+   "gobta",
+   "ranga",
+   "gobchi"
   ],
   "forces": [
    "F-TEM-001A",
@@ -1572,6 +1824,153 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "ranga",
+    "presence": "present"
+   },
+   {
+    "id": "gobchi",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Added Ranga and Gobchi: both now have valid ids in the registry (ranga, gobchi), contrary to the event's own stale notes.",
+   "removed": []
+  }
+ },
+ {
+  "id": "EVT-0106",
+  "day": 0,
+  "time": "12:40",
+  "timePrecision": "SEQUENTIAL",
+  "canonicalTime": "after the fortress formed, as Gobta tried to withdraw",
+  "theatreId": "TH-DWG",
+  "front": "Dwargon Gate Front",
+  "battle": "Battle of the Dwargon Gate",
+  "battleType": "ENGAGEMENT",
+  "location": "sw-dwargon-airspace",
+  "locationText": "Airspace over the front",
+  "actor": "Flying Combat Corps (Major General Farraga)",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Wolf riders and Gabiru's air element",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "farraga",
+   "gaster",
+   "gabiru",
+   "gobta"
+  ],
+  "forces": [
+   "F-EMP-013",
+   "F-TEM-001A",
+   "F-TEM-003B",
+   "F-TEM-003C"
+  ],
+  "type": "SPECIAL_ABILITY",
+  "title": "Farraga's 100 airships arrive; Magic Disturbing Radiation blocks Shadow Motion",
+  "immediateResult": "The Flying Combat Corps joins with 100 airships; its radiation and a magic barrier stop the riders escaping by Shadow Motion and weigh down Gabiru's flyers near the ships",
+  "operationalResult": "Gobta's ordered withdrawal fails; the riders must run on foot",
+  "strategicResult": "The Empire commits its secret weapon",
+  "strength": {
+   "tempest": 500,
+   "empire": 40000,
+   "note": "Tempest: ~100 riders plus ~400 flyers affected. Empire: 40,000 (corps total, stated post-battle, v13.txt:7531-7533); 100 airships committed (v13.txt:2772). Scenario: with the 200,000 already there, 240,000 at the Main Gate."
+  },
+  "commandStatus": "Major General Farraga commanding the Flying Combat Corps",
+  "intensity": "HIGH",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1 Shake and Consciousness",
+    "locator": "v13.txt:2764-2775"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1 Shake and Consciousness",
+    "locator": "v13.txt:2795-2825"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1 Shake and Consciousness",
+    "locator": "v13.txt:2905-2912"
+   }
+  ],
+  "evidence": "Farraga's corps arrives with 100 airships. When Gobta tries to withdraw by Shadow Motion, a magic barrier and the magicule-disturbing radiation prevent it; near the ships Gabiru's flyers feel their bodies grow heavy.",
+  "reconstructionNote": "Clock time is a simulation placement: the novel gives no clock times. The surface battle is fitted into 11:30-13:20 because it was over in under two hours (v13.txt:7475-7476).",
+  "notes": "Affected both Gobta's and Gabiru's formations.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Order: now after the fortress EVT-0107 (v13.txt:2703-2730, then 2766-2822)",
+    "Airship arrival and F-EMP-013 ENGAGED effect moved here from EVT-0105",
+    "Tempest 3,000 -> ~500 affected (~100 riders + ~400 flyers)",
+    "Empire 40,000 kept; 100 airships added (v13.txt:2772)",
+    "Air Combat Flying Corps -> Flying Combat Corps; Faraga -> Farraga",
+    "Time 07:20 -> D+0 12:00; source Ch1-2 -> Ch1",
+    "R7 campaign reconstruction: Arrival 12:30 after the flight from the halt point; 240,000 at the gate."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-013": {
+     "strength": 40000,
+     "effective": 40000,
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "direction": "Joining the battle over the front",
+     "location": "sw-dwargon-airspace",
+     "locationText": "Airspace over the front"
+    },
+    "F-TEM-001A": {
+     "movement": "RETREAT",
+     "direction": "Withdrawal attempt blocked; Shadow Motion jammed"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "100 airships over the front; Shadow Motion blocked inside the magitank ring"
+    }
+   },
+   "campaign": {
+    "majorCombatants": "Gaster; Farraga; Gobta; Gabiru; Benimaru"
+   }
+  },
+  "cast": [
+   {
+    "id": "farraga",
+    "presence": "present"
+   },
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1652,6 +2051,16 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "hakuro",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1732,6 +2141,20 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "farraga",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1822,6 +2245,20 @@
    "campaign": {
     "majorCombatants": "Ultima; Farraga; Gaster; Gobta; Gabiru; Hakuro; Benimaru"
    }
+  },
+  "cast": [
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "farraga",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1843,8 +2280,7 @@
   "characters": [
    "ultima",
    "farraga",
-   "gabiru",
-   "veldora"
+   "gabiru"
   ],
   "forces": [
    "F-DEM-002",
@@ -1932,9 +2368,30 @@
     }
    },
    "campaign": {
-    "empireEffective": 900000,
+    "empireEffective": 960000,
     "majorCombatants": "Ultima; Gobta; Gabiru; Hakuro; Gaster; Benimaru"
    }
+  },
+  "cast": [
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "farraga",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Veldora was never physically present; the novel states Farraga mistook Gabiru for him (v13.txt:5398-5404).",
+   "removed": [
+    "veldora"
+   ]
   }
  },
  {
@@ -2005,6 +2462,16 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gaster",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -2089,6 +2556,20 @@
    "campaign": {
     "activeCommanders": "Benimaru Supreme General (Tempest); Gaster ordering a general withdrawal"
    }
+  },
+  "cast": [
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -2177,6 +2658,214 @@
    "campaign": {
     "majorCombatants": "Testarossa; Gaster; Ultima; Gobta; Gabiru; Hakuro; Benimaru"
    }
+  },
+  "cast": [
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "gaster",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
+  }
+ },
+ {
+  "id": "EVT-0119",
+  "day": 0,
+  "time": "13:20",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "less than two hours after the battle began, it was completely over",
+  "theatreId": "TH-DWG",
+  "front": "Dwargon Gate Front",
+  "battle": "Battle of the Dwargon Gate",
+  "battleType": "MAJOR_BATTLE",
+  "location": "sw-dwargon-front",
+  "locationText": "Dwargon Gate Front",
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Magitank Force and Flying Combat Corps",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "testarossa",
+   "ultima",
+   "gobta",
+   "gabiru",
+   "hakuro",
+   "gaster",
+   "farraga",
+   "rimuru",
+   "benimaru",
+   "gadra"
+  ],
+  "forces": [
+   "F-EMP-012",
+   "F-EMP-013",
+   "F-EMP-010",
+   "F-TEM-001",
+   "F-TEM-001A",
+   "F-TEM-003B",
+   "F-TEM-003C",
+   "F-DEM-001",
+   "F-DEM-002"
+  ],
+  "type": "UNIT_DESTRUCTION",
+  "title": "Main Gate battle over: the 200,000 and the 40,000 annihilated by Testarossa's group",
+  "immediateResult": "The 200,000 of the Magitank Force and the 40,000 of the Flying Combat Corps are completely defeated; no prisoners, all killed, about 240,000",
+  "operationalResult": "The Dwargon Gate Front is cleared; Tempest holds the field",
+  "strategicResult": "The Empire loses about a quarter of its 940,000-strong invasion army; these dead are never revived",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 240000,
+   "note": "Empire: 200,000 + 40,000 = 240,000 at the Main Gate (v13.txt:7531-7542). Scenario attribution: Testarossa's group; the novels credit Ultima (air), Gobta, Ranga, Hakuro and Gabiru (ground) and Testarossa (Gaster's headquarters). See DISC-R7-03."
+  },
+  "commandStatus": "Gaster and Farraga killed",
+  "intensity": "EXTREME",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "HIGH",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch2 The Ravaged Beginning",
+    "locator": "v13.txt:6664-6680"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:7472-7476"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch3",
+    "locator": "v13.txt:7528-7546"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Epilogue",
+    "locator": "v13.txt:18362-18370"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Epilogue",
+    "locator": "v13.txt:18390-18396"
+   }
+  ],
+  "evidence": "Under two hours after it began, the battle was over. Raphael: no prisoners, all killed, about 240,000 (200,000 under Gaster, 40,000 under Farraga). In the Epilogue these 240,000 cannot be resurrected.",
+  "reconstructionNote": "Clock time reconstructed: 13:20 closes the battle 1 h 50 min after the first volley at 11:30, inside the canonical \"under two hours\".",
+  "notes": "240,000 = 200,000 + 40,000, summed by the novel itself (v13.txt:7542). Final deaths: never resurrected (v13.txt:18368, 18393). See CAS-001, CAS-002, CAS-003, CAS-008.",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Time 13:00 -> D+0 13:20; the battle now spans 11:30-13:20, under two hours (v13.txt:7475-7476)",
+    "Tempest 15,000 -> UNKNOWN (not stated in V13 Ch2-3)",
+    "Source Ch3 -> Ch2 end + Ch3 + Epilogue",
+    "Added: the 240,000 were never revived (v13.txt:18364-18395)",
+    "Calgurio -> Caligulio; Geist/Faraga -> Gaster/Farraga",
+    "R6 scenario ledger: the main formation's strength after the split is the sum of its allocations, computed by the compiler.",
+    "R7 campaign reconstruction: Scenario framing of the Main Gate counter-attack."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-012": {
+     "strength": 0,
+     "effective": 0,
+     "kia": 200000,
+     "pow": 0,
+     "status": "DESTROYED",
+     "movement": "STATIONARY",
+     "direction": "-"
+    },
+    "F-TEM-001A": {
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-"
+    },
+    "F-TEM-001": {
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-"
+    },
+    "F-TEM-003B": {
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-"
+    },
+    "F-DEM-002": {
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "direction": "-"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "status": "CLEARED",
+     "frontline": "Dwargon Gate Front cleared; Tempest in possession of the field",
+     "battleStatus": "CONCLUDED",
+     "control": "TEMPEST_CONTROLLED"
+    }
+   },
+   "campaign": {
+    "empireEffective": 760000,
+    "activeCommanders": "Benimaru Supreme General (Tempest); Gaster and Farraga killed; Caligulio commanding the Jura invasion army",
+    "majorCombatants": "Testarossa; Ultima; Gobta; Gabiru; Hakuro; Benimaru"
+   }
+  },
+  "cast": [
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "hakuro",
+    "presence": "present"
+   },
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "farraga",
+    "presence": "present"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   },
+   {
+    "id": "benimaru",
+    "presence": "remote"
+   },
+   {
+    "id": "gadra",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -2283,153 +2972,24 @@
    "campaign": {
     "activeCommanders": "Benimaru Supreme General (Tempest); Gaster and Farraga killed; Caligulio commanding the Jura invasion army, unaware of the defeat"
    }
-  }
- },
- {
-  "id": "EVT-0119",
-  "day": 0,
-  "time": "13:20",
-  "timePrecision": "CANONICAL_RELATIVE",
-  "canonicalTime": "less than two hours after the battle began, it was completely over",
-  "theatreId": "TH-DWG",
-  "front": "Dwargon Gate Front",
-  "battle": "Battle of the Dwargon Gate",
-  "battleType": "MAJOR_BATTLE",
-  "location": "sw-dwargon-front",
-  "locationText": "Dwargon Gate Front",
-  "actor": "Jura-Tempest Federation",
-  "actorFaction": "Jura-Tempest Federation",
-  "opponent": "Magitank Force and Flying Combat Corps",
-  "opponentFaction": "Eastern Empire",
-  "characters": [
-   "rimuru",
-   "benimaru",
-   "testarossa",
-   "ultima",
-   "gobta",
-   "gabiru",
-   "hakuro",
-   "gaster",
-   "farraga",
-   "gadra"
-  ],
-  "forces": [
-   "F-EMP-012",
-   "F-EMP-013",
-   "F-EMP-010",
-   "F-TEM-001",
-   "F-TEM-001A",
-   "F-TEM-003B",
-   "F-TEM-003C",
-   "F-DEM-001",
-   "F-DEM-002"
-  ],
-  "type": "UNIT_DESTRUCTION",
-  "title": "Surface battle over: Magitank Force and Flying Combat Corps annihilated",
-  "immediateResult": "The 200,000 of the Magitank Force and the 40,000 of the Flying Combat Corps are completely defeated; no prisoners, all killed, about 240,000",
-  "operationalResult": "The Dwargon Gate Front is cleared; Tempest holds the field",
-  "strategicResult": "The Empire loses about a quarter of its 940,000-strong invasion army; these dead are never revived",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": 240000,
-   "note": "Empire: 200,000 + 40,000 (v13.txt:7531-7542). Tempest strength in contact not stated in Ch2-3."
   },
-  "commandStatus": "Gaster and Farraga killed",
-  "intensity": "EXTREME",
-  "significance": "CRITICAL",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "HIGH",
-   "numbers": "HIGH",
-   "overall": "HIGH"
-  },
-  "sources": [
+  "cast": [
    {
-    "volume": "V13",
-    "chapter": "Ch2 The Ravaged Beginning",
-    "locator": "v13.txt:6664-6680"
+    "id": "testarossa",
+    "presence": "present"
    },
    {
-    "volume": "V13",
-    "chapter": "Ch3",
-    "locator": "v13.txt:7472-7476"
+    "id": "gaster",
+    "presence": "present"
    },
    {
-    "volume": "V13",
-    "chapter": "Ch3",
-    "locator": "v13.txt:7528-7546"
-   },
-   {
-    "volume": "V13",
-    "chapter": "Epilogue",
-    "locator": "v13.txt:18362-18370"
-   },
-   {
-    "volume": "V13",
-    "chapter": "Epilogue",
-    "locator": "v13.txt:18390-18396"
+    "id": "ultima",
+    "presence": "present"
    }
   ],
-  "evidence": "Under two hours after it began, the battle was over. Raphael: no prisoners, all killed, about 240,000 (200,000 under Gaster, 40,000 under Farraga). In the Epilogue these 240,000 cannot be resurrected.",
-  "reconstructionNote": "Clock time reconstructed: 13:20 closes the battle 1 h 50 min after the first volley at 11:30, inside the canonical \"under two hours\".",
-  "notes": "240,000 = 200,000 + 40,000, summed by the novel itself (v13.txt:7542). Final deaths: never resurrected (v13.txt:18368, 18393). See CAS-001, CAS-002, CAS-003, CAS-008.",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "Time 13:00 -> D+0 13:20; the battle now spans 11:30-13:20, under two hours (v13.txt:7475-7476)",
-    "Tempest 15,000 -> UNKNOWN (not stated in V13 Ch2-3)",
-    "Source Ch3 -> Ch2 end + Ch3 + Epilogue",
-    "Added: the 240,000 were never revived (v13.txt:18364-18395)",
-    "Calgurio -> Caligulio; Geist/Faraga -> Gaster/Farraga",
-    "R6 scenario ledger: the main formation's strength after the split is the sum of its allocations, computed by the compiler."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-012": {
-     "strength": 0,
-     "effective": 0,
-     "kia": 200000,
-     "pow": 0,
-     "status": "DESTROYED",
-     "movement": "STATIONARY",
-     "direction": "-"
-    },
-    "F-TEM-001A": {
-     "status": "ACTIVE",
-     "movement": "STATIONARY",
-     "direction": "-"
-    },
-    "F-TEM-001": {
-     "status": "ACTIVE",
-     "movement": "STATIONARY",
-     "direction": "-"
-    },
-    "F-TEM-003B": {
-     "status": "ACTIVE",
-     "movement": "STATIONARY",
-     "direction": "-"
-    },
-    "F-DEM-002": {
-     "status": "ACTIVE",
-     "movement": "STATIONARY",
-     "direction": "-"
-    }
-   },
-   "theatres": {
-    "TH-DWG": {
-     "status": "CLEARED",
-     "frontline": "Dwargon Gate Front cleared; Tempest in possession of the field",
-     "battleStatus": "CONCLUDED",
-     "control": "TEMPEST_CONTROLLED"
-    }
-   },
-   "campaign": {
-    "empireEffective": 700000,
-    "activeCommanders": "Benimaru Supreme General (Tempest); Gaster and Farraga killed; Caligulio commanding the Jura invasion army",
-    "majorCombatants": "Testarossa; Ultima; Gobta; Gabiru; Hakuro; Benimaru"
-   }
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -2510,6 +3070,123 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "The Indonesian fan translation names the speakers 'Jane' and 'Pan'; 'Pan' is matched to Vaughn per the registry's noted alias ('Pan'/'Ben' = Vaughn); the identity of 'Jane' in this scene is uncertain and assumed to be Dorf.",
+   "removed": []
+  }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "testarossa",
+   "ultima",
+   "gobta",
+   "ranga",
+   "hakuro"
+  ],
+  "immediateResult": "No soldier of the 240,000 remains on the field; the south-western front returns to the pre-war line.",
+  "operationalResult": "Territorial withdrawal in the south-west. The Eastern Gate front is untouched.",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 0
+  },
+  "intensity": "LOW",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:6675-6679"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11).",
+    "R7 campaign reconstruction: South-western withdrawal (scenario H)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "Offensive failed; south-western Dwargon back to the pre-war line"
+    }
+   },
+   "campaign": {}
+  },
+  "id": "EVT-0515",
+  "day": 0,
+  "time": "13:30",
+  "theatreId": "TH-DWG",
+  "location": "sw-dwargon-front",
+  "locationText": "Southwestern Dwargon front",
+  "type": "OFFENSIVE_FAILED",
+  "title": "The Main Gate offensive has failed: imperial ground in south-western Dwargon is given up",
+  "evidence": "The surface battle ends with the Magitank Force and the Flying Combat Corps annihilated (v13.txt:6675-6679). The scenario attributes the defence to Ultima's group; the novels credit Ultima with the air battle and Testarossa, Gobta, Ranga and Hakuro with the ground battle, so the attribution to Ultima's group for the whole defence is UNVERIFIED.",
+  "cast": [
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "ranga",
+    "presence": "present"
+   },
+   {
+    "id": "hakuro",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "This event's own evidence field flags its attribution to 'Ultima's group' as UNVERIFIED (it is a scenario-ledger claim). The cast given here instead follows what the novel actually credits: Testarossa, Gobta, Ranga and Hakuro for the ground battle, Ultima for the air battle.",
+   "removed": []
   }
  },
  {
@@ -2584,78 +3261,16 @@
     }
    },
    "campaign": {}
-  }
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [
-   "ultima",
-   "testarossa"
-  ],
-  "immediateResult": "No imperial soldier of Formation B or the northern reinforcement remains on the field. Dwargon is not taken.",
-  "operationalResult": "The interdiction of the Tempest-Dwargon link ends with the formation that attempted it.",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": 0
   },
-  "intensity": "LOW",
-  "significance": "CRITICAL",
-  "turningPoint": null,
-  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
+  "cast": [
    {
-    "volume": "V13",
-    "chapter": "Ch2",
-    "locator": "v13.txt:6675-6679"
-   },
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+    "id": "calgurio",
+    "presence": "present"
    }
   ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {},
-   "theatres": {
-    "TH-DWG": {
-     "frontline": "Offensive failed; Dwargon not taken",
-     "control": "DWARGON_CONTROLLED",
-     "battleStatus": "OFFENSIVE_FAILED"
-    }
-   },
-   "campaign": {}
-  },
-  "id": "EVT-0515",
-  "day": 0,
-  "time": "13:30",
-  "theatreId": "TH-DWG",
-  "location": "sw-dwargon-front",
-  "locationText": "Southwestern Dwargon front",
-  "type": "OFFENSIVE_FAILED",
-  "title": "Formation B's offensive into Dwargon has failed; the Tempest-Dwargon road is secure",
-  "evidence": "The surface battle ends with the Magitank Force and the Flying Combat Corps annihilated (v13.txt:6675-6679). The scenario attributes the defence to Ultima's group; the novels credit Ultima with the air battle and Testarossa, Gobta, Ranga and Hakuro with the ground battle, so the attribution to Ultima's group for the whole defence is UNVERIFIED.",
-  "logistics": {
-   "tempest-dwargon-road": "SECURE"
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  }
 ]

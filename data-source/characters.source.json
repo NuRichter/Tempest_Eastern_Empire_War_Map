@@ -152,7 +152,19 @@
    "faction": "Jura-Tempest Federation",
    "role": "Detachment commander; Led the Kurenai advance force onto the eastern front",
    "nameConflicts": "'Gobya' is a fan-TL misreading of ゴブア.",
-   "photocard": null
+   "photocard": {
+    "file": "162_Gobwa.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/gobwa",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 162,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 4.09,
+    "licence": "Open"
+   }
   },
   {
    "id": "hakuro",
@@ -391,7 +403,7 @@
     "file": "130_Gadra.jpg",
     "sourceType": "wiki:light_novel_illustration",
     "sourceUrl": "https://tensura.fandom.com/wiki/Gadra",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 130,
     "originalSize": [
      332,
@@ -417,7 +429,7 @@
     "file": "317_Phobio.jpg",
     "sourceType": "wiki:anime_screenshot_or_design",
     "sourceUrl": "https://tensura.fandom.com/wiki/Phobio",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 317,
     "originalSize": [
      1024,
@@ -512,12 +524,12 @@
    "japanese": "ドルフ",
    "faction": "Armed Nation of Dwargon",
    "role": "Formation commander; Heavy assault force; took joint command with Gabil",
-   "nameConflicts": "Yen Press 'Dolph' vs anime/wiki 'Dorf'; kept 'Dorf'. He captains the Pegasus Knights — check F-DWA-003 ('Heavy armed assault force' under Dorf) against the source.",
+   "nameConflicts": "Yen Press 'Dolph' vs anime/wiki 'Dorf'; kept 'Dorf'. He captains the Pegasus Knights - check F-DWA-003 ('Heavy armed assault force' under Dorf) against the source.",
    "photocard": {
     "file": "096_Dorf.jpg",
     "sourceType": "wiki:anime_screenshot_or_design",
     "sourceUrl": "https://tensura.fandom.com/wiki/Dorf",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 96,
     "originalSize": [
      1920,
@@ -541,7 +553,19 @@
    "faction": "Armed Nation of Dwargon",
    "role": "Counsel to Gazel on the eastern front",
    "nameConflicts": "'Ben' (fan TL) = バーン = Vaughn; identity inferred from role. Yen Press spelling not verified.",
-   "photocard": null
+   "photocard": {
+    "file": "402_Vaughn.jpg",
+    "sourceType": "anime_screenshot_or_design_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Vaughn",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
+    "manifestId": 402,
+    "originalSize": [
+     1920,
+     1080
+    ],
+    "upscaleFactor": 3.15,
+    "licence": "Open"
+   }
   },
   {
    "id": "anrietta",
@@ -557,7 +581,7 @@
     "file": "017_Anrietta.jpg",
     "sourceType": "wiki:anime_screenshot_or_design",
     "sourceUrl": "https://tensura.fandom.com/wiki/Anrietta",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 17,
     "originalSize": [
      1920,
@@ -593,7 +617,7 @@
     "file": "350_Rudra Nam Ul Nasca.jpg",
     "sourceType": "wiki:anime_screenshot_or_design",
     "sourceUrl": "https://tensura.fandom.com/wiki/Rudra_Nam_Ul_Nasca",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 350,
     "originalSize": [
      1920,
@@ -615,12 +639,12 @@
    "japanese": "カリギュリオ・ヒース",
    "faction": "Eastern Empire",
    "role": "General (one of the Three Great Generals), head of the Armored Division; commanded the Jura invasion; killed by Diablo, resurrected, held prisoner in Tempest, summit delegate, leads the repatriation",
-   "nameConflicts": "Official English (Yen Press) is 'Caligulio', which is also the closer reading of カリギュリオ (ka-ri-gyu-ri-o). 'Calgurio' is the wiki/fan form. Rank: wiki has him as General commanding the Armored Division (Velgrynd holds the Marshal post); 'Marshal' comes from the fan TL — verify.",
+   "nameConflicts": "Official English (Yen Press) is 'Caligulio', which is also the closer reading of カリギュリオ (ka-ri-gyu-ri-o). 'Calgurio' is the wiki/fan form. Rank: wiki has him as General commanding the Armored Division (Velgrynd holds the Marshal post); 'Marshal' comes from the fan TL - verify.",
    "photocard": {
     "file": "049_Calgurio Heath.jpg",
     "sourceType": "wiki:light_novel_illustration",
     "sourceUrl": "https://tensura.fandom.com/wiki/Calgurio_Heath",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 49,
     "originalSize": [
      236,
@@ -642,7 +666,19 @@
    "faction": "Eastern Empire",
    "role": "Lieutenant General, Magitank Force; killed by Testarossa at his headquarters (V13 Ch2)",
    "nameConflicts": "'Geist' is the fan-TL rendering of ガスター. Identity confirmed by role: Lt. General commanding the magitank ('Magic Chariot') force under Caligulio.",
-   "photocard": null
+   "photocard": {
+    "file": "139_Gaster.jpg",
+    "sourceType": "light_novel_illustration_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Gaster",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
+    "manifestId": 139,
+    "originalSize": [
+     879,
+     1250
+    ],
+    "upscaleFactor": 2.72,
+    "licence": "Open"
+   }
   },
   {
    "id": "farraga",
@@ -675,7 +711,7 @@
     "file": "279_Minitz.jpg",
     "sourceType": "wiki:light_novel_illustration",
     "sourceUrl": "https://tensura.fandom.com/wiki/Minitz",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 279,
     "originalSize": [
      1000,
@@ -696,7 +732,7 @@
    "japanese": "グラディム",
    "faction": "Eastern Empire",
    "role": "Commander of the Magic Beast Division (30,000); killed by Carillon during his awakening sleep at the Dwargon eastern front, remains devoured by Vega (V15 Ch3)",
-   "nameConflicts": "Yen Press spelling NOT verified (name absent from v16). ラ is r/l-ambiguous; 'Gradim' is the wiki title and the standard romanisation. 'Grand Admiral' is doubtful: wiki lists him as one of the Three Great Generals commanding the Magic Beast Division — verify against the source.",
+   "nameConflicts": "Yen Press spelling NOT verified (name absent from v16). ラ is r/l-ambiguous; 'Gradim' is the wiki title and the standard romanisation. 'Grand Admiral' is doubtful: wiki lists him as one of the Three Great Generals commanding the Magic Beast Division - verify against the source.",
    "photocard": null
   },
   {
@@ -746,7 +782,7 @@
     "file": "384_Tatsuya Kondou.jpg",
     "sourceType": "wiki:light_novel_illustration",
     "sourceUrl": "https://tensura.fandom.com/wiki/Tatsuya_Kondou",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 384,
     "originalSize": [
      834,
@@ -782,7 +818,7 @@
     "file": "408_Velgrynd.jpg",
     "sourceType": "wiki:light_novel_illustration",
     "sourceUrl": "https://tensura.fandom.com/wiki/Velgrynd",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 408,
     "originalSize": [
      456,
@@ -969,7 +1005,7 @@
     "file": "403_Vega.jpg",
     "sourceType": "light_novel_illustration_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Vega",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 403,
     "licence": "Open"
    }
@@ -1005,7 +1041,7 @@
     "file": "117_Feldway.jpg",
     "sourceType": "light_novel_illustration_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Feldway",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 117,
     "licence": "Open"
    }
@@ -1022,7 +1058,7 @@
     "file": "273_Michael.jpg",
     "sourceType": "light_novel_illustration_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Michael",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 273,
     "licence": "Open"
    }
@@ -1047,7 +1083,19 @@
    "faction": "Beast Kingdom Eurazania",
    "role": "Led the 20,000 reinforcements (beastmen and winged clan) that Milim sent into the labyrinth (V13 Ch4)",
    "nameConflicts": "Indonesian TL 'Albis' vs Yen Press V16 'Alvis' (v13.txt:14247; v16.txt:9145).",
-   "photocard": null
+   "photocard": {
+    "file": "010_Albis.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/albis",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 10,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.66,
+    "licence": "Open"
+   }
   },
   {
    "id": "carillon",
@@ -1060,7 +1108,19 @@
    "faction": "Beast Kingdom Eurazania",
    "role": "Former demon lord (Beast King); killed Gradim at the Dwargon eastern front during Gradim's awakening sleep (V15 Ch3)",
    "nameConflicts": "Indonesian fan TL writes 'Carrion' (v15.txt:9400-9466). 'Carillon' follows common English usage; not verified against Yen Press for this volume.",
-   "photocard": null
+   "photocard": {
+    "file": "054_Carrion.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/carrion",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 54,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.57,
+    "licence": "Open"
+   }
   },
   {
    "id": "ranga",
@@ -1093,7 +1153,7 @@
     "file": "157_Gobchi.jpg",
     "sourceType": "anime_screenshot_or_design_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Gobchi",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 157,
     "licence": "Open"
    }
@@ -1113,7 +1173,7 @@
     "file": "430_Zegion.jpg",
     "sourceType": "light_novel_illustration_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Zegion",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 430,
     "licence": "Open"
    }
@@ -1132,7 +1192,7 @@
     "file": "009_Albert.jpg",
     "sourceType": "light_novel_illustration_via_wiki",
     "sourceUrl": "https://tensura.fandom.com/wiki/Albert",
-    "attribution": "Tensura Fandom wiki (tensura.fandom.com) — infobox image",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
     "manifestId": 9,
     "licence": "Open"
    }
@@ -1156,6 +1216,641 @@
    "japanese": null,
    "faction": "Eastern Empire",
    "role": "Wizard in Masayuki's party, revealed as an enemy in the attempt on Rimuru",
+   "nameConflicts": null,
+   "photocard": null
+  },
+  {
+   "id": "rigurd",
+   "name": "Rigurd",
+   "aliases": [
+    "Chief",
+    "Rigurdo",
+    "Rigurudo"
+   ],
+   "japanese": "リグルド",
+   "faction": "Jura-Tempest Federation",
+   "role": "Prime Minister of Tempest",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "345_Rigurd.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/rigurd",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 345,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.55,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "shuna",
+   "name": "Shuna",
+   "aliases": [
+    "Princess Shuna"
+   ],
+   "japanese": "シュナ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Oni princess; capital and banquets",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "370_Shuna.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/shuna",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 370,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.85,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "beretta",
+   "name": "Beretta",
+   "aliases": [],
+   "japanese": "ベレッタ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Ramiris's guardian (labyrinth)",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "040_Beretta.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/beretta",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 40,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.69,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "treyni",
+   "name": "Treyni",
+   "aliases": [
+    "Ms. Treyni",
+    "Trainee",
+    "Trainie"
+   ],
+   "japanese": "トレイニー",
+   "faction": "Jura-Tempest Federation",
+   "role": "Dryad; Ramiris's attendant",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "395_Treyni.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/treyni",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 395,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.54,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "kumara",
+   "name": "Kumara",
+   "aliases": [
+    "Nine",
+    "Nine Head"
+   ],
+   "japanese": "クマラ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Labyrinth guardian (Nine-Headed Fox)",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "236_Kumara.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/nine-head",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 236,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 4.59,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "momiji",
+   "name": "Momiji",
+   "aliases": [],
+   "japanese": "モミジ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Tengu; leads the Fourth Corps in the field (D+10)",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "288_Momiji.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/momiji",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 288,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 4.32,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "charys",
+   "name": "Charys",
+   "aliases": [
+    "Ifrit"
+   ],
+   "japanese": "カリス",
+   "faction": "Jura-Tempest Federation",
+   "role": "Labyrinth attendant",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "058_Charys.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/charys",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 58,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.53,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "kaijin",
+   "name": "Kaijin",
+   "aliases": [],
+   "japanese": "カイジン",
+   "faction": "Jura-Tempest Federation",
+   "role": "Dwarf craftsman in Tempest",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "214_Kaijin.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/kaijin",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 214,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 4.05,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "vester",
+   "name": "Vester",
+   "aliases": [
+    "Bester",
+    "Vester"
+   ],
+   "japanese": "ベスター",
+   "faction": "Jura-Tempest Federation",
+   "role": "Former Dwargon minister, researcher in Tempest",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "414_Vesta.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/vesta",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 414,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.66,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "haruna",
+   "name": "Haruna",
+   "aliases": [],
+   "japanese": "ハルナ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Capital staff",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "183_Haruna.jpg",
+    "sourceType": "anime_screenshot_or_design_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Haruna",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
+    "manifestId": 183,
+    "originalSize": [
+     1920,
+     1080
+    ],
+    "upscaleFactor": 3.15,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "kurobe",
+   "name": "Kurobe",
+   "aliases": [
+    "Kurobee",
+    "Kurobei"
+   ],
+   "japanese": "クロベエ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Smith",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "238_Kurobe.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/kurobe",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 238,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.44,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "cien",
+   "name": "Cien",
+   "aliases": [],
+   "japanese": "シエン",
+   "faction": "Jura-Tempest Federation",
+   "role": "Testarossa's subordinate; relations with the Western Nations",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "064_Cien.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/cien",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 64,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.63,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "venom",
+   "name": "Venom",
+   "aliases": [],
+   "japanese": "ヴェノム",
+   "faction": "Jura-Tempest Federation",
+   "role": "Diablo's subordinate; Masayuki's bodyguard after the war",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "410_Venom.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/venom",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 410,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.71,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "moss",
+   "name": "Moss",
+   "aliases": [],
+   "japanese": "モス",
+   "faction": "Jura-Tempest Federation",
+   "role": "Testarossa's subordinate",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "289_Moss.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/moss",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 289,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 4.24,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "lilina",
+   "name": "Lilina",
+   "aliases": [
+    "Ririna"
+   ],
+   "japanese": "リリナ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Agriculture officer",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "247_Lilina.jpg",
+    "sourceType": "anime_screenshot_or_design_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Lilina",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
+    "manifestId": 247,
+    "originalSize": [
+     1920,
+     1080
+    ],
+    "upscaleFactor": 3.15,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "jiwu",
+   "name": "Jiwu",
+   "aliases": [
+    "Ji-Woo",
+    "Jiu"
+   ],
+   "japanese": "ジウ",
+   "faction": "Eastern Empire",
+   "role": "Masayuki's companion and bodyguard",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "206_Jiwu.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/jiwu",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 206,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 4.3,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "bernie",
+   "name": "Bernie",
+   "aliases": [
+    "Bonnie"
+   ],
+   "japanese": "バーニィ",
+   "faction": "Eastern Empire",
+   "role": "Masayuki's companion and bodyguard",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "041_Bernie.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/bernie",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 41,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.92,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "jaine",
+   "name": "Jaine",
+   "aliases": [
+    "Jane",
+    "Lady Jaine"
+   ],
+   "japanese": "ジェーン",
+   "faction": "Armed Nation of Dwargon",
+   "role": "Arch-wizard of Dwargon",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "201_Jaine.jpg",
+    "sourceType": "anime_screenshot_or_design_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Jaine",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
+    "manifestId": 201,
+    "originalSize": [
+     1920,
+     1080
+    ],
+    "upscaleFactor": 3.15,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "agera",
+   "name": "Agera",
+   "aliases": [],
+   "japanese": "アゲーラ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Swordsman at the Dwargon front (Long Night)",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "006_Agera.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/agera",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 6,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.53,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "esprit",
+   "name": "Esprit",
+   "aliases": [],
+   "japanese": "エスプリ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Healer at the Dwargon front (Long Night)",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "113_Esprit.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/esprit",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 113,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.75,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "souka",
+   "name": "Souka",
+   "aliases": [
+    "Soka"
+   ],
+   "japanese": "ソーカ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Soei's subordinate",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "373_Souka.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/soka",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 373,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.84,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "garasha",
+   "name": "Garasha",
+   "aliases": [
+    "Gara",
+    "Gracia"
+   ],
+   "japanese": "ガラシャ",
+   "faction": "Moderate Harlequin Alliance",
+   "role": "Raider of the capital (Long Night)",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "133_Garasha.jpg",
+    "sourceType": "light_novel_illustration_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Garasha",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
+    "manifestId": 133,
+    "originalSize": [
+     850,
+     926
+    ],
+    "upscaleFactor": 2.47,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "pico",
+   "name": "Pico",
+   "aliases": [],
+   "japanese": "ピコ",
+   "faction": "Moderate Harlequin Alliance",
+   "role": "Raider of the capital (Long Night)",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "320_Pico.jpg",
+    "sourceType": "light_novel_illustration_via_wiki",
+    "sourceUrl": "https://tensura.fandom.com/wiki/Pico",
+    "attribution": "Tensura Fandom wiki (tensura.fandom.com) - infobox image",
+    "manifestId": 320,
+    "originalSize": [
+     850,
+     1170
+    ],
+    "upscaleFactor": 2.67,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "frey",
+   "name": "Frey",
+   "aliases": [
+    "Harpy Queen",
+    "Heavenly Frey"
+   ],
+   "japanese": "フレイ",
+   "faction": "Jura-Tempest Federation",
+   "role": "Former demon lord; asleep in evolution after the war",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "124_Frey.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/frey",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 124,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 3.85,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "milim",
+   "name": "Milim Nava",
+   "aliases": [
+    "Dragon Princess",
+    "Goddess",
+    "Lady Milim",
+    "Milim",
+    "Millim"
+   ],
+   "japanese": "ミリム・ナーヴァ",
+   "faction": "Milim Nava (Demon Lord)",
+   "role": "Demon lord; sends Albis",
+   "nameConflicts": null,
+   "photocard": {
+    "file": "277_Milim Nava.jpg",
+    "sourceType": "official",
+    "sourceUrl": "https://www.ten-sura.com/character/milim",
+    "attribution": "Official TenSura portal (ten-sura.com) character database",
+    "manifestId": 277,
+    "originalSize": [
+     660,
+     920
+    ],
+    "upscaleFactor": 4.12,
+    "licence": "Open"
+   }
+  },
+  {
+   "id": "malcolm",
+   "name": "Malcolm",
+   "aliases": [],
+   "japanese": null,
+   "faction": "Eastern Empire",
+   "role": "Imperial Guardian at the ritual ground",
+   "nameConflicts": null,
+   "photocard": null
+  },
+  {
+   "id": "graneet",
+   "name": "Graneet",
+   "aliases": [],
+   "japanese": null,
+   "faction": "Eastern Empire",
+   "role": "Imperial Guardian aboard the flagship",
+   "nameConflicts": null,
+   "photocard": null
+  },
+  {
+   "id": "zarario",
+   "name": "Zarario",
+   "aliases": [],
+   "japanese": null,
+   "faction": "Feldway (Insectar)",
+   "role": "Leads the raid on the labyrinth (Long Night)",
+   "nameConflicts": null,
+   "photocard": null
+  },
+  {
+   "id": "cornu",
+   "name": "Cornu",
+   "aliases": [],
+   "japanese": null,
+   "faction": "Feldway (Insectar)",
+   "role": "Raider on Floor 70 (Long Night)",
    "nameConflicts": null,
    "photocard": null
   }

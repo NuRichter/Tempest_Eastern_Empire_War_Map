@@ -1,6 +1,6 @@
 import type { Dataset } from '@/data/loader';
 import { alongPolyline } from '@/lib/world';
-import type { ForceSnapshot, FrameState, LedgerPoint, PlacementGrade, RouteConfidence, Territory, TerritoryControlSegment } from '@/types/dataset';
+import type { Force, ForceSnapshot, FrameState, LedgerPoint, PlacementGrade, RouteConfidence, Territory, TerritoryControlSegment } from '@/types/dataset';
 
 /**
  * Resolves battlefield state at any frame without replaying the campaign.
@@ -300,6 +300,38 @@ export function displayStrengthAt(data: Dataset, forceId: string, frame: number)
   const t = (frame - changedAt) / STRENGTH_TWEEN_FRAMES;
   if (typeof prev !== 'number' || t >= 1) return cur;
   return Math.round(prev + (cur - prev) * Math.max(0, t));
+}
+
+/** Whether a force is flying a leg at a frame (its current leg follows an AIR route): it holds no ground on the way. */
+export function airborneAt(data: Dataset, forceId: string, frame: number): boolean {
+  const keys = data.positionByForce.get(forceId)?.keys;
+  if (!keys?.length) return false;
+  let i = -1;
+  for (let k = 0; k < keys.length && keys[k].f <= frame; k += 1) i = k;
+  const next = keys[i + 1];
+  if (i < 0 || !next?.path || frame <= keys[i].f) return false;
+  return data.routeById.get(next.path.routeId)?.mode === 'AIR';
+}
+
+/** Formations riding in a host's column at a frame (Force.convoy): drawn inside the host's marker. */
+export function convoyGuestsAt(data: Dataset, hostId: string, frame: number): Force[] {
+  return data.forces.filter((g) => g.convoy?.hostId === hostId && frame < g.convoy.untilFrame && forceSnapshotAt(data, g.id, Math.floor(frame)) !== null);
+}
+
+/** Whether a force is riding in another formation's column at a frame (and is drawn by its host). */
+export function inConvoyAt(data: Dataset, force: Force, frame: number): boolean {
+  return Boolean(force.convoy && frame < force.convoy.untilFrame && forcePositionAt(data, force.convoy.hostId, frame));
+}
+
+/** A marker's strength: the force's own, plus the formations riding in its column. */
+export function markerStrengthAt(data: Dataset, forceId: string, frame: number): ForceSnapshot['strength'] {
+  const own = displayStrengthAt(data, forceId, frame);
+  let total = own;
+  for (const g of convoyGuestsAt(data, forceId, frame)) {
+    const s = displayStrengthAt(data, g.id, frame);
+    total = typeof total === 'number' && typeof s === 'number' ? total + s : 'UNKNOWN';
+  }
+  return total;
 }
 
 /** The operation's force ledger at a frame: the latest point at or before it. */

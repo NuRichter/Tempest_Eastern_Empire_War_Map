@@ -15,7 +15,7 @@ import { getField, onField } from '@/map/field/fieldStore';
 import { createWarSkin, type WarSkin } from '@/map/three/warSkin';
 import { activeFocus, cluster, gatherAction, Spring, useDirector, type Shot } from '@/map/cinematic/director';
 import type { Front } from '@/map/field/front';
-import { displayStrengthAt, forcePositionAt, forceSnapshotAt } from '@/simulation/resolver';
+import { forcePositionAt, forceSnapshotAt, inConvoyAt, markerStrengthAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
 import { prefersReducedMotion, usePreferences } from '@/state/preferences';
 import { replacesParent } from '@/lib/hierarchy';
@@ -171,6 +171,7 @@ function placeForces3D(data: Dataset, T: number): { force: Force; snap: ForceSna
     if (/DESTROYED|ANNIHILATED/i.test(snap.status) && iT - snap.f > 432) continue;
     const pos = forcePositionAt(data, force.id, T);
     if (!pos) continue;
+    if (inConvoyAt(data, force, T)) continue; // drawn inside its host's token
     const place = pos.placeId ? data.placeById.get(pos.placeId) : null;
     placed.push({ force, snap, x: pos.x, y: pos.y, moving: pos.moving, heading: pos.heading, air: unitClass(force) === 'air' || place?.altitude === 'AIR' });
   }
@@ -275,7 +276,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
     const battleFx: { group: THREE.Group; ring: THREE.Mesh; sparks: THREE.Points; light: THREE.PointLight; id: string }[] = [];
     const portal = { group: new THREE.Group(), ring: null as THREE.Mesh | null, light: null as THREE.PointLight | null };
 
-    void Promise.all([loadRelief(), loadFront(), new THREE.TextureLoader().loadAsync('/maps/3d/myth-4k.jpg')]).then(([r, f, tex]) => {
+    void Promise.all([loadRelief(), loadFront(), new THREE.TextureLoader().loadAsync(usePreferences.getState().mapStyle === 'myth' ? '/maps/3d/myth-4k.jpg' : '/maps/3d/terrain-4k.jpg')]).then(([r, f, tex]) => {
       if (disposed) return;
       relief = r;
       front = f;
@@ -417,7 +418,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
             scene.add(o.tether);
           } else if (!p.air && o.tether) { scene.remove(o.tether); o.tether.geometry.dispose(); o.tether = null; }
           const single = p.snap.strength === 1 || /single|special combatant|construct|entity/i.test(`${p.force.unitType} ${p.force.initialStrengthRaw}`);
-          const text = prefs.layers.armySizes && !single ? formatStrength(displayStrengthAt(data!, p.force.id, T), p.snap.sizeStatus) : '';
+          const text = prefs.layers.armySizes && !single ? formatStrength(markerStrengthAt(data!, p.force.id, T), p.snap.sizeStatus) : '';
           if (text !== o.labelText) {
             if (o.label) { o.token.group.remove(o.label); o.label.material.map?.dispose(); o.label.material.dispose(); }
             o.label = text ? textSprite(text, destroyed ? '#9aa2a6' : p.snap.sizeStatus === 'EXPLICIT' ? '#ffffff' : '#e8e2d2', 56, 700) : null;
@@ -468,7 +469,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
         for (const e of recent) {
           const anchor = e.placeId ? data!.placeById.get(e.placeId) ?? data!.nationById.get(e.placeId) : null;
           if (!anchor || anchor.x == null || anchor.y == null) continue;
-          const people = e.characterIds.filter((c) => !want.has(c) && data!.characterById.get(c)?.photocard).slice(0, 3);
+          const people = e.presentIds.filter((c) => !want.has(c) && data!.characterById.get(c)?.photocard).slice(0, 3);
           people.forEach((cid, i) => {
             const c = data!.characterById.get(cid)!;
             want.set(cid, { ax: anchor.x!, ay: anchor.y!, slot: i, of: people.length, name: c.name, src: c.photocard!.src, key: factionKey(c.faction) });
@@ -774,6 +775,19 @@ export function Atlas3D({ auto }: { auto: boolean }) {
     };
     applyQuality(useQuality.getState().level);
     const unsubQuality = useQuality.subscribe((q) => applyQuality(q.level));
+    // The relief wears the chosen map: the painted Myth Map, otherwise the physical terrain.
+    const unsubStyle = usePreferences.subscribe((s, prev) => {
+      if ((s.mapStyle === 'myth') === (prev.mapStyle === 'myth') || !terrain) return;
+      void new THREE.TextureLoader().loadAsync(s.mapStyle === 'myth' ? '/maps/3d/myth-4k.jpg' : '/maps/3d/terrain-4k.jpg').then((tex) => {
+        if (disposed || !terrain) return tex.dispose();
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+        const mat = terrain.material as THREE.MeshStandardMaterial;
+        mat.map?.dispose();
+        mat.map = tex;
+        mat.needsUpdate = true;
+      });
+    });
 
     const onResize = () => {
       const w = el.clientWidth, h = el.clientHeight;
@@ -791,6 +805,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
       cancelAnimationFrame(raf);
       unsubField?.();
       unsubQuality();
+      unsubStyle();
       renderer.domElement.removeEventListener('pointerdown', onDown);
       renderer.domElement.removeEventListener('pointerup', onUp);
       warSkin?.dispose();

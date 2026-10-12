@@ -9,7 +9,7 @@
   "front": "",
   "battle": null,
   "battleType": null,
-  "location": "dwargon-eastern-metropolis",
+  "location": "dwargon-eastern-gate",
   "locationText": "Isthmus, Dwargon's eastern gate",
   "actor": "Gazel Dwargo",
   "actorFaction": "Armed Nation of Dwargon",
@@ -63,12 +63,23 @@
      "status": "ACTIVE",
      "movement": "STATIONARY",
      "direction": "-",
-     "location": "dwargon-eastern-metropolis",
+     "location": "dwargon-eastern-gate",
      "locationText": "Isthmus (concentrated against the Empire)"
     }
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "Expository narration (Rimuru recounting Dwargon's defence posture), not a live scene with Gazel.",
+   "removed": []
   }
  },
  {
@@ -91,9 +102,7 @@
    "rimuru",
    "benimaru",
    "shion",
-   "gobta",
-   "geld",
-   "gabiru"
+   "diablo"
   ],
   "forces": [
    "F-TEM-000",
@@ -244,6 +253,33 @@
    "campaign": {
     "activeCommanders": "Rimuru (Tempest head of state) with Benimaru; Emperor Rudra (Empire)"
    }
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Gobta/Geld/Gabiru's corps strengths are reported in absentia; none of the three is in the office.",
+   "removed": [
+    "gobta",
+    "geld",
+    "gabiru"
+   ]
   }
  },
  {
@@ -265,7 +301,8 @@
   "characters": [
    "rimuru",
    "benimaru",
-   "masayuki"
+   "shion",
+   "diablo"
   ],
   "forces": [
    "F-TEM-020",
@@ -383,6 +420,31 @@
     "tempestTotal": 102000,
     "activeCommanders": "Rimuru (Tempest head of state), Benimaru supreme commander; Emperor Rudra (Empire)"
    }
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Shion proposes Masayuki for the Volunteer Corps and Rimuru/Benimaru decide on the spot (v12.txt:4544-4556), but a scene break follows ('***', v12.txt:4557) before Rimuru separately tells Masayuki the news and finds him 'very depressed' (v12.txt:4558-4562) -- Masayuki himself is never in this office scene.",
+   "removed": [
+    "masayuki"
+   ]
   }
  },
  {
@@ -451,6 +513,12 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "Pure exposition on imperial intelligence estimates (v12.txt:10200-10208); no individual is shown delivering or receiving it.",
+   "removed": []
   }
  },
  {
@@ -473,9 +541,9 @@
    "rudra",
    "velgrynd",
    "calgurio",
-   "yuuki",
+   "gadra",
    "gradim",
-   "gadra"
+   "yuuki"
   ],
   "forces": [
    "F-EMP-000",
@@ -583,6 +651,36 @@
    "campaign": {
     "activeCommanders": "Rimuru (Tempest head of state), Benimaru supreme commander; the Marshal directing the Empire's war, decree in Emperor Rudra's name"
    }
+  },
+  "cast": [
+   {
+    "id": "rudra",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "gadra",
+    "presence": "present"
+   },
+   {
+    "id": "gradim",
+    "presence": "present"
+   },
+   {
+    "id": "yuuki",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -602,6 +700,7 @@
   "opponent": "Tempest, Dwargon and the Western nations",
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
+   "rudra",
    "velgrynd",
    "calgurio",
    "yuuki",
@@ -706,7 +805,7 @@
      "locationText": "Eastern Empire"
     },
     "F-EMP-080": {
-     "strength": 100000,
+     "strength": 110100,
      "sizeStatus": "SCENARIO",
      "status": "RESERVE",
      "movement": "STATIONARY",
@@ -716,6 +815,33 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rudra",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "yuuki",
+    "presence": "present"
+   },
+   {
+    "id": "gradim",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Added Rudra: same unbroken council scene as EVT-0001, where his presence is explicit.",
+   "removed": []
   }
  },
  {
@@ -808,6 +934,93 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rudra",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
+  }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "immediateResult": "110,100 are held back at the capital, outside the invasion operation.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 110100,
+   "note": "Capital reserve (scenario); not part of the forward deployment."
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11).",
+    "R7 campaign reconstruction: Reserve 110,100 (was 100,000)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-080": {
+     "status": "RESERVE",
+     "movement": "STATIONARY",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital (emergency reserve)",
+     "strength": 110100,
+     "sizeStatus": "SCENARIO"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0501",
+  "day": -39,
+  "time": "07:50",
+  "theatreId": "TH-CAP",
+  "location": "imperial-capital",
+  "locationText": "Imperial Capital",
+  "type": "FORMATION_CREATED",
+  "title": "The 110,100-strong emergency reserve stays at the imperial capital",
+  "evidence": "Scenario (Word document, Persiapan): 110,100 standby at the imperial capital as the emergency reserve.",
+  "reconstructionNote": "Placed just before the main formation departs.",
+  "cast": [],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "SCENARIO event (project force-ledger reconstruction); actor is the generic 'Imperial Army' with no individual commander named in its own fields.",
+   "removed": []
   }
  },
  {
@@ -828,21 +1041,24 @@
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
    "calgurio",
+   "minitz",
    "gaster",
-   "farraga"
+   "farraga",
+   "rudra"
   ],
   "forces": [
-   "F-EMP-010"
+   "F-EMP-010",
+   "F-EMP-017"
   ],
   "type": "DEPLOYMENT",
-  "title": "The 1,005,000-strong main formation leaves the Empire as one column",
+  "title": "The 900,000-strong main formation leaves the Empire, the 70,000 reinforcement cohort in the same column",
   "immediateResult": "An army of unprecedented size leaves the Empire and marches toward the Jura-Tempest Federation.",
   "operationalResult": "Caligulio leads 940,000: the Restructured Armor Corps 700,000, the Magitank Force 200,000 and the Flying Combat Corps 40,000.",
   "strategicResult": "The invasion of the Great Jura Forest begins.",
   "strength": {
    "tempest": "UNKNOWN",
-   "empire": 1005000,
-   "note": "Scenario main formation. The novels give 940,000 for the invasion army (v13.txt:16208). The separate 5,000 detachment and the 100,000 capital reserve are not in this figure."
+   "empire": 970000,
+   "note": "Scenario: 900,000 main formation + 70,000 reinforcement cohort travelling with it (shown together as 970,000, two formations in the ledger). The novels give 940,000 for the invasion army (v13.txt:16208)."
   },
   "commandStatus": "General Caligulio; Magitank Force under Lieutenant General Gaster",
   "intensity": "LOW",
@@ -877,21 +1093,19 @@
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "R6 scenario ledger: The main formation departs as one column of 1,005,000; the 700,000, 200,000 and 40,000 elements no longer move separately before the halt."
+    "R6 scenario ledger: The main formation departs as one column of 1,005,000; the 700,000, 200,000 and 40,000 elements no longer move separately before the halt.",
+    "R7 campaign reconstruction: Main formation 900,000; the 70,000 cohort leaves with it (EVT-0530)."
    ]
   },
   "effects": {
    "forces": {
     "F-EMP-010": {
-     "strength": 1005000,
-     "effective": 940000,
-     "sizeStatus": "SCENARIO",
      "status": "ADVANCING",
      "movement": "ADVANCE",
-     "direction": "West, to the border base",
-     "confidence": "MEDIUM",
      "location": "imperial-capital",
-     "locationText": "Imperial Capital (departing)"
+     "locationText": "Imperial Capital",
+     "strength": 900000,
+     "sizeStatus": "SCENARIO"
     }
    },
    "theatres": {
@@ -901,11 +1115,122 @@
     }
    },
    "campaign": {
-    "empireTotal": 940000,
-    "empireEffective": 940000,
+    "empireTotal": 970000,
+    "empireEffective": 970000,
     "activeCommanders": "Rimuru (Tempest head of state), Benimaru supreme commander; General Caligulio leading the Jura invasion (Empire)"
    }
+  },
+  "cast": [
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "farraga",
+    "presence": "present"
+   },
+   {
+    "id": "rudra",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "The departure (v12.txt:13120-13123) is a one-line summary with no named individuals; Farraga is never named in this event's own fields, only linked via the character registry, so he is dropped.",
+   "removed": [
+    "farraga"
+   ]
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "farraga"
+  ],
+  "immediateResult": "The cohort marches with the main formation on the same road: 900,000 + 70,000 = 970,000 in one column.",
+  "operationalResult": "Two formations, one column: the map draws them together as 970,000 until the halt point; the ledger keeps them apart.",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 70000,
+   "note": "Reinforcement cohort (scenario)."
+  },
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-017": {
+     "status": "ADVANCING",
+     "movement": "ADVANCE",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital (in the main column)",
+     "strength": 70000,
+     "sizeStatus": "SCENARIO",
+     "direction": "With the main formation"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0530",
+  "day": -39,
+  "time": "08:00",
+  "theatreId": "TH-CAP",
+  "location": "imperial-capital",
+  "locationText": "Imperial Capital",
+  "type": "FORMATION_DEPARTED",
+  "title": "The 70,000 reinforcement cohort leaves the capital in the main column",
+  "evidence": "Word document, A (Persiapan): \"Gelombang pertama dianimasikan 900rb + 70rb = 970rb melewati perbatasan Tempest-Kekaisaran\".",
+  "forces": [
+   "F-EMP-017"
+  ],
+  "cast": [
+   {
+    "id": "farraga",
+    "presence": "present"
+   }
+  ]
  },
  {
   "id": "EVT-0024",
@@ -997,6 +1322,20 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1017,13 +1356,10 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "gadra",
-   "rudra",
    "rimuru",
-   "benimaru",
    "diablo",
    "ramiris",
-   "veldora",
-   "adalmann"
+   "veldora"
   ],
   "forces": [],
   "type": "ASSASSINATION",
@@ -1085,6 +1421,37 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gadra",
+    "presence": "present"
+   },
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "ramiris",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Benimaru explicitly stays behind in the Control Room ('aku akan terus berjaga-jaga di sini') and never goes to floor 70. Rudra is never shown at the attack: the narrated stabbing (v12.txt:11179-11238) happens in a corridor under sakura trees before Gadra ever reaches the Emperor -- 'Yang Mulia sudah menunggumu' (His Majesty is already waiting) places Rudra elsewhere; the audience that was 'granted' never actually takes place on screen, so he is left out per the brief's rule against inventing presence. Adalmann is also dropped: the text names only 'pasukan Adalman' (Adalman's troops) gathered on floor 70, not Adalmann himself.",
+   "removed": [
+    "benimaru",
+    "rudra",
+    "adalmann"
+   ]
   }
  },
  {
@@ -1166,6 +1533,24 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gadra",
+    "presence": "present"
+   },
+   {
+    "id": "yuuki",
+    "presence": "remote"
+   },
+   {
+    "id": "rimuru",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1186,10 +1571,7 @@
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
    "yuuki",
-   "kagali",
-   "gadra",
-   "masayuki",
-   "rudra"
+   "kagali"
   ],
   "forces": [
    "F-EMP-030"
@@ -1244,6 +1626,25 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "yuuki",
+    "presence": "present"
+   },
+   {
+    "id": "kagali",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Gadra, Masayuki and Rudra are discussed/theorized about in this scene, not present.",
+   "removed": [
+    "gadra",
+    "masayuki",
+    "rudra"
+   ]
   }
  },
  {
@@ -1314,6 +1715,24 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1344,9 +1763,19 @@
    "ultima",
    "carrera",
    "diablo",
-   "shion",
    "gadra",
-   "masayuki"
+   "masayuki",
+   "veldora",
+   "ramiris",
+   "shuna",
+   "rigurd",
+   "lilina",
+   "kaijin",
+   "kurobe",
+   "vester",
+   "beretta",
+   "treyni",
+   "charys"
   ],
   "forces": [
    "F-EMP-010"
@@ -1408,6 +1837,111 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "hakuro",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "geld",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "gadra",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "present"
+   },
+   {
+    "id": "ramiris",
+    "presence": "present"
+   },
+   {
+    "id": "shuna",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "lilina",
+    "presence": "present"
+   },
+   {
+    "id": "kaijin",
+    "presence": "present"
+   },
+   {
+    "id": "kurobe",
+    "presence": "present"
+   },
+   {
+    "id": "vester",
+    "presence": "present"
+   },
+   {
+    "id": "beretta",
+    "presence": "present"
+   },
+   {
+    "id": "treyni",
+    "presence": "present"
+   },
+   {
+    "id": "charys",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "The attendee roster at v12.txt:12108-12136 is explicit and complete; Shion appears earlier in the same Control Room on an unrelated errand (v12.txt:12073-12078) but is not named in this roster. Several named subordinates (Shuna, Rigurd, etc.) have no id in characters.source.json.",
+   "removed": [
+    "shion"
+   ]
   }
  },
  {
@@ -1427,7 +1961,9 @@
   "opponent": "Jura-Tempest Federation",
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
+   "rimuru",
    "benimaru",
+   "soei",
    "diablo"
   ],
   "forces": [
@@ -1492,6 +2028,29 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "This intel item is raised within the same continuous war council as EVT-0008; Benimaru and Souei are the ones who actually discuss the eastern-forest squads, so Souei and Rimuru are added.",
+   "removed": []
   }
  },
  {
@@ -1645,6 +2204,48 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "geld",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1664,7 +2265,8 @@
   "opponent": "Imperial Army",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "rimuru"
+   "rimuru",
+   "benimaru"
   ],
   "forces": [
    "F-EMP-010"
@@ -1718,6 +2320,21 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Added Benimaru: 'aku melakukan perhitungan dengan Benimaru' places him in the same calculation.",
+   "removed": []
   }
  },
  {
@@ -1737,20 +2354,27 @@
   "opponent": "Jura-Tempest Federation",
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
+   "calgurio",
+   "minitz",
+   "gaster",
+   "farraga",
+   "rudra",
    "rimuru",
    "benimaru"
   ],
   "forces": [
-   "F-EMP-010"
+   "F-EMP-010",
+   "F-EMP-017"
   ],
   "type": "MOVEMENT",
-  "title": "The Imperial Army has crossed the Tempest border",
+  "title": "The 970,000 cross the Tempest border (900,000 main formation and 70,000 cohort)",
   "immediateResult": "The Imperial Army crosses into Tempest territory, against the international law of the Western council, which the Empire does not take seriously.",
   "operationalResult": "Tempest could use the crossing as a pretext for a surprise attack.",
   "strategicResult": "Rimuru and Benimaru opt for an open fight and a declaration instead; there is no need to sneak.",
   "strength": {
    "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
+   "empire": 970000,
+   "note": "Shown together; two formations in the ledger (scenario)."
   },
   "commandStatus": "Imperial field command (General Caligulio)",
   "intensity": "LOW",
@@ -1793,7 +2417,8 @@
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "R6 scenario ledger: Re-timed from D-5 to the measured route's border crossing."
+    "R6 scenario ledger: Re-timed from D-5 to the measured route's border crossing.",
+    "R7 campaign reconstruction: The cohort crosses with the main formation."
    ]
   },
   "effects": {
@@ -1801,6 +2426,10 @@
     "F-EMP-010": {
      "movement": "ADVANCE",
      "direction": "West, inside Tempest territory"
+    },
+    "F-EMP-017": {
+     "status": "ADVANCING",
+     "movement": "ADVANCE"
     }
    },
    "theatres": {
@@ -1810,6 +2439,197 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "farraga",
+    "presence": "present"
+   },
+   {
+    "id": "rudra",
+    "presence": "remote"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   },
+   {
+    "id": "benimaru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "No individual Imperial commander is named at the border-crossing locator; Caligulio is included by canonical field-command role. Rimuru and Benimaru are watching/deciding from the Control Room, not physically at the border.",
+   "removed": []
+  }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "immediateResult": "A separate column of 30,000 sets out for Dwargon's Eastern Gate across the Empire-Dwargon border.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 30000,
+   "note": "900,000 + 70,000 + 30,000 = 1,000,000 forward-deployed (scenario)."
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11).",
+    "R7 campaign reconstruction: The 30,000 eastern cohort (was the 5,000 detachment)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-019": {
+     "status": "ADVANCING",
+     "movement": "ADVANCE",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital",
+     "strength": 30000,
+     "sizeStatus": "SCENARIO",
+     "direction": "South-west, by the isthmus road"
+    }
+   },
+   "theatres": {},
+   "campaign": {
+    "empireTotal": 1000000,
+    "empireEffective": 1000000
+   }
+  },
+  "id": "EVT-0502",
+  "day": -11,
+  "time": "06:00",
+  "theatreId": "TH-DWE",
+  "location": "imperial-capital",
+  "locationText": "Imperial Capital",
+  "type": "FORMATION_DEPARTED",
+  "title": "The 30,000 eastern cohort leaves the capital by the isthmus road",
+  "evidence": "Word document, A: \"30rb menyerbu Pintu Timur Dwargon lewat perbatasan Timur\".",
+  "reconstructionNote": "Timed backwards from the arrival at the Eastern Gate together with the halt (D-3 14:00): about 580 km by the isthmus road at under 80 km a day.",
+  "forces": [
+   "F-EMP-019"
+  ],
+  "cast": [],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "SCENARIO event; no individual commander named in its own fields.",
+   "removed": []
+  }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Armed Nation of Dwargon",
+  "opponentFaction": "Armed Nation of Dwargon",
+  "characters": [],
+  "immediateResult": "30,000 imperial soldiers enter Dwargon on the isthmus road.",
+  "operationalResult": "The eastern front opens: Dwargon is a belligerent from this moment, and imperial-held ground in Dwargon starts here.",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 30000
+  },
+  "intensity": "LOW",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11).",
+    "R7 campaign reconstruction: Repurposed: the eastern cohort crosses into Dwargon."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-019": {
+     "status": "ADVANCING",
+     "movement": "ADVANCE",
+     "location": "empire-dwargon-border",
+     "locationText": "Empire-Dwargon border",
+     "direction": "West, to the Eastern Gate"
+    }
+   },
+   "theatres": {
+    "TH-DWE": {
+     "status": "ACTIVE",
+     "frontline": "Imperial column inside Dwargon on the isthmus road",
+     "control": "CONTESTED"
+    }
+   },
+   "campaign": {}
+  },
+  "id": "EVT-0521",
+  "day": -5,
+  "time": "12:00",
+  "theatreId": "TH-DWE",
+  "location": "empire-dwargon-border",
+  "locationText": "Empire-Dwargon border (isthmus road)",
+  "type": "BORDER_CROSSING",
+  "title": "The eastern cohort crosses the Empire-Dwargon border: Dwargon is at war",
+  "evidence": "Word document, catatan: \"animasi teritorial Dwargon sejak lewat perbatasan (Dwargon join war dari awal)\".",
+  "cast": [],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "SCENARIO event; no individual commander named in its own fields.",
+   "removed": []
   }
  },
  {
@@ -1834,9 +2654,7 @@
    "soei",
    "shion",
    "diablo",
-   "geld",
-   "veldora",
-   "ramiris"
+   "geld"
   ],
   "forces": [
    "F-EMP-010"
@@ -1902,6 +2720,40 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "geld",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Text explicitly says Veldora and Ramiris had already gone back to their own institute out of boredom (v13.txt:279-283); they are not in the Control Room for this event.",
+   "removed": [
+    "veldora",
+    "ramiris"
+   ]
   }
  },
  {
@@ -1981,6 +2833,17 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "No individual Imperial commander is named for this specific slow-advance passage.",
+   "removed": []
   }
  },
  {
@@ -2051,6 +2914,17 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Same remote-observation passage as EVT-0013; opponent is wildlife, no imperial individual named.",
+   "removed": []
   }
  },
  {
@@ -2070,21 +2944,25 @@
   "opponent": "Jura-Tempest Federation",
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
-   "rimuru"
+   "calgurio",
+   "minitz",
+   "gaster",
+   "farraga"
   ],
   "forces": [
    "F-EMP-010",
-   "F-EMP-016"
+   "F-EMP-016",
+   "F-EMP-017"
   ],
   "type": "DEPLOYMENT",
-  "title": "The main formation halts at the forest edge",
+  "title": "The 970,000 halt at the forest edge",
   "immediateResult": "The imperial side stops and begins to put out its formations.",
   "operationalResult": "Unlike the chariot unit, the infantry marches into the forest one formation after another.",
   "strategicResult": "The Empire passes from the approach march to its attack posture.",
   "strength": {
    "tempest": "UNKNOWN",
-   "empire": 1005000,
-   "note": "The single main formation (scenario)."
+   "empire": 970000,
+   "note": "Main formation 900,000 and the cohort 70,000 (scenario)."
   },
   "commandStatus": "General Caligulio",
   "intensity": "LOW",
@@ -2114,7 +2992,8 @@
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "R6 scenario ledger: Halt moved from D-2 08:00 to D-3 14:00 (travel-time constraints). Only the single main formation halts; the split follows as EVT-0503."
+    "R6 scenario ledger: Halt moved from D-2 08:00 to D-3 14:00 (travel-time constraints). Only the single main formation halts; the split follows as EVT-0503.",
+    "R7 campaign reconstruction: The cohort halts with the main formation."
    ]
   },
   "effects": {
@@ -2132,6 +3011,12 @@
      "direction": "-",
      "location": null,
      "locationText": "Rejoined the main body at the halt (reconstructed)"
+    },
+    "F-EMP-017": {
+     "status": "HALTED",
+     "movement": "HALT",
+     "location": "jura-forest-edge",
+     "locationText": "Imperial halt point (forest edge)"
     }
    },
    "theatres": {
@@ -2140,6 +3025,309 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gaster",
+    "presence": "present"
+   },
+   {
+    "id": "farraga",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "removed": []
+  }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Armed Nation of Dwargon",
+  "opponentFaction": "Armed Nation of Dwargon",
+  "characters": [],
+  "immediateResult": "30,000 stand before Dwargon's Eastern Gate and close the isthmus road.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 30000
+  },
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11).",
+    "R7 campaign reconstruction: Repurposed: arrival at the Eastern Gate, simultaneous with the halt."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-019": {
+     "status": "BLOCKADING",
+     "movement": "STATIONARY",
+     "location": "dwargon-eastern-front",
+     "locationText": "Before the Eastern Gate"
+    }
+   },
+   "theatres": {
+    "TH-DWE": {
+     "status": "ACTIVE",
+     "frontline": "Imperial 30,000 before the Eastern Gate",
+     "battleStatus": "NOT_STARTED",
+     "control": "CONTESTED"
+    }
+   },
+   "campaign": {}
+  },
+  "id": "EVT-0522",
+  "day": -3,
+  "time": "14:00",
+  "theatreId": "TH-DWE",
+  "location": "dwargon-eastern-front",
+  "locationText": "Before the Eastern Gate",
+  "type": "SIEGE",
+  "title": "The eastern cohort reaches the Eastern Gate as the 970,000 reach the halt point",
+  "evidence": "Word document, C: \"30rb sampai pintu timur bersamaan 970rb sampai halt\".",
+  "cast": [],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "SCENARIO event; no individual commander named in its own fields.",
+   "removed": []
+  }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "immediateResult": "The Eastern Gate force stands at 30,000.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 30000
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-019": {
+     "status": "MERGED",
+     "movement": "STATIONARY",
+     "locationText": "Merged into the Eastern Gate force",
+     "strength": 0,
+     "location": null
+    },
+    "F-EMP-031": {
+     "status": "BLOCKADING",
+     "movement": "STATIONARY",
+     "location": "dwargon-eastern-front",
+     "locationText": "Before the Eastern Gate",
+     "strength": 30000,
+     "sizeStatus": "SCENARIO"
+    }
+   },
+   "theatres": {
+    "TH-DWE": {
+     "frontline": "Eastern Gate force (30,000) before the gate"
+    }
+   },
+   "campaign": {}
+  },
+  "id": "EVT-0533",
+  "day": -3,
+  "time": "14:10",
+  "theatreId": "TH-DWE",
+  "location": "dwargon-eastern-front",
+  "locationText": "Before the Eastern Gate",
+  "type": "FORMATION_MERGED",
+  "title": "The eastern cohort forms the Eastern Gate force: 30,000",
+  "evidence": "Scenario ledger: the Gate force is counted as the formations merged into it.",
+  "forces": [
+   "F-EMP-019",
+   "F-EMP-031"
+  ],
+  "cast": []
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "calgurio",
+   "minitz",
+   "gaster"
+  ],
+  "immediateResult": "700,000 for the Tempest capital and the Labyrinth, 200,000 for Dwargon's Main Gate by the south-west. The 70,000 cohort waits at the halt point.",
+  "operationalResult": "700,000 + 200,000 = 900,000. The cohort is not split yet.",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 900000,
+   "note": "Parent strength preserved by the split (scenario)."
+  },
+  "intensity": "LOW",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11).",
+    "R7 campaign reconstruction: Two allocations (700,000 + 200,000); the cohort stays staged."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-010": {
+     "status": "SPLIT",
+     "movement": "STATIONARY",
+     "locationText": "Split at the halt point",
+     "location": null
+    },
+    "F-EMP-011": {
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "location": "jura-forest-edge",
+     "locationText": "Imperial halt point",
+     "strength": 700000,
+     "sizeStatus": "EXPLICIT"
+    },
+    "F-EMP-012": {
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "location": "jura-forest-edge",
+     "locationText": "Imperial halt point",
+     "strength": 200000,
+     "sizeStatus": "EXPLICIT"
+    },
+    "F-EMP-017": {
+     "status": "STAGED",
+     "movement": "STATIONARY",
+     "location": "jura-forest-edge",
+     "locationText": "Imperial halt point (staged)"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "frontline": "Main formation split at the halt point; the cohort staged"
+    }
+   },
+   "campaign": {}
+  },
+  "id": "EVT-0503",
+  "day": -3,
+  "time": "15:00",
+  "theatreId": "TH-DWG",
+  "location": "jura-forest-edge",
+  "locationText": "Imperial halt point",
+  "type": "FORMATION_SPLIT",
+  "title": "At the halt point the main formation splits: 700,000 and 200,000; the 70,000 cohort stays staged",
+  "evidence": "Word document, C (Pembagian 900rb di halt).",
+  "reconstructionNote": "An hour after the halt.",
+  "forces": [
+   "F-EMP-010",
+   "F-EMP-011",
+   "F-EMP-012",
+   "F-EMP-017"
+  ],
+  "cast": [
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gaster",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "SCENARIO event; no individual commander named in its own fields.",
+   "removed": []
   }
  },
  {
@@ -2161,6 +3349,7 @@
   "characters": [
    "rimuru",
    "benimaru",
+   "diablo",
    "calgurio"
   ],
   "forces": [
@@ -2228,12 +3417,445 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   },
+   {
+    "id": "benimaru",
+    "presence": "remote"
+   },
+   {
+    "id": "diablo",
+    "presence": "remote"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Rimuru, Benimaru and Diablo are watching/discussing from the Control Room via Argos, not physically in the forest.",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "gaster"
+  ],
+  "immediateResult": "",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11).",
+    "R7 campaign reconstruction: Straight to the south-western border (the R6 northern Tempest leg is gone)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-012": {
+     "status": "ADVANCING",
+     "movement": "ADVANCE",
+     "direction": "North-west, to Dwargon's south-western border"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0504",
+  "day": -3,
+  "time": "16:00",
+  "theatreId": "TH-DWG",
+  "location": "jura-forest-edge",
+  "locationText": "Imperial halt point",
+  "type": "FORMATION_DEPARTED",
+  "title": "The 200,000 set out for Dwargon's Main Gate by the south-west",
+  "evidence": "Scenario brief.",
+  "cast": [
+   {
+    "id": "gaster",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "SCENARIO event; no individual commander named in its own fields.",
+   "removed": []
+  }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Armed Nation of Dwargon",
+  "opponentFaction": "Armed Nation of Dwargon",
+  "characters": [
+   "gaster"
+  ],
+  "immediateResult": "The magitanks enter the south-western valley towards the city.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 200000
+  },
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11).",
+    "R7 campaign reconstruction: Re-timed for the direct route."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-012": {
+     "status": "ADVANCING",
+     "movement": "ADVANCE",
+     "direction": "North-east, up the south-western valley",
+     "location": "dwargon-sw-border",
+     "locationText": "Dwargon's south-western border"
+    }
+   },
+   "theatres": {
+    "TH-DWG": {
+     "status": "ACTIVE",
+     "control": "CONTESTED",
+     "frontline": "Formation B inside Dwargon's south-western border; Dwargon not taken"
+    }
+   },
+   "campaign": {}
+  },
+  "id": "EVT-0513",
+  "day": -2,
+  "time": "22:00",
+  "theatreId": "TH-DWG",
+  "location": "dwargon-sw-border",
+  "locationText": "Dwargon's south-western border",
+  "type": "BORDER_CROSSING",
+  "title": "The 200,000 cross Dwargon's south-western border",
+  "evidence": "Scenario brief.",
+  "cast": [
+   {
+    "id": "gaster",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "SCENARIO event; no individual commander named in its own fields.",
+   "removed": []
+  }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "gaster"
+  ],
+  "immediateResult": "",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R6 scenario ledger (2026-10-11).",
+    "R7 campaign reconstruction: Re-timed for the direct route."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-012": {
+     "status": "ADVANCING",
+     "movement": "ADVANCE"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0514",
+  "day": -2,
+  "time": "22:10",
+  "theatreId": "TH-DWG",
+  "location": "dwargon-sw-border",
+  "locationText": "Dwargon's south-western border",
+  "type": "FORMATION_DEPARTED",
+  "title": "The 200,000 push north to the Main Gate",
+  "evidence": "Scenario brief.",
+  "cast": [
+   {
+    "id": "gaster",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "SCENARIO event; no individual commander named in its own fields.",
+   "removed": []
+  }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "testarossa",
+   "ultima"
+  ],
+  "immediateResult": "Testarossa and Ultima go ahead to the gate where the First Corps is camping.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DEM-001": {
+     "status": "ACTIVE",
+     "movement": "ADVANCE",
+     "direction": "North, to the Main Gate"
+    },
+    "F-DEM-002": {
+     "status": "ACTIVE",
+     "movement": "ADVANCE",
+     "direction": "North, to the Main Gate"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0534",
+  "day": -1,
+  "time": "06:00",
+  "theatreId": "TH-DWG",
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru",
+  "type": "FORMATION_DEPARTED",
+  "title": "Testarossa's group leaves the capital Rimuru for Dwargon's Main Gate",
+  "evidence": "Word document, E (First Strike): \"Group Testarossa dari Capital Tempest sampai sebelum 200rb\". The novels have Testarossa at the gate camp on D+0 (v13.txt:2180-2200).",
+  "forces": [
+   "F-DEM-001",
+   "F-DEM-002"
+  ],
+  "cast": [
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   }
+  ]
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "testarossa",
+   "ultima"
+  ],
+  "immediateResult": "The envoy and her escort are at the gate a day before the magitanks array.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL_WITH_VISUAL_RECONSTRUCTION",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "MEDIUM",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DEM-001": {
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "location": "dwargon-main-gate",
+     "locationText": "Dwargon Main Gate"
+    },
+    "F-DEM-002": {
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "location": "dwargon-main-gate",
+     "locationText": "Dwargon Main Gate"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0535",
+  "day": -1,
+  "time": "09:00",
+  "theatreId": "TH-DWG",
+  "location": "dwargon-main-gate",
+  "locationText": "Dwargon Main Gate",
+  "type": "REINFORCEMENT_ARRIVED",
+  "title": "Testarossa's group reaches the Main Gate ahead of the 200,000",
+  "evidence": "Word document, E.",
+  "forces": [
+   "F-DEM-001",
+   "F-DEM-002"
+  ],
+  "cast": [
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   }
+  ]
  },
  {
   "id": "EVT-0029",
   "day": 0,
-  "time": "04:00",
+  "time": "08:00",
   "timePrecision": "RECONSTRUCTED",
   "canonicalTime": "Reported by Soei on the day of the Gazel call; the camp itself is undated.",
   "theatreId": "TH-LAB",
@@ -2250,7 +3872,8 @@
    "soei",
    "diablo",
    "rimuru",
-   "benimaru"
+   "benimaru",
+   "calgurio"
   ],
   "forces": [
    "F-EMP-011"
@@ -2297,12 +3920,13 @@
    }
   ],
   "evidence": "Soei reports the infantry gathered about thirty kilometres from the capital, camped with command posts; average grade about B, and one A per twenty men gives some 35,000 A-rank opponents.",
-  "reconstructionNote": "Soei reports the camp on D+0. Placed before dawn on D+0: the measured route from the halt point is about 280 km, which takes the 700,000 about 2.6 days at the forecast rate.",
+  "reconstructionNote": "Soei reports the camp on D+0. Placed at 08:00, the moment the 200,000 array before Dwargon's Main Gate (Word document, E: \"200rb sampai bersamaan 700rb di Capital Tempest\").",
   "notes": "",
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "R6 scenario ledger: Moved from D-1 18:00 to D+0 04:00 (measured route length)."
+    "R6 scenario ledger: Moved from D-1 18:00 to D+0 04:00 (measured route length).",
+    "R7 campaign reconstruction: Moved to D+0 08:00, simultaneous with the 200,000 at the Main Gate."
    ]
   },
   "effects": {
@@ -2323,6 +3947,32 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "soei",
+    "presence": "remote"
+   },
+   {
+    "id": "diablo",
+    "presence": "remote"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   },
+   {
+    "id": "benimaru",
+    "presence": "remote"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "removed": []
   }
  },
  {
@@ -2349,7 +3999,7 @@
    "F-EMP-012"
   ],
   "type": "DEPLOYMENT",
-  "title": "2,000 magitanks of Formation B arrayed about 30 km from Dwargon's centre, inside its south-western border",
+  "title": "The 200,000 (2,000 magitanks) array before Dwargon's Main Gate, about 30 km from the city centre",
   "immediateResult": "2,000 magitanks stand in neat rows, twenty by twenty blocks, on a plain at the foot of the mountains about 30 km from Dwargon's centre.",
   "operationalResult": "Their muzzles face Dwargon's front gate; Rimuru doubts shells can hit at that range.",
   "strategicResult": "The Empire's demonstration axis is in place before the ultimatum.",
@@ -2395,7 +4045,8 @@
   "audit": {
    "status": "CORRECTED",
    "changes": [
-    "R6 scenario ledger: Location: the south-western Dwargon front (scenario approach through the south-western border)."
+    "R6 scenario ledger: Location: the south-western Dwargon front (scenario approach through the south-western border).",
+    "R7 campaign reconstruction: At the Main Gate on the south-western foot of the range."
    ]
   },
   "effects": {
@@ -2415,107 +4066,20 @@
     }
    },
    "campaign": {}
-  }
- },
- {
-  "id": "EVT-0016",
-  "day": 0,
-  "time": "08:10",
-  "timePrecision": "DAY_LEVEL",
-  "canonicalTime": "Reported at the start of the final Gazel call; the blockade's start is undated.",
-  "theatreId": "TH-DWE",
-  "front": "Dwargon eastern approach",
-  "battle": null,
-  "battleType": null,
-  "location": "dwargon-eastern-metropolis",
-  "locationText": "Before the Isthmus gate, east of Dwargon",
-  "actor": "Imperial Army (Composite Division suspected)",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Armed Nation of Dwargon",
-  "opponentFaction": "Armed Nation of Dwargon",
-  "characters": [
-   "gazel",
-   "rimuru",
-   "yuuki",
-   "gadra"
-  ],
-  "forces": [
-   "F-EMP-019"
-  ],
-  "type": "SIEGE",
-  "title": "Gazel reports Dwargon's eastern gate (Isthmus) blockaded",
-  "immediateResult": "Before the task talks, Gazel reports that the gate east of Dwargon's city (Isthmus) has been blocked by the Imperial Army, as Gadora predicted.",
-  "operationalResult": "Rimuru suspects the legion led by Yuuki.",
-  "strategicResult": "Dwargon must split its army to defend both its centre and the east.",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": 5000,
-   "note": "Scenario: the 5,000 detachment is the blockade Gazel reports. The novels state no strength here; 60,000 is first stated later (V13 Ch3), which in the scenario is the Gate force after both reinforcements."
   },
-  "commandStatus": "Gazel reporting; imperial blockade commander not named here",
-  "intensity": "LOW",
-  "significance": "CRITICAL",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "LOW",
-   "overall": "HIGH"
-  },
-  "sources": [
+  "cast": [
    {
-    "volume": "V13",
-    "chapter": "Ch1",
-    "locator": "v13.txt:697"
+    "id": "rimuru",
+    "presence": "remote"
    },
    {
-    "volume": "V13",
-    "chapter": "Ch1",
-    "locator": "v13.txt:703"
-   },
-   {
-    "volume": "V13",
-    "chapter": "Ch1",
-    "locator": "v13.txt:823"
-   },
-   {
-    "volume": "V13",
-    "chapter": "Ch2",
-    "locator": "v13.txt:7712"
-   },
-   {
-    "volume": "V12",
-    "chapter": "Ch4",
-    "locator": "v12.txt:10788"
+    "id": "gaster",
+    "presence": "present"
    }
   ],
-  "evidence": "Gazel opens the call by reporting the Isthmus gate east of Dwargon blocked by the Imperial Army; Rimuru recalls Gadora's warning and suspects Yuuki's legion.",
-  "reconstructionNote": "Actor attribution is INFERRED from Rimuru's suspicion (v13.txt:703). When the blockade began is not stated (MOV-008 runs from the council tasking). The 60,000 in the force effect is back-projected from v13.txt:7712.",
-  "notes": "",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "R6 scenario ledger: The blockade reported on D+0 is the 5,000 detachment (scenario); the 60,000 Gate force forms later."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-019": {
-     "status": "BLOCKADING",
-     "movement": "STATIONARY",
-     "location": "dwargon-eastern-front",
-     "locationText": "Before the Dwargon Gate (Isthmus)"
-    }
-   },
-   "theatres": {
-    "TH-DWE": {
-     "status": "ACTIVE",
-     "frontline": "Imperial force blocking the road to the Isthmus gate",
-     "battleStatus": "NOT_STARTED",
-     "control": "CONTESTED"
-    }
-   },
-   "campaign": {}
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -2528,7 +4092,7 @@
   "front": "Dwargon approach",
   "battle": null,
   "battleType": null,
-  "location": "dwargon-outer-gate",
+  "location": "dwargon-main-gate",
   "locationText": "Plaza at the outer edge of Dwargon's gate",
   "actor": "First Corps (Gobta) and Third Corps (Gabil)",
   "actorFaction": "Jura-Tempest Federation",
@@ -2540,7 +4104,8 @@
    "testarossa",
    "ultima",
    "veyron",
-   "zonda"
+   "zonda",
+   "gobchi"
   ],
   "forces": [
    "F-TEM-001",
@@ -2607,7 +4172,7 @@
      "status": "DEPLOYED",
      "movement": "STATIONARY",
      "direction": "-",
-     "location": "dwargon-outer-gate",
+     "location": "dwargon-main-gate",
      "locationText": "Plaza at the outer edge of Dwargon's gate"
     },
     "F-TEM-001A": {
@@ -2618,26 +4183,24 @@
      "movement": "STATIONARY",
      "direction": "-",
      "confidence": "HIGH",
-     "location": "dwargon-outer-gate",
+     "location": "dwargon-main-gate",
      "locationText": "Plaza at the outer edge of Dwargon's gate"
     },
     "F-TEM-003": {
      "status": "DEPLOYED",
      "movement": "STATIONARY",
      "direction": "-",
-     "location": "dwargon-outer-gate",
+     "location": "dwargon-main-gate",
      "locationText": "Plaza at the outer edge of Dwargon's gate"
     },
     "F-DEM-001": {
      "movement": "STATIONARY",
      "direction": "With Gobta",
-     "location": "dwargon-outer-gate",
      "locationText": "Dwargon's gate"
     },
     "F-DEM-002": {
      "movement": "STATIONARY",
      "direction": "With Gabil",
-     "location": "dwargon-outer-gate",
      "locationText": "Dwargon's gate"
     }
    },
@@ -2645,6 +4208,40 @@
    "campaign": {
     "tempestEffective": 15000
    }
+  },
+  "cast": [
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "veyron",
+    "presence": "present"
+   },
+   {
+    "id": "zonda",
+    "presence": "present"
+   },
+   {
+    "id": "gobchi",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -2657,7 +4254,7 @@
   "front": "Dwargon approach",
   "battle": null,
   "battleType": null,
-  "location": "dwargon-outer-gate",
+  "location": "dwargon-main-gate",
   "locationText": "Dwargon's gate",
   "actor": "Dwarven Knights (seven units)",
   "actorFaction": "Armed Nation of Dwargon",
@@ -2725,12 +4322,134 @@
      "movement": "STATIONARY",
      "direction": "-",
      "confidence": "HIGH",
-     "location": "dwargon-outer-gate",
+     "location": "dwargon-main-gate",
      "locationText": "Dwargon's gate, behind three earth walls"
     }
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "No individual Dwarven commander is named for the fortification work; actor given only as 'Dwarven Knights (seven units)'.",
+   "removed": []
+  }
+ },
+ {
+  "id": "EVT-0016",
+  "day": 0,
+  "time": "08:10",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "Reported at the start of the final Gazel call; the blockade's start is undated.",
+  "theatreId": "TH-DWE",
+  "front": "Dwargon eastern approach",
+  "battle": null,
+  "battleType": null,
+  "location": "dwargon-eastern-gate",
+  "locationText": "Before the Isthmus gate, east of Dwargon",
+  "actor": "Imperial Army (Composite Division suspected)",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Armed Nation of Dwargon",
+  "opponentFaction": "Armed Nation of Dwargon",
+  "characters": [
+   "gazel",
+   "rimuru"
+  ],
+  "forces": [
+   "F-EMP-031"
+  ],
+  "type": "SIEGE",
+  "title": "Gazel reports Dwargon's eastern gate (Isthmus) blockaded",
+  "immediateResult": "Before the task talks, Gazel reports that the gate east of Dwargon's city (Isthmus) has been blocked by the Imperial Army, as Gadora predicted.",
+  "operationalResult": "Rimuru suspects the legion led by Yuuki.",
+  "strategicResult": "Dwargon must split its army to defend both its centre and the east.",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 30000,
+   "note": "Scenario: the 30,000 eastern cohort, before the gate since D-3 14:00. The novels state no strength here; 60,000 is first stated later (V13 Ch3)."
+  },
+  "commandStatus": "Gazel reporting; imperial blockade commander not named here",
+  "intensity": "LOW",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "LOW",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:697"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:703"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch1",
+    "locator": "v13.txt:823"
+   },
+   {
+    "volume": "V13",
+    "chapter": "Ch2",
+    "locator": "v13.txt:7712"
+   },
+   {
+    "volume": "V12",
+    "chapter": "Ch4",
+    "locator": "v12.txt:10788"
+   }
+  ],
+  "evidence": "Gazel opens the call by reporting the Isthmus gate east of Dwargon blocked by the Imperial Army; Rimuru recalls Gadora's warning and suspects Yuuki's legion.",
+  "reconstructionNote": "Actor attribution is INFERRED from Rimuru's suspicion (v13.txt:703). When the blockade began is not stated (MOV-008 runs from the council tasking). The 60,000 in the force effect is back-projected from v13.txt:7712.",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "R6 scenario ledger: The blockade reported on D+0 is the 5,000 detachment (scenario); the 60,000 Gate force forms later.",
+    "R7 campaign reconstruction: The blockade Gazel reports is the 30,000 Eastern Gate force."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-031": {
+     "status": "BLOCKADING",
+     "movement": "STATIONARY"
+    }
+   },
+   "theatres": {
+    "TH-DWE": {
+     "status": "ACTIVE",
+     "frontline": "Imperial force blocking the road to the Isthmus gate",
+     "battleStatus": "NOT_STARTED",
+     "control": "CONTESTED"
+    }
+   },
+   "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "remote"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Yuuki is only Rimuru's unconfirmed suspicion and Gadora only the source of an earlier warning; neither is shown acting at the Isthmus.",
+   "removed": [
+    "yuuki",
+    "gadra"
+   ]
   }
  },
  {
@@ -2751,8 +4470,7 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "rimuru",
-   "gazel",
-   "gadra"
+   "gazel"
   ],
   "forces": [
    "F-EMP-031"
@@ -2806,6 +4524,23 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   },
+   {
+    "id": "gazel",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Gadora is only referenced as the source of the earlier warning, not shown acting here.",
+   "removed": [
+    "gadra"
+   ]
   }
  },
  {
@@ -2826,8 +4561,11 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "rimuru",
+   "benimaru",
    "gazel",
-   "benimaru"
+   "shion",
+   "geld",
+   "diablo"
   ],
   "forces": [],
   "type": "COMMAND",
@@ -2888,6 +4626,36 @@
    "campaign": {
     "activeCommanders": "Rimuru and Benimaru (Tempest); King Gazel (Dwargon); General Caligulio leading the Jura invasion (Empire)"
    }
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "remote"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "geld",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -2900,7 +4668,7 @@
   "front": "Dwargon approach",
   "battle": null,
   "battleType": null,
-  "location": "dwargon-outer-gate",
+  "location": "dwargon-main-gate",
   "locationText": "Order from the Control Room to Testarossa at Dwargon's gate",
   "actor": "Rimuru Tempest",
   "actorFaction": "Jura-Tempest Federation",
@@ -2909,7 +4677,9 @@
   "characters": [
    "rimuru",
    "testarossa",
-   "gobta"
+   "gobta",
+   "gabiru",
+   "ranga"
   ],
   "forces": [
    "F-DEM-001",
@@ -2977,6 +4747,33 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "ranga",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Testarossa, Gobta and Gabiru are physically at Dwargon's gate when Rimuru reaches them by Communication Network; Rimuru himself stays remote in the Control Room. Ranga is with Rimuru at the moment of this order and departs only afterward.",
+   "removed": []
   }
  },
  {
@@ -2997,9 +4794,7 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "rimuru",
-   "benimaru",
-   "ramiris",
-   "gobta"
+   "benimaru"
   ],
   "forces": [
    "F-TEM-001A"
@@ -3064,6 +4859,24 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Ramiris is only the subject of a future recall order, not present; Gobta is only discussed as the planned lead of the opening wolf-rider strike, not present or contacted in this passage (he is already at Dwargon's gate per EVT-0005).",
+   "removed": [
+    "ramiris",
+    "gobta"
+   ]
   }
  },
  {
@@ -3140,6 +4953,16 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gaster",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -3151,139 +4974,9 @@
   "actorFaction": "Eastern Empire",
   "opponent": "Jura-Tempest Federation",
   "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "A 100,000-strong reserve is held back at the capital, outside the invasion operation.",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": 100000,
-   "note": "Capital reserve (scenario); not part of the forward deployment."
-  },
-  "intensity": "LOW",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
+  "characters": [
+   "farraga"
   ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-080": {
-     "strength": 100000,
-     "sizeStatus": "SCENARIO",
-     "status": "RESERVE",
-     "movement": "STATIONARY",
-     "location": "imperial-capital",
-     "locationText": "Imperial Capital (emergency reserve)"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  },
-  "id": "EVT-0501",
-  "day": -39,
-  "time": "07:50",
-  "theatreId": "TH-CAP",
-  "location": "imperial-capital",
-  "locationText": "Imperial Capital",
-  "type": "FORMATION_CREATED",
-  "title": "The 100,000-strong emergency reserve stays at the imperial capital",
-  "evidence": "Scenario brief: the reserve stays at the capital and only its later 30,000 transfer enters the operation.",
-  "reconstructionNote": "Placed just before the main formation departs."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "The detachment leaves on its own road, towards the isthmus and Dwargon's eastern gate.",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": 5000,
-   "note": "With the 1,005,000 main formation: 1,010,000 forward-deployed (scenario)."
-  },
-  "intensity": "LOW",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-019": {
-     "strength": 5000,
-     "sizeStatus": "SCENARIO",
-     "status": "ADVANCING",
-     "movement": "ADVANCE",
-     "direction": "South-west, towards the isthmus",
-     "location": "imperial-capital",
-     "locationText": "Imperial Capital"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  },
-  "id": "EVT-0502",
-  "day": -39,
-  "time": "08:10",
-  "theatreId": "TH-DWE",
-  "location": "imperial-capital",
-  "locationText": "Imperial Capital",
-  "type": "FORMATION_DEPARTED",
-  "title": "A separate 5,000-strong detachment sets out towards Dwargon",
-  "evidence": "Scenario brief."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
   "immediateResult": "",
   "operationalResult": "",
   "strategicResult": "",
@@ -3311,575 +5004,40 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-019": {
-     "status": "HOLDING",
-     "movement": "STATIONARY",
-     "location": "isthmus-approach",
-     "locationText": "Isthmus road (Empire side)"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  },
-  "id": "EVT-0521",
-  "day": -33,
-  "time": "12:00",
-  "theatreId": "TH-DWE",
-  "location": "isthmus-approach",
-  "locationText": "Isthmus road (Empire side)",
-  "type": "FORMATION_HALTED",
-  "title": "The detachment halts on the isthmus road, short of the Dwargon Gate",
-  "evidence": "Scenario. The novels have Gazel keep Dwargon's army concentrated at the Isthmus to watch the Empire (EVT-0457)."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "intensity": "LOW",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-019": {
-     "status": "ADVANCING",
-     "movement": "ADVANCE",
-     "direction": "West, to the gate"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  },
-  "id": "EVT-0522",
-  "day": -1,
-  "time": "06:00",
-  "theatreId": "TH-DWE",
-  "location": "isthmus-approach",
-  "locationText": "Isthmus road (Empire side)",
-  "type": "FORMATION_DEPARTED",
-  "title": "The detachment closes on the Dwargon Gate",
-  "evidence": "Scenario. Precedes the blockade Gazel reports on D+0 (v13.txt:697-699)."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "700,000 for the Labyrinth and the capital, 200,000 for northern Tempest, 40,000 to reinforce the northern front, 30,000 for the Dwargon Gate and 35,000 for the southern approach to Dwargon.",
-  "operationalResult": "The single column becomes five formations; none of them adds a soldier: 700,000 + 200,000 + 40,000 + 30,000 + 35,000 = 1,005,000.",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": 1005000,
-   "note": "Parent strength preserved by the split (scenario)."
-  },
-  "intensity": "LOW",
-  "significance": "CRITICAL",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-010": {
-     "status": "SPLIT",
-     "movement": "STATIONARY",
-     "location": null,
-     "locationText": "Split into five allocations at the halt point"
-    },
-    "F-EMP-011": {
-     "strength": 700000,
-     "sizeStatus": "EXPLICIT",
-     "status": "DEPLOYED",
-     "movement": "STATIONARY",
-     "location": "jura-forest-edge",
-     "locationText": "Imperial halt point"
-    },
-    "F-EMP-012": {
-     "strength": 200000,
-     "sizeStatus": "EXPLICIT",
-     "status": "DEPLOYED",
-     "movement": "STATIONARY",
-     "location": "jura-forest-edge",
-     "locationText": "Imperial halt point"
-    },
-    "F-EMP-013": {
-     "strength": 40000,
-     "sizeStatus": "EXPLICIT",
-     "status": "DEPLOYED",
-     "movement": "STATIONARY",
-     "location": "jura-forest-edge",
-     "locationText": "Imperial halt point"
-    },
-    "F-EMP-017": {
-     "strength": 30000,
-     "sizeStatus": "SCENARIO",
-     "status": "DEPLOYED",
-     "movement": "STATIONARY",
-     "location": "jura-forest-edge",
-     "locationText": "Imperial halt point"
-    },
-    "F-EMP-018": {
-     "strength": 35000,
-     "sizeStatus": "SCENARIO",
-     "status": "DEPLOYED",
-     "movement": "STATIONARY",
-     "location": "jura-forest-edge",
-     "locationText": "Imperial halt point"
-    }
-   },
-   "theatres": {
-    "TH-DWG": {
-     "frontline": "Main formation split at the halt point into five allocations"
-    }
-   },
-   "campaign": {}
-  },
-  "id": "EVT-0503",
-  "day": -3,
-  "time": "15:00",
-  "theatreId": "TH-DWG",
-  "location": "jura-forest-edge",
-  "locationText": "Imperial halt point",
-  "type": "FORMATION_SPLIT",
-  "title": "At the halt point the main formation splits into five allocations",
-  "evidence": "Scenario brief. The novels say the army halted and issued its formations (v13.txt:341-346); the five-way split and the 30,000 and 35,000 allocations are the scenario's.",
-  "reconstructionNote": "An hour after the halt."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "intensity": "LOW",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-012": {
-     "status": "ADVANCING",
-     "movement": "ADVANCE",
-     "direction": "North-west, to the Tempest-Dwargon road"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  },
-  "id": "EVT-0504",
-  "day": -3,
-  "time": "16:00",
-  "theatreId": "TH-DWG",
-  "location": "jura-forest-edge",
-  "locationText": "Imperial halt point",
-  "type": "FORMATION_DEPARTED",
-  "title": "Formation B (200,000) sets out for northern Tempest",
-  "evidence": "Scenario brief."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "intensity": "LOW",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-013": {
-     "status": "ADVANCING",
-     "movement": "ADVANCE",
-     "direction": "North-west (airships)"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  },
-  "id": "EVT-0506",
-  "day": -3,
-  "time": "16:30",
-  "theatreId": "TH-DWG",
-  "location": "jura-forest-edge",
-  "locationText": "Imperial halt point",
-  "type": "FORMATION_DEPARTED",
-  "title": "The 40,000 northern reinforcement takes off for the northern Tempest front",
-  "evidence": "Scenario brief."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "intensity": "LOW",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-017": {
-     "status": "ADVANCING",
-     "movement": "ADVANCE",
-     "direction": "North-east, across the upper ford to the isthmus"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  },
-  "id": "EVT-0508",
-  "day": -3,
-  "time": "17:00",
-  "theatreId": "TH-DWE",
-  "location": "jura-forest-edge",
-  "locationText": "Imperial halt point",
-  "type": "REINFORCEMENT_DISPATCHED",
-  "title": "Gate reinforcement, Phase 1 (30,000) sets out for the Dwargon Gate",
-  "evidence": "Scenario brief."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "intensity": "LOW",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-018": {
-     "status": "ADVANCING",
-     "movement": "ADVANCE",
-     "direction": "North, to the massif's southern foothills"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  },
-  "id": "EVT-0510",
-  "day": -3,
-  "time": "17:30",
-  "theatreId": "TH-DWG",
-  "location": "jura-forest-edge",
-  "locationText": "Imperial halt point",
-  "type": "FORMATION_DEPARTED",
-  "title": "The 35,000 southern formation sets out for Dwargon's southern approach",
-  "evidence": "Scenario brief."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "intensity": "LOW",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
+    "R6 scenario ledger (2026-10-11).",
+    "R7 campaign reconstruction: Departs after the rejection, from the cohort."
    ]
   },
   "effects": {
    "forces": {
     "F-EMP-013": {
      "status": "REINFORCING",
-     "movement": "STATIONARY",
-     "location": "northern-tempest-front",
-     "locationText": "Over the northern Tempest front"
+     "movement": "ADVANCE",
+     "direction": "North-west, to the Main Gate (airships)"
     }
    },
    "theatres": {},
    "campaign": {}
   },
-  "id": "EVT-0507",
-  "day": -3,
-  "time": "18:30",
+  "id": "EVT-0506",
+  "day": 0,
+  "time": "11:30",
   "theatreId": "TH-DWG",
-  "location": "northern-tempest-front",
-  "locationText": "Northern Tempest front",
-  "type": "REINFORCEMENT_ARRIVED",
-  "title": "The northern reinforcement reaches the northern Tempest front",
-  "evidence": "Scenario brief. About 170 km by airship."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "The 200,000 stand astride the road and rail line that carry Tempest's link with Dwargon.",
-  "operationalResult": "An attempt to sever the allies' strategic supply link.",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": 200000
-  },
-  "intensity": "LOW",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
+  "location": "jura-forest-edge",
+  "locationText": "Imperial halt point",
+  "type": "REINFORCEMENT_DISPATCHED",
+  "title": "The 40,000 airships take off for the Main Gate",
+  "evidence": "Word document, F. About 470 km at the airships' 400 km an hour (v14.txt:1138).",
+  "cast": [
    {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+    "id": "farraga",
+    "presence": "present"
    }
   ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-012": {
-     "status": "INTERDICTING",
-     "movement": "STATIONARY",
-     "location": "northern-tempest-front",
-     "locationText": "Astride the Tempest-Dwargon road"
-    }
-   },
-   "theatres": {
-    "TH-DWG": {
-     "status": "ACTIVE",
-     "frontline": "Formation B astride the Tempest-Dwargon road in northern Tempest",
-     "control": "CONTESTED"
-    }
-   },
-   "campaign": {}
-  },
-  "id": "EVT-0505",
-  "day": -2,
-  "time": "10:00",
-  "theatreId": "TH-DWG",
-  "location": "northern-tempest-front",
-  "locationText": "Northern Tempest front, on the Tempest-Dwargon road",
-  "type": "SUPPLY_ROUTE_THREATENED",
-  "title": "Formation B reaches northern Tempest and threatens the Tempest-Dwargon road",
-  "evidence": "Scenario brief. The road and magic train line are canon (v12.txt:3263-3281); the interdiction is the scenario's.",
-  "logistics": {
-   "tempest-dwargon-road": "THREATENED"
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "SCENARIO event; no individual commander named in its own fields.",
+   "removed": []
   }
  },
  {
@@ -3919,219 +5077,35 @@
   "audit": {
    "status": "ADDED",
    "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-012": {
-     "status": "ADVANCING",
-     "movement": "ADVANCE",
-     "direction": "North-west, to the south-western border"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  },
-  "id": "EVT-0512",
-  "day": -2,
-  "time": "12:00",
-  "theatreId": "TH-DWG",
-  "location": "northern-tempest-front",
-  "locationText": "Northern Tempest front",
-  "type": "FORMATION_DEPARTED",
-  "title": "Formation B turns for Dwargon's south-western border",
-  "evidence": "Scenario brief."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "intensity": "LOW",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
+    "R6 scenario ledger (2026-10-11).",
+    "R7 campaign reconstruction: Departs after the rejection, from the cohort."
    ]
   },
   "effects": {
    "forces": {
     "F-EMP-018": {
-     "status": "HOLDING",
-     "movement": "STATIONARY",
-     "location": "dwargon-south-approach",
-     "locationText": "Southern approach to Dwargon"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  },
-  "id": "EVT-0511",
-  "day": -1,
-  "time": "12:00",
-  "theatreId": "TH-DWG",
-  "location": "dwargon-south-approach",
-  "locationText": "Southern approach to Dwargon",
-  "type": "FORMATION_HALTED",
-  "title": "The southern formation halts in the foothills south of Dwargon",
-  "evidence": "Scenario brief."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "The magitanks enter the south-western valley towards the city.",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": 200000
-  },
-  "intensity": "LOW",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-012": {
-     "status": "ADVANCING",
+     "status": "REINFORCING",
      "movement": "ADVANCE",
-     "direction": "North-east, up the south-western valley",
-     "location": "dwargon-sw-border",
-     "locationText": "Dwargon's south-western border"
-    }
-   },
-   "theatres": {
-    "TH-DWG": {
-     "status": "ACTIVE",
-     "control": "CONTESTED",
-     "frontline": "Formation B inside Dwargon's south-western border; Dwargon not taken"
-    }
-   },
-   "campaign": {}
-  },
-  "id": "EVT-0513",
-  "day": -1,
-  "time": "02:00",
-  "theatreId": "TH-DWG",
-  "location": "dwargon-sw-border",
-  "locationText": "Dwargon's south-western border",
-  "type": "BORDER_CROSSING",
-  "title": "Formation B crosses Dwargon's south-western border",
-  "evidence": "Scenario brief."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "intensity": "LOW",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
-   {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-012": {
-     "status": "ADVANCING",
-     "movement": "ADVANCE"
+     "direction": "North-east, to the Eastern Gate"
     }
    },
    "theatres": {},
    "campaign": {}
   },
-  "id": "EVT-0514",
-  "day": -1,
-  "time": "04:00",
-  "theatreId": "TH-DWG",
-  "location": "dwargon-sw-border",
-  "locationText": "Dwargon's south-western border",
-  "type": "FORMATION_DEPARTED",
-  "title": "Formation B pushes up the south-western valley",
-  "evidence": "Scenario brief."
+  "id": "EVT-0508",
+  "day": 0,
+  "time": "11:30",
+  "theatreId": "TH-DWE",
+  "location": "jura-forest-edge",
+  "locationText": "Imperial halt point",
+  "type": "REINFORCEMENT_DISPATCHED",
+  "title": "The 30,000 set out from the halt point for the Eastern Gate",
+  "evidence": "Word document, F. About 560 km through the eastern forest, a week at the infantry rate.",
+  "cast": [],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "SCENARIO event; no individual commander named in its own fields.",
+   "removed": []
+  }
  }
 ]

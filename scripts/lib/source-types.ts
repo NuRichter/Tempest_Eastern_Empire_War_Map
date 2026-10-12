@@ -63,6 +63,9 @@ export interface EventSrc {
   opponent: string;
   opponentFaction: string;
   characters?: string[];
+  /** Who takes part (docs/CHARACTER_EVENT_AUDIT.md): present at the event's place, or remote (orders, watches, directs from elsewhere). */
+  cast?: { id: string; presence: 'present' | 'remote' }[];
+  castAudit?: { confidence: string; comment?: string; removed?: string[] };
   forces?: string[];
   type: string;
   title: string;
@@ -116,6 +119,8 @@ export interface ForceSrc {
   mergedInto?: { forceId: string; eventId: string };
   /** From this event on, its strength is the sum of its ALLOCATION children (the compiler computes it). */
   aggregateFromEvent?: string;
+  /** Travels inside another formation's column (drawn as one marker) until an event. */
+  convoy?: { hostId: string; untilEvent: string };
 }
 
 export interface TransitKeySrc {

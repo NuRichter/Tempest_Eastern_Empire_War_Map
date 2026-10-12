@@ -55,10 +55,10 @@
       "y": 0.40564,
       "placement": "MEASURED",
       "shape": "lens",
-      "radius": 0.0075,
-      "aspect": 2.2,
+      "radius": 0.0032,
+      "aspect": 1.6,
       "rotation": -28,
-      "basis": "Royal capital of the Armed Nation of Dwargon, carved into a vast natural cavern of the Kanaat Mountains. Outline RECONSTRUCTED as a long lens along the range.",
+      "basis": "Royal capital of the Armed Nation of Dwargon, carved into a vast natural cavern of the Kanaat Mountains. Outline RECONSTRUCTED as a long lens along the range. R7: drawn about 34 x 21 km, inside the compact Kanaat range (the earlier outline was as large as the range itself).",
       "source": "Central World All Territories Nation and Capital.png (Sources of Truth/Source Map), registered to the Base Map by land-mask ECC homography (correlation 0.992, land IoU 0.96)"
     },
     {
@@ -344,7 +344,7 @@
       "aspect": 1.4,
       "rotation": 30,
       "basis": "Dwargon's eastern city at the Isthmus gate, where the long-night battle of the eastern front is fought (V15). Position from the campaign gazetteer, outline RECONSTRUCTED.",
-      "source": "data-source/gazetteer.source.json (dwargon-eastern-metropolis)"
+      "source": "data-source/gazetteer.source.json (dwargon-eastern-gate)"
     }
   ]
 }

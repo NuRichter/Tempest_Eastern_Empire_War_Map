@@ -1,0 +1,81 @@
+{
+ "about": "Characters the per-event audit found present but who have no entry in data-source/characters.source.json (R7). Event ids where they appear.",
+ "names": {
+  "Aria": [
+   "EVT-0317",
+   "EVT-0318"
+  ],
+  "Arios": [
+   "EVT-0317"
+  ],
+  "Balder": [
+   "EVT-0126"
+  ],
+  "Bazan": [
+   "EVT-0212"
+  ],
+  "Deeno": [
+   "EVT-0467",
+   "EVT-0469"
+  ],
+  "Doreth": [
+   "EVT-0464"
+  ],
+  "Gordon": [
+   "EVT-0126"
+  ],
+  "Jiu": [
+   "EVT-0218",
+   "EVT-0220"
+  ],
+  "Kansas": [
+   "EVT-0213"
+  ],
+  "Michel": [
+   "EVT-0213"
+  ],
+  "Myourmile": [
+   "EVT-0008",
+   "EVT-0404"
+  ],
+  "Olca": [
+   "EVT-0317",
+   "EVT-0318"
+  ],
+  "Raymond": [
+   "EVT-0213"
+  ],
+  "Regurd": [
+   "EVT-0008",
+   "EVT-0404"
+  ],
+  "Reiha": [
+   "EVT-0212"
+  ],
+  "Rogurd": [
+   "EVT-0008",
+   "EVT-0404"
+  ],
+  "Rugurd": [
+   "EVT-0008",
+   "EVT-0404"
+  ],
+  "Sariel (Chronoa)": [
+   "EVT-0465",
+   "EVT-0468"
+  ],
+  "Tibbs": [
+   "EVT-0126"
+  ],
+  "Tolneod": [
+   "EVT-0317",
+   "EVT-0318"
+  ],
+  "Traya": [
+   "EVT-0464"
+  ],
+  "Venti": [
+   "EVT-0469"
+  ]
+ }
+}

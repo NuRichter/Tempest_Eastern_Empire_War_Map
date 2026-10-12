@@ -1,5 +1,75 @@
 [
  {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [],
+  "immediateResult": "With the Jura front closed, the First Corps marches east along the range to join Gazel.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-001": {
+     "status": "ACTIVE",
+     "movement": "ADVANCE",
+     "direction": "East, along the range to the Eastern Gate"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0536",
+  "day": 11,
+  "time": "08:00",
+  "theatreId": "TH-DWE",
+  "location": "dwargon-main-gate",
+  "locationText": "Dwargon Main Gate",
+  "type": "FORMATION_DEPARTED",
+  "title": "Tempest's First Corps leaves the Main Gate for the Eastern Gate",
+  "evidence": "Word document, J (Counter Timur): \"Dwargon-Tempest menuju timur vs 60rb\". The novels do not move the First Corps east; Tempest's relief force arrives by spatial transfer on the Long Night (EVT-0336).",
+  "forces": [
+   "F-TEM-001"
+  ],
+  "cast": []
+ },
+ {
   "id": "EVT-0400",
   "day": 12,
   "time": "10:00",
@@ -20,7 +90,22 @@
    "benimaru",
    "testarossa",
    "ultima",
-   "carrera"
+   "carrera",
+   "gobta",
+   "geld",
+   "gabiru",
+   "ranga",
+   "hakuro",
+   "diablo",
+   "adalmann",
+   "zegion",
+   "shion",
+   "soei",
+   "albis",
+   "phobio",
+   "shuna",
+   "momiji",
+   "kumara"
   ],
   "forces": [
    "F-TEM-000",
@@ -82,6 +167,93 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "geld",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "ranga",
+    "presence": "present"
+   },
+   {
+    "id": "hakuro",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "adalmann",
+    "presence": "present"
+   },
+   {
+    "id": "zegion",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   },
+   {
+    "id": "albis",
+    "presence": "present"
+   },
+   {
+    "id": "phobio",
+    "presence": "present"
+   },
+   {
+    "id": "shuna",
+    "presence": "present"
+   },
+   {
+    "id": "momiji",
+    "presence": "present"
+   },
+   {
+    "id": "kumara",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "The ceremony is one continuous scene; the current 5-character list captured only a fraction of the dozen evolution candidates and attending generals who are explicitly named walking up individually.",
+   "removed": []
   }
  },
  {
@@ -153,6 +325,21 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "No on-page scene actually depicts Caligulio delivering this report; the cited lines are only Rimuru's own narration citing the investigation's conclusion, so presence is inferred rather than shown.",
+   "removed": []
   }
  },
  {
@@ -253,6 +440,41 @@
    "campaign": {
     "majorCombatants": "Yuuki; Miranda; Damrada"
    }
+  },
+  "cast": [
+   {
+    "id": "yuuki",
+    "presence": "present"
+   },
+   {
+    "id": "kagali",
+    "presence": "present"
+   },
+   {
+    "id": "laplace",
+    "presence": "present"
+   },
+   {
+    "id": "tear",
+    "presence": "present"
+   },
+   {
+    "id": "footman",
+    "presence": "present"
+   },
+   {
+    "id": "miranda",
+    "presence": "present"
+   },
+   {
+    "id": "damrada",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Vega is explicitly stated to have already left to join the Warcraft Legion (v14.txt:78-80) and is correctly absent from the current list.",
+   "removed": []
   }
  },
  {
@@ -318,6 +540,21 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "kagali",
+    "presence": "present"
+   },
+   {
+    "id": "yuuki",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Text is a short bridging summary ('on Yuuki's instruction, Kagali acted at once...') rather than a depicted scene of the order being given.",
+   "removed": []
   }
  },
  {
@@ -338,7 +575,12 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "rimuru",
-   "calgurio"
+   "calgurio",
+   "diablo",
+   "shion",
+   "minitz",
+   "krishna",
+   "bonnie"
   ],
   "forces": [
    "F-EMP-090",
@@ -407,6 +649,40 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "krishna",
+    "presence": "present"
+   },
+   {
+    "id": "bonnie",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -477,7 +753,89 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "The casualty figures (zero vs 940,000) quoted in the event's evidence are actually voiced in a separate, remote scene between Frey and Carillon reacting to spy reports at their own court (v14.txt:4642-4651), not in a depicted Tempest-capital banquet scene where Rimuru is shown hearing them; cast kept to what is textually attested at Rimuru's own banquet.",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [],
+  "immediateResult": "",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-TEM-001": {
+     "status": "DEPLOYED",
+     "movement": "STATIONARY",
+     "location": "dwargon-eastern-gate",
+     "locationText": "Dwargon Eastern Gate"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0537",
+  "day": 15,
+  "time": "08:00",
+  "theatreId": "TH-DWE",
+  "location": "dwargon-eastern-gate",
+  "locationText": "Dwargon Eastern Gate",
+  "type": "REINFORCEMENT_ARRIVED",
+  "title": "The First Corps joins Dwargon's army at the Eastern Gate",
+  "evidence": "Word document, J. About 330 km in four days.",
+  "forces": [
+   "F-TEM-001"
+  ],
+  "cast": []
  },
  {
   "id": "EVT-0404",
@@ -508,7 +866,12 @@
    "hakuro",
    "gobta",
    "gadra",
-   "laplace"
+   "laplace",
+   "shuna",
+   "rigurd",
+   "lilina",
+   "kaijin",
+   "vester"
   ],
   "forces": [
    "F-TEM-030"
@@ -574,6 +937,85 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   },
+   {
+    "id": "hakuro",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   },
+   {
+    "id": "gadra",
+    "presence": "present"
+   },
+   {
+    "id": "laplace",
+    "presence": "present"
+   },
+   {
+    "id": "shuna",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "lilina",
+    "presence": "present"
+   },
+   {
+    "id": "kaijin",
+    "presence": "present"
+   },
+   {
+    "id": "vester",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "The existing 13-character list is fully confirmed by the text (~20 attendees named at v14.txt:12826-12838); only unregistered names are added as missingCharacters.",
+   "removed": []
   }
  },
  {
@@ -593,8 +1035,7 @@
   "opponent": "Imperial Intelligence Bureau",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "miranda",
-   "yuuki"
+   "miranda"
   ],
   "forces": [
    "F-EMP-051"
@@ -650,7 +1091,123 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "miranda",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Yuuki is only referenced in background exposition ('several days after Yuuki's report') here; he is not acting in this scene.",
+   "removed": [
+    "yuuki"
+   ]
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Armed Nation of Dwargon",
+  "actorFaction": "Armed Nation of Dwargon",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gazel",
+   "gobta"
+  ],
+  "immediateResult": "The allies advance from the gate on the imperial camp.",
+  "operationalResult": "The eastern front moves back and forth; the coup in the imperial capital breaks out while the battle is on.",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "HIGH",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DWA-001": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "dwargon-defensive-line",
+     "locationText": "East of the Eastern Gate",
+     "direction": "East"
+    },
+    "F-TEM-001": {
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "location": "dwargon-defensive-line",
+     "locationText": "East of the Eastern Gate",
+     "direction": "East"
+    },
+    "F-EMP-031": {
+     "status": "ENGAGED",
+     "movement": "STATIONARY"
+    }
+   },
+   "theatres": {
+    "TH-DWE": {
+     "status": "ACTIVE",
+     "battleStatus": "ACTIVE",
+     "frontline": "Allied counter-offensive against the 60,000"
+    }
+   },
+   "campaign": {}
+  },
+  "id": "EVT-0538",
+  "day": 15,
+  "time": "18:00",
+  "theatreId": "TH-DWE",
+  "location": "dwargon-defensive-line",
+  "locationText": "East of the Eastern Gate",
+  "type": "OFFENSIVE",
+  "title": "Allied counter-offensive: Dwargon and Tempest push east against the 60,000",
+  "evidence": "Word document, J and K.",
+  "forces": [
+   "F-DWA-001",
+   "F-TEM-001",
+   "F-EMP-031"
+  ],
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "gobta",
+    "presence": "present"
+   }
+  ]
  },
  {
   "id": "EVT-0317",
@@ -669,9 +1226,9 @@
   "opponent": "Yuuki Kagurazaka",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "gadra",
    "yuuki",
    "kagali",
+   "gadra",
    "rimuru"
   ],
   "forces": [
@@ -733,6 +1290,28 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "yuuki",
+    "presence": "present"
+   },
+   {
+    "id": "kagali",
+    "presence": "present"
+   },
+   {
+    "id": "gadra",
+    "presence": "remote"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -797,6 +1376,17 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "yuuki",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "commandStatus already correctly names Tolneod, Aria and Olca as Yuuki's staff present; none have registry ids.",
+   "removed": []
   }
  },
  {
@@ -816,8 +1406,7 @@
   "opponent": "Imperial Intelligence Bureau",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "miranda",
-   "damrada"
+   "miranda"
   ],
   "forces": [
    "F-EMP-051"
@@ -868,6 +1457,19 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "miranda",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Damrada only set the rendezvous point earlier (v14.txt:9906) and does not appear physically until later (EVT-0322, v14.txt:10024-10027); he is not present in this specific walking scene.",
+   "removed": [
+    "damrada"
+   ]
   }
  },
  {
@@ -947,6 +1549,20 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "miranda",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1013,6 +1629,20 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "miranda",
+    "presence": "present"
+   },
+   {
+    "id": "kondo",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1093,6 +1723,20 @@
    "campaign": {
     "majorCombatants": "Kondo; Yuuki; Damrada"
    }
+  },
+  "cast": [
+   {
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "miranda",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1113,8 +1757,7 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "kondo",
-   "miranda",
-   "yuuki"
+   "miranda"
   ],
   "forces": [
    "F-EMP-014"
@@ -1162,6 +1805,23 @@
    "campaign": {
     "activeCommanders": "Emperor Rudra (Empire), Kondo holding the conspiracy in full; Rimuru (Tempest); Gazel (Dwargon)"
    }
+  },
+  "cast": [
+   {
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "miranda",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Yuuki's scheme is only content retrieved FROM Miranda's mind ('Yuuki's scheme' is listed among the things Kondo reads); Yuuki is not acting in this scene.",
+   "removed": [
+    "yuuki"
+   ]
   }
  },
  {
@@ -1229,6 +1889,24 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "damrada",
+    "presence": "present"
+   },
+   {
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "miranda",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1249,11 +1927,11 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "kondo",
-   "damrada",
-   "yuuki",
    "kagali",
    "tear",
    "footman",
+   "yuuki",
+   "damrada",
    "rudra",
    "velgrynd"
   ],
@@ -1356,6 +2034,45 @@
     "activeCommanders": "Emperor Rudra and Velgrynd (Empire), Kondo executing the purge; Rimuru (Tempest); Gazel (Dwargon)",
     "majorCombatants": "Rudra; Velgrynd; Kondo; Damrada; Yuuki"
    }
+  },
+  "cast": [
+   {
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "kagali",
+    "presence": "present"
+   },
+   {
+    "id": "tear",
+    "presence": "present"
+   },
+   {
+    "id": "footman",
+    "presence": "present"
+   },
+   {
+    "id": "yuuki",
+    "presence": "present"
+   },
+   {
+    "id": "damrada",
+    "presence": "present"
+   },
+   {
+    "id": "rudra",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "The event spans two adjoining sub-locations within 'Yuuki's mansion and Tidu': the streets (Kondo vs Kagali/Tear/Footman) and the mansion interior (Yuuki/Damrada vs Rudra/Velgrynd). Kondo reports to Rudra by remote means between the two, but all eight listed characters are physically on-scene somewhere within the combined location — consistent with the canonical note that Velgrynd acts in person this night and Rudra has not yet boarded the flagship.",
+   "removed": []
   }
  },
  {
@@ -1368,7 +2085,7 @@
   "front": "Dwargon Eastern Front",
   "battle": "Destruction of the Composite Division",
   "battleType": "MAJOR_BATTLE",
-  "location": "dwargon-eastern-metropolis",
+  "location": "dwargon-eastern-gate",
   "locationText": "Blockade camp before Isthmus",
   "actor": "Composite Division blockade force",
   "actorFaction": "Eastern Empire",
@@ -1429,13 +2146,24 @@
      "sizeStatus": "EXPLICIT",
      "status": "DEPLOYED",
      "movement": "STATIONARY",
-     "location": "dwargon-eastern-metropolis",
+     "location": "dwargon-eastern-front",
      "locationText": "Blockade camp before Isthmus",
      "confidence": "HIGH"
     }
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "zero",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Locator v14.txt:640-641 is Miranda's dialogue in the Imperial Capital describing the blockade from afar, not a camp scene; it supports only the '60,000' detail, not any character's presence there.",
+   "removed": []
   }
  },
  {
@@ -1448,16 +2176,13 @@
   "front": "Dwargon Eastern Front",
   "battle": "Destruction of the Composite Division",
   "battleType": "MAJOR_BATTLE",
-  "location": "dwargon-eastern-metropolis",
+  "location": "dwargon-eastern-gate",
   "locationText": "Blockade camp (red glow over Tidu)",
   "actor": "Composite Division blockade force",
   "actorFaction": "Eastern Empire",
   "opponent": "-",
   "opponentFaction": "-",
-  "characters": [
-   "rudra",
-   "velgrynd"
-  ],
+  "characters": [],
   "forces": [
    "F-EMP-031"
   ],
@@ -1511,6 +2236,15 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Rudra and Velgrynd are the offstage cause of the red glow (they depart for/act at Tidu/the Imperial Capital, not the blockade camp); the camp's witnesses in this passage are unnamed soldiers with no identifiable registry character.",
+   "removed": [
+    "rudra",
+    "velgrynd"
+   ]
   }
  },
  {
@@ -1523,15 +2257,14 @@
   "front": "Dwargon Eastern Front",
   "battle": "Destruction of the Composite Division",
   "battleType": "MAJOR_BATTLE",
-  "location": "dwargon-eastern-metropolis",
+  "location": "dwargon-eastern-gate",
   "locationText": "Blockade camp before Isthmus",
   "actor": "Zero",
   "actorFaction": "Eastern Empire",
   "opponent": "Dissenting officers",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "zero",
-   "yuuki"
+   "zero"
   ],
   "forces": [
    "F-EMP-031"
@@ -1591,6 +2324,19 @@
    "campaign": {
     "activeCommanders": "Emperor Rudra and Velgrynd (Empire, purge in Tidu); Zero holding the Composite Division blockade; Gazel (Dwargon); Rimuru (Tempest)"
    }
+  },
+  "cast": [
+   {
+    "id": "zero",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Yuuki is merely awaited (not yet arrived) and takes no remote action in this passage.",
+   "removed": [
+    "yuuki"
+   ]
   }
  },
  {
@@ -1674,6 +2420,20 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "zero",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1743,7 +2503,8 @@
    "changes": [
     "New event (v14.txt:13851-13884); AUDIT-PLAN section 5 and 7 (CAS-012 target)",
     "F-EMP-031 effect (0 / kia 60,000 / DESTROYED) moved here from EVT-0343",
-    "R6 re-dated from D+18 21:00 to D+15 21:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
+    "R6 re-dated from D+18 21:00 to D+15 21:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542).",
+    "R7 campaign reconstruction: The 60,000 die while the allied counter-offensive is engaged (DISC-R7-06)."
    ]
   },
   "effects": {
@@ -1765,8 +2526,124 @@
    },
    "campaign": {
     "activeCommanders": "Emperor Rudra and Velgrynd (Empire); Kondo controlling Kagali; Gazel (Dwargon); Rimuru (Tempest)",
-    "majorCombatants": "Velgrynd; Kondo; Kagali; Gazel"
+    "majorCombatants": "Velgrynd; Kondo; Kagali; Gazel",
+    "empireEffective": 0
    }
+  },
+  "cast": [
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "zero",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Rimuru, Carrera, Diablo and Testarossa watch this massacre remotely from the Tempest cafeteria; they are not added here because they belong to the watching scene (EVT-0327/EVT-0343 context), not to the massacre site itself.",
+   "removed": []
+  }
+ },
+ {
+  "id": "EVT-0326",
+  "day": 15,
+  "time": "21:00",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "a few minutes after the first report",
+  "theatreId": "TH-DWE",
+  "front": "Dwargon Eastern Front",
+  "battle": "Battle of the Dwargon Eastern Front",
+  "battleType": "MAJOR_BATTLE",
+  "location": "dwargon-eastern-gate",
+  "locationText": "Dwargon, eastern metropolis",
+  "actor": "King Gazel Dwargo",
+  "actorFaction": "Armed Nation of Dwargon",
+  "opponent": "Velgrynd",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gazel",
+   "dorf",
+   "anrietta"
+  ],
+  "forces": [
+   "F-DWA-000"
+  ],
+  "type": "COMMAND",
+  "title": "Gazel hears of the monster and decides to fight in person",
+  "immediateResult": "Reports say the Composite Division is fighting someone, then that it is a monster beyond human means; Gazel informs Rimuru and flies to the battlefield",
+  "operationalResult": "Dwargon commits its king to the front",
+  "strategicResult": "Dwargon will show its strength rather than submit",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Gazel commanding",
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V14",
+    "chapter": "Ch4",
+    "locator": "v14.txt:12531-12559"
+   },
+   {
+    "volume": "V14",
+    "chapter": "Ch4",
+    "locator": "v14.txt:12715-12722"
+   }
+  ],
+  "evidence": "A report says the Composite Division is moving and fighting someone; minutes later a monster rivalling demon lords; having reported to Rimuru, Gazel releases his aura and flies to the battlefield.",
+  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "New event (v14.txt:12531-12559, 12720-12722); AUDIT-PLAN section 5",
+    "R6 re-dated from D+18 21:00 to D+15 21:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DWA-000": {
+     "status": "ACTIVE",
+     "movement": "STATIONARY",
+     "location": "dwargon-eastern-gate",
+     "locationText": "Dwargon, eastern metropolis",
+     "confidence": "HIGH"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "anrietta",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Rimuru is only reported to once by magical relay ('dilaporkan satu kali kepada Yang Mulia Rimuru', v14.txt:12716-12717); he never appears as an acting character in this scene — he is the commander being reported to, not present or directing.",
+   "removed": [
+    "rimuru"
+   ]
   }
  },
  {
@@ -1779,7 +2656,7 @@
   "front": "Dwargon Eastern Front",
   "battle": "Destruction of the Composite Division",
   "battleType": "MAJOR_BATTLE",
-  "location": "dwargon-eastern-metropolis",
+  "location": "dwargon-eastern-gate",
   "locationText": "Dwargon formation before Isthmus",
   "actor": "Dwargon's Supreme Commander",
   "actorFaction": "Armed Nation of Dwargon",
@@ -1787,7 +2664,7 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "gazel",
-   "velgrynd"
+   "vaughn"
   ],
   "forces": [
    "F-DWA-000",
@@ -1840,43 +2717,62 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Velgrynd is the destroyer, witnessed from a distance by Gazel/Vaughn at the Dwargon formation; she is not co-located with the watchers, so she is dropped from this watching event (she belongs to EVT-0325).",
+   "removed": [
+    "velgrynd"
+   ]
   }
  },
  {
-  "id": "EVT-0326",
+  "id": "EVT-0327",
   "day": 15,
-  "time": "21:00",
-  "timePrecision": "DAY_LEVEL",
-  "canonicalTime": "a few minutes after the first report",
+  "time": "21:10",
+  "timePrecision": "CANONICAL_RELATIVE",
+  "canonicalTime": "after dinner",
   "theatreId": "TH-DWE",
   "front": "Dwargon Eastern Front",
-  "battle": "Battle of the Dwargon Eastern Front",
-  "battleType": "MAJOR_BATTLE",
-  "location": "dwargon-eastern-metropolis",
-  "locationText": "Dwargon, eastern metropolis",
-  "actor": "King Gazel Dwargo",
-  "actorFaction": "Armed Nation of Dwargon",
+  "battle": null,
+  "battleType": null,
+  "location": "jura-tempest-federation",
+  "locationText": "Cafeteria and control room, capital Rimuru",
+  "actor": "Laplace and Vesta",
+  "actorFaction": "Jura-Tempest Federation",
   "opponent": "Velgrynd",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "gazel",
-   "dorf",
-   "rimuru"
+   "rimuru",
+   "benimaru",
+   "laplace",
+   "testarossa",
+   "vester"
   ],
   "forces": [
-   "F-DWA-000"
+   "F-TEM-000"
   ],
-  "type": "COMMAND",
-  "title": "Gazel hears of the monster and decides to fight in person",
-  "immediateResult": "Reports say the Composite Division is fighting someone, then that it is a monster beyond human means; Gazel informs Rimuru and flies to the battlefield",
-  "operationalResult": "Dwargon commits its king to the front",
-  "strategicResult": "Dwargon will show its strength rather than submit",
+  "type": "INTELLIGENCE",
+  "title": "Alarm in Tempest: Velgrynd before the Composite Division",
+  "immediateResult": "Laplace runs in shouting; Vesta relays Gazel's call for emergency help; Argos shows the Gravity Collapse and Kagali's ritual",
+  "operationalResult": "Tempest's strike members are summoned at once",
+  "strategicResult": "Tempest is drawn into the Dwargon front the night before the planned meeting",
   "strength": {
    "tempest": "UNKNOWN",
    "empire": "UNKNOWN"
   },
-  "commandStatus": "Gazel commanding",
-  "intensity": "LOW",
+  "commandStatus": "Rimuru",
+  "intensity": "NONE",
   "significance": "HIGH",
   "turningPoint": null,
   "provenance": "CANONICAL",
@@ -1889,36 +2785,55 @@
    {
     "volume": "V14",
     "chapter": "Ch4",
-    "locator": "v14.txt:12531-12559"
+    "locator": "v14.txt:13778-13792"
    },
    {
     "volume": "V14",
     "chapter": "Ch4",
-    "locator": "v14.txt:12715-12722"
+    "locator": "v14.txt:13847-13884"
    }
   ],
-  "evidence": "A report says the Composite Division is moving and fighting someone; minutes later a monster rivalling demon lords; having reported to Rimuru, Gazel releases his aura and flies to the battlefield.",
+  "evidence": "The daily routine ends: Laplace runs into the cafeteria; Vesta reports King Gazel's message that Velgrynd appeared before the Composite Division and asks for help; Rimuru summons the strike members.",
   "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
   "notes": "",
   "audit": {
    "status": "ADDED",
    "changes": [
-    "New event (v14.txt:12531-12559, 12720-12722); AUDIT-PLAN section 5",
-    "R6 re-dated from D+18 21:00 to D+15 21:00: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
+    "New event (v14.txt:13778-13789, 13847-13884); AUDIT-PLAN section 5",
+    "R6 re-dated from D+18 21:10 to D+15 21:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
    ]
   },
   "effects": {
-   "forces": {
-    "F-DWA-000": {
-     "status": "ACTIVE",
-     "movement": "STATIONARY",
-     "location": "dwargon-eastern-metropolis",
-     "locationText": "Dwargon, eastern metropolis",
-     "confidence": "HIGH"
-    }
-   },
+   "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "laplace",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "vester",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Vesta (the one who delivers Gazel's distress call) is not in the character registry. Testarossa's exact arrival moment is inferred from the lines immediately following the alarm.",
+   "removed": []
   }
  },
  {
@@ -2039,77 +2954,29 @@
     }
    },
    "campaign": {}
-  }
- },
- {
-  "id": "EVT-0327",
-  "day": 15,
-  "time": "21:10",
-  "timePrecision": "CANONICAL_RELATIVE",
-  "canonicalTime": "after dinner",
-  "theatreId": "TH-DWE",
-  "front": "Dwargon Eastern Front",
-  "battle": null,
-  "battleType": null,
-  "location": "jura-tempest-federation",
-  "locationText": "Cafeteria and control room, capital Rimuru",
-  "actor": "Laplace and Vesta",
-  "actorFaction": "Jura-Tempest Federation",
-  "opponent": "Velgrynd",
-  "opponentFaction": "Eastern Empire",
-  "characters": [
-   "laplace",
-   "rimuru",
-   "testarossa"
-  ],
-  "forces": [
-   "F-TEM-000"
-  ],
-  "type": "INTELLIGENCE",
-  "title": "Alarm in Tempest: Velgrynd before the Composite Division",
-  "immediateResult": "Laplace runs in shouting; Vesta relays Gazel's call for emergency help; Argos shows the Gravity Collapse and Kagali's ritual",
-  "operationalResult": "Tempest's strike members are summoned at once",
-  "strategicResult": "Tempest is drawn into the Dwargon front the night before the planned meeting",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
   },
-  "commandStatus": "Rimuru",
-  "intensity": "NONE",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "MEDIUM",
-   "overall": "HIGH"
-  },
-  "sources": [
+  "cast": [
    {
-    "volume": "V14",
-    "chapter": "Ch4",
-    "locator": "v14.txt:13778-13792"
+    "id": "kagali",
+    "presence": "present"
    },
    {
-    "volume": "V14",
-    "chapter": "Ch4",
-    "locator": "v14.txt:13847-13884"
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "footman",
+    "presence": "present"
+   },
+   {
+    "id": "tear",
+    "presence": "present"
    }
   ],
-  "evidence": "The daily routine ends: Laplace runs into the cafeteria; Vesta reports King Gazel's message that Velgrynd appeared before the Composite Division and asks for help; Rimuru summons the strike members.",
-  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "New event (v14.txt:13778-13789, 13847-13884); AUDIT-PLAN section 5",
-    "R6 re-dated from D+18 21:10 to D+15 21:10: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
-   ]
-  },
-  "effects": {
-   "forces": {},
-   "theatres": {},
-   "campaign": {}
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Footman/Tear's physical guard presence at the ritual ground is confirmed by the nearby v15.txt:1365-1371 passage (same ritual-guard scene) rather than by the narrowly cited locators, which are mostly Tempest-side remote discussion about them as historical comparisons.",
+   "removed": []
   }
  },
  {
@@ -2135,11 +3002,7 @@
    "hakuro",
    "testarossa",
    "ultima",
-   "carrera",
-   "diablo",
-   "benimaru",
-   "shion",
-   "soei"
+   "carrera"
   ],
   "forces": [
    "F-TEM-003B",
@@ -2264,6 +3127,46 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "gobwa",
+    "presence": "present"
+   },
+   {
+    "id": "hakuro",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Benimaru, Shion, Soei and Diablo are the four Rimuru explicitly 'takes' with himself for the separate Imperial Capital infiltration (v14.txt:14516-14519: 'Benimaru, Shion, Souei, dan Diablo. Dengan keempatnya di tempat...'); they are not part of the force sent to Gazel.",
+   "removed": [
+    "benimaru",
+    "shion",
+    "soei",
+    "diablo"
+   ]
   }
  },
  {
@@ -2370,6 +3273,193 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "anrietta",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
+  }
+ },
+ {
+  "id": "EVT-0342",
+  "day": 15,
+  "time": "21:40",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "",
+  "theatreId": "TH-DWE",
+  "front": "Dwargon Eastern Front",
+  "battle": "Battle of the Dwargon Eastern Front",
+  "battleType": "MAJOR_BATTLE",
+  "location": "dwargon-defensive-line",
+  "locationText": "Gazel's command post (observing the ground behind Velgrynd)",
+  "actor": "Anrietta",
+  "actorFaction": "Armed Nation of Dwargon",
+  "opponent": "Kagali's ritual",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "anrietta",
+   "gazel"
+  ],
+  "forces": [
+   "F-DWA-000"
+  ],
+  "type": "RECONNAISSANCE",
+  "title": "Anrietta reports a ritual behind the Scorch Dragon",
+  "immediateResult": "Anrietta reports several beings performing a ritual behind Velgrynd; Jaine judges grand magic is part of it",
+  "operationalResult": "The ritual is identified as a separate target",
+  "strategicResult": "Dwargon's aim shifts from the dragon to the casters",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Anrietta reporting to Gazel",
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:645-650"
+   }
+  ],
+  "evidence": "Anrietta reports that besides the Scorch Dragon several beings behind her are performing a ritual; Jaine judges grand magic is involved.",
+  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D+8 06:40 to D+18 21:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
+    "Names: Jaine (not Lady Jane); opponent Kagali's ritual",
+    "R6 re-dated from D+18 21:40 to D+15 21:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "anrietta",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
+  }
+ },
+ {
+  "id": "EVT-0344",
+  "day": 15,
+  "time": "21:40",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "",
+  "theatreId": "TH-DWE",
+  "front": "Dwargon Eastern Front",
+  "battle": "Battle of the Dwargon Eastern Front",
+  "battleType": "MAJOR_BATTLE",
+  "location": "dwargon-defensive-line",
+  "locationText": "Gazel's command post",
+  "actor": "King Gazel Dwargo",
+  "actorFaction": "Armed Nation of Dwargon",
+  "opponent": "Velgrynd",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gazel",
+   "dorf"
+  ],
+  "forces": [
+   "F-DWA-003"
+  ],
+  "type": "COMMAND",
+  "title": "Gazel will not move the heavy force",
+  "immediateResult": "Asked by Dorf, Gazel refuses to move the heavy armoured force: it is slow, a magic target, and thick shields mean nothing before Velgrynd",
+  "operationalResult": "Dwargon's heavy formation is preserved",
+  "strategicResult": "Only a special attack remains",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Gazel deciding; Dorf's proposal declined",
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:663-670"
+   }
+  ],
+  "evidence": "Dorf asks whether to move the army; Gazel shakes his head: the heavy armoured force is slow, would be a target for magic, and its shields mean nothing against Velgrynd.",
+  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D+8 07:20 to D+18 21:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
+    "R6 re-dated from D+18 21:40 to D+15 21:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DWA-003": {
+     "status": "HELD_IN_RESERVE",
+     "movement": "STATIONARY",
+     "confidence": "HIGH"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -2458,6 +3548,36 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "laplace",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -2478,10 +3598,12 @@
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
    "rimuru",
-   "rudra",
-   "velgrynd",
-   "veldora",
-   "laplace"
+   "benimaru",
+   "shion",
+   "soei",
+   "diablo",
+   "laplace",
+   "velgrynd"
   ],
   "forces": [
    "F-TEM-030"
@@ -2550,230 +3672,44 @@
    "campaign": {
     "activeCommanders": "Rimuru and Benimaru cut off in the Dream Fortress; Gabil and the Primordials at Dwargon; Rudra and Velgrynd (Empire); Gazel (Dwargon)"
    }
-  }
- },
- {
-  "id": "EVT-0342",
-  "day": 15,
-  "time": "21:40",
-  "timePrecision": "DAY_LEVEL",
-  "canonicalTime": "",
-  "theatreId": "TH-DWE",
-  "front": "Dwargon Eastern Front",
-  "battle": "Battle of the Dwargon Eastern Front",
-  "battleType": "MAJOR_BATTLE",
-  "location": "dwargon-defensive-line",
-  "locationText": "Gazel's command post (observing the ground behind Velgrynd)",
-  "actor": "Anrietta",
-  "actorFaction": "Armed Nation of Dwargon",
-  "opponent": "Kagali's ritual",
-  "opponentFaction": "Eastern Empire",
-  "characters": [
-   "anrietta",
-   "gazel"
-  ],
-  "forces": [
-   "F-DWA-000"
-  ],
-  "type": "RECONNAISSANCE",
-  "title": "Anrietta reports a ritual behind the Scorch Dragon",
-  "immediateResult": "Anrietta reports several beings performing a ritual behind Velgrynd; Jaine judges grand magic is part of it",
-  "operationalResult": "The ritual is identified as a separate target",
-  "strategicResult": "Dwargon's aim shifts from the dragon to the casters",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
   },
-  "commandStatus": "Anrietta reporting to Gazel",
-  "intensity": "LOW",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "MEDIUM",
-   "overall": "HIGH"
-  },
-  "sources": [
+  "cast": [
    {
-    "volume": "V15",
-    "chapter": "Ch1",
-    "locator": "v15.txt:645-650"
-   }
-  ],
-  "evidence": "Anrietta reports that besides the Scorch Dragon several beings behind her are performing a ritual; Jaine judges grand magic is involved.",
-  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
-  "notes": "",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "Moved from D+8 06:40 to D+18 21:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Names: Jaine (not Lady Jane); opponent Kagali's ritual",
-    "R6 re-dated from D+18 21:40 to D+15 21:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
-   ]
-  },
-  "effects": {
-   "forces": {},
-   "theatres": {},
-   "campaign": {}
-  }
- },
- {
-  "id": "EVT-0344",
-  "day": 15,
-  "time": "21:40",
-  "timePrecision": "DAY_LEVEL",
-  "canonicalTime": "",
-  "theatreId": "TH-DWE",
-  "front": "Dwargon Eastern Front",
-  "battle": "Battle of the Dwargon Eastern Front",
-  "battleType": "MAJOR_BATTLE",
-  "location": "dwargon-defensive-line",
-  "locationText": "Gazel's command post",
-  "actor": "King Gazel Dwargo",
-  "actorFaction": "Armed Nation of Dwargon",
-  "opponent": "Velgrynd",
-  "opponentFaction": "Eastern Empire",
-  "characters": [
-   "gazel",
-   "dorf"
-  ],
-  "forces": [
-   "F-DWA-003"
-  ],
-  "type": "COMMAND",
-  "title": "Gazel will not move the heavy force",
-  "immediateResult": "Asked by Dorf, Gazel refuses to move the heavy armoured force: it is slow, a magic target, and thick shields mean nothing before Velgrynd",
-  "operationalResult": "Dwargon's heavy formation is preserved",
-  "strategicResult": "Only a special attack remains",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "commandStatus": "Gazel deciding; Dorf's proposal declined",
-  "intensity": "LOW",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "MEDIUM",
-   "overall": "HIGH"
-  },
-  "sources": [
-   {
-    "volume": "V15",
-    "chapter": "Ch1",
-    "locator": "v15.txt:663-670"
-   }
-  ],
-  "evidence": "Dorf asks whether to move the army; Gazel shakes his head: the heavy armoured force is slow, would be a target for magic, and its shields mean nothing against Velgrynd.",
-  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
-  "notes": "",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "Moved from D+8 07:20 to D+18 21:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "R6 re-dated from D+18 21:40 to D+15 21:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-DWA-003": {
-     "status": "HELD_IN_RESERVE",
-     "movement": "STATIONARY",
-     "confidence": "HIGH"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
-  }
- },
- {
-  "id": "EVT-0345",
-  "day": 15,
-  "time": "21:50",
-  "timePrecision": "DAY_LEVEL",
-  "canonicalTime": "the decision came somewhat too late",
-  "theatreId": "TH-DWE",
-  "front": "Dwargon Eastern Front",
-  "battle": "Battle of the Dwargon Eastern Front",
-  "battleType": "MAJOR_BATTLE",
-  "location": "dwargon-defensive-line",
-  "locationText": "Gazel's command post",
-  "actor": "King Gazel Dwargo",
-  "actorFaction": "Armed Nation of Dwargon",
-  "opponent": "Kagali's ritual",
-  "opponentFaction": "Eastern Empire",
-  "characters": [
-   "gazel",
-   "dorf",
-   "vaughn"
-  ],
-  "forces": [
-   "F-DWA-002"
-  ],
-  "type": "COMMAND",
-  "title": "Decision for a Pegasus Knights special attack on the ritual",
-  "immediateResult": "The only option left: a special attack by the 500 Pegasus Knights on the ritual; the sortie follows the Tempest reinforcement and the joint council",
-  "operationalResult": "The knights will fly in fives to stall the defenders so Gazel can duel Kondo",
-  "strategicResult": "Dwargon takes the offensive at high risk",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN",
-   "note": "Dwargon: 500 Pegasus Knights (v15.txt:672-689)"
-  },
-  "commandStatus": "Gazel commanding; Dorf leading the knights",
-  "intensity": "MEDIUM",
-  "significance": "CRITICAL",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "MEDIUM",
-   "overall": "HIGH"
-  },
-  "sources": [
-   {
-    "volume": "V15",
-    "chapter": "Ch1",
-    "locator": "v15.txt:672-689"
+    "id": "rimuru",
+    "presence": "present"
    },
    {
-    "volume": "V15",
-    "chapter": "Ch1",
-    "locator": "v15.txt:1425-1458"
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "laplace",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
    }
   ],
-  "evidence": "The only remaining choice is a special attack by the 500 Pegasus Knights on the ritual; when it comes, Dorf orders air combat in fives to stall rather than destroy, leaving Kondo to Gazel.",
-  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
-  "notes": "",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "Moved from D+8 07:40 to D+18 21:50 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Type ATTACK to COMMAND: the decision; the sortie itself reaches the ritual ground in EVT-0338",
-    "Objective: delay the defenders so Gazel can duel Kondo (v15.txt:1453-1458)",
-    "Names: Pegasus Knights (not Sky Knights)",
-    "R6 re-dated from D+18 21:50 to D+15 21:50: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "The text states outright that 'Rudra' here is a fake created by Velgrynd's Parallel Existence (v14.txt:15710-15713), so the real Rudra is not present. Veldora is only shown to Rimuru on a conjured screen while he is actually fighting at a separate location (covered by EVT-0330/EVT-0334); he is not physically in the Fortress.",
+   "removed": [
+    "rudra",
+    "veldora"
    ]
-  },
-  "effects": {
-   "forces": {
-    "F-DWA-002": {
-     "strength": 500,
-     "effective": 500,
-     "sizeStatus": "EXPLICIT",
-     "status": "ENGAGED",
-     "movement": "ADVANCE",
-     "direction": "Toward the ritual ground",
-     "location": "dwargon-defensive-line",
-     "locationText": "Gazel's command post",
-     "confidence": "HIGH"
-    }
-   },
-   "theatres": {},
-   "campaign": {}
   }
  },
  {
@@ -2801,7 +3737,8 @@
    "carrera",
    "gazel",
    "dorf",
-   "phobio"
+   "phobio",
+   "jaine"
   ],
   "forces": [
    "F-TEM-003B",
@@ -2921,7 +3858,251 @@
     "activeCommanders": "Gazel and Gabil (allied, eastern front); Rimuru and Benimaru cut off; Rudra and Velgrynd (Empire), Kondo at the ritual",
     "majorCombatants": "Velgrynd; Kondo; Gazel; Gabil; Testarossa; Ultima; Carrera; Hakuro; Gobwa"
    }
+  },
+  "cast": [
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "gobwa",
+    "presence": "present"
+   },
+   {
+    "id": "hakuro",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "phobio",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Phobio's presence here is inferred only from his registry role (attached to Gobwa's force), not from a direct textual mention in the cited passage.",
+   "removed": []
   }
+ },
+ {
+  "id": "EVT-0345",
+  "day": 15,
+  "time": "21:50",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "the decision came somewhat too late",
+  "theatreId": "TH-DWE",
+  "front": "Dwargon Eastern Front",
+  "battle": "Battle of the Dwargon Eastern Front",
+  "battleType": "MAJOR_BATTLE",
+  "location": "dwargon-defensive-line",
+  "locationText": "Gazel's command post",
+  "actor": "King Gazel Dwargo",
+  "actorFaction": "Armed Nation of Dwargon",
+  "opponent": "Kagali's ritual",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gazel",
+   "dorf",
+   "vaughn",
+   "jaine"
+  ],
+  "forces": [
+   "F-DWA-002"
+  ],
+  "type": "COMMAND",
+  "title": "Decision for a Pegasus Knights special attack on the ritual",
+  "immediateResult": "The only option left: a special attack by the 500 Pegasus Knights on the ritual; the sortie follows the Tempest reinforcement and the joint council",
+  "operationalResult": "The knights will fly in fives to stall the defenders so Gazel can duel Kondo",
+  "strategicResult": "Dwargon takes the offensive at high risk",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN",
+   "note": "Dwargon: 500 Pegasus Knights (v15.txt:672-689)"
+  },
+  "commandStatus": "Gazel commanding; Dorf leading the knights",
+  "intensity": "MEDIUM",
+  "significance": "CRITICAL",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:672-689"
+   },
+   {
+    "volume": "V15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:1425-1458"
+   }
+  ],
+  "evidence": "The only remaining choice is a special attack by the 500 Pegasus Knights on the ritual; when it comes, Dorf orders air combat in fives to stall rather than destroy, leaving Kondo to Gazel.",
+  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D+8 07:40 to D+18 21:50 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
+    "Type ATTACK to COMMAND: the decision; the sortie itself reaches the ritual ground in EVT-0338",
+    "Objective: delay the defenders so Gazel can duel Kondo (v15.txt:1453-1458)",
+    "Names: Pegasus Knights (not Sky Knights)",
+    "R6 re-dated from D+18 21:50 to D+15 21:50: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-DWA-002": {
+     "strength": 500,
+     "effective": 500,
+     "sizeStatus": "EXPLICIT",
+     "status": "ENGAGED",
+     "movement": "ADVANCE",
+     "direction": "Toward the ritual ground",
+     "location": "dwargon-defensive-line",
+     "locationText": "Gazel's command post",
+     "confidence": "HIGH"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
+  }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "rudra"
+  ],
+  "immediateResult": "The capital reserve falls from 110,100 to 100,000; the 10,100 board airships.",
+  "operationalResult": "The only addition to the operation after the initial deployment: 1,000,000 + 10,100 = 1,010,100 committed.",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 10100
+  },
+  "intensity": "LOW",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-080": {
+     "strength": 100000,
+     "status": "RESERVE",
+     "movement": "STATIONARY"
+    },
+    "F-EMP-081": {
+     "status": "ADVANCING",
+     "movement": "STATIONARY",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital",
+     "strength": 10100,
+     "sizeStatus": "SCENARIO"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0540",
+  "day": 15,
+  "time": "21:50",
+  "theatreId": "TH-CAP",
+  "location": "imperial-capital",
+  "locationText": "Imperial Capital",
+  "type": "FORMATION_TRANSFERRED",
+  "title": "Third Strike: 10,100 leave the capital reserve",
+  "evidence": "Word document, L (Third Strike, after the coup: \"All Out Strike\").",
+  "reconstructionNote": "Two hours after the coup (EVT-0323).",
+  "forces": [
+   "F-EMP-080",
+   "F-EMP-081"
+  ],
+  "cast": [
+   {
+    "id": "rudra",
+    "presence": "remote"
+   }
+  ]
  },
  {
   "id": "EVT-0330",
@@ -3026,6 +4207,24 @@
    "campaign": {
     "majorCombatants": "Veldora; Velgrynd; Kondo; Gazel; Gabil; Testarossa; Ultima; Carrera"
    }
+  },
+  "cast": [
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "present"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -3129,7 +4328,120 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "immediateResult": "The eastern group flies for the Eastern Gate across the Empire-Dwargon border; the Tempest group for the Great Jura Forest.",
+  "operationalResult": "The two groups sum to 10,100 (data-source/campaign/scenario-params.json).",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": 10100
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-081": {
+     "status": "SPLIT",
+     "movement": "STATIONARY",
+     "locationText": "Divided into its two groups",
+     "location": null
+    },
+    "F-EMP-081E": {
+     "status": "ADVANCING",
+     "movement": "ADVANCE",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital",
+     "strength": 8000,
+     "sizeStatus": "SCENARIO",
+     "direction": "South-west, to the Eastern Gate (airships)"
+    },
+    "F-EMP-081T": {
+     "status": "ADVANCING",
+     "movement": "ADVANCE",
+     "location": "imperial-capital",
+     "locationText": "Imperial Capital",
+     "strength": 2100,
+     "sizeStatus": "SCENARIO",
+     "direction": "South-west, to the Great Jura Forest (airships)"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0541",
+  "day": 15,
+  "time": "22:00",
+  "theatreId": "TH-CAP",
+  "location": "imperial-capital",
+  "locationText": "Imperial Capital",
+  "type": "FORMATION_SPLIT",
+  "title": "The Third Strike divides: most for the Eastern Gate, the rest for the Tempest capital",
+  "evidence": "Word document, L: \"sebagian besar ke Pintu Timur lewat perbatasan timur, sisanya ke Capital Tempest\".",
+  "forces": [
+   "F-EMP-081",
+   "F-EMP-081E",
+   "F-EMP-081T"
+  ],
+  "cast": []
  },
  {
   "id": "EVT-0331",
@@ -3201,6 +4513,20 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -3306,6 +4632,36 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "footman",
+    "presence": "present"
+   },
+   {
+    "id": "tear",
+    "presence": "present"
+   },
+   {
+    "id": "kagali",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -3326,7 +4682,7 @@
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
    "velgrynd",
-   "rimuru"
+   "veldora"
   ],
   "forces": [],
   "type": "UNIT_DESTRUCTION",
@@ -3377,6 +4733,23 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "This locator is pure narration by Rimuru, who is remote (trapped in the Dream Fortress) at this point and not physically present at the gate; removed him. The text never places either dragon directly at the gate, so the dragons' presence here is inferred only from the actor field ('Velgrynd-Veldora battle') per the fallback rule.",
+   "removed": [
+    "rimuru"
+   ]
   }
  },
  {
@@ -3396,8 +4769,7 @@
   "opponent": "Velgrynd",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "ramiris",
-   "rimuru"
+   "ramiris"
   ],
   "forces": [
    "F-TEM-010"
@@ -3443,6 +4815,109 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "ramiris",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "The v14 locator is Rimuru's own narration, given while he is remote (trapped in the Dream Fortress); removed him as not physically present. Ramiris's presence is confirmed by the corroborating v15 prologue scene rather than the bare locator itself.",
+   "removed": [
+    "rimuru"
+   ]
+  }
+ },
+ {
+  "id": "EVT-0334",
+  "day": 15,
+  "time": "22:30",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "",
+  "theatreId": "TH-DRG",
+  "front": "Jura airspace",
+  "battle": "Dragon battle over the Jura forest",
+  "battleType": "SPECIAL_COMBAT",
+  "location": "jura-airspace",
+  "locationText": "Airspace over the Great Jura Forest",
+  "actor": "Velgrynd",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Veldora Tempest",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [
+   "velgrynd",
+   "veldora"
+  ],
+  "forces": [
+   "F-EMP-070",
+   "F-DRG-001"
+  ],
+  "type": "SPECIAL_ABILITY",
+  "title": "Parallel Existence: Velgrynd is only partly committed",
+  "immediateResult": "The dragon fight seems in stasis because Velgrynd runs Parallel Existence; both still control vast power precisely",
+  "operationalResult": "Velgrynd fights Veldora while also acting at Dwargon and as Rudra's double",
+  "strategicResult": "One True Dragon pins Tempest's strongest asset with part of her strength",
+  "strength": {
+   "tempest": 1,
+   "empire": 1
+  },
+  "commandStatus": "-",
+  "intensity": "EXTREME",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V14",
+    "chapter": "Epilogue",
+    "locator": "v14.txt:15488-15496"
+   },
+   {
+    "volume": "V14",
+    "chapter": "Epilogue",
+    "locator": "v14.txt:15692-15700"
+   }
+  ],
+  "evidence": "The fight looks static because Velgrynd is using Parallel Existence, yet both dragons control their immense power precisely.",
+  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D+7 22:40 to D+18 22:30 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
+    "Strategic result: Velgrynd only partly committed (v14.txt:15489-15490, 15692-15700)",
+    "R6 re-dated from D+18 22:30 to D+15 22:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {
+    "TH-DRG": {
+     "frontline": "Dragon battle; Velgrynd split by Parallel Existence"
+    }
+   },
+   "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -3527,82 +5002,20 @@
    },
    "theatres": {},
    "campaign": {}
-  }
- },
- {
-  "id": "EVT-0334",
-  "day": 15,
-  "time": "22:30",
-  "timePrecision": "DAY_LEVEL",
-  "canonicalTime": "",
-  "theatreId": "TH-DRG",
-  "front": "Jura airspace",
-  "battle": "Dragon battle over the Jura forest",
-  "battleType": "SPECIAL_COMBAT",
-  "location": "jura-airspace",
-  "locationText": "Airspace over the Great Jura Forest",
-  "actor": "Velgrynd",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Veldora Tempest",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [
-   "velgrynd",
-   "veldora"
-  ],
-  "forces": [
-   "F-EMP-070",
-   "F-DRG-001"
-  ],
-  "type": "SPECIAL_ABILITY",
-  "title": "Parallel Existence: Velgrynd is only partly committed",
-  "immediateResult": "The dragon fight seems in stasis because Velgrynd runs Parallel Existence; both still control vast power precisely",
-  "operationalResult": "Velgrynd fights Veldora while also acting at Dwargon and as Rudra's double",
-  "strategicResult": "One True Dragon pins Tempest's strongest asset with part of her strength",
-  "strength": {
-   "tempest": 1,
-   "empire": 1
   },
-  "commandStatus": "-",
-  "intensity": "EXTREME",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "MEDIUM",
-   "overall": "HIGH"
-  },
-  "sources": [
+  "cast": [
    {
-    "volume": "V14",
-    "chapter": "Epilogue",
-    "locator": "v14.txt:15488-15496"
+    "id": "gabiru",
+    "presence": "present"
    },
    {
-    "volume": "V14",
-    "chapter": "Epilogue",
-    "locator": "v14.txt:15692-15700"
+    "id": "gadra",
+    "presence": "present"
    }
   ],
-  "evidence": "The fight looks static because Velgrynd is using Parallel Existence, yet both dragons control their immense power precisely.",
-  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
-  "notes": "",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "Moved from D+7 22:40 to D+18 22:30 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Strategic result: Velgrynd only partly committed (v14.txt:15489-15490, 15692-15700)",
-    "R6 re-dated from D+18 22:30 to D+15 22:30: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
-   ]
-  },
-  "effects": {
-   "forces": {},
-   "theatres": {
-    "TH-DRG": {
-     "frontline": "Dragon battle; Velgrynd split by Parallel Existence"
-    }
-   },
-   "campaign": {}
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -3621,7 +5034,13 @@
   "actorFaction": "Eastern Empire",
   "opponent": "Jura-Tempest Federation",
   "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
+  "characters": [
+   "ramiris",
+   "zarario",
+   "treyni",
+   "charys",
+   "beretta"
+  ],
   "forces": [],
   "type": "COMBAT",
   "title": "Mystic raid on the labyrinth: Zarario and five generals break in",
@@ -3668,86 +5087,33 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
-  }
- },
- {
-  "id": "EVT-0347",
-  "day": 15,
-  "time": "22:40",
-  "timePrecision": "DAY_LEVEL",
-  "canonicalTime": "",
-  "theatreId": "TH-DWE",
-  "front": "Dwargon Eastern Front",
-  "battle": "Battle of the Dwargon Eastern Front",
-  "battleType": "MAJOR_BATTLE",
-  "location": "ritual-caster-position",
-  "locationText": "Above Kagali's ritual ground",
-  "actor": "Gadora",
-  "actorFaction": "Jura-Tempest Federation",
-  "opponent": "Velgrynd",
-  "opponentFaction": "Eastern Empire",
-  "characters": [
-   "gadra",
-   "velgrynd",
-   "damrada",
-   "masayuki"
-  ],
-  "forces": [
-   "F-TEM-011",
-   "F-EMP-070"
-  ],
-  "type": "ATTACK",
-  "title": "Gadora launches the Colossus at Velgrynd, then stalls her by talk",
-  "immediateResult": "Gadora mounts the Colossus and launches it at Velgrynd, then keeps her talking (Damrada, Masayuki's likeness to Rudra) knowing a real fight would break it in one blow",
-  "operationalResult": "Velgrynd spares him and leaves on her own when her Veldora front needs her",
-  "strategicResult": "Time is bought without a fight",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
   },
-  "commandStatus": "Gadora on his own initiative",
-  "intensity": "MEDIUM",
-  "significance": "HIGH",
-  "turningPoint": null,
-  "provenance": "CANONICAL",
-  "confidence": {
-   "time": "MEDIUM",
-   "numbers": "MEDIUM",
-   "overall": "HIGH"
-  },
-  "sources": [
+  "cast": [
    {
-    "volume": "V15",
-    "chapter": "Ch1",
-    "locator": "v15.txt:1489-1511"
+    "id": "ramiris",
+    "presence": "remote"
    },
    {
-    "volume": "V15",
-    "chapter": "Ch1",
-    "locator": "v15.txt:3155-3175"
+    "id": "zarario",
+    "presence": "present"
    },
    {
-    "volume": "V15",
-    "chapter": "Ch1",
-    "locator": "v15.txt:3350-3407"
+    "id": "treyni",
+    "presence": "present"
+   },
+   {
+    "id": "charys",
+    "presence": "present"
+   },
+   {
+    "id": "beretta",
+    "presence": "remote"
    }
   ],
-  "evidence": "Gadora rides the Colossus and fires it at Velgrynd but, knowing one blow would destroy it, stalls her with talk of Damrada and Masayuki's resemblance to Rudra; she releases him and departs.",
-  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
-  "notes": "",
-  "audit": {
-   "status": "CORRECTED",
-   "changes": [
-    "Moved from D+8 08:20 to D+18 22:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
-    "Result: Gadora stalls Velgrynd by talk; she leaves on her own (v15.txt:3391-3404)",
-    "Name: Gadora",
-    "R6 re-dated from D+18 22:40 to D+15 22:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
-   ]
-  },
-  "effects": {
-   "forces": {},
-   "theatres": {},
-   "campaign": {}
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Zarario's 'five generals' and the 'Dragon Lords' who fight them are only referenced as unnamed collectives in this locator range, so they cannot be added without inventing names.",
+   "removed": []
   }
  },
  {
@@ -3814,6 +5180,116 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "veldora",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
+  }
+ },
+ {
+  "id": "EVT-0347",
+  "day": 15,
+  "time": "22:40",
+  "timePrecision": "DAY_LEVEL",
+  "canonicalTime": "",
+  "theatreId": "TH-DWE",
+  "front": "Dwargon Eastern Front",
+  "battle": "Battle of the Dwargon Eastern Front",
+  "battleType": "MAJOR_BATTLE",
+  "location": "ritual-caster-position",
+  "locationText": "Above Kagali's ritual ground",
+  "actor": "Gadora",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Velgrynd",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gadra",
+   "velgrynd"
+  ],
+  "forces": [
+   "F-TEM-011",
+   "F-EMP-070"
+  ],
+  "type": "ATTACK",
+  "title": "Gadora launches the Colossus at Velgrynd, then stalls her by talk",
+  "immediateResult": "Gadora mounts the Colossus and launches it at Velgrynd, then keeps her talking (Damrada, Masayuki's likeness to Rudra) knowing a real fight would break it in one blow",
+  "operationalResult": "Velgrynd spares him and leaves on her own when her Veldora front needs her",
+  "strategicResult": "Time is bought without a fight",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "commandStatus": "Gadora on his own initiative",
+  "intensity": "MEDIUM",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "MEDIUM",
+   "numbers": "MEDIUM",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:1489-1511"
+   },
+   {
+    "volume": "V15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:3155-3175"
+   },
+   {
+    "volume": "V15",
+    "chapter": "Ch1",
+    "locator": "v15.txt:3350-3407"
+   }
+  ],
+  "evidence": "Gadora rides the Colossus and fires it at Velgrynd but, knowing one blow would destroy it, stalls her with talk of Damrada and Masayuki's resemblance to Rudra; she releases him and departs.",
+  "reconstructionNote": "Clock time is a simulation placement inside the single long night (D+18 18:00 to D+19 about 02:30). The novel gives the night and the order of events, never a clock time (AMB-018).",
+  "notes": "",
+  "audit": {
+   "status": "CORRECTED",
+   "changes": [
+    "Moved from D+8 08:20 to D+18 22:40 (AMB-018 one-night clock; AUDIT-PLAN section 5)",
+    "Result: Gadora stalls Velgrynd by talk; she leaves on her own (v15.txt:3391-3404)",
+    "Name: Gadora",
+    "R6 re-dated from D+18 22:40 to D+15 22:40: the coup and the long night begin on the evening of the day after the Elmesia night (v14.txt:12723, 10116, 14542)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gadra",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Damrada and Masayuki are only names that come up in Gadra's stalling conversation with Velgrynd (v15.txt:3206-3321); neither is physically at the ritual ground, so both are removed.",
+   "removed": [
+    "damrada",
+    "masayuki"
+   ]
   }
  },
  {
@@ -3832,7 +5308,15 @@
   "actorFaction": "Eastern Empire",
   "opponent": "Jura-Tempest Federation",
   "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
+  "characters": [
+   "masayuki",
+   "calgurio",
+   "minitz",
+   "cornu",
+   "venom",
+   "jiwu",
+   "bernie"
+  ],
   "forces": [],
   "type": "COMBAT",
   "title": "Cornu attacks Masayuki on Floor 70; the imperial prisoners fight beside Tempest",
@@ -3879,6 +5363,40 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "cornu",
+    "presence": "present"
+   },
+   {
+    "id": "venom",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -3948,6 +5466,20 @@
    "campaign": {
     "activeCommanders": "Dorf holding joint command at the ritual; Gazel duelling Kondo; Rimuru cut off; Rudra and Velgrynd (Empire)"
    }
+  },
+  "cast": [
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -3967,7 +5499,8 @@
   "opponent": "Malcolm (Imperial Guardian, single digit No. 8)",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "gabiru"
+   "gabiru",
+   "malcolm"
   ],
   "forces": [
    "F-TEM-003B",
@@ -4022,6 +5555,20 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "malcolm",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -4108,6 +5655,25 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gobwa",
+    "presence": "present"
+   },
+   {
+    "id": "phobio",
+    "presence": "present"
+   },
+   {
+    "id": "hakuro",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Hakuro's own arrival line sits just past this locator's end (v15.txt:1876-1877) but describes the same force arriving together.",
+   "removed": []
   }
  },
  {
@@ -4195,6 +5761,24 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "hakuro",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -4214,7 +5798,9 @@
   "opponent": "Gabil",
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
-   "gabiru"
+   "gabiru",
+   "malcolm",
+   "souka"
   ],
   "forces": [
    "F-EMP-015",
@@ -4265,6 +5851,24 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "malcolm",
+    "presence": "present"
+   },
+   {
+    "id": "souka",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -4289,7 +5893,8 @@
    "footman",
    "tear",
    "anrietta",
-   "gobwa"
+   "gobwa",
+   "moss"
   ],
   "forces": [
    "F-DWA-000",
@@ -4337,6 +5942,40 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "phobio",
+    "presence": "present"
+   },
+   {
+    "id": "footman",
+    "presence": "present"
+   },
+   {
+    "id": "tear",
+    "presence": "present"
+   },
+   {
+    "id": "anrietta",
+    "presence": "present"
+   },
+   {
+    "id": "gobwa",
+    "presence": "present"
+   },
+   {
+    "id": "moss",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -4358,7 +5997,9 @@
   "characters": [
    "veyron",
    "zonda",
-   "gabiru"
+   "gabiru",
+   "malcolm",
+   "souka"
   ],
   "forces": [
    "F-TEM-013"
@@ -4419,7 +6060,104 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "veyron",
+    "presence": "present"
+   },
+   {
+    "id": "zonda",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "malcolm",
+    "presence": "present"
+   },
+   {
+    "id": "souka",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Armed Nation of Dwargon",
+  "opponentFaction": "Armed Nation of Dwargon",
+  "characters": [],
+  "immediateResult": "",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-081E": {
+     "status": "ADVANCING",
+     "movement": "ADVANCE",
+     "location": "empire-dwargon-border",
+     "locationText": "Over the Empire-Dwargon border"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0542",
+  "day": 15,
+  "time": "23:20",
+  "theatreId": "TH-DWE",
+  "location": "empire-dwargon-border",
+  "locationText": "Empire-Dwargon border",
+  "type": "BORDER_CROSSING",
+  "title": "The Third Strike's eastern group crosses the eastern border",
+  "evidence": "Word document, L.",
+  "forces": [
+   "F-EMP-081E"
+  ],
+  "cast": []
  },
  {
   "id": "EVT-0355",
@@ -4440,7 +6178,9 @@
   "characters": [
    "kondo",
    "gazel",
-   "hakuro"
+   "hakuro",
+   "agera",
+   "esprit"
   ],
   "forces": [
    "F-DEM-003",
@@ -4486,6 +6226,32 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "hakuro",
+    "presence": "present"
+   },
+   {
+    "id": "agera",
+    "presence": "present"
+   },
+   {
+    "id": "esprit",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -4506,8 +6272,7 @@
   "opponentFaction": "-",
   "characters": [
    "samuel",
-   "gradim",
-   "vega"
+   "gradim"
   ],
   "forces": [
    "F-EMP-060",
@@ -4597,6 +6362,23 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "samuel",
+    "presence": "present"
+   },
+   {
+    "id": "gradim",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Vega is not mentioned anywhere near this locator window; his only appearance as an infiltrator inside the Magic Beast Division is much later (~v15.txt:10521, during the Dwargon-front battle aftermath), not during this transit scene.",
+   "removed": [
+    "vega"
+   ]
   }
  },
  {
@@ -4618,8 +6400,7 @@
   "characters": [
    "velgrynd",
    "samuel",
-   "rudra",
-   "calgurio"
+   "rudra"
   ],
   "forces": [
    "F-EMP-061",
@@ -4679,6 +6460,27 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "samuel",
+    "presence": "present"
+   },
+   {
+    "id": "rudra",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Calgurio is only invoked as a comparison ('even Calgurio's chief of staff didn't know who the secluded noble was') - he is not present or acting in this scene.",
+   "removed": [
+    "calgurio"
+   ]
   }
  },
  {
@@ -4699,8 +6501,8 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "velgrynd",
-   "gradim",
-   "samuel"
+   "samuel",
+   "gradim"
   ],
   "forces": [
    "F-EMP-020",
@@ -4759,6 +6561,25 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "samuel",
+    "presence": "present"
+   },
+   {
+    "id": "gradim",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Gradim is physically part of the wider flotilla (as in EVT-0370/EVT-0373) but for this specific bridge briefing he is explicitly shown joining only via a magic screen call from another ship, so he is tagged remote for this particular scene.",
+   "removed": []
   }
  },
  {
@@ -4865,7 +6686,100 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "gadra",
+    "presence": "present"
+   },
+   {
+    "id": "samuel",
+    "presence": "present"
+   },
+   {
+    "id": "gradim",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Armed Nation of Dwargon",
+  "opponentFaction": "Armed Nation of Dwargon",
+  "characters": [],
+  "immediateResult": "The imperial line before the gate is re-formed as the Magic Beast Division emerges on the same front.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-081E": {
+     "status": "ENGAGED",
+     "movement": "STATIONARY",
+     "location": "dwargon-eastern-front",
+     "locationText": "Before the Eastern Gate"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0543",
+  "day": 15,
+  "time": "23:40",
+  "theatreId": "TH-DWE",
+  "location": "dwargon-eastern-front",
+  "locationText": "Before the Eastern Gate",
+  "type": "REINFORCEMENT_ARRIVED",
+  "title": "The Third Strike's eastern group lands before the Eastern Gate",
+  "evidence": "Word document, L.",
+  "forces": [
+   "F-EMP-081E"
+  ],
+  "cast": []
  },
  {
   "id": "EVT-0339",
@@ -4885,9 +6799,9 @@
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
    "veldora",
-   "velgrynd",
    "kondo",
    "rudra",
+   "velgrynd",
    "rimuru"
   ],
   "forces": [
@@ -4965,6 +6879,33 @@
    "campaign": {
     "majorCombatants": "Velgrynd; Veldora (dominated); Rudra; Kondo; Gabil; Testarossa; Ultima; Carrera"
    }
+  },
+  "cast": [
+   {
+    "id": "veldora",
+    "presence": "present"
+   },
+   {
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "rudra",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "rimuru",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "v14.txt text explicitly flags the figure negotiating with Rimuru as a Velgrynd-made 'Parallel Existence' impersonation; the Rudra who actually shoots/dominates Veldora is aboard the flagship airship with Kondo.",
+   "removed": []
   }
  },
  {
@@ -4985,6 +6926,7 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "rimuru",
+   "benimaru",
    "veldora",
    "velgrynd",
    "rudra"
@@ -5040,6 +6982,33 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "remote"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "remote"
+   },
+   {
+    "id": "rudra",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "This event is Rimuru's own realization inside the Dream Fortress; Veldora/Velgrynd/Rudra are the subjects of that realization (acting in parallel at the Jura-forest battle, not in the Fortress itself), so they are tagged remote rather than present or dropped.",
+   "removed": []
   }
  },
  {
@@ -5189,6 +7158,48 @@
     "activeCommanders": "Rimuru (Tempest), Benimaru directing the strike; Rudra and Velgrynd aboard the flagship; Gazel down (Dwargon)",
     "majorCombatants": "Rimuru; Velgrynd; Veldora (dominated); Benimaru; Testarossa; Ultima; Carrera; Diablo"
    }
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "laplace",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -5207,7 +7218,10 @@
   "actorFaction": "Eastern Empire",
   "opponent": "Jura-Tempest Federation",
   "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
+  "characters": [
+   "ramiris",
+   "beretta"
+  ],
   "forces": [],
   "type": "COMBAT",
   "title": "The capital is pushed out of the labyrinth back to the surface",
@@ -5249,6 +7263,21 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "ramiris",
+    "presence": "remote"
+   },
+   {
+    "id": "beretta",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "No character is described as physically on the surface at the moment the capital is ejected; the only active participants in this locator are Ramiris and Beretta, acting from the Control Center, hence 'remote' rather than 'present' at the surface location.",
+   "removed": []
   }
  },
  {
@@ -5269,13 +7298,18 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "benimaru",
+   "diablo",
    "testarossa",
    "shion",
    "soei",
    "ultima",
    "carrera",
    "veyron",
-   "gabiru"
+   "zonda",
+   "gabiru",
+   "agera",
+   "esprit",
+   "cien"
   ],
   "forces": [
    "F-DEM-001",
@@ -5337,6 +7371,64 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   },
+   {
+    "id": "veyron",
+    "presence": "present"
+   },
+   {
+    "id": "zonda",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "remote"
+   },
+   {
+    "id": "agera",
+    "presence": "present"
+   },
+   {
+    "id": "esprit",
+    "presence": "present"
+   },
+   {
+    "id": "cien",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -5359,7 +7451,10 @@
    "gradim",
    "gazel",
    "gabiru",
-   "carillon"
+   "carillon",
+   "samuel",
+   "benimaru",
+   "frey"
   ],
   "forces": [
    "F-EMP-020",
@@ -5448,6 +7543,40 @@
    "campaign": {
     "majorCombatants": "Gabil; Gradim; Carillon; Rimuru; Velgrynd; Benimaru; Testarossa"
    }
+  },
+  "cast": [
+   {
+    "id": "gradim",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "carillon",
+    "presence": "present"
+   },
+   {
+    "id": "samuel",
+    "presence": "remote"
+   },
+   {
+    "id": "benimaru",
+    "presence": "remote"
+   },
+   {
+    "id": "frey",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -5541,6 +7670,25 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "No corrections needed; current character list for this event matches the text.",
+   "removed": []
   }
  },
  {
@@ -5559,7 +7707,14 @@
   "actorFaction": "Eastern Empire",
   "opponent": "Jura-Tempest Federation",
   "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
+  "characters": [
+   "ramiris",
+   "geld",
+   "beretta",
+   "kumara",
+   "garasha",
+   "pico"
+  ],
   "forces": [],
   "type": "COMBAT",
   "title": "Pico and Garasha fight Geld and Kumara on the surface; Geld's men shield the city",
@@ -5606,6 +7761,36 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "ramiris",
+    "presence": "remote"
+   },
+   {
+    "id": "geld",
+    "presence": "present"
+   },
+   {
+    "id": "beretta",
+    "presence": "remote"
+   },
+   {
+    "id": "kumara",
+    "presence": "present"
+   },
+   {
+    "id": "garasha",
+    "presence": "present"
+   },
+   {
+    "id": "pico",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -5626,7 +7811,10 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "testarossa",
-   "samuel"
+   "samuel",
+   "benimaru",
+   "ultima",
+   "carrera"
   ],
   "forces": [
    "F-DEM-001",
@@ -5706,6 +7894,33 @@
    "campaign": {
     "majorCombatants": "Testarossa; Benimaru; Shion; Soei; Ultima; Carrera; Kondo; Rudra; Rimuru; Velgrynd"
    }
+  },
+  "cast": [
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "samuel",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Ultima and Carrera are explicitly called out in the text as 'the two who were late,' arriving just after the cast but still inside the cited 11073-11165 span.",
+   "removed": []
   }
  },
  {
@@ -5782,6 +7997,12 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "Both cited passages describe the mass fused-berserker landing and casualty counts impersonally; no named registry character acts in this specific window (Gabiru is present in the general area but is not part of this particular beat).",
+   "removed": []
   }
  },
  {
@@ -5805,7 +8026,8 @@
    "rudra",
    "kondo",
    "damrada",
-   "velgrynd"
+   "velgrynd",
+   "malcolm"
   ],
   "forces": [
    "F-DEM-002",
@@ -5876,7 +8098,109 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "rudra",
+    "presence": "present"
+   },
+   {
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "damrada",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "malcolm",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Malcolm's name appears a few lines past the exact cited span (11150-11198) but is part of the same unbroken bow confrontation.",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "immediateResult": "",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-081T": {
+     "status": "ADVANCING",
+     "movement": "STATIONARY",
+     "location": "third-strike-landing",
+     "locationText": "Great Jura Forest"
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0544",
+  "day": 16,
+  "time": "00:50",
+  "theatreId": "TH-LAB",
+  "location": "third-strike-landing",
+  "locationText": "Great Jura Forest",
+  "type": "AIRBORNE",
+  "title": "The Third Strike's Tempest group lands in the Great Jura Forest",
+  "evidence": "Word document, L: \"sisanya ke Capital Tempest dengan advancement teritorial\".",
+  "forces": [
+   "F-EMP-081T"
+  ],
+  "cast": []
  },
  {
   "id": "EVT-0375",
@@ -5970,7 +8294,104 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "carillon",
+    "presence": "present"
+   },
+   {
+    "id": "gradim",
+    "presence": "present"
+   },
+   {
+    "id": "vega",
+    "presence": "present"
+   },
+   {
+    "id": "gabiru",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Imperial Army",
+  "actorFaction": "Eastern Empire",
+  "opponent": "Jura-Tempest Federation",
+  "opponentFaction": "Jura-Tempest Federation",
+  "characters": [],
+  "immediateResult": "Imperial-held ground spreads west from the landing ground.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-081T": {
+     "status": "ADVANCING",
+     "movement": "ADVANCE",
+     "direction": "West, on the capital"
+    }
+   },
+   "theatres": {
+    "TH-LAB": {
+     "status": "ACTIVE",
+     "frontline": "Third Strike advancing on the capital"
+    }
+   },
+   "campaign": {}
+  },
+  "id": "EVT-0545",
+  "day": 16,
+  "time": "01:00",
+  "theatreId": "TH-LAB",
+  "location": "third-strike-landing",
+  "locationText": "Great Jura Forest",
+  "type": "OFFENSIVE",
+  "title": "The Tempest group advances on the capital Rimuru",
+  "evidence": "Word document, L.",
+  "forces": [
+   "F-EMP-081T"
+  ],
+  "cast": []
  },
  {
   "id": "EVT-0380",
@@ -5990,8 +8411,7 @@
   "opponentFaction": "-",
   "characters": [
    "diablo",
-   "rimuru",
-   "benimaru"
+   "rimuru"
   ],
   "forces": [
    "F-DEM-004"
@@ -6043,6 +8463,23 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "rimuru",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Benimaru is only the subject of Diablo's internal musing about who deserves to grow through combat; he is not physically at Diablo's post (he is fighting Graneet / at the flagship bow in this same stretch of the night).",
+   "removed": [
+    "benimaru"
+   ]
   }
  },
  {
@@ -6113,6 +8550,12 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [],
+  "castAudit": {
+   "confidence": "LOW",
+   "comment": "Only the impersonal ~500 Black Numbers vs. Goseline's Chimera Knights are described; no named registry character acts in this exact window.",
+   "removed": []
   }
  },
  {
@@ -6132,7 +8575,8 @@
   "opponent": "Magic Beast Division",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "gabiru"
+   "gabiru",
+   "gadra"
   ],
   "forces": [
    "F-TEM-003B",
@@ -6202,6 +8646,20 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "gadra",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -6223,7 +8681,9 @@
   "characters": [
    "benimaru",
    "carrera",
-   "kondo"
+   "kondo",
+   "graneet",
+   "agera"
   ],
   "forces": [
    "F-DEM-003",
@@ -6295,7 +8755,122 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   },
+   {
+    "id": "kondo",
+    "presence": "present"
+   },
+   {
+    "id": "graneet",
+    "presence": "present"
+   },
+   {
+    "id": "agera",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Project brief flagged 'Graneet' specifically to check -- confirmed present and confirmed missing from the registry.",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Armed Nation of Dwargon",
+  "actorFaction": "Armed Nation of Dwargon",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "gabiru",
+   "gazel"
+  ],
+  "immediateResult": "The imperial line before the Eastern Gate breaks with the Magic Beast Division (EVT-0463).",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "HIGH",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-081E": {
+     "status": "DESTROYED",
+     "movement": "STATIONARY",
+     "strength": 0,
+     "effective": 0,
+     "kia": 8000
+    }
+   },
+   "theatres": {
+    "TH-DWE": {
+     "frontline": "Imperial forces before the Eastern Gate destroyed"
+    }
+   },
+   "campaign": {}
+  },
+  "id": "EVT-0546",
+  "day": 16,
+  "time": "01:40",
+  "theatreId": "TH-DWE",
+  "location": "dwargon-eastern-front",
+  "locationText": "Before the Eastern Gate",
+  "type": "UNIT_DESTRUCTION",
+  "title": "The Third Strike's eastern group is destroyed in the allied general attack",
+  "evidence": "Word document, M (counter akhir berhasil).",
+  "forces": [
+   "F-EMP-081E"
+  ],
+  "cast": [
+   {
+    "id": "gabiru",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   }
+  ]
  },
  {
   "id": "EVT-0382",
@@ -6316,9 +8891,15 @@
   "characters": [
    "testarossa",
    "velgrynd",
+   "carrera",
+   "ultima",
+   "veyron",
+   "zonda",
    "shion",
    "soei",
-   "benimaru"
+   "benimaru",
+   "esprit",
+   "agera"
   ],
   "forces": [
    "F-DEM-001",
@@ -6373,6 +8954,57 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   },
+   {
+    "id": "ultima",
+    "presence": "present"
+   },
+   {
+    "id": "veyron",
+    "presence": "present"
+   },
+   {
+    "id": "zonda",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "soei",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "esprit",
+    "presence": "present"
+   },
+   {
+    "id": "agera",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "The event's own evidence text ('the others arrive') covers exactly this gathering, bracketed by the two cited locators.",
+   "removed": []
   }
  },
  {
@@ -6392,9 +9024,7 @@
   "opponent": "-",
   "opponentFaction": "-",
   "characters": [
-   "kagali",
-   "laplace",
-   "vega"
+   "kagali"
   ],
   "forces": [
    "F-EMP-050",
@@ -6455,6 +9085,20 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "kagali",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Laplace and Vega are only introduced in the lines immediately after this locator as about to confront Kagali; their actual on-screen engagement belongs to EVT-0385, not to the ritual's lapse itself.",
+   "removed": [
+    "laplace",
+    "vega"
+   ]
   }
  },
  {
@@ -6478,10 +9122,10 @@
    "kagali",
    "yuuki",
    "vega",
-   "footman",
-   "tear",
    "diablo",
-   "laplace"
+   "laplace",
+   "footman",
+   "tear"
   ],
   "forces": [
    "F-EMP-050",
@@ -6557,6 +9201,44 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "feldway",
+    "presence": "present"
+   },
+   {
+    "id": "kagali",
+    "presence": "present"
+   },
+   {
+    "id": "yuuki",
+    "presence": "present"
+   },
+   {
+    "id": "vega",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "laplace",
+    "presence": "present"
+   },
+   {
+    "id": "footman",
+    "presence": "remote"
+   },
+   {
+    "id": "tear",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -6576,11 +9258,17 @@
   "opponent": "Velgrynd and Rimuru Tempest",
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
-   "michael",
-   "rudra",
+   "rimuru",
    "velgrynd",
+   "rudra",
+   "michael",
    "feldway",
-   "rimuru"
+   "veldora",
+   "carrera",
+   "benimaru",
+   "diablo",
+   "shion",
+   "testarossa"
   ],
   "forces": [
    "F-EMP-070",
@@ -6636,6 +9324,57 @@
    "campaign": {
     "activeCommanders": "Michael (in Rudra's body) and Feldway; Rimuru (Tempest); Gazel recovering (Dwargon)"
    }
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "rudra",
+    "presence": "present"
+   },
+   {
+    "id": "michael",
+    "presence": "present"
+   },
+   {
+    "id": "feldway",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "present"
+   },
+   {
+    "id": "carrera",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Carrera, Shion, and Testarossa's actions fall just outside the exact cited line numbers but are part of the same unbroken confrontation; this is a major correction to the original cast, which omitted them entirely.",
+   "removed": []
   }
  },
  {
@@ -6798,6 +9537,37 @@
     "activeCommanders": "Rimuru (Tempest); Gazel (Dwargon); Empire leaderless: Michael and Feldway withdrawn",
     "majorCombatants": "None engaged"
    }
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "michael",
+    "presence": "present"
+   },
+   {
+    "id": "feldway",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "v16.txt:516-533 is the later capital-city banquet, a different location; it is used here only to confirm final force/casualty status, not as evidence of additional attendees at the combat's actual end above the forest.",
+   "removed": []
   }
  },
  {
@@ -6816,7 +9586,11 @@
   "actorFaction": "Eastern Empire",
   "opponent": "Jura-Tempest Federation",
   "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
+  "characters": [
+   "velgrynd",
+   "masayuki",
+   "cornu"
+  ],
   "forces": [],
   "type": "COMBAT",
   "title": "Velgrynd appears on Floor 70 and kills Cornu",
@@ -6858,7 +9632,107 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "cornu",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "geld"
+  ],
+  "immediateResult": "Geld's Second Corps, holding the capital's surface, destroys it.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "HIGH",
+  "significance": "HIGH",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {
+    "F-EMP-081T": {
+     "status": "DESTROYED",
+     "movement": "STATIONARY",
+     "location": "tempest-eastern-outskirts",
+     "locationText": "Eastern outskirts of the capital",
+     "strength": 0,
+     "effective": 0,
+     "kia": 2100
+    }
+   },
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0547",
+  "day": 16,
+  "time": "02:30",
+  "theatreId": "TH-LAB",
+  "location": "tempest-eastern-outskirts",
+  "locationText": "Eastern approaches of the capital",
+  "type": "UNIT_DESTRUCTION",
+  "title": "The Third Strike's Tempest group is stopped and destroyed east of the capital",
+  "evidence": "Word document, M. Geld's men shield the city that night (EVT-0467).",
+  "forces": [
+   "F-EMP-081T",
+   "F-TEM-002"
+  ],
+  "cast": [
+   {
+    "id": "geld",
+    "presence": "present"
+   }
+  ]
  },
  {
   "id": "EVT-0469",
@@ -6876,7 +9750,19 @@
   "actorFaction": "Eastern Empire",
   "opponent": "Jura-Tempest Federation",
   "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
+  "characters": [
+   "geld",
+   "adalmann",
+   "albert",
+   "zegion",
+   "pico",
+   "garasha",
+   "kumara",
+   "zarario",
+   "treyni",
+   "charys",
+   "beretta"
+  ],
   "forces": [],
   "type": "COMBAT",
   "title": "The raiders withdraw; the labyrinth is secured",
@@ -6928,6 +9814,57 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "geld",
+    "presence": "present"
+   },
+   {
+    "id": "adalmann",
+    "presence": "present"
+   },
+   {
+    "id": "albert",
+    "presence": "present"
+   },
+   {
+    "id": "zegion",
+    "presence": "present"
+   },
+   {
+    "id": "pico",
+    "presence": "present"
+   },
+   {
+    "id": "garasha",
+    "presence": "present"
+   },
+   {
+    "id": "kumara",
+    "presence": "present"
+   },
+   {
+    "id": "zarario",
+    "presence": "present"
+   },
+   {
+    "id": "treyni",
+    "presence": "present"
+   },
+   {
+    "id": "charys",
+    "presence": "present"
+   },
+   {
+    "id": "beretta",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "The Adalmann/Albert/Venti reinforcement that precipitates Zarario's retreat sits in the narrative gap between the cited locators (roughly v16.txt:4093-4354); it is included here because it is the direct, continuous lead-in to the retreat confirmed at the cited 4355-4372/4423 lines.",
+   "removed": []
   }
  },
  {
@@ -6935,13 +9872,13 @@
   "canonicalTime": "-",
   "battle": null,
   "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
   "characters": [],
-  "immediateResult": "The operation's cumulative dead reach 1,010,000. Of the 40,000 in the detachment and the southern formation, 30,000 are not recorded as killed.",
-  "operationalResult": "Where and when these 10,000 fell is not established; neither formation's own share is invented.",
+  "immediateResult": "No imperial soldier holds ground in Tempest or Dwargon: status quo.",
+  "operationalResult": "",
   "strategicResult": "",
   "strength": {
    "tempest": "UNKNOWN",
@@ -6960,43 +9897,35 @@
    {
     "volume": "Scenario",
     "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
    }
   ],
   "notes": "",
   "audit": {
    "status": "ADDED",
    "changes": [
-    "R6 scenario ledger (2026-10-11)."
+    "R7 campaign reconstruction (2026-10-12)."
    ]
   },
   "effects": {
-   "forces": {
-    "F-EMP-018": {
-     "strength": "UNKNOWN",
-     "sizeStatus": "UNKNOWN",
-     "status": "REDUCED",
-     "movement": "STATIONARY"
-    },
-    "F-EMP-019": {
-     "strength": "UNKNOWN",
-     "sizeStatus": "UNKNOWN",
-     "status": "REDUCED",
-     "movement": "STATIONARY"
-    }
-   },
+   "forces": {},
    "theatres": {},
    "campaign": {}
   },
-  "id": "EVT-0519",
+  "id": "EVT-0548",
   "day": 16,
-  "time": "06:00",
-  "theatreId": "TH-DWE",
+  "time": "03:00",
+  "theatreId": "TH-DIP",
   "location": null,
-  "locationText": "Not established",
-  "type": "CASUALTIES_RECORDED",
-  "title": "Ledger closure: 10,000 dead among the detachment and the southern formation",
-  "evidence": "Derived from the scenario totals: 1,010,000 dead - (700,000 + 200,000 + 40,000 + 60,000 attributed by the novels) = 10,000.",
-  "reconstructionNote": "Placed at the end of the Long Night as a ledger closure, not as a battle."
+  "locationText": "Both fronts",
+  "type": "OUTCOME",
+  "title": "Both fronts back on the pre-war line",
+  "evidence": "Word document, M: \"counter akhir berhasil di dua front, status quo\".",
+  "cast": []
  }
 ]

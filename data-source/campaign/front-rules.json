@@ -1,6 +1,6 @@
 {
   "$schema": "internal://front-rules",
-  "about": "Rules for the held-ground simulation (scripts/compile-front.ts). Gates: a side can take ground in a territory only from the event that opens that front, or never (fromEvent null). Anchored: in these territories a side's held ground is a band reaching in from its own border (a siege front tied to its homeland) rather than an area around its army. Each rule names its basis.",
+  "about": "Rules for the held-ground simulation (scripts/compile-front.ts). Gates: a side can take ground in a territory only from the event that opens that front, or never (fromEvent null). Anchored: in these territories a side's held ground is a band reaching in from its own border (a siege front tied to its homeland) rather than an area around its army. Each rule names its basis. Reopen: from that event a side may take again ground it lost earlier. Reach scale: a side's formations standing in that territory reach that share of their usual distance, at most maxReach of the atlas width. Minimum weight: a formation counts with at least that influence.",
   "gates": [
     {
       "territoryId": "T-JTF",
@@ -11,9 +11,32 @@
     {
       "territoryId": "T-DWG",
       "side": "empire",
-      "fromEvent": null,
-      "basis": "R6 scenario: Dwargon is never taken. Formation B's south-western offensive fails (EVT-0515) and the Gate force never passes the Dwargon Gate, so no imperial formation holds Dwargon ground; the fighting there is shown as a CONTESTED operational area instead. Replaces the R5 band from the imperial border, which assumed a siege pressed only from the east."
+      "fromEvent": "EVT-0521",
+      "basis": "R7 scenario: imperial ground in Dwargon from the eastern crossing (EVT-0521): the 30,000 on the isthmus up to the Eastern Gate and the coast, and the 200,000 on their way from the south-western border to the Main Gate. Both are given back when the formations holding them are destroyed (status quo)."
     }
   ],
-  "anchored": []
+  "anchored": [],
+  "reopen": [
+    {
+      "side": "empire",
+      "fromEvent": "EVT-0541",
+      "basis": "R7 scenario: the Third Strike advances over ground the Empire lost earlier in the war (Word document, L: advancement teritorial). Until then, ground a side lost stays lost."
+    }
+  ],
+  "reachScale": [
+    {
+      "territoryId": "T-DWG",
+      "side": "empire",
+      "scale": 1,
+      "maxReach": 0.011,
+      "basis": "R7: Dwargon is mountain and isthmus country. An imperial formation standing in Dwargon reaches at most 0.011 of the atlas width (about 60 km) whatever its size, so the south-western thrust shows as a corridor to the Main Gate and the Eastern Gate front as a bridgehead on the isthmus, not as the whole kingdom."
+    }
+  ],
+  "minWeight": [
+    {
+      "forceId": "F-EMP-081T",
+      "weight": 28,
+      "basis": "R7 scenario: the Third Strike's Tempest group is ordered to take ground on its way to the capital (Word document, L: \"advancement teritorial\"). At 2,100 it would hold nothing under the strength rule; it is given the weight of a formation able to hold a bridgehead of a few tens of kilometres east of the capital garrison's reach."
+    }
+  ]
 }

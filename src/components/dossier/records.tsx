@@ -244,6 +244,7 @@ export function EventDossier({ id }: { id: string }) {
             <button key={c!.id} type="button" onClick={() => jumpToCharacter(c!.id)} className="w-16 shrink-0 text-center" aria-label={t('Open {name}', { name: c!.name })}>
               <Portrait src={c!.photocard?.src ?? null} name={c!.name} source={c!.photocard?.source} size={56} faction={c!.faction} />
               <span className="mt-1 block truncate text-2xs text-fg-2">{c!.name}</span>
+              {e.presentIds.includes(c!.id) ? null : <span className="block truncate text-2xs uppercase tracking-label text-fg-3">{t('remote')}</span>}
             </button>
           ))}
         </div>

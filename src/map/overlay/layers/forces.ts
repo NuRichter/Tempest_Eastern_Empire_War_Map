@@ -1,6 +1,6 @@
 import { FACTION_COLOR, FACTION_DEEP, FACTION_PALE, FACTION_SHAPE, factionKey, INK, type ColorKey } from '@/lib/palette';
 import { SIZE_STATUS_LABEL } from '@/lib/taxonomy';
-import { displayStrengthAt, forcePositionAt, forceSnapshotAt, forceTrail } from '@/simulation/resolver';
+import { convoyGuestsAt, forcePositionAt, forceSnapshotAt, forceTrail, inConvoyAt, markerStrengthAt } from '@/simulation/resolver';
 import { getField } from '@/map/field/fieldStore';
 import { type DrawContext, factionVisible, forceHidden, haloText, isSelected, meetsConfidence, textWidth, trimTo } from '@/map/overlay/context';
 import { tracePath } from '@/map/overlay/glyphs';
@@ -59,6 +59,8 @@ export function placeForces(dc: DrawContext): PlacedForce[] {
     if (/DESTROYED|ANNIHILATED/i.test(snapshot.status) && dc.intFrame - snapshot.f > 432) continue; // a destroyed formation lingers three days, struck through
     const pos = forcePositionAt(data, force.id, dc.frame);
     if (!pos) continue;
+    // A formation riding in another's column is drawn inside its host's marker.
+    if (inConvoyAt(data, force, dc.frame) && !isSelected(dc.selection, 'force', force.id)) continue;
     if (focusSet && !focusSet.has(force.id)) continue;
     const p = dc.project(pos.x, pos.y);
     if (p.occluded) continue;
@@ -185,7 +187,7 @@ export function drawForces(dc: DrawContext, placed: PlacedForce[]): void {
       selection: { kind: 'force', id: p.force.id },
       x: p.sx, y: p.sy, r: p.r + 5,
       title: p.force.displayName,
-      detail: `${p.force.faction} · ${formatStrength(p.snapshot.strength, p.snapshot.sizeStatus)} · ${p.snapshot.status.toLowerCase().replace(/_/g, ' ')}`,
+      detail: `${p.force.faction} · ${formatStrength(markerStrengthAt(dc.data, p.force.id, dc.frame), p.snapshot.sizeStatus)} · ${p.snapshot.status.toLowerCase().replace(/_/g, ' ')}`,
       priority: 1,
     });
   }
@@ -200,8 +202,9 @@ export function drawForces(dc: DrawContext, placed: PlacedForce[]): void {
     const value = typeof p.snapshot.strength === 'number' ? p.snapshot.strength : 0;
     const numSize = single ? Math.round(11 * dc.labelScale) : strengthFontSize(value, dc.labelScale);
     const nameSize = Math.round(11 * dc.labelScale);
-    const name = trimTo(ctx, p.force.displayName, 200);
-    const number = single ? '' : formatStrength(displayStrengthAt(dc.data, p.force.id, dc.frame), p.snapshot.sizeStatus);
+    const guests = convoyGuestsAt(dc.data, p.force.id, dc.frame);
+    const name = trimTo(ctx, [p.force.displayName, ...guests.map((g) => g.displayName)].join(' + '), 260);
+    const number = single ? '' : formatStrength(markerStrengthAt(dc.data, p.force.id, dc.frame), p.snapshot.sizeStatus);
     ctx.font = `700 ${numSize}px ${dc.fonts.ui}`;
     const nw = number ? textWidth(ctx, number) : 0;
     ctx.font = `500 ${nameSize}px ${dc.fonts.ui}`;
@@ -284,7 +287,8 @@ export function drawFrontStrength(dc: DrawContext, placed: PlacedForce[]): void 
   for (const th of dc.data.theatres) {
     const live = dc.state.theatres[th.id];
     if (!live || live.status !== 'ACTIVE') continue;
-    const here = placed.filter((p) => p.theatreId === th.id && !/DESTROYED|ANNIHILATED/i.test(p.snapshot.status));
+    // Prisoners and revived captives are not combat strength.
+    const here = placed.filter((p) => p.theatreId === th.id && !/DESTROYED|ANNIHILATED|REVIVED|PRISONER|CAPTURED|MERGED/i.test(p.snapshot.status));
     const sides = { empire: here.filter((p) => p.key === 'empire'), allied: here.filter((p) => p.key !== 'empire') };
     if (sides.empire.length === 0 || sides.allied.length === 0) continue;
     const centroid = (list: PlacedForce[]) => ({
@@ -320,7 +324,7 @@ export function drawFrontStrength(dc: DrawContext, placed: PlacedForce[]): void 
       let unknown = false;
       let estimated = false;
       for (const p of list) {
-        const shown = displayStrengthAt(dc.data, p.force.id, dc.frame);
+        const shown = markerStrengthAt(dc.data, p.force.id, dc.frame);
         if (typeof shown === 'number' && p.snapshot.sizeStatus !== 'UNKNOWN') {
           total += shown;
           if (p.snapshot.sizeStatus !== 'EXPLICIT') estimated = true;

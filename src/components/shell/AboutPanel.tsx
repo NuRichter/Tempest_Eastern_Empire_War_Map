@@ -30,7 +30,7 @@ export function AboutPanel() {
           {t('I love the Tempest–Eastern Empire war arc, so I read volumes 12 to 16 again with a notebook open and turned the war into a map you can play like a documentary. Every movement, battle and loss is placed from the novels. Where the books are silent, the map says so.')}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-fg-2">
-          {t('The imperial order of battle follows a scenario brief: 1,040,000 soldiers in the operation instead of the novels’ 940,000. Each difference from the novels is listed below under Scenario and novels.')}
+          {t('The imperial order of battle follows a scenario: 1,010,100 soldiers in the operation instead of the novels’ 940,000, on two Dwargon fronts as well as in Tempest. Each difference from the novels is listed below under Scenario and novels.')}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-fg-2">
           {t('This is not official Tensura material. It is made for fun, for other fans, and as a thank-you to the people who made the story.')}
@@ -139,7 +139,7 @@ function apa(text: string): ReactNode[] {
   return text.split(/(\*[^*]+\*)/g).map((part, i) => (part.startsWith('*') ? <i key={i}>{part.slice(1, -1)}</i> : part));
 }
 
-/** Where the scenario brief departs from the novels: the R6 entries of the reference register. */
+/** Where the scenario brief departs from the novels: the scenario entries of the reference register. */
 function ScenarioDifferences() {
   const t = useT();
   const [reg, setReg] = useState<ReferenceRegister | null>(null);
@@ -149,7 +149,7 @@ function ScenarioDifferences() {
     loadReference(ctl.signal).then(setReg, () => setFailed(!ctl.signal.aborted));
     return () => ctl.abort();
   }, []);
-  const rows = reg?.contradictions.filter((c) => c.id.startsWith('DISC-R6')) ?? [];
+  const rows = reg?.contradictions.filter((c) => c.id.startsWith('DISC-R7')) ?? [];
   return (
     <Section title={t('Scenario and novels')} defaultOpen={false}>
       {failed ? <p className="text-xs text-fg-3">{t('Could not load the register.')}</p> : null}

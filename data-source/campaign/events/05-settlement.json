@@ -4,12 +4,14 @@
   "canonicalTime": "-",
   "battle": null,
   "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "The detachment leaves the approach to the Dwargon Gate.",
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Western Nations",
+  "opponentFaction": "Western Nations",
+  "characters": [
+   "rimuru"
+  ],
+  "immediateResult": "",
   "operationalResult": "",
   "strategicResult": "",
   "strength": {
@@ -19,46 +21,46 @@
   "intensity": "LOW",
   "significance": "MEDIUM",
   "turningPoint": null,
-  "provenance": "SCENARIO",
+  "provenance": "CANONICAL",
   "confidence": {
    "time": "LOW",
    "numbers": "HIGH",
-   "overall": "MEDIUM"
+   "overall": "HIGH"
   },
   "sources": [
    {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+    "volume": "V16",
+    "chapter": "Ch1",
+    "locator": "v16.txt:9656-9658"
    }
   ],
   "notes": "",
   "audit": {
    "status": "ADDED",
    "changes": [
-    "R6 scenario ledger (2026-10-11)."
+    "R7 campaign reconstruction (2026-10-12)."
    ]
   },
   "effects": {
-   "forces": {
-    "F-EMP-019": {
-     "status": "WITHDRAWING",
-     "movement": "WITHDRAWAL",
-     "direction": "East, towards the Empire"
-    }
-   },
+   "forces": {},
    "theatres": {},
    "campaign": {}
   },
-  "id": "EVT-0527",
-  "day": 17,
-  "time": "08:00",
+  "id": "EVT-0560",
+  "day": 16,
+  "time": "17:30",
   "theatreId": "TH-DIP",
-  "location": "isthmus-approach",
-  "locationText": "Isthmus road (Empire side)",
-  "type": "FORMATION_RETREATED",
-  "title": "After the armistice the detachment withdraws from the isthmus road towards the Empire",
-  "evidence": "Scenario. The brief does not say what became of these formations; withdrawal after the armistice is the project's assumption."
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru",
+  "type": "POLITICAL",
+  "title": "Rimuru tells Elmesia: \"Hey, we won\"",
+  "evidence": "Before the party Rimuru tells the Heavenly Emperor of Thalion over a secure magitool that the war is won (v16.txt:9656-9658).",
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   }
+  ]
  },
  {
   "id": "EVT-0450",
@@ -77,18 +79,26 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "rimuru",
-   "testarossa",
-   "carillon",
-   "benimaru",
    "veldora",
-   "diablo"
+   "benimaru",
+   "shion",
+   "diablo",
+   "geld",
+   "adalmann",
+   "ramiris",
+   "treyni",
+   "beretta",
+   "charys",
+   "vester",
+   "shuna",
+   "haruna"
   ],
   "forces": [
    "F-TEM-030",
    "F-DEM-001"
   ],
   "type": "AFTERMATH",
-  "title": "Return home and victory party",
+  "title": "Return home: the victory festival in the capital",
   "immediateResult": "With Michael and Feldway gone, Rimuru's side returns to capital Rimuru to celebrate; Carillon, Frey and others, still in evolution sleep, are left with Testarossa",
   "operationalResult": "Fighting over; Tempest's leadership stands down for the night",
   "strategicResult": "The officers take the next day off; settlement work deferred",
@@ -132,7 +142,8 @@
     "New event: return home and party (v15.txt:18045-18092; v16.txt:512-533)",
     "Officers' day off the next day (v16.txt:4880)",
     "Theatres other than TH-DIP set to HOSTILITIES_SUSPENDED (combat over, v16.txt:516-518)",
-    "R6 re-dated from D+19 18:00 to D+16 18:00: the return and victory party follow the long night."
+    "R6 re-dated from D+19 18:00 to D+16 18:00: the return and victory party follow the long night.",
+    "R7 campaign reconstruction: The ending festival of the scenario (N)."
    ]
   },
   "effects": {
@@ -174,7 +185,141 @@
    "campaign": {
     "majorCombatants": "None engaged (Michael and Feldway withdrawn)"
    }
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "veldora",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "geld",
+    "presence": "present"
+   },
+   {
+    "id": "adalmann",
+    "presence": "present"
+   },
+   {
+    "id": "ramiris",
+    "presence": "present"
+   },
+   {
+    "id": "treyni",
+    "presence": "present"
+   },
+   {
+    "id": "beretta",
+    "presence": "present"
+   },
+   {
+    "id": "charys",
+    "presence": "present"
+   },
+   {
+    "id": "vester",
+    "presence": "present"
+   },
+   {
+    "id": "shuna",
+    "presence": "present"
+   },
+   {
+    "id": "haruna",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Testarossa stayed behind holding the still-sleeping Carillon and Frey (v16.txt:522-524), so neither is at the capital party; the banquet-hall seating (v16.txt:559-584) gives the real guest list.",
+   "removed": [
+    "testarossa",
+    "carillon"
+   ]
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Armed Nation of Dwargon",
+  "actorFaction": "Armed Nation of Dwargon",
+  "opponent": "Western Nations",
+  "opponentFaction": "Western Nations",
+  "characters": [
+   "gazel",
+   "rimuru"
+  ],
+  "immediateResult": "Rimuru will give the West a curated account that leaves out his officers' evolution.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "CANONICAL",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "HIGH"
+  },
+  "sources": [
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9613-9628"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0561",
+  "day": 16,
+  "time": "20:00",
+  "theatreId": "TH-DIP",
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru (victory party)",
+  "type": "POLITICAL",
+  "title": "Gazel presses for an explanation to the Western Nations",
+  "evidence": "At the party Gazel warns that the Western Nations, the Church and Thalion will want an explanation; Rimuru plans a cover story (v16.txt:9613-9628).",
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "rimuru",
+    "presence": "present"
+   }
+  ]
  },
  {
   "id": "EVT-0451",
@@ -192,7 +337,8 @@
   "opponent": "-",
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
-   "rimuru"
+   "rimuru",
+   "rigurd"
   ],
   "forces": [],
   "type": "AFTERMATH",
@@ -239,6 +385,21 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Rigurd has no character id (per project notes); he is the actual actor of this event.",
+   "removed": []
   }
  },
  {
@@ -266,7 +427,14 @@
    "velgrynd",
    "calgurio",
    "minitz",
-   "gazel"
+   "gazel",
+   "dorf",
+   "anrietta",
+   "vaughn",
+   "rigurd",
+   "jiwu",
+   "bernie",
+   "jaine"
   ],
   "forces": [],
   "type": "POLITICAL",
@@ -341,6 +509,81 @@
    "campaign": {
     "majorCombatants": "None engaged; summit of Rimuru, Masayuki (with Velgrynd) and Gazel"
    }
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "anrietta",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Dorf, Anrietta and Vaughn were missing from the original cast despite being explicitly seated/guarding at the table (v16.txt:8391-8394).",
+   "removed": []
   }
  },
  {
@@ -359,9 +602,23 @@
   "opponent": "Eastern Empire",
   "opponentFaction": "Eastern Empire",
   "characters": [
+   "rimuru",
+   "benimaru",
+   "shion",
+   "diablo",
    "testarossa",
    "masayuki",
-   "velgrynd"
+   "velgrynd",
+   "calgurio",
+   "minitz",
+   "gazel",
+   "dorf",
+   "anrietta",
+   "vaughn",
+   "rigurd",
+   "jiwu",
+   "bernie",
+   "jaine"
   ],
   "forces": [],
   "type": "NEGOTIATION",
@@ -410,6 +667,81 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "anrietta",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Same seated summit roster as EVT-0390/the whole morning session; this sub-beat is Testarossa confirming the agenda with no objection from Gazel (v16.txt:8436).",
+   "removed": []
   }
  },
  {
@@ -429,10 +761,22 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "rimuru",
-   "michael",
+   "benimaru",
+   "shion",
+   "diablo",
+   "testarossa",
    "masayuki",
+   "velgrynd",
    "calgurio",
-   "minitz"
+   "minitz",
+   "gazel",
+   "dorf",
+   "anrietta",
+   "vaughn",
+   "rigurd",
+   "jiwu",
+   "bernie",
+   "jaine"
   ],
   "forces": [],
   "type": "POLITICAL",
@@ -481,6 +825,83 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "anrietta",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Michael is only discussed (he and Feldway had already fled after the Long Night, v16.txt:516-518); he is not at the summit, so he is removed rather than marked remote.",
+   "removed": [
+    "michael"
+   ]
   }
  },
  {
@@ -499,8 +920,23 @@
   "opponent": "Jura-Tempest Federation",
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
+   "rimuru",
+   "benimaru",
+   "shion",
+   "diablo",
+   "testarossa",
+   "masayuki",
+   "velgrynd",
+   "calgurio",
    "minitz",
-   "rimuru"
+   "gazel",
+   "dorf",
+   "anrietta",
+   "vaughn",
+   "rigurd",
+   "jiwu",
+   "bernie",
+   "jaine"
   ],
   "forces": [
    "F-EMP-000"
@@ -548,6 +984,81 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "anrietta",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "comment": "Same seated summit roster; Minitz is the speaker (v16.txt:8754-8762).",
+   "removed": []
   }
  },
  {
@@ -566,10 +1077,23 @@
   "opponent": "-",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "velgrynd",
-   "masayuki",
    "rimuru",
-   "gazel"
+   "benimaru",
+   "shion",
+   "diablo",
+   "testarossa",
+   "masayuki",
+   "velgrynd",
+   "calgurio",
+   "minitz",
+   "gazel",
+   "dorf",
+   "anrietta",
+   "vaughn",
+   "rigurd",
+   "jiwu",
+   "bernie",
+   "jaine"
   ],
   "forces": [],
   "type": "COMMAND_CHANGE",
@@ -634,6 +1158,80 @@
    "campaign": {
     "activeCommanders": "Rimuru (Tempest); Masayuki Rudra Nam Ul Nasca to be named emperor by Velgrynd, coronation pending (Empire); King Gazel (Dwargon)"
    }
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "anrietta",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -653,7 +1251,22 @@
   "opponentFaction": "Eastern Empire",
   "characters": [
    "rimuru",
-   "masayuki"
+   "benimaru",
+   "shion",
+   "diablo",
+   "testarossa",
+   "masayuki",
+   "velgrynd",
+   "calgurio",
+   "minitz",
+   "gazel",
+   "dorf",
+   "anrietta",
+   "vaughn",
+   "rigurd",
+   "jiwu",
+   "bernie",
+   "jaine"
   ],
   "forces": [
    "F-EMP-090"
@@ -710,6 +1323,80 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "anrietta",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -728,11 +1415,24 @@
   "opponent": "-",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "testarossa",
    "rimuru",
+   "benimaru",
+   "shion",
+   "diablo",
+   "testarossa",
+   "masayuki",
+   "velgrynd",
    "calgurio",
+   "minitz",
+   "gazel",
+   "dorf",
+   "vaughn",
    "samuel",
-   "velgrynd"
+   "shuna",
+   "rigurd",
+   "jiwu",
+   "bernie",
+   "jaine"
   ],
   "forces": [
    "F-EMP-061"
@@ -783,6 +1483,84 @@
    },
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "samuel",
+    "presence": "present"
+   },
+   {
+    "id": "shuna",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -801,10 +1579,22 @@
   "opponent": "-",
   "opponentFaction": "Eastern Empire",
   "characters": [
-   "testarossa",
    "rimuru",
+   "benimaru",
+   "shion",
+   "diablo",
+   "testarossa",
+   "masayuki",
+   "velgrynd",
+   "calgurio",
+   "minitz",
    "gazel",
-   "masayuki"
+   "dorf",
+   "vaughn",
+   "rigurd",
+   "jiwu",
+   "bernie",
+   "jaine"
   ],
   "forces": [],
   "type": "POLITICAL",
@@ -851,6 +1641,76 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -869,8 +1729,22 @@
   "opponent": "-",
   "opponentFaction": "Eastern Empire",
   "characters": [
+   "rimuru",
    "gazel",
-   "rimuru"
+   "benimaru",
+   "shion",
+   "diablo",
+   "testarossa",
+   "masayuki",
+   "velgrynd",
+   "calgurio",
+   "minitz",
+   "dorf",
+   "vaughn",
+   "rigurd",
+   "jiwu",
+   "bernie",
+   "jaine"
   ],
   "forces": [
    "F-DWA-000"
@@ -917,6 +1791,76 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -935,10 +1879,22 @@
   "opponent": "Eastern Empire",
   "opponentFaction": "Eastern Empire",
   "characters": [
+   "rimuru",
    "testarossa",
    "masayuki",
    "velgrynd",
-   "diablo"
+   "diablo",
+   "benimaru",
+   "shion",
+   "calgurio",
+   "minitz",
+   "gazel",
+   "dorf",
+   "vaughn",
+   "rigurd",
+   "jiwu",
+   "bernie",
+   "jaine"
   ],
   "forces": [
    "F-DEM-001"
@@ -992,6 +1948,76 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "HIGH",
+   "removed": []
   }
  },
  {
@@ -1014,7 +2040,18 @@
    "masayuki",
    "minitz",
    "calgurio",
-   "testarossa"
+   "testarossa",
+   "velgrynd",
+   "benimaru",
+   "shion",
+   "diablo",
+   "gazel",
+   "dorf",
+   "vaughn",
+   "rigurd",
+   "jiwu",
+   "bernie",
+   "jaine"
   ],
   "forces": [],
   "type": "INTELLIGENCE",
@@ -1066,7 +2103,166 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "minitz",
+    "presence": "present"
+   },
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "benimaru",
+    "presence": "present"
+   },
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "rigurd",
+    "presence": "present"
+   },
+   {
+    "id": "jiwu",
+    "presence": "present"
+   },
+   {
+    "id": "bernie",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "This beat is Rimuru's own assessment (not dialogue); kept as present because the hall roster had not dispersed yet (summit concludes shortly after, v16.txt:9307-9310).",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Eastern Empire",
+  "opponentFaction": "Eastern Empire",
+  "characters": [
+   "rimuru",
+   "masayuki",
+   "velgrynd",
+   "testarossa"
+  ],
+  "immediateResult": "A Tempest-backed emperor (Masayuki), a Tempest embassy under Testarossa and a Tempest bodyguard (Venom) at his side, inside a three-nation alliance.",
+  "operationalResult": "The Word document calls this a temporary puppet state. In the novels Rimuru rules out making the Empire a vassal (v16.txt:7192-7193); no occupation or puppet government is described.",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:7192-7197"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9262-9296"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0562",
+  "day": 19,
+  "time": "16:00",
+  "theatreId": "TH-DIP",
+  "location": "jura-tempest-federation",
+  "locationText": "Capital Rimuru (summit)",
+  "type": "POLITICAL",
+  "title": "Scenario reading: the Empire as a temporary Tempest-aligned state",
+  "evidence": "Word document, N: \"Kekaisaran diambil alih Tempest sebagai Puppet State sementara (sesuaikan canon)\". Adjusted to canon as alignment, not control (DISC-R7-08).",
+  "cast": [
+   {
+    "id": "rimuru",
+    "presence": "present"
+   },
+   {
+    "id": "masayuki",
+    "presence": "present"
+   },
+   {
+    "id": "velgrynd",
+    "presence": "present"
+   },
+   {
+    "id": "testarossa",
+    "presence": "present"
+   }
+  ]
  },
  {
   "id": "EVT-0454",
@@ -1084,7 +2280,11 @@
   "opponent": "-",
   "opponentFaction": "Jura-Tempest Federation",
   "characters": [
-   "gazel"
+   "gazel",
+   "dorf",
+   "anrietta",
+   "vaughn",
+   "jaine"
   ],
   "forces": [],
   "type": "MOVEMENT",
@@ -1127,7 +2327,107 @@
    "forces": {},
    "theatres": {},
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "gazel",
+    "presence": "present"
+   },
+   {
+    "id": "dorf",
+    "presence": "present"
+   },
+   {
+    "id": "anrietta",
+    "presence": "present"
+   },
+   {
+    "id": "vaughn",
+    "presence": "present"
+   },
+   {
+    "id": "jaine",
+    "presence": "present"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "The text only says 'Gazel and his team left the next morning' (v16.txt:9767); the four names are inferred from the delegation that rode in with him (v16.txt:8391-8394), not individually re-named at departure.",
+   "removed": []
   }
+ },
+ {
+  "timePrecision": "RECONSTRUCTED",
+  "canonicalTime": "-",
+  "battle": null,
+  "battleType": null,
+  "actor": "Jura-Tempest Federation",
+  "actorFaction": "Jura-Tempest Federation",
+  "opponent": "Western Nations",
+  "opponentFaction": "Western Nations",
+  "characters": [
+   "testarossa",
+   "cien"
+  ],
+  "immediateResult": "The West hears a curated account; Testarossa (Tempest's representative) and Cien handle the Council.",
+  "operationalResult": "",
+  "strategicResult": "",
+  "strength": {
+   "tempest": "UNKNOWN",
+   "empire": "UNKNOWN"
+  },
+  "intensity": "LOW",
+  "significance": "MEDIUM",
+  "turningPoint": null,
+  "provenance": "SCENARIO",
+  "confidence": {
+   "time": "LOW",
+   "numbers": "HIGH",
+   "overall": "MEDIUM"
+  },
+  "sources": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9813-9823"
+   }
+  ],
+  "notes": "",
+  "audit": {
+   "status": "ADDED",
+   "changes": [
+    "R7 campaign reconstruction (2026-10-12)."
+   ]
+  },
+  "effects": {
+   "forces": {},
+   "theatres": {},
+   "campaign": {}
+  },
+  "id": "EVT-0563",
+  "day": 23,
+  "time": "10:00",
+  "theatreId": "TH-DIP",
+  "location": "council-of-the-west",
+  "locationText": "Council of the West (Ingracia)",
+  "type": "POLITICAL",
+  "title": "Scenario: Tempest gives the Western Nations its account of the war",
+  "evidence": "Word document, N: \"rapat besar dengan Wilayah Barat\". The novels show no such meeting: Cien and Zonda cover Blumund and the Western Nations after the summit (v16.txt:9813-9823). Placed after Gazel leaves Tempest (DISC-R7-09).",
+  "cast": [
+   {
+    "id": "testarossa",
+    "presence": "present"
+   },
+   {
+    "id": "cien",
+    "presence": "present"
+   }
+  ]
  },
  {
   "id": "EVT-0455",
@@ -1215,6 +2515,25 @@
     }
    },
    "campaign": {}
+  },
+  "cast": [
+   {
+    "id": "calgurio",
+    "presence": "present"
+   },
+   {
+    "id": "adalmann",
+    "presence": "remote"
+   },
+   {
+    "id": "testarossa",
+    "presence": "remote"
+   }
+  ],
+  "castAudit": {
+   "confidence": "MEDIUM",
+   "comment": "Matches the project's own LOW time-confidence; Adalmann's and Testarossa's exact physical location at this moment is inferred, not stated directly.",
+   "removed": []
   }
  },
  {
@@ -1222,12 +2541,19 @@
   "canonicalTime": "-",
   "battle": null,
   "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "",
+  "actor": "Guy Crimson",
+  "actorFaction": "Octagram",
+  "opponent": "-",
+  "opponentFaction": "-",
+  "characters": [
+   "rimuru",
+   "shion",
+   "diablo",
+   "ramiris",
+   "beretta",
+   "treyni"
+  ],
+  "immediateResult": "Rimuru goes with Shion and Diablo; Ramiris joins with Beretta and Treyni.",
   "operationalResult": "",
   "strategicResult": "",
   "strength": {
@@ -1237,108 +2563,65 @@
   "intensity": "LOW",
   "significance": "MEDIUM",
   "turningPoint": null,
-  "provenance": "SCENARIO",
+  "provenance": "CANONICAL",
   "confidence": {
    "time": "LOW",
    "numbers": "HIGH",
-   "overall": "MEDIUM"
+   "overall": "HIGH"
   },
   "sources": [
    {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+    "volume": "V16",
+    "chapter": "Ch3",
+    "locator": "v16.txt:9876-9939"
    }
   ],
   "notes": "",
   "audit": {
    "status": "ADDED",
    "changes": [
-    "R6 scenario ledger (2026-10-11)."
+    "R7 campaign reconstruction (2026-10-12)."
    ]
   },
   "effects": {
-   "forces": {
-    "F-EMP-019": {
-     "status": "RETURNED",
-     "movement": "STATIONARY",
-     "location": "imperial-interior",
-     "locationText": "Imperial border base"
-    }
-   },
+   "forces": {},
    "theatres": {},
    "campaign": {}
   },
-  "id": "EVT-0523",
-  "day": 21,
-  "time": "18:00",
-  "theatreId": "TH-CAP",
-  "location": "imperial-interior",
-  "locationText": "Imperial border base",
-  "type": "FORMATION_HALTED",
-  "title": "The detachment's survivors are back at the imperial border base",
-  "evidence": "Scenario. About 250 km by the isthmus road."
- },
- {
-  "timePrecision": "RECONSTRUCTED",
-  "canonicalTime": "-",
-  "battle": null,
-  "battleType": null,
-  "actor": "Imperial Army",
-  "actorFaction": "Eastern Empire",
-  "opponent": "Jura-Tempest Federation",
-  "opponentFaction": "Jura-Tempest Federation",
-  "characters": [],
-  "immediateResult": "",
-  "operationalResult": "",
-  "strategicResult": "",
-  "strength": {
-   "tempest": "UNKNOWN",
-   "empire": "UNKNOWN"
-  },
-  "intensity": "LOW",
-  "significance": "MEDIUM",
-  "turningPoint": null,
-  "provenance": "SCENARIO",
-  "confidence": {
-   "time": "LOW",
-   "numbers": "HIGH",
-   "overall": "MEDIUM"
-  },
-  "sources": [
+  "id": "EVT-0564",
+  "day": 27,
+  "time": "10:00",
+  "theatreId": "TH-DIP",
+  "location": "walpurgis-council",
+  "locationText": "Walpurgis Council",
+  "type": "POLITICAL",
+  "title": "Guy Crimson summons an emergency Walpurgis Council of the Octagram",
+  "evidence": "\"Days later\" Rimuru's Demon's Ring glows and Guy summons all members (v16.txt:9878-9886). Placed the day after the prisoners leave (EVT-0455).",
+  "cast": [
    {
-    "volume": "Scenario",
-    "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
-   }
-  ],
-  "notes": "",
-  "audit": {
-   "status": "ADDED",
-   "changes": [
-    "R6 scenario ledger (2026-10-11)."
-   ]
-  },
-  "effects": {
-   "forces": {
-    "F-EMP-018": {
-     "status": "RETURNED",
-     "movement": "STATIONARY",
-     "location": "imperial-interior",
-     "locationText": "Imperial border base"
-    }
+    "id": "rimuru",
+    "presence": "present"
    },
-   "theatres": {},
-   "campaign": {}
-  },
-  "id": "EVT-0524",
-  "day": 19,
-  "time": "18:00",
-  "theatreId": "TH-CAP",
-  "location": "imperial-interior",
-  "locationText": "Imperial border base",
-  "type": "FORMATION_HALTED",
-  "title": "The southern formation's survivors are back at the imperial border base",
-  "evidence": "Scenario. By the route the main formation came in on."
+   {
+    "id": "shion",
+    "presence": "present"
+   },
+   {
+    "id": "diablo",
+    "presence": "present"
+   },
+   {
+    "id": "ramiris",
+    "presence": "present"
+   },
+   {
+    "id": "beretta",
+    "presence": "present"
+   },
+   {
+    "id": "treyni",
+    "presence": "present"
+   }
+  ]
  }
 ]

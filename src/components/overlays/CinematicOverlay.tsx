@@ -220,7 +220,7 @@ export function CinematicOverlay() {
   const simPerSec = speed * FRAMES_PER_SECOND_AT_1X * 10;
   const rate = simPerSec < 60 ? t('{n} min / s', { n: Math.round(simPerSec) }) : simPerSec < 1440 ? t('{n} h / s', { n: +(simPerSec / 60).toFixed(1) }) : t('{n} days / s', { n: +(simPerSec / 1440).toFixed(1) });
   const fresh = latest && frame - latest.frame <= 30 ? latest : null;
-  const leader = fresh?.characterIds.map((c) => data.characterById.get(c)).find((c) => c?.photocard) ?? null;
+  const leader = fresh?.presentIds.map((c) => data.characterById.get(c)).find((c) => c?.photocard) ?? null;
   const totals = data.campaignTotals;
   const shotText = shot === 'MULTI_FRONT' ? t('Wide · {n} fronts', { n: fronts }) : t(SHOT_LABEL[shot]);
 

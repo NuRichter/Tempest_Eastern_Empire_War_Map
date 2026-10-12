@@ -107,9 +107,9 @@
   "eventId": "EVT-0207",
   "faction": "Eastern Empire",
   "forceId": "F-EMP-011A",
-  "formation": "Restructured Armor Corps - labyrinth assault echelon",
+  "formation": "Labyrinth Raider force (350,000 + 200,000)",
   "cause": "Destroyed inside Ramiris's Labyrinth",
-  "kia": 530000,
+  "kia": 550000,
   "wia": "UNKNOWN",
   "pow": "UNKNOWN",
   "mia": "UNKNOWN",
@@ -136,7 +136,7 @@
    }
   ],
   "evidence": "'Of the 700,000 who came by land, more than 530,000 already defeated' (v13.txt:13708-13709) = the 350,000 + 150,000 + 30,000 who entered (v13.txt:9489-9493).",
-  "notes": "Stated as 'more than 530,000'. All were resurrected on D+12 (counted in CAS-021, not netted here). Includes Minitz."
+  "notes": "Stated as 'more than 530,000'. All were resurrected on D+12 (counted in CAS-021, not netted here). Includes Minitz. R7 scenario: 550,000 (novels: 530,000; DISC-R7-04)."
  },
  {
   "id": "CAS-005",
@@ -171,7 +171,7 @@
   "forceId": "F-EMP-010",
   "formation": "Interim tally at the end of the labyrinth phase",
   "cause": "Souls gathered 'bring the total to more than seven hundred thousand'",
-  "kia": 770000,
+  "kia": 790000,
   "wia": "UNKNOWN",
   "pow": "UNKNOWN",
   "mia": "UNKNOWN",
@@ -188,7 +188,7 @@
    }
   ],
   "evidence": "Text: 'more than seven hundred thousand' (v13.txt:13711). 770,000 = 240,000 + 530,000 is project arithmetic.",
-  "notes": "R5: was a CAMPAIGN_TOTAL. It is only an interim running total: the 170,000 outside the labyrinth were killed afterwards (CAS-017) and the Jura total is 940,000 (CAS-020). Excluded from sums."
+  "notes": "R5: was a CAMPAIGN_TOTAL. It is only an interim running total: the 170,000 outside the labyrinth were killed afterwards (CAS-017) and the Jura total is 940,000 (CAS-020). Excluded from sums. R7: 240,000 + 550,000."
  },
  {
   "id": "CAS-007",
@@ -324,7 +324,7 @@
   "eventId": "EVT-0325",
   "faction": "Eastern Empire",
   "forceId": "F-EMP-031",
-  "formation": "Composite Division blockade force before Isthmus",
+  "formation": "Eastern Gate force (60,000)",
   "cause": "Velgrynd's Gravity Collapse; the corpses were then used for Kagali's forbidden undead ritual",
   "kia": 60000,
   "wia": "UNKNOWN",
@@ -353,7 +353,7 @@
    }
   ],
   "evidence": "A formation of 60,000 hurled into the sky and killed (v14.txt:13851-13884); Laplace: 'about 60,000 in that Hybrid Legion' (v14.txt:14212).",
-  "notes": "R5: the death is narrated in V14 Ch4 (Velgrynd), not V15 Ch1; killer corrected from 'ritual casters' to Velgrynd. Separate from the 940,000 (AMB-011). Not revived. R6: in the scenario these 60,000 are the Dwargon Gate force (30,000 from the main formation, 30,000 from the capital reserve)."
+  "notes": "R5: the death is narrated in V14 Ch4 (Velgrynd), not V15 Ch1; killer corrected from 'ritual casters' to Velgrynd. Separate from the 940,000 (AMB-011). Not revived. R6: in the scenario these 60,000 are the Dwargon Gate force (30,000 from the main formation, 30,000 from the capital reserve). R7: the Eastern Gate force (30,000 eastern cohort + 30,000 from the reinforcement cohort)."
  },
  {
   "id": "CAS-014",
@@ -455,7 +455,7 @@
   "forceId": "F-EMP-011B",
   "formation": "Restructured Armor Corps - camp outside the labyrinth",
   "cause": "Annihilated by Carrera's Gravity Collapse, Geld's Second Corps and Diablo (Caligulio killed)",
-  "kia": 170000,
+  "kia": 150000,
   "wia": "UNKNOWN",
   "pow": "UNKNOWN",
   "mia": "UNKNOWN",
@@ -497,7 +497,7 @@
    }
   ],
   "evidence": "170,000 stayed outside (v13.txt:9491-9493); 'fewer than 200,000' (v13.txt:16208-16209). All of the 940,000 died except Miranda, Michel and Raymond (v13.txt:18345-18349).",
-  "notes": "Added in R5 (MISSING-A). 170,000 = 940,000 - 240,000 - 530,000 (DERIVED; the text also states 170,000 outside). Three survivors make the figure approximate. All were resurrected on D+12 (CAS-021)."
+  "notes": "Added in R5 (MISSING-A). 170,000 = 940,000 - 240,000 - 530,000 (DERIVED; the text also states 170,000 outside). Three survivors make the figure approximate. All were resurrected on D+12 (CAS-021). R7 scenario: 150,000 (novels: 170,000; DISC-R7-04)."
  },
  {
   "id": "CAS-018",
@@ -830,33 +830,65 @@
   "notes": "Added in R5. V15 wording is garbled ('avenging Kondo's death', v15.txt:15054); V16 confirms the death."
  },
  {
-  "id": "CAS-S01",
-  "eventId": "EVT-0519",
+  "id": "CAS-T01",
+  "eventId": "EVT-0546",
   "faction": "Eastern Empire",
-  "forceId": null,
-  "formation": "Dwargon detachment and southern formation (combined, 40,000)",
-  "cause": "Not established",
-  "kia": 10000,
+  "forceId": "F-EMP-081E",
+  "formation": "Third Strike, eastern group",
+  "cause": "Allied counter-attack",
+  "kia": 8000,
   "wia": "UNKNOWN",
   "pow": "UNKNOWN",
   "mia": "UNKNOWN",
   "revived": 0,
   "scope": "EVENT_CASUALTY",
   "aggregateOf": "-",
-  "basis": "DERIVED",
+  "basis": "SCENARIO",
   "confidence": "MEDIUM",
   "sourceRefs": [
    {
     "volume": "Scenario",
     "chapter": null,
-    "locator": "docs/CAMPAIGN_FORCE_LEDGER.md"
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
    }
   ],
-  "evidence": "Scenario totals: 1,010,000 cumulative dead minus the 1,000,000 the novels attribute (700,000 Formation A, 200,000 Formation B, 40,000 northern reinforcement, 60,000 Gate force).",
-  "notes": "Counted in the operation ledger through operationForceIds. No share is assigned to either formation.",
-  "operationForceIds": [
-   "F-EMP-018",
-   "F-EMP-019"
-  ]
+  "evidence": "Word document, M: the final counter-attacks succeed on both fronts. The group strength is the scenario parameter.",
+  "notes": "R7."
+ },
+ {
+  "id": "CAS-T02",
+  "eventId": "EVT-0547",
+  "faction": "Eastern Empire",
+  "forceId": "F-EMP-081T",
+  "formation": "Third Strike, Tempest group",
+  "cause": "Allied counter-attack",
+  "kia": 2100,
+  "wia": "UNKNOWN",
+  "pow": "UNKNOWN",
+  "mia": "UNKNOWN",
+  "revived": 0,
+  "scope": "EVENT_CASUALTY",
+  "aggregateOf": "-",
+  "basis": "SCENARIO",
+  "confidence": "MEDIUM",
+  "sourceRefs": [
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "Sources of Truth/Alur Timeline secara kasarannya.docx"
+   },
+   {
+    "volume": "Scenario",
+    "chapter": null,
+    "locator": "docs/CAMPAIGN_TIMELINE.md"
+   }
+  ],
+  "evidence": "Word document, M: the final counter-attacks succeed on both fronts. The group strength is the scenario parameter.",
+  "notes": "R7."
  }
 ]

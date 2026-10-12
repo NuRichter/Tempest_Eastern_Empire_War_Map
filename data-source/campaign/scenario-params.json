@@ -1,0 +1,12 @@
+{
+  "about": "Owner-adjustable scenario parameters, applied by scripts/compile-data.ts. thirdStrike.groups splits the 10,100 Third Strike between its eastern and Tempest groups; the compiler writes these strengths into the split event and the casualty records and refuses to build unless they sum to thirdStrike.total.",
+  "thirdStrike": {
+    "total": 10100,
+    "transferEvent": "EVT-0540",
+    "splitEvent": "EVT-0541",
+    "groups": {
+      "F-EMP-081E": 8000,
+      "F-EMP-081T": 2100
+    }
+  }
+}

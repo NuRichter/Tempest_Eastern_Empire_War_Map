@@ -282,6 +282,8 @@ export interface Force {
   origin: { kind: 'SPLIT' | 'TRANSFER'; fromForceId: ForceId; eventId: EventId; frame: number } | null;
   /** The force it was merged into, and when. Its personnel are counted there from then on. */
   mergedInto: { forceId: ForceId; eventId: EventId; frame: number } | null;
+  /** Travels inside another formation's column until untilFrame: drawn as one marker with the combined strength. */
+  convoy: { hostId: ForceId; untilEvent: EventId; untilFrame: number } | null;
   /** Forces split from it or transferred out of it (the inverse of origin). */
   issuedIds: ForceId[];
   firstFrame: number;
@@ -358,6 +360,8 @@ export interface WarEvent {
   opponent: string;
   opponentFaction: FactionId;
   characterIds: CharacterId[];
+  /** The cast physically at the event's place (portraits and standees are drawn for these only). */
+  presentIds: CharacterId[];
   forceIds: ForceId[];
   type: string;
   title: string;
@@ -554,9 +558,9 @@ export interface Geography {
 export interface LedgerPoint {
   frame: number;
   eventId: EventId | null;
-  /** Main formation plus detachment as first deployed (1,010,000). */
+  /** Formations first deployed: the main formation and the two cohorts (1,000,000). */
   initialForward: number;
-  /** Unique personnel ever committed to the operation (1,010,000, then 1,040,000). */
+  /** Unique personnel ever committed to the operation (1,000,000, then 1,010,100 with the Third Strike). */
   committed: number;
   capitalReserve: Quantity;
   gateForce: Quantity;
