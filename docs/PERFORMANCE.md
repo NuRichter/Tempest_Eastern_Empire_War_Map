@@ -147,3 +147,23 @@ without it for comparisons). Measured back to back, 2D film at 48x with the CPU
 frames (p99) 266 to 275 ms without, 204 to 217 ms with. A small gain in frame
 rate, about a fifth less stutter. The MapLibre bridge (MapView) opts out with
 'use no memo'.
+
+## Load: only the visible map style
+
+The three map styles share one MapLibre style. A hidden style downloads nothing:
+its raster layer starts with `visibility: none`, the Base Map image source starts
+on a 2 × 2 placeholder and fetches `base-map.webp` the first time the Base Map is
+shown, and the vector coast (`coast.json`) is fetched only for the Base Map. The 3D
+relief reads an 8-bit `height-3d.png` (the browser reads PNGs through an 8-bit
+canvas anyway) and WebP textures, loading only the one for the chosen style.
+
+Measured with `npm run qa:perf` (local production build, SwiftShader), desktop 1440:
+
+| | Transfer at load | Requests at load | After play and seeks | Heap after GC |
+|---|---:|---:|---:|---:|
+| Before (every style loaded) | 1,953 KB | 169 | 3,293 KB / 179 | 13.6 MB |
+| After | 1,236 KB | 116 | 2,734 KB / 137 | 12.7 MB |
+
+3D textures: `terrain-4k` 840 → 337 KB, `myth-4k` 1,831 → 890 KB, relief 374 → 66 KB;
+the unused `base-4k.jpg` is gone. `qa:perf` now forces a garbage collection before
+reading the heap after playback, so the figure is retained memory, not GC timing.

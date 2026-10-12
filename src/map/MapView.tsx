@@ -15,7 +15,7 @@ import { use3DActive } from '@/state/view3d';
 import { getField, setField } from '@/map/field/fieldStore';
 import { territoryControlAt } from '@/simulation/resolver';
 import { useSimulation } from '@/simulation/store';
-import { prefersReducedMotion, usePreferences } from '@/state/preferences';
+import { prefersReducedMotion, usePreferences, type MapStyle } from '@/state/preferences';
 import { Overlay } from '@/map/overlay/Overlay';
 import { MapControls } from '@/map/MapControls';
 import { Minimap } from '@/map/Minimap';
@@ -28,6 +28,8 @@ import { pixelRatioFor, samplesFor, useQuality } from '@/perf/quality';
 
 // Lossless WebP of public/maps/base-map.png: the same pixels at about a third of the bytes.
 const BASE_MAP_URL = '/maps/base-map.webp';
+/** Stands in for the Base Map image until that style is first shown, so a hidden style downloads nothing. */
+const BLANK_URL = '/maps/thumb/blank.png';
 
 const SEA = '#0b1419';
 
@@ -36,13 +38,14 @@ const SEA = '#0b1419';
  * (Base Map and Myth Map, sharing one 2641 x 2035 frame), with the political
  * geometry traced from the Base Map drawn on top as vector layers.
  */
-function baseStyle(): StyleSpecification {
+function baseStyle(style: MapStyle): StyleSpecification {
+  const shown = (s: MapStyle) => ({ visibility: style === s ? ('visible' as const) : ('none' as const) });
   const empty = { type: 'geojson' as const, data: { type: 'FeatureCollection' as const, features: [] } };
   return {
     version: 8,
     name: 'Tempest campaign atlas',
     sources: {
-      base: { type: 'image', url: BASE_MAP_URL, coordinates: atlasCorners() },
+      base: { type: 'image', url: style === 'base' ? BASE_MAP_URL : BLANK_URL, coordinates: atlasCorners() },
       // The painted map as super-resolved tiles (scripts/cartography/build_hd_maps.py):
       // only the part in view loads, and detail holds up when zoomed in.
       myth: { type: 'raster', tiles: [`${typeof window === 'undefined' ? '' : window.location.origin}/tiles/myth/{z}/{x}/{y}.jpg`], tileSize: 256, minzoom: 0, maxzoom: 5, bounds: atlasBoundsFlat() },
@@ -60,6 +63,7 @@ function baseStyle(): StyleSpecification {
         id: 'base-raster',
         type: 'raster',
         source: 'base',
+        layout: shown('base'),
         paint: { 'raster-opacity': 1, 'raster-fade-duration': 0, 'raster-opacity-transition': { duration: 600 } },
       },
       // Vector Base Map: sea, land and coastline that stay sharp at any zoom.
@@ -71,12 +75,14 @@ function baseStyle(): StyleSpecification {
         id: 'terrain-raster',
         type: 'raster',
         source: 'terrain',
+        layout: shown('terrain'),
         paint: { 'raster-opacity': 0, 'raster-fade-duration': 0, 'raster-opacity-transition': { duration: 600 } },
       },
       {
         id: 'myth-raster',
         type: 'raster',
         source: 'myth',
+        layout: shown('myth'),
         paint: { 'raster-opacity': 0, 'raster-fade-duration': 0, 'raster-opacity-transition': { duration: 600 } },
       },
       {
@@ -366,7 +372,7 @@ export function MapView() {
     try {
       map = new maplibregl.Map({
         container: container.current,
-        style: baseStyle(),
+        style: baseStyle(usePreferences.getState().mapStyle),
         bounds: campaignBounds(),
         fitBoundsOptions: { padding: 40 },
         minZoom: 1,
@@ -445,6 +451,11 @@ export function MapView() {
     // A hidden style downloads nothing: switch its layer off, not only transparent.
     map.setLayoutProperty('myth-raster', 'visibility', mapStyle === 'myth' ? 'visible' : 'none');
     map.setLayoutProperty('base-raster', 'visibility', mapStyle === 'base' ? 'visible' : 'none');
+    if (mapStyle === 'base') {
+      // The Base Map image is fetched the first time that style is shown.
+      const img = map.getSource('base') as maplibregl.ImageSource | undefined;
+      if (img && !img.url?.endsWith(BASE_MAP_URL)) img.updateImage({ url: BASE_MAP_URL, coordinates: atlasCorners() });
+    }
     // The war-room treatment darkens the Base Map so faction colour carries the
     // information; the Myth Map keeps its own painted colours, slightly dimmed.
     map.setPaintProperty('base-raster', 'raster-brightness-max', dark ? 0.3 : 1);
@@ -514,18 +525,23 @@ export function MapView() {
     src?.setData(areaFeatures(data, useSimulation.getState().state));
   }, [data, areaKey, ready, territoryOpacity]);
 
+  // The vector coast belongs to the Base Map: fetched the first time that style is shown.
+  const coastWanted = mapStyle === 'base';
+  const coastLoaded = useRef(false);
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !ready) return;
+    if (!map || !ready || !coastWanted || coastLoaded.current) return;
+    coastLoaded.current = true;
     let alive = true;
     void fetchVerified('/maps/coast.json')
       .then(async (r) => (r.ok ? safeJsonParse<{ polygons: [number, number][][][] }>(await r.text()) : null))
       .then((c) => {
+        if (!c) coastLoaded.current = false;
         if (alive && c) (map.getSource('coast') as maplibregl.GeoJSONSource | undefined)?.setData(coastFeatures(c));
       })
       .catch(() => undefined);
     return () => { alive = false; };
-  }, [ready]);
+  }, [ready, coastWanted]);
 
   useEffect(() => {
     const map = mapRef.current;

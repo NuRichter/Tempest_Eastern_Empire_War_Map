@@ -78,7 +78,7 @@ The painted symbol is kept as `paintedSymbol` for reference only: under it the r
 - **Water**: sea shaded by distance from the coast (shelf to deep water), the painted lakes and the lakes of the route model, the rivers of the route model.
 - **Hillshade** from the north-west, with fine ridges where the ground is high, and single tree crowns stippled into forest when zoomed in.
 
-The output is a Web-Mercator tile pyramid, zoom 0 to 6 (`public/tiles/terrain/`, WebP, about 7 MB), the **Terrain Map** style (the default), and a 4,096-pixel texture for the 3D relief (`public/maps/3d/terrain-4k.jpg`). Detail below the 2 km source resolution is deterministic noise in world coordinates, so tiles join without seams and every build is identical. Every layer is a stylised reconstruction, not a survey.
+The output is a Web-Mercator tile pyramid, zoom 0 to 6 (`public/tiles/terrain/`, WebP, about 7 MB), the **Terrain Map** style (the default), and a 4,096-pixel texture for the 3D relief (`public/maps/3d/terrain-4k.webp`). Detail below the 2 km source resolution is deterministic noise in world coordinates, so tiles join without seams and every build is identical. Every layer is a stylised reconstruction, not a survey.
 
 ## 6. Routes and distance
 

@@ -478,7 +478,7 @@ npm run qa:playback   # front bergerak saat diputar, beku saat dijeda, sama sete
 npm run qa:perf       # waktu siap, transfer, heap, dan seek di 6 perangkat
 ```
 
-Hasil terakhir: `verify` lulus (25/25 tes engine, 27/27 tes skenario, 30 bahasa 100 %), `qa` 50/50 termasuk tur, mode 3D, gaya peta, skala, dan penggaris, `qa:visual` 10/10, `qa:playback` 3/3. Muatan pertama sekitar 2,7 sampai 3,1 MB dalam 74 sampai 129 request, siap dalam kurang dari 2,1 detik. `validate-data` dan `i18n:check` juga menolak em dash dan titik koma di semua teks yang tampil di situs. Detail di [`docs/QA.md`](./docs/QA.md).
+Hasil terakhir: `verify` lulus (25/25 tes engine, 27/27 tes skenario, 30 bahasa 100 %), `qa` 50/50 termasuk tur, mode 3D, gaya peta, skala, dan penggaris, `qa:visual` 10/10, `qa:playback` 3/3. Muatan pertama sekitar 1,2 MB (2,5 sampai 2,7 MB setelah diputar, termasuk musik) dalam 72 sampai 139 request, siap dalam sekitar 1,5 sampai 2,2 detik. Gaya peta yang tidak terlihat tidak diunduh, dan tekstur 3D berformat WebP. `validate-data` dan `i18n:check` juga menolak em dash dan titik koma di semua teks yang tampil di situs. Detail di [`docs/QA.md`](./docs/QA.md).
 
 </details>
 

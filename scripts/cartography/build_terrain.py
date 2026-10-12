@@ -4,9 +4,10 @@ Continental terrain: the relief and the physical basemap.
     public/maps/base-map.png   (2641 x 2035, the line map: land and sea)
     public/maps/myth-map.jpg   (2641 x 2035, the painted map: vegetation zones, drawn ranges)
     data-source/geography.source.json  (Dwargon massif, forests, lakes, rivers)
-        ->  public/maps/3d/height.png           stylised relief, 16-bit, 1024 wide
+        ->  public/maps/3d/height.png           stylised relief, 16-bit, 1024 wide (routing)
+        ->  public/maps/3d/height-3d.png        the same, 8-bit, for the 3D view
         ->  public/tiles/terrain/{z}/{x}/{y}.webp  physical basemap tiles, z0..6
-        ->  public/maps/3d/terrain-4k.jpg       the same basemap as the 3D texture
+        ->  public/maps/3d/terrain-4k.webp      the same basemap as the 3D texture
         ->  public/maps/terrain-biomes.json     land cover statistics (km2) for the docs
 
 The atlas is a 1:1 world in kilometres (src/lib/world.ts: 2.0 km per atlas
@@ -349,6 +350,8 @@ def write_height(M: np.ndarray, world: dict) -> None:
     enc = R['seaLevel'] + m / R['metresPerLevel']
     enc = np.clip(enc, 0, 65535).astype(np.uint16)
     Image.fromarray(enc).save(MAPS / '3d' / 'height.png')
+    # The browser reads a PNG through an 8-bit canvas anyway: ship the 3D view the high byte only.
+    Image.fromarray((enc >> 8).astype(np.uint8)).save(MAPS / '3d' / 'height-3d.png', optimize=True)
     print('height', enc.min(), enc.max())
 
 
@@ -390,7 +393,7 @@ def texture(F: dict, M: np.ndarray, geo: dict) -> None:
         y1 = min(TH, y0 + 512)
         gx, gy = np.meshgrid(((np.arange(TW) + 0.5) / TW).astype(np.float32), ((np.arange(y0, y1) + 0.5) / TH).astype(np.float32))
         out[y0:y1] = render(F, M, gx, gy, km_px, geo, 0, y0 / TH, TW, TH)
-    cv2.imwrite(str(MAPS / '3d' / 'terrain-4k.jpg'), out, [cv2.IMWRITE_JPEG_QUALITY, 86])
+    Image.fromarray(cv2.cvtColor(out, cv2.COLOR_BGR2RGB)).save(MAPS / '3d' / 'terrain-4k.webp', quality=82, method=6)
     Image.fromarray(cv2.cvtColor(cv2.resize(out, (320, round(320 * H / W)), interpolation=cv2.INTER_AREA), cv2.COLOR_BGR2RGB)).save(MAPS / 'thumb' / 'terrain-320.webp', quality=80)
 
 

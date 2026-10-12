@@ -72,7 +72,7 @@ function loadImage(src: string): Promise<HTMLImageElement> {
 }
 
 async function loadRelief(): Promise<Relief> {
-  const im = await loadImage('/maps/3d/height.png');
+  const im = await loadImage('/maps/3d/height-3d.png');
   const c = document.createElement('canvas');
   c.width = im.width;
   c.height = im.height;
@@ -276,7 +276,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
     const battleFx: { group: THREE.Group; ring: THREE.Mesh; sparks: THREE.Points; light: THREE.PointLight; id: string }[] = [];
     const portal = { group: new THREE.Group(), ring: null as THREE.Mesh | null, light: null as THREE.PointLight | null };
 
-    void Promise.all([loadRelief(), loadFront(), new THREE.TextureLoader().loadAsync(usePreferences.getState().mapStyle === 'myth' ? '/maps/3d/myth-4k.jpg' : '/maps/3d/terrain-4k.jpg')]).then(([r, f, tex]) => {
+    void Promise.all([loadRelief(), loadFront(), new THREE.TextureLoader().loadAsync(usePreferences.getState().mapStyle === 'myth' ? '/maps/3d/myth-4k.webp' : '/maps/3d/terrain-4k.webp')]).then(([r, f, tex]) => {
       if (disposed) return;
       relief = r;
       front = f;
@@ -778,7 +778,7 @@ export function Atlas3D({ auto }: { auto: boolean }) {
     // The relief wears the chosen map: the painted Myth Map, otherwise the physical terrain.
     const unsubStyle = usePreferences.subscribe((s, prev) => {
       if ((s.mapStyle === 'myth') === (prev.mapStyle === 'myth') || !terrain) return;
-      void new THREE.TextureLoader().loadAsync(s.mapStyle === 'myth' ? '/maps/3d/myth-4k.jpg' : '/maps/3d/terrain-4k.jpg').then((tex) => {
+      void new THREE.TextureLoader().loadAsync(s.mapStyle === 'myth' ? '/maps/3d/myth-4k.webp' : '/maps/3d/terrain-4k.webp').then((tex) => {
         if (disposed || !terrain) return tex.dispose();
         tex.colorSpace = THREE.SRGBColorSpace;
         tex.anisotropy = renderer.capabilities.getMaxAnisotropy();

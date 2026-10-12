@@ -105,6 +105,7 @@ async function main(): Promise<void> {
         return (performance.now() - t) / 30;
       })()`)) as number;
       await sleep(1000);
+      await cdp.send('HeapProfiler.collectGarbage');
       const heap1 = (await cdp.send('Performance.getMetrics')).metrics.find((m: { name: string }) => m.name === 'JSHeapUsedSize')?.value ?? 0;
       const longTasks = (await page.evaluate('window.__longTasks')) as number[];
       const overflow = (await page.evaluate('document.documentElement.scrollWidth - window.innerWidth')) as number;

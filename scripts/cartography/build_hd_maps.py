@@ -7,8 +7,7 @@ High-definition map layers.
                                                 FSRCNN super-resolution of the painted map
         ->  public/maps/coast.json             land and lake polygons in simulation
                                                 coordinates (vector, sharp at any zoom)
-        ->  public/maps/3d/myth-4k.jpg         4096-wide texture for the 3D view
-        ->  public/maps/3d/base-4k.jpg         4096-wide texture for the 3D view
+        ->  public/maps/3d/myth-4k.webp        4096-wide texture for the 3D view
 
 The atlas projection (src/lib/coords.ts) maps simulation x linearly onto
 Web-Mercator x and simulation y linearly onto Web-Mercator y, so a tile pixel
@@ -148,9 +147,7 @@ def main() -> None:
     out3d.mkdir(parents=True, exist_ok=True)
     hd = super_resolve(myth, a.model)
     print('super-resolved', hd.shape)
-    cv2.imwrite(str(out3d / 'myth-4k.jpg'), cv2.resize(hd, (4096, round(4096 * H / W)), interpolation=cv2.INTER_AREA), [cv2.IMWRITE_JPEG_QUALITY, 86])
-    base4 = cv2.resize(base, (4096, round(4096 * H / W)), interpolation=cv2.INTER_LANCZOS4)
-    cv2.imwrite(str(out3d / 'base-4k.jpg'), base4, [cv2.IMWRITE_JPEG_QUALITY, 88])
+    cv2.imwrite(str(out3d / 'myth-4k.webp'), cv2.resize(hd, (4096, round(4096 * H / W)), interpolation=cv2.INTER_AREA), [cv2.IMWRITE_WEBP_QUALITY, 82])
     n = tiles(hd, ROOT / 'public' / 'tiles' / 'myth', a.zmax)
     print('tiles', n)
 
