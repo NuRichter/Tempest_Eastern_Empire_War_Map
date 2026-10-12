@@ -44,7 +44,7 @@ Both need Python 3 with `numpy`, `opencv-python` and `Pillow`. Their outputs are
 |---|---|
 | `src/data/loader.ts` | Fetches the runtime files; `assembleDataset` builds derived indexes (shared with the tests) |
 | `src/simulation/clock.ts` | One deterministic clock outside React; continuous frame position; 0.25×–48× |
-| `src/simulation/resolver.ts` | Frame state from checkpoint + deltas; force snapshot and position interpolated along its measured route; territory control with transition; strength history; operation ledger at a frame; km travelled and remaining |
+| `src/simulation/resolver.ts` | Frame state from checkpoint + deltas; force snapshot and position interpolated along its measured route; territory control with transition; strength history; operation ledger at a frame; km travelled and remaining; convoy markers (`markerStrengthAt`), airborne legs |
 | `src/lib/world.ts` | The WORLD_KM frame: normalised point ↔ km, distances, polyline arc length (shared by compiler and browser) |
 | `src/lib/units.ts`, `src/lib/hierarchy.ts` | Unit classes (symbol, travel mode, march rate) and the rule for when a subordinate stands in for its parent |
 | `scripts/lib/routing.ts` | Terrain-cost grid and A* routing (compile time only) |

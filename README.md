@@ -8,7 +8,7 @@
 
 ### Campaign Atlas
 
-**Satu perang. 1.040.000 prajurit Kekaisaran. 71 hari. Sekarang bisa kamu putar seperti film dokumenter.**
+**Satu perang. 1.010.100 prajurit Kekaisaran. Tiga front. 71 hari. Sekarang bisa kamu putar seperti film dokumenter.**
 
 <sub>Atlas kampanye interaktif untuk Perang Tempest melawan Kekaisaran Timur dari light novel <i>Tensei Shitara Slime Datta Ken</i> (volume 12 sampai 16)</sub>
 
@@ -19,8 +19,8 @@
 
 <br>
 
-![Events](https://img.shields.io/badge/events-206-2f9e7e?style=flat-square)
-![Canon](https://img.shields.io/badge/kanon-143_·_rekonstruksi_visual_37_·_skenario_26-cfe5dc?style=flat-square)
+![Events](https://img.shields.io/badge/events-215-2f9e7e?style=flat-square)
+![Canon](https://img.shields.io/badge/kanon-146_·_rekonstruksi_visual_39_·_skenario_30-cfe5dc?style=flat-square)
 ![Clock](https://img.shields.io/badge/jam-D−43_→_D+27_·_10_menit-5b8fd8?style=flat-square)
 ![Languages](https://img.shields.io/badge/bahasa-30-8fc9b6?style=flat-square)
 ![Theme](https://img.shields.io/badge/tema-dark_·_light-a7b1b5?style=flat-square)
@@ -33,7 +33,7 @@
 
 <img src="./assets/readme/gifs/war-timelapse.gif" width="100%" alt="Timelapse seluruh perang dari D−39 sampai D+17">
 
-<sub>Seluruh perang dalam satu tarikan napas. Satu kolom berangkat dari Kekaisaran, pecah di titik henti, menyerbu hutan Jura dan Dwargon, lalu runtuh. Direkam langsung dari atlas.</sub>
+<sub>Seluruh perang dalam satu tarikan napas di Terrain Map. Kolom 970.000 berangkat dari Kekaisaran, 30.000 lain menembus Dwargon dari timur, kolomnya pecah di titik henti, menyerbu ibu kota Tempest dan Gerbang Utama Dwargon, lalu runtuh di dua front. Direkam langsung dari atlas.</sub>
 
 <br><br>
 
@@ -62,7 +62,7 @@
 
 <img src="./Sources%20of%20Truth/GIF%20Assets/Contents.gif" width="230" align="right" alt="Slime Rimuru: asal lo tau ya!">
 
-Waktu membaca volume 12 sampai 16, aku selalu ingin melihat perang ini **bergerak**. Rapat perang di ibu kota Kekaisaran. Pawai panjang ke perbatasan. Pertempuran permukaan yang selesai dalam kurang dari dua jam. Labirin yang menelan ratusan ribu prajurit. Lalu satu malam panjang di Dwargon yang hampir membalik segalanya.
+Waktu membaca volume 12 sampai 16, aku selalu ingin melihat perang ini **bergerak**. Rapat perang di ibu kota Kekaisaran. Pawai panjang ke perbatasan. Pertempuran permukaan yang selesai dalam kurang dari dua jam. Labirin yang menelan ratusan ribu prajurit. Lalu satu malam panjang di Gerbang Timur Dwargon yang hampir membalik segalanya.
 
 Novelnya tidak pernah menggambar garis depan. Jadi aku membaca ulang 2.101 halaman dengan buku catatan terbuka, mengekstrak 305 adegan perang, dan menempatkan setiap pergerakan, pertempuran, dan korban di satu jam simulasi berlangkah sepuluh menit.
 
@@ -72,17 +72,17 @@ Kalau bukunya diam, atlasnya juga bilang begitu. Asal lo tau ya, angka yang tida
 
 <table>
 <tr>
-<td align="center"><h3>206</h3><sub>event, 26 di antaranya skenario</sub></td>
+<td align="center"><h3>215</h3><sub>event, 30 di antaranya skenario</sub></td>
 <td align="center"><h3>71 hari</h3><sub>10.224 frame, 10 menit per frame</sub></td>
-<td align="center"><h3>63</h3><sub>formasi pasukan</sub></td>
+<td align="center"><h3>65</h3><sub>formasi pasukan</sub></td>
 <td align="center"><h3>56</h3><sub>rute terukur di medan</sub></td>
 <td align="center"><h3>9</h3><sub>pertempuran</sub></td>
 </tr>
 <tr>
-<td align="center"><h3>24</h3><sub>transisi wilayah, 2.466 sel</sub></td>
-<td align="center"><h3>53</h3><sub>karakter, 41 photocard</sub></td>
+<td align="center"><h3>44</h3><sub>transisi wilayah, 2.095 sel</sub></td>
+<td align="center"><h3>82</h3><sub>karakter, 71 photocard</sub></td>
 <td align="center"><h3>23</h3><sub>ibu kota, kota, dan Labirin</sub></td>
-<td align="center"><h3>30</h3><sub>bahasa, 827 teks antarmuka</sub></td>
+<td align="center"><h3>30</h3><sub>bahasa, 845 teks antarmuka</sub></td>
 <td align="center"><h3>18</h3><sub>langkah tur bersama warga Tempest</sub></td>
 </tr>
 </table>
@@ -90,8 +90,8 @@ Kalau bukunya diam, atlasnya juga bilang begitu. Asal lo tau ya, angka yang tida
 <br>
 
 <div align="center">
-<img src="./assets/readme/screenshots/hero-dark.webp" width="100%" alt="Atlas pada D−2: Formation B mengancam jalan Tempest–Dwargon, panel Situasi menampilkan buku besar operasi">
-<sub>D−2, 10:30. Formation B (200.000) berdiri di jalan Tempest–Dwargon dan mengancam jalur pasokannya, pasukan lain menyebar dari titik henti. Panel kanan langsung menjawab: siapa melawan siapa, berapa yang gugur, apa yang baru terjadi, dan buku besar pasukan detik itu.</sub>
+<img src="./assets/readme/screenshots/hero-dark.webp" width="100%" alt="Atlas pada D+0 12:50 di Terrain Map: 240.000 di Gerbang Utama Dwargon, 700.000 di depan ibu kota Tempest, 30.000 di Gerbang Timur">
+<sub>D+0, 12:50. Tiga front sekaligus di Terrain Map: 240.000 di Gerbang Utama Dwargon, 700.000 berkemah 30 km dari ibu kota Tempest, dan pasukan Kekaisaran di Gerbang Timur. Panel kanan langsung menjawab: siapa melawan siapa, berapa yang gugur, apa yang baru terjadi, dan buku besar pasukan detik itu.</sub>
 </div>
 
 <br>
@@ -102,12 +102,16 @@ Atlas ini meniru *cara* empat video perang dokumenter menggerakkan wilayah. Vide
 
 <table>
 <tr>
-<td width="50%"><img src="./assets/readme/gifs/front-advance-into-jura.gif" alt="Kolom Kekaisaran pecah di titik henti dan menyerbu hutan Jura"><br><b>D−3 → D+0 · Pecah di titik henti</b><br><sub>Kolom 1.005.000 berhenti dan pecah jadi lima. 700.000 infanteri menyerbu hutan menuju Rimuru, yang lain berangkat ke utara dan ke Dwargon. Garis depan merayap mengikuti barisan.</sub></td>
+<td width="50%"><img src="./assets/readme/gifs/front-advance-into-jura.gif" alt="Kolom 970.000 berhenti di titik henti, formasi utama pecah, dan menyerbu hutan Jura"><br><b>D−3 → D+0 · Pecah di titik henti</b><br><sub>Kolom 970.000 berhenti tepat saat 30.000 tiba di Gerbang Timur. 900.000 pecah jadi 700.000 ke ibu kota Tempest dan 200.000 ke Gerbang Utama Dwargon, 70.000 menunggu. Garis depan merayap mengikuti barisan.</sub></td>
 <td width="50%"><img src="./assets/readme/gifs/pocket-collapse-d10.gif" alt="Kantong Kekaisaran di Jura runtuh setelah kamp dimusnahkan"><br><b>D+10 · Kantong Jura runtuh</b><br><sub>Baru bergerak setelah ikon pertempuran disilang, lalu mundur ke arah perbatasan Kekaisaran. Wilayah yang paling jauh dari rumah lepas lebih dulu.</sub></td>
 </tr>
 <tr>
-<td width="50%"><img src="./assets/readme/gifs/dwargon-sw-offensive.gif" alt="Formation B mengancam jalan Tempest–Dwargon, menembus perbatasan barat daya Dwargon, lalu hancur"><br><b>D−2 → D+0 · Serangan barat daya gagal</b><br><sub>Formation B mengancam jalan Tempest–Dwargon, menembus perbatasan barat daya lewat lembah, dan berbaris 30 km dari kota Dwargon. Lalu hancur. Rutenya berakhir dengan tanda silang, Dwargon tidak pernah jatuh.</sub></td>
+<td width="50%"><img src="./assets/readme/gifs/dwargon-sw-offensive.gif" alt="200.000 menembus perbatasan barat daya Dwargon ke Gerbang Utama, diperkuat 40.000 kapal udara, lalu hancur"><br><b>D−2 → D+0 · Gerbang Utama Dwargon</b><br><sub>200.000 menembus perbatasan barat daya dan berbaris di kaki Pegunungan Kanaat. Ultimatum ditolak, 40.000 kapal udara datang (240.000), lalu grup Testarossa menghancurkan semuanya. Wilayah barat daya kembali ke garis sebelum perang.</sub></td>
 <td width="50%"><img src="./assets/readme/screenshots/capitals-labyrinth.webp" alt="Ibu kota Rimuru dan Labirin Ramiris di tengah wilayah yang dikuasai Kekaisaran"><br><b>Kota tidak pernah jatuh</b><br><sub>Rimuru dengan mahkotanya dan Labirin Ramiris bergaris putus-putus. Wilayah Kekaisaran mengalir di sekelilingnya, persis seperti di novel.</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="./assets/readme/gifs/eastern-front-long-night.gif" alt="Front Gerbang Timur Dwargon pada malam panjang: serangan balik sekutu, kudeta, Third Strike, lalu status quo"><br><b>D+15 → D+16 · Front timur, malam panjang</b><br><sub>Dwargon dan Tempest mendorong ke timur melawan 60.000. Kudeta pecah, Velgrynd membunuh 60.000, Third Strike datang lewat perbatasan timur, lalu serangan balik terakhir mengembalikan semuanya ke status quo.</sub></td>
+<td width="50%"><img src="./assets/readme/screenshots/terrain-measure.webp" alt="Terrain Map di sekitar Dwargon dengan penggaris dari Gerbang Utama lewat kota ke Gerbang Timur"><br><b>Peta 1:1 yang bisa diukur</b><br><sub>Terrain Map dengan hutan, padang, salju, danau, dan relief. Skala, posisi kursor dalam km, dan penggaris: dari Gerbang Utama lewat kota Dwargon ke Gerbang Timur sekitar 330 km.</sub></td>
 </tr>
 </table>
 
@@ -139,7 +143,7 @@ Sutradaranya membaca perang setiap seperempat detik: event terbaru, pertempuran 
 
 **Auto Timing.** Filmnya mengatur kecepatannya sendiri: 16× saat persiapan, 8× saat serbuan pertama, melambat ke 2× menjelang pertempuran, dan 1× tepat saat pertempuran berlangsung. Tombolnya ada di atas layar dan bisa dimatikan kapan saja.
 
-**Cold open.** Sebelum film berjalan, empat kalimat pembuka muncul satu per satu, semuanya dari catatan perang: *"D−40. The Empire decides on war."*, *"1,020,002 imperial soldiers will fall."*, *"700,000 of them will rise again."*, *"Tempest will not lose a single soldier."* Angka gugurnya untuk seluruh Kekaisaran: 1.010.000 dari operasi invasi, ditambah 10.000 Magic Beast Division yang bertempur di luar operasi dan dua tokoh bernama. Setiap kartu bab juga membawa kalimat pemikat dari event terpenting di bab itu.
+**Cold open.** Sebelum film berjalan, empat kalimat pembuka muncul satu per satu, semuanya dari catatan perang: *"D−40. The Empire decides on war."*, *"1,020,102 imperial soldiers will fall."*, *"700,000 of them will rise again."*, *"Tempest will not lose a single soldier."* Angka gugurnya untuk seluruh Kekaisaran: 1.010.100 dari operasi invasi (setiap prajurit yang dikerahkan), ditambah 10.000 Magic Beast Division yang bertempur di luar operasi dan dua tokoh bernama. Itulah "sekitar 1.020.000" di skenario. Setiap kartu bab juga membawa kalimat pemikat dari event terpenting di bab itu.
 
 Kamera tidak pernah melompat. Pusat, zoom, kemiringan, dan arah pandang masing-masing mengikuti pegas teredam kritis yang dihitung persis, jadi gerakannya sama mulusnya di komputer kencang maupun ponsel lambat. Di atasnya ada **kartu bab** di setiap tahap perang, **kartu VS** saat pertempuran dimulai (bendera dan photocard kedua pihak), kartu event yang bertumpuk, buku korban, bingkai viewfinder, dan pita film yang menandai setiap bab. Sentuh peta kapan saja untuk mengambil alih kamera, sutradara kembali beberapa detik kemudian.
 
@@ -150,16 +154,16 @@ Kamera tidak pernah melompat. Pusat, zoom, kemiringan, dan arah pandang masing-m
 Tekan `V` (atau pilih **3D** di sebelah Datar dan Bola dunia) dan seluruh atlas berdiri jadi dunia tiga dimensi, dibangun dengan **three.js**. Mode sinematik memakai panggung yang sama secara default, dengan tombol **2D | 3D** di bagian atas.
 
 <div align="center">
-<img src="./assets/readme/gifs/cinematic-3d.gif" width="100%" alt="Mode sinematik 3D: token pasukan di titik henti, serangan barat daya, Gerbang Dwargon, dan standee karakter">
+<img src="./assets/readme/gifs/cinematic-3d.gif" width="100%" alt="Mode sinematik 3D di atas Terrain Map: token pasukan di titik henti, Gerbang Utama, Gerbang Timur, dan standee karakter">
 </div>
 
 | | Yang ada di layar |
 |:---:|---|
-| 🏔️ | **Relief** dengan Myth Map yang di-*super-resolve* sebagai kulitnya. Pegunungan Kanaat berdiri tinggi di sekitar Dwargon. Reliefnya rekonstruksi bergaya, novel tidak memberi ketinggian. |
+| 🏔️ | **Relief** berkulit Terrain Map (atau Myth Map yang di-*super-resolve* kalau gaya itu dipilih). Pegunungan Kanaat ringkas, inti sekitar 44 × 40 km, puncak sekitar 2.600 m, dengan Gerbang Utama di kakinya. Reliefnya rekonstruksi bergaya, novel tidak memberi ketinggian. |
 | 🌊 | **Laut beranimasi** dengan ombak, pantulan langit, dan kilau matahari |
 | 🟥 | **Wilayah dan front** dari data yang sama dengan peta 2D, dilukis di atas medan, garis depannya menyala |
 | ♟️ | **Pasukan sebagai token 3D**, kembaran ikon 2D: alas berbentuk faksi (kotak Kekaisaran, bulat Tempest, belah ketupat Dwargon, segitiga lainnya), simbol jenis unit timbul di atasnya (✕ infanteri, oval lapis baja, baling-baling udara yang berputar, bintang elite), angka kekuatan melayang di atas. Pasukan udara melayang bertali, yang bergerak menunjukkan arah, yang hancur rebah kelabu |
-| 🎴 | **Karakter 2.5D.** Tokoh di event yang sedang berlangsung berdiri sebagai standee photocard di atas dudukan berwarna faksi, selalu menghadap kamera, lengkap dengan bayangan |
+| 🎴 | **Karakter 2.5D.** Tokoh yang benar-benar hadir di event yang sedang berlangsung berdiri sebagai standee photocard di atas dudukan berwarna faksi, selalu menghadap kamera, lengkap dengan bayangan. Yang memberi perintah dari jauh tidak ikut berdiri di sana. |
 | 🚩 | **Titik strategis** sebagai model kecil: bendera titik henti, menara gerbang, chevron perbatasan, target sasaran, tenda kamp |
 | 🛣️ | **Rute terukur** yang sedang ditempuh menempel di relief, sama dengan garis di peta 2D |
 | 💥 | **Pertempuran** dengan cincin berdenyut, percikan api, dan cahaya kobaran selama berlangsung |
@@ -168,7 +172,7 @@ Tekan `V` (atau pilih **3D** di sebelah Datar dan Bola dunia) dan seluruh atlas 
 | 🎥 | **Kamera sutradara** yang sama, diterjemahkan ke orbit 3D |
 | 👆 | **Klik** token, titik strategis, atau standee untuk membuka dossier-nya |
 
-**Peta lebih HD saat di-zoom.** Base Map berubah jadi vektor (garis pantai dan perbatasan tetap tajam di zoom berapa pun), dan Myth Map dilukis ulang dengan super-resolusi ×4 (FSRCNN) lalu dipotong jadi 609 tile, jadi detailnya bertahan saat didekati.
+**Peta lebih HD saat di-zoom.** Terrain Map adalah 2.337 tile sampai zoom 6, dengan tajuk pohon yang muncul satu per satu saat didekati. Base Map berubah jadi vektor (garis pantai dan perbatasan tetap tajam di zoom berapa pun), dan Myth Map dilukis ulang dengan super-resolusi ×4 (FSRCNN) lalu dipotong jadi 609 tile.
 
 <br>
 
@@ -184,71 +188,81 @@ Tekan `V` (atau pilih **3D** di sebelah Datar dan Bola dunia) dan seluruh atlas 
 
 ## ⚖️ Aturan perang di peta ini
 
-Novel tidak menggambar garis kendali, jadi wilayah yang dikuasai **direkonstruksi** dari posisi, kekuatan, dan nasib setiap formasi. Supaya hasilnya logis seperti perang sungguhan, tujuh aturan ini dijaga oleh kompiler dan diuji otomatis:
+Novel tidak menggambar garis kendali, jadi wilayah yang dikuasai **direkonstruksi** dari posisi, kekuatan, dan nasib setiap formasi. Supaya hasilnya logis seperti perang sungguhan, aturan ini dijaga oleh kompiler dan diuji otomatis:
 
 | | Aturan | Artinya di layar |
 |:---:|---|---|
 | ⚔️ | **Pertempuran menentukan** | Tidak ada yang mundur sebelum pertempurannya selesai. Begitu ikon pertempuran disilang, barulah pihak yang kalah melepas wilayahnya. |
 | 🏳️ | **Mundur ke status quo** | Tanah yang lepas surut ke arah wilayah asal pihak yang kalah. Yang paling jauh dari rumah hilang duluan, garis di perbatasan lama paling akhir. |
-| 🔒 | **Yang hilang tetap hilang** | Pasukan tidak pernah merebut lagi tanah yang sudah ditinggalkannya. Front tidak maju mundur bolak-balik. |
+| 🔒 | **Yang hilang tetap hilang** | Pasukan tidak merebut lagi tanah yang sudah ditinggalkannya, kecuali Third Strike yang memang diperintahkan maju lagi ke arah ibu kota Tempest. |
 | 🏰 | **Kota bertahan** | Tidak ada ibu kota, kota, atau Labirin yang jatuh di perang ini. Wilayah yang direbut selalu mengalir di sekelilingnya. |
-| 🛡️ | **Dwargon tidak pernah jatuh** | Formation B menembus perbatasan barat daya dan pasukan Gerbang mengepung Isthmus, tapi Kekaisaran tidak pernah menguasai tanah Dwargon. Pertempurannya tampil sebagai area operasi yang *contested*. |
-| 🚶 | **Yang mundur tidak merebut** | Formasi yang sedang mundur, sudah bergabung ke pasukan lain, atau sudah pulang tidak lagi menahan wilayah. |
+| 🛡️ | **Dwargon berperang sejak awal** | Sejak 30.000 melintasi perbatasan timur, Dwargon ikut perang. Koridor barat daya menuju Gerbang Utama dan kantong Gerbang Timur sampai ke pantai tampil sebagai wilayah Kekaisaran, tapi pegunungan dan tanah genting menahan jangkauannya, dan kota Dwargon tidak pernah jatuh. Keduanya kembali ke status quo di akhir. |
+| 🚶 | **Yang mundur tidak merebut** | Formasi yang sedang mundur, sudah bergabung ke pasukan lain, sudah pulang, atau sedang diterbangkan tidak menahan wilayah. |
 | 〰️ | **Garis bergerigi** | Setiap front punya tonjolan, lekukan, dan salient seperti peta perang sungguhan, bukan busur halus atau garis lurus. |
 
 Detail teknis ada di [`docs/TERRITORIAL-ANIMATION.md`](./docs/TERRITORIAL-ANIMATION.md), setiap transisi beserta alasannya di [`docs/research/TERRITORIAL_RECONSTRUCTION.md`](./docs/research/TERRITORIAL_RECONSTRUCTION.md), dan nilai kemiripan yang jujur (skala 1 sampai 10) terhadap video referensi di [`docs/research/REFERENCE_MATCH_AUDIT.md`](./docs/research/REFERENCE_MATCH_AUDIT.md).
 
 <br>
 
-## 🌍 Buku besar pasukan dan peta berskala
+## 🌍 Buku besar pasukan dan peta 1:1
 
-Susunan pasukan Kekaisaran di atlas ini mengikuti **brief skenario** pembuatnya. Novel menyebut 940.000 untuk tentara invasi, skenarionya 1.040.000. Setiap perbedaan dengan novel dicatat dan bisa dibaca di panel About → *Scenario and novels*, tidak disembunyikan.
+Susunan pasukan Kekaisaran di atlas ini mengikuti **skenario** pembuatnya (*Alur Timeline secara kasarannya*, fase A sampai N). Novel menyebut 940.000 untuk tentara invasi, skenarionya 1.010.100 di tiga front. Setiap perbedaan dengan novel dicatat dan bisa dibaca di panel About → *Scenario and novels*, tidak disembunyikan.
 
 | | Angka | Dari mana |
 |---|---:|---|
-| Formasi utama, maju sebagai satu kolom | 1.005.000 | pecah di titik henti: 700.000 + 200.000 + 40.000 + 30.000 + 35.000 |
-| Detasemen terpisah ke Dwargon | 5.000 | penempatan awal 1.010.000 |
-| Cadangan ibu kota | 100.000 → 70.000 | 30.000 dipindah ke Gerbang Dwargon (fase 2) |
-| Pasukan Gerbang Dwargon | 30.000 → 60.000 | fase 1 dari titik henti, fase 2 dari cadangan |
-| Personel unik dalam operasi | 1.040.000 | 1.010.000 + 30.000 |
-| Gugur / dibangkitkan | 1.010.000 / 700.000 | 310.000 tidak dibangkitkan, 30.000 tidak pernah gugur, 730.000 aktif di akhir |
+| Kolom yang melintasi perbatasan Tempest | 970.000 | 900.000 formasi utama + 70.000 kohort bala bantuan, satu penanda, dua formasi di buku besar |
+| Formasi utama di titik henti | 900.000 | 700.000 ke ibu kota Tempest dan Labirin + 200.000 ke Gerbang Utama Dwargon |
+| Kohort timur | 30.000 | dari ibu kota lewat perbatasan timur, tiba di Gerbang Timur bersamaan dengan titik henti |
+| Penempatan awal | 1.000.000 | 900.000 + 70.000 + 30.000, persis plafon "paling banyak satu juta" |
+| Kohort 70.000 setelah ultimatum ditolak | 40.000 + 30.000 | 240.000 di Gerbang Utama, 60.000 di Gerbang Timur |
+| Ibu kota Tempest | 350.000 + 200.000 + 150.000 | masuk Labirin dua gelombang, sisanya menunggu di luar |
+| Cadangan ibu kota | 110.100 → 100.000 | 10.100 berangkat sebagai Third Strike setelah kudeta |
+| Third Strike | 8.000 + 2.100 | sebagian besar ke Gerbang Timur, sisanya ke ibu kota Tempest (parameter yang bisa diubah) |
+| Gugur / dibangkitkan | 1.010.100 / 700.000 | setiap prajurit yang dikerahkan gugur, 700.000 dibangkitkan |
 
-Semua angka itu **dihitung kompiler** dari data pasukan, event, dan catatan korban, lalu dicek otomatis oleh 27 tes skenario. Panel Situasi menampilkan *Operation ledger* untuk detik yang sedang diputar, lengkap dengan hitungannya.
+Semua angka itu **dihitung kompiler** dari data pasukan, event, dan catatan korban, lalu dicek otomatis oleh 27 tes skenario, termasuk 19 checkpoint linimasa. Panel Situasi menampilkan *Operation ledger* untuk detik yang sedang diputar, lengkap dengan hitungannya.
 
-Petanya punya **skala**: 1 piksel atlas ≈ 2 km, kalibrasi sintetis dari jarak yang disebut novel. Sungai, danau, pegunungan Kanaat beserta celahnya, hutan, dan jalan dilacak dari peta lukis. Setiap pasukan berjalan di **rute terukur**, lewat jalan, celah gunung, dan arungan, bukan garis lurus, dan kecepatannya dicek terhadap laju yang disebut novel. Status jalur pasokan (terbuka, terancam, terputus, aman) tampil di jalan Tempest–Dwargon.
+Petanya **1:1**: 1 piksel atlas ≈ 2 km, dunia 5.282 × 4.070 km dengan sekitar 7,6 juta km² daratan. **Terrain Map** (gaya bawaan) menggambarnya seperti peta fisik: laut menurut kedalaman, padang rumput, hutan, stepa, tanah tandus, batu, salju, danau, sungai, dan bayangan relief. Ada **skala**, posisi kursor dalam **km**, dan **penggaris** untuk mengukur jarak. Setiap pasukan berjalan di **rute terukur**, lewat jalan, celah gunung, dan arungan, bukan garis lurus, dan kecepatannya dicek terhadap laju yang disebut novel.
 
-Rinciannya: [`docs/GEOGRAPHIC_MODEL.md`](./docs/GEOGRAPHIC_MODEL.md) · [`docs/CAMPAIGN_FORCE_LEDGER.md`](./docs/CAMPAIGN_FORCE_LEDGER.md) · [`docs/CAMPAIGN_TIMELINE.md`](./docs/CAMPAIGN_TIMELINE.md)
+**Karakter per event** juga diaudit ulang dari teks novel: siapa yang benar-benar hadir di tempat kejadian, dan siapa yang memberi perintah dari jauh. Saat 970.000 melintasi perbatasan, yang tampil adalah Caligulio dan para komandan Kekaisaran, bukan Rimuru dan Benimaru yang menonton dari Control Room.
+
+Rinciannya: [`docs/GEOGRAPHIC_MODEL.md`](./docs/GEOGRAPHIC_MODEL.md) · [`docs/CAMPAIGN_FORCE_LEDGER.md`](./docs/CAMPAIGN_FORCE_LEDGER.md) · [`docs/CAMPAIGN_TIMELINE.md`](./docs/CAMPAIGN_TIMELINE.md) · [`docs/CHARACTER_EVENT_AUDIT.md`](./docs/CHARACTER_EVENT_AUDIT.md) · [`docs/SOURCE_AND_ASSUMPTIONS.md`](./docs/SOURCE_AND_ASSUMPTIONS.md)
 
 <br>
 
 ## 🗓️ Linimasa perang
 
-Novel tidak pernah memberi jam atau tanggal kalender. Kerangka waktunya dibangun dari interval yang dinyatakan novel, seperti "keesokan harinya", "tujuh hari sejak operasi dimulai", dan "malam yang sangat panjang dimulai". Hari `D+00` adalah hari ultimatum dan pertempuran permukaan.
+Novel tidak pernah memberi jam atau tanggal kalender. Kerangka waktunya dibangun dari interval yang dinyatakan novel, seperti "keesokan harinya", "tujuh hari sejak operasi dimulai", dan "malam yang sangat panjang dimulai". Hari `D+00` adalah hari ultimatum dan pertempuran di Gerbang Utama Dwargon.
 
 ```mermaid
 timeline
     title Perang Tempest melawan Kekaisaran Timur
     section Persiapan
-        D−40 : Rapat perang Kekaisaran, cadangan 100.000 ditahan di ibu kota
-        D−39 : Satu kolom 1.005.000 berangkat, detasemen 5.000 menuju Dwargon
-        D−24 : Kolom menyeberangi perbatasan Tempest
-        D−3 : Berhenti di titik henti, pecah jadi 700.000 · 200.000 · 40.000 · 30.000 · 35.000
-        D−2 : Formation B mengancam jalan Tempest–Dwargon
-    section Pertempuran permukaan
-        D+0 : Ultimatum dan serangan barat daya ke Dwargon
-            : Formation B dan Flying Combat Corps dihancurkan, Dwargon tidak jatuh
-        D+1 : 30.000 dari cadangan ibu kota berangkat ke Gerbang Dwargon
+        D−40 : Rapat perang Kekaisaran, cadangan 110.100 ditahan di ibu kota
+        D−39 : Kolom 970.000 berangkat (900.000 + 70.000)
+        D−24 : Kolom 970.000 menyeberangi perbatasan Tempest
+        D−11 : 30.000 berangkat lewat jalan tanah genting
+        D−5 : 30.000 melintasi perbatasan timur, Dwargon ikut perang
+        D−3 : 970.000 tiba di titik henti bersamaan dengan 30.000 di Gerbang Timur
+            : 900.000 pecah jadi 700.000 dan 200.000, 70.000 menunggu
+    section First dan Second Strike
+        D−1 : Grup Testarossa tiba di Gerbang Utama lebih dulu
+        D+0 : 200.000 di Gerbang Utama bersamaan dengan 700.000 di depan ibu kota Tempest
+            : Ultimatum ditolak, 40.000 kapal udara datang (240.000), semuanya dihancurkan
     section Labirin
-        D+1 sampai D+9 : Operasi Labyrinth Raider, 350.000 masuk di hari pertama
-        D+5 dan D+8 : Pasukan Gerbang Dwargon jadi 30.000, lalu 60.000
-        D+10 : Kamp di luar Labirin dimusnahkan
+        D+1 dan D+2 : 350.000 lalu 200.000 masuk Labirin, 150.000 menunggu di luar
+        D+7 : Gerbang Timur jadi 60.000
+        D+9 dan D+10 : 700.000 dimusnahkan, wilayah kembali ke status quo
         D+11 : Rimuru membangkitkan sekitar 700.000 prajurit
     section Malam panjang
-        D+15 : Kudeta, 60.000 pasukan Gerbang dibunuh Velgrynd di Dwargon
-        D+16 : Black Numbers, kapal bendera jatuh, Velgrynd pergi
+        D+15 : Serangan balik Dwargon dan Tempest ke timur, kudeta di ibu kota
+            : Velgrynd membunuh 60.000, Third Strike 10.100 berangkat
+        D+16 : Third Strike hancur di dua front, semuanya kembali ke status quo
     section Perdamaian
-        D+19 : Pertemuan puncak
-        D+26 : Repatriasi tawanan dimulai
+        D+16 : Festival kemenangan di ibu kota
+        D+19 : Pertemuan puncak tiga negara, Kekaisaran berpihak ke Tempest
+        D+23 : Penjelasan untuk Negara-negara Barat (skenario)
+        D+27 : Guy Crimson memanggil Walpurgis Council
 ```
 
 | Lapisan waktu | Contoh | Kanon? |
@@ -295,9 +309,10 @@ Spotlight-nya meluncur mulus ke setiap tombol. Di langkah peta, tur memindahkan 
 <td width="50%" valign="top">
 
 **🗺️ Peta**
-- Base Map yang bersih atau Myth Map yang dilukis, keduanya HD saat di-zoom
+- Terrain Map fisik, Base Map yang bersih, atau Myth Map yang dilukis, semuanya HD saat di-zoom
 - Mode 3D three.js dengan relief, laut, siang dan malam, token pasukan 3D, dan standee karakter 2.5D
-- Skala ≈ 2 km per piksel, sungai, danau, pegunungan dan celahnya, jalan dengan status pasokan
+- Peta 1:1, 2 km per piksel, dengan skala, posisi km, dan penggaris
+- Sungai, danau, pegunungan dan celahnya, jalan dengan status pasokan
 - Pasukan berjalan di rute terukur yang mengikuti medan
 - Datar atau bola dunia, waktu tetap tidak bergeser
 - Look *Documentary* atau *War room*
@@ -351,7 +366,7 @@ Spotlight-nya meluncur mulus ke setiap tombol. Di langkah peta, tur memindahkan 
 |---|---|---|---|
 | `Space` | Play / pause | `/` · `Ctrl+K` | Cari dan perintah |
 | `←` `→` | ±1 jam simulasi | `G` | Datar / bola dunia |
-| `Shift` + `←` `→` | ±1 hari | `M` | Base / Myth Map |
+| `Shift` + `←` `→` | ±1 hari | `M` | Terrain / Base / Myth Map |
 | `[` `]` | Event sebelumnya / berikutnya | `L` | Legenda |
 | `,` `.` | ±1 frame (10 menit) | `C` | Mode sinematik |
 | `1` sampai `8` | Kecepatan | `0` | Bingkai seluruh kampanye |
@@ -370,13 +385,13 @@ Spotlight-nya meluncur mulus ke setiap tombol. Di langkah peta, tur memindahkan 
 | `CANONICAL` | Didukung eksplisit oleh novel |
 | `CANONICAL_WITH_VISUAL_RECONSTRUCTION` | Kejadiannya kanon, posisi, rute, atau jam di peta direkonstruksi |
 | `INFERRED` | Mengikuti dari beberapa petunjuk, tidak dinyatakan |
-| `SCENARIO` | Ditetapkan brief skenario atlas ini, tidak dinyatakan novel |
+| `SCENARIO` | Ditetapkan skenario atlas ini, tidak dinyatakan novel |
 | `RECONSTRUCTED` | Jembatan antara titik-titik yang diketahui, dibuat proyek ini |
 | `UNRESOLVED` | Bukti tidak cukup, tetap ditampilkan supaya celahnya kelihatan |
 
 **Boleh:** interpolasi gerakan di antara dua posisi kanonik, jam simulasi untuk event yang di novel hanya bertanggal hari, dan posisi peta untuk tempat yang tidak ditandai (dengan alasan tertulis).
 
-**Tidak boleh:** mengarang pertempuran, korban, keputusan komandan, atau presisi palsu. Angka pasukan yang berbeda dari novel hanya datang dari brief skenario, berkelas `SCENARIO`, dan bedanya dicatat.
+**Tidak boleh:** mengarang pertempuran, korban, keputusan komandan, atau presisi palsu. Angka pasukan yang berbeda dari novel hanya datang dari skenario, berkelas `SCENARIO`, dan bedanya dicatat.
 
 </details>
 
@@ -400,7 +415,7 @@ Dan tiga yang direkam langsung dari atlas, tanpa antarmuka:
 
 <table>
 <tr>
-<td width="40%"><a href="./assets/readme/wallpapers/wallpaper-1920x1080-advance.png"><img src="./assets/readme/wallpapers/wallpaper-1920x1080-advance.png" alt="Wallpaper 1920×1080, D−1"></a><br><sub>1920 × 1080 · D−1, 700.000 di hutan</sub></td>
+<td width="40%"><a href="./assets/readme/wallpapers/wallpaper-1920x1080-advance.png"><img src="./assets/readme/wallpapers/wallpaper-1920x1080-advance.png" alt="Wallpaper 1920×1080, D−1"></a><br><sub>1920 × 1080 · D−1, 700.000 di hutan dan 200.000 menuju Dwargon</sub></td>
 <td width="40%"><a href="./assets/readme/wallpapers/wallpaper-2560x1440-collapse.png"><img src="./assets/readme/wallpapers/wallpaper-2560x1440-collapse.png" alt="Wallpaper 2560×1440, D+10"></a><br><sub>2560 × 1440 · D+10, kantong runtuh</sub></td>
 <td width="20%"><a href="./assets/readme/wallpapers/wallpaper-phone-advance.png"><img src="./assets/readme/wallpapers/wallpaper-phone-advance.png" alt="Wallpaper ponsel"></a><br><sub>Ponsel · 1170 × 2532</sub></td>
 </tr>
@@ -443,7 +458,8 @@ python scripts/cartography/extract_territories.py   # geometri wilayah dari Base
 python scripts/characters/build_photocards.py       # photocard WebP dan thumbnail
 python scripts/flags/build_flag_thumbs.py           # thumbnail bendera WebP
 python scripts/theme/build_theme_assets.py          # wallpaper, stiker, pemandu tur, kursor
-python scripts/cartography/build_hd_maps.py --model FSRCNN_x4.pb   # tile HD, garis pantai vektor, relief 3D
+python scripts/cartography/build_hd_maps.py --model FSRCNN_x4.pb   # tile Myth Map HD, garis pantai vektor
+python scripts/cartography/build_terrain.py         # relief, tile Terrain Map, tekstur 3D
 python scripts/cartography/build_relief_grid.py     # grid relief untuk pencarian rute
 ```
 
@@ -455,14 +471,14 @@ python scripts/cartography/build_relief_grid.py     # grid relief untuk pencaria
 
 ```bash
 npm run verify        # compile, validate-data, validate-assets, lint, typecheck, i18n, test, build
-npm run qa            # 46 cek di Chromium sungguhan, 8 lebar layar (320 sampai 1920 px)
+npm run qa            # 50 cek di Chromium sungguhan, 8 lebar layar (320 sampai 1920 px)
 npm run qa:visual     # regresi visual, 10 checkpoint
 npm run qa:front      # tangkapan 0/25/50/75/100 % tiap transisi wilayah besar
 npm run qa:playback   # front bergerak saat diputar, beku saat dijeda, sama setelah scrub
 npm run qa:perf       # waktu siap, transfer, heap, dan seek di 6 perangkat
 ```
 
-Hasil terakhir: `verify` lulus (25/25 tes engine, 27/27 tes skenario, 30 bahasa 100 %), `qa` 46/46 termasuk tur dan mode 3D, `qa:visual` 10/10, `qa:playback` 3/3. Muatan pertama sekitar 2,7 sampai 3,1 MB dalam 74 sampai 129 request, siap dalam kurang dari 2,1 detik. `validate-data` dan `i18n:check` juga menolak em dash dan titik koma di semua teks yang tampil di situs. Detail di [`docs/QA.md`](./docs/QA.md).
+Hasil terakhir: `verify` lulus (25/25 tes engine, 27/27 tes skenario, 30 bahasa 100 %), `qa` 50/50 termasuk tur, mode 3D, gaya peta, skala, dan penggaris, `qa:visual` 10/10, `qa:playback` 3/3. Muatan pertama sekitar 2,7 sampai 3,1 MB dalam 74 sampai 129 request, siap dalam kurang dari 2,1 detik. `validate-data` dan `i18n:check` juga menolak em dash dan titik koma di semua teks yang tampil di situs. Detail di [`docs/QA.md`](./docs/QA.md).
 
 </details>
 
@@ -474,9 +490,11 @@ Hasil terakhir: `verify` lulus (25/25 tes engine, 27/27 tes skenario, 30 bahasa 
 |---|---|
 | [`ARCHITECTURE.md`](./docs/ARCHITECTURE.md) | Modul runtime, loop render, model frame dan delta |
 | [`DATA-MODEL.md`](./docs/DATA-MODEL.md) | Bentuk setiap file data |
-| [`GEOGRAPHIC_MODEL.md`](./docs/GEOGRAPHIC_MODEL.md) | Koordinat, skala km, medan, rute, dan kalibrasinya |
+| [`GEOGRAPHIC_MODEL.md`](./docs/GEOGRAPHIC_MODEL.md) | Dunia 1:1, skala km, Pegunungan Kanaat, Terrain Map, rute, dan kalibrasinya |
 | [`CAMPAIGN_FORCE_LEDGER.md`](./docs/CAMPAIGN_FORCE_LEDGER.md) | Buku besar pasukan, persamaan, dan perbedaan dengan novel |
-| [`CAMPAIGN_TIMELINE.md`](./docs/CAMPAIGN_TIMELINE.md) | Linimasa skenario per fase |
+| [`CAMPAIGN_TIMELINE.md`](./docs/CAMPAIGN_TIMELINE.md) | Linimasa skenario per fase, A sampai N |
+| [`CHARACTER_EVENT_AUDIT.md`](./docs/CHARACTER_EVENT_AUDIT.md) | Siapa hadir dan siapa memerintah dari jauh di setiap event |
+| [`SOURCE_AND_ASSUMPTIONS.md`](./docs/SOURCE_AND_ASSUMPTIONS.md) | Urutan sumber, koreksi dokumen skenario, dan setiap asumsi |
 | [`TERRITORIAL-ANIMATION.md`](./docs/TERRITORIAL-ANIMATION.md) | Mesin wilayah dan aturan perangnya |
 | [`CARTOGRAPHY.md`](./docs/CARTOGRAPHY.md) | Wilayah, ibu kota, kota, Labirin |
 | [`UI-DESIGN.md`](./docs/UI-DESIGN.md) | Anatomi layar dan tur |

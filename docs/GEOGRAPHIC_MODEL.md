@@ -1,19 +1,23 @@
 # Geographic model
 
-Revision R6 (2026-10-11). One world model drives the map, the 3D view, the minimap, unit movement, the held-ground front and every distance shown in the interface. Nothing in it is an official Tensura measurement: the author has never published a world scale. Everything below is either read off the supplied maps, stated by the novels, or a documented synthesis.
+Revision R7 (2026-10-12). One world model drives the map, the 3D view, the minimap, unit movement, the held-ground front, the scale bar, the measuring tool and every distance shown in the interface. Nothing in it is an official Tensura measurement: the author has never published a world scale. Everything below is either read off the supplied maps, stated by the novels, or a documented synthesis.
 
-## 1. Coordinate systems
+## 1. A 1:1 world
 
 | System | Definition | Where it lives | Used for |
 |---|---|---|---|
 | `SIM_NORMALISED` | `x`, `y` in [0, 1] across the 2641 × 2035 atlas image, origin at the north-west corner, `+x` east, `+y` south | `data-source/gazetteer.source.json` (every position, stored once) | storage of all positions |
-| `WORLD_KM` | kilometres east and south of the same corner: `e = x · 5,282`, `s = y · 4,070` | `data-source/world.source.json`, `src/lib/world.ts` | distances, route lengths, speeds |
+| `WORLD_KM` | kilometres east and south of the same corner: `e = x · 5,282`, `s = y · 4,070` | `data-source/world.source.json`, `src/lib/world.ts` | distances, route lengths, speeds, the scale bar and the measuring tool |
 | Synthetic projection | longitude/latitude-shaped angles for the renderer only (`src/lib/coords.ts`) | runtime | MapLibre flat and globe views |
 | Screen | CSS pixels | each frame | drawing only, never stored |
 
-The scale is isotropic: 1 atlas pixel = **2.0 km** in both directions, so the whole atlas is 5,282 × 4,070 km. `WORLD_KM` is a pure function of the stored point. Zoom, pan, flat or globe projection, the 3D view and marker size never feed back into a position. `scripts/test-scenario.ts` checks the round trip through the renderer's projection and that distances survive it unchanged.
+The scale is isotropic: 1 atlas pixel = **2.0 km** in both directions. The world frame is 5,282 × 4,070 km, **21.5 million km²**; the basemap measures **7.59 million km² of land**, 13.8 million km² of sea and 58,500 km² of lakes (`public/maps/terrain-biomes.json`), a continent the size of Australia. `WORLD_KM` is a pure function of the stored point: zoom, pan, projection, the 3D view and marker size never feed back into a position.
 
-Places carry a placement grade: `MEASURED` (read off the annotated map by a SIFT/RANSAC registration), `RECONSTRUCTED` (placed by stated relations and the constraints below) or `ABSTRACT` (no position at all). Each place has a `basis` that says why it is where it is; the place dossier shows it.
+On the map the reader sees the same kilometres:
+
+- a **scale bar** (bottom left), the ground length under 100 screen pixels at the centre of the view, rounded to a 1-2-5 step;
+- the **pointer read-out** in kilometres east and south of the atlas corner (the simulation coordinates are in its tooltip);
+- a **measuring tool** (ruler button): click points on the map, read the straight-line length in kilometres; Backspace removes the last point, Esc stops.
 
 ## 2. Calibration
 
@@ -21,56 +25,64 @@ Places carry a placement grade: `MEASURED` (read off the annotated map by a SIFT
 
 | Id | Statement | Locator | Stated | Atlas at 2.0 km/px | Residual |
 |---|---|---|---:|---:|---:|
-| CAL-01 | Tempest-Dwargon rail line, overall | v12.txt:3279-3281 | ~1,000 km (path) | 622 km straight | path/straight 1.6 |
+| CAL-01 | Tempest-Dwargon rail line, overall | v12.txt:3279-3281 | ~1,000 km (path) | 654 km straight | path/straight 1.5 |
 | CAL-02 | Imperial army at its border, from the intended battlefield | v12.txt:12443-12450 | ~1,500 km | 1,081 km | −28 % |
-| CAL-03 | Imperial capital to the Composite Division's camp near the Dwargon border | v14.txt:10863-10866 | 500 km | 575 km | +15 % |
+| CAL-03 | Imperial capital to the camp near the Dwargon border | v14.txt:10863-10866 | 500 km | 575 km | +15 % |
 | CAL-04 | Tempest-Ingracia line | v12.txt:3283 | ~300 km | 914 km | ×3 (map discrepancy) |
-| CAL-05 | Magitanks arrayed from Dwargon's centre | v13.txt:513-515 | ~30 km | 31 km | placement |
+| CAL-05 | Magitanks arrayed from Dwargon's centre | v13.txt:513-515 | ~30 km | 30 km | placement |
 | CAL-06 | Imperial infantry camp from capital Rimuru | v13.txt:386-389 | ~30 km | 30 km | placement |
 
-No single scale reconciles all four long distances: the fan map is not drawn to the novels' numbers. CAL-01 and CAL-02 favour 2.6 to 3.2 km/px, CAL-03 favours 1.5, and CAL-04 fits nothing. The opening marches decide between them. The novels give the reconstructed infantry about 80 km a day (v12.txt:12443-12446) and the chariots about 10 km an hour (v12.txt:12456-12457). The halt, the infantry camp 30 km from Rimuru and the magitank array 30 km from Dwargon must all fall between the month mark (D-3) and the morning of D+0. That is only possible below about 2.2 km/px. **2.0 km/px** is the round scale that keeps every war-theatre statement within about 40 % and every opening march inside the stated speeds. CAL-05 and CAL-06 were then used to place the two battlefields at their stated 30 km. The calibration is graded `SYNTHETIC`, confidence `LOW`, and distances are shown rounded to 10 km (5 km below 50 km) with a `~`. Reference entry DISC-R6-09 records the residuals.
+No single scale reconciles all four long distances: the fan map is not drawn to the novels' numbers. **2.0 km/px** is the round scale that keeps every war-theatre statement within about 40 % and every opening march inside the stated speeds. The calibration is graded `SYNTHETIC`, confidence `LOW`, and distances are shown rounded (DISC-R7-13).
 
 ## 3. Control points
 
 | Anchor | Id | Grade | Basis |
 |---|---|---|---|
-| Tempest capital Rimuru | `jura-tempest-federation` | MEASURED | Map pin (the Ramiris Labyrinth `ramiris-labyrinth` takes the same position, RECONSTRUCTED) |
-| Dwargon (city) | `dwargon` | MEASURED | Map pin |
+| Tempest capital Rimuru | `jura-tempest-federation` | MEASURED | Map pin |
+| Dwargon (city) | `dwargon`, settlement `city-dwargon` | MEASURED | Map pin; the city sits on the southern flank of the range |
 | Imperial capital | `imperial-capital` | MEASURED | Map pin |
-| Blumund, Englassia (Ingracia), Farmenas, other nations | nation ids | MEASURED | Map pins |
 | Imperial border base | `imperial-interior` | RECONSTRUCTED | On the bearing from the capital to the forest |
 | Tempest border crossing | `tempest-border` | RECONSTRUCTED | Where the line of march meets the traced Empire-Jura border |
+| **Empire-Dwargon border crossing** | `empire-dwargon-border` | RECONSTRUCTED | Where the isthmus road meets the traced Empire-Dwargon border |
 | **Imperial halt point** | `jura-forest-edge` | RECONSTRUCTED | Travel-time constraints, §5 |
-| **Dwargon Gate** (eastern metropolis, Isthmus) | `dwargon-eastern-metropolis` | RECONSTRUCTED | East of the city at the Isthmus, facing the Empire (v13.txt:697-699), 575 km from the imperial capital |
-| Dwargon southern gate (front door) | `dwargon-outer-gate` | RECONSTRUCTED | On the southern road about 18 km from the city |
-| Southwestern Dwargon front | `sw-dwargon-front` | RECONSTRUCTED | 30 km SSW of the city (CAL-05), head of the south-western valley |
-| Northern Tempest front | `northern-tempest-front` | RECONSTRUCTED | On the Tempest-Dwargon road at the massif's southern foot |
-| Dwargon south-western border crossing | `dwargon-sw-border` | RECONSTRUCTED | On the traced Dwargon-Jura border |
-| Southern approach to Dwargon | `dwargon-south-approach` | RECONSTRUCTED | Foothills south of the massif, outside the border |
-| Isthmus road (Empire side) | `isthmus-approach` | RECONSTRUCTED | The detachment's holding position |
+| **Dwargon Main Gate** | `dwargon-main-gate` | RECONSTRUCTED | At the south-western **foot** of the range, about 22 km from the city centre |
+| Main Gate front (magitank array) | `sw-dwargon-front` | RECONSTRUCTED | About 8 km beyond the gate, 30 km from the city (CAL-05) |
+| Dwargon south-western border crossing | `dwargon-sw-border` | RECONSTRUCTED | On the traced Dwargon-Jura border, south of the gate |
+| **Dwargon Eastern Gate** | `dwargon-eastern-gate` | RECONSTRUCTED | At the Isthmus facing the Empire (v13.txt:697-699), 575 km from the imperial capital |
+| Eastern front (imperial camp) | `dwargon-eastern-front` | RECONSTRUCTED | Between the gate and the border on the isthmus plain |
 | Imperial infantry camp | `imperial-infantry-camp` | RECONSTRUCTED | 30 km from Rimuru (CAL-06) |
+| Third Strike landing ground, eastern approaches of the capital | `third-strike-landing`, `tempest-eastern-outskirts` | RECONSTRUCTED | East of the capital, beyond its garrison's immediate reach |
+| Council of the West, Walpurgis Council | `council-of-the-west`, `walpurgis-council` | RECONSTRUCTED / ABSTRACT | Ingracia; a spatial rift with no map position |
 
-Each strategic location exists once, with one coordinate, for the whole campaign. In R6 the D+0 magitank battlefield and its tactical positions (chariot line, linked fortress, Gaster's camp, the magitank rear) moved from the old forest-side "Dwargon Gate Front" to the south-western front. The old id `dwargon-gate-front` became `sw-dwargon-front`, so that the single **Dwargon Gate** of the scenario is the Isthmus gate. The Isthmus cluster (gate, battle line, Gazel's defensive line, the ritual ground, the Legion's landing ground) moved east with the gate, keeping its relative layout.
+Each strategic location exists once, with one coordinate, for the whole campaign. The two Dwargon gates are different places 300 km apart; tests check both.
 
-## 4. Terrain reconstruction
+## 4. The Kanaat massif
 
-The painted map (`public/maps/myth-map.jpg`) is the only supplied image that shows relief, forest and water. The theatre (x 0.50 to 0.90, y 0.28 to 0.70) was traced by eye on a 0.01 grid into `data-source/geography.source.json`:
+The painted map draws Dwargon's mountains as a pictorial symbol several hundred kilometres across. The atlas keeps a **compact range** (DISC-R7-11):
 
-| Feature | Ids | Grade |
-|---|---|---|
-| Kanaat massif (Dwargon's mountains) | `kanaat-massif` | TRACED |
-| Passes: southern road pass, south-western valley, Isthmus road | `dwargon-south-pass`, `dwargon-sw-pass`, `isthmus-pass` | CANON_RECONSTRUCTED / SYNTHETIC |
-| Lake east of Rimuru | `jura-central-lake` | TRACED |
-| Eastern Jura river, lake outflows east and west | `eastern-jura-river`, `lake-outflow-east`, `lake-outflow-west` | TRACED |
-| Fords and bridges | `ford-upper-eastern`, `ford-lower-eastern`, `outflow-east-ford`, `rimuru-bridge` | SYNTHETIC / CANON_RECONSTRUCTED |
-| Great Jura Forest, eastern deep forest | `great-jura-forest-cover`, `eastern-deep-forest` | TRACED |
-| Roads: Tempest-Dwargon (logistics), Tempest-Blumund (logistics), imperial highway, Isthmus road | ids as named | CANON_RECONSTRUCTED / SYNTHETIC |
+| | |
+|---|---|
+| Impassable core | an ellipse about **44 × 40 km** (`geography.source.json`, `kanaat-massif.ring`) |
+| Foothills | to about 66 × 60 km |
+| Summit | about **2,600 synthetic metres**, 14 km north of the city; the city at about 1,900 m |
+| Passes | the southern road pass (Tempest-Dwargon road and rail), the main-gate valley (south-west), the eastern road pass |
 
-The sea and the coast come from `public/maps/coast.json` (traced from the line map). Relief comes from `public/maps/3d/height.png`, the stylised relief of the 3D view, sampled by `scripts/cartography/build_relief_grid.py` into `data-source/relief.grid.source.json` (201 × 211 cells, 0.002 atlas units, about 5 km). Elevations are shown as synthetic metres (a linear mapping of the stylised relief, peak 4,500 m) and are not a survey.
+The painted symbol is kept as `paintedSymbol` for reference only: under it the relief is rolling upland and the land cover is borrowed from the surroundings. The Main Gate is outside the impassable core, at its south-western foot; the 200,000 reach it from the south-western border without entering the mountains.
 
-## 5. Routes and distance
+## 5. Terrain and the basemap
 
-`scripts/lib/routing.ts` rasterises the theatre on the relief lattice and finds every ground route by A* (8-connected, no corner-cutting next to a barrier or a river):
+`scripts/cartography/build_terrain.py` builds the relief and the physical basemap:
+
+- **Relief** (`public/maps/3d/height.png`, 16-bit; sampled into `data-source/relief.grid.source.json` for routing): land rises from the coast; broad shaded ranges on the painted map become mountains (thin drawn lines, coasts and borders are ignored); the Ice Continent carries glaciated ranges; the Kanaat massif is the compact cone of §4. Synthetic metres = (level − 5,243) × 0.1.
+- **Land cover**: the painted map's green washes become grassland and meadow, its tan washes steppe, its strongly saturated washes barren ground; interior ground far from the sea is drier. The named forests of the route model (Great Jura Forest, eastern deep forest) and the painted tree clusters are forest, with clearings and woodland patches across green ground. Rock above about 1,500 m, snow above about 2,500 m (lower in the far north), the Ice Continent under snow with rock on steep ground.
+- **Water**: sea shaded by distance from the coast (shelf to deep water), the painted lakes and the lakes of the route model, the rivers of the route model.
+- **Hillshade** from the north-west, with fine ridges where the ground is high, and single tree crowns stippled into forest when zoomed in.
+
+The output is a Web-Mercator tile pyramid, zoom 0 to 6 (`public/tiles/terrain/`, WebP, about 7 MB), the **Terrain Map** style (the default), and a 4,096-pixel texture for the 3D relief (`public/maps/3d/terrain-4k.jpg`). Detail below the 2 km source resolution is deterministic noise in world coordinates, so tiles join without seams and every build is identical. Every layer is a stylised reconstruction, not a survey.
+
+## 6. Routes and distance
+
+`scripts/lib/routing.ts` rasterises the theatre on the relief lattice (0.002 atlas units, about 5 km) and finds every ground route by A*:
 
 | Terrain | Cost per km |
 |---|---:|
@@ -81,39 +93,35 @@ The sea and the coast come from `public/maps/coast.json` (traced from the line m
 | Mountain pass | 1.9 |
 | Deep forest | 2.3 |
 | River without a ford | 9.0 |
-| Kanaat massif outside a pass, water | impassable |
+| Kanaat core outside a pass, water | impassable |
 
-Relief above the plain adds a slope penalty off roads. The path is smoothed and simplified without ever cutting across a barrier, then measured in kilometres. Air routes (airships, dragon-tier movers) are straight lines. Moves under 15 km inside one battlefield are drawn straight. Every route records its length, the straight-line distance, kilometres per terrain class, passes, crossings, roads used, highest ground and an elevation profile (`public/data/routes.json`).
+Relief above the plain adds a slope penalty off roads. Air routes (airships, airlifts, dragon-tier movers) are straight lines; a movement typed `AIRLIFT` flies even when its unit marches on the ground. Moves under 15 km inside one battlefield are drawn straight. A movement's implied pace is checked against its unit's stated rate (infantry 80/120, armour 160/240, air 2,400/9,600, elite 120/1,200, mixed 60/100, dragon-tier 20,000/200,000 km a day, usual/maximum). R7 has no movement over its maximum.
 
-Every leg of every formation's position track carries the route it travels (`PositionKey.path`). The resolver interpolates along that route by distance, so the marker, its trail, the movement line, the held-ground front, the cinematic camera, the minimap and the 3D overlay all follow the same road, pass and ford. A movement's implied pace is checked against its unit's stated rate (`world.source.json` speeds: infantry 80/120, armour 160/240, air 2,400/9,600, elite 120/1,200, mixed 60/100, dragon-tier 20,000/200,000 km a day, usual/maximum). The compiler lists any movement that would exceed the maximum. R6 has none.
+The scenario's simultaneities fix the opening: the 970,000 halt and the eastern cohort reach the Eastern Gate at D-3 14:00; the 700,000 (288 km) and the 200,000 (222 km to the south-western border, 294 km up to the gate) arrive together at D+0 08:00; the 40,000 airships fly 448 km from the halt in 70 minutes after the ultimatum is rejected.
 
-**Halt point.** The novels do not place the halt. It was placed where the constraints of §2 can all be met. The 700,000 must reach a camp 30 km from Rimuru (about 280 km by the road, 113 km a day). The 200,000 must go by northern Tempest and the south-western valley to 30 km from Dwargon by D+0 08:00 (about 555 km, about 220 km a day). Both fit only if the halt lies west of the upper ford, south-east of the northern Tempest front, and the halt falls at D-3 14:00 rather than R5's D-2.
+## 7. Territory and the front
 
-## 6. Territory and the front
+National borders are the traced Base Map regions. The held-ground front (`scripts/compile-front.ts`) is a reconstruction from force positions and strengths. The rules (`data-source/campaign/front-rules.json`):
 
-National borders are the traced Base Map regions (unchanged in R6). The held-ground front (`scripts/compile-front.ts`) is a reconstruction from force positions and strengths. In R6:
+- **Dwargon is at war from the eastern crossing** (EVT-0521): from then imperial formations in Dwargon hold ground. A formation standing in Dwargon reaches at most about 60 km (mountain and isthmus country), so the south-western thrust shows as a corridor to the Main Gate and the Eastern Gate front as a bridgehead from the border to the coast, not as the whole kingdom.
+- The south-western ground is given back when the 240,000 are destroyed; the eastern ground holds until the Eastern Gate force dies, changes hands during the allied push, and goes when the Third Strike's eastern group is destroyed.
+- Ground a side lost stays lost, except that from the Third Strike (EVT-0541) the Empire may take ground again: its Tempest group, given the weight of a formation able to hold a bridgehead, advances east of the capital until it is destroyed.
+- Formations flying a leg hold no ground on the way. Formations withdrawing, merged or returned hold none. Cities are never taken.
+- At the end both fronts are back on the pre-war line.
 
-- a formation becomes an aggregate only when it is split (a party sent ahead does not divide it);
-- formations withdrawing, merged or returned hold no ground;
-- imperial formations never hold Dwargon ground: Dwargon is never taken (front-rules gate with `fromEvent: null`). The fighting there is shown by the theatre's `CONTESTED` state and its operational area.
+## 8. Validation (actually run)
 
-## 7. Validation (actually run)
+`npm run test` runs `scripts/test-scenario.ts` (27 tests) after the engine tests (25). The geographic and territorial tests:
 
-`npm run test` runs `scripts/test-scenario.ts` (27 tests) after the engine tests (25). The geographic tests:
+- the impassable core is under 80 km across and the summit under 3,200 m;
+- the Main Gate is 15 to 30 km from the city, outside the core and reachable from the south-west; the Eastern Gate is a different place more than 200 km away;
+- km round-trip and invariance through the renderer projection; the two canonical 30 km placements hold;
+- every route has a length that matches its geometry and no exception; every ground segment stays on land, crosses the core only inside a pass and rivers only at a ford or bridge; the 200,000 pass the south-western border on the way to the gate;
+- no movement exceeds its unit's maximum rate; no formation moves further in one 10-minute frame than its top speed allows;
+- imperial ground in Dwargon appears only after the eastern crossing, grows with the south-western thrust, shrinks after the Main Gate battle while the eastern occupation remains, and is gone at the end; the Third Strike takes ground in Tempest; Tempest is clear at the end.
 
-- essential places have coordinates inside the atlas;
-- km round-trip and invariance through the renderer projection; manifest scale equals the module scale;
-- the two canonical 30 km placements hold within 5 km;
-- every route has at least two points, a length that matches its geometry, and no exception; every movement references real places and routes;
-- every ground route segment stays on land, crosses the massif only inside a pass, and crosses rivers only at a ford or bridge; Formation B uses the south-western valley;
-- no movement exceeds its unit's maximum rate;
-- every drawn leg longer than 15 km has a route (or an UNKNOWN discontinuity);
-- no formation moves further in one 10-minute frame than its top speed allows;
-- the Dwargon Gate has one coordinate everywhere and there is one place of that name.
+## 9. Known uncertainties
 
-## 8. Known uncertainties
-
-- The scale is a compromise. The Tempest-Ingracia distance is off by a factor of three, and the Tempest-Dwargon straight line is 622 km against a stated 1,000 km rail path.
-- Terrain outlines are accurate to about one grid step (10 to 13 km). Roads, passes and fords are the project's.
-- The relief is stylised. Its metres are synthetic.
-- Outside the traced theatre, ground routes would be drawn straight and flagged. No R6 movement needs that.
+- The scale is a compromise (CAL-01 to CAL-04).
+- Terrain outlines are accurate to about one grid step (10 to 13 km). Roads, passes and fords are the project's. Land cover is inferred from a painting.
+- The relief is stylised and its metres are synthetic. The compact Kanaat range is a decision of the scenario, not a measurement.

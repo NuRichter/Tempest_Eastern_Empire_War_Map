@@ -35,7 +35,7 @@ An event is placed by **battle day** (`day`, relative to first contact D+0) and 
 | `CANONICAL_WITH_VISUAL_RECONSTRUCTION` | Canonical event; exact position, path or timing reconstructed for the map |
 | `INFERRED` | Follows from several clues but is not stated |
 | `RECONSTRUCTED` | A bridging sequence made by the project between known points |
-| `SCENARIO` | Set by the owner's scenario brief (R6), authoritative for this atlas but not stated by the novels |
+| `SCENARIO` | Set by the owner's campaign scenario (docs/SOURCE_AND_ASSUMPTIONS.md), authoritative for this atlas but not stated by the novels |
 | `UNRESOLVED` | Evidence insufficient; kept visible |
 
 The brief's evidence taxonomy maps onto these classes: canonical = `CANONICAL` (and the canonical part of `CANONICAL_WITH_VISUAL_RECONSTRUCTION`), source_inferred = `INFERRED`, synthetic = `RECONSTRUCTED` and `SCENARIO`, unverified = `UNRESOLVED`. Size statuses add `SCENARIO` beside `EXPLICIT`, `DERIVED`, `RECONSTRUCTED` and `UNKNOWN`.
@@ -66,9 +66,12 @@ A force with no recorded movement that changes location is drawn travelling at a
 
 Killed, wounded, missing, captured and **revived** are separate fields. Scopes: `EVENT_CASUALTY` and `RESTORATION` rows are summed; `AGGREGATE_CASUALTY`, `COMPONENT_CASUALTY` and `CAMPAIGN_TOTAL` restate other rows and are excluded. A field is `UNKNOWN` until some record states a number for it. Permanent dead = killed − revived. `validate-data` recomputes every total independently.
 
-## R6: ledger, merges, routes
+## Ledger, merges, convoys, routes
 
 - **Forces** may carry `ledgerRole` (`MAIN`, `ALLOCATION`, `DETACHMENT`, `RESERVE`, `TRANSFER`, `GATE_FORCE`, `REVIVED_COHORT`, `OUTSIDE_OPERATION`), `origin` (`SPLIT` from or `TRANSFER` out of another force, with the event) and `mergedInto` (the force and event). A force with `aggregateFromEvent` has its strength computed from that event on as the sum of its allocations. The compiler derives `issuedIds`.
+- **Forces** may carry `convoy` (`hostId`, `untilEvent`): the force rides in its host's column and is drawn inside the host's marker, which shows the combined strength and both names, until that event. The ledger keeps them apart.
+- **Events** carry `cast`: every character taking part, `present` (drawn at the place) or `remote` (orders, watches or directs from elsewhere), and `castAudit` (confidence, comment, ids removed by the audit). The compiler emits `characterIds` (all) and `presentIds` (present only). See `docs/CHARACTER_EVENT_AUDIT.md`.
+- **`scenario-params.json`**: owner-adjustable scenario parameters (the Third Strike's split), applied by the compiler, which refuses to build if they do not add up.
 - **Events** may set `logistics` (state of a LOGISTICS road: `OPEN`, `THREATENED`, `CUT`, `SECURE`). `FrameState.logistics` carries it per frame.
 - **Casualty rows** with no single force may name `operationForceIds`, so the ledger can count them.
 - **`ledger.json`**: the operation ledger by event (committed unique personnel, reserve, Gate force, killed, revived, dead not revived, never killed, active) and the identities the compiler checked. See `docs/CAMPAIGN_FORCE_LEDGER.md`.
@@ -77,7 +80,7 @@ Killed, wounded, missing, captured and **revived** are separate fields. Scopes: 
 
 ## Derived on the client (not in the data)
 
-- **Held ground** — `public/data/front.json`, compiled by `scripts/compile-front.ts` (RECONSTRUCTED). A 352 × 272 grid; per cell the frames at which its holder changes (CSR: `counts`, `times`, `holders`, base64 typed arrays) and its territory (`owner`); `episodes` group the flips into transitions (`ADVANCE`, `RECAPTURE`, `COLLAPSE`, `SETTLEMENT`) with gaining and losing side, start / mid / end frame, cell count, territories, formations and nearest event. `src/map/field/front.ts` evaluates it for any continuous time (signed time fields `E`, `A`, pale band `P`/`Q`); the front is the isochrone `t_flip = T`. Canon gates for when a side may take ground in a territory: `data-source/campaign/front-rules.json`. Details: `docs/TERRITORIAL-ANIMATION.md`.
+- **Held ground** — `public/data/front.json`, compiled by `scripts/compile-front.ts` (RECONSTRUCTED). A 352 × 272 grid; per cell the frames at which its holder changes (CSR: `counts`, `times`, `holders`, base64 typed arrays) and its territory (`owner`); `episodes` group the flips into transitions (`ADVANCE`, `RECAPTURE`, `COLLAPSE`, `SETTLEMENT`) with gaining and losing side, start / mid / end frame, cell count, territories, formations and nearest event. `src/map/field/front.ts` evaluates it for any continuous time (signed time fields `E`, `A`, pale band `P`/`Q`); the front is the isochrone `t_flip = T`. Rules for when and how a side takes ground (`data-source/campaign/front-rules.json`): gates by territory and event, reach scale by territory, reopening lost ground from an event, minimum weight for a formation whose task is to take ground. Details: `docs/TERRITORIAL-ANIMATION.md`.
 - **Front seams** — the zero contour of the held-ground fields, traced by marching squares.
 - **Front strength** — the sum of the most specific drawn formations of each side within a front, never summing tiers; on the map it counts linearly to each newly recorded value over one simulated hour (`displayStrengthAt`), dossiers show recorded figures.
 

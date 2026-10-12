@@ -82,7 +82,9 @@ Full method, transition modes, tests and limits: `docs/TERRITORIAL-ANIMATION.md`
 - **Myth Map, tiles.** The painted map is super-resolved ×4 with FSRCNN (Dong, Loy and Tang, 2016), lightly sharpened, then cut into 609 Web-Mercator tiles, zoom 0 to 5, in `public/tiles/myth/`. The atlas projection maps simulation x and y linearly onto Mercator x and y, so a tile pixel maps to an image pixel by an affine transform.
 
 **The 3D view.** `src/map/three/Atlas3D.tsx` (three.js, loaded only when opened) draws the following:
-- **Terrain:** a relief mesh from `public/maps/3d/height.png`. The relief is STYLISED, because the novels give no elevations. Land rises inland, the painted map's rugged ground becomes ranges, and the Kanaat Mountains around Dwargon are raised because Dwargon is carved into them. Its skin is the super-resolved Myth Map.
+- **Terrain:** a relief mesh from `public/maps/3d/height.png`, built with the physical basemap by `scripts/cartography/build_terrain.py`. The relief is STYLISED, because the novels give no elevations. Land rises inland, the painted map's broad ranges become mountains, and Dwargon sits on the southern flank of a compact Kanaat range (docs/GEOGRAPHIC_MODEL.md §4). Its skin is the Terrain Map texture, or the super-resolved Myth Map when that style is chosen.
 - **War:** territory roles, held ground and glowing fronts are painted onto the terrain from the same data as the 2D map.
 - **Forces and places:** armies as lit pillars sized by strength, battles as rings, sparks and firelight, capitals as extruded cities with crowns, and the Labyrinth as a portal.
 - **Sky and light:** an animated sea, sky, fog, clouds and bloom. Sun and moon follow the simulation hour.
+
+**Terrain Map.** `scripts/cartography/build_terrain.py` renders the default style: a physical map in the manner of a web terrain layer (sea by depth, grassland, forest, steppe, barren ground, rock, snow, lakes, rivers and hillshade), as 2,337 WebP tiles, zoom 0 to 6, in `public/tiles/terrain/`, and as the 3D texture `public/maps/3d/terrain-4k.jpg`. Its land-cover areas are written to `public/maps/terrain-biomes.json`. See docs/GEOGRAPHIC_MODEL.md §5.
